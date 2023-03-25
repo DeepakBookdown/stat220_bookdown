@@ -1,0 +1,189 @@
+# (PART\*) Class Activities {-}
+
+# Class Activity 1
+
+The `R` package `babynames` provides data about the popularity of individual baby names from the US Social Security Administration. Data includes all names used at least 5 times in a year beginning in 1880.
+
+```{r}
+#install.packages("babynames")  # uncomment to install
+library(babynames)
+```
+
+Below is the list for first few cases of baby names.
+
+```{r}
+head(babynames)
+```
+
+1. How many cases and variables are in the dataset `babynames`?
+
+**Answer:** 
+
+```{r}
+dim(babynames)
+```
+
+There are `r dim(babynames)[1]` cases and `r dim(babynames)[2]` variables in the dataset `babynames`.
+
+Let's use the package tidyverse to do some exploratory data analysis.
+
+```{r}
+#install.packages("tidyverse")   # uncomment to install
+library(tidyverse)
+babynames %>% filter(name=='Aimee')
+
+filtered_names <- babynames %>% filter(name=='Aimee')
+```
+
+```{r}
+#install.packages("ggplot2")   # uncomment to install
+library(ggplot2)
+```
+
+```{r trend, fig.cap= "A trend chart", tidy=FALSE}
+ggplot(data=filtered_names, aes(x=year, y=prop)) + 
+  geom_line(aes(colour=sex)) + 
+  xlab('Year') + 
+  ylab('Prop. of Babies Named Aimee')
+```
+
+2. What do you see in the Figure 1? Explain in a few sentences.
+
+**Answer:**
+
+In Figure 1, we can see the proportion of babies named Aimee by year for both males and females. We notice that the name Aimee has been more popular among females than males throughout the years. There is a peak in popularity around the 1970s for female babies, and then the popularity declines.
+
+3. Repeat question 2 to infer how does the proportion of babies with your first name trend over time. Examine the generated plot and describe the trend of your name's popularity over time. Consider the following points:
+
+Has the popularity of your name increased, decreased, or remained stable over the years? Is there a noticeable difference in popularity between sexes? Are there any interesting patterns or trends, such as sudden increases or decreases in popularity?
+
+**Answer:**
+
+```{r}
+# Replace 'YourName' with your first name
+your_name <- "Dee"
+
+your_name_data <- babynames %>% filter(name == your_name)
+
+ggplot(data=your_name_data, aes(x=year, y=prop)) + 
+  geom_line(aes(colour=sex)) + 
+  xlab('Year') + 
+  ylab(paste('Prop. of Babies Named', your_name))
+```
+
+4. Compare the popularity of your first name with a randomly chosen name from the dataset. Examine the generated plot and compare the popularity of your first name with the randomly chosen name. Consider the following points:
+
+Are there differences in popularity trends between the two names? Is one name consistently more popular than the other, or do their popularity levels change over time? Are there any interesting patterns or trends in the data, such as periods of rapid increase or decrease in popularity?
+
+**Answer**
+
+```{r}
+# Replace 'YourName' with your first name
+your_name_data <- babynames %>% filter(name == 'Dee')
+
+# Replace 'RandomName' with a randomly chosen name from the dataset
+random_name_data <- babynames %>% filter(name == 'Max')
+
+# Combine the two datasets
+combined_data <- bind_rows(your_name_data, random_name_data)
+
+# Plot the data
+ggplot(data=combined_data, aes(x=year, y=prop)) + 
+  geom_line(aes(colour=sex, linetype=name)) + 
+  xlab('Year') 
+```
+
+
+## Extras (optional)
+
+### Part 1: Setting Working Directory and Loading Data
+
+1. Set your working directory to a folder on your computer where you would like to save your R scripts and data files.
+
+```{r}
+# Replace 'your_directory_path' with the path to your desired folder
+# setwd("your_directory_path")
+```
+
+
+2. Load the mtcars dataset which comes preloaded with R. This dataset consists of various car features and their corresponding miles per gallon (mpg) values.
+
+
+```{r}
+data(mtcars)
+head(mtcars)
+```
+
+
+### Part 2: Downloading Packages
+
+1. Install the "tidyverse" package, which is a collection of useful R packages for data manipulation, exploration, and visualization.
+
+```{r}
+# Uncomment the line below to install the package
+# install.packages("tidyverse")
+```
+
+
+2. Load the "tidyverse" package into your R session.
+
+
+```{r}
+library(tidyverse)
+```
+
+
+### Part 3: Creating and Compiling an R Markdown File
+
+
+1. Create a new R Markdown file in RStudio by clicking on "File" > "New File" > "R Markdown...". Save the file in your working directory.
+
+2. Add the following code to your R Markdown file to create a scatter plot of the mtcars dataset, showing the relationship between miles per gallon (mpg) and the weight of the car (wt).
+
+
+```{r}
+# Create a scatter plot
+ggplot(data = mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  xlab("Weight (1000 lbs)") +
+  ylab("Miles per Gallon") +
+  theme_minimal()
+```
+
+
+3. Knit your R Markdown file to create an output document. Click the "Knit" button at the top of the RStudio script editor, and choose the output format you prefer (e.g., HTML, PDF, or Word).
+
+
+\vspace*{0.2in}
+
+
+## Questions
+
+### 1. How does the weight of a car (wt) affect its miles per gallon (mpg) based on the scatter plot you created?
+
+**Answer:**
+
+Based on the scatter plot, there appears to be a negative relationship between the weight of a car (wt) and its miles per gallon (mpg). As the weight of a car increases, its fuel efficiency (mpg) tends to decrease.
+
+\vspace*{0.2in}
+
+### 2. What is the importance of setting a working directory in R?
+
+**Answer:**
+
+Setting a working directory in R is important because it determines the default location where R will read from or write to when loading or saving files. This makes it easier to keep your files organized and ensures that your R scripts can access the necessary files without needing to specify the full file paths. It also simplifies sharing your R projects with others since the file paths within your scripts will be relative to the working directory.
+
+
+
+\vspace*{0.2in}
+
+### 3. Explain the role of R Markdown in creating reproducible research documents.
+
+**Answer:**
+
+R Markdown plays a crucial role in creating reproducible research documents by allowing you to combine text, code, and output (e.g., tables, figures) within a single document. This integration of narrative, data, and results makes it easier to document your data analysis process, ensuring that others can easily understand, reproduce, and build upon your work. R Markdown also supports various output formats (e.g., HTML, PDF, Word) to make it easy to share your research findings with others.
+
+
+
+
+

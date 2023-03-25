@@ -1,0 +1,262 @@
+/* Import new fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:700,900');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
+
+/* Color palette */
+:root {
+  --primary-color: #2F80ED;
+  --secondary-color: #27AE60;
+  --accent-color: #F2994A;
+  --text-color: #333333;
+  --background-color: #F7F8FA;
+}
+
+/*------------ TOC --------------*/
+
+.book .book-summary {
+  background: white;
+  border-right: none;
+}
+
+
+.book .book-body .onthispage-nav {
+  display: none;
+}
+
+.container-fluid {
+    max-width: 120rem;
+}
+.container-fluid main {
+    max-width: 55rem;
+}
+
+body {
+  margin: 10rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #28435D;
+  line-height: 1.5;
+  font-size: 18px;
+  letter-spacing: 0.25px;
+}
+
+
+h1, h2, h3 {
+  font-family: 'Fredoka One', cursive;
+  color: #1F4257;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.25px;
+}
+
+
+
+/* Style for code blocks */
+pre {
+  border: 1px solid #1c5253;
+  box-shadow: 0px 0px 8px #F2B155;
+  padding: 1em;
+  background-color: #f7f7f7;
+  overflow-x: auto;
+  border-radius: 15px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #1c5253;
+}
+
+pre code {
+  background: none;
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+/* Style for inline code */
+.inline-c, .remark-inline-code {
+  background: #e8e8e8;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  color: #1c5253;
+}
+
+
+
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+
+
+
+img {
+  max-width: 100%;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+footnote {
+  position: absolute;
+  bottom: 3em;
+  padding-right: 4em;
+  font-size: 0.9em;
+}
+
+bql {
+  display: block;
+  margin-top: 0.05em;
+  margin-bottom: 0.05em;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-left: solid 5px #E6E6E6;
+  border-top: solid 2px #E6E6E6;
+  border-bottom: solid 2px #E6E6E6;
+  border-right: solid 2px #E6E6E6;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  background-color: rgba(255,255,255,1);
+  color: #000000;
+  padding: 0.5em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.5em;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 1px rgba(0,0,0,0.5);
+}
+
+
+table.dataTable tbody {
+  background-color: #0148A4;;
+  color: #B2182B;
+}
+table.dataTable.display tbody tr.odd {
+  background-color: #D1E5F0;
+}
+table.dataTable.display tbody tr.even {
+  background-color: #2166AC;
+}
+table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+  background-color: #386247;
+}
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #0148A4;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  color: #2166AC !important;
+}
+
+ul li::marker {
+  margin-bottom: 10px;
+  color: #00FF40;
+  font-size: 1em;
+}
+
+img {
+	margin-bottom: 1.5rem;
+	/*overflow: hidden;*/
+	background: #1c5253;
+}
+
+pre {
+  border: 1px solid #1c5253;
+  box-shadow: 0px 0px 8px #F2B155;
+  padding: 0.1em;
+  background-color: #FFFFFF;
+  overflow-x: auto;
+  border-radius: 15px; 
+  font-family: sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  color: #1c5253;
+}
+
+pre code { 
+  background: #f2f2f2; 
+  font-size: 1rem;
+  color: #000000;
+}
+
+hljs-solarized-light .hljs {
+  color: #2B3D43; 
+}
+
+fade { 
+  opacity: 0.5; 
+}
+
+
+
+inline-c, remark-inline-code {
+   background: #FFFFFF;
+   border-radius: 10px;
+   padding: 20px;
+   font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;
+   font-size: 10px;
+   color: white;
+}
+
+yellow-h{
+   background: #ffff88;
+}
+
+out-t, remark-inline-code {
+   background: #ff8811;
+   border-radius: 3px;
+   padding: 4px;
+   
+}
+
+pull-left {
+    float: left;
+    width: 50%;
+    
+}
+
+pull-right{
+    float: right;
+    width: 50%;
+    
+}
+
+/* Style for collapsible summary */
+.answer {
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Style for the collapsed content */
+details > *:not(summary) {
+  padding: 0.5rem 1rem;
+}

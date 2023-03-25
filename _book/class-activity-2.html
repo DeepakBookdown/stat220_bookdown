@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Class Activity 2 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="Previously, we have used babynames dataset under the R package of the same name. These datasets can also be stored locally on your computer or remotely on Github or other online repositories. One...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Class Activity 2 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Previously, we have used babynames dataset under the R package of the same name. These datasets can also be stored locally on your computer or remotely on Github or other online repositories. One...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Class Activity 2 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="Previously, we have used babynames dataset under the R package of the same name. These datasets can also be stored locally on your computer or remotely on Github or other online repositories. One...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="what-is-r-rstudio-and-rmarkdown.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="assignments-in-stat-220.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
+<li><a class="" href="softwares-in-stat-220.html"><span class="header-section-number">3</span> Softwares in Stat 220</a></li>
+<li><a class="" href="github-guide-for-students-in-stat-220.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
+<li><a class="" href="r-markdown-basics.html"><span class="header-section-number">5</span> R Markdown Basics</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">6</span> Class Activity 1</a></li>
+<li><a class="active" href="class-activity-2.html"><span class="header-section-number">7</span> Class Activity 2</a></li>
+<li class="book-part">Extra Materials</li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">8</span> Helpful R codes</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-2" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Class Activity 2<a class="anchor" aria-label="anchor" href="#class-activity-2"><i class="fas fa-link"></i></a>
+</h1>
+<ol style="list-style-type: decimal">
+<li>Previously, we have used <code>babynames</code> dataset under the R package of the same name. These datasets can also be stored locally on your computer or remotely on Github or other online repositories. One way to load such dataset in R is via the function <code>read_csv</code>. We will learn about data import in detail later. But for now, please run the following chunk of code to load the data.</li>
+</ol>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="va">babynames</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/baby-names-by-state.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>This dataset differs from the package version as it has data on state affiliation and has actual counts instead of proportions. You can use the function <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> to view the dataset. Additionally, you may also use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> to take a glimpse at the dataset.</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">babynames</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 502,618
+Columns: 5
+$ state  &lt;chr&gt; "AK", "AK", "AK", "AK", "AK", "AK", "AK", "…
+$ year   &lt;dbl&gt; 1960, 1960, 1960, 1960, 1960, 1960, 1960, 1…
+$ name   &lt;chr&gt; "David", "Michael", "Robert", "John", "Jame…
+$ number &lt;dbl&gt; 151, 139, 135, 126, 123, 91, 86, 74, 73, 66…
+$ sex    &lt;chr&gt; "boy", "boy", "boy", "boy", "boy", "boy", "…</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>What is the total number of babies born in California or Minnesota with the name <code>Holly</code>?</li>
+</ol>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">babynames_CA_MN_Holly</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state</span><span class="op">==</span><span class="st">"CA"</span> <span class="op">|</span> <span class="va">state</span> <span class="op">==</span> <span class="st">"MN"</span>,  <span class="va">name</span> <span class="op">==</span> <span class="st">"Holly"</span><span class="op">)</span></span>
+<span><span class="va">total_Holly_CA_MN</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">babynames_CA_MN_Holly</span><span class="op">$</span><span class="va">number</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Answer:</strong> The total number of babies born in California or Minnesota with the name <code>Holly</code> is 7760.</p>
+<p>You can create a table of the header (i.e., the first six entries/rows) of any dataset using the function <code>head</code> in conjunction with <code>kable</code> function under the <code>knitr</code> package as follows:</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">babynames_CA_MN_Holly</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">state</th>
+<th align="right">year</th>
+<th align="left">name</th>
+<th align="right">number</th>
+<th align="left">sex</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">CA</td>
+<td align="right">1969</td>
+<td align="left">Holly</td>
+<td align="right">384</td>
+<td align="left">girl</td>
+</tr>
+<tr class="even">
+<td align="left">CA</td>
+<td align="right">1970</td>
+<td align="left">Holly</td>
+<td align="right">394</td>
+<td align="left">girl</td>
+</tr>
+<tr class="odd">
+<td align="left">CA</td>
+<td align="right">1973</td>
+<td align="left">Holly</td>
+<td align="right">336</td>
+<td align="left">girl</td>
+</tr>
+<tr class="even">
+<td align="left">CA</td>
+<td align="right">1974</td>
+<td align="left">Holly</td>
+<td align="right">364</td>
+<td align="left">girl</td>
+</tr>
+<tr class="odd">
+<td align="left">CA</td>
+<td align="right">1976</td>
+<td align="left">Holly</td>
+<td align="right">360</td>
+<td align="left">girl</td>
+</tr>
+<tr class="even">
+<td align="left">CA</td>
+<td align="right">1977</td>
+<td align="left">Holly</td>
+<td align="right">355</td>
+<td align="left">girl</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Let’s plot the evolution of the number of babies named ‘Holly’ over the years. Explain what do you see in the figure below.</li>
+</ol>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">babynames_CA_MN_Holly</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">number</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour<span class="op">=</span><span class="va">state</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">'Year'</span>,</span>
+<span>      y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="va">Number</span><span class="op">~</span><span class="va">of</span><span class="op">~</span><span class="va">Babies</span><span class="op">~</span><span class="va">Named</span><span class="op">~</span><span class="va">Holly</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="class_activity_2_files/figure-html/unnamed-chunk-5-1.png" alt="A trend graph" width="100%"><p class="caption">
+Figure 7.1: A trend graph
+</p>
+</div>
+<p><strong>Answer:</strong> The number of babies named ‘Holly’ in both California and Minnesota generally increased over the years, peaking around the 1980s. After that, the number started to decline. California consistently had more babies named ‘Holly’ than Minnesota.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>In this section, let’s practice some common data assignments and manipulations in R.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Create a vector of all integers from 4 to 10, and save it as <code>a1</code>.</li>
+</ol>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a1</span> <span class="op">&lt;-</span> <span class="fl">4</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">a1</span></span></code></pre></div>
+<pre><code>[1]  4  5  6  7  8  9 10</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Create a vector of <em>even</em> integers from 4 to 10, and save it as <code>a2</code>.</li>
+</ol>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">10</span>, by<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">a2</span></span></code></pre></div>
+<pre><code>[1]  4  6  8 10</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>What do you get when you add <code>a1</code> to <code>a2</code>?</li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a1_plus_a2</span> <span class="op">&lt;-</span> <span class="va">a1</span> <span class="op">+</span> <span class="va">a2</span></span>
+<span><span class="va">a1_plus_a2</span></span></code></pre></div>
+<pre><code>[1]  8 11 14 17 12 15 18</code></pre>
+<p><strong>Answer:</strong> When you add <code>a1</code> to <code>a2</code>, you get a vector containing the element-wise sum: 8, 11, 14, 17, 12, 15, 18.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>What does the command <code>sum(a1)</code> do?</li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sum_a1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">a1</span><span class="op">)</span></span>
+<span><span class="va">sum_a1</span></span></code></pre></div>
+<pre><code>[1] 49</code></pre>
+<p><strong>Answer:</strong> The command <code>sum(a1)</code> calculates the sum of all elements in the vector <code>a1</code>. In this case, it returns 49.</p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>What does the command <code>length(a1)</code> do?</li>
+</ol>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">length_a1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">a1</span><span class="op">)</span></span>
+<span><span class="va">length_a1</span></span></code></pre></div>
+<pre><code>[1] 7</code></pre>
+<p><strong>Answer:</strong> The command <code>length(a1)</code> returns the number of elements in the vector <code>a1</code>. In this case, there are 7 elements.</p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Use the <code>sum</code> and <code>length</code> commands to calculate the average of the values in <code>a1</code>.</li>
+</ol>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">average_a1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">a1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">a1</span><span class="op">)</span></span>
+<span><span class="va">average_a1</span></span></code></pre></div>
+<pre><code>[1] 7</code></pre>
+<p><strong>Answer:</strong> The average of the values in <code>a1</code> is 7.</p>
+<div id="extras-optional-1" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Extras (Optional)<a class="anchor" aria-label="anchor" href="#extras-optional-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this worksheet, you will learn how to use the <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> function from the <code>readr</code> package to save a data object from your R session to a file in your working directory.</p>
+<p>First, let’s load the necessary package.</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span></code></pre></div>
+<p>Suppose we have a simple data frame called <code>my_data</code>, with three columns: <code>Name</code>, <code>Age</code>, and <code>City</code>.</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="st">"David"</span><span class="op">)</span>,</span>
+<span>                      Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">25</span>, <span class="fl">30</span>, <span class="fl">22</span>, <span class="fl">35</span><span class="op">)</span>,</span>
+<span>                      City <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"New York"</span>, <span class="st">"Los Angeles"</span>, <span class="st">"Chicago"</span>, <span class="st">"San Francisco"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">my_data</span></span></code></pre></div>
+<pre><code>     Name Age          City
+1   Alice  25      New York
+2     Bob  30   Los Angeles
+3 Charlie  22       Chicago
+4   David  35 San Francisco</code></pre>
+<p>Now we want to save this data frame as a CSV file in our working directory. To do this, we will use the <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> function. The first argument is the data object you want to save, and the second argument is the file name (including the .csv extension).</p>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="st">"my_data.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>This command will save <code>my_data</code> as a file called <code>my_data.csv</code> in your working directory.</p>
+<p><strong>Question 1:</strong> What is the purpose of the <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> function?</p>
+<p><strong>Answer:</strong> The <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> function is used to save a data object from an R session to a CSV file in your working directory.</p>
+<p><strong>Question 2:</strong> How do you save a data frame called <code>my_data</code> as a file named “example_data.csv”?</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Your code here</span></span></code></pre></div>
+<p><strong>Answer:</strong></p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">my_data</span>, <span class="st">"example_data.csv"</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Question 3:</strong> If you want to save a data frame called <code>students</code> as a file named “student_data.csv”, what would be the appropriate command?</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Your code here</span></span></code></pre></div>
+<p><strong>Answer:</strong></p>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">students</span>, <span class="st">"student_data.csv"</span><span class="op">)</span></span></code></pre></div>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="class-activity-1.html"><span class="header-section-number">6</span> Class Activity 1</a></div>
+<div class="next"><a href="helpful-r-codes.html"><span class="header-section-number">8</span> Helpful R codes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#class-activity-2"><span class="header-section-number">7</span> Class Activity 2</a></li>
+<li><a class="nav-link" href="#extras-optional-1"><span class="header-section-number">7.1</span> Extras (Optional)</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/class_activity_2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/class_activity_2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

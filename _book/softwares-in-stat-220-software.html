@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Softwares in Stat 220 (#software) | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="You will work with many .Rmd Markdown files in this course. These include class activities, homework template, project helper files etc. To stay organized, I strongly suggest you create a stat220...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Softwares in Stat 220 (#software) | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="You will work with many .Rmd Markdown files in this course. These include class activities, homework template, project helper files etc. To stay organized, I strongly suggest you create a stat220...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Softwares in Stat 220 (#software) | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="You will work with many .Rmd Markdown files in this course. These include class activities, homework template, project helper files etc. To stay organized, I strongly suggest you create a stat220...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="what-is-r-rstudio-and-rmarkdown-rstudio.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown? (#rstudio)</a></li>
+<li><a class="" href="assignments-in-stat-220-assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220 (#assignments)</a></li>
+<li><a class="active" href="softwares-in-stat-220-software.html"><span class="header-section-number">3</span> Softwares in Stat 220 (#software)</a></li>
+<li><a class="" href="github-guide-for-students-in-stat-220-github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220 (#github)</a></li>
+<li><a class="" href="r-markdown-basics.html"><span class="header-section-number">5</span> R Markdown Basics</a></li>
+<li class="book-part">Extra Materials</li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">6</span> Helpful R codes</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="softwares-in-stat-220-software" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Softwares in Stat 220 (#software)<a class="anchor" aria-label="anchor" href="#softwares-in-stat-220-software"><i class="fas fa-link"></i></a>
+</h1>
+<p>You will work with many .Rmd Markdown files in this course. These include class activities, homework template, project helper files etc. To stay organized, I <em>strongly</em> suggest you create a <strong>stat220</strong> folder that contains the following subfolders:</p>
+<ul>
+<li>
+<strong>stat220</strong> folder
+<ul>
+<li><p><strong>Assignments:</strong> This folder will contain subfolders for each
+assignment. Each assignment subfolder (e.g. homework1,
+homework2, …) will be a Github connected RStudio project that
+you will create <strong>once an assignment is posted.</strong></p></li>
+<li><p><strong>Content:</strong> This folder should be used to save any
+non-assignment files (e.g. slides, examples) for this class. You
+will create this subfolder by creating an RStudio project (see
+step 5 below).</p></li>
+</ul>
+</li>
+</ul>
+<p>To get started with this organization, follow the steps below.</p>
+<hr>
+<div id="file-organization-using-maize" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> File organization: Using maize<a class="anchor" aria-label="anchor" href="#file-organization-using-maize"><i class="fas fa-link"></i></a>
+</h2>
+<p>The server (online) version of Rstudio is run from a unix server. You
+can navigate this file system using unix commands, but I assume that
+most or all of you will just use Rstudio to access your files on this
+server.</p>
+<blockquote>
+<p><strong>1.</strong> In Rstudio, click the <strong>Files</strong> <em>tab</em> in the lower right-hand
+window. Note: this is <strong>not</strong> the same as the <strong>File</strong> <em>menu</em>
+option.</p>
+</blockquote>
+<div class="inline-figure"><img src="img/maize_files.png"></div>
+<blockquote>
+<p><strong>2.</strong> Verify that you are in your <strong>HOME</strong> folder (should simply
+say Home right under the New Folder button). To navigate to your
+Home folder (if somehow you are not in it), click the <strong>…</strong> button
+(far right side of the <strong>Files</strong> tab) and enter a ~ (tilde) symbol</p>
+</blockquote>
+<div class="inline-figure"><img src="img/maize_home.png"></div>
+<ul>
+<li>
+<strong>3.</strong> Click the <strong>New Folder</strong> button and name the folder
+<strong>stat220</strong>.</li>
+</ul>
+<div class="inline-figure"><img src="img/maize_newfolder.png"></div>
+<ul>
+<li>
+<strong>4.</strong> Click on this newly created (empty) <strong>stat220</strong> folder.
+Within the folder create another <strong>New Folder</strong> and name it
+<strong>assignments</strong>.</li>
+</ul>
+<div class="inline-figure"><img src="img/maize_stat220.png"></div>
+<ul>
+<li>
+<p><strong>5.</strong> Within the <strong>stat220</strong> folder, create an <strong>RStudio project</strong>
+called <strong>content</strong> with the following steps:</p>
+<ul>
+<li>
+<strong>a.</strong> Click the <strong>Project</strong> button in the upper righthand
+corner of your RStudio window and select <strong>New Project…</strong>.</li>
+</ul>
+</li>
+</ul>
+<div class="inline-figure"><img src="img/maize_project.png"></div>
+<ul>
+<li>
+<strong>b.</strong> Select <strong>New Directory</strong> and then <strong>New Project</strong>
+</li>
+</ul>
+<div class="inline-figure"><img src="img/maize_newdirectory.png"></div>
+<div class="inline-figure"><img src="img/maize_newdirectory2.png"></div>
+<ul>
+<li>
+<strong>c.</strong> Enter <strong>content</strong> as the <strong>Directory name</strong> and use the
+<strong>Browse</strong> button to find your <strong>stat220</strong> folder. Then click
+<strong>Create Project</strong>.</li>
+</ul>
+<div class="inline-figure"><img src="img/maize_create.png"></div>
+<ul>
+<li>
+<strong>d.</strong> You should now have a new folder called <strong>content</strong> in your
+<strong>stat220</strong> folder and this folder will contain an RStudio project
+<code>.Rproj</code>. Feel free to add subfolders to this <strong>content</strong> folder
+(e.g. slides, examples, etc).</li>
+</ul>
+<div class="inline-figure"><img src="img/maize_Rproj.png"></div>
+<p><strong>Warning: Do not</strong> create an RStudio project in the main stat220 folder
+because it is not good practice to have RStudio projects in subfolders
+of another project (e.g. a project within a project is not recommended).</p>
+<hr>
+</div>
+<div id="file-organization-using-your-own-rstudio" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> File organization: Using your own Rstudio<a class="anchor" aria-label="anchor" href="#file-organization-using-your-own-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>Create a folder called <strong>stat220</strong> somewhere on your computer. Within
+this folder create an <strong>assignments</strong> subfolder. Then complete <strong>step
+5</strong> from above to create a <strong>content</strong> RStudio project folder.</p>
+<hr>
+</div>
+<div id="rstudio-projects" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> RStudio projects<a class="anchor" aria-label="anchor" href="#rstudio-projects"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once you’ve created a project, your R session should be running within
+that project folder. You can check which project you are in by checking
+the project name in the upper righthand part of your RStudio window.
+Here we see the <strong>content</strong> project is open:</p>
+<div class="inline-figure"><img src="img/maize_content.png"></div>
+<p>Running R from an RStudio project sets your <strong>working directory</strong> to the
+project folder:</p>
+<div class="inline-figure"><img src="img/maize_getwd.png"></div>
+<p>This allows for easy file path access to all files related to this
+project.</p>
+<p>To <strong>start</strong> a project, click on the <code>.Rproj</code> file or use the <strong>Open
+Project…</strong> option shown in step 5 above.</p>
+<hr>
+</div>
+<div id="best-practices-or-what-not-to-do" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Best practices (or what not to do)<a class="anchor" aria-label="anchor" href="#best-practices-or-what-not-to-do"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Never save files to a lab computer hard drive (e.g. desktop,
+downloads, etc). They will be erased when you log off.</li>
+<li>Do not use gmail as a file storage system! Avoid emailing yourself
+files that you created (and saved) on a lab computer. Eventually you
+will lose work this way.</li>
+<li>Avoid using online versions of google drive and dropbox. Similar to
+gmail, downloading, editing a doc, then uploading it back to
+drive/dropbox is another great way to lose work.</li>
+<li>Avoid <a href="https://xkcd.com/1459/">this</a> and <a href="http://phdcomics.com/comics.php?f=1531">this</a>.</li>
+</ul>
+</div>
+<div id="git-and-github" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Git and GitHub<a class="anchor" aria-label="anchor" href="#git-and-github"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="https://happygitwithr.com/big-picture.html#why-git">Git</a> is version
+control software that you install locally on your computer. Git is
+already installed on the maize RStudio server.</p>
+<p><a href="https://happygitwithr.com/big-picture.html#why-github">Github</a> is a
+cloud-based service for hosting git projects. It allows multiple users
+to share and contribute to projects and it is how you will be submitting
+homework assignments and projects for this class. More information about Git and
+Github can also be found in <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">Getting setup with Git and
+GitHub</a> and <a href="https://sahirbhatnagar.com/rpkg/#gitgithub">Git and Github</a>.</p>
+<p>If you are using a local install of R/RStudio, then you will need to
+install Git.</p>
+<p><strong>Installing Git</strong></p>
+<p>Directions for both Windows &amp; Mac here:
+<a href="http://happygitwithr.com/install-git.html" class="uri">http://happygitwithr.com/install-git.html</a>.</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>If you are using <strong>maize</strong>, then there is nothing you need to install.</li>
+<li>Windows users should follow Option 1 in 6.2.</li>
+<li>Mac users can follow Option 1 in 6.3 if comfortable, otherwise follow Option 2</li>
+<li>Linux users can follow 6.4.</li>
+</ol>
+</blockquote>
+<div class="inline-figure"><img src="img/maize_gittab.png"></div>
+</div>
+<div id="slack" class="section level2" number="3.6">
+<h2>
+<span class="header-section-number">3.6</span> Slack<a class="anchor" aria-label="anchor" href="#slack"><i class="fas fa-link"></i></a>
+</h2>
+<p>We will use Slack for all course communication. <a href="https://join.slack.com/t/datasciencefall22/shared_invite/zt-1fiwi30yr-MysFDWn0uuQZbS39X~5KTw">Sign up for our course
+Slack team
+here</a>!
+You will need to create an account with a username, and log in to read
+and post. You can download a
+standalone Slack application to your
+<a href="https://slack.com/downloads/osx">Mac</a>,
+<a href="https://slack.com/downloads/windows">Windows</a>,
+<a href="https://slack.com/downloads/linux">Linux</a> and/or
+<a href="https://slack.com/downloads/android">Android</a>/<a href="https://slack.com/downloads/ios">iOS</a>
+device. You can control whether you receive notifications on new posts
+by going to Preferences, as well as decide which ‘channels’ to subscribe
+to. A ‘channel’ is a discussion thread, which is used to organize
+communications into topics. You can learn more about Slack features
+<a href="https://slack.com/help/articles/218080037-Getting-started-for-new-Slack-users">here</a>.</p>
+<p>Several channels have been set up for specific parts of the course. Feel
+free to ask questions anytime. You can browse the available channels in
+our team by clicking on “Channels” on the left-hand panel.</p>
+</div>
+<div id="acknowledgements" class="section level2" number="3.7">
+<h2>
+<span class="header-section-number">3.7</span> Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"><i class="fas fa-link"></i></a>
+</h2>
+<p>This installation guide is based on the guide from Adam Loy and Katie St. Clair.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="assignments-in-stat-220-assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220 (#assignments)</a></div>
+<div class="next"><a href="github-guide-for-students-in-stat-220-github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220 (#github)</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#softwares-in-stat-220-software"><span class="header-section-number">3</span> Softwares in Stat 220 (#software)</a></li>
+<li><a class="nav-link" href="#file-organization-using-maize"><span class="header-section-number">3.1</span> File organization: Using maize</a></li>
+<li><a class="nav-link" href="#file-organization-using-your-own-rstudio"><span class="header-section-number">3.2</span> File organization: Using your own Rstudio</a></li>
+<li><a class="nav-link" href="#rstudio-projects"><span class="header-section-number">3.3</span> RStudio projects</a></li>
+<li><a class="nav-link" href="#best-practices-or-what-not-to-do"><span class="header-section-number">3.4</span> Best practices (or what not to do)</a></li>
+<li><a class="nav-link" href="#git-and-github"><span class="header-section-number">3.5</span> Git and GitHub</a></li>
+<li><a class="nav-link" href="#slack"><span class="header-section-number">3.6</span> Slack</a></li>
+<li><a class="nav-link" href="#acknowledgements"><span class="header-section-number">3.7</span> Acknowledgements</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/software.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/software.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

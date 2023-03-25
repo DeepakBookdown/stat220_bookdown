@@ -1,0 +1,19 @@
+book_filename: "stat220_bookdown"
+new_session: true
+before_chapter_script: _common.R
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
+rmd_files: [
+  "index.Rmd", 
+  "rstudio.Rmd", 
+  "assignments.Rmd",
+  "software.Rmd",
+  "github.Rmd",
+  "rmarkdown.Rmd",
+  #"class_activity_1.Rmd", 
+  #"class_activity_2.Rmd",
+  "nice_R_codes.Rmd"
+]
+

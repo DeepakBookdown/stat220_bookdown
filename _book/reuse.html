@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Reuse | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="Text and figures are licensed under Creative Commons Attribution CC BY-NC 3.0.  4.1 R/RStudio The use of the R programming language with the RStudio interface is an essential component of this...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Reuse | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Text and figures are licensed under Creative Commons Attribution CC BY-NC 3.0.  4.1 R/RStudio The use of the R programming language with the RStudio interface is an essential component of this...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Reuse | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="Text and figures are licensed under Creative Commons Attribution CC BY-NC 3.0.  4.1 R/RStudio The use of the R programming language with the RStudio interface is an essential component of this...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li><a class="" href="assignments-in-stat-220.html"><span class="header-section-number">1</span> Assignments in Stat 220</a></li>
+<li><a class="" href="softwares-in-stat-220.html"><span class="header-section-number">2</span> Softwares in Stat 220</a></li>
+<li><a class="" href="rstudio-projects.html"><span class="header-section-number">3</span> RStudio projects</a></li>
+<li><a class="active" href="reuse.html"><span class="header-section-number">4</span> Reuse</a></li>
+<li><a class="" href="github-guide-for-students-in-stat-220.html"><span class="header-section-number">5</span> GitHub Guide for Students in Stat 220</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="what-is-r-rstudio-and-rmarkdown.html"><span class="header-section-number">6</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="installing-r-and-rstudio.html"><span class="header-section-number">7</span> Installing R and RStudio</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">8</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">9</span> Class Activity 2</a></li>
+<li class="book-part">Extra Materials</li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">10</span> Helpful R codes</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="reuse" class="section level1 appendix" number="4">
+<h1>
+<span class="header-section-number">4</span> Reuse<a class="anchor" aria-label="anchor" href="#reuse"><i class="fas fa-link"></i></a>
+</h1>
+<p>Text and figures are licensed under Creative Commons Attribution CC BY-NC 3.0.</p>
+<div id="rrstudio" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> R/RStudio<a class="anchor" aria-label="anchor" href="#rrstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>The use of the R programming language with the RStudio interface is an
+essential component of this course. You have two options for using
+RStudio:</p>
+<ul>
+<li><p>The <strong>server version</strong> of RStudio on the web at
+(<a href="https://maize.mathcs.carleton.edu" class="uri">https://maize.mathcs.carleton.edu</a>). The advantage of using the
+server version is that all of your work will be stored in the cloud,
+where it is automatically saved and backed up. This means that you
+can access your work from any computer on campus using a web
+browser. This server may run slow during peak days/hours. I also recommend
+you to download a local version of R server in your computer in case of rare outages.</p></li>
+<li><p>A <strong>local version</strong> of RStudio installed on your machine. This
+option is highly recommended due to the computational resources this
+course demands. Using this version you can only store your files in your local machine. Additionally, we can save our work on GitHub. We will learn how to use GitHub in the beginning of the course. Both R and RStudio are free and open-source. Please make sure that you have recently updated both R and RStudio.</p></li>
+</ul>
+<div id="installing-rrstudio-not-needed-if-you-are-using-the-maize-server" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> <strong>Installing R/RStudio (not needed if you are using the maize server)</strong><a class="anchor" aria-label="anchor" href="#installing-rrstudio-not-needed-if-you-are-using-the-maize-server"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Download the latest version of R: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>
+Download the free Rstudio desktop version: <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a></p>
+</blockquote>
+<p>Use the default download and install options for each. For R, download the “precompiled binary” distribution rather than the source code</p>
+<p><strong>Updating R/RStudio (not needed if you are using the maize server)</strong></p>
+<p>If you have used a local version of R/RStudio before and it is still installed on your machine, then you should make sure that you have the most recent versions of each program.</p>
+<ul>
+<li><p>To check your version of R, run the command <code><a href="https://rdrr.io/r/base/numeric_version.html">getRversion()</a></code> and compare your version to the newest version posted on <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>. If you need an update, then install the newer version using the installation directions above.</p></li>
+<li><p>In RStudio, check for updates with the menu option <code>Help &gt; Check for updates</code>. Follow directions if an update is needed.</p></li>
+</ul>
+<p>** Did it work? (A sanity check after your install/update) **</p>
+<p>Do whatever is appropriate for your operating system to launch
+RStudio. You should get a window similar to the screenshot you see
+<a href="https://www.rstudio.com/wp-content/uploads/2014/04/rstudio-workbench.png">here</a>,
+but yours will be more boring because you haven’t written any code
+or made any figures yet!</p>
+<p>Put your cursor in the pane labeled <em>Console</em>, which is where you
+interact with the live R process. Create a simple object with code
+like <code>x &lt;- 2 * 4</code> (followed by enter or return). Then inspect the
+<code>x</code> object by typing <code>x</code> followed by enter or return. You should see
+the value <code>8</code> printed. If this happened, you’ve succeeded in
+installing R and RStudio!</p>
+</div>
+</div>
+<div id="vpn" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> VPN<a class="anchor" aria-label="anchor" href="#vpn"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you plan to do any work off campus this term, you need to install Carleton’s VPN. This will allow you to access the <strong>maize</strong> server (if needed).</p>
+<p><strong>Installing the GlobalProtect VPN</strong></p>
+<p>Follow the directions <a href="https://wiki.carleton.edu/display/itskb/GlobalProtect+VPN">here</a> to install VPN.</p>
+</div>
+<div id="git-and-github" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Git and GitHub<a class="anchor" aria-label="anchor" href="#git-and-github"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="https://happygitwithr.com/big-picture.html#why-git">Git</a> is version
+control software that you install locally on your computer. Git is
+already installed on the maize RStudio server.</p>
+<p><a href="https://happygitwithr.com/big-picture.html#why-github">Github</a> is a
+cloud-based service for hosting git projects. It allows multiple users
+to share and contribute to projects and it is how you will be submitting
+homework assignments and projects for this class. More information about Git and
+Github can also be found in <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">Getting setup with Git and
+GitHub</a> and <a href="https://sahirbhatnagar.com/rpkg/#gitgithub">Git and Github</a>.</p>
+<p>If you are using a local install of R/RStudio, then you will need to
+install Git.</p>
+<p><strong>Installing Git</strong></p>
+<p>Directions for both Windows &amp; Mac here:
+<a href="http://happygitwithr.com/install-git.html" class="uri">http://happygitwithr.com/install-git.html</a>.</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>If you are using <strong>maize</strong>, then there is nothing you need to install.</li>
+<li>Windows users should follow Option 1 in 6.2.</li>
+<li>Mac users can follow Option 1 in 6.3 if comfortable, otherwise follow Option 2</li>
+<li>Linux users can follow 6.4.</li>
+</ol>
+</blockquote>
+<div class="inline-figure"><img src="img/maize_gittab.png"></div>
+</div>
+<div id="slack" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Slack<a class="anchor" aria-label="anchor" href="#slack"><i class="fas fa-link"></i></a>
+</h2>
+<p>We will use Slack for all course communication. <a href="https://join.slack.com/t/datasciencefall22/shared_invite/zt-1fiwi30yr-MysFDWn0uuQZbS39X~5KTw">Sign up for our course
+Slack team
+here</a>!
+You will need to create an account with a username, and log in to read
+and post. You can download a
+standalone Slack application to your
+<a href="https://slack.com/downloads/osx">Mac</a>,
+<a href="https://slack.com/downloads/windows">Windows</a>,
+<a href="https://slack.com/downloads/linux">Linux</a> and/or
+<a href="https://slack.com/downloads/android">Android</a>/<a href="https://slack.com/downloads/ios">iOS</a>
+device. You can control whether you receive notifications on new posts
+by going to Preferences, as well as decide which ‘channels’ to subscribe
+to. A ‘channel’ is a discussion thread, which is used to organize
+communications into topics. You can learn more about Slack features
+<a href="https://slack.com/help/articles/218080037-Getting-started-for-new-Slack-users">here</a>.</p>
+<p>Several channels have been set up for specific parts of the course. Feel
+free to ask questions anytime. You can browse the available channels in
+our team by clicking on “Channels” on the left-hand panel.</p>
+</div>
+<div id="latex" class="section level2" number="4.5">
+<h2>
+<span class="header-section-number">4.5</span> LaTeX<a class="anchor" aria-label="anchor" href="#latex"><i class="fas fa-link"></i></a>
+</h2>
+<p>You need a Latex compiler to create a pdf document from a R Markdown file. If you use the maize server, you don’t need to install anything. If you are using a local RStudio, you should install a Latex compiler. Below are the recommended installers for Windows and Mac:</p>
+<ul>
+<li><p><a href="https://www.tug.org/mactex/">MacTeX</a> for Mac (3.2GB)</p></li>
+<li><p><a href="https://miktex.org/download">MiKTeX</a> for Windows (190MB)</p></li>
+<li><p>Alternatively, you can install the <code>tinytex</code> R package by running
+<code>install.packages("tinytex")</code> in the console.</p></li>
+</ul>
+</div>
+<div id="acknowledgements" class="section level2 appendix" number="4.6">
+<h2>
+<span class="header-section-number">4.6</span> Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"><i class="fas fa-link"></i></a>
+</h2>
+<p>This installation guide is based on the guide from Adam Loy and Katie St. Clair.</p>
+</div>
+<div id="resuse" class="section level2 appendix" number="4.7">
+<h2>
+<span class="header-section-number">4.7</span> Resuse<a class="anchor" aria-label="anchor" href="#resuse"><i class="fas fa-link"></i></a>
+</h2>
+<p>This work is licensed under the CC BY-NC 3.0 Creative Commons License.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="rstudio-projects.html"><span class="header-section-number">3</span> RStudio projects</a></div>
+<div class="next"><a href="github-guide-for-students-in-stat-220.html"><span class="header-section-number">5</span> GitHub Guide for Students in Stat 220</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#reuse"><span class="header-section-number">4</span> Reuse</a></li>
+<li>
+<a class="nav-link" href="#rrstudio"><span class="header-section-number">4.1</span> R/RStudio</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#installing-rrstudio-not-needed-if-you-are-using-the-maize-server"><span class="header-section-number">4.1.1</span> Installing R/RStudio (not needed if you are using the maize server)</a></li></ul>
+</li>
+<li><a class="nav-link" href="#vpn"><span class="header-section-number">4.2</span> VPN</a></li>
+<li><a class="nav-link" href="#git-and-github"><span class="header-section-number">4.3</span> Git and GitHub</a></li>
+<li><a class="nav-link" href="#slack"><span class="header-section-number">4.4</span> Slack</a></li>
+<li><a class="nav-link" href="#latex"><span class="header-section-number">4.5</span> LaTeX</a></li>
+<li><a class="nav-link" href="#acknowledgements"><span class="header-section-number">4.6</span> Acknowledgements</a></li>
+<li><a class="nav-link" href="#resuse"><span class="header-section-number">4.7</span> Resuse</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/software.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/software.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

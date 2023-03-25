@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Installing R and RStudio | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="2.1 Installing R/RStudio (not needed if you are using the maize server) Download the latest version of R: Windows: http://cran.r-project.org/bin/windows/base/ Mac:...">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Installing R and RStudio | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="2.1 Installing R/RStudio (not needed if you are using the maize server) Download the latest version of R: Windows: http://cran.r-project.org/bin/windows/base/ Mac:...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Installing R and RStudio | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="2.1 Installing R/RStudio (not needed if you are using the maize server) Download the latest version of R: Windows: http://cran.r-project.org/bin/windows/base/ Mac:...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="what-is-r-rstudio-and-rmarkdown.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="active" href="installing-r-and-rstudio.html"><span class="header-section-number">2</span> Installing R and RStudio</a></li>
+<li><a class="" href="r-markdown-basics.html"><span class="header-section-number">3</span> R Markdown Basics</a></li>
+<li><a class="" href="assignments-in-stat-220.html"><span class="header-section-number">4</span> Assignments in Stat 220</a></li>
+<li><a class="" href="softwares-in-stat-220.html"><span class="header-section-number">5</span> Softwares in Stat 220</a></li>
+<li><a class="" href="github-guide-for-students-in-stat-220.html"><span class="header-section-number">6</span> GitHub Guide for Students in Stat 220</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
+<li class="book-part">Extra Materials</li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">9</span> Helpful R codes</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="installing-r-and-rstudio" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Installing R and RStudio<a class="anchor" aria-label="anchor" href="#installing-r-and-rstudio"><i class="fas fa-link"></i></a>
+</h1>
+<div id="installing-rrstudio-not-needed-if-you-are-using-the-maize-server-1" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Installing R/RStudio (not needed if you are using the maize server)<a class="anchor" aria-label="anchor" href="#installing-rrstudio-not-needed-if-you-are-using-the-maize-server-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Download the latest version of R:
+<ul>
+<li>Windows: <a href="http://cran.r-project.org/bin/windows/base/">http://cran.r-project.org/bin/windows/base/</a>
+</li>
+<li>Mac: <a href="http://cran.r-project.org/bin/macosx/">http://cran.r-project.org/bin/macosx/</a>
+</li>
+</ul>
+</li>
+<li>Download the free Rstudio desktop version (Windows or Mac): <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a>
+</li>
+</ul>
+<p>Use the default download and install options for each.</p>
+</div>
+<div id="install-latex-for-knitting-r-markdown-documents-to-pdf" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Install LaTeX (for knitting R Markdown documents to PDF):<a class="anchor" aria-label="anchor" href="#install-latex-for-knitting-r-markdown-documents-to-pdf"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you want to compile R Markdown to .pdf files, you also need a LaTeX distribution (Note: this is not necessary if you choose to compile as a Word document.) Click <a href="http://www.miktex.org/">instructions for Windows</a> or <a href="https://tug.org/mactex/">instructions for Mac</a>, depending on your operating system to complete the installation.</p>
+</div>
+<div id="updating-rrstudio-not-needed-if-you-are-using-the-maize-server" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Updating R/RStudio (not needed if you are using the maize server)<a class="anchor" aria-label="anchor" href="#updating-rrstudio-not-needed-if-you-are-using-the-maize-server"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you have used a local version of R/RStudio before and it is still installed on your machine, then you should make sure that you have the most recent versions of each program.</p>
+<ul>
+<li><p>To check your version of R, run the command <code><a href="https://rdrr.io/r/base/numeric_version.html">getRversion()</a></code> and compare your version to the newest version posted on <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>. If you need an update, then install the newer version using the installation directions above.</p></li>
+<li><p>In RStudio, check for updates with the menu option <code>Help &gt; Check for updates</code>. Follow directions if an update is needed.</p></li>
+</ul>
+</div>
+<div id="opening-a-new-file" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Opening a new file<a class="anchor" aria-label="anchor" href="#opening-a-new-file"><i class="fas fa-link"></i></a>
+</h2>
+<p>If using Rstudio on your computer, using the <strong>File&gt;Open File</strong> menu to find and open this .Rmd file.</p>
+<p>If using Maize Rstudio from your browser:</p>
+<ul>
+<li><p>In the Files tab, select <strong>Upload</strong> and <strong>Choose File</strong> to find the .Rmd that you downloaded. Click <em>OK</em> to upload to your course folder/location in the maize server account.</p></li>
+<li><p>Click on the .Rmd file in the appropriate folder to open the file.</p></li>
+</ul>
+</div>
+<div id="running-codes-and-knitting-.rmd-files" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Running codes and knitting .Rmd files:<a class="anchor" aria-label="anchor" href="#running-codes-and-knitting-.rmd-files"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>You can run a line of code by placing your cursor in the line of code and clicking <strong>Run Selected Line(s)</strong></p></li>
+<li><p>You can run an entire chunk by clicking the green triangle on the right side of the code chunk.</p></li>
+<li><p>After each small edit or code addition, <strong>Knit</strong> your Markdown. If you wait until the end to Knit, it will be harder to find errors in your work.</p></li>
+<li><p>Format output type: You can use any of pdf_document, html_document type, or word_document type.</p></li>
+<li><p><strong>Maize users</strong>: You may also need to allow for “pop-up” in your web browser when knitting documents.</p></li>
+</ul>
+</div>
+<div id="few-more-instructions" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> Few More Instructions<a class="anchor" aria-label="anchor" href="#few-more-instructions"><i class="fas fa-link"></i></a>
+</h2>
+<p>The default setting in Rstudio when you are running chunks is that the “output” (numbers, graphs) are
+shown <strong>inline</strong> within the Markdown Rmd. If you prefer to have your plots appear on the right of the console and not below the chunk, then change the settings as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Select Tools &gt; Global Options.</li>
+<li>Click the R Markdown section and uncheck (if needed) the option Show output inline for all
+R Markdown documents.</li>
+<li>Click OK.</li>
+</ol>
+<p>Now try running R chunks in the .Rmd file to see the difference. You can recheck this box if you prefer
+the default setting.</p>
+</div>
+<div id="latex" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> LaTeX<a class="anchor" aria-label="anchor" href="#latex"><i class="fas fa-link"></i></a>
+</h2>
+<p>You need a Latex compiler to create a pdf document from a R Markdown file. If you use the maize server, you don’t need to install anything. If you are using a local RStudio, you should install a Latex compiler. Below are the recommended installers for Windows and Mac:</p>
+<ul>
+<li><p><a href="https://www.tug.org/mactex/">MacTeX</a> for Mac (3.2GB)</p></li>
+<li><p><a href="https://miktex.org/download">MiKTeX</a> for Windows (190MB)</p></li>
+<li><p>Alternatively, you can install the <code>tinytex</code> R package by running
+<code>install.packages("tinytex")</code> in the console.</p></li>
+</ul>
+</div>
+<div id="vpn" class="section level2" number="2.8">
+<h2>
+<span class="header-section-number">2.8</span> VPN<a class="anchor" aria-label="anchor" href="#vpn"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you plan to do any work off campus this term, you need to install Carleton’s VPN. This will allow you to access the <strong>maize</strong> server (if needed).</p>
+<p><strong>Installing the GlobalProtect VPN</strong></p>
+<p>Follow the directions <a href="https://wiki.carleton.edu/display/itskb/GlobalProtect+VPN">here</a> to install VPN.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="what-is-r-rstudio-and-rmarkdown.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></div>
+<div class="next"><a href="r-markdown-basics.html"><span class="header-section-number">3</span> R Markdown Basics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#installing-r-and-rstudio"><span class="header-section-number">2</span> Installing R and RStudio</a></li>
+<li><a class="nav-link" href="#installing-rrstudio-not-needed-if-you-are-using-the-maize-server-1"><span class="header-section-number">2.1</span> Installing R/RStudio (not needed if you are using the maize server)</a></li>
+<li><a class="nav-link" href="#install-latex-for-knitting-r-markdown-documents-to-pdf"><span class="header-section-number">2.2</span> Install LaTeX (for knitting R Markdown documents to PDF):</a></li>
+<li><a class="nav-link" href="#updating-rrstudio-not-needed-if-you-are-using-the-maize-server"><span class="header-section-number">2.3</span> Updating R/RStudio (not needed if you are using the maize server)</a></li>
+<li><a class="nav-link" href="#opening-a-new-file"><span class="header-section-number">2.4</span> Opening a new file</a></li>
+<li><a class="nav-link" href="#running-codes-and-knitting-.rmd-files"><span class="header-section-number">2.5</span> Running codes and knitting .Rmd files:</a></li>
+<li><a class="nav-link" href="#few-more-instructions"><span class="header-section-number">2.6</span> Few More Instructions</a></li>
+<li><a class="nav-link" href="#latex"><span class="header-section-number">2.7</span> LaTeX</a></li>
+<li><a class="nav-link" href="#vpn"><span class="header-section-number">2.8</span> VPN</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/rstudio.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/rstudio.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-03-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+/* Prevent collapsing */
+.book .book-body .tocify .tocify-header a {
+  pointer-events: none;
+}
