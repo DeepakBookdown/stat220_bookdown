@@ -71,7 +71,7 @@
 <li><a class="" href="assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
 <li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
 <li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
-<li><a class="" href="r-markdown-basics.html"><span class="header-section-number">5</span> R Markdown Basics</a></li>
+<li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
 <li class="book-part">Extra Materials</li>
 <li><a class="" href="helpful-r-codes.html"><span class="header-section-number">6</span> Helpful R codes</a></li>
 </ul>
@@ -151,9 +151,21 @@ like <code>x &lt;- 2 * 4</code> (followed by enter or return). Then inspect the
 the value <code>8</code> printed. If this happened, you’ve succeeded in
 installing R and RStudio!</p>
 </div>
-<div id="install-latex-for-knitting-r-markdown-documents-to-pdf" class="section level2" number="1.5">
+<div id="what-is-rmarkdown" class="section level2" number="1.5">
 <h2>
-<span class="header-section-number">1.5</span> Install LaTeX (for knitting R Markdown documents to PDF):<a class="anchor" aria-label="anchor" href="#install-latex-for-knitting-r-markdown-documents-to-pdf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.5</span> What is RMarkdown?<a class="anchor" aria-label="anchor" href="#what-is-rmarkdown"><i class="fas fa-link"></i></a>
+</h2>
+<p>An R Markdown file (.Rmd file) combines R commands and written analyses, which are ‘knit’ together into an HTML, PDF, or Microsoft Word document.</p>
+<p>An R Markdown file contains three essential elements:</p>
+<ul>
+<li><p>Header: The header (top) of the file contains information like the document title, author, date and your preferred output format (pdf_document, word_document, or html_document).</p></li>
+<li><p>Written analysis: You write up your analysis after the header and embed R code where needed. The online help below shows ways to add formatting details like bold words, lists, section labels, etc to your final pdf/word/html document. For example, adding ** before and after a word will bold that word in your compiled document.</p></li>
+<li><p>R chunks: R chunks contain the R commands that you want evaluated. You embed these chunks within your written analysis and they are evaluated when you compile the document.</p></li>
+</ul>
+</div>
+<div id="install-latex-for-knitting-r-markdown-documents-to-pdf" class="section level2" number="1.6">
+<h2>
+<span class="header-section-number">1.6</span> Install LaTeX (for knitting R Markdown documents to PDF):<a class="anchor" aria-label="anchor" href="#install-latex-for-knitting-r-markdown-documents-to-pdf"><i class="fas fa-link"></i></a>
 </h2>
 <p>You need a Latex compiler to create a pdf document from a R Markdown file. If you use the maize server, you don’t need to install anything. If you are using a local RStudio, you should install a Latex compiler. Below are the recommended installers for Windows and Mac:</p>
 <ul>
@@ -163,9 +175,9 @@ installing R and RStudio!</p>
 <code>install.packages("tinytex")</code> in the console.</p></li>
 </ul>
 </div>
-<div id="updating-rrstudio-not-needed-if-you-are-using-the-maize2-server" class="section level2" number="1.6">
+<div id="updating-rrstudio-not-needed-if-you-are-using-the-maize2-server" class="section level2" number="1.7">
 <h2>
-<span class="header-section-number">1.6</span> Updating R/RStudio (not needed if you are using the maize2 server)<a class="anchor" aria-label="anchor" href="#updating-rrstudio-not-needed-if-you-are-using-the-maize2-server"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.7</span> Updating R/RStudio (not needed if you are using the maize2 server)<a class="anchor" aria-label="anchor" href="#updating-rrstudio-not-needed-if-you-are-using-the-maize2-server"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you have used a local version of R/RStudio before and it is still installed on your machine, then you should make sure that you have the most recent versions of each program.</p>
 <ul>
@@ -173,9 +185,9 @@ installing R and RStudio!</p>
 <li><p>In RStudio, check for updates with the menu option <code>Help &gt; Check for updates</code>. Follow directions if an update is needed.</p></li>
 </ul>
 </div>
-<div id="opening-a-new-file" class="section level2" number="1.7">
+<div id="opening-a-new-file" class="section level2" number="1.8">
 <h2>
-<span class="header-section-number">1.7</span> Opening a new file<a class="anchor" aria-label="anchor" href="#opening-a-new-file"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8</span> Opening a new file<a class="anchor" aria-label="anchor" href="#opening-a-new-file"><i class="fas fa-link"></i></a>
 </h2>
 <p>If using Rstudio on your computer, using the <strong>File&gt;Open File</strong> menu to find and open this .Rmd file.</p>
 <p>If using Maize Rstudio from your browser:</p>
@@ -184,9 +196,9 @@ installing R and RStudio!</p>
 <li><p>Click on the .Rmd file in the appropriate folder to open the file.</p></li>
 </ul>
 </div>
-<div id="running-codes-and-knitting-.rmd-files" class="section level2" number="1.8">
+<div id="running-codes-and-knitting-.rmd-files" class="section level2" number="1.9">
 <h2>
-<span class="header-section-number">1.8</span> Running codes and knitting .Rmd files:<a class="anchor" aria-label="anchor" href="#running-codes-and-knitting-.rmd-files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.9</span> Running codes and knitting .Rmd files:<a class="anchor" aria-label="anchor" href="#running-codes-and-knitting-.rmd-files"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>You can run a line of code by placing your cursor in the line of code and clicking <strong>Run Selected Line(s)</strong></p></li>
@@ -196,9 +208,9 @@ installing R and RStudio!</p>
 <li><p><strong>Maize users</strong>: You may also need to allow for “pop-up” in your web browser when knitting documents.</p></li>
 </ul>
 </div>
-<div id="few-more-instructions" class="section level2" number="1.9">
+<div id="few-more-instructions" class="section level2" number="1.10">
 <h2>
-<span class="header-section-number">1.9</span> Few More Instructions<a class="anchor" aria-label="anchor" href="#few-more-instructions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.10</span> Few More Instructions<a class="anchor" aria-label="anchor" href="#few-more-instructions"><i class="fas fa-link"></i></a>
 </h2>
 <p>The default setting in Rstudio when you are running chunks is that the “output” (numbers, graphs) are
 shown <strong>inline</strong> within the Markdown Rmd. If you prefer to have your plots appear on the right of the console and not below the chunk, then change the settings as follows:</p>
@@ -211,9 +223,9 @@ R Markdown documents.</li>
 <p>Now try running R chunks in the .Rmd file to see the difference. You can recheck this box if you prefer
 the default setting.</p>
 </div>
-<div id="vpn" class="section level2" number="1.10">
+<div id="vpn" class="section level2" number="1.11">
 <h2>
-<span class="header-section-number">1.10</span> VPN<a class="anchor" aria-label="anchor" href="#vpn"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.11</span> VPN<a class="anchor" aria-label="anchor" href="#vpn"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you plan to do any work off campus this term, you need to install Carleton’s VPN. This will allow you to access the <strong>maize</strong> server (if needed).</p>
 <p><strong>Installing the GlobalProtect VPN</strong></p>
@@ -232,12 +244,13 @@ the default setting.</p>
 <li><a class="nav-link" href="#r-studio-server"><span class="header-section-number">1.2</span> R Studio Server</a></li>
 <li><a class="nav-link" href="#rrstudio"><span class="header-section-number">1.3</span> R/RStudio</a></li>
 <li><a class="nav-link" href="#installing-rrstudio-not-needed-if-you-are-using-the-maize-server"><span class="header-section-number">1.4</span> Installing R/RStudio (not needed if you are using the maize server)</a></li>
-<li><a class="nav-link" href="#install-latex-for-knitting-r-markdown-documents-to-pdf"><span class="header-section-number">1.5</span> Install LaTeX (for knitting R Markdown documents to PDF):</a></li>
-<li><a class="nav-link" href="#updating-rrstudio-not-needed-if-you-are-using-the-maize2-server"><span class="header-section-number">1.6</span> Updating R/RStudio (not needed if you are using the maize2 server)</a></li>
-<li><a class="nav-link" href="#opening-a-new-file"><span class="header-section-number">1.7</span> Opening a new file</a></li>
-<li><a class="nav-link" href="#running-codes-and-knitting-.rmd-files"><span class="header-section-number">1.8</span> Running codes and knitting .Rmd files:</a></li>
-<li><a class="nav-link" href="#few-more-instructions"><span class="header-section-number">1.9</span> Few More Instructions</a></li>
-<li><a class="nav-link" href="#vpn"><span class="header-section-number">1.10</span> VPN</a></li>
+<li><a class="nav-link" href="#what-is-rmarkdown"><span class="header-section-number">1.5</span> What is RMarkdown?</a></li>
+<li><a class="nav-link" href="#install-latex-for-knitting-r-markdown-documents-to-pdf"><span class="header-section-number">1.6</span> Install LaTeX (for knitting R Markdown documents to PDF):</a></li>
+<li><a class="nav-link" href="#updating-rrstudio-not-needed-if-you-are-using-the-maize2-server"><span class="header-section-number">1.7</span> Updating R/RStudio (not needed if you are using the maize2 server)</a></li>
+<li><a class="nav-link" href="#opening-a-new-file"><span class="header-section-number">1.8</span> Opening a new file</a></li>
+<li><a class="nav-link" href="#running-codes-and-knitting-.rmd-files"><span class="header-section-number">1.9</span> Running codes and knitting .Rmd files:</a></li>
+<li><a class="nav-link" href="#few-more-instructions"><span class="header-section-number">1.10</span> Few More Instructions</a></li>
+<li><a class="nav-link" href="#vpn"><span class="header-section-number">1.11</span> VPN</a></li>
 </ul>
 
       <div class="book-extra">

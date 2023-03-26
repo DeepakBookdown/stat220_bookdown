@@ -6,6 +6,7 @@ what-is-rstudio
 r-studio-server
 rrstudio
 installing-rrstudio-not-needed-if-you-are-using-the-maize-server
+what-is-rmarkdown
 install-latex-for-knitting-r-markdown-documents-to-pdf
 updating-rrstudio-not-needed-if-you-are-using-the-maize2-server
 opening-a-new-file
@@ -38,8 +39,7 @@ working-with-collaborative-repos
 additional-resources
 acknowledgements-1
 reuse
-r-markdown-basics
-some-r-markdown-helpers
+r-markdown-syntax
 lists-in-r-markdown
 embed-an-r-code-chunk
 including-plots

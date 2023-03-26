@@ -28,7 +28,7 @@ ggplot(bac, aes(x = Beers, y = BAC)) +
         plot.title = element_text(size = 10, face = "bold"))
 ```
 
-<img src="nice_R_codes_files/figure-html/unnamed-chunk-1-1.png" width="100%" />
+<img src="nice_R_codes_files/figure-epub3/unnamed-chunk-1-1.png" width="100%" />
 
 
 
@@ -47,7 +47,7 @@ ggplot(bac, aes(x = Beers, y = residuals)) +
   theme(plot.title = element_text(hjust=0.5, size=7, face='bold')) 
 ```
 
-<img src="nice_R_codes_files/figure-html/unnamed-chunk-2-1.png" width="100%" />
+<img src="nice_R_codes_files/figure-epub3/unnamed-chunk-2-1.png" width="100%" />
 
 
 ## Plotly codes

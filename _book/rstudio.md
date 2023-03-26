@@ -68,6 +68,18 @@ If you have used a local version of R/RStudio before and it is still installed o
     the value `8` printed. If this happened, you've succeeded in
     installing R and RStudio!
 
+## What is RMarkdown?
+
+An R Markdown file (.Rmd file) combines R commands and written analyses, which are 'knit' together into an HTML, PDF, or Microsoft Word document. 
+
+An R Markdown file contains three essential elements:
+
+- Header: The header (top) of the file contains information like the document title, author, date and your preferred output format (pdf_document, word_document, or html_document).
+
+- Written analysis: You write up your analysis after the header and embed R code where needed. The online help below shows ways to add formatting details like bold words, lists, section labels, etc to your final pdf/word/html document. For example, adding ** before and after a word will bold that word in your compiled document. 
+
+- R chunks: R chunks contain the R commands that you want evaluated. You embed these chunks within your written analysis and they are evaluated when you compile the document.
+
 
 ## Install LaTeX (for knitting R Markdown documents to PDF): 
 

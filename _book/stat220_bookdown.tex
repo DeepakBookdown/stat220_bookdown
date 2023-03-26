@@ -243,6 +243,22 @@ like \texttt{x\ \textless{}-\ 2\ *\ 4} (followed by enter or return). Then inspe
 the value \texttt{8} printed. If this happened, you've succeeded in
 installing R and RStudio!
 
+\hypertarget{what-is-rmarkdown}{%
+\section{What is RMarkdown?}\label{what-is-rmarkdown}}
+
+An R Markdown file (.Rmd file) combines R commands and written analyses, which are `knit' together into an HTML, PDF, or Microsoft Word document.
+
+An R Markdown file contains three essential elements:
+
+\begin{itemize}
+\item
+  Header: The header (top) of the file contains information like the document title, author, date and your preferred output format (pdf\_document, word\_document, or html\_document).
+\item
+  Written analysis: You write up your analysis after the header and embed R code where needed. The online help below shows ways to add formatting details like bold words, lists, section labels, etc to your final pdf/word/html document. For example, adding ** before and after a word will bold that word in your compiled document.
+\item
+  R chunks: R chunks contain the R commands that you want evaluated. You embed these chunks within your written analysis and they are evaluated when you compile the document.
+\end{itemize}
+
 \hypertarget{install-latex-for-knitting-r-markdown-documents-to-pdf}{%
 \section{Install LaTeX (for knitting R Markdown documents to PDF):}\label{install-latex-for-knitting-r-markdown-documents-to-pdf}}
 
@@ -967,24 +983,8 @@ Most of this content in this guide was taken from
 This guide is licensed under the CC BY-NC 3.0 Creative
 Commons License.
 
-\hypertarget{r-markdown-basics}{%
-\chapter{R Markdown Basics}\label{r-markdown-basics}}
-
-An R Markdown file (.Rmd file) combines R commands and written analyses, which are `knit' together into an HTML, PDF, or Microsoft Word document.
-
-An R Markdown file contains three essential elements:
-
-\begin{itemize}
-\item
-  Header: The header (top) of the file contains information like the document title, author, date and your preferred output format (pdf\_document, word\_document, or html\_document).
-\item
-  Written analysis: You write up your analysis after the header and embed R code where needed. The online help below shows ways to add formatting details like bold words, lists, section labels, etc to your final pdf/word/html document. For example, adding ** before and after a word will bold that word in your compiled document.
-\item
-  R chunks: R chunks contain the R commands that you want evaluated. You embed these chunks within your written analysis and they are evaluated when you compile the document.
-\end{itemize}
-
-\hypertarget{some-r-markdown-helpers}{%
-\section{Some R Markdown helpers}\label{some-r-markdown-helpers}}
+\hypertarget{r-markdown-syntax}{%
+\chapter{R Markdown Syntax}\label{r-markdown-syntax}}
 
 Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see \url{http://rmarkdown.rstudio.com}.
 

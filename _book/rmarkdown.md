@@ -1,17 +1,4 @@
-# R Markdown Basics
-
-An R Markdown file (.Rmd file) combines R commands and written analyses, which are 'knit' together into an HTML, PDF, or Microsoft Word document. 
-
-An R Markdown file contains three essential elements:
-
-- Header: The header (top) of the file contains information like the document title, author, date and your preferred output format (pdf_document, word_document, or html_document).
-
-- Written analysis: You write up your analysis after the header and embed R code where needed. The online help below shows ways to add formatting details like bold words, lists, section labels, etc to your final pdf/word/html document. For example, adding ** before and after a word will bold that word in your compiled document. 
-
-- R chunks: R chunks contain the R commands that you want evaluated. You embed these chunks within your written analysis and they are evaluated when you compile the document.
-
-
-## Some R Markdown helpers
+# R Markdown Syntax
 
 Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
@@ -107,7 +94,7 @@ pie(
 ```
 
 <div class="figure">
-<img src="rmarkdown_files/figure-html/pie-1.png" alt="A fancy pie chart." width="100%" />
+<img src="rmarkdown_files/figure-epub3/pie-1.png" alt="A fancy pie chart." width="100%" />
 <p class="caption">(\#fig:pie)A fancy pie chart.</p>
 </div>
 

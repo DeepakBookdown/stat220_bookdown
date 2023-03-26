@@ -24,12 +24,14 @@ If you have taken Stat 120, 230, or 250 at Carleton, you will find yourself well
 
 ## Learning Objectives
 
+<blockquote>
 - Develop research questions that can be answered by data. Import/scrape data into R and reshape it to the form necessary for analysis.
 - Manipulate common types of data, including numeric, categorical (factors), text, date-times, geo-location variables in order to provide insight into your data and facilitate analysis.
 - Explore data using both graphical and numeric methods to provide insight and uncover relationships/patterns.
 - Utilize fundamental programming concepts such as iteration, conditional execution, and functions to streamline your code.
 - Build, tune, use, and evaluate basic statistical learning models to uncover clusters and classify observations.
 - Draw informed conclusions from your data and communicate your findings using both written and interactive platforms.
+</blockquote>
 
 ## Course Requirements
 
