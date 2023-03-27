@@ -117,7 +117,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-03-25}
+\date{2023-03-26}
 
 \begin{document}
 \maketitle
@@ -1163,6 +1163,509 @@ adc & TX & 45 & 5:45\\
 kme & CT & 50 & 4:19\\
 \hline
 \end{tabular}
+
+\hypertarget{part-class-activities}{%
+\part*{Class Activities}\label{part-class-activities}}
+\addcontentsline{toc}{part}{Class Activities}
+
+\hypertarget{class-activity-0}{%
+\chapter{Class Activity 0}\label{class-activity-0}}
+
+In this worksheet, you will practice creating a GitHub repository using the RStudio Git terminal, usethis::use\_github() function and cloning it back to your local machine using RStudio's menu options.
+
+\hypertarget{tutorial-1-creating-a-new-github-repository-using-rstudios-git-terminal}{%
+\section{Tutorial 1: Creating a new GitHub repository using RStudio's Git terminal}\label{tutorial-1-creating-a-new-github-repository-using-rstudios-git-terminal}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
+\item
+  Initialize a Git repository for your project. Click on the ``Terminal'' tab in the bottom right pane of RStudio and run the following command:
+\end{enumerate}
+
+\hypertarget{tutorial-2-cloning-the-github-repository}{%
+\section{Tutorial 2: Cloning the GitHub repository}\label{tutorial-2-cloning-the-github-repository}}
+
+In this worksheet, you will practice creating a GitHub repository using the usethis::use\_github() function and cloning it back to your local machine using RStudio's menu options.
+
+\hypertarget{prerequisites}{%
+\subsection{Prerequisites}\label{prerequisites}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Install the usethis package if you haven't already: install.packages(``usethis'')
+\item
+  Make sure you have a GitHub account, and you are logged in.
+\item
+  Configure Git with your name and email address if you haven't already. Run the following commands in the R console, replacing ``Your Name'' and ``\href{mailto:youremail@example.com}{\nolinkurl{youremail@example.com}}'' with your information:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{usethis}\SpecialCharTok{::}\FunctionTok{use\_git\_config}\NormalTok{(}\AttributeTok{user.name =} \StringTok{"Your Name"}\NormalTok{, }\AttributeTok{user.email =} \StringTok{"youremail@example.com"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creating-a-new-github-repository}{%
+\subsection{Creating a new GitHub repository}\label{creating-a-new-github-repository}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
+\item
+  In the R console, load the usethis package:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(usethis)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Initialize a Git repository for your project by running:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{usethis}\SpecialCharTok{::}\FunctionTok{use\_git}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Now, let's create a new GitHub repository using the usethis::use\_github() function. Run the following command:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{usethis}\SpecialCharTok{::}\FunctionTok{use\_github}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Follow the instructions in the R console, and your GitHub repository will be created. Note the repository URL, as you will need it in the next activity.
+\end{enumerate}
+
+\hypertarget{tutorial-3-cloning-the-github-repository}{%
+\section{Tutorial 3: Cloning the GitHub repository}\label{tutorial-3-cloning-the-github-repository}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  To clone the repository to another folder on your local machine, first, close the current RStudio project by clicking on ``File'' \textgreater{} ``Close Project.''
+\item
+  Next, create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``Version Control'' \textgreater{} ``Git.''
+\item
+  In the ``Repository URL'' field, paste the URL of the GitHub repository you created in Activity 1. Choose a location on your computer to save the cloned project, and click ``Create Project.''
+\item
+  Now, you have successfully cloned your GitHub repository to your local machine. You can make changes to the files
+\end{enumerate}
+
+\hypertarget{tutorial-4-creating-a-new-github-repository-using-rstudios-git-terminal}{%
+\section{Tutorial 4: Creating a new GitHub repository using RStudio's Git terminal}\label{tutorial-4-creating-a-new-github-repository-using-rstudios-git-terminal}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
+\item
+  Initialize a Git repository for your project. Click on the ``Terminal'' tab in the bottom right pane of RStudio and run the following command:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{git init}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Configure Git with your name and email address if you haven't already. Run the following commands in the terminal, replacing ``Your Name'' and ``\href{mailto:youremail@example.com}{\nolinkurl{youremail@example.com}}'' with your information:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{git config user.name }\StringTok{"Your Name"}
+\NormalTok{git config user.email }\StringTok{"youremail@example.com"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Commit your project files to the Git repository. Run the following commands in the terminal:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{git add .}
+\NormalTok{git commit }\SpecialCharTok{{-}}\NormalTok{m }\StringTok{"Initial commit"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  Go to your GitHub account, click on the ``+'' icon in the upper right corner, and select ``New repository.'' Give your repository a name (it's recommended to use the same name as your R project), and click ``Create repository.''
+\item
+  In the ``\ldots or push an existing repository from the command line'' section of your new GitHub repository, copy
+\end{enumerate}
+
+\hypertarget{class-activity-1}{%
+\chapter{Class Activity 1}\label{class-activity-1}}
+
+The \texttt{R} package \texttt{babynames} provides data about the popularity of individual baby names from the US Social Security Administration. Data includes all names used at least 5 times in a year beginning in 1880.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("babynames")  \# uncomment to install}
+\FunctionTok{library}\NormalTok{(babynames)}
+\end{Highlighting}
+\end{Shaded}
+
+Below is the list for first few cases of baby names.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(babynames)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 6 x 5
+   year sex   name          n   prop
+  <dbl> <chr> <chr>     <int>  <dbl>
+1  1880 F     Mary       7065 0.0724
+2  1880 F     Anna       2604 0.0267
+3  1880 F     Emma       2003 0.0205
+4  1880 F     Elizabeth  1939 0.0199
+5  1880 F     Minnie     1746 0.0179
+6  1880 F     Margaret   1578 0.0162
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How many cases and variables are in the dataset \texttt{babynames}?
+\end{enumerate}
+
+\textbf{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(babynames)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1924665       5
+\end{verbatim}
+
+There are 1924665 cases and 5 variables in the dataset \texttt{babynames}.
+
+Let's use the package tidyverse to do some exploratory data analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("tidyverse")   \# uncomment to install}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(name}\SpecialCharTok{==}\StringTok{\textquotesingle{}Aimee\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 150 x 5
+    year sex   name      n      prop
+   <dbl> <chr> <chr> <int>     <dbl>
+ 1  1880 F     Aimee    13 0.000133 
+ 2  1881 F     Aimee    11 0.000111 
+ 3  1882 F     Aimee    13 0.000112 
+ 4  1883 F     Aimee    11 0.0000916
+ 5  1884 F     Aimee    15 0.000109 
+ 6  1885 F     Aimee    17 0.000120 
+ 7  1886 F     Aimee    17 0.000111 
+ 8  1887 F     Aimee    18 0.000116 
+ 9  1888 F     Aimee    12 0.0000633
+10  1889 F     Aimee    16 0.0000846
+# ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{filtered\_names }\OtherTok{\textless{}{-}}\NormalTok{ babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(name}\SpecialCharTok{==}\StringTok{\textquotesingle{}Aimee\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("ggplot2")   \# uncomment to install}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{filtered\_names, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{year, }\AttributeTok{y=}\NormalTok{prop)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour=}\NormalTok{sex)) }\SpecialCharTok{+} 
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Prop. of Babies Named Aimee\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/trend-1} \caption{A trend chart}\label{fig:trend}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  What do you see in the Figure 1? Explain in a few sentences.
+\end{enumerate}
+
+Click for answer
+
+\textbf{Answer:}
+
+In Figure 1, we can see the proportion of babies named Aimee by year for both males and females. We notice that the name Aimee has been more popular among females than males throughout the years. There is a peak in popularity around the 1970s for female babies, and then the popularity declines.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Repeat question 2 to infer how does the proportion of babies with your first name trend over time. Examine the generated plot and describe the trend of your name's popularity over time. Consider the following points:
+\end{enumerate}
+
+Has the popularity of your name increased, decreased, or remained stable over the years? Is there a noticeable difference in popularity between sexes? Are there any interesting patterns or trends, such as sudden increases or decreases in popularity?
+
+\textbf{Answer:}
+
+\vspace*{0.2in}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Replace \textquotesingle{}YourName\textquotesingle{} with your first name}
+\NormalTok{your\_name }\OtherTok{\textless{}{-}} \StringTok{"Dee"}
+
+\NormalTok{your\_name\_data }\OtherTok{\textless{}{-}}\NormalTok{ babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==}\NormalTok{ your\_name)}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{your\_name\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{year, }\AttributeTok{y=}\NormalTok{prop)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour=}\NormalTok{sex)) }\SpecialCharTok{+} 
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{ylab}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}Prop. of Babies Named\textquotesingle{}}\NormalTok{, your\_name))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/unnamed-chunk-6-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Compare the popularity of your first name with a randomly chosen name from the dataset. Examine the generated plot and compare the popularity of your first name with the randomly chosen name. Consider the following points:
+\end{enumerate}
+
+Are there differences in popularity trends between the two names? Is one name consistently more popular than the other, or do their popularity levels change over time? Are there any interesting patterns or trends in the data, such as periods of rapid increase or decrease in popularity?
+
+\textbf{Answer}
+
+\vspace*{0.2in}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Replace \textquotesingle{}YourName\textquotesingle{} with your first name}
+\NormalTok{your\_name\_data }\OtherTok{\textless{}{-}}\NormalTok{ babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \StringTok{\textquotesingle{}Dee\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Replace \textquotesingle{}RandomName\textquotesingle{} with a randomly chosen name from the dataset}
+\NormalTok{random\_name\_data }\OtherTok{\textless{}{-}}\NormalTok{ babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \StringTok{\textquotesingle{}Max\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Combine the two datasets}
+\NormalTok{combined\_data }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(your\_name\_data, random\_name\_data)}
+
+\CommentTok{\# Plot the data}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{combined\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{year, }\AttributeTok{y=}\NormalTok{prop)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour=}\NormalTok{sex, }\AttributeTok{linetype=}\NormalTok{name)) }\SpecialCharTok{+} 
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/unnamed-chunk-7-1}
+
+\hypertarget{extras-optional}{%
+\section{Extras (optional)}\label{extras-optional}}
+
+\hypertarget{part-1-setting-working-directory-and-loading-data}{%
+\subsection{Part 1: Setting Working Directory and Loading Data}\label{part-1-setting-working-directory-and-loading-data}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Set your working directory to a folder on your computer where you would like to save your R scripts and data files.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Replace \textquotesingle{}your\_directory\_path\textquotesingle{} with the path to your desired folder}
+\CommentTok{\# setwd("your\_directory\_path")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Load the mtcars dataset which comes preloaded with R. This dataset consists of various car features and their corresponding miles per gallon (mpg) values.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(mtcars)}
+\FunctionTok{head}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+                   mpg cyl disp  hp drat    wt  qsec vs am
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0
+                  gear carb
+Mazda RX4            4    4
+Mazda RX4 Wag        4    4
+Datsun 710           4    1
+Hornet 4 Drive       3    1
+Hornet Sportabout    3    2
+Valiant              3    1
+\end{verbatim}
+
+\hypertarget{part-2-downloading-packages}{%
+\subsection{Part 2: Downloading Packages}\label{part-2-downloading-packages}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Install the ``tidyverse'' package, which is a collection of useful R packages for data manipulation, exploration, and visualization.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Uncomment the line below to install the package}
+\CommentTok{\# install.packages("tidyverse")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Load the ``tidyverse'' package into your R session.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{part-3-creating-and-compiling-an-r-markdown-file}{%
+\subsection{Part 3: Creating and Compiling an R Markdown File}\label{part-3-creating-and-compiling-an-r-markdown-file}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a new R Markdown file in RStudio by clicking on ``File'' \textgreater{} ``New File'' \textgreater{} ``R Markdown\ldots{}''. Save the file in your working directory.
+\item
+  Add the following code to your R Markdown file to create a scatter plot of the mtcars dataset, showing the relationship between miles per gallon (mpg) and the weight of the car (wt).
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a scatter plot}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wt, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Weight (1000 lbs)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Miles per Gallon"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/unnamed-chunk-12-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Knit your R Markdown file to create an output document. Click the ``Knit'' button at the top of the RStudio script editor, and choose the output format you prefer (e.g., HTML, PDF, or Word).
+\end{enumerate}
+
+\vspace*{0.5in}
+
+\hypertarget{questions}{%
+\section{Questions}\label{questions}}
+
+\hypertarget{how-does-the-weight-of-a-car-wt-affect-its-miles-per-gallon-mpg-based-on-the-scatter-plot-you-created}{%
+\subsection{1. How does the weight of a car (wt) affect its miles per gallon (mpg) based on the scatter plot you created?}\label{how-does-the-weight-of-a-car-wt-affect-its-miles-per-gallon-mpg-based-on-the-scatter-plot-you-created}}
+
+Click for answer
+
+\textbf{Answer:}
+
+Based on the scatter plot, there appears to be a negative relationship between the weight of a car (wt) and its miles per gallon (mpg). As the weight of a car increases, its fuel efficiency (mpg) tends to decrease.
+
+\vspace*{0.5in}
+
+\hypertarget{what-is-the-importance-of-setting-a-working-directory-in-r}{%
+\subsection{2. What is the importance of setting a working directory in R?}\label{what-is-the-importance-of-setting-a-working-directory-in-r}}
+
+Click for answer
+
+\textbf{Answer:}
+
+Setting a working directory in R is important because it determines the default location where R will read from or write to when loading or saving files. This makes it easier to keep your files organized and ensures that your R scripts can access the necessary files without needing to specify the full file paths. It also simplifies sharing your R projects with others since the file paths within your scripts will be relative to the working directory.
+
+\vspace*{0.5in}
+
+\hypertarget{explain-the-role-of-r-markdown-in-creating-reproducible-research-documents.}{%
+\subsection{3. Explain the role of R Markdown in creating reproducible research documents.}\label{explain-the-role-of-r-markdown-in-creating-reproducible-research-documents.}}
+
+Click for answer
+
+\textbf{Answer:}
+
+R Markdown plays a crucial role in creating reproducible research documents by allowing you to combine text, code, and output (e.g., tables, figures) within a single document. This integration of narrative, data, and results makes it easier to document your data analysis process, ensuring that others can easily understand, reproduce, and build upon your work. R Markdown also supports various output formats (e.g., HTML, PDF, Word) to make it easy to share your research findings with others.
 
 \hypertarget{part-extra-materials}{%
 \part*{Extra Materials}\label{part-extra-materials}}

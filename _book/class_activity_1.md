@@ -1,4 +1,3 @@
-# (PART\*) Class Activities {-}
 
 # Class Activity 1
 
@@ -18,7 +17,7 @@ head(babynames)
 ```
 
 ```
-# A tibble: 6 x 5
+# A tibble: 6 × 5
    year sex   name          n   prop
   <dbl> <chr> <chr>     <int>  <dbl>
 1  1880 F     Mary       7065 0.0724
@@ -54,7 +53,7 @@ babynames %>% filter(name=='Aimee')
 ```
 
 ```
-# A tibble: 150 x 5
+# A tibble: 150 × 5
     year sex   name      n      prop
    <dbl> <chr> <chr> <int>     <dbl>
  1  1880 F     Aimee    13 0.000133 
@@ -67,7 +66,7 @@ babynames %>% filter(name=='Aimee')
  8  1887 F     Aimee    18 0.000116 
  9  1888 F     Aimee    12 0.0000633
 10  1889 F     Aimee    16 0.0000846
-# ... with 140 more rows
+# … with 140 more rows
 ```
 
 ```r
@@ -88,21 +87,29 @@ ggplot(data=filtered_names, aes(x=year, y=prop)) +
   ylab('Prop. of Babies Named Aimee')
 ```
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/trend-1} \caption{A trend chart}(\#fig:trend)
-\end{figure}
+<div class="figure">
+<img src="class_activity_1_files/figure-epub3/trend-1.png" alt="A trend chart" width="100%" />
+<p class="caption">(\#fig:trend)A trend chart</p>
+</div>
 
 2. What do you see in the Figure 1? Explain in a few sentences.
 
+<details>
+<summary><red>Click for answer</red></summary>
 **Answer:**
 
 In Figure 1, we can see the proportion of babies named Aimee by year for both males and females. We notice that the name Aimee has been more popular among females than males throughout the years. There is a peak in popularity around the 1970s for female babies, and then the popularity declines.
+
+</details>
 
 3. Repeat question 2 to infer how does the proportion of babies with your first name trend over time. Examine the generated plot and describe the trend of your name's popularity over time. Consider the following points:
 
 Has the popularity of your name increased, decreased, or remained stable over the years? Is there a noticeable difference in popularity between sexes? Are there any interesting patterns or trends, such as sudden increases or decreases in popularity?
 
 **Answer:**
+
+\vspace*{0.2in}
+
 
 
 ```r
@@ -117,14 +124,15 @@ ggplot(data=your_name_data, aes(x=year, y=prop)) +
   ylab(paste('Prop. of Babies Named', your_name))
 ```
 
-
-\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/unnamed-chunk-6-1} 
+<img src="class_activity_1_files/figure-epub3/unnamed-chunk-6-1.png" width="100%" />
 
 4. Compare the popularity of your first name with a randomly chosen name from the dataset. Examine the generated plot and compare the popularity of your first name with the randomly chosen name. Consider the following points:
 
 Are there differences in popularity trends between the two names? Is one name consistently more popular than the other, or do their popularity levels change over time? Are there any interesting patterns or trends in the data, such as periods of rapid increase or decrease in popularity?
 
 **Answer**
+
+\vspace*{0.2in}
 
 
 ```r
@@ -143,8 +151,7 @@ ggplot(data=combined_data, aes(x=year, y=prop)) +
   xlab('Year') 
 ```
 
-
-\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/unnamed-chunk-7-1} 
+<img src="class_activity_1_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
 
 
 ## Extras (optional)
@@ -225,42 +232,51 @@ ggplot(data = mtcars, aes(x = wt, y = mpg)) +
   theme_minimal()
 ```
 
-
-\includegraphics[width=1\linewidth]{class_activity_1_files/figure-latex/unnamed-chunk-12-1} 
+<img src="class_activity_1_files/figure-epub3/unnamed-chunk-12-1.png" width="100%" />
 
 
 3. Knit your R Markdown file to create an output document. Click the "Knit" button at the top of the RStudio script editor, and choose the output format you prefer (e.g., HTML, PDF, or Word).
 
 
-\vspace*{0.2in}
+\vspace*{0.5in}
 
 
 ## Questions
 
 ### 1. How does the weight of a car (wt) affect its miles per gallon (mpg) based on the scatter plot you created?
 
+<details>
+<summary><red>Click for answer</red></summary>
 **Answer:**
 
 Based on the scatter plot, there appears to be a negative relationship between the weight of a car (wt) and its miles per gallon (mpg). As the weight of a car increases, its fuel efficiency (mpg) tends to decrease.
+</details>
 
-\vspace*{0.2in}
+
+\vspace*{0.5in}
 
 ### 2. What is the importance of setting a working directory in R?
 
+<details>
+<summary><red>Click for answer</red></summary>
 **Answer:**
 
 Setting a working directory in R is important because it determines the default location where R will read from or write to when loading or saving files. This makes it easier to keep your files organized and ensures that your R scripts can access the necessary files without needing to specify the full file paths. It also simplifies sharing your R projects with others since the file paths within your scripts will be relative to the working directory.
+</details>
 
 
 
-\vspace*{0.2in}
+\vspace*{0.5in}
 
 ### 3. Explain the role of R Markdown in creating reproducible research documents.
 
+<details>
+<summary><red>Click for answer</red></summary>
 **Answer:**
 
 R Markdown plays a crucial role in creating reproducible research documents by allowing you to combine text, code, and output (e.g., tables, figures) within a single document. This integration of narrative, data, and results makes it easier to document your data analysis process, ensuring that others can easily understand, reproduce, and build upon your work. R Markdown also supports various output formats (e.g., HTML, PDF, Word) to make it easy to share your research findings with others.
 
+</details>
 
 
 
