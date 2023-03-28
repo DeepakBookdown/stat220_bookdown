@@ -13,24 +13,6 @@
   --background-color: #F7F8FA;
 }
 
-/*------------ TOC --------------*/
-
-.book .book-summary {
-  background: white;
-  border-right: none;
-}
-
-
-.book .book-body .onthispage-nav {
-  display: none;
-}
-
-.container-fluid {
-    max-width: 120rem;
-}
-.container-fluid main {
-    max-width: 55rem;
-}
 
 body {
   margin: 10rem;

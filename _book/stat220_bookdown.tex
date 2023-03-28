@@ -117,7 +117,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-03-26}
+\date{2023-03-27}
 
 \begin{document}
 \maketitle
@@ -1171,23 +1171,48 @@ kme & CT & 50 & 4:19\\
 \hypertarget{class-activity-0}{%
 \chapter{Class Activity 0}\label{class-activity-0}}
 
-In this worksheet, you will practice creating a GitHub repository using the RStudio Git terminal, usethis::use\_github() function and cloning it back to your local machine using RStudio's menu options.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the required libraries}
+\FunctionTok{library}\NormalTok{(credentials) }\CommentTok{\# to help with PAT access}
+\FunctionTok{library}\NormalTok{(gitcreds)}
+\FunctionTok{library}\NormalTok{(usethis)}
+\end{Highlighting}
+\end{Shaded}
 
-\hypertarget{tutorial-1-creating-a-new-github-repository-using-rstudios-git-terminal}{%
-\section{Tutorial 1: Creating a new GitHub repository using RStudio's Git terminal}\label{tutorial-1-creating-a-new-github-repository-using-rstudios-git-terminal}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# STEPS INVOLVED TO ESTABLISH GIT CREDENTIALS / PAT}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
-\item
-  Initialize a Git repository for your project. Click on the ``Terminal'' tab in the bottom right pane of RStudio and run the following command:
-\end{enumerate}
+\CommentTok{\# Step 1}
 
-\hypertarget{tutorial-2-cloning-the-github-repository}{%
-\section{Tutorial 2: Cloning the GitHub repository}\label{tutorial-2-cloning-the-github-repository}}
+\CommentTok{\# usethis::use\_git\_config(user.name = "deepbas", user.email = "deepbas99@gmail.com")}
+
+\CommentTok{\# Step 2}
+
+\CommentTok{\# usethis::create\_github\_token()}
+
+\CommentTok{\# Step 3}
+
+\CommentTok{\# if this is the second/subsequent iteration start from here}
+
+\CommentTok{\# gitcreds::gitcreds\_set()}
+
+\CommentTok{\# Verify}
+
+\CommentTok{\# gitcreds::gitcreds\_get()}
+
+\CommentTok{\# make a new repo in remote Github}
+
+\CommentTok{\# usethis::use\_git()}
+\CommentTok{\# usethis::use\_github()}
+\end{Highlighting}
+\end{Shaded}
 
 In this worksheet, you will practice creating a GitHub repository using the usethis::use\_github() function and cloning it back to your local machine using RStudio's menu options.
+
+\hypertarget{tutorial-1-creating-a-new-github-repository-using-usethis-r-package}{%
+\section{\texorpdfstring{Tutorial 1: Creating a new GitHub repository using \texttt{usethis} R package}{Tutorial 1: Creating a new GitHub repository using usethis R package}}\label{tutorial-1-creating-a-new-github-repository-using-usethis-r-package}}
 
 \hypertarget{prerequisites}{%
 \subsection{Prerequisites}\label{prerequisites}}
@@ -1208,13 +1233,19 @@ In this worksheet, you will practice creating a GitHub repository using the uset
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{creating-a-new-github-repository}{%
-\subsection{Creating a new GitHub repository}\label{creating-a-new-github-repository}}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\item
+  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
+\item
+  Make a new file or copy and paste a .Rmd file that you want to have in your repo and save it to your requirement.
+\end{enumerate}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\item
-  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
+\setcounter{enumi}{5}
+\tightlist
 \item
   In the R console, load the usethis package:
 \end{enumerate}
@@ -1227,7 +1258,7 @@ In this worksheet, you will practice creating a GitHub repository using the uset
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
+\setcounter{enumi}{6}
 \tightlist
 \item
   Initialize a Git repository for your project by running:
@@ -1241,7 +1272,7 @@ In this worksheet, you will practice creating a GitHub repository using the uset
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
+\setcounter{enumi}{7}
 \tightlist
 \item
   Now, let's create a new GitHub repository using the usethis::use\_github() function. Run the following command:
@@ -1261,8 +1292,8 @@ In this worksheet, you will practice creating a GitHub repository using the uset
   Follow the instructions in the R console, and your GitHub repository will be created. Note the repository URL, as you will need it in the next activity.
 \end{enumerate}
 
-\hypertarget{tutorial-3-cloning-the-github-repository}{%
-\section{Tutorial 3: Cloning the GitHub repository}\label{tutorial-3-cloning-the-github-repository}}
+\hypertarget{tutorial-2-cloning-the-github-repository-back-to-your-local-machine}{%
+\section{Tutorial 2: Cloning the GitHub repository back to your local machine}\label{tutorial-2-cloning-the-github-repository-back-to-your-local-machine}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1273,11 +1304,11 @@ In this worksheet, you will practice creating a GitHub repository using the uset
 \item
   In the ``Repository URL'' field, paste the URL of the GitHub repository you created in Activity 1. Choose a location on your computer to save the cloned project, and click ``Create Project.''
 \item
-  Now, you have successfully cloned your GitHub repository to your local machine. You can make changes to the files
+  Now, you have successfully cloned your GitHub repository to your local machine. You can make changes to the files and push back the changes regularly.
 \end{enumerate}
 
-\hypertarget{tutorial-4-creating-a-new-github-repository-using-rstudios-git-terminal}{%
-\section{Tutorial 4: Creating a new GitHub repository using RStudio's Git terminal}\label{tutorial-4-creating-a-new-github-repository-using-rstudios-git-terminal}}
+\hypertarget{optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal}{%
+\section{(Optional) Tutorial 3: Creating a new GitHub repository using RStudio's Git terminal}\label{optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}

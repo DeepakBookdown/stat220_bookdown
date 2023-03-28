@@ -2,19 +2,48 @@
 
 # Class Activity 0
 
-In this worksheet, you will practice creating a GitHub repository using the RStudio Git terminal, usethis::use_github() function and cloning it back to your local machine using RStudio's menu options.
 
-## Tutorial 1: Creating a new GitHub repository using RStudio's Git terminal
 
-<blockquote>
-1. Create a new R project in RStudio by clicking on "File" > "New Project" > "New Directory" > "New Project." Give your project a name and choose a location on your computer to save it. Click "Create Project."
+```{r, eval=FALSE}
+# load the required libraries
+library(credentials) # to help with PAT access
+library(gitcreds)
+library(usethis)
+```
 
-2. Initialize a Git repository for your project. Click on the "Terminal" tab in the bottom right pane of RStudio and run the following command:
-</blockquote>
 
-## Tutorial 2: Cloning the GitHub repository
+```r
+# STEPS INVOLVED TO ESTABLISH GIT CREDENTIALS / PAT
+
+# Step 1
+
+# usethis::use_git_config(user.name = "deepbas", user.email = "deepbas99@gmail.com")
+
+# Step 2
+
+# usethis::create_github_token()
+
+# Step 3
+
+# if this is the second/subsequent iteration start from here
+
+# gitcreds::gitcreds_set()
+
+# Verify
+
+# gitcreds::gitcreds_get()
+
+# make a new repo in remote Github
+
+# usethis::use_git()
+# usethis::use_github()
+```
+
+
 
 In this worksheet, you will practice creating a GitHub repository using the usethis::use_github() function and cloning it back to your local machine using RStudio's menu options.
+
+## Tutorial 1: Creating a new GitHub repository using `usethis` R package
 
 
 ### Prerequisites
@@ -31,24 +60,30 @@ In this worksheet, you will practice creating a GitHub repository using the uset
 usethis::use_git_config(user.name = "Your Name", user.email = "youremail@example.com")
 ```
 
-### Creating a new GitHub repository
 
-<blockquote> 
-1.  Create a new R project in RStudio by clicking on "File" > "New Project" > "New Directory" > "New Project." Give your project a name and choose a location on your computer to save it. Click "Create Project."
 
-2. In the R console, load the usethis package:
-```{r}
+<blockquote>
+4. Create a new R project in RStudio by clicking on "File" > "New Project" > "New Directory" > "New Project." Give your project a name and choose a location on your computer to save it. Click "Create Project."
+
+5. Make a new file or copy and paste a .Rmd file that you want to have in your repo and save it to your requirement.
+
+</blockquote>
+
+
+6. In the R console, load the usethis package:
+
+```{r, eval=FALSE}
 library(usethis)
 ```
 
-3. Initialize a Git repository for your project by running:
+7. Initialize a Git repository for your project by running:
 
 ```{r, eval=FALSE}
 usethis::use_git()
 ```
 
 
-4. Now, let's create a new GitHub repository using the usethis::use_github() function. Run the following command:
+8. Now, let's create a new GitHub repository using the usethis::use_github() function. Run the following command:
 
 ```{r, eval=FALSE}
 usethis::use_github()
@@ -60,21 +95,22 @@ usethis::use_github()
 </blockquote>
 
 
-## Tutorial 3: Cloning the GitHub repository
+## Tutorial 2: Cloning the GitHub repository back to your local machine
 
 <blockquote>
+
 1. To clone the repository to another folder on your local machine, first, close the current RStudio project by clicking on "File" > "Close Project."
 
 2. Next, create a new R project in RStudio by clicking on "File" > "New Project" > "Version Control" > "Git."
 
 3. In the "Repository URL" field, paste the URL of the GitHub repository you created in Activity 1. Choose a location on your computer to save the cloned project, and click "Create Project."
 
-4. Now, you have successfully cloned your GitHub repository to your local machine. You can make changes to the files
+4. Now, you have successfully cloned your GitHub repository to your local machine. You can make changes to the files and push back the changes regularly.
 </blockquote>
 
 
 
-## Tutorial 4: Creating a new GitHub repository using RStudio's Git terminal
+## (Optional) Tutorial 3: Creating a new GitHub repository using RStudio's Git terminal
 
 <blockquote>
 1. Create a new R project in RStudio by clicking on "File" > "New Project" > "New Directory" > "New Project." Give your project a name and choose a location on your computer to save it. Click "Create Project."
@@ -104,4 +140,3 @@ git commit -m "Initial commit"
 6. In the "…or push an existing repository from the command line" section of your new GitHub repository, copy
 
 </blockquote>
-
