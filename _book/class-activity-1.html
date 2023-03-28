@@ -67,11 +67,11 @@
 <span class="header-section-number">7</span> Class Activity 1<a class="anchor" aria-label="anchor" href="#class-activity-1"><i class="fas fa-link"></i></a>
 </h1>
 <p>The <code>R</code> package <code>babynames</code> provides data about the popularity of individual baby names from the US Social Security Administration. Data includes all names used at least 5 times in a year beginning in 1880.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("babynames")  # uncomment to install</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/babynames">babynames</a></span><span class="op">)</span></span></code></pre></div>
 <p>Below is the list for first few cases of baby names.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">babynames</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 6 × 5
    year sex   name          n   prop
@@ -86,12 +86,12 @@
 <li>How many cases and variables are in the dataset <code>babynames</code>?</li>
 </ol>
 <p><strong>Answer:</strong></p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">babynames</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 1924665       5</code></pre>
 <p>There are 1924665 cases and 5 variables in the dataset <code>babynames</code>.</p>
 <p>Let’s use the package tidyverse to do some exploratory data analysis.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("tidyverse")   # uncomment to install</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span><span class="op">==</span><span class="st">'Aimee'</span><span class="op">)</span></span></code></pre></div>
@@ -109,12 +109,12 @@
  9  1888 F     Aimee    12 0.0000633
 10  1889 F     Aimee    16 0.0000846
 # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">filtered_names</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span><span class="op">==</span><span class="st">'Aimee'</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("ggplot2")   # uncomment to install</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">filtered_names</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour<span class="op">=</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">'Year'</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -135,7 +135,7 @@ Figure 7.1: A trend chart
 </ol>
 <p>Has the popularity of your name increased, decreased, or remained stable over the years? Is there a noticeable difference in popularity between sexes? Are there any interesting patterns or trends, such as sudden increases or decreases in popularity?</p>
 <p><strong>Answer:</strong></p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Replace 'YourName' with your first name</span></span>
 <span><span class="va">your_name</span> <span class="op">&lt;-</span> <span class="st">"Dee"</span></span>
 <span></span>
@@ -151,7 +151,7 @@ Figure 7.1: A trend chart
 </ol>
 <p>Are there differences in popularity trends between the two names? Is one name consistently more popular than the other, or do their popularity levels change over time? Are there any interesting patterns or trends in the data, such as periods of rapid increase or decrease in popularity?</p>
 <p><strong>Answer</strong></p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Replace 'YourName' with your first name</span></span>
 <span><span class="va">your_name_data</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">==</span> <span class="st">'Dee'</span><span class="op">)</span></span>
 <span></span>
@@ -177,13 +177,13 @@ Figure 7.1: A trend chart
 <ol style="list-style-type: decimal">
 <li>Set your working directory to a folder on your computer where you would like to save your R scripts and data files.</li>
 </ol>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Replace 'your_directory_path' with the path to your desired folder</span></span>
 <span><span class="co"># setwd("your_directory_path")</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Load the mtcars dataset which comes preloaded with R. This dataset consists of various car features and their corresponding miles per gallon (mpg) values.</li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am
@@ -208,13 +208,13 @@ Valiant              3    1</code></pre>
 <ol style="list-style-type: decimal">
 <li>Install the “tidyverse” package, which is a collection of useful R packages for data manipulation, exploration, and visualization.</li>
 </ol>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Uncomment the line below to install the package</span></span>
 <span><span class="co"># install.packages("tidyverse")</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Load the “tidyverse” package into your R session.</li>
 </ol>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="part-3-creating-and-compiling-an-r-markdown-file" class="section level3" number="7.1.3">
@@ -225,7 +225,7 @@ Valiant              3    1</code></pre>
 <li><p>Create a new R Markdown file in RStudio by clicking on “File” &gt; “New File” &gt; “R Markdown…”. Save the file in your working directory.</p></li>
 <li><p>Add the following code to your R Markdown file to create a scatter plot of the mtcars dataset, showing the relationship between miles per gallon (mpg) and the weight of the car (wt).</p></li>
 </ol>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create a scatter plot</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">wt</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>

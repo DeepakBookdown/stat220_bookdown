@@ -47,9 +47,10 @@ including-plots
 read-in-data-files
 hide-the-code
 class-activity-0
-tutorial-1-creating-a-new-github-repository-using-usethis-r-package
+tutorial-1-creating-and-cloning-a-repository-starting-from-github-to-rstudio
+tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio
 prerequisites
-tutorial-2-cloning-the-github-repository-back-to-your-local-machine
+optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal
 class-activity-1
 extras-optional
 part-1-setting-working-directory-and-loading-data

@@ -744,7 +744,7 @@ Everyone needs to connect Git and GitHub by doing the following:
   Register for account on GitHub (\url{https://github.com/}). I recommend
   using a username that incorporates your name (e.g., dbastola) and Carleton email address for your Github account.
 \item
-  If you haven't done so already, accept the invite to the class organization \href{https://github.com/DataScienceSpring23}{DataScienceSpring23}. This organization is where all course homework, activity files, and project repositories will live.
+  If you haven't done so already, accept the invite to the class organization \href{https://github.com/DataScienceSpring23}{DataScienceSpring23}. This organization is where all course homework files and project repositories will live.
 \item
   Setup options in Git by running the following code chunk in your
   console:
@@ -804,7 +804,7 @@ Everyone needs to connect Git and GitHub by doing the following:
 You should get something like this:
 
 \begin{verbatim}
-```r
+```
 #> <gitcreds>
 #>   protocol: https
 #>   host    : github.com
@@ -837,10 +837,7 @@ repository will contain assignment details (README, .Rmd).
   Enter the online assignment repository on GitHub. Click the green
   \textbf{``Code''} button. Most of you should just use the default setting
   which is to ``clone'' (copy) using HTTPS. Click the clipboard to the
-  right of the URL to copy the repo location. (If you are using SSH,
-  make sure it says ``Clone with SSH'' in bold in the top left of the
-  pop-up box. If not, click the ``SSH'' button and copy the link in the
-  box to your clipboard.)
+  right of the URL to copy the repo location.
 \item
   Now open up RStudio and create a project as follows:
 
@@ -1201,18 +1198,52 @@ kme & CT & 50 & 4:19\\
 \CommentTok{\# Verify}
 
 \CommentTok{\# gitcreds::gitcreds\_get()}
-
-\CommentTok{\# make a new repo in remote Github}
-
-\CommentTok{\# usethis::use\_git()}
-\CommentTok{\# usethis::use\_github()}
 \end{Highlighting}
 \end{Shaded}
 
 In this worksheet, you will practice creating a GitHub repository using the usethis::use\_github() function and cloning it back to your local machine using RStudio's menu options.
 
-\hypertarget{tutorial-1-creating-a-new-github-repository-using-usethis-r-package}{%
-\section{\texorpdfstring{Tutorial 1: Creating a new GitHub repository using \texttt{usethis} R package}{Tutorial 1: Creating a new GitHub repository using usethis R package}}\label{tutorial-1-creating-a-new-github-repository-using-usethis-r-package}}
+\hypertarget{tutorial-1-creating-and-cloning-a-repository-starting-from-github-to-rstudio}{%
+\section{Tutorial 1: Creating and cloning a Repository starting from Github to RStudio}\label{tutorial-1-creating-and-cloning-a-repository-starting-from-github-to-rstudio}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Visit the GitHub website at \url{https://github.com} and sign in using your GitHub account. If you don't have an account yet, you can create one for free.
+\item
+  Once logged in, click on the ``+'' icon in the top right corner of the webpage, then click on ``New repository''.
+\item
+  Enter a name for your new repository in the ``Repository name'' field. You may also provide an optional description.
+\item
+  Choose the visibility of your repository by selecting either ``Public'' or ``Private''. Public repositories are visible to anyone, while private repositories are only visible to you and any collaborators you invite.
+\item
+  (Optional) Check the box to initialize the repository with a README file.
+\item
+  Click on the ``Create repository'' button to create your new repository.
+\end{enumerate}
+
+This will create a new GitHub repository on your Github account. Follow further to clone the repository to your local folder using RStudio.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Go to your GitHub repository webpage and click on the green ``Code'' button. This will display a dropdown menu with a URL for your repository. Click on the clipboard icon to copy the URL to your clipboard.
+\item
+  Open RStudio, and from the ``File'' menu, select ``New Project''.
+\item
+  In the ``New Project'' dialog, choose ``Version Control''.
+\item
+  Select ``Git'' as the version control system.
+\item
+  In the ``Repository URL'' field, paste the URL that you copied from your GitHub repository webpage.
+\item
+  Choose a local directory where you want to clone the repository by clicking on the ``Browse'' button and navigating to the desired folder on your computer.
+\item
+  Click on ``Create Project'' to clone the GitHub repository to your local computer.
+\end{enumerate}
+
+\hypertarget{tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio}{%
+\section{\texorpdfstring{Tutorial 2: Creating a new GitHub repository using \texttt{usethis} R package (RStudio to Github) (Works ONLY on local RStudio)}{Tutorial 2: Creating a new GitHub repository using usethis R package (RStudio to Github) (Works ONLY on local RStudio)}}\label{tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio}}
 
 \hypertarget{prerequisites}{%
 \subsection{Prerequisites}\label{prerequisites}}
@@ -1286,25 +1317,74 @@ In this worksheet, you will practice creating a GitHub repository using the uset
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
+\setcounter{enumi}{8}
 \tightlist
 \item
   Follow the instructions in the R console, and your GitHub repository will be created. Note the repository URL, as you will need it in the next activity.
 \end{enumerate}
 
-\hypertarget{tutorial-2-cloning-the-github-repository-back-to-your-local-machine}{%
-\section{Tutorial 2: Cloning the GitHub repository back to your local machine}\label{tutorial-2-cloning-the-github-repository-back-to-your-local-machine}}
+\hypertarget{optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal}{%
+\section{(Optional) Tutorial 3: Creating a new GitHub repository using RStudio's Git terminal}\label{optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  To clone the repository to another folder on your local machine, first, close the current RStudio project by clicking on ``File'' \textgreater{} ``Close Project.''
+  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
 \item
-  Next, create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``Version Control'' \textgreater{} ``Git.''
+  Initialize a Git repository for your project. Click on the ``Terminal'' tab in the bottom right pane of RStudio and run the following command:
+\end{enumerate}
+
+\begin{verbatim}
+git init
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
 \item
-  In the ``Repository URL'' field, paste the URL of the GitHub repository you created in Activity 1. Choose a location on your computer to save the cloned project, and click ``Create Project.''
+  Configure Git with your name and email address if you haven't already. Run the following commands in the terminal, replacing ``Your Name'' and ``\href{mailto:youremail@example.com}{\nolinkurl{youremail@example.com}}'' with your information:
+\end{enumerate}
+
+\begin{verbatim}
+git config user.name "Your Name"
+git config user.email "youremail@example.com"
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
 \item
-  Now, you have successfully cloned your GitHub repository to your local machine. You can make changes to the files and push back the changes regularly.
+  Commit your project files to the Git repository. Run the following commands in the terminal:
+\end{enumerate}
+
+\begin{verbatim}
+git add .
+git commit -m "Initial commit"
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  Go to your GitHub account, click on the ``+'' icon in the upper right corner, and select ``New repository.'' Give your repository a name (it's recommended to use the same name as your R project), and click ``Create repository.''
+\item
+  In the ``\ldots or push an existing repository from the command line'' section of your new GitHub repository, copy the commands under this section. It should look similar to the following (replace and with your GitHub username and repository name):
+\end{enumerate}
+
+\begin{verbatim}
+git remote add origin https://github.com/<your-username>/<your-repo-name>.git
+git branch -M main
+git push -u origin main
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Paste the copied commands into the RStudio terminal and execute them. This will link your local Git repository to the remote GitHub repository and push your initial commit to the GitHub repository.
 \end{enumerate}
 
 \hypertarget{class-activity-1}{%

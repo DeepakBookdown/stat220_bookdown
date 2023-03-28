@@ -90,20 +90,42 @@
 <span></span>
 <span><span class="co"># Verify</span></span>
 <span></span>
-<span><span class="co"># gitcreds::gitcreds_get()</span></span>
-<span></span>
-<span><span class="co"># make a new repo in remote Github</span></span>
-<span></span>
-<span><span class="co"># usethis::use_git()</span></span>
-<span><span class="co"># usethis::use_github()</span></span></code></pre></div>
+<span><span class="co"># gitcreds::gitcreds_get()</span></span></code></pre></div>
 <p>In this worksheet, you will practice creating a GitHub repository using the usethis::use_github() function and cloning it back to your local machine using RStudio’s menu options.</p>
-<div id="tutorial-1-creating-a-new-github-repository-using-usethis-r-package" class="section level2" number="6.1">
+<div id="tutorial-1-creating-and-cloning-a-repository-starting-from-github-to-rstudio" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">6.1</span> Tutorial 1: Creating a new GitHub repository using <code>usethis</code> R package<a class="anchor" aria-label="anchor" href="#tutorial-1-creating-a-new-github-repository-using-usethis-r-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Tutorial 1: Creating and cloning a Repository starting from Github to RStudio<a class="anchor" aria-label="anchor" href="#tutorial-1-creating-and-cloning-a-repository-starting-from-github-to-rstudio"><i class="fas fa-link"></i></a>
 </h2>
-<div id="prerequisites" class="section level3" number="6.1.1">
+<blockquote>
+<ol style="list-style-type: decimal">
+<li><p>Visit the GitHub website at <a href="https://github.com">https://github.com</a> and sign in using your GitHub account. If you don’t have an account yet, you can create one for free.</p></li>
+<li><p>Once logged in, click on the “+” icon in the top right corner of the webpage, then click on “New repository”.</p></li>
+<li><p>Enter a name for your new repository in the “Repository name” field. You may also provide an optional description.</p></li>
+<li><p>Choose the visibility of your repository by selecting either “Public” or “Private”. Public repositories are visible to anyone, while private repositories are only visible to you and any collaborators you invite.</p></li>
+<li><p>(Optional) Check the box to initialize the repository with a README file.</p></li>
+<li><p>Click on the “Create repository” button to create your new repository.</p></li>
+</ol>
+</blockquote>
+<p>This will create a new GitHub repository on your Github account. Follow further to clone the repository to your local folder using RStudio.</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li><p>Go to your GitHub repository webpage and click on the green “Code” button. This will display a dropdown menu with a URL for your repository. Click on the clipboard icon to copy the URL to your clipboard.</p></li>
+<li><p>Open RStudio, and from the “File” menu, select “New Project”.</p></li>
+<li><p>In the “New Project” dialog, choose “Version Control”.</p></li>
+<li><p>Select “Git” as the version control system.</p></li>
+<li><p>In the “Repository URL” field, paste the URL that you copied from your GitHub repository webpage.</p></li>
+<li><p>Choose a local directory where you want to clone the repository by clicking on the “Browse” button and navigating to the desired folder on your computer.</p></li>
+<li><p>Click on “Create Project” to clone the GitHub repository to your local computer.</p></li>
+</ol>
+</blockquote>
+</div>
+<div id="tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Tutorial 2: Creating a new GitHub repository using <code>usethis</code> R package (RStudio to Github) (Works ONLY on local RStudio)<a class="anchor" aria-label="anchor" href="#tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<div id="prerequisites" class="section level3" number="6.2.1">
 <h3>
-<span class="header-section-number">6.1.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <ol style="list-style-type: decimal">
@@ -135,21 +157,40 @@
 </ol>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github.html">use_github</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
+<ol start="9" style="list-style-type: decimal">
 <li>Follow the instructions in the R console, and your GitHub repository will be created. Note the repository URL, as you will need it in the next activity.</li>
 </ol>
 </div>
 </div>
-<div id="tutorial-2-cloning-the-github-repository-back-to-your-local-machine" class="section level2" number="6.2">
+<div id="optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal" class="section level2" number="6.3">
 <h2>
-<span class="header-section-number">6.2</span> Tutorial 2: Cloning the GitHub repository back to your local machine<a class="anchor" aria-label="anchor" href="#tutorial-2-cloning-the-github-repository-back-to-your-local-machine"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3</span> (Optional) Tutorial 3: Creating a new GitHub repository using RStudio’s Git terminal<a class="anchor" aria-label="anchor" href="#optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li><p>To clone the repository to another folder on your local machine, first, close the current RStudio project by clicking on “File” &gt; “Close Project.”</p></li>
-<li><p>Next, create a new R project in RStudio by clicking on “File” &gt; “New Project” &gt; “Version Control” &gt; “Git.”</p></li>
-<li><p>In the “Repository URL” field, paste the URL of the GitHub repository you created in Activity 1. Choose a location on your computer to save the cloned project, and click “Create Project.”</p></li>
-<li><p>Now, you have successfully cloned your GitHub repository to your local machine. You can make changes to the files and push back the changes regularly.</p></li>
+<li><p>Create a new R project in RStudio by clicking on “File” &gt; “New Project” &gt; “New Directory” &gt; “New Project.” Give your project a name and choose a location on your computer to save it. Click “Create Project.”</p></li>
+<li><p>Initialize a Git repository for your project. Click on the “Terminal” tab in the bottom right pane of RStudio and run the following command:</p></li>
+</ol>
+<pre><code>git init</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Configure Git with your name and email address if you haven’t already. Run the following commands in the terminal, replacing “Your Name” and “<a href="mailto:youremail@example.com" class="email">youremail@example.com</a>” with your information:</li>
+</ol>
+<pre><code>git config user.name "Your Name"
+git config user.email "youremail@example.com"</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Commit your project files to the Git repository. Run the following commands in the terminal:</li>
+</ol>
+<pre><code>git add .
+git commit -m "Initial commit"</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Go to your GitHub account, click on the “+” icon in the upper right corner, and select “New repository.” Give your repository a name (it’s recommended to use the same name as your R project), and click “Create repository.”</p></li>
+<li><p>In the “…or push an existing repository from the command line” section of your new GitHub repository, copy the commands under this section. It should look similar to the following (replace <your-username> and <your-repo-name> with your GitHub username and repository name):</your-repo-name></your-username></p></li>
+</ol>
+<pre><code>git remote add origin https://github.com/&lt;your-username&gt;/&lt;your-repo-name&gt;.git
+git branch -M main
+git push -u origin main</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Paste the copied commands into the RStudio terminal and execute them. This will link your local Git repository to the remote GitHub repository and push your initial commit to the GitHub repository.</li>
 </ol>
 </blockquote>
 
@@ -162,10 +203,11 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#class-activity-0"><span class="header-section-number">6</span> Class Activity 0</a></li>
+<li><a class="nav-link" href="#tutorial-1-creating-and-cloning-a-repository-starting-from-github-to-rstudio"><span class="header-section-number">6.1</span> Tutorial 1: Creating and cloning a Repository starting from Github to RStudio</a></li>
 <li>
-<a class="nav-link" href="#tutorial-1-creating-a-new-github-repository-using-usethis-r-package"><span class="header-section-number">6.1</span> Tutorial 1: Creating a new GitHub repository using usethis R package</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#prerequisites"><span class="header-section-number">6.1.1</span> Prerequisites</a></li></ul>
+<a class="nav-link" href="#tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio"><span class="header-section-number">6.2</span> Tutorial 2: Creating a new GitHub repository using usethis R package (RStudio to Github) (Works ONLY on local RStudio)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#prerequisites"><span class="header-section-number">6.2.1</span> Prerequisites</a></li></ul>
 </li>
-<li><a class="nav-link" href="#tutorial-2-cloning-the-github-repository-back-to-your-local-machine"><span class="header-section-number">6.2</span> Tutorial 2: Cloning the GitHub repository back to your local machine</a></li>
+<li><a class="nav-link" href="#optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal"><span class="header-section-number">6.3</span> (Optional) Tutorial 3: Creating a new GitHub repository using RStudio’s Git terminal</a></li>
 </ul>
 
       <div class="book-extra">

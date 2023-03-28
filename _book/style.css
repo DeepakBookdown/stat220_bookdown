@@ -13,6 +13,9 @@
   --background-color: #F7F8FA;
 }
 
+.book .book-body .page-wrapper .page-inner {
+  max-width: 120%;
+}
 
 body {
   margin: 10rem;

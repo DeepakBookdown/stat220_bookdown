@@ -19,7 +19,7 @@ Everyone needs to connect Git and GitHub by doing the following:
 1.  Register for account on GitHub (<https://github.com/>). I recommend
     using a username that incorporates your name (e.g., dbastola) and Carleton email address for your Github account.
 
-2.  If you haven’t done so already, accept the invite to the class organization [DataScienceSpring23](https://github.com/DataScienceSpring23). This organization is where all course homework, activity files, and project repositories will live.
+2.  If you haven’t done so already, accept the invite to the class organization [DataScienceSpring23](https://github.com/DataScienceSpring23). This organization is where all course homework files and project repositories will live.
 
 
 3.  Setup options in Git by running the following code chunk in your
@@ -66,7 +66,7 @@ Everyone needs to connect Git and GitHub by doing the following:
     
   You should get something like this:
   
-    ```r
+    ```
     #> <gitcreds>
     #>   protocol: https
     #>   host    : github.com
@@ -95,10 +95,7 @@ repository will contain assignment details (README, .Rmd).
 2.  Enter the online assignment repository on GitHub. Click the green
     **"Code"** button. Most of you should just use the default setting
     which is to "clone" (copy) using HTTPS. Click the clipboard to the
-    right of the URL to copy the repo location. (If you are using SSH,
-    make sure it says "Clone with SSH" in bold in the top left of the
-    pop-up box. If not, click the "SSH" button and copy the link in the
-    box to your clipboard.)
+    right of the URL to copy the repo location.
     
 3.  Now open up RStudio and create a project as follows:
 
