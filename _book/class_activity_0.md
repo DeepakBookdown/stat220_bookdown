@@ -114,37 +114,3 @@ usethis::use_github()
 </blockquote>
 
 
-
-## (Optional) Tutorial 3: Creating a new GitHub repository using RStudio's Git terminal
-
-<blockquote>
-1. Create a new R project in RStudio by clicking on "File" > "New Project" > "New Directory" > "New Project." Give your project a name and choose a location on your computer to save it. Click "Create Project."
-
-2. Initialize a Git repository for your project. Click on the "Terminal" tab in the bottom right pane of RStudio and run the following command:
-
-
-```r
-git init
-```
-
-3. Configure Git with your name and email address if you haven't already. Run the following commands in the terminal, replacing "Your Name" and "youremail@example.com" with your information:
-
-
-```r
-git config user.name "Your Name"
-git config user.email "youremail@example.com"
-```
-
-4. Commit your project files to the Git repository. Run the following commands in the terminal:
-
-
-```r
-git add .
-git commit -m "Initial commit"
-```
-
-5. Go to your GitHub account, click on the "+" icon in the upper right corner, and select "New repository." Give your repository a name (it's recommended to use the same name as your R project), and click "Create repository."
-
-6. In the "…or push an existing repository from the command line" section of your new GitHub repository, copy
-
-</blockquote>
