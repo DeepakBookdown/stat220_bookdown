@@ -28,6 +28,20 @@ body {
 }
 
 
+
+/* Style for collapsible summary */
+.answer {
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Style for the collapsed content */
+details > *:not(summary) {
+  padding: 0.5rem 1rem;
+}
+
+
 h1, h2, h3 {
   font-family: 'Fredoka One', cursive;
   color: #1F4257;

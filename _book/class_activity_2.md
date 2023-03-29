@@ -1,91 +1,11 @@
 # Class Activity 2
 
-1. Previously, we have used `babynames` dataset under the R package of the same name. These datasets can also be stored locally on your computer or remotely on Github or other online repositories. One way to load such dataset in R is via the function `read_csv`. We will learn about data import in detail later. But for now, please run the following chunk of code to load the data.
-
-
-```r
-library(readr)
-babynames <- read_csv("https://raw.githubusercontent.com/deepbas/statdatasets/main/baby-names-by-state.csv")
-```
-
-This dataset differs from the package version as it has data on state affiliation and has actual counts instead of proportions. You can use the function `View()` to view the dataset. Additionally, you may also use `glimpse()` to take a glimpse at the dataset.
-
-
-```r
-library(dplyr)
-glimpse(babynames)
-```
-
-```
-Rows: 502,618
-Columns: 5
-$ state  <chr> "AK", "AK", "AK", "AK", "AK", "AK", "AK", "~
-$ year   <dbl> 1960, 1960, 1960, 1960, 1960, 1960, 1960, 1~
-$ name   <chr> "David", "Michael", "Robert", "John", "Jame~
-$ number <dbl> 151, 139, 135, 126, 123, 91, 86, 74, 73, 66~
-$ sex    <chr> "boy", "boy", "boy", "boy", "boy", "boy", "~
-```
-
-a. What is the total number of babies born in California or Minnesota with the name `Holly`?
-
-
-```r
-babynames_CA_MN_Holly <- babynames %>% filter(state=="CA" | state == "MN",  name == "Holly")
-total_Holly_CA_MN <- sum(babynames_CA_MN_Holly$number)
-```
-
-**Answer:** The total number of babies born in California or Minnesota with the name `Holly` is 7760.
-
-You can create a table of the header (i.e., the first six entries/rows) of any dataset using the function `head` in conjunction with `kable` function under the `knitr` package as follows:
-
-
-```r
-library(knitr)
-knitr::kable(head(babynames_CA_MN_Holly))
-```
-
-
-\begin{tabular}{l|r|l|r|l}
-\hline
-state & year & name & number & sex\\
-\hline
-CA & 1969 & Holly & 384 & girl\\
-\hline
-CA & 1970 & Holly & 394 & girl\\
-\hline
-CA & 1973 & Holly & 336 & girl\\
-\hline
-CA & 1974 & Holly & 364 & girl\\
-\hline
-CA & 1976 & Holly & 360 & girl\\
-\hline
-CA & 1977 & Holly & 355 & girl\\
-\hline
-\end{tabular}
-
-b. Let's plot the evolution of the number of babies named 'Holly' over the years. Explain what do you see in the figure below.
-
-
-```r
-library(ggplot2)
-ggplot(data=babynames_CA_MN_Holly, aes(x=year, y=number)) + 
-  geom_line(aes(colour=state)) + 
-  labs(x = 'Year',
-      y = bquote(Number~of~Babies~Named~Holly))
-```
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{class_activity_2_files/figure-latex/unnamed-chunk-5-1} \caption{A trend graph}(\#fig:unnamed-chunk-5)
-\end{figure}
-
-**Answer:** The number of babies named 'Holly' in both California and Minnesota generally increased over the years, peaking around the 1980s. After that, the number started to decline. California consistently had more babies named 'Holly' than Minnesota.
-
-\vspace*{1in}
-
-2. In this section, let's practice some common data assignments and manipulations in R.
+Let's practice some common data assignments and manipulations in R.
 
 a. Create a vector of all integers from 4 to 10, and save it as `a1`. 
 
+<details>
+<summary class="answer">Click for answer</summary>
 
 ```r
 a1 <- 4:10
@@ -95,9 +15,14 @@ a1
 ```
 [1]  4  5  6  7  8  9 10
 ```
+</details>
+
+
 
 b. Create a vector of _even_ integers from 4 to 10, and save it as `a2`. 
 
+<details>
+<summary class="answer">Click for answer</summary>
 
 ```r
 a2 <- seq(4, 10, by=2)
@@ -107,9 +32,12 @@ a2
 ```
 [1]  4  6  8 10
 ```
+</details>
 
 c. What do you get when you add `a1` to `a2`? 
 
+<details>
+<summary class="answer">Click for answer</summary>
 
 ```r
 a1_plus_a2 <- a1 + a2
@@ -121,9 +49,12 @@ a1_plus_a2
 ```
 
 **Answer:** When you add `a1` to `a2`, you get a vector containing the element-wise sum: 8, 11, 14, 17, 12, 15, 18.
+</details>
 
 d. What does the command `sum(a1)` do?
 
+<details>
+<summary class="answer">Click for answer</summary>
 
 ```r
 sum_a1 <- sum(a1)
@@ -135,9 +66,12 @@ sum_a1
 ```
 
 **Answer:** The command `sum(a1)` calculates the sum of all elements in the vector `a1`. In this case, it returns 49.
+</details>
 
 e. What does the command `length(a1)` do?
 
+<details>
+<summary class="answer">Click for answer</summary>
 
 ```r
 length_a1 <- length(a1)
@@ -149,9 +83,12 @@ length_a1
 ```
 
 **Answer:** The command `length(a1)` returns the number of elements in the vector `a1`. In this case, there are 7 elements.
+</details>
 
 f. Use the `sum` and `length` commands to calculate the average of the values in `a1`.
 
+<details>
+<summary class="answer">Click for answer</summary>
 
 ```r
 average_a1 <- sum(a1) / length(a1)
@@ -163,6 +100,7 @@ average_a1
 ```
 
 **Answer:** The average of the values in `a1` is 7.
+</details>
 
 ## Extras (Optional)
 
@@ -204,7 +142,14 @@ This command will save `my_data` as a file called `my_data.csv` in your working 
 
 **Question 1:** What is the purpose of the `write_csv()` function?
 
-**Answer:** The `write_csv()` function is used to save a data object from an R session to a CSV file in your working directory.
+<details>
+<summary class="answer">Click for answer</summary>
+**Answer:** 
+
+The `write_csv()` function is used to save a data object from an R session to a CSV file in your working directory.
+
+</details>
+
 
 **Question 2:** How do you save a data frame called `my_data` as a file named "example_data.csv"?
 
@@ -213,12 +158,15 @@ This command will save `my_data` as a file called `my_data.csv` in your working 
 # Your code here
 ```
 
+<details>
+<summary class="answer">Click for answer</summary>
 **Answer:**
 
 
 ```r
 write_csv(my_data, "example_data.csv")
 ```
+</details>
 
 **Question 3:** If you want to save a data frame called `students` as a file named "student_data.csv", what would be the appropriate command?
 
@@ -227,10 +175,14 @@ write_csv(my_data, "example_data.csv")
 # Your code here
 ```
 
+
+<details>
+<summary class="answer">Click for answer</summary>
 **Answer:**
 
 
 ```r
 write_csv(students, "student_data.csv")
 ```
+</details>
 

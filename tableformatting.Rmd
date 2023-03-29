@@ -1,0 +1,122 @@
+# Table Formatting
+
+In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.
+
+### Basic Table Formatting with `kable`
+
+The `kable()` function from the knitr package provides a simple way to output tables in RMarkdown.
+
+```{r}
+library(knitr)
+kable(mtcars[1:5, 1:5], caption = "A basic table using kable")
+```
+
+We will also use the `Gapminder` dataset for our examples. This dataset contains information about life expectancy, GDP per capita, and population size for various countries and years.Here's an example of how to display the first 10 rows of the `Gapminder` dataset.
+
+```{r}
+data("gapminder", package = "gapminder")
+knitr::kable(head(gapminder, 10), caption = "First 10 rows of the Gapminder dataset.")
+```
+
+### Formatting Tables with `kableExtra`
+
+To further customize the table appearance, we can use the `kableExtra` package.
+
+```{r}
+#install.packages("kableExtra") 
+library(kableExtra)
+kable(mtcars[1:5, 1:5], caption = "A formatted table with kableExtra") %>%
+  kable_styling("striped", full_width = F)
+```
+
+
+### Customizing column formats
+
+Use the `column_spec()` function from the `kableExtra` package to customize the appearance of individual columns.
+
+```{r}
+gapminder %>%
+  head(10) %>%
+  knitr::kable(caption = "Table 3: First 10 rows of the Gapminder dataset with custom column formatting.") %>%
+  kableExtra::kable_styling("striped", full_width = F) %>%
+  kableExtra::column_spec(2, bold = TRUE, color = "red") %>%
+  kableExtra::column_spec(4, monospace = TRUE)
+```
+
+
+### Formatting Tables with flextable
+
+Another option for table formatting is the flextable package.
+
+```{r}
+#install.packages("flextable")
+library(flextable)
+ft <- flextable(mtcars[1:5, 1:5])
+ft <- set_caption(ft, caption = "A table using flextable")
+ft
+```
+
+
+### Formatting Tables with gt
+
+The gt package provides another way to create formatted tables in R.
+
+```{r}
+#install.packages("gt")
+library(gt)
+gt(mtcars[1:5, 1:5]) %>%
+  tab_header(title = "A table using gt")
+```
+
+
+
+### Hiding R commands and R output
+
+As mentioned in the graph formatting handout, adding the chunk option echo=FALSE will display output (like graphs) produced by a chunk but not show the commands used in the chunk. You can stop both R commands and output from being displayed in a document by adding the chunk option include=FALSE.
+
+As you work through a report analysis, you may initially want to see all of your R results as you are writing your report. But after you've summarized results in paragraphs or in tables, you can then use the include=FALSE argument to hide your R commands and output in your final document. If you ever need to rerun or reevaluate your R work for a report, you can easily recreate and edit your analysis since the R chunks used in your original report are still in your R Markdown .Rmd file.
+
+```{r, include=FALSE}
+gapminder %>%
+  head(10) %>%
+  knitr::kable(caption = "First 10 rows of the Gapminder dataset with hidden R commands and output.") %>%
+  kableExtra::kable_styling("striped", full_width = F)
+```
+
+### Summary statistics with pander
+
+We can use the pander package to create summary tables.
+
+```{r}
+#install.packages("pander")
+library(pander)
+pander(summary(mtcars$mpg), caption = "Summary statistics for miles per gallon")
+```
+
+
+### t-test results with pander
+
+Let's perform a t-test comparing the miles per gallon (mpg) for cars with 4 and 6 cylinders.
+
+```{r}
+t_test_result <- t.test(mpg ~ as.factor(cyl), data = mtcars, subset = cyl %in% c(4, 6))
+pander(t_test_result, caption = "Comparing MPG for 4 and 6 cylinder cars")
+```
+
+### Chi-square test results with pander
+Now let's perform a chi-square test to check for an association between the number of cylinders and the type of transmission (automatic or manual).
+
+```{r}
+my_table <- table(mtcars$cyl, mtcars$am)
+chisq_test_result <- chisq.test(my_table)
+pander(chisq_test_result, caption = "Chi-square test for cylinders and transmission type")
+```
+
+### Linear regression results with pander
+Finally, let's fit a linear regression model of miles per gallon (mpg) as a function of weight (wt) and display the results.
+
+```{r}
+lm_result <- lm(mpg ~ wt, data = mtcars)
+pander(lm_result, caption = "Linear regression of MPG on weight")
+```
+

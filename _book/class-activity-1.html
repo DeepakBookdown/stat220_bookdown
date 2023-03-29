@@ -17,7 +17,30 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -53,8 +76,11 @@
 <li class="book-part">Class Activities</li>
 <li><a class="" href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></li>
 <li><a class="active" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
 <li class="book-part">Extra Materials</li>
-<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">8</span> Helpful R codes</a></li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">9</span> Helpful R codes</a></li>
+<li><a class="" href="graph-formatting.html"><span class="header-section-number">10</span> Graph Formatting</a></li>
+<li><a class="" href="table-formatting.html"><span class="header-section-number">11</span> Table Formatting</a></li>
 </ul>
 
         <div class="book-extra">
@@ -128,13 +154,15 @@ Figure 7.1: A trend chart
 <ol start="2" style="list-style-type: decimal">
 <li>What do you see in the Figure 1? Explain in a few sentences.</li>
 </ol>
-<details><summary><red>Click for answer</red></summary><p><strong>Answer:</strong></p>
-<p>In Figure 1, we can see the proportion of babies named Aimee by year for both males and females. We notice that the name Aimee has been more popular among females than males throughout the years. There is a peak in popularity around the 1970s for female babies, and then the popularity declines.</p>
+<details><summary class="answer">
+Click for answer
+</summary><p><strong>Answer:</strong></p>
+In Figure 1, we can see the proportion of babies named Aimee by year for both males and females. We notice that the name Aimee has been more popular among females than males throughout the years. There is a peak in popularity around the 1970s for female babies, and then the popularity declines.
 </details><ol start="3" style="list-style-type: decimal">
 <li>Repeat question 2 to infer how does the proportion of babies with your first name trend over time. Examine the generated plot and describe the trend of your name’s popularity over time. Consider the following points:</li>
 </ol>
 <p>Has the popularity of your name increased, decreased, or remained stable over the years? Is there a noticeable difference in popularity between sexes? Are there any interesting patterns or trends, such as sudden increases or decreases in popularity?</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> Answers will vary.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Replace 'YourName' with your first name</span></span>
 <span><span class="va">your_name</span> <span class="op">&lt;-</span> <span class="st">"Dee"</span></span>
@@ -150,7 +178,7 @@ Figure 7.1: A trend chart
 <li>Compare the popularity of your first name with a randomly chosen name from the dataset. Examine the generated plot and compare the popularity of your first name with the randomly chosen name. Consider the following points:</li>
 </ol>
 <p>Are there differences in popularity trends between the two names? Is one name consistently more popular than the other, or do their popularity levels change over time? Are there any interesting patterns or trends in the data, such as periods of rapid increase or decrease in popularity?</p>
-<p><strong>Answer</strong></p>
+<p><strong>Answer</strong> Answers will vary</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Replace 'YourName' with your first name</span></span>
 <span><span class="va">your_name_data</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">==</span> <span class="st">'Dee'</span><span class="op">)</span></span>
@@ -246,7 +274,9 @@ Valiant              3    1</code></pre>
 <h3>
 <span class="header-section-number">7.2.1</span> 1. How does the weight of a car (wt) affect its miles per gallon (mpg) based on the scatter plot you created?<a class="anchor" aria-label="anchor" href="#how-does-the-weight-of-a-car-wt-affect-its-miles-per-gallon-mpg-based-on-the-scatter-plot-you-created"><i class="fas fa-link"></i></a>
 </h3>
-<details><summary><red>Click for answer</red></summary><p><strong>Answer:</strong></p>
+<details><summary class="answer">
+Click for answer
+</summary><p><strong>Answer:</strong></p>
 Based on the scatter plot, there appears to be a negative relationship between the weight of a car (wt) and its miles per gallon (mpg). As the weight of a car increases, its fuel efficiency (mpg) tends to decrease.
 </details>
 </div>
@@ -254,7 +284,9 @@ Based on the scatter plot, there appears to be a negative relationship between t
 <h3>
 <span class="header-section-number">7.2.2</span> 2. What is the importance of setting a working directory in R?<a class="anchor" aria-label="anchor" href="#what-is-the-importance-of-setting-a-working-directory-in-r"><i class="fas fa-link"></i></a>
 </h3>
-<details><summary><red>Click for answer</red></summary><p><strong>Answer:</strong></p>
+<details><summary class="answer">
+Click for answer
+</summary><p><strong>Answer:</strong></p>
 Setting a working directory in R is important because it determines the default location where R will read from or write to when loading or saving files. This makes it easier to keep your files organized and ensures that your R scripts can access the necessary files without needing to specify the full file paths. It also simplifies sharing your R projects with others since the file paths within your scripts will be relative to the working directory.
 </details>
 </div>
@@ -262,18 +294,17 @@ Setting a working directory in R is important because it determines the default 
 <h3>
 <span class="header-section-number">7.2.3</span> 3. Explain the role of R Markdown in creating reproducible research documents.<a class="anchor" aria-label="anchor" href="#explain-the-role-of-r-markdown-in-creating-reproducible-research-documents."><i class="fas fa-link"></i></a>
 </h3>
-<details><summary><red>Click for answer</red></summary><p><strong>Answer:</strong></p>
+<details><summary class="answer">
+Click for answer
+</summary><p><strong>Answer:</strong></p>
 <p>R Markdown plays a crucial role in creating reproducible research documents by allowing you to combine text, code, and output (e.g., tables, figures) within a single document. This integration of narrative, data, and results makes it easier to document your data analysis process, ensuring that others can easily understand, reproduce, and build upon your work. R Markdown also supports various output formats (e.g., HTML, PDF, Word) to make it easy to share your research findings with others.</p>
 </details>
 </div>
 </div>
 </div>
-
-
-
   <div class="chapter-nav">
 <div class="prev"><a href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></div>
-<div class="next"><a href="helpful-r-codes.html"><span class="header-section-number">8</span> Helpful R codes</a></div>
+<div class="next"><a href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

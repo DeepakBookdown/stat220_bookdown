@@ -101,6 +101,28 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{multicol}
+\usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{caption}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -1517,7 +1539,7 @@ In Figure 1, we can see the proportion of babies named Aimee by year for both ma
 
 Has the popularity of your name increased, decreased, or remained stable over the years? Is there a noticeable difference in popularity between sexes? Are there any interesting patterns or trends, such as sudden increases or decreases in popularity?
 
-\textbf{Answer:}
+\textbf{Answer:} Answers will vary.
 
 \vspace*{0.2in}
 
@@ -1547,7 +1569,7 @@ Has the popularity of your name increased, decreased, or remained stable over th
 
 Are there differences in popularity trends between the two names? Is one name consistently more popular than the other, or do their popularity levels change over time? Are there any interesting patterns or trends in the data, such as periods of rapid increase or decrease in popularity?
 
-\textbf{Answer}
+\textbf{Answer} Answers will vary
 
 \vspace*{0.2in}
 
@@ -1722,6 +1744,230 @@ Click for answer
 
 R Markdown plays a crucial role in creating reproducible research documents by allowing you to combine text, code, and output (e.g., tables, figures) within a single document. This integration of narrative, data, and results makes it easier to document your data analysis process, ensuring that others can easily understand, reproduce, and build upon your work. R Markdown also supports various output formats (e.g., HTML, PDF, Word) to make it easy to share your research findings with others.
 
+\hypertarget{class-activity-2}{%
+\chapter{Class Activity 2}\label{class-activity-2}}
+
+Let's practice some common data assignments and manipulations in R.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Create a vector of all integers from 4 to 10, and save it as \texttt{a1}.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a1 }\OtherTok{\textless{}{-}} \DecValTok{4}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create a vector of \emph{even} integers from 4 to 10, and save it as \texttt{a2}.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a2 }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{by=}\DecValTok{2}\NormalTok{)}
+\NormalTok{a2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  4  6  8 10
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What do you get when you add \texttt{a1} to \texttt{a2}?
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a1\_plus\_a2 }\OtherTok{\textless{}{-}}\NormalTok{ a1 }\SpecialCharTok{+}\NormalTok{ a2}
+\NormalTok{a1\_plus\_a2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  8 11 14 17 12 15 18
+\end{verbatim}
+
+\textbf{Answer:} When you add \texttt{a1} to \texttt{a2}, you get a vector containing the element-wise sum: 8, 11, 14, 17, 12, 15, 18.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What does the command \texttt{sum(a1)} do?
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_a1 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(a1)}
+\NormalTok{sum\_a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 49
+\end{verbatim}
+
+\textbf{Answer:} The command \texttt{sum(a1)} calculates the sum of all elements in the vector \texttt{a1}. In this case, it returns 49.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  What does the command \texttt{length(a1)} do?
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{length\_a1 }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(a1)}
+\NormalTok{length\_a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 7
+\end{verbatim}
+
+\textbf{Answer:} The command \texttt{length(a1)} returns the number of elements in the vector \texttt{a1}. In this case, there are 7 elements.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Use the \texttt{sum} and \texttt{length} commands to calculate the average of the values in \texttt{a1}.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_a1 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(a1) }\SpecialCharTok{/} \FunctionTok{length}\NormalTok{(a1)}
+\NormalTok{average\_a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 7
+\end{verbatim}
+
+\textbf{Answer:} The average of the values in \texttt{a1} is 7.
+
+\hypertarget{extras-optional-1}{%
+\section{Extras (Optional)}\label{extras-optional-1}}
+
+In this worksheet, you will learn how to use the \texttt{write\_csv()} function from the \texttt{readr} package to save a data object from your R session to a file in your working directory.
+
+First, let's load the necessary package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\end{Highlighting}
+\end{Shaded}
+
+Suppose we have a simple data frame called \texttt{my\_data}, with three columns: \texttt{Name}, \texttt{Age}, and \texttt{City}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Alice"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{, }\StringTok{"Charlie"}\NormalTok{, }\StringTok{"David"}\NormalTok{),}
+                      \AttributeTok{Age =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{35}\NormalTok{),}
+                      \AttributeTok{City =} \FunctionTok{c}\NormalTok{(}\StringTok{"New York"}\NormalTok{, }\StringTok{"Los Angeles"}\NormalTok{, }\StringTok{"Chicago"}\NormalTok{, }\StringTok{"San Francisco"}\NormalTok{))}
+\NormalTok{my\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     Name Age          City
+1   Alice  25      New York
+2     Bob  30   Los Angeles
+3 Charlie  22       Chicago
+4   David  35 San Francisco
+\end{verbatim}
+
+Now we want to save this data frame as a CSV file in our working directory. To do this, we will use the \texttt{write\_csv()} function. The first argument is the data object you want to save, and the second argument is the file name (including the .csv extension).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(my\_data, }\StringTok{"my\_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This command will save \texttt{my\_data} as a file called \texttt{my\_data.csv} in your working directory.
+
+\textbf{Question 1:} What is the purpose of the \texttt{write\_csv()} function?
+
+Click for answer
+
+\textbf{Answer:}
+
+The \texttt{write\_csv()} function is used to save a data object from an R session to a CSV file in your working directory.
+
+\textbf{Question 2:} How do you save a data frame called \texttt{my\_data} as a file named ``example\_data.csv''?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Click for answer
+
+\textbf{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(my\_data, }\StringTok{"example\_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Question 3:} If you want to save a data frame called \texttt{students} as a file named ``student\_data.csv'', what would be the appropriate command?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Click for answer
+
+\textbf{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write\_csv}\NormalTok{(students, }\StringTok{"student\_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{part-extra-materials}{%
 \part*{Extra Materials}\label{part-extra-materials}}
 \addcontentsline{toc}{part}{Extra Materials}
@@ -1818,6 +2064,826 @@ R Markdown plays a crucial role in creating reproducible research documents by a
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{graph-formatting}{%
+\chapter{Graph Formatting}\label{graph-formatting}}
+
+This worksheet provides a comprehensive guide on graph formatting in R using the ggplot2 package. We will explore various aspects of formatting, such as adding figure numbers, captions, titles, axes labels, customizing themes, and using different color scales.
+
+\hypertarget{load-the-required-packages-and-datasets}{%
+\section{Load the required packages and datasets}\label{load-the-required-packages-and-datasets}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Cereals }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"http://people.carleton.edu/\textasciitilde{}kstclair/data/Cereals.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{graph-theme-and-colors}{%
+\section{Graph theme and colors}\label{graph-theme-and-colors}}
+
+\hypertarget{adding-figure-numbers-and-captions}{%
+\subsection{Adding figure numbers and captions}\label{adding-figure-numbers-and-captions}}
+
+To automatically add figure numbers and captions, include the option fig\_caption: true in the output options at the top of your markdown file. To add captions to the figures, use the fig.cap argument in the R code chunk that creates the figure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(Cereals, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ calgram)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \FloatTok{0.3}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Histogram of Calorie Content in Cereals"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Calorie Content (g)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Count"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-2-1} \caption{A nice figure}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+\hypertarget{customizing-titles-axis-labels-and-legends}{%
+\subsection{Customizing titles, axis labels, and legends}\label{customizing-titles-axis-labels-and-legends}}
+
+You can customize titles, axis labels, and legends using the labs() function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price, }\AttributeTok{color =}\NormalTok{ cut)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Color represents the cut of the diamond"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Price (USD)"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Diamond Cut"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-3-1}
+
+\hypertarget{customizing-themes}{%
+\subsection{Customizing themes}\label{customizing-themes}}
+
+You can customize themes using the \texttt{theme()} function and various \texttt{element\_*()} functions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hp, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Miles per Gallon vs. Horsepower"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Horsepower"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{16}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{color =} \StringTok{"darkblue"}\NormalTok{),}
+        \AttributeTok{axis.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{color =} \StringTok{"darkblue"}\NormalTok{),}
+        \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{),}
+        \AttributeTok{panel.grid.major =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"gray"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{),}
+        \AttributeTok{panel.grid.minor =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"gray"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.25}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-4-1}
+
+\hypertarget{using-different-color-scales}{%
+\subsection{Using different color scales}\label{using-different-color-scales}}
+
+You can use different color scales for both continuous and discrete variables using the \texttt{scale\_color\_*()} and \texttt{scale\_fill\_*()} functions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price, }\AttributeTok{color =}\NormalTok{ cut)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"Color represents the cut of the diamond"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Price (USD)"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Diamond Cut"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set1"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/fig4-1} \caption{Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale.}\label{fig:fig4}
+\end{figure}
+
+\hypertarget{customizing-plot-elements}{%
+\subsection{Customizing plot elements}\label{customizing-plot-elements}}
+
+You can customize plot elements such as points, lines, and bars using the corresponding geom\_*() functions and their arguments.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hp, }\AttributeTok{y =}\NormalTok{ mpg, }\AttributeTok{shape =} \FunctionTok{factor}\NormalTok{(gear), }\AttributeTok{size =}\NormalTok{ gear)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \FunctionTok{factor}\NormalTok{(gear))) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Miles per Gallon vs. Horsepower"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Horsepower"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Number of Gears"}\NormalTok{,}
+       \AttributeTok{shape =} \StringTok{"Number of Gears"}\NormalTok{,}
+       \AttributeTok{size =} \StringTok{"Number of Gears"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_shape\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{, }\DecValTok{17}\NormalTok{, }\DecValTok{18}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-5-1}
+
+\hypertarget{faceting}{%
+\subsection{Faceting}\label{faceting}}
+
+You can create multiple plots based on a categorical variable using the f\texttt{acet\_wrap()} and \texttt{facet\_grid()} functions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(carat }\SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ clarity), }\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Price (USD)"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Clarity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ cut, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-6-1}
+
+\hypertarget{graph-sizing-in-r}{%
+\section{Graph Sizing in R}\label{graph-sizing-in-r}}
+
+This worksheet demonstrates how to adjust the size of various plots in R using ggplot2. We will explore different techniques to control the size of the plots and their elements.
+
+\hypertarget{load-the-necessary-libraries-and-data}{%
+\subsection{Load the necessary libraries and data}\label{load-the-necessary-libraries-and-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\# Load the built{-}in datasets}
+\FunctionTok{data}\NormalTok{(}\StringTok{"mtcars"}\NormalTok{)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"diamonds"}\NormalTok{)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"iris"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{adjusting-the-overall-size-of-the-plot}{%
+\subsection{Adjusting the overall size of the plot}\label{adjusting-the-overall-size-of-the-plot}}
+
+You can control the overall size of the plot using the width and height options within the R Markdown output settings. Another way is to use the ggsave() function when saving the plot as an image file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scatter\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hp, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Miles per Gallon vs. Horsepower"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Horsepower"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{scatter\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-8-1}
+
+\hypertarget{adjusting-the-size-of-points-lines-and-bars}{%
+\subsection{Adjusting the size of points, lines, and bars}\label{adjusting-the-size-of-points-lines-and-bars}}
+
+Use the size parameter within the geom\_*() functions to control the size of points, lines, and bars.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scatter\_plot\_large\_points }\OtherTok{\textless{}{-}}\NormalTok{ scatter\_plot }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{)}
+
+\NormalTok{scatter\_plot\_large\_points}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-9-1}
+
+\hypertarget{adjusting-the-size-of-text-elements}{%
+\subsection{Adjusting the size of text elements}\label{adjusting-the-size-of-text-elements}}
+
+You can change the size of text elements, such as axis labels and titles, using the theme() function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scatter\_plot\_custom\_text }\OtherTok{\textless{}{-}}\NormalTok{ scatter\_plot\_large\_points }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{24}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),}
+        \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{),}
+        \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{),}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{),}
+        \AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{))}
+
+\NormalTok{scatter\_plot\_custom\_text}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-10-1}
+
+\hypertarget{adjusting-the-size-of-legend-elements}{%
+\subsection{Adjusting the size of legend elements}\label{adjusting-the-size-of-legend-elements}}
+
+You can modify the size of the legend elements using the theme() function along with element\_text() and element\_rect().
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iris\_scatter\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Sepal Length vs. Sepal Width"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Sepal Length"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Sepal Width"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Species"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{),}
+        \AttributeTok{legend.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{),}
+        \AttributeTok{legend.key.size =} \FunctionTok{unit}\NormalTok{(}\FloatTok{1.5}\NormalTok{, }\StringTok{"cm"}\NormalTok{))}
+
+\NormalTok{iris\_scatter\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-11-1}
+
+\hypertarget{adjusting-the-size-of-facet-labels}{%
+\subsection{Adjusting the size of facet labels}\label{adjusting-the-size-of-facet-labels}}
+
+You can control the size of facet labels using the theme() function along with element\_text().
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{diamonds\_facet\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(carat }\SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price)) }\SpecialCharTok{+}
+\FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{cut) }\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds, Faceted by Cut"}\NormalTok{,}
+\AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
+\AttributeTok{y =} \StringTok{"Price"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{strip.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{))}
+
+\NormalTok{diamonds\_facet\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-12-1}
+
+\hypertarget{adjusting-the-size-of-axis-ticks}{%
+\subsection{Adjusting the size of axis ticks}\label{adjusting-the-size-of-axis-ticks}}
+
+You can modify the size of axis ticks using the \texttt{theme()} function along with \texttt{element\_line()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scatter\_plot\_custom\_ticks }\OtherTok{\textless{}{-}}\NormalTok{ scatter\_plot }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.ticks =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{size =} \FloatTok{1.5}\NormalTok{),}
+        \AttributeTok{axis.ticks.length =} \FunctionTok{unit}\NormalTok{(}\FloatTok{0.3}\NormalTok{, }\StringTok{"cm"}\NormalTok{))}
+
+\NormalTok{scatter\_plot\_custom\_ticks}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/fig6-1} \caption{Scatterplot of mpg vs. hp with customized axis tick size.}\label{fig:fig6}
+\end{figure}
+
+\hypertarget{adding-text-labels-to-points}{%
+\subsection{Adding text labels to points}\label{adding-text-labels-to-points}}
+
+Use the geom\_text() or geom\_label() functions to add text labels to points.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}\SpecialCharTok{$}\NormalTok{car\_name }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(mtcars)}
+
+\NormalTok{scatter\_plot\_labels }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wt, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ gear)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ car\_name), }\AttributeTok{check\_overlap =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{1.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Scatter plot of MPG vs Weight with Car Labels"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Weight"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Miles Per Gallon"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Gears"}\NormalTok{)}
+
+\NormalTok{scatter\_plot\_labels}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-13-1}
+
+\hypertarget{modifying-axis-limits-and-scales}{%
+\subsection{Modifying axis limits and scales}\label{modifying-axis-limits-and-scales}}
+
+Use scale\_x\_continuous() and scale\_y\_continuous() to modify axis limits and scales.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"gapminder"}\NormalTok{, }\AttributeTok{package =} \StringTok{"gapminder"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(gapminder, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ gdpPercap, }\AttributeTok{y =}\NormalTok{ lifeExp, }\AttributeTok{color =}\NormalTok{ continent)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_log10}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{500}\NormalTok{, }\DecValTok{50000}\NormalTok{), }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\DecValTok{30000}\NormalTok{), }\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{dollar\_format}\NormalTok{()) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{90}\NormalTok{), }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{10}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Life Expectancy vs. GDP per Capita"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"GDP per Capita (log scale)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Life Expectancy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-14-1}
+
+\hypertarget{table-formatting}{%
+\chapter{Table Formatting}\label{table-formatting}}
+
+In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.
+
+\hypertarget{basic-table-formatting-with-kable}{%
+\subsection{\texorpdfstring{Basic Table Formatting with \texttt{kable}}{Basic Table Formatting with kable}}\label{basic-table-formatting-with-kable}}
+
+The \texttt{kable()} function from the knitr package provides a simple way to output tables in RMarkdown.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{kable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{caption =} \StringTok{"A basic table using kable"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-1}A basic table using kable}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+  & mpg & cyl & disp & hp & drat\\
+\hline
+Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
+\hline
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
+\hline
+Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
+\hline
+\end{tabular}
+\end{table}
+
+We will also use the \texttt{Gapminder} dataset for our examples. This dataset contains information about life expectancy, GDP per capita, and population size for various countries and years.Here's an example of how to display the first 10 rows of the \texttt{Gapminder} dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"gapminder"}\NormalTok{, }\AttributeTok{package =} \StringTok{"gapminder"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(gapminder, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{"First 10 rows of the Gapminder dataset."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-2}First 10 rows of the Gapminder dataset.}
+\centering
+\begin{tabular}[t]{l|l|r|r|r|r}
+\hline
+country & continent & year & lifeExp & pop & gdpPercap\\
+\hline
+Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.4453\\
+\hline
+Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.8530\\
+\hline
+Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.1007\\
+\hline
+Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.1971\\
+\hline
+Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.9811\\
+\hline
+Afghanistan & Asia & 1977 & 38.438 & 14880372 & 786.1134\\
+\hline
+Afghanistan & Asia & 1982 & 39.854 & 12881816 & 978.0114\\
+\hline
+Afghanistan & Asia & 1987 & 40.822 & 13867957 & 852.3959\\
+\hline
+Afghanistan & Asia & 1992 & 41.674 & 16317921 & 649.3414\\
+\hline
+Afghanistan & Asia & 1997 & 41.763 & 22227415 & 635.3414\\
+\hline
+\end{tabular}
+\end{table}
+
+\hypertarget{formatting-tables-with-kableextra}{%
+\subsection{\texorpdfstring{Formatting Tables with \texttt{kableExtra}}{Formatting Tables with kableExtra}}\label{formatting-tables-with-kableextra}}
+
+To further customize the table appearance, we can use the \texttt{kableExtra} package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("kableExtra") }
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\FunctionTok{kable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{caption =} \StringTok{"A formatted table with kableExtra"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\AttributeTok{full\_width =}\NormalTok{ F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-3}A formatted table with kableExtra}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+  & mpg & cyl & disp & hp & drat\\
+\hline
+Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
+\hline
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
+\hline
+Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
+\hline
+\end{tabular}
+\end{table}
+
+\hypertarget{customizing-column-formats}{%
+\subsection{Customizing column formats}\label{customizing-column-formats}}
+
+Use the \texttt{column\_spec()} function from the \texttt{kableExtra} package to customize the appearance of individual columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Table 3: First 10 rows of the Gapminder dataset with custom column formatting."}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\AttributeTok{full\_width =}\NormalTok{ F) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{column\_spec}\NormalTok{(}\DecValTok{2}\NormalTok{, }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{column\_spec}\NormalTok{(}\DecValTok{4}\NormalTok{, }\AttributeTok{monospace =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-4}Table 3: First 10 rows of the Gapminder dataset with custom column formatting.}
+\centering
+\begin{tabular}[t]{l|>{}l|r|>{}r|r|r}
+\hline
+country & continent & year & lifeExp & pop & gdpPercap\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1952 & \ttfamily{28.801} & 8425333 & 779.4453\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1957 & \ttfamily{30.332} & 9240934 & 820.8530\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1962 & \ttfamily{31.997} & 10267083 & 853.1007\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1967 & \ttfamily{34.020} & 11537966 & 836.1971\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1972 & \ttfamily{36.088} & 13079460 & 739.9811\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1977 & \ttfamily{38.438} & 14880372 & 786.1134\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1982 & \ttfamily{39.854} & 12881816 & 978.0114\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1987 & \ttfamily{40.822} & 13867957 & 852.3959\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1992 & \ttfamily{41.674} & 16317921 & 649.3414\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1997 & \ttfamily{41.763} & 22227415 & 635.3414\\
+\hline
+\end{tabular}
+\end{table}
+
+\hypertarget{formatting-tables-with-flextable}{%
+\subsection{Formatting Tables with flextable}\label{formatting-tables-with-flextable}}
+
+Another option for table formatting is the flextable package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("flextable")}
+\FunctionTok{library}\NormalTok{(flextable)}
+\NormalTok{ft }\OtherTok{\textless{}{-}} \FunctionTok{flextable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{])}
+\NormalTok{ft }\OtherTok{\textless{}{-}} \FunctionTok{set\_caption}\NormalTok{(ft, }\AttributeTok{caption =} \StringTok{"A table using flextable"}\NormalTok{)}
+\NormalTok{ft}
+\end{Highlighting}
+\end{Shaded}
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
+
+\caption{A\ table\ using\ flextable}\label{tab:unnamed-chunk-5}\\
+
+\ascline{1.5pt}{666666}{1-5}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{mpg}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{cyl}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{disp}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{hp}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{drat}}}} \\
+
+\ascline{1.5pt}{666666}{1-5}\endhead
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.90}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.90}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{22.8}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{108}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{93}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.85}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{258}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.08}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{18.7}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{8}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{360}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{175}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.15}}}} \\
+
+\ascline{1.5pt}{666666}{1-5}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\hypertarget{formatting-tables-with-gt}{%
+\subsection{Formatting Tables with gt}\label{formatting-tables-with-gt}}
+
+The gt package provides another way to create formatted tables in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("gt")}
+\FunctionTok{library}\NormalTok{(gt)}
+\FunctionTok{gt}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"A table using gt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}{rrrrr}
+\caption*{
+{\large A table using gt}
+} \\ 
+\toprule
+mpg & cyl & disp & hp & drat \\ 
+\midrule
+21.0 & 6 & 160 & 110 & 3.90 \\ 
+21.0 & 6 & 160 & 110 & 3.90 \\ 
+22.8 & 4 & 108 & 93 & 3.85 \\ 
+21.4 & 6 & 258 & 110 & 3.08 \\ 
+18.7 & 8 & 360 & 175 & 3.15 \\ 
+\bottomrule
+\end{longtable}
+
+\hypertarget{hiding-r-commands-and-r-output}{%
+\subsection{Hiding R commands and R output}\label{hiding-r-commands-and-r-output}}
+
+As mentioned in the graph formatting handout, adding the chunk option echo=FALSE will display output (like graphs) produced by a chunk but not show the commands used in the chunk. You can stop both R commands and output from being displayed in a document by adding the chunk option include=FALSE.
+
+As you work through a report analysis, you may initially want to see all of your R results as you are writing your report. But after you've summarized results in paragraphs or in tables, you can then use the include=FALSE argument to hide your R commands and output in your final document. If you ever need to rerun or reevaluate your R work for a report, you can easily recreate and edit your analysis since the R chunks used in your original report are still in your R Markdown .Rmd file.
+
+\hypertarget{summary-statistics-with-pander}{%
+\subsection{Summary statistics with pander}\label{summary-statistics-with-pander}}
+
+We can use the pander package to create summary tables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("pander")}
+\FunctionTok{library}\NormalTok{(pander)}
+\FunctionTok{pander}\NormalTok{(}\FunctionTok{summary}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{mpg), }\AttributeTok{caption =} \StringTok{"Summary statistics for miles per gallon"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0972}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0972}}@{}}
+\caption{Summary statistics for miles per gallon}\tabularnewline
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+1st Qu.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Median
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+3rd Qu.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Max.
+\end{minipage} \\
+\midrule()
+\endfirsthead
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+Min.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+1st Qu.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Median
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+3rd Qu.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Max.
+\end{minipage} \\
+\midrule()
+\endhead
+10.4 & 15.43 & 19.2 & 20.09 & 22.8 & 33.9 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{t-test-results-with-pander}{%
+\subsection{t-test results with pander}\label{t-test-results-with-pander}}
+
+Let's perform a t-test comparing the miles per gallon (mpg) for cars with 4 and 6 cylinders.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(mpg }\SpecialCharTok{\textasciitilde{}} \FunctionTok{as.factor}\NormalTok{(cyl), }\AttributeTok{data =}\NormalTok{ mtcars, }\AttributeTok{subset =}\NormalTok{ cyl }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{))}
+\FunctionTok{pander}\NormalTok{(t\_test\_result, }\AttributeTok{caption =} \StringTok{"Comparing MPG for 4 and 6 cylinder cars"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2361}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3472}}@{}}
+\caption{Comparing MPG for 4 and 6 cylinder cars (continued below)}\tabularnewline
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+Test statistic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+P value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Alternative hypothesis
+\end{minipage} \\
+\midrule()
+\endfirsthead
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+Test statistic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+P value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Alternative hypothesis
+\end{minipage} \\
+\midrule()
+\endhead
+4.719 & 12.96 & 0.0004048 * * * & two.sided \\
+\bottomrule()
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2500}}
+  >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2500}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+mean in group 4
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+mean in group 6
+\end{minipage} \\
+\midrule()
+\endhead
+26.66 & 19.74 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{chi-square-test-results-with-pander}{%
+\subsection{Chi-square test results with pander}\label{chi-square-test-results-with-pander}}
+
+Now let's perform a chi-square test to check for an association between the number of cylinders and the type of transmission (automatic or manual).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{cyl, mtcars}\SpecialCharTok{$}\NormalTok{am)}
+\NormalTok{chisq\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(my\_table)}
+\FunctionTok{pander}\NormalTok{(chisq\_test\_result, }\AttributeTok{caption =} \StringTok{"Chi{-}square test for cylinders and transmission type"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2361}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.0694}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1667}}@{}}
+\caption{Chi-square test for cylinders and transmission type}\tabularnewline
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+Test statistic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+P value
+\end{minipage} \\
+\midrule()
+\endfirsthead
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+Test statistic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+P value
+\end{minipage} \\
+\midrule()
+\endhead
+8.741 & 2 & 0.01265 * \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{linear-regression-results-with-pander}{%
+\subsection{Linear regression results with pander}\label{linear-regression-results-with-pander}}
+
+Finally, let's fit a linear regression model of miles per gallon (mpg) as a function of weight (wt) and display the results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_result }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ wt, }\AttributeTok{data =}\NormalTok{ mtcars)}
+\FunctionTok{pander}\NormalTok{(lm\_result, }\AttributeTok{caption =} \StringTok{"Linear regression of MPG on weight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2500}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1528}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1806}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1667}}@{}}
+\caption{Linear regression of MPG on weight}\tabularnewline
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Estimate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Std. Error
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+t value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Pr(\textgreater\textbar t\textbar)
+\end{minipage} \\
+\midrule()
+\endfirsthead
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Estimate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Std. Error
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+t value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Pr(\textgreater\textbar t\textbar)
+\end{minipage} \\
+\midrule()
+\endhead
+\textbf{(Intercept)} & 37.29 & 1.878 & 19.86 & 8.242e-19 \\
+\textbf{wt} & -5.344 & 0.5591 & -9.559 & 1.294e-10 \\
+\bottomrule()
+\end{longtable}
 
   \bibliography{book.bib,packages.bib}
 
