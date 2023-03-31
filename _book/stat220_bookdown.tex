@@ -139,7 +139,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-03-28}
+\date{2023-03-30}
 
 \begin{document}
 \maketitle
@@ -1967,6 +1967,403 @@ Click for answer
 \FunctionTok{write\_csv}\NormalTok{(students, }\StringTok{"student\_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{class-activity-3}{%
+\chapter{Class Activity 3}\label{class-activity-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# some interesting data objects}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\NormalTok{x.mat }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(x, }\DecValTok{2}\SpecialCharTok{*}\NormalTok{x)}
+\NormalTok{x.df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\NormalTok{x,}\AttributeTok{double.x=}\NormalTok{x}\SpecialCharTok{*}\DecValTok{2}\NormalTok{)}
+\NormalTok{my.list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{myVec=}\NormalTok{x, }\AttributeTok{myDf=}\NormalTok{x.df, }\AttributeTok{myString=}\FunctionTok{c}\NormalTok{(}\StringTok{"hi"}\NormalTok{,}\StringTok{"bye"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-1-data-types}{%
+\section{Question 1: data types}\label{question-1-data-types}}
+
+\begin{itemize}
+\tightlist
+\item
+  What data type is \texttt{x}?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "double"
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What data type is \texttt{c(x,\ x/2)}?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{typeof}\NormalTok{(}\FunctionTok{c}\NormalTok{(x, x}\SpecialCharTok{/}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "double"
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What data type is \texttt{c(x,NA)}? What data type is \texttt{c(x,"NA")}?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{typeof}\NormalTok{(}\FunctionTok{c}\NormalTok{(x, }\ConstantTok{NA}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(}\FunctionTok{c}\NormalTok{(x, }\StringTok{"NA"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
+
+\hypertarget{question-2-subsetting-and-coercion}{%
+\section{Question 2: Subsetting and coercion}\label{question-2-subsetting-and-coercion}}
+
+\begin{itemize}
+\tightlist
+\item
+  How can we reverse the order of entries in \texttt{x}?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{rev}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 10  5  9  6  3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\FunctionTok{length}\NormalTok{(x)}\SpecialCharTok{:}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 10  5  9  6  3
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What does \texttt{which(x\ \textless{}\ 5)} equal?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{which}\NormalTok{(x}\SpecialCharTok{\textless{}}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Extract the element of x that corresponds to the location in the preceding question.
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\NormalTok{x[}\FunctionTok{which}\NormalTok{(x}\SpecialCharTok{\textless{}}\DecValTok{5}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What does \texttt{sum(c(TRUE,FALSE,TRUE,FALSE))} equal?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What does \texttt{sum(x{[}c(TRUE,FALSE,TRUE,FALSE){]})} equal?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{sum}\NormalTok{(x[}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 22
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What does \texttt{sum(x\ \textless{}\ 5)} equal?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{sum}\NormalTok{(x }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What does \texttt{sum(x{[}x\ \textless{}\ 5{]})} equal?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{sum}\NormalTok{(x[x }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Why \texttt{dim(x.mat{[}1:2,1{]})} return \texttt{NULL} while \texttt{dim(x.mat{[}1:2,1:2{]})} returns a dimension?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{dim}\NormalTok{(x.mat[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(x.mat[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2 2
+\end{verbatim}
+
+\hypertarget{question-3-lists}{%
+\section{Question 3: Lists}\label{question-3-lists}}
+
+\begin{itemize}
+\tightlist
+\item
+  Using \texttt{my.list}, show three ways to write one command that gives the 3rd entry of variable \texttt{x} in data frame \texttt{myDf}
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\NormalTok{my.list[[}\DecValTok{1}\NormalTok{]][}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.list[[}\StringTok{"myVec"}\NormalTok{]][}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.list[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{$}\NormalTok{myVec[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.list}\SpecialCharTok{$}\NormalTok{myVec[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What class of object does the command \texttt{my.list{[}3{]}} return?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{class}\NormalTok{(my.list[}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "list"
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What class of object does the command \texttt{my.list{[}{[}3{]}{]}} return?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{class}\NormalTok{(my.list[[}\DecValTok{3}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  What class of object does the command \texttt{unlist(my.list)} return? Why are all the entries \texttt{character}s?
+\end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{class}\NormalTok{(}\FunctionTok{unlist}\NormalTok{(my.list))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
 
 \hypertarget{part-extra-materials}{%
 \part*{Extra Materials}\label{part-extra-materials}}

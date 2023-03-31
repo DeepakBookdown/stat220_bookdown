@@ -70,6 +70,10 @@ what-is-the-importance-of-setting-a-working-directory-in-r
 explain-the-role-of-r-markdown-in-creating-reproducible-research-documents.
 class-activity-2
 extras-optional-1
+class-activity-3
+question-1-data-types
+question-2-subsetting-and-coercion
+question-3-lists
 helpful-r-codes
 residual-plots-in-ggplot2
 plotly-codes
