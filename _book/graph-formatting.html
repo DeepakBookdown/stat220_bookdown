@@ -4,19 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 Graph Formatting | Stat 220 Introduction to Data Science</title>
+<title>Chapter 12 Graph Formatting | Stat 220 Introduction to Data Science</title>
 <meta name="author" content="Deepak Bastola">
 <meta name="description" content="This worksheet provides a comprehensive guide on graph formatting in R using the ggplot2 package. We will explore various aspects of formatting, such as adding figure numbers, captions, titles,...">
-<meta name="generator" content="bookdown 0.31 with bs4_book()">
-<meta property="og:title" content="Chapter 11 Graph Formatting | Stat 220 Introduction to Data Science">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="Chapter 12 Graph Formatting | Stat 220 Introduction to Data Science">
 <meta property="og:type" content="book">
 <meta property="og:description" content="This worksheet provides a comprehensive guide on graph formatting in R using the ggplot2 package. We will explore various aspects of formatting, such as adding figure numbers, captions, titles,...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 Graph Formatting | Stat 220 Introduction to Data Science">
+<meta name="twitter:title" content="Chapter 12 Graph Formatting | Stat 220 Introduction to Data Science">
 <meta name="twitter:description" content="This worksheet provides a comprehensive guide on graph formatting in R using the ggplot2 package. We will explore various aspects of formatting, such as adding figure numbers, captions, titles,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -78,10 +78,11 @@
 <li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
 <li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
 <li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
+<li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
 <li class="book-part">Extra Materials</li>
-<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">10</span> Helpful R codes</a></li>
-<li><a class="active" href="graph-formatting.html"><span class="header-section-number">11</span> Graph Formatting</a></li>
-<li><a class="" href="table-formatting.html"><span class="header-section-number">12</span> Table Formatting</a></li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">11</span> Helpful R codes</a></li>
+<li><a class="active" href="graph-formatting.html"><span class="header-section-number">12</span> Graph Formatting</a></li>
+<li><a class="" href="table-formatting.html"><span class="header-section-number">13</span> Table Formatting</a></li>
 </ul>
 
         <div class="book-extra">
@@ -89,28 +90,28 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graph-formatting" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graph-formatting" class="section level1" number="12">
 <h1>
-<span class="header-section-number">11</span> Graph Formatting<a class="anchor" aria-label="anchor" href="#graph-formatting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> Graph Formatting<a class="anchor" aria-label="anchor" href="#graph-formatting"><i class="fas fa-link"></i></a>
 </h1>
 <p>This worksheet provides a comprehensive guide on graph formatting in R using the ggplot2 package. We will explore various aspects of formatting, such as adding figure numbers, captions, titles, axes labels, customizing themes, and using different color scales.</p>
-<div id="load-the-required-packages-and-datasets" class="section level2" number="11.1">
+<div id="load-the-required-packages-and-datasets" class="section level2" number="12.1">
 <h2>
-<span class="header-section-number">11.1</span> Load the required packages and datasets<a class="anchor" aria-label="anchor" href="#load-the-required-packages-and-datasets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> Load the required packages and datasets<a class="anchor" aria-label="anchor" href="#load-the-required-packages-and-datasets"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Cereals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"http://people.carleton.edu/~kstclair/data/Cereals.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="graph-theme-and-colors" class="section level2" number="11.2">
+<div id="graph-theme-and-colors" class="section level2" number="12.2">
 <h2>
-<span class="header-section-number">11.2</span> Graph theme and colors<a class="anchor" aria-label="anchor" href="#graph-theme-and-colors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2</span> Graph theme and colors<a class="anchor" aria-label="anchor" href="#graph-theme-and-colors"><i class="fas fa-link"></i></a>
 </h2>
-<div id="adding-figure-numbers-and-captions" class="section level3" number="11.2.1">
+<div id="adding-figure-numbers-and-captions" class="section level3" number="12.2.1">
 <h3>
-<span class="header-section-number">11.2.1</span> Adding figure numbers and captions<a class="anchor" aria-label="anchor" href="#adding-figure-numbers-and-captions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.1</span> Adding figure numbers and captions<a class="anchor" aria-label="anchor" href="#adding-figure-numbers-and-captions"><i class="fas fa-link"></i></a>
 </h3>
 <p>To automatically add figure numbers and captions, include the option fig_caption: true in the output options at the top of your markdown file. To add captions to the figures, use the fig.cap argument in the R code chunk that creates the figure.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Cereals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calgram</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.3</span>, fill <span class="op">=</span> <span class="st">"skyblue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Histogram of Calorie Content in Cereals"</span>,</span>
@@ -120,16 +121,16 @@
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="graphformatting_files/figure-html/unnamed-chunk-2-1.png" alt="A nice figure" width="100%"><p class="caption">
-Figure 11.1: A nice figure
+Figure 12.1: A nice figure
 </p>
 </div>
 </div>
-<div id="customizing-titles-axis-labels-and-legends" class="section level3" number="11.2.2">
+<div id="customizing-titles-axis-labels-and-legends" class="section level3" number="12.2.2">
 <h3>
-<span class="header-section-number">11.2.2</span> Customizing titles, axis labels, and legends<a class="anchor" aria-label="anchor" href="#customizing-titles-axis-labels-and-legends"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.2</span> Customizing titles, axis labels, and legends<a class="anchor" aria-label="anchor" href="#customizing-titles-axis-labels-and-legends"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can customize titles, axis labels, and legends using the labs() function.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span>, color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Price vs. Carat of Diamonds"</span>,</span>
@@ -140,12 +141,12 @@ Figure 11.1: A nice figure
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-3-1.png" width="100%"></div>
 </div>
-<div id="customizing-themes" class="section level3" number="11.2.3">
+<div id="customizing-themes" class="section level3" number="12.2.3">
 <h3>
-<span class="header-section-number">11.2.3</span> Customizing themes<a class="anchor" aria-label="anchor" href="#customizing-themes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.3</span> Customizing themes<a class="anchor" aria-label="anchor" href="#customizing-themes"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can customize themes using the <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> function and various <code>element_*()</code> functions.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Miles per Gallon vs. Horsepower"</span>,</span>
@@ -159,12 +160,12 @@ Figure 11.1: A nice figure
 <span>        panel.grid.minor <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray"</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-4-1.png" width="100%"></div>
 </div>
-<div id="using-different-color-scales" class="section level3" number="11.2.4">
+<div id="using-different-color-scales" class="section level3" number="12.2.4">
 <h3>
-<span class="header-section-number">11.2.4</span> Using different color scales<a class="anchor" aria-label="anchor" href="#using-different-color-scales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.4</span> Using different color scales<a class="anchor" aria-label="anchor" href="#using-different-color-scales"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can use different color scales for both continuous and discrete variables using the <code>scale_color_*()</code> and <code>scale_fill_*()</code> functions.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span>, color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Price vs. Carat of Diamonds"</span>,</span>
@@ -177,16 +178,16 @@ Figure 11.1: A nice figure
 <div class="figure">
 <span style="display:block;" id="fig:fig4"></span>
 <img src="graphformatting_files/figure-html/fig4-1.png" alt="Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale." width="100%"><p class="caption">
-Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale.
+Figure 12.2: Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale.
 </p>
 </div>
 </div>
-<div id="customizing-plot-elements" class="section level3" number="11.2.5">
+<div id="customizing-plot-elements" class="section level3" number="12.2.5">
 <h3>
-<span class="header-section-number">11.2.5</span> Customizing plot elements<a class="anchor" aria-label="anchor" href="#customizing-plot-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.5</span> Customizing plot elements<a class="anchor" aria-label="anchor" href="#customizing-plot-elements"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can customize plot elements such as points, lines, and bars using the corresponding geom_*() functions and their arguments.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span>, shape <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span>, size <span class="op">=</span> <span class="va">gear</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Miles per Gallon vs. Horsepower"</span>,</span>
@@ -200,12 +201,12 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set2"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-5-1.png" width="100%"></div>
 </div>
-<div id="faceting" class="section level3" number="11.2.6">
+<div id="faceting-1" class="section level3" number="12.2.6">
 <h3>
-<span class="header-section-number">11.2.6</span> Faceting<a class="anchor" aria-label="anchor" href="#faceting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2.6</span> Faceting<a class="anchor" aria-label="anchor" href="#faceting-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can create multiple plots based on a categorical variable using the f<code>acet_wrap()</code> and <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code> functions.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">clarity</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Price vs. Carat of Diamonds"</span>,</span>
@@ -217,16 +218,16 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-6-1.png" width="100%"></div>
 </div>
 </div>
-<div id="graph-sizing-in-r" class="section level2" number="11.3">
+<div id="graph-sizing-in-r" class="section level2" number="12.3">
 <h2>
-<span class="header-section-number">11.3</span> Graph Sizing in R<a class="anchor" aria-label="anchor" href="#graph-sizing-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3</span> Graph Sizing in R<a class="anchor" aria-label="anchor" href="#graph-sizing-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>This worksheet demonstrates how to adjust the size of various plots in R using ggplot2. We will explore different techniques to control the size of the plots and their elements.</p>
-<div id="load-the-necessary-libraries-and-data" class="section level3" number="11.3.1">
+<div id="load-the-necessary-libraries-and-data" class="section level3" number="12.3.1">
 <h3>
-<span class="header-section-number">11.3.1</span> Load the necessary libraries and data<a class="anchor" aria-label="anchor" href="#load-the-necessary-libraries-and-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.1</span> Load the necessary libraries and data<a class="anchor" aria-label="anchor" href="#load-the-necessary-libraries-and-data"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -235,12 +236,12 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"diamonds"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="adjusting-the-overall-size-of-the-plot" class="section level3" number="11.3.2">
+<div id="adjusting-the-overall-size-of-the-plot" class="section level3" number="12.3.2">
 <h3>
-<span class="header-section-number">11.3.2</span> Adjusting the overall size of the plot<a class="anchor" aria-label="anchor" href="#adjusting-the-overall-size-of-the-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.2</span> Adjusting the overall size of the plot<a class="anchor" aria-label="anchor" href="#adjusting-the-overall-size-of-the-plot"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can control the overall size of the plot using the width and height options within the R Markdown output settings. Another way is to use the ggsave() function when saving the plot as an image file.</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scatter_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Miles per Gallon vs. Horsepower"</span>,</span>
@@ -251,24 +252,24 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <span><span class="va">scatter_plot</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-8-1.png" width="100%"></div>
 </div>
-<div id="adjusting-the-size-of-points-lines-and-bars" class="section level3" number="11.3.3">
+<div id="adjusting-the-size-of-points-lines-and-bars" class="section level3" number="12.3.3">
 <h3>
-<span class="header-section-number">11.3.3</span> Adjusting the size of points, lines, and bars<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-points-lines-and-bars"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.3</span> Adjusting the size of points, lines, and bars<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-points-lines-and-bars"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use the size parameter within the geom_*() functions to control the size of points, lines, and bars.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scatter_plot_large_points</span> <span class="op">&lt;-</span> <span class="va">scatter_plot</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">scatter_plot_large_points</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-9-1.png" width="100%"></div>
 </div>
-<div id="adjusting-the-size-of-text-elements" class="section level3" number="11.3.4">
+<div id="adjusting-the-size-of-text-elements" class="section level3" number="12.3.4">
 <h3>
-<span class="header-section-number">11.3.4</span> Adjusting the size of text elements<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-text-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.4</span> Adjusting the size of text elements<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-text-elements"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can change the size of text elements, such as axis labels and titles, using the theme() function.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scatter_plot_custom_text</span> <span class="op">&lt;-</span> <span class="va">scatter_plot_large_points</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">24</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>,</span>
@@ -279,12 +280,12 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <span><span class="va">scatter_plot_custom_text</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-10-1.png" width="100%"></div>
 </div>
-<div id="adjusting-the-size-of-legend-elements" class="section level3" number="11.3.5">
+<div id="adjusting-the-size-of-legend-elements" class="section level3" number="12.3.5">
 <h3>
-<span class="header-section-number">11.3.5</span> Adjusting the size of legend elements<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-legend-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.5</span> Adjusting the size of legend elements<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-legend-elements"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can modify the size of the legend elements using the theme() function along with element_text() and element_rect().</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris_scatter_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Sepal.Length</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span>, color <span class="op">=</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Sepal Length vs. Sepal Width"</span>,</span>
@@ -299,12 +300,12 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <span><span class="va">iris_scatter_plot</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-11-1.png" width="100%"></div>
 </div>
-<div id="adjusting-the-size-of-facet-labels" class="section level3" number="11.3.6">
+<div id="adjusting-the-size-of-facet-labels" class="section level3" number="12.3.6">
 <h3>
-<span class="header-section-number">11.3.6</span> Adjusting the size of facet labels<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-facet-labels"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.6</span> Adjusting the size of facet labels<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-facet-labels"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can control the size of facet labels using the theme() function along with element_text().</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">diamonds_facet_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">cut</span><span class="op">)</span> <span class="op">+</span></span>
@@ -317,12 +318,12 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <span><span class="va">diamonds_facet_plot</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-12-1.png" width="100%"></div>
 </div>
-<div id="adjusting-the-size-of-axis-ticks" class="section level3" number="11.3.7">
+<div id="adjusting-the-size-of-axis-ticks" class="section level3" number="12.3.7">
 <h3>
-<span class="header-section-number">11.3.7</span> Adjusting the size of axis ticks<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-axis-ticks"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.7</span> Adjusting the size of axis ticks<a class="anchor" aria-label="anchor" href="#adjusting-the-size-of-axis-ticks"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can modify the size of axis ticks using the <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> function along with <code><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line()</a></code>.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scatter_plot_custom_ticks</span> <span class="op">&lt;-</span> <span class="va">scatter_plot</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span>,</span>
 <span>        axis.ticks.length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span>
@@ -331,16 +332,16 @@ Figure 11.2: Scatterplot of price vs. carat of diamonds with color representing
 <div class="figure">
 <span style="display:block;" id="fig:fig6"></span>
 <img src="graphformatting_files/figure-html/fig6-1.png" alt="Scatterplot of mpg vs. hp with customized axis tick size." width="100%"><p class="caption">
-Figure 11.3: Scatterplot of mpg vs. hp with customized axis tick size.
+Figure 12.3: Scatterplot of mpg vs. hp with customized axis tick size.
 </p>
 </div>
 </div>
-<div id="adding-text-labels-to-points" class="section level3" number="11.3.8">
+<div id="adding-text-labels-to-points" class="section level3" number="12.3.8">
 <h3>
-<span class="header-section-number">11.3.8</span> Adding text labels to points<a class="anchor" aria-label="anchor" href="#adding-text-labels-to-points"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.8</span> Adding text labels to points<a class="anchor" aria-label="anchor" href="#adding-text-labels-to-points"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use the geom_text() or geom_label() functions to add text labels to points.</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars</span><span class="op">$</span><span class="va">car_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">scatter_plot_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">wt</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -354,12 +355,12 @@ Figure 11.3: Scatterplot of mpg vs. hp with customized axis tick size.
 <span><span class="va">scatter_plot_labels</span></span></code></pre></div>
 <div class="inline-figure"><img src="graphformatting_files/figure-html/unnamed-chunk-13-1.png" width="100%"></div>
 </div>
-<div id="modifying-axis-limits-and-scales" class="section level3" number="11.3.9">
+<div id="modifying-axis-limits-and-scales" class="section level3" number="12.3.9">
 <h3>
-<span class="header-section-number">11.3.9</span> Modifying axis limits and scales<a class="anchor" aria-label="anchor" href="#modifying-axis-limits-and-scales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3.9</span> Modifying axis limits and scales<a class="anchor" aria-label="anchor" href="#modifying-axis-limits-and-scales"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use scale_x_continuous() and scale_y_continuous() to modify axis limits and scales.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gapminder"</span>, package <span class="op">=</span> <span class="st">"gapminder"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -376,34 +377,34 @@ Figure 11.3: Scatterplot of mpg vs. hp with customized axis tick size.
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="helpful-r-codes.html"><span class="header-section-number">10</span> Helpful R codes</a></div>
-<div class="next"><a href="table-formatting.html"><span class="header-section-number">12</span> Table Formatting</a></div>
+<div class="prev"><a href="helpful-r-codes.html"><span class="header-section-number">11</span> Helpful R codes</a></div>
+<div class="next"><a href="table-formatting.html"><span class="header-section-number">13</span> Table Formatting</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#graph-formatting"><span class="header-section-number">11</span> Graph Formatting</a></li>
-<li><a class="nav-link" href="#load-the-required-packages-and-datasets"><span class="header-section-number">11.1</span> Load the required packages and datasets</a></li>
+<li><a class="nav-link" href="#graph-formatting"><span class="header-section-number">12</span> Graph Formatting</a></li>
+<li><a class="nav-link" href="#load-the-required-packages-and-datasets"><span class="header-section-number">12.1</span> Load the required packages and datasets</a></li>
 <li>
-<a class="nav-link" href="#graph-theme-and-colors"><span class="header-section-number">11.2</span> Graph theme and colors</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#adding-figure-numbers-and-captions"><span class="header-section-number">11.2.1</span> Adding figure numbers and captions</a></li>
-<li><a class="nav-link" href="#customizing-titles-axis-labels-and-legends"><span class="header-section-number">11.2.2</span> Customizing titles, axis labels, and legends</a></li>
-<li><a class="nav-link" href="#customizing-themes"><span class="header-section-number">11.2.3</span> Customizing themes</a></li>
-<li><a class="nav-link" href="#using-different-color-scales"><span class="header-section-number">11.2.4</span> Using different color scales</a></li>
-<li><a class="nav-link" href="#customizing-plot-elements"><span class="header-section-number">11.2.5</span> Customizing plot elements</a></li>
-<li><a class="nav-link" href="#faceting"><span class="header-section-number">11.2.6</span> Faceting</a></li>
+<a class="nav-link" href="#graph-theme-and-colors"><span class="header-section-number">12.2</span> Graph theme and colors</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#adding-figure-numbers-and-captions"><span class="header-section-number">12.2.1</span> Adding figure numbers and captions</a></li>
+<li><a class="nav-link" href="#customizing-titles-axis-labels-and-legends"><span class="header-section-number">12.2.2</span> Customizing titles, axis labels, and legends</a></li>
+<li><a class="nav-link" href="#customizing-themes"><span class="header-section-number">12.2.3</span> Customizing themes</a></li>
+<li><a class="nav-link" href="#using-different-color-scales"><span class="header-section-number">12.2.4</span> Using different color scales</a></li>
+<li><a class="nav-link" href="#customizing-plot-elements"><span class="header-section-number">12.2.5</span> Customizing plot elements</a></li>
+<li><a class="nav-link" href="#faceting-1"><span class="header-section-number">12.2.6</span> Faceting</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#graph-sizing-in-r"><span class="header-section-number">11.3</span> Graph Sizing in R</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#load-the-necessary-libraries-and-data"><span class="header-section-number">11.3.1</span> Load the necessary libraries and data</a></li>
-<li><a class="nav-link" href="#adjusting-the-overall-size-of-the-plot"><span class="header-section-number">11.3.2</span> Adjusting the overall size of the plot</a></li>
-<li><a class="nav-link" href="#adjusting-the-size-of-points-lines-and-bars"><span class="header-section-number">11.3.3</span> Adjusting the size of points, lines, and bars</a></li>
-<li><a class="nav-link" href="#adjusting-the-size-of-text-elements"><span class="header-section-number">11.3.4</span> Adjusting the size of text elements</a></li>
-<li><a class="nav-link" href="#adjusting-the-size-of-legend-elements"><span class="header-section-number">11.3.5</span> Adjusting the size of legend elements</a></li>
-<li><a class="nav-link" href="#adjusting-the-size-of-facet-labels"><span class="header-section-number">11.3.6</span> Adjusting the size of facet labels</a></li>
-<li><a class="nav-link" href="#adjusting-the-size-of-axis-ticks"><span class="header-section-number">11.3.7</span> Adjusting the size of axis ticks</a></li>
-<li><a class="nav-link" href="#adding-text-labels-to-points"><span class="header-section-number">11.3.8</span> Adding text labels to points</a></li>
-<li><a class="nav-link" href="#modifying-axis-limits-and-scales"><span class="header-section-number">11.3.9</span> Modifying axis limits and scales</a></li>
+<a class="nav-link" href="#graph-sizing-in-r"><span class="header-section-number">12.3</span> Graph Sizing in R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#load-the-necessary-libraries-and-data"><span class="header-section-number">12.3.1</span> Load the necessary libraries and data</a></li>
+<li><a class="nav-link" href="#adjusting-the-overall-size-of-the-plot"><span class="header-section-number">12.3.2</span> Adjusting the overall size of the plot</a></li>
+<li><a class="nav-link" href="#adjusting-the-size-of-points-lines-and-bars"><span class="header-section-number">12.3.3</span> Adjusting the size of points, lines, and bars</a></li>
+<li><a class="nav-link" href="#adjusting-the-size-of-text-elements"><span class="header-section-number">12.3.4</span> Adjusting the size of text elements</a></li>
+<li><a class="nav-link" href="#adjusting-the-size-of-legend-elements"><span class="header-section-number">12.3.5</span> Adjusting the size of legend elements</a></li>
+<li><a class="nav-link" href="#adjusting-the-size-of-facet-labels"><span class="header-section-number">12.3.6</span> Adjusting the size of facet labels</a></li>
+<li><a class="nav-link" href="#adjusting-the-size-of-axis-ticks"><span class="header-section-number">12.3.7</span> Adjusting the size of axis ticks</a></li>
+<li><a class="nav-link" href="#adding-text-labels-to-points"><span class="header-section-number">12.3.8</span> Adding text labels to points</a></li>
+<li><a class="nav-link" href="#modifying-axis-limits-and-scales"><span class="header-section-number">12.3.9</span> Modifying axis limits and scales</a></li>
 </ul>
 </li>
 </ul>
@@ -423,7 +424,7 @@ Figure 11.3: Scatterplot of mpg vs. hp with customized axis tick size.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-03-30.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-04-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
