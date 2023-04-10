@@ -132,7 +132,7 @@ Use the codes mentioned so far to compute three statistics:
 
 - the total number of children who ever had your name
 - the maximum number of children given your name in a single year
-- the mean number of children given your name per year
+- the mean number of children given your name per year/decade (optional)
 
 
 <details>
@@ -140,14 +140,20 @@ Use the codes mentioned so far to compute three statistics:
 
 ```{r}
 babynames %>% 
-  filter(name == "John", sex == "M") %>% 
-  group_by(year) %>%
+  filter(name == "Dee", sex == "M")
+
+babynames %>% 
+  filter(name == "Dee", sex == "M") %>% 
+  summarise(max_number = max(n))
+
+babynames %>% 
+  filter(name == "Dee", sex == "M") %>% 
+  mutate(decade = (year %/% 10) * 10) %>% 
+  group_by(decade) %>%
   summarise(total = sum(n),
             max = max(n), 
             mean = mean(n))
 
-# alternate
-summarize(filter(babynames, name =="John", sex == "M"), total = sum(n), max = max(n), mean = mean(n))
 ```
 
 </details>

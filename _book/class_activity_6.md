@@ -258,7 +258,7 @@ Use the codes mentioned so far to compute three statistics:
 
 - the total number of children who ever had your name
 - the maximum number of children given your name in a single year
-- the mean number of children given your name per year
+- the mean number of children given your name per year/decade (optional)
 
 
 <details>
@@ -267,40 +267,67 @@ Use the codes mentioned so far to compute three statistics:
 
 ```r
 babynames %>% 
-  filter(name == "John", sex == "M") %>% 
-  group_by(year) %>%
+  filter(name == "Dee", sex == "M")
+```
+
+```
+# A tibble: 136 × 5
+    year sex   name      n     prop
+   <dbl> <chr> <chr> <int>    <dbl>
+ 1  1880 M     Dee      20 0.000169
+ 2  1881 M     Dee      32 0.000296
+ 3  1882 M     Dee      23 0.000188
+ 4  1883 M     Dee      22 0.000196
+ 5  1884 M     Dee      27 0.000220
+ 6  1885 M     Dee      28 0.000241
+ 7  1886 M     Dee      26 0.000218
+ 8  1887 M     Dee      39 0.000357
+ 9  1888 M     Dee      35 0.000269
+10  1889 M     Dee      24 0.000202
+# … with 126 more rows
+```
+
+```r
+babynames %>% 
+  filter(name == "Dee", sex == "M") %>% 
+  summarise(max_number = max(n))
+```
+
+```
+# A tibble: 1 × 1
+  max_number
+       <int>
+1        125
+```
+
+```r
+babynames %>% 
+  filter(name == "Dee", sex == "M") %>% 
+  mutate(decade = (year %/% 10) * 10) %>% 
+  group_by(decade) %>%
   summarise(total = sum(n),
             max = max(n), 
             mean = mean(n))
 ```
 
 ```
-# A tibble: 138 × 4
-    year total   max  mean
-   <dbl> <int> <int> <dbl>
- 1  1880  9655  9655  9655
- 2  1881  8769  8769  8769
- 3  1882  9557  9557  9557
- 4  1883  8894  8894  8894
- 5  1884  9388  9388  9388
- 6  1885  8756  8756  8756
- 7  1886  9026  9026  9026
- 8  1887  8110  8110  8110
- 9  1888  9247  9247  9247
-10  1889  8548  8548  8548
-# … with 128 more rows
-```
-
-```r
-# alternate
-summarize(filter(babynames, name =="John", sex == "M"), total = sum(n), max = max(n), mean = mean(n))
-```
-
-```
-# A tibble: 1 × 3
-    total   max   mean
-    <int> <int>  <dbl>
-1 5115466 88318 37069.
+# A tibble: 14 × 4
+   decade total   max   mean
+    <dbl> <int> <int>  <dbl>
+ 1   1880   276    39  27.6 
+ 2   1890   271    43  27.1 
+ 3   1900   302    38  30.2 
+ 4   1910   818   125  81.8 
+ 5   1920  1090   125 109   
+ 6   1930  1010   118 101   
+ 7   1940   967   120  96.7 
+ 8   1950   957   118  95.7 
+ 9   1960   683   102  68.3 
+10   1970   380    57  38   
+11   1980   217    30  21.7 
+12   1990   130    17  13   
+13   2000    87    13   9.67
+14   2010    52    12   7.43
 ```
 
 </details>

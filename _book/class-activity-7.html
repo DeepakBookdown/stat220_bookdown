@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 14 Class Activity 7 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="# load the necessary libraries library(tidyverse) library(ggplot2) library(babynames)  14.1 Problem 1: Boolean Operators Use Boolean operators to alter the code below to return only the rows that...">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="Chapter 14 Class Activity 7 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="# load the necessary libraries library(tidyverse) library(ggplot2) library(babynames)  14.1 Problem 1: Boolean Operators Use Boolean operators to alter the code below to return only the rows that...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 14 Class Activity 7 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="# load the necessary libraries library(tidyverse) library(ggplot2) library(babynames)  14.1 Problem 1: Boolean Operators Use Boolean operators to alter the code below to return only the rows that...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 14</span> Class Activity 7</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-7" class="section level1" number="14">
+<h1>
+<span class="header-section-number">14</span> Class Activity 7<a class="anchor" aria-label="anchor" href="#class-activity-7"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/babynames">babynames</a></span><span class="op">)</span></span></code></pre></div>
+<div id="problem-1-boolean-operators" class="section level2" number="14.1">
+<h2>
+<span class="header-section-number">14.1</span> Problem 1: Boolean Operators<a class="anchor" aria-label="anchor" href="#problem-1-boolean-operators"><i class="fas fa-link"></i></a>
+</h2>
+<p>Use Boolean operators to alter the code below to return only the rows that contain:</p>
+<div id="a.-girls-named-rhea" class="section level3" number="14.1.1">
+<h3>
+<span class="header-section-number">14.1.1</span> a. Girls named Rhea<a class="anchor" aria-label="anchor" href="#a.-girls-named-rhea"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span> <span class="op">==</span> <span class="st">"Rhea"</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 136 × 5
+    year sex   name      n      prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1  1882 F     Rhea      7 0.0000605
+ 2  1883 F     Rhea      8 0.0000666
+ 3  1884 F     Rhea     13 0.0000945
+ 4  1885 F     Rhea     11 0.0000775
+ 5  1886 F     Rhea     13 0.0000846
+ 6  1887 F     Rhea     14 0.0000901
+ 7  1888 F     Rhea     20 0.000106 
+ 8  1889 F     Rhea     31 0.000164 
+ 9  1890 F     Rhea     39 0.000193 
+10  1891 F     Rhea     24 0.000122 
+# … with 126 more rows</code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">==</span> <span class="st">"Rhea"</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 136 × 5
+    year sex   name      n      prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1  1882 F     Rhea      7 0.0000605
+ 2  1883 F     Rhea      8 0.0000666
+ 3  1884 F     Rhea     13 0.0000945
+ 4  1885 F     Rhea     11 0.0000775
+ 5  1886 F     Rhea     13 0.0000846
+ 6  1887 F     Rhea     14 0.0000901
+ 7  1888 F     Rhea     20 0.000106 
+ 8  1889 F     Rhea     31 0.000164 
+ 9  1890 F     Rhea     39 0.000193 
+10  1891 F     Rhea     24 0.000122 
+# … with 126 more rows</code></pre>
+</details>
+</div>
+<div id="b.-names-that-were-used-by-exactly-5-or-6-children-in-1990" class="section level3" number="14.1.2">
+<h3>
+<span class="header-section-number">14.1.2</span> b. Names that were used by exactly 5 or 6 children in 1990<a class="anchor" aria-label="anchor" href="#b.-names-that-were-used-by-exactly-5-or-6-children-in-1990"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">1990</span>, <span class="va">n</span> <span class="op">==</span> <span class="fl">5</span> <span class="op">|</span> <span class="va">n</span> <span class="op">==</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 6,144 × 5
+    year sex   name         n       prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;
+ 1  1990 F     Aariel       6 0.00000292
+ 2  1990 F     Aarion       6 0.00000292
+ 3  1990 F     Abagael      6 0.00000292
+ 4  1990 F     Abbye        6 0.00000292
+ 5  1990 F     Abiola       6 0.00000292
+ 6  1990 F     Abreanna     6 0.00000292
+ 7  1990 F     Abygail      6 0.00000292
+ 8  1990 F     Acadia       6 0.00000292
+ 9  1990 F     Adilenne     6 0.00000292
+10  1990 F     Adriena      6 0.00000292
+# … with 6,134 more rows</code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="st">"1990"</span>, <span class="va">n</span> <span class="op">==</span> <span class="fl">5</span> <span class="op">|</span> <span class="va">n</span> <span class="op">==</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 6,144 × 5
+    year sex   name         n       prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;
+ 1  1990 F     Aariel       6 0.00000292
+ 2  1990 F     Aarion       6 0.00000292
+ 3  1990 F     Abagael      6 0.00000292
+ 4  1990 F     Abbye        6 0.00000292
+ 5  1990 F     Abiola       6 0.00000292
+ 6  1990 F     Abreanna     6 0.00000292
+ 7  1990 F     Abygail      6 0.00000292
+ 8  1990 F     Acadia       6 0.00000292
+ 9  1990 F     Adilenne     6 0.00000292
+10  1990 F     Adriena      6 0.00000292
+# … with 6,134 more rows</code></pre>
+</details>
+</div>
+<div id="c.-names-that-are-one-of-apple-yoroi-ada" class="section level3" number="14.1.3">
+<h3>
+<span class="header-section-number">14.1.3</span> c. Names that are one of Apple, Yoroi, Ada<a class="anchor" aria-label="anchor" href="#c.-names-that-are-one-of-apple-yoroi-ada"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span> <span class="op">==</span> <span class="st">"Apple"</span> <span class="op">|</span> <span class="va">name</span> <span class="op">==</span> <span class="st">"Yoroi"</span> <span class="op">|</span> <span class="va">name</span> <span class="op">==</span> <span class="st">"Ada"</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 200 × 5
+    year sex   name      n      prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1  1880 F     Ada     652 0.00668  
+ 2  1881 F     Ada     628 0.00635  
+ 3  1882 F     Ada     689 0.00596  
+ 4  1883 F     Ada     778 0.00648  
+ 5  1884 F     Ada     854 0.00621  
+ 6  1885 F     Ada     876 0.00617  
+ 7  1885 M     Ada       5 0.0000431
+ 8  1886 F     Ada     915 0.00595  
+ 9  1886 M     Ada       6 0.0000504
+10  1887 F     Ada     910 0.00586  
+# … with 190 more rows</code></pre>
+</details>
+</div>
+<div id="d.-store-the-data-tibble-in-part-c-into-a-new-tibble-and-change-all-the-character-columns-to-upper-case.-also-rename-the-n-variable-to-count." class="section level3" number="14.1.4">
+<h3>
+<span class="header-section-number">14.1.4</span> d. Store the data tibble in part c into a new tibble and change all the character columns to upper case. Also, rename the <code>n</code> variable to <code>count</code>.<a class="anchor" aria-label="anchor" href="#d.-store-the-data-tibble-in-part-c-into-a-new-tibble-and-change-all-the-character-columns-to-upper-case.-also-rename-the-n-variable-to-count."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aya</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">==</span> <span class="st">"Apple"</span> <span class="op">|</span> <span class="va">name</span> <span class="op">==</span> <span class="st">"Yoroi"</span> <span class="op">|</span> <span class="va">name</span> <span class="op">==</span> <span class="st">"Ada"</span><span class="op">)</span></span>
+<span><span class="va">aya</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="va">is.character</span>, <span class="va">toupper</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 200 × 5
+    year sex   name      n      prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1  1880 F     ADA     652 0.00668  
+ 2  1881 F     ADA     628 0.00635  
+ 3  1882 F     ADA     689 0.00596  
+ 4  1883 F     ADA     778 0.00648  
+ 5  1884 F     ADA     854 0.00621  
+ 6  1885 F     ADA     876 0.00617  
+ 7  1885 M     ADA       5 0.0000431
+ 8  1886 F     ADA     915 0.00595  
+ 9  1886 M     ADA       6 0.0000504
+10  1887 F     ADA     910 0.00586  
+# … with 190 more rows</code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aya</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span>, <span class="va">toupper</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 200 × 5
+    year sex   name      n      prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1  1880 F     ADA     652 0.00668  
+ 2  1881 F     ADA     628 0.00635  
+ 3  1882 F     ADA     689 0.00596  
+ 4  1883 F     ADA     778 0.00648  
+ 5  1884 F     ADA     854 0.00621  
+ 6  1885 F     ADA     876 0.00617  
+ 7  1885 M     ADA       5 0.0000431
+ 8  1886 F     ADA     915 0.00595  
+ 9  1886 M     ADA       6 0.0000504
+10  1887 F     ADA     910 0.00586  
+# … with 190 more rows</code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aya</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>count <span class="op">=</span> <span class="va">n</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 200 × 5
+    year sex   name  count      prop
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1  1880 F     Ada     652 0.00668  
+ 2  1881 F     Ada     628 0.00635  
+ 3  1882 F     Ada     689 0.00596  
+ 4  1883 F     Ada     778 0.00648  
+ 5  1884 F     Ada     854 0.00621  
+ 6  1885 F     Ada     876 0.00617  
+ 7  1885 M     Ada       5 0.0000431
+ 8  1886 F     Ada     915 0.00595  
+ 9  1886 M     Ada       6 0.0000504
+10  1887 F     Ada     910 0.00586  
+# … with 190 more rows</code></pre>
+</details>
+</div>
+<div id="e.-change-all-the-column-names-to-upper-case-in-the-previous-problem." class="section level3" number="14.1.5">
+<h3>
+<span class="header-section-number">14.1.5</span> e. Change all the column names to upper case in the previous problem.<a class="anchor" aria-label="anchor" href="#e.-change-all-the-column-names-to-upper-case-in-the-previous-problem."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aya</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">year</span><span class="op">:</span><span class="va">prop</span><span class="op">)</span>, <span class="va">toupper</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 200 × 5
+    YEAR SEX   NAME      N      PROP
+   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1  1880 F     Ada     652 0.00668  
+ 2  1881 F     Ada     628 0.00635  
+ 3  1882 F     Ada     689 0.00596  
+ 4  1883 F     Ada     778 0.00648  
+ 5  1884 F     Ada     854 0.00621  
+ 6  1885 F     Ada     876 0.00617  
+ 7  1885 M     Ada       5 0.0000431
+ 8  1886 F     Ada     915 0.00595  
+ 9  1886 M     Ada       6 0.0000504
+10  1887 F     Ada     910 0.00586  
+# … with 190 more rows</code></pre>
+</details>
+</div>
+<div id="f.-what-do-these-commands-do" class="section level3" number="14.1.6">
+<h3>
+<span class="header-section-number">14.1.6</span> f. What do these commands do?<a class="anchor" aria-label="anchor" href="#f.-what-do-these-commands-do"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polluted_cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<span>       <span class="op">~</span><span class="va">city</span>,   <span class="op">~</span><span class="va">size</span>, <span class="op">~</span><span class="va">amount</span>, </span>
+<span>  <span class="st">"New York"</span>, <span class="st">"large"</span>,      <span class="fl">23</span>,</span>
+<span>  <span class="st">"New York"</span>, <span class="st">"small"</span>,      <span class="fl">14</span>,</span>
+<span>    <span class="st">"London"</span>, <span class="st">"large"</span>,      <span class="fl">22</span>,</span>
+<span>    <span class="st">"London"</span>, <span class="st">"small"</span>,      <span class="fl">16</span>,</span>
+<span>   <span class="st">"Beijing"</span>, <span class="st">"large"</span>,      <span class="fl">121</span>,</span>
+<span>   <span class="st">"Beijing"</span>, <span class="st">"small"</span>,      <span class="fl">56</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">polluted_cities</span></span></code></pre></div>
+<pre><code># A tibble: 6 × 3
+  city     size  amount
+  &lt;chr&gt;    &lt;chr&gt;  &lt;dbl&gt;
+1 New York large     23
+2 New York small     14
+3 London   large     22
+4 London   small     16
+5 Beijing  large    121
+6 Beijing  small     56</code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">select_if</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="co">#1</span></span>
+<span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">toupper</span><span class="op">)</span> <span class="co">#2</span></span>
+<span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_if</a></span><span class="op">(</span><span class="va">is.character</span>, <span class="va">toupper</span><span class="op">)</span> <span class="co">#3</span></span>
+<span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"it"</span><span class="op">)</span><span class="op">)</span>, <span class="va">toupper</span><span class="op">)</span> <span class="co">#4</span></span></code></pre></div>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>answer:</em></p>
+<ol style="list-style-type: decimal">
+<li>Selects all numeric columns from the polluted_cities dataset.</li>
+<li>Renames all column names in the polluted_cities dataset to uppercase.</li>
+<li>Renames column names with character data type in the polluted_cities dataset to uppercase.</li>
+<li>Renames column names containing “it” in the polluted_cities dataset to uppercase.</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">select_if</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="co">#1</span></span></code></pre></div>
+<pre><code># A tibble: 6 × 1
+  amount
+   &lt;dbl&gt;
+1     23
+2     14
+3     22
+4     16
+5    121
+6     56</code></pre>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">toupper</span><span class="op">)</span> <span class="co">#2</span></span></code></pre></div>
+<pre><code># A tibble: 6 × 3
+  CITY     SIZE  AMOUNT
+  &lt;chr&gt;    &lt;chr&gt;  &lt;dbl&gt;
+1 New York large     23
+2 New York small     14
+3 London   large     22
+4 London   small     16
+5 Beijing  large    121
+6 Beijing  small     56</code></pre>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_if</a></span><span class="op">(</span><span class="va">is.character</span>, <span class="va">toupper</span><span class="op">)</span> <span class="co">#3</span></span></code></pre></div>
+<pre><code># A tibble: 6 × 3
+  CITY     SIZE  amount
+  &lt;chr&gt;    &lt;chr&gt;  &lt;dbl&gt;
+1 New York large     23
+2 New York small     14
+3 London   large     22
+4 London   small     16
+5 Beijing  large    121
+6 Beijing  small     56</code></pre>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polluted_cities</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"it"</span><span class="op">)</span><span class="op">)</span>, <span class="va">toupper</span><span class="op">)</span> <span class="co">#4</span></span></code></pre></div>
+<pre><code># A tibble: 6 × 3
+  CITY     size  amount
+  &lt;chr&gt;    &lt;chr&gt;  &lt;dbl&gt;
+1 New York large     23
+2 New York small     14
+3 London   large     22
+4 London   small     16
+5 Beijing  large    121
+6 Beijing  small     56</code></pre>
+</details><hr>
+<p>Let’s look at an interesting example on how to join related information on various artists, bands, songs, and their labels.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">artists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jimmy"</span>, <span class="st">"George"</span>, <span class="st">"Mick"</span>, <span class="st">"Tom"</span>, <span class="st">"Davy"</span>, <span class="st">"John"</span>,</span>
+<span>                            <span class="st">"Paul"</span>, <span class="st">"Jimmy"</span>, <span class="st">"Joe"</span>, <span class="st">"Elvis"</span>, <span class="st">"Keith"</span>, <span class="st">"Paul"</span>, </span>
+<span>                            <span class="st">"Ringo"</span>, <span class="st">"Joe"</span>, <span class="st">"Brian"</span>, <span class="st">"Nancy"</span><span class="op">)</span>, </span>
+<span>                  last <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Buffett"</span>, <span class="st">"Harrison"</span>, <span class="st">"Jagger"</span>, <span class="st">"Jones"</span>, <span class="st">"Jones"</span>, </span>
+<span>                           <span class="st">"Lennon"</span>, <span class="st">"McCartney"</span>, <span class="st">"Page"</span>, <span class="st">"Perry"</span>, <span class="st">"Presley"</span>,</span>
+<span>                           <span class="st">"Richards"</span>, <span class="st">"Simon"</span>, <span class="st">"Starr"</span>, <span class="st">"Walsh"</span>, <span class="st">"Wilson"</span>, <span class="st">"Wilson"</span><span class="op">)</span>, </span>
+<span>                  instrument <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Guitar"</span>, <span class="st">"Guitar"</span>, <span class="st">"Vocals"</span>, <span class="st">"Vocals"</span>, <span class="st">"Vocals"</span>,</span>
+<span>                                 <span class="st">"Guitar"</span>, <span class="st">"Bass"</span>, <span class="st">"Guitar"</span>, <span class="st">"Guitar"</span>, <span class="st">"Vocals"</span>, <span class="st">"Guitar"</span>, </span>
+<span>                                 <span class="st">"Guitar"</span>, <span class="st">"Drums"</span>, <span class="st">"Guitar"</span>, <span class="st">"Vocals"</span>, <span class="st">"Vocals"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">bands</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"John"</span>, <span class="st">"John Paul"</span>, <span class="st">"Jimmy"</span>, <span class="st">"Robert"</span>, <span class="st">"George"</span>, <span class="st">"John"</span>, </span>
+<span>                          <span class="st">"Paul"</span>, <span class="st">"Ringo"</span>, <span class="st">"Jimmy"</span>, <span class="st">"Mick"</span>, <span class="st">"Keith"</span>, <span class="st">"Charlie"</span>, <span class="st">"Ronnie"</span><span class="op">)</span>, </span>
+<span>                last <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Bonham"</span>, <span class="st">"Jones"</span>, <span class="st">"Page"</span>, <span class="st">"Plant"</span>, <span class="st">"Harrison"</span>, <span class="st">"Lennon"</span>,</span>
+<span>                         <span class="st">"McCartney"</span>, <span class="st">"Starr"</span>, <span class="st">"Buffett"</span>, <span class="st">"Jagger"</span>, <span class="st">"Richards"</span>, <span class="st">"Watts"</span>, <span class="st">"Wood"</span><span class="op">)</span>, </span>
+<span>                band <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Led Zeppelin"</span>, <span class="st">"Led Zeppelin"</span>, <span class="st">"Led Zeppelin"</span>, <span class="st">"Led Zeppelin"</span>,</span>
+<span>                         <span class="st">"The Beatles"</span>, <span class="st">"The Beatles"</span>, <span class="st">"The Beatles"</span>, <span class="st">"The Beatles"</span>,</span>
+<span>                         <span class="st">"The Coral Reefers"</span>, <span class="st">"The Rolling Stones"</span>, <span class="st">"The Rolling Stones"</span>,</span>
+<span>                         <span class="st">"The Rolling Stones"</span>, <span class="st">"The Rolling Stones"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">albums</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>album <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A Hard Day's Night"</span>, <span class="st">"Magical Mystery Tour"</span>, <span class="st">"Beggar's Banquet"</span>,</span>
+<span>                           <span class="st">"Abbey Road"</span>, <span class="st">"Led Zeppelin IV"</span>, <span class="st">"The Dark Side of the Moon"</span>, <span class="st">"Aerosmith"</span>,</span>
+<span>                           <span class="st">"Rumours"</span>, <span class="st">"Hotel California"</span><span class="op">)</span>,</span>
+<span>                 band <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"The Beatles"</span>, <span class="st">"The Beatles"</span>, <span class="st">"The Rolling Stones"</span>, <span class="st">"The Beatles"</span>, </span>
+<span>                          <span class="st">"Led Zeppelin"</span>, <span class="st">"Pink Floyd"</span>, <span class="st">"Aerosmith"</span>, <span class="st">"Fleetwood Mac"</span>, <span class="st">"Eagles"</span><span class="op">)</span>, </span>
+<span>                 year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1964</span>,<span class="fl">1967</span>,<span class="fl">1968</span>,<span class="fl">1969</span>,<span class="fl">1971</span>,<span class="fl">1973</span>,<span class="fl">1973</span>,<span class="fl">1977</span>,<span class="fl">1982</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">songs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>song <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Come Together"</span>, <span class="st">"Dream On"</span>, <span class="st">"Hello, Goodbye"</span>, <span class="st">"It's Not Unusual"</span><span class="op">)</span>,</span>
+<span>                album  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abbey Road"</span>, <span class="st">"Aerosmith"</span>, <span class="st">"Magical Mystery Tour"</span>, <span class="st">"Along Came Jones"</span><span class="op">)</span>, </span>
+<span>                first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"John"</span>, <span class="st">"Steven"</span>, <span class="st">"Paul"</span>, <span class="st">"Tom"</span><span class="op">)</span>, </span>
+<span>                last <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Lennon"</span>, <span class="st">"Tyler"</span>, <span class="st">"McCartney"</span>, <span class="st">"Jones"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>album <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abbey Road"</span>, <span class="st">"A Hard Days Night"</span>, <span class="st">"Magical Mystery Tour"</span>,</span>
+<span>                           <span class="st">"Led Zeppelin IV"</span>, <span class="st">"The Dark Side of the Moon"</span>, <span class="st">"Hotel California"</span>, </span>
+<span>                           <span class="st">"Rumours"</span>, <span class="st">"Aerosmith"</span>, <span class="st">"Beggar's Banquet"</span><span class="op">)</span>, </span>
+<span>                 label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Apple"</span>, <span class="st">"Parlophone"</span>, <span class="st">"Parlophone"</span>, <span class="st">"Atlantic"</span>, <span class="st">"Harvest"</span>,</span>
+<span>                           <span class="st">"Asylum"</span>, <span class="st">"Warner Brothers"</span>, <span class="st">"Columbia"</span>, <span class="st">"Decca"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Let’s take a glimpse of the tibbles <code>artists</code> and <code>bands</code>. Notice that there are different number of rows in the dataset.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">artists</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 16
+Columns: 3
+$ first      &lt;chr&gt; "Jimmy", "George", "Mick", "Tom", "Davy…
+$ last       &lt;chr&gt; "Buffett", "Harrison", "Jagger", "Jones…
+$ instrument &lt;chr&gt; "Guitar", "Guitar", "Vocals", "Vocals",…</code></pre>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">bands</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 13
+Columns: 3
+$ first &lt;chr&gt; "John", "John Paul", "Jimmy", "Robert", "Geo…
+$ last  &lt;chr&gt; "Bonham", "Jones", "Page", "Plant", "Harriso…
+$ band  &lt;chr&gt; "Led Zeppelin", "Led Zeppelin", "Led Zeppeli…</code></pre>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">albums</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 9
+Columns: 3
+$ album &lt;chr&gt; "A Hard Day's Night", "Magical Mystery Tour"…
+$ band  &lt;chr&gt; "The Beatles", "The Beatles", "The Rolling S…
+$ year  &lt;dbl&gt; 1964, 1967, 1968, 1969, 1971, 1973, 1973, 19…</code></pre>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">songs</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 4
+Columns: 4
+$ song  &lt;chr&gt; "Come Together", "Dream On", "Hello, Goodbye…
+$ album &lt;chr&gt; "Abbey Road", "Aerosmith", "Magical Mystery …
+$ first &lt;chr&gt; "John", "Steven", "Paul", "Tom"
+$ last  &lt;chr&gt; "Lennon", "Tyler", "McCartney", "Jones"</code></pre>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">labels</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 9
+Columns: 2
+$ album &lt;chr&gt; "Abbey Road", "A Hard Days Night", "Magical …
+$ label &lt;chr&gt; "Apple", "Parlophone", "Parlophone", "Atlant…</code></pre>
+</div>
+</div>
+<div id="problem-2-joining-artists-and-bands-data" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> Problem 2: Joining artists and bands data<a class="anchor" aria-label="anchor" href="#problem-2-joining-artists-and-bands-data"><i class="fas fa-link"></i></a>
+</h2>
+<div id="a.-join-the-artists-and-bands-tibbles-using-left_join-right_join-and-full_join.-verify-that-the-datasets-obtained-from-left_join-and-right_join-are-the-same-using-setequal." class="section level3" number="14.2.1">
+<h3>
+<span class="header-section-number">14.2.1</span> a. Join the artists and bands tibbles using <code>left_join()</code>, <code>right_join()</code>, and <code>full_join()</code>. Verify that the datasets obtained from <code>left_join()</code> and <code>right_join()</code> are the same using <code>setequal()</code>.<a class="anchor" aria-label="anchor" href="#a.-join-the-artists-and-bands-tibbles-using-left_join-right_join-and-full_join.-verify-that-the-datasets-obtained-from-left_join-and-right_join-are-the-same-using-setequal."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bands2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">bands</span>, <span class="va">artists</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"last"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">bands3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">artists</span>, <span class="va">bands</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"last"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">full_bands</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">artists</span>, <span class="va">bands</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"last"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Check if the datasets are the same</span></span>
+<span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setequal</a></span><span class="op">(</span><span class="va">bands2</span>, <span class="va">bands3</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+</details>
+</div>
+<div id="b.-use-the-pipe-operator-to-create-one-table-that-combines-all-information-from-artists-bands-albums-songs-and-labels." class="section level3" number="14.2.2">
+<h3>
+<span class="header-section-number">14.2.2</span> b. Use the pipe operator, <code>%&gt;%</code>, to create one table that combines all information from <code>artists</code>, <code>bands</code>, <code>albums</code>, <code>songs</code>, and <code>labels.</code><a class="anchor" aria-label="anchor" href="#b.-use-the-pipe-operator-to-create-one-table-that-combines-all-information-from-artists-bands-albums-songs-and-labels."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_info</span> <span class="op">&lt;-</span> <span class="va">artists</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">bands</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"last"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">songs</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"last"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">albums</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"album"</span>, <span class="st">"band"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">labels</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"album"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">all_info</span></span></code></pre></div>
+<pre><code># A tibble: 30 × 8
+   first  last      instrument band  song  album  year label
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;
+ 1 Jimmy  Buffett   Guitar     The … &lt;NA&gt;  &lt;NA&gt;     NA &lt;NA&gt; 
+ 2 George Harrison  Guitar     The … &lt;NA&gt;  &lt;NA&gt;     NA &lt;NA&gt; 
+ 3 Mick   Jagger    Vocals     The … &lt;NA&gt;  &lt;NA&gt;     NA &lt;NA&gt; 
+ 4 Tom    Jones     Vocals     &lt;NA&gt;  It's… Alon…    NA &lt;NA&gt; 
+ 5 Davy   Jones     Vocals     &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;     NA &lt;NA&gt; 
+ 6 John   Lennon    Guitar     The … Come… Abbe…  1969 Apple
+ 7 Paul   McCartney Bass       The … Hell… Magi…  1967 Parl…
+ 8 Jimmy  Page      Guitar     Led … &lt;NA&gt;  &lt;NA&gt;     NA &lt;NA&gt; 
+ 9 Joe    Perry     Guitar     &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;     NA &lt;NA&gt; 
+10 Elvis  Presley   Vocals     &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;     NA &lt;NA&gt; 
+# … with 20 more rows</code></pre>
+</details><hr>
+</div>
+</div>
+<div id="problem-3-filtering-and-counting-rows-in-the-data" class="section level2" number="14.3">
+<h2>
+<span class="header-section-number">14.3</span> Problem 3: Filtering and counting rows in the data<a class="anchor" aria-label="anchor" href="#problem-3-filtering-and-counting-rows-in-the-data"><i class="fas fa-link"></i></a>
+</h2>
+<div id="a.-collect-artists-that-have-songs-provided-and-return-rows-of-artists-that-dont-have-bands-info." class="section level3" number="14.3.1">
+<h3>
+<span class="header-section-number">14.3.1</span> a. Collect artists that have songs provided, and return rows of artists that don’t have bands info.<a class="anchor" aria-label="anchor" href="#a.-collect-artists-that-have-songs-provided-and-return-rows-of-artists-that-dont-have-bands-info."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Artists with songs</span></span>
+<span><span class="va">artists_with_songs</span> <span class="op">&lt;-</span> <span class="va">artists</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">songs</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"first"</span>, <span class="st">"last"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Artists without bands info</span></span>
+<span><span class="va">artists_without_bands</span> <span class="op">&lt;-</span> <span class="va">artists</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">bands</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"first"</span>,<span class="st">"last"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">artists_with_songs</span></span></code></pre></div>
+<pre><code># A tibble: 3 × 3
+  first last      instrument
+  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
+1 Tom   Jones     Vocals    
+2 John  Lennon    Guitar    
+3 Paul  McCartney Bass      </code></pre>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">artists_without_bands</span></span></code></pre></div>
+<pre><code># A tibble: 8 × 3
+  first last    instrument
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;     
+1 Tom   Jones   Vocals    
+2 Davy  Jones   Vocals    
+3 Joe   Perry   Guitar    
+4 Elvis Presley Vocals    
+5 Paul  Simon   Guitar    
+6 Joe   Walsh   Guitar    
+7 Brian Wilson  Vocals    
+8 Nancy Wilson  Vocals    </code></pre>
+</details>
+</div>
+<div id="b.-collect-the-albums-made-by-a-band-count-the-number-of-rows-find-the-rows-of-songs-that-match-a-row-in-labels-and-count-the-number-of-rows." class="section level3" number="14.3.2">
+<h3>
+<span class="header-section-number">14.3.2</span> b. Collect the albums made by a band, count the number of rows, find the rows of songs that match a row in labels, and count the number of rows.<a class="anchor" aria-label="anchor" href="#b.-collect-the-albums-made-by-a-band-count-the-number-of-rows-find-the-rows-of-songs-that-match-a-row-in-labels-and-count-the-number-of-rows."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Albums made by a band</span></span>
+<span><span class="va">albums_by_band</span> <span class="op">&lt;-</span> <span class="va">albums</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">bands</span>, by <span class="op">=</span> <span class="st">"band"</span><span class="op">)</span></span>
+<span><span class="va">n_albums_by_band</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">albums_by_band</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Rows of songs that match a row in labels</span></span>
+<span><span class="va">songs_with_labels</span> <span class="op">&lt;-</span> <span class="va">songs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">labels</span>, by <span class="op">=</span> <span class="st">"album"</span><span class="op">)</span></span>
+<span><span class="va">n_songs_with_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">songs_with_labels</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">n_albums_by_band</span></span></code></pre></div>
+<pre><code>[1] 5</code></pre>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n_songs_with_labels</span></span></code></pre></div>
+<pre><code>[1] 3</code></pre>
+</details>
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-04-09.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
