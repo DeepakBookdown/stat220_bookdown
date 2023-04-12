@@ -139,7 +139,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-04-09}
+\date{2023-04-11}
 
 \begin{document}
 \maketitle
@@ -3416,7 +3416,6 @@ Click for answer
 \begin{Highlighting}[]
 \CommentTok{\# load the necessary libraries}
 \FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{library}\NormalTok{(ggplot2)}
 \FunctionTok{library}\NormalTok{(babynames)}
 \end{Highlighting}
 \end{Shaded}
@@ -4048,6 +4047,385 @@ Click for answer
 
 \begin{verbatim}
 [1] 3
+\end{verbatim}
+
+\hypertarget{class-activity-8}{%
+\chapter{Class Activity 8}\label{class-activity-8}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{your-turn-1-1}{%
+\section{Your turn 1}\label{your-turn-1-1}}
+
+The following code chinks create the data objects used in this exercise. Please run the chunks and answer the questions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DBP\_wide }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{id =}\NormalTok{ letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{],}
+ \AttributeTok{sex =} \FunctionTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{),}
+ \AttributeTok{v1.DBP =} \FunctionTok{c}\NormalTok{(}\DecValTok{88}\NormalTok{, }\DecValTok{84}\NormalTok{, }\DecValTok{102}\NormalTok{, }\DecValTok{70}\NormalTok{),}
+ \AttributeTok{v2.DBP =} \FunctionTok{c}\NormalTok{(}\DecValTok{78}\NormalTok{, }\DecValTok{78}\NormalTok{, }\DecValTok{96}\NormalTok{, }\DecValTok{76}\NormalTok{),}
+ \AttributeTok{v3.DBP =} \FunctionTok{c}\NormalTok{(}\DecValTok{94}\NormalTok{, }\DecValTok{82}\NormalTok{, }\DecValTok{94}\NormalTok{, }\DecValTok{74}\NormalTok{),}
+ \AttributeTok{age=}\FunctionTok{c}\NormalTok{(}\DecValTok{23}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{41}\NormalTok{, }\DecValTok{38}\NormalTok{)}
+\NormalTok{ )}
+\NormalTok{DBP\_wide}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 4 x 6
+  id    sex   v1.DBP v2.DBP v3.DBP   age
+  <chr> <chr>  <dbl>  <dbl>  <dbl> <dbl>
+1 a     F         88     78     94    23
+2 b     M         84     78     82    56
+3 c     M        102     96     94    41
+4 d     F         70     76     74    38
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{BP\_wide }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{id =}\NormalTok{ letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{],}
+                     \AttributeTok{sex =} \FunctionTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{),}
+                     \AttributeTok{SBP\_v1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{130}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{130}\NormalTok{, }\DecValTok{119}\NormalTok{),}
+                     \AttributeTok{SBP\_v2 =} \FunctionTok{c}\NormalTok{(}\DecValTok{110}\NormalTok{, }\DecValTok{116}\NormalTok{, }\DecValTok{136}\NormalTok{, }\DecValTok{106}\NormalTok{),}
+                     \AttributeTok{SBP\_v3 =} \FunctionTok{c}\NormalTok{(}\DecValTok{112}\NormalTok{, }\DecValTok{122}\NormalTok{, }\DecValTok{138}\NormalTok{, }\DecValTok{118}\NormalTok{))}
+\NormalTok{BP\_wide}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 4 x 5
+  id    sex   SBP_v1 SBP_v2 SBP_v3
+  <chr> <chr>  <dbl>  <dbl>  <dbl>
+1 a     F        130    110    112
+2 b     M        120    116    122
+3 c     M        130    136    138
+4 d     F        119    106    118
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{BP\_long }\OtherTok{\textless{}{-}}\NormalTok{ BP\_wide }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{names\_to =} \StringTok{"visit"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"SBP"}\NormalTok{, SBP\_v1}\SpecialCharTok{:}\NormalTok{SBP\_v3) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{visit =} \FunctionTok{parse\_number}\NormalTok{(visit))}
+\NormalTok{BP\_long}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 12 x 4
+   id    sex   visit   SBP
+   <chr> <chr> <dbl> <dbl>
+ 1 a     F         1   130
+ 2 a     F         2   110
+ 3 a     F         3   112
+ 4 b     M         1   120
+ 5 b     M         2   116
+ 6 b     M         3   122
+ 7 c     M         1   130
+ 8 c     M         2   136
+ 9 c     M         3   138
+10 d     F         1   119
+11 d     F         2   106
+12 d     F         3   118
+\end{verbatim}
+
+\hypertarget{a.-create-a-long-dataframe-from-dbp_wide-based-on-the-repeated-dbp-columns-and-save-it-as-dbp_long.}{%
+\subsection{\texorpdfstring{a. Create a long dataframe from \texttt{DBP\_wide} based on the repeated DBP columns and save it as \texttt{DBP\_long}.}{a. Create a long dataframe from DBP\_wide based on the repeated DBP columns and save it as DBP\_long.}}\label{a.-create-a-long-dataframe-from-dbp_wide-based-on-the-repeated-dbp-columns-and-save-it-as-dbp_long.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DBP\_long }\OtherTok{\textless{}{-}}\NormalTok{ DBP\_wide }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{names\_to =} \StringTok{"visit"}\NormalTok{,}
+               \AttributeTok{values\_to =} \StringTok{"DBP"}\NormalTok{,}
+               \AttributeTok{cols =}\NormalTok{ v1.DBP}\SpecialCharTok{:}\NormalTok{v3.DBP)}
+\NormalTok{DBP\_long}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 12 x 5
+   id    sex     age visit    DBP
+   <chr> <chr> <dbl> <chr>  <dbl>
+ 1 a     F        23 v1.DBP    88
+ 2 a     F        23 v2.DBP    78
+ 3 a     F        23 v3.DBP    94
+ 4 b     M        56 v1.DBP    84
+ 5 b     M        56 v2.DBP    78
+ 6 b     M        56 v3.DBP    82
+ 7 c     M        41 v1.DBP   102
+ 8 c     M        41 v2.DBP    96
+ 9 c     M        41 v3.DBP    94
+10 d     F        38 v1.DBP    70
+11 d     F        38 v2.DBP    76
+12 d     F        38 v3.DBP    74
+\end{verbatim}
+
+\hypertarget{b.-clean-up-the-visit-column-of-dbp_long-so-that-the-values-are-1-2-3-and-save-it-as-dbp_long.}{%
+\subsection{\texorpdfstring{b. Clean up the visit column of \texttt{DBP\_long} so that the values are 1, 2, 3, and save it as \texttt{DBP\_long}.}{b. Clean up the visit column of DBP\_long so that the values are 1, 2, 3, and save it as DBP\_long.}}\label{b.-clean-up-the-visit-column-of-dbp_long-so-that-the-values-are-1-2-3-and-save-it-as-dbp_long.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DBP\_long }\OtherTok{\textless{}{-}}\NormalTok{ DBP\_long }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{visit =} \FunctionTok{parse\_number}\NormalTok{(visit))}
+\NormalTok{DBP\_long}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 12 x 5
+   id    sex     age visit   DBP
+   <chr> <chr> <dbl> <dbl> <dbl>
+ 1 a     F        23     1    88
+ 2 a     F        23     2    78
+ 3 a     F        23     3    94
+ 4 b     M        56     1    84
+ 5 b     M        56     2    78
+ 6 b     M        56     3    82
+ 7 c     M        41     1   102
+ 8 c     M        41     2    96
+ 9 c     M        41     3    94
+10 d     F        38     1    70
+11 d     F        38     2    76
+12 d     F        38     3    74
+\end{verbatim}
+
+\hypertarget{c.-make-dbp_long-wide-with-column-names-visit.1-visit.2-visit.3-for-the-dbp-values-and-save-it-as-dbp_wide2}{%
+\subsection{\texorpdfstring{c.~Make \texttt{DBP\_long} wide with column names visit.1, visit.2, visit.3 for the DBP values, and save it as \texttt{DBP\_wide2}}{c.~Make DBP\_long wide with column names visit.1, visit.2, visit.3 for the DBP values, and save it as DBP\_wide2}}\label{c.-make-dbp_long-wide-with-column-names-visit.1-visit.2-visit.3-for-the-dbp-values-and-save-it-as-dbp_wide2}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DBP\_wide2 }\OtherTok{\textless{}{-}}\NormalTok{ DBP\_long }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =} \StringTok{"visit"}\NormalTok{,}
+              \AttributeTok{values\_from =} \StringTok{"DBP"}\NormalTok{,}
+              \AttributeTok{names\_prefix =} \StringTok{"visit."}\NormalTok{)}
+\NormalTok{DBP\_wide2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 4 x 6
+  id    sex     age visit.1 visit.2 visit.3
+  <chr> <chr> <dbl>   <dbl>   <dbl>   <dbl>
+1 a     F        23      88      78      94
+2 b     M        56      84      78      82
+3 c     M        41     102      96      94
+4 d     F        38      70      76      74
+\end{verbatim}
+
+\hypertarget{d.-join-dbp_long-with-bp_long2-to-create-a-single-data-frame-with-columns-id-sex-visit-sbp-dbp-and-age.-save-this-as-bp_both_long.}{%
+\subsection{\texorpdfstring{d.~Join \texttt{DBP\_long} with \texttt{BP\_long2} to create a single data frame with columns id, sex, visit, SBP, DBP, and age. Save this as \texttt{BP\_both\_long.}}{d.~Join DBP\_long with BP\_long2 to create a single data frame with columns id, sex, visit, SBP, DBP, and age. Save this as BP\_both\_long.}}\label{d.-join-dbp_long-with-bp_long2-to-create-a-single-data-frame-with-columns-id-sex-visit-sbp-dbp-and-age.-save-this-as-bp_both_long.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{BP\_both\_long }\OtherTok{\textless{}{-}} \FunctionTok{left\_join}\NormalTok{(BP\_long, DBP\_long, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"id"}\NormalTok{, }\StringTok{"sex"}\NormalTok{, }\StringTok{"visit"}\NormalTok{))}
+\NormalTok{BP\_both\_long}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 12 x 6
+   id    sex   visit   SBP   age   DBP
+   <chr> <chr> <dbl> <dbl> <dbl> <dbl>
+ 1 a     F         1   130    23    88
+ 2 a     F         2   110    23    78
+ 3 a     F         3   112    23    94
+ 4 b     M         1   120    56    84
+ 5 b     M         2   116    56    78
+ 6 b     M         3   122    56    82
+ 7 c     M         1   130    41   102
+ 8 c     M         2   136    41    96
+ 9 c     M         3   138    41    94
+10 d     F         1   119    38    70
+11 d     F         2   106    38    76
+12 d     F         3   118    38    74
+\end{verbatim}
+
+\hypertarget{e.-calculate-the-mean-sbp-and-dbp-for-each-visit-and-save-the-result-as-mean_bp_by_visit.}{%
+\subsection{\texorpdfstring{e. Calculate the mean SBP and DBP for each visit and save the result as \texttt{mean\_BP\_by\_visit.}}{e. Calculate the mean SBP and DBP for each visit and save the result as mean\_BP\_by\_visit.}}\label{e.-calculate-the-mean-sbp-and-dbp-for-each-visit-and-save-the-result-as-mean_bp_by_visit.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean\_BP\_by\_visit }\OtherTok{\textless{}{-}}\NormalTok{ BP\_both\_long }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(visit) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{mean\_SBP =} \FunctionTok{mean}\NormalTok{(SBP),}
+            \AttributeTok{mean\_DBP =} \FunctionTok{mean}\NormalTok{(DBP))}
+\NormalTok{mean\_BP\_by\_visit}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 3 x 3
+  visit mean_SBP mean_DBP
+  <dbl>    <dbl>    <dbl>
+1     1     125.       86
+2     2     117        82
+3     3     122.       86
+\end{verbatim}
+
+\hypertarget{your-turn-2}{%
+\section{Your turn 2}\label{your-turn-2}}
+
+\hypertarget{a.-parsing-complex-dates-use-dmy_hms-to-parse-the-following-date-time-string-25-dec-2020-173000}{%
+\subsection{\texorpdfstring{a. Parsing Complex Dates: Use \texttt{dmy\_hms()} to parse the following date-time string: ``25-Dec-2020 17:30:00''}{a. Parsing Complex Dates: Use dmy\_hms() to parse the following date-time string: ``25-Dec-2020 17:30:00''}}\label{a.-parsing-complex-dates-use-dmy_hms-to-parse-the-following-date-time-string-25-dec-2020-173000}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{parsed\_date }\OtherTok{\textless{}{-}} \FunctionTok{dmy\_hms}\NormalTok{(}\StringTok{"25{-}Dec{-}2020 17:30:00"}\NormalTok{)}
+\NormalTok{parsed\_date}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "2020-12-25 17:30:00 UTC"
+\end{verbatim}
+
+\hypertarget{b.-advanced-date-arithmetic-calculate-the-exact-age-in-years-for-someone-born-on-1995-05-15-093000.}{%
+\subsection{b. Advanced Date Arithmetic: Calculate the exact age in years for someone born on ``1995-05-15 09:30:00''.}\label{b.-advanced-date-arithmetic-calculate-the-exact-age-in-years-for-someone-born-on-1995-05-15-093000.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dob }\OtherTok{\textless{}{-}} \FunctionTok{ymd\_hms}\NormalTok{(}\StringTok{"1995{-}05{-}15 09:30:00"}\NormalTok{)}
+\NormalTok{exact\_age }\OtherTok{\textless{}{-}} \FunctionTok{as.duration}\NormalTok{(}\FunctionTok{interval}\NormalTok{(dob, }\FunctionTok{now}\NormalTok{())) }\SpecialCharTok{/} \FunctionTok{dyears}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{exact\_age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 27.90852
+\end{verbatim}
+
+\hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
+\subsection{\texorpdfstring{c.~Creating Date-Time Objects: Create a date-time object for March 15, 2020, 13:30:00 using \texttt{make\_datetime()}.}{c.~Creating Date-Time Objects: Create a date-time object for March 15, 2020, 13:30:00 using make\_datetime().}}\label{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_date\_time }\OtherTok{\textless{}{-}} \FunctionTok{make\_datetime}\NormalTok{(}\DecValTok{2020}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{new\_date\_time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "2020-03-15 13:30:00 UTC"
+\end{verbatim}
+
+\hypertarget{d.-extracting-components-from-date-time-objects-extract-the-year-month-as-a-number-day-hour-and-minute-from-2022-07-01-144500.}{%
+\subsection{d.~Extracting Components from Date-Time Objects: Extract the year, month (as a number), day, hour, and minute from ``2022-07-01 14:45:00''.}\label{d.-extracting-components-from-date-time-objects-extract-the-year-month-as-a-number-day-hour-and-minute-from-2022-07-01-144500.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_date\_time }\OtherTok{\textless{}{-}} \FunctionTok{ymd\_hms}\NormalTok{(}\StringTok{"2022{-}07{-}01 14:45:00"}\NormalTok{)}
+\NormalTok{extracted\_components }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{year =} \FunctionTok{year}\NormalTok{(example\_date\_time),}
+  \AttributeTok{month =} \FunctionTok{month}\NormalTok{(example\_date\_time),}
+  \AttributeTok{day =} \FunctionTok{day}\NormalTok{(example\_date\_time),}
+  \AttributeTok{hour =} \FunctionTok{hour}\NormalTok{(example\_date\_time),}
+  \AttributeTok{minute =} \FunctionTok{minute}\NormalTok{(example\_date\_time)}
+\NormalTok{)}
+\NormalTok{extracted\_components}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 5
+   year month   day  hour minute
+  <dbl> <dbl> <int> <int>  <int>
+1  2022     7     1    14     45
+\end{verbatim}
+
+\hypertarget{e.-advanced-date-time-arithmetic-with-periods-add-2-months-and-15-days-to-2021-08-01.}{%
+\subsection{e. Advanced Date-Time Arithmetic with Periods: Add 2 months and 15 days to ``2021-08-01''.}\label{e.-advanced-date-time-arithmetic-with-periods-add-2-months-and-15-days-to-2021-08-01.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_date }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2021{-}08{-}01"}\NormalTok{)}
+\NormalTok{new\_date }\OtherTok{\textless{}{-}}\NormalTok{ initial\_date }\SpecialCharTok{+} \FunctionTok{months}\NormalTok{(}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{days}\NormalTok{(}\DecValTok{15}\NormalTok{)}
+\NormalTok{new\_date}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "2021-10-16"
+\end{verbatim}
+
+\hypertarget{f.-duration-and-time-differences-calculate-the-duration-in-days-weeks-months-and-years-between-2019-04-01-and-2022-04-01.}{%
+\subsection{f.~Duration and Time Differences: Calculate the duration in days, weeks, months, and years between ``2019-04-01'' and ``2022-04-01''.}\label{f.-duration-and-time-differences-calculate-the-duration-in-days-weeks-months-and-years-between-2019-04-01-and-2022-04-01.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start\_date }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2019{-}04{-}01"}\NormalTok{)}
+\NormalTok{end\_date }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}04{-}01"}\NormalTok{)}
+\NormalTok{time\_diff }\OtherTok{\textless{}{-}}\NormalTok{ end\_date }\SpecialCharTok{{-}}\NormalTok{ start\_date}
+\NormalTok{duration\_days }\OtherTok{\textless{}{-}} \FunctionTok{as.duration}\NormalTok{(time\_diff)}
+\NormalTok{duration\_weeks }\OtherTok{\textless{}{-}}\NormalTok{ duration\_days }\SpecialCharTok{/} \FunctionTok{dweeks}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{duration\_months }\OtherTok{\textless{}{-}}\NormalTok{ duration\_days }\SpecialCharTok{/} \FunctionTok{dmonths}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{duration\_years }\OtherTok{\textless{}{-}}\NormalTok{ duration\_days }\SpecialCharTok{/} \FunctionTok{dyears}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{duration\_results }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{days =}\NormalTok{ duration\_days,}
+  \AttributeTok{weeks =}\NormalTok{ duration\_weeks,}
+  \AttributeTok{months =}\NormalTok{ duration\_months,}
+  \AttributeTok{years =}\NormalTok{ duration\_years}
+\NormalTok{)}
+\NormalTok{duration\_results}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 4
+  days                 weeks months years
+  <Duration>           <dbl>  <dbl> <dbl>
+1 94694400s (~3 years)  157.   36.0  3.00
 \end{verbatim}
 
 \hypertarget{part-extra-materials}{%

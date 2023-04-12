@@ -4,7 +4,6 @@
 ```r
 # load the necessary libraries
 library(tidyverse)
-library(ggplot2)
 library(babynames)
 ```
 
