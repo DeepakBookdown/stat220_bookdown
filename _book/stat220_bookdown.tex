@@ -139,7 +139,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-04-12}
+\date{2023-04-13}
 
 \begin{document}
 \maketitle
@@ -4326,7 +4326,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 27.91016
+[1] 27.91433
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4427,6 +4427,291 @@ Click for answer
   <Duration>           <dbl>  <dbl> <dbl>
 1 94694400s (~3 years)  157.   36.0  3.00
 \end{verbatim}
+
+\hypertarget{class-activity-9}{%
+\chapter{Class Activity 9}\label{class-activity-9}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{your-turn-1-2}{%
+\section{Your Turn 1}\label{your-turn-1-2}}
+
+\hypertarget{a-read_csv}{%
+\subsection{\texorpdfstring{a) \texttt{read\_csv()}}{a) read\_csv()}}\label{a-read_csv}}
+
+Use \texttt{read\_csv()} to import the \texttt{desserts} data set from \url{https://raw.githubusercontent.com/deepbas/statdatasets/main/desserts.csv}. Use \texttt{glimpse} to see if the data import is alright.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{url }\OtherTok{\textless{}{-}} \StringTok{"https://raw.githubusercontent.com/deepbas/statdatasets/main/desserts.csv"}
+\NormalTok{desserts }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(url)}
+\FunctionTok{glimpse}\NormalTok{(desserts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 549
+Columns: 16
+$ series                <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+$ episode               <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+$ baker                 <chr> "Annetha", "David", "Edd", "~
+$ technical             <chr> "2nd", "3rd", "1st", "N/A", ~
+$ result                <chr> "IN", "IN", "IN", "IN", "IN"~
+$ uk_airdate            <chr> "17 August 2010", "17 August~
+$ us_season             <dbl> NA, NA, NA, NA, NA, NA, NA, ~
+$ us_airdate            <date> NA, NA, NA, NA, NA, NA, NA,~
+$ showstopper_chocolate <chr> "chocolate", "chocolate", "n~
+$ showstopper_dessert   <chr> "other", "other", "other", "~
+$ showstopper_fruit     <chr> "no fruit", "no fruit", "no ~
+$ showstopper_nut       <chr> "no nut", "no nut", "no nut"~
+$ signature_chocolate   <chr> "no chocolate", "chocolate",~
+$ signature_dessert     <chr> "cake", "cake", "cake", "cak~
+$ signature_fruit       <chr> "no fruit", "fruit", "fruit"~
+$ signature_nut         <chr> "no nut", "no nut", "no nut"~
+\end{verbatim}
+
+\hypertarget{b-are-there-any-issues-with-the-data-import-if-so-what-are-they}{%
+\subsection{b) Are there any issues with the data import? If so, what are they?}\label{b-are-there-any-issues-with-the-data-import-if-so-what-are-they}}
+
+Click for answer
+
+\emph{Answer:} Based on the output of glimpse, we can see that the `technical' column should be a numeric column and the `uk\_airdate' column should be a date column. We can also identify any issues with missing values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# your r{-}code}
+
+\NormalTok{desserts }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(url,}
+  \AttributeTok{col\_types =} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{technical =} \FunctionTok{col\_number}\NormalTok{(),}
+    \AttributeTok{uk\_airdate =} \FunctionTok{col\_date}\NormalTok{()}
+\NormalTok{  )}
+\NormalTok{)}
+
+\FunctionTok{problems}\NormalTok{(desserts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 556 x 5
+     row   col expected        actual         file 
+   <int> <int> <chr>           <chr>          <chr>
+ 1     2     6 date in ISO8601 17 August 2010 ""   
+ 2     3     6 date in ISO8601 17 August 2010 ""   
+ 3     4     6 date in ISO8601 17 August 2010 ""   
+ 4     5     4 a number        N/A            ""   
+ 5     5     6 date in ISO8601 17 August 2010 ""   
+ 6     6     6 date in ISO8601 17 August 2010 ""   
+ 7     7     4 a number        N/A            ""   
+ 8     7     6 date in ISO8601 17 August 2010 ""   
+ 9     8     6 date in ISO8601 17 August 2010 ""   
+10     9     4 a number        N/A            ""   
+# ... with 546 more rows
+\end{verbatim}
+
+\hypertarget{c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any.}{%
+\subsection{c) Import the dataset with correct data types, if needed. Fix the problems, if any.}\label{c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{desserts }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(url,}
+  \AttributeTok{col\_types =} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{technical =} \FunctionTok{col\_number}\NormalTok{(),}
+    \AttributeTok{uk\_airdate =} \FunctionTok{col\_date}\NormalTok{()}
+\NormalTok{  )}
+\NormalTok{)}
+
+\FunctionTok{problems}\NormalTok{(desserts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 556 x 5
+     row   col expected        actual         file 
+   <int> <int> <chr>           <chr>          <chr>
+ 1     2     6 date in ISO8601 17 August 2010 ""   
+ 2     3     6 date in ISO8601 17 August 2010 ""   
+ 3     4     6 date in ISO8601 17 August 2010 ""   
+ 4     5     4 a number        N/A            ""   
+ 5     5     6 date in ISO8601 17 August 2010 ""   
+ 6     6     6 date in ISO8601 17 August 2010 ""   
+ 7     7     4 a number        N/A            ""   
+ 8     7     6 date in ISO8601 17 August 2010 ""   
+ 9     8     6 date in ISO8601 17 August 2010 ""   
+10     9     4 a number        N/A            ""   
+# ... with 546 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{desserts }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(url,}
+    \AttributeTok{col\_types =} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{technical =} \FunctionTok{col\_number}\NormalTok{(), }
+    \AttributeTok{uk\_airdate =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%d \%B \%Y"}\NormalTok{)}
+\NormalTok{  ) }
+\NormalTok{)}
+
+\FunctionTok{problems}\NormalTok{(desserts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 7 x 5
+    row   col expected actual file 
+  <int> <int> <chr>    <chr>  <chr>
+1     5     4 a number N/A    ""   
+2     7     4 a number N/A    ""   
+3     9     4 a number N/A    ""   
+4    11     4 a number N/A    ""   
+5    35     4 a number N/A    ""   
+6    36     4 a number N/A    ""   
+7    37     4 a number N/A    ""   
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{desserts }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(url,}
+  \AttributeTok{col\_types =} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{technical =} \FunctionTok{col\_number}\NormalTok{(), }
+    \AttributeTok{uk\_airdate =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%d \%B \%Y"}\NormalTok{)}
+\NormalTok{  ),}
+  \AttributeTok{na =} \FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"NA"}\NormalTok{, }\StringTok{"N/A"}\NormalTok{)}
+\NormalTok{)}
+
+\FunctionTok{problems}\NormalTok{(desserts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 0 x 5
+# ... with 5 variables: row <int>, col <int>,
+#   expected <chr>, actual <chr>, file <chr>
+\end{verbatim}
+
+\hypertarget{your-turn-2-1}{%
+\section{Your Turn 2}\label{your-turn-2-1}}
+
+Use the appropriate \texttt{read\_\textless{}type\textgreater{}()} function to import the following data sets:
+
+\begin{itemize}
+\item
+  \texttt{https://deepbas.io/data/simple-1.dat}
+\item
+  \texttt{https://deepbas.io/data/mild-1.csv}
+\item
+  \texttt{https://deepbas.io/data/tricky-1.csv}
+\item
+  \texttt{https://deepbas.io/data/tricky-2.csv}
+\end{itemize}
+
+Identify and fix any issues you encounter.
+
+\hypertarget{a-importing-simple-data}{%
+\subsection{a) Importing simple data:}\label{a-importing-simple-data}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simple1 }\OtherTok{\textless{}{-}}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://deepbas.io/data/simple{-}1.dat"}\NormalTok{)}
+\FunctionTok{problems}\NormalTok{(simple1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 0 x 5
+# ... with 5 variables: row <int>, col <int>,
+#   expected <chr>, actual <chr>, file <chr>
+\end{verbatim}
+
+\hypertarget{b-importing-mildly-tricky-data}{%
+\subsection{b) Importing mildly tricky data:}\label{b-importing-mildly-tricky-data}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mild1 }\OtherTok{\textless{}{-}}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_delim}\NormalTok{(}\StringTok{"https://deepbas.io/data/mild{-}1.csv"}\NormalTok{, }\AttributeTok{delim =} \StringTok{"|"}\NormalTok{)}
+\FunctionTok{problems}\NormalTok{(mild1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 0 x 5
+# ... with 5 variables: row <int>, col <int>,
+#   expected <chr>, actual <chr>, file <chr>
+\end{verbatim}
+
+\hypertarget{c-importing-tricky-data-1}{%
+\subsection{c) Importing tricky data 1:}\label{c-importing-tricky-data-1}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tricky1 }\OtherTok{\textless{}{-}}  \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://deepbas.io/data/tricky{-}1.csv"}\NormalTok{)}
+\FunctionTok{problems}\NormalTok{(tricky1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 2 x 5
+    row   col expected  actual    file 
+  <int> <int> <chr>     <chr>     <chr>
+1     4     4 5 columns 4 columns ""   
+2     7     4 5 columns 4 columns ""   
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fix missing values}
+\NormalTok{tricky1[}\DecValTok{3}\NormalTok{, ] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(tricky1[}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{], }\ConstantTok{NA}\NormalTok{, tricky1[}\DecValTok{3}\NormalTok{, }\DecValTok{3}\SpecialCharTok{:}\DecValTok{4}\NormalTok{])}
+\NormalTok{tricky1[}\DecValTok{6}\NormalTok{, ] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(tricky1[}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{], }\ConstantTok{NA}\NormalTok{, tricky1[}\DecValTok{4}\NormalTok{, }\DecValTok{3}\SpecialCharTok{:}\DecValTok{5}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{d-importing-tricky-data-2}{%
+\subsection{d) Importing tricky data 2:}\label{d-importing-tricky-data-2}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tricky2 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://deepbas.io/data/tricky{-}2.csv"}\NormalTok{)}
+\FunctionTok{problems}\NormalTok{(tricky2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 0 x 5
+# ... with 5 variables: row <int>, col <int>,
+#   expected <chr>, actual <chr>, file <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fix missing values}
+\NormalTok{tricky2\_part1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://deepbas.io/data/tricky{-}2.csv"}\NormalTok{, }\AttributeTok{n\_max =} \DecValTok{7}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate}\NormalTok{(city, }\FunctionTok{c}\NormalTok{(}\StringTok{"city"}\NormalTok{, }\StringTok{"state"}\NormalTok{), }\AttributeTok{sep =} \StringTok{","}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{))}
+
+\NormalTok{tricky2\_part2 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}
+  \StringTok{"https://deepbas.io/data/tricky{-}2.csv"}\NormalTok{,}
+  \AttributeTok{skip =} \DecValTok{8}\NormalTok{, }
+  \AttributeTok{col\_names =} \FunctionTok{c}\NormalTok{(}\StringTok{"iata"}\NormalTok{, }\StringTok{"airport"}\NormalTok{, }\StringTok{"city"}\NormalTok{, }\StringTok{"state"}\NormalTok{,  }\StringTok{"latitude"}\NormalTok{, }\StringTok{"longitude"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Combine parts}
+\NormalTok{data\_combined }\OtherTok{\textless{}{-}} \FunctionTok{full\_join}\NormalTok{(tricky2\_part1, tricky2\_part2)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{part-extra-materials}{%
 \part*{Extra Materials}\label{part-extra-materials}}

@@ -140,6 +140,16 @@ c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000
 d.-extracting-components-from-date-time-objects-extract-the-year-month-as-a-number-day-hour-and-minute-from-2022-07-01-144500.
 e.-advanced-date-time-arithmetic-with-periods-add-2-months-and-15-days-to-2021-08-01.
 f.-duration-and-time-differences-calculate-the-duration-in-days-weeks-months-and-years-between-2019-04-01-and-2022-04-01.
+class-activity-9
+your-turn-1-2
+a-read_csv
+b-are-there-any-issues-with-the-data-import-if-so-what-are-they
+c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any.
+your-turn-2-1
+a-importing-simple-data
+b-importing-mildly-tricky-data
+c-importing-tricky-data-1
+d-importing-tricky-data-2
 helpful-r-codes
 residual-plots-in-ggplot2
 plotly-codes

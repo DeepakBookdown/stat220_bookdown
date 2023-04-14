@@ -1,0 +1,171 @@
+# Class Activity 9
+
+```{r}
+# load the necessary libraries
+library(tidyverse)
+```
+
+
+## Your Turn 1
+
+### a) `read_csv()`
+
+Use `read_csv()` to import the `desserts` data set from https://raw.githubusercontent.com/deepbas/statdatasets/main/desserts.csv. Use `glimpse` to see if the data import is alright.
+
+```{r}
+url <- "https://raw.githubusercontent.com/deepbas/statdatasets/main/desserts.csv"
+desserts <- read_csv(url)
+glimpse(desserts)
+```
+
+### b) Are there any issues with the data import? If so, what are they?
+<details>
+<summary class="answer">Click for answer</summary>
+
+*Answer:* Based on the output of glimpse, we can see that the 'technical' column should be a numeric column and the 'uk_airdate' column should be a date column. We can also identify any issues with missing values.
+
+
+```{r}
+# your r-code
+
+desserts <- read_csv(url,
+  col_types = list(
+    technical = col_number(),
+    uk_airdate = col_date()
+  )
+)
+
+problems(desserts)
+```
+
+</details>
+
+
+### c) Import the dataset with correct data types, if needed. Fix the problems, if any.
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+```{R}
+desserts <- read_csv(url,
+  col_types = list(
+    technical = col_number(),
+    uk_airdate = col_date()
+  )
+)
+
+problems(desserts)
+```
+
+
+
+```{r}
+desserts <- read_csv(url,
+    col_types = list(
+    technical = col_number(), 
+    uk_airdate = col_date(format = "%d %B %Y")
+  ) 
+)
+
+problems(desserts)
+```
+
+
+
+```{r}
+desserts <- read_csv(url,
+  col_types = list(
+    technical = col_number(), 
+    uk_airdate = col_date(format = "%d %B %Y")
+  ),
+  na = c("", "NA", "N/A")
+)
+
+problems(desserts)
+```
+
+</details>
+
+
+## Your Turn 2
+
+Use the appropriate `read_<type>()` function to import the following data sets:
+
+- `https://deepbas.io/data/simple-1.dat`
+
+- `https://deepbas.io/data/mild-1.csv`
+
+- `https://deepbas.io/data/tricky-1.csv`
+
+- `https://deepbas.io/data/tricky-2.csv`
+
+
+Identify and fix any issues you encounter.
+
+### a)  Importing simple data:
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+```{r}
+simple1 <- readr::read_csv("https://deepbas.io/data/simple-1.dat")
+problems(simple1)
+```
+
+</details>
+
+### b) Importing mildly tricky data:
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+```{r}
+mild1 <- readr::read_delim("https://deepbas.io/data/mild-1.csv", delim = "|")
+problems(mild1)
+```
+
+</details>
+
+### c) Importing tricky data 1:
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+```{r}
+tricky1 <-  read_csv("https://deepbas.io/data/tricky-1.csv")
+problems(tricky1)
+
+# Fix missing values
+tricky1[3, ] <- c(tricky1[3, 1:2], NA, tricky1[3, 3:4])
+tricky1[6, ] <- c(tricky1[4, 1], NA, tricky1[4, 3:5])
+```
+
+</details>
+
+
+### d) Importing tricky data 2:
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+```{r}
+tricky2 <- read_csv("https://deepbas.io/data/tricky-2.csv")
+problems(tricky2)
+
+# Fix missing values
+tricky2_part1 <- read_csv("https://deepbas.io/data/tricky-2.csv", n_max = 7) %>%
+  separate(city, c("city", "state"), sep = ",") %>%
+  select(-c(7))
+
+tricky2_part2 <- read_csv(
+  "https://deepbas.io/data/tricky-2.csv",
+  skip = 8, 
+  col_names = c("iata", "airport", "city", "state",  "latitude", "longitude")
+)
+
+# Combine parts
+data_combined <- full_join(tricky2_part1, tricky2_part2)
+
+```
+
+</details>
