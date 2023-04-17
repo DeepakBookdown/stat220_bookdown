@@ -42,6 +42,7 @@ $ signature_nut         <chr> "no nut", "no nut", "no nut"…
 ```
 
 ### b) Are there any issues with the data import? If so, what are they?
+
 <details>
 <summary class="answer">Click for answer</summary>
 

@@ -19,6 +19,7 @@ glimpse(desserts)
 ```
 
 ### b) Are there any issues with the data import? If so, what are they?
+
 <details>
 <summary class="answer">Click for answer</summary>
 
