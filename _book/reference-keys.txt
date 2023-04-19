@@ -160,6 +160,11 @@ your-turn-2-2
 a.-which-religions-watch-the-least-tv
 b.-do-married-people-watch-more-or-less-tv-than-single-people
 c.-collapse-the-marital-variable-to-have-levels-married-not_married-and-no_answer.-include-never-married-divorced-and-widowed-in-not_married
+class-activity-11
+problem-1
+problem-2
+problem-3
+problem-4
 helpful-r-codes
 residual-plots-in-ggplot2
 plotly-codes

@@ -139,7 +139,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-04-16}
+\date{2023-04-19}
 
 \begin{document}
 \maketitle
@@ -4326,7 +4326,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 27.92243
+[1] 27.92929
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4759,30 +4759,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Middle East      91 9th      
- 2     2 9th   Europe           69 9th      
- 3     4 9th   North America    91 9th      
- 4     6 9th   Europe           53 9th      
- 5    12 9th   South America    99 9th      
- 6    18 9th   Africa           84 9th      
- 7    21 9th   North America    98 9th      
- 8    22 9th   South America    57 9th      
- 9    24 9th   Asia             88 9th      
-10     3 10th  Middle East      58 10th     
-11     9 10th  Middle East      89 10th     
-12    11 10th  Europe           79 10th     
-13    14 10th  Europe           85 10th     
-14    20 10th  Europe           58 10th     
-15    23 10th  South America    80 10th     
-16     5 11th  South America    80 11th     
-17     7 11th  Middle East      80 11th     
-18     8 11th  Europe          100 11th     
-19    10 11th  Middle East      83 11th     
-20    13 11th  South America    56 11th     
-21    15 11th  Europe           95 11th     
-22    16 11th  Africa           86 11th     
-23    17 11th  Europe           90 11th     
-24    19 11th  Asia             71 11th     
+ 1     5 9th   Middle East      56 9th      
+ 2    12 9th   Europe           65 9th      
+ 3    13 9th   Middle East      82 9th      
+ 4     2 10th  Europe           69 10th     
+ 5     3 10th  Europe           92 10th     
+ 6     4 10th  North America    51 10th     
+ 7     8 10th  South America    91 10th     
+ 8     9 10th  Europe          100 10th     
+ 9    11 10th  Asia             94 10th     
+10    14 10th  Africa           55 10th     
+11    15 10th  North America    78 10th     
+12    16 10th  Middle East      54 10th     
+13    20 10th  Middle East      82 10th     
+14    22 10th  North America    99 10th     
+15    24 10th  South America    76 10th     
+16     1 11th  Europe           92 11th     
+17     6 11th  Middle East     100 11th     
+18     7 11th  Africa           52 11th     
+19    10 11th  Europe           95 11th     
+20    17 11th  South America    71 11th     
+21    18 11th  South America    87 11th     
+22    19 11th  North America    59 11th     
+23    21 11th  North America    74 11th     
+24    23 11th  Europe           83 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4809,9 +4809,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                15
-2 Asia                 2
-3 Americas             7
+1 EMEA                14
+2 Asia                 1
+3 Americas             9
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4832,7 +4832,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "9th"  "11th" "10th"
+[1] "10th" "11th" "9th" 
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4852,12 +4852,11 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 3 x 2
+# A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 9th              9
-2 10th             6
-3 11th             9
+1 10th            12
+2 Others          12
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -4965,6 +4964,535 @@ Click for answer
 
 \begin{verbatim}
 [1] "no_answer"   "not_married" "married"    
+\end{verbatim}
+
+\hypertarget{class-activity-11}{%
+\chapter{Class Activity 11}\label{class-activity-11}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{problem-1}{%
+\section{Problem 1}\label{problem-1}}
+
+Let's learn about combining strings with different separators first.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{place }\OtherTok{\textless{}{-}} \StringTok{"Central Park"}
+\NormalTok{activity }\OtherTok{\textless{}{-}} \StringTok{"jogging"}
+\NormalTok{activities }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"jogging"}\NormalTok{, }\StringTok{"picnicking"}\NormalTok{, }\StringTok{"boating"}\NormalTok{)}
+\NormalTok{my\_sentence }\OtherTok{\textless{}{-}} \FunctionTok{str\_c}\NormalTok{(place, }\StringTok{" is great for "}\NormalTok{, activity, }\StringTok{"."}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)}
+\NormalTok{my\_sentence}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park is great for jogging."
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  What happens when a \texttt{str\_c} entry is a vector?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} When an entry in \texttt{str\_c} is a vector, it will combine the strings with each element of the vector, creating multiple combined strings.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentences }\OtherTok{\textless{}{-}} \FunctionTok{str\_c}\NormalTok{(place, }\StringTok{" is great for "}\NormalTok{, activities, }\StringTok{"."}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)}
+\NormalTok{my\_sentences}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park is great for jogging."   
+[2] "Central Park is great for picnicking."
+[3] "Central Park is great for boating."   
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  How do you combine strings with \texttt{str\_glue}?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can combine strings with \texttt{str\_glue} using curly braces \texttt{\{\}} to insert variables directly into the string.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentence }\OtherTok{\textless{}{-}} \FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{place\} is great for \{activity\}."}\NormalTok{)}
+\NormalTok{my\_sentence}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Central Park is great for jogging.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentences1 }\OtherTok{\textless{}{-}} \FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{place\} is great for \{activities\}."}\NormalTok{)}
+\NormalTok{my\_sentences1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Central Park is great for jogging.
+Central Park is great for picnicking.
+Central Park is great for boating.
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What does \texttt{str\_flatten} do?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} \texttt{str\_flatten} collapses a character vector into a single string by concatenating the elements with a specified separator.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_flatten}\NormalTok{(my\_sentences, }\AttributeTok{collapse =} \StringTok{" and "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park is great for jogging. and Central Park is great for picnicking. and Central Park is great for boating."
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What will using a \texttt{\textbackslash{}n} separator do in the command below?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Using a \texttt{\textbackslash{}n} separator in the command will insert a newline character between the strings being combined, making them display on separate lines when printed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{str\_c}\NormalTok{(place, }\StringTok{" is great for "}\NormalTok{, activity, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\FunctionTok{writeLines}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Central Park
+ is great for 
+jogging
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Does \texttt{str\_length} count spaces and special characters??
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Yes, \texttt{str\_length} counts spaces and special characters as part of the string's length.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park\n is great for \njogging"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_length}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 35
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  How do you count the number of \texttt{e}'s in a string?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can count the number of \texttt{e}`s in a string using \texttt{str\_count} with a pattern that matches the character 'e'.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{text }\OtherTok{\textless{}{-}} \StringTok{"The quick brown fox jumps over the lazy dog."}
+\NormalTok{pattern }\OtherTok{\textless{}{-}} \StringTok{"e"}
+\NormalTok{vowel\_count }\OtherTok{\textless{}{-}} \FunctionTok{str\_count}\NormalTok{(text, pattern)}
+\NormalTok{vowel\_count}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  What happens with negative positions?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Negative positions in \texttt{str\_sub} count the positions from the end of the string rather than from the beginning.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \SpecialCharTok{{-}}\DecValTok{3}\NormalTok{, }\AttributeTok{end =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "ng."
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  How do you extract a \texttt{substring} with positive and negative positions?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can extract a \texttt{substring} with positive and negative positions using \texttt{str\_sub} and specifying the start and end positions with either positive or negative numbers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentence }\OtherTok{\textless{}{-}} \StringTok{"Central Park is great for jogging."}
+\NormalTok{positive\_substr }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \DecValTok{1}\NormalTok{, }\AttributeTok{end =} \DecValTok{12}\NormalTok{)}
+\NormalTok{negative\_substr }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \SpecialCharTok{{-}}\DecValTok{8}\NormalTok{, }\AttributeTok{end =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{positive\_substr}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{negative\_substr}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "jogging."
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  With a vector of positions?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Using a vector of positions with \texttt{str\_sub} will extract \texttt{substrings} starting and ending at the specified positions in the vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{), }\AttributeTok{end =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{15}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Cent"    "Park is"
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  How do you extract multiple \texttt{substrings} using a vector of positions?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can extract multiple \texttt{substrings} using a vector of positions with \texttt{str\_sub} by specifying the start and end positions in separate vectors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentence }\OtherTok{\textless{}{-}} \StringTok{"Central Park is great for jogging."}
+\NormalTok{substrs }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{24}\NormalTok{), }\AttributeTok{end =} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{30}\NormalTok{))}
+\NormalTok{substrs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park" "is gre"       "or jogg"     
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{problem-2}{%
+\section{Problem 2}\label{problem-2}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Use the string parsing functions that you learned today to do tasks described in the comments below:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s1 }\OtherTok{\textless{}{-}} \StringTok{"12\%"}  \CommentTok{\# remove \%}
+\NormalTok{s2 }\OtherTok{\textless{}{-}} \StringTok{"New Jersey\_*"}  \CommentTok{\# remove \_*}
+\NormalTok{s3 }\OtherTok{\textless{}{-}} \StringTok{"2,150"}    \CommentTok{\# remove comma(,)}
+\NormalTok{s4 }\OtherTok{\textless{}{-}} \StringTok{"Learning \#datascience is fun!"}   \CommentTok{\# extract \#datascience}
+\NormalTok{s5 }\OtherTok{\textless{}{-}} \StringTok{"123 Main St, Springfield, MA, 01101"}   \CommentTok{\# separate info}
+\end{Highlighting}
+\end{Shaded}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cleaning steps}
+\NormalTok{s1\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_replace}\NormalTok{(s1, }\StringTok{"\%"}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{s2\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_replace}\NormalTok{(s2, }\StringTok{"\_}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{*"}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{s3\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_replace}\NormalTok{(s3, }\StringTok{","}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{s4\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_extract}\NormalTok{(s4, }\StringTok{"\#}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{w+"}\NormalTok{)}
+\NormalTok{s5\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_split}\NormalTok{(s5, }\StringTok{",}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s?"}\NormalTok{)}
+
+\CommentTok{\# Print cleaned strings}
+\NormalTok{s1\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "12"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s2\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "New Jersey"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s3\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "2150"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s4\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "#datascience"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s5\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[1]]
+[1] "123 Main St" "Springfield" "MA"          "01101"      
+\end{verbatim}
+
+\hypertarget{problem-3}{%
+\section{Problem 3}\label{problem-3}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Use the string parsing functions that you learned today to do tasks described in the comments below:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s1 }\OtherTok{\textless{}{-}} \StringTok{"25\%"}  \CommentTok{\# remove \%}
+\NormalTok{s2 }\OtherTok{\textless{}{-}} \StringTok{"Los Angeles\_\#"}  \CommentTok{\# remove \_\#}
+\NormalTok{s3 }\OtherTok{\textless{}{-}} \StringTok{"1,250"}    \CommentTok{\# remove comma(,)}
+\NormalTok{s4 }\OtherTok{\textless{}{-}} \StringTok{"Discover \#machinelearning today!"}   \CommentTok{\# extract \#machinelearning}
+\NormalTok{s5 }\OtherTok{\textless{}{-}} \StringTok{"456 Main St, San Francisco, CA, 94107"}   \CommentTok{\# separate info}
+\end{Highlighting}
+\end{Shaded}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cleaning steps}
+\NormalTok{s1\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_replace}\NormalTok{(s1, }\StringTok{"\%"}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{s2\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_replace}\NormalTok{(s2, }\StringTok{"\_\#"}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{s3\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_replace}\NormalTok{(s3, }\StringTok{","}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{s4\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_extract}\NormalTok{(s4, }\StringTok{"\#}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{w+"}\NormalTok{)}
+\NormalTok{s5\_clean }\OtherTok{\textless{}{-}} \FunctionTok{str\_split}\NormalTok{(s5, }\StringTok{",}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s?"}\NormalTok{)}
+
+\CommentTok{\# Print cleaned strings}
+\NormalTok{s1\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "25"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s2\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Los Angeles"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s3\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "1250"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s4\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "#machinelearning"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s5\_clean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[1]]
+[1] "456 Main St"   "San Francisco" "CA"           
+[4] "94107"        
+\end{verbatim}
+
+\hypertarget{problem-4}{%
+\section{Problem 4}\label{problem-4}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Let's look at the following dataset containing information about movies and their release years. We'll extract the release year from the movie title, create a new column with decades, and count the number of movies in each decade.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sample dataset}
+\NormalTok{movies }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{title =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"The Godfather (1972)"}\NormalTok{, }\StringTok{"Pulp Fiction (1994)"}\NormalTok{, }\StringTok{"The Dark Knight (2008)"}\NormalTok{,}
+    \StringTok{"Forrest Gump (1994)"}\NormalTok{, }\StringTok{"The Shawshank Redemption (1994)"}\NormalTok{, }\StringTok{"The Matrix (1999)"}\NormalTok{,}
+    \StringTok{"Inception (2010)"}\NormalTok{, }\StringTok{"Interstellar (2014)"}\NormalTok{, }\StringTok{"Parasite (2019)"}\NormalTok{, }\StringTok{"Fight Club (1999)"}
+\NormalTok{  )}
+\NormalTok{)}
+\NormalTok{movies}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 10 x 1
+   title                          
+   <chr>                          
+ 1 The Godfather (1972)           
+ 2 Pulp Fiction (1994)            
+ 3 The Dark Knight (2008)         
+ 4 Forrest Gump (1994)            
+ 5 The Shawshank Redemption (1994)
+ 6 The Matrix (1999)              
+ 7 Inception (2010)               
+ 8 Interstellar (2014)            
+ 9 Parasite (2019)                
+10 Fight Club (1999)              
+\end{verbatim}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Processing the dataset}
+\NormalTok{movies\_processed }\OtherTok{\textless{}{-}}\NormalTok{ movies }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{release\_year =} \FunctionTok{as.integer}\NormalTok{(}\FunctionTok{str\_extract}\NormalTok{(title, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\}"}\NormalTok{)),}
+    \AttributeTok{decade =} \FunctionTok{floor}\NormalTok{(release\_year }\SpecialCharTok{/} \DecValTok{10}\NormalTok{) }\SpecialCharTok{*} \DecValTok{10}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(decade) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{num\_movies =}\NormalTok{ n)}
+
+\CommentTok{\# Print the processed dataset}
+\NormalTok{movies\_processed}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 4 x 2
+  decade num_movies
+   <dbl>      <int>
+1   1970          1
+2   1990          5
+3   2000          1
+4   2010          3
 \end{verbatim}
 
 \hypertarget{part-extra-materials}{%
