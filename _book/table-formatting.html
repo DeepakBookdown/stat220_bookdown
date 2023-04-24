@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 20 Table Formatting | Stat 220 Introduction to Data Science</title>
+<title>Chapter 22 Table Formatting | Stat 220 Introduction to Data Science</title>
 <meta name="author" content="Deepak Bastola">
-<meta name="description" content="In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.  20.0.1 Basic Table Formatting with kable The kable() function from...">
+<meta name="description" content="In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.  22.0.1 Basic Table Formatting with kable The kable() function from...">
 <meta name="generator" content="bookdown 0.33 with bs4_book()">
-<meta property="og:title" content="Chapter 20 Table Formatting | Stat 220 Introduction to Data Science">
+<meta property="og:title" content="Chapter 22 Table Formatting | Stat 220 Introduction to Data Science">
 <meta property="og:type" content="book">
-<meta property="og:description" content="In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.  20.0.1 Basic Table Formatting with kable The kable() function from...">
+<meta property="og:description" content="In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.  22.0.1 Basic Table Formatting with kable The kable() function from...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 20 Table Formatting | Stat 220 Introduction to Data Science">
-<meta name="twitter:description" content="In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.  20.0.1 Basic Table Formatting with kable The kable() function from...">
+<meta name="twitter:title" content="Chapter 22 Table Formatting | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.  22.0.1 Basic Table Formatting with kable The kable() function from...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -89,10 +89,12 @@
 <li><a class="" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
 <li><a class="" href="class-activity-10.html"><span class="header-section-number">16</span> Class Activity 10</a></li>
 <li><a class="" href="class-activity-11.html"><span class="header-section-number">17</span> Class Activity 11</a></li>
+<li><a class="" href="class-activity-12.html"><span class="header-section-number">18</span> Class Activity 12</a></li>
+<li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
 <li class="book-part">Extra Materials</li>
-<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">18</span> Helpful R codes</a></li>
-<li><a class="" href="graph-formatting.html"><span class="header-section-number">19</span> Graph Formatting</a></li>
-<li><a class="active" href="table-formatting.html"><span class="header-section-number">20</span> Table Formatting</a></li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">20</span> Helpful R codes</a></li>
+<li><a class="" href="graph-formatting.html"><span class="header-section-number">21</span> Graph Formatting</a></li>
+<li><a class="active" href="table-formatting.html"><span class="header-section-number">22</span> Table Formatting</a></li>
 </ul>
 
         <div class="book-extra">
@@ -100,22 +102,22 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="table-formatting" class="section level1" number="20">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="table-formatting" class="section level1" number="22">
 <h1>
-<span class="header-section-number">20</span> Table Formatting<a class="anchor" aria-label="anchor" href="#table-formatting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22</span> Table Formatting<a class="anchor" aria-label="anchor" href="#table-formatting"><i class="fas fa-link"></i></a>
 </h1>
 <p>In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.</p>
-<div id="basic-table-formatting-with-kable" class="section level3" number="20.0.1">
+<div id="basic-table-formatting-with-kable" class="section level3" number="22.0.1">
 <h3>
-<span class="header-section-number">20.0.1</span> Basic Table Formatting with <code>kable</code><a class="anchor" aria-label="anchor" href="#basic-table-formatting-with-kable"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.1</span> Basic Table Formatting with <code>kable</code><a class="anchor" aria-label="anchor" href="#basic-table-formatting-with-kable"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function from the knitr package provides a simple way to output tables in RMarkdown.</p>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, caption <span class="op">=</span> <span class="st">"A basic table using kable"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-1">Table 20.1: </span>A basic table using kable</caption>
+<span id="tab:unnamed-chunk-1">Table 22.1: </span>A basic table using kable</caption>
 <thead><tr class="header">
 <th align="left"></th>
 <th align="right">mpg</th>
@@ -168,12 +170,12 @@
 </tbody>
 </table></div>
 <p>We will also use the <code>Gapminder</code> dataset for our examples. This dataset contains information about life expectancy, GDP per capita, and population size for various countries and years.Here’s an example of how to display the first 10 rows of the <code>Gapminder</code> dataset.</p>
-<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gapminder"</span>, package <span class="op">=</span> <span class="st">"gapminder"</span><span class="op">)</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fl">10</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"First 10 rows of the Gapminder dataset."</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-2">Table 20.2: </span>First 10 rows of the Gapminder dataset.</caption>
+<span id="tab:unnamed-chunk-2">Table 22.2: </span>First 10 rows of the Gapminder dataset.</caption>
 <thead><tr class="header">
 <th align="left">country</th>
 <th align="left">continent</th>
@@ -266,19 +268,19 @@
 </tbody>
 </table></div>
 </div>
-<div id="formatting-tables-with-kableextra" class="section level3" number="20.0.2">
+<div id="formatting-tables-with-kableextra" class="section level3" number="22.0.2">
 <h3>
-<span class="header-section-number">20.0.2</span> Formatting Tables with <code>kableExtra</code><a class="anchor" aria-label="anchor" href="#formatting-tables-with-kableextra"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.2</span> Formatting Tables with <code>kableExtra</code><a class="anchor" aria-label="anchor" href="#formatting-tables-with-kableextra"><i class="fas fa-link"></i></a>
 </h3>
 <p>To further customize the table appearance, we can use the <code>kableExtra</code> package.</p>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("kableExtra") </span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, caption <span class="op">=</span> <span class="st">"A formatted table with kableExtra"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span><span class="st">"striped"</span>, full_width <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-3">Table 20.3: </span>A formatted table with kableExtra
+<span id="tab:unnamed-chunk-3">Table 22.3: </span>A formatted table with kableExtra
 </caption>
 <thead><tr>
 <th style="text-align:left;">
@@ -403,12 +405,12 @@ Hornet Sportabout
 </tbody>
 </table></div>
 </div>
-<div id="customizing-column-formats" class="section level3" number="20.0.3">
+<div id="customizing-column-formats" class="section level3" number="22.0.3">
 <h3>
-<span class="header-section-number">20.0.3</span> Customizing column formats<a class="anchor" aria-label="anchor" href="#customizing-column-formats"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.3</span> Customizing column formats<a class="anchor" aria-label="anchor" href="#customizing-column-formats"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use the <code><a href="https://rdrr.io/pkg/kableExtra/man/column_spec.html">column_spec()</a></code> function from the <code>kableExtra</code> package to customize the appearance of individual columns.</p>
-<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Table 3: First 10 rows of the Gapminder dataset with custom column formatting."</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -417,7 +419,7 @@ Hornet Sportabout
 <span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/column_spec.html">column_spec</a></span><span class="op">(</span><span class="fl">4</span>, monospace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-4">Table 20.4: </span>Table 3: First 10 rows of the Gapminder dataset with custom column formatting.
+<span id="tab:unnamed-chunk-4">Table 22.4: </span>Table 3: First 10 rows of the Gapminder dataset with custom column formatting.
 </caption>
 <thead><tr>
 <th style="text-align:left;">
@@ -643,87 +645,87 @@ Asia
 </tbody>
 </table></div>
 </div>
-<div id="formatting-tables-with-flextable" class="section level3" number="20.0.4">
+<div id="formatting-tables-with-flextable" class="section level3" number="22.0.4">
 <h3>
-<span class="header-section-number">20.0.4</span> Formatting Tables with flextable<a class="anchor" aria-label="anchor" href="#formatting-tables-with-flextable"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.4</span> Formatting Tables with flextable<a class="anchor" aria-label="anchor" href="#formatting-tables-with-flextable"><i class="fas fa-link"></i></a>
 </h3>
 <p>Another option for table formatting is the flextable package.</p>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("flextable")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ardata-fr.github.io/flextable-book/">flextable</a></span><span class="op">)</span></span>
 <span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/flextable.html">flextable</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://davidgohel.github.io/flextable/reference/set_caption.html">set_caption</a></span><span class="op">(</span><span class="va">ft</span>, caption <span class="op">=</span> <span class="st">"A table using flextable"</span><span class="op">)</span></span>
 <span><span class="va">ft</span></span></code></pre></div>
 <div class="tabwid">
-<style>.cl-01df7722{}.cl-01d47b42{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-01d9874a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-01d9a176{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-01d9a180{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-01d9a181{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-01df7722">
+<style>.cl-8330e622{}.cl-832757a6{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-832b4b68{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-832b659e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-832b65a8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-832b65b2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-8330e622">
 <caption style="margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;">
-<span id="tab:unnamed-chunk-5">Table 20.5: </span><span>A table using flextable</span>
+<span id="tab:unnamed-chunk-5">Table 22.5: </span><span>A table using flextable</span>
 </caption>
 
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-01d9a176"><p class="cl-01d9874a"><span class="cl-01d47b42">mpg</span></p></th>
-<th class="cl-01d9a176"><p class="cl-01d9874a"><span class="cl-01d47b42">cyl</span></p></th>
-<th class="cl-01d9a176"><p class="cl-01d9874a"><span class="cl-01d47b42">disp</span></p></th>
-<th class="cl-01d9a176"><p class="cl-01d9874a"><span class="cl-01d47b42">hp</span></p></th>
-<th class="cl-01d9a176"><p class="cl-01d9874a"><span class="cl-01d47b42">drat</span></p></th>
+<th class="cl-832b659e"><p class="cl-832b4b68"><span class="cl-832757a6">mpg</span></p></th>
+<th class="cl-832b659e"><p class="cl-832b4b68"><span class="cl-832757a6">cyl</span></p></th>
+<th class="cl-832b659e"><p class="cl-832b4b68"><span class="cl-832757a6">disp</span></p></th>
+<th class="cl-832b659e"><p class="cl-832b4b68"><span class="cl-832757a6">hp</span></p></th>
+<th class="cl-832b659e"><p class="cl-832b4b68"><span class="cl-832757a6">drat</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">21.0</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">6</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">160</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">110</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">3.90</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">21.0</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">6</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">160</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">110</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">3.90</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">21.0</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">6</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">160</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">110</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">3.90</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">21.0</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">6</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">160</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">110</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">3.90</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">22.8</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">4</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">108</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">93</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">3.85</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">22.8</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">4</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">108</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">93</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">3.85</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">21.4</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">6</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">258</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">110</span></p></td>
-<td class="cl-01d9a180"><p class="cl-01d9874a"><span class="cl-01d47b42">3.08</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">21.4</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">6</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">258</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">110</span></p></td>
+<td class="cl-832b65a8"><p class="cl-832b4b68"><span class="cl-832757a6">3.08</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-01d9a181"><p class="cl-01d9874a"><span class="cl-01d47b42">18.7</span></p></td>
-<td class="cl-01d9a181"><p class="cl-01d9874a"><span class="cl-01d47b42">8</span></p></td>
-<td class="cl-01d9a181"><p class="cl-01d9874a"><span class="cl-01d47b42">360</span></p></td>
-<td class="cl-01d9a181"><p class="cl-01d9874a"><span class="cl-01d47b42">175</span></p></td>
-<td class="cl-01d9a181"><p class="cl-01d9874a"><span class="cl-01d47b42">3.15</span></p></td>
+<td class="cl-832b65b2"><p class="cl-832b4b68"><span class="cl-832757a6">18.7</span></p></td>
+<td class="cl-832b65b2"><p class="cl-832b4b68"><span class="cl-832757a6">8</span></p></td>
+<td class="cl-832b65b2"><p class="cl-832b4b68"><span class="cl-832757a6">360</span></p></td>
+<td class="cl-832b65b2"><p class="cl-832b4b68"><span class="cl-832757a6">175</span></p></td>
+<td class="cl-832b65b2"><p class="cl-832b4b68"><span class="cl-832757a6">3.15</span></p></td>
 </tr>
 </tbody>
 </table></div>
 </div>
 </div>
-<div id="formatting-tables-with-gt" class="section level3" number="20.0.5">
+<div id="formatting-tables-with-gt" class="section level3" number="22.0.5">
 <h3>
-<span class="header-section-number">20.0.5</span> Formatting Tables with gt<a class="anchor" aria-label="anchor" href="#formatting-tables-with-gt"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.5</span> Formatting Tables with gt<a class="anchor" aria-label="anchor" href="#formatting-tables-with-gt"><i class="fas fa-link"></i></a>
 </h3>
 <p>The gt package provides another way to create formatted tables in R.</p>
-<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("gt")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"A table using gt"</span><span class="op">)</span></span></code></pre></div>
-<div id="cnlflvmjap" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jwerazpivl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#cnlflvmjap .gt_table {
+#jwerazpivl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -748,7 +750,7 @@ Asia
   border-left-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_heading {
+#jwerazpivl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -760,12 +762,12 @@ Asia
   border-right-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_caption {
+#jwerazpivl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cnlflvmjap .gt_title {
+#jwerazpivl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -777,7 +779,7 @@ Asia
   border-bottom-width: 0;
 }
 
-#cnlflvmjap .gt_subtitle {
+#jwerazpivl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -789,13 +791,13 @@ Asia
   border-top-width: 0;
 }
 
-#cnlflvmjap .gt_bottom_border {
+#jwerazpivl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_col_headings {
+#jwerazpivl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -810,7 +812,7 @@ Asia
   border-right-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_col_heading {
+#jwerazpivl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -830,7 +832,7 @@ Asia
   overflow-x: hidden;
 }
 
-#cnlflvmjap .gt_column_spanner_outer {
+#jwerazpivl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -842,15 +844,15 @@ Asia
   padding-right: 4px;
 }
 
-#cnlflvmjap .gt_column_spanner_outer:first-child {
+#jwerazpivl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cnlflvmjap .gt_column_spanner_outer:last-child {
+#jwerazpivl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cnlflvmjap .gt_column_spanner {
+#jwerazpivl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -862,7 +864,7 @@ Asia
   width: 100%;
 }
 
-#cnlflvmjap .gt_group_heading {
+#jwerazpivl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -888,7 +890,7 @@ Asia
   text-align: left;
 }
 
-#cnlflvmjap .gt_empty_group_heading {
+#jwerazpivl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -903,15 +905,15 @@ Asia
   vertical-align: middle;
 }
 
-#cnlflvmjap .gt_from_md > :first-child {
+#jwerazpivl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cnlflvmjap .gt_from_md > :last-child {
+#jwerazpivl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cnlflvmjap .gt_row {
+#jwerazpivl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -930,7 +932,7 @@ Asia
   overflow-x: hidden;
 }
 
-#cnlflvmjap .gt_stub {
+#jwerazpivl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -943,7 +945,7 @@ Asia
   padding-right: 5px;
 }
 
-#cnlflvmjap .gt_stub_row_group {
+#jwerazpivl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -957,11 +959,11 @@ Asia
   vertical-align: top;
 }
 
-#cnlflvmjap .gt_row_group_first td {
+#jwerazpivl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cnlflvmjap .gt_summary_row {
+#jwerazpivl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -971,16 +973,16 @@ Asia
   padding-right: 5px;
 }
 
-#cnlflvmjap .gt_first_summary_row {
+#jwerazpivl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_first_summary_row.thick {
+#jwerazpivl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cnlflvmjap .gt_last_summary_row {
+#jwerazpivl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -990,7 +992,7 @@ Asia
   border-bottom-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_grand_summary_row {
+#jwerazpivl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1000,7 +1002,7 @@ Asia
   padding-right: 5px;
 }
 
-#cnlflvmjap .gt_first_grand_summary_row {
+#jwerazpivl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1010,11 +1012,11 @@ Asia
   border-top-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_striped {
+#jwerazpivl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cnlflvmjap .gt_table_body {
+#jwerazpivl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1023,7 +1025,7 @@ Asia
   border-bottom-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_footnotes {
+#jwerazpivl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1037,7 +1039,7 @@ Asia
   border-right-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_footnote {
+#jwerazpivl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1046,7 +1048,7 @@ Asia
   padding-right: 5px;
 }
 
-#cnlflvmjap .gt_sourcenotes {
+#jwerazpivl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1060,7 +1062,7 @@ Asia
   border-right-color: #D3D3D3;
 }
 
-#cnlflvmjap .gt_sourcenote {
+#jwerazpivl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1068,64 +1070,64 @@ Asia
   padding-right: 5px;
 }
 
-#cnlflvmjap .gt_left {
+#jwerazpivl .gt_left {
   text-align: left;
 }
 
-#cnlflvmjap .gt_center {
+#jwerazpivl .gt_center {
   text-align: center;
 }
 
-#cnlflvmjap .gt_right {
+#jwerazpivl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cnlflvmjap .gt_font_normal {
+#jwerazpivl .gt_font_normal {
   font-weight: normal;
 }
 
-#cnlflvmjap .gt_font_bold {
+#jwerazpivl .gt_font_bold {
   font-weight: bold;
 }
 
-#cnlflvmjap .gt_font_italic {
+#jwerazpivl .gt_font_italic {
   font-style: italic;
 }
 
-#cnlflvmjap .gt_super {
+#jwerazpivl .gt_super {
   font-size: 65%;
 }
 
-#cnlflvmjap .gt_footnote_marks {
+#jwerazpivl .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#cnlflvmjap .gt_asterisk {
+#jwerazpivl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cnlflvmjap .gt_indent_1 {
+#jwerazpivl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cnlflvmjap .gt_indent_2 {
+#jwerazpivl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cnlflvmjap .gt_indent_3 {
+#jwerazpivl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cnlflvmjap .gt_indent_4 {
+#jwerazpivl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cnlflvmjap .gt_indent_5 {
+#jwerazpivl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1180,19 +1182,19 @@ Asia
 </table></div>
 </div>
 </div>
-<div id="hiding-r-commands-and-r-output" class="section level3" number="20.0.6">
+<div id="hiding-r-commands-and-r-output" class="section level3" number="22.0.6">
 <h3>
-<span class="header-section-number">20.0.6</span> Hiding R commands and R output<a class="anchor" aria-label="anchor" href="#hiding-r-commands-and-r-output"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.6</span> Hiding R commands and R output<a class="anchor" aria-label="anchor" href="#hiding-r-commands-and-r-output"><i class="fas fa-link"></i></a>
 </h3>
 <p>As mentioned in the graph formatting handout, adding the chunk option echo=FALSE will display output (like graphs) produced by a chunk but not show the commands used in the chunk. You can stop both R commands and output from being displayed in a document by adding the chunk option include=FALSE.</p>
 <p>As you work through a report analysis, you may initially want to see all of your R results as you are writing your report. But after you’ve summarized results in paragraphs or in tables, you can then use the include=FALSE argument to hide your R commands and output in your final document. If you ever need to rerun or reevaluate your R work for a report, you can easily recreate and edit your analysis since the R chunks used in your original report are still in your R Markdown .Rmd file.</p>
 </div>
-<div id="summary-statistics-with-pander" class="section level3" number="20.0.7">
+<div id="summary-statistics-with-pander" class="section level3" number="22.0.7">
 <h3>
-<span class="header-section-number">20.0.7</span> Summary statistics with pander<a class="anchor" aria-label="anchor" href="#summary-statistics-with-pander"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.7</span> Summary statistics with pander<a class="anchor" aria-label="anchor" href="#summary-statistics-with-pander"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can use the pander package to create summary tables.</p>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("pander")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rapporter.github.io/pander/">pander</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pander/man/pander.html">pander</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"Summary statistics for miles per gallon"</span><span class="op">)</span></span></code></pre></div>
@@ -1224,12 +1226,12 @@ Asia
 </tr></tbody>
 </table></div>
 </div>
-<div id="t-test-results-with-pander" class="section level3" number="20.0.8">
+<div id="t-test-results-with-pander" class="section level3" number="22.0.8">
 <h3>
-<span class="header-section-number">20.0.8</span> t-test results with pander<a class="anchor" aria-label="anchor" href="#t-test-results-with-pander"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.8</span> t-test results with pander<a class="anchor" aria-label="anchor" href="#t-test-results-with-pander"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s perform a t-test comparing the miles per gallon (mpg) for cars with 4 and 6 cylinders.</p>
-<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t_test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span>, subset <span class="op">=</span> <span class="va">cyl</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pander/man/pander.html">pander</a></span><span class="op">(</span><span class="va">t_test_result</span>, caption <span class="op">=</span> <span class="st">"Comparing MPG for 4 and 6 cylinder cars"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table style="width:94%;" class="table table-sm">
@@ -1268,12 +1270,12 @@ Asia
 </tr></tbody>
 </table></div>
 </div>
-<div id="chi-square-test-results-with-pander" class="section level3" number="20.0.9">
+<div id="chi-square-test-results-with-pander" class="section level3" number="22.0.9">
 <h3>
-<span class="header-section-number">20.0.9</span> Chi-square test results with pander<a class="anchor" aria-label="anchor" href="#chi-square-test-results-with-pander"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.9</span> Chi-square test results with pander<a class="anchor" aria-label="anchor" href="#chi-square-test-results-with-pander"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now let’s perform a chi-square test to check for an association between the number of cylinders and the type of transmission (automatic or manual).</p>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">$</span><span class="va">am</span><span class="op">)</span></span>
 <span><span class="va">chisq_test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">my_table</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pander/man/pander.html">pander</a></span><span class="op">(</span><span class="va">chisq_test_result</span>, caption <span class="op">=</span> <span class="st">"Chi-square test for cylinders and transmission type"</span><span class="op">)</span></span></code></pre></div>
@@ -1296,12 +1298,12 @@ Asia
 </tr></tbody>
 </table></div>
 </div>
-<div id="linear-regression-results-with-pander" class="section level3" number="20.0.10">
+<div id="linear-regression-results-with-pander" class="section level3" number="22.0.10">
 <h3>
-<span class="header-section-number">20.0.10</span> Linear regression results with pander<a class="anchor" aria-label="anchor" href="#linear-regression-results-with-pander"><i class="fas fa-link"></i></a>
+<span class="header-section-number">22.0.10</span> Linear regression results with pander<a class="anchor" aria-label="anchor" href="#linear-regression-results-with-pander"><i class="fas fa-link"></i></a>
 </h3>
 <p>Finally, let’s fit a linear regression model of miles per gallon (mpg) as a function of weight (wt) and display the results.</p>
-<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lm_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">wt</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pander/man/pander.html">pander</a></span><span class="op">(</span><span class="va">lm_result</span>, caption <span class="op">=</span> <span class="st">"Linear regression of MPG on weight"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table style="width:89%;" class="table table-sm">
@@ -1340,22 +1342,22 @@ Asia
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="graph-formatting.html"><span class="header-section-number">19</span> Graph Formatting</a></div>
+<div class="prev"><a href="graph-formatting.html"><span class="header-section-number">21</span> Graph Formatting</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav"><li>
-<a class="nav-link" href="#table-formatting"><span class="header-section-number">20</span> Table Formatting</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#basic-table-formatting-with-kable"><span class="header-section-number">20.0.1</span> Basic Table Formatting with kable</a></li>
-<li><a class="nav-link" href="#formatting-tables-with-kableextra"><span class="header-section-number">20.0.2</span> Formatting Tables with kableExtra</a></li>
-<li><a class="nav-link" href="#customizing-column-formats"><span class="header-section-number">20.0.3</span> Customizing column formats</a></li>
-<li><a class="nav-link" href="#formatting-tables-with-flextable"><span class="header-section-number">20.0.4</span> Formatting Tables with flextable</a></li>
-<li><a class="nav-link" href="#formatting-tables-with-gt"><span class="header-section-number">20.0.5</span> Formatting Tables with gt</a></li>
-<li><a class="nav-link" href="#hiding-r-commands-and-r-output"><span class="header-section-number">20.0.6</span> Hiding R commands and R output</a></li>
-<li><a class="nav-link" href="#summary-statistics-with-pander"><span class="header-section-number">20.0.7</span> Summary statistics with pander</a></li>
-<li><a class="nav-link" href="#t-test-results-with-pander"><span class="header-section-number">20.0.8</span> t-test results with pander</a></li>
-<li><a class="nav-link" href="#chi-square-test-results-with-pander"><span class="header-section-number">20.0.9</span> Chi-square test results with pander</a></li>
-<li><a class="nav-link" href="#linear-regression-results-with-pander"><span class="header-section-number">20.0.10</span> Linear regression results with pander</a></li>
+<a class="nav-link" href="#table-formatting"><span class="header-section-number">22</span> Table Formatting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#basic-table-formatting-with-kable"><span class="header-section-number">22.0.1</span> Basic Table Formatting with kable</a></li>
+<li><a class="nav-link" href="#formatting-tables-with-kableextra"><span class="header-section-number">22.0.2</span> Formatting Tables with kableExtra</a></li>
+<li><a class="nav-link" href="#customizing-column-formats"><span class="header-section-number">22.0.3</span> Customizing column formats</a></li>
+<li><a class="nav-link" href="#formatting-tables-with-flextable"><span class="header-section-number">22.0.4</span> Formatting Tables with flextable</a></li>
+<li><a class="nav-link" href="#formatting-tables-with-gt"><span class="header-section-number">22.0.5</span> Formatting Tables with gt</a></li>
+<li><a class="nav-link" href="#hiding-r-commands-and-r-output"><span class="header-section-number">22.0.6</span> Hiding R commands and R output</a></li>
+<li><a class="nav-link" href="#summary-statistics-with-pander"><span class="header-section-number">22.0.7</span> Summary statistics with pander</a></li>
+<li><a class="nav-link" href="#t-test-results-with-pander"><span class="header-section-number">22.0.8</span> t-test results with pander</a></li>
+<li><a class="nav-link" href="#chi-square-test-results-with-pander"><span class="header-section-number">22.0.9</span> Chi-square test results with pander</a></li>
+<li><a class="nav-link" href="#linear-regression-results-with-pander"><span class="header-section-number">22.0.10</span> Linear regression results with pander</a></li>
 </ul>
 </li></ul>
 
@@ -1374,7 +1376,7 @@ Asia
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-04-19.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-04-23.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

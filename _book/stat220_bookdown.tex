@@ -139,7 +139,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-04-19}
+\date{2023-04-23}
 
 \begin{document}
 \maketitle
@@ -4326,7 +4326,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 27.92929
+[1] 27.94146
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4759,30 +4759,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     5 9th   Middle East      56 9th      
- 2    12 9th   Europe           65 9th      
- 3    13 9th   Middle East      82 9th      
- 4     2 10th  Europe           69 10th     
- 5     3 10th  Europe           92 10th     
- 6     4 10th  North America    51 10th     
- 7     8 10th  South America    91 10th     
- 8     9 10th  Europe          100 10th     
- 9    11 10th  Asia             94 10th     
-10    14 10th  Africa           55 10th     
-11    15 10th  North America    78 10th     
-12    16 10th  Middle East      54 10th     
-13    20 10th  Middle East      82 10th     
-14    22 10th  North America    99 10th     
-15    24 10th  South America    76 10th     
-16     1 11th  Europe           92 11th     
-17     6 11th  Middle East     100 11th     
-18     7 11th  Africa           52 11th     
-19    10 11th  Europe           95 11th     
-20    17 11th  South America    71 11th     
-21    18 11th  South America    87 11th     
-22    19 11th  North America    59 11th     
-23    21 11th  North America    74 11th     
-24    23 11th  Europe           83 11th     
+ 1     1 9th   South America    80 9th      
+ 2     4 9th   Africa           82 9th      
+ 3     7 9th   Europe           77 9th      
+ 4    13 9th   North America    85 9th      
+ 5    14 9th   Africa           84 9th      
+ 6    15 9th   North America    65 9th      
+ 7    21 9th   Asia             56 9th      
+ 8     2 10th  South America    73 10th     
+ 9     3 10th  North America    67 10th     
+10     6 10th  Europe           68 10th     
+11     9 10th  South America    80 10th     
+12    10 10th  South America    86 10th     
+13    11 10th  Middle East      88 10th     
+14    12 10th  North America    68 10th     
+15    16 10th  Asia             93 10th     
+16    17 10th  North America    62 10th     
+17    20 10th  Middle East      80 10th     
+18    22 10th  Middle East      92 10th     
+19    23 10th  South America    63 10th     
+20     5 11th  Asia             80 11th     
+21     8 11th  Asia             55 11th     
+22    18 11th  North America    80 11th     
+23    19 11th  Africa           71 11th     
+24    24 11th  Africa           77 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4809,9 +4809,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                14
-2 Asia                 1
-3 Americas             9
+1 EMEA                 9
+2 Asia                 4
+3 Americas            11
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4832,7 +4832,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "11th" "9th" 
+[1] "10th" "9th"  "11th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -5494,6 +5494,450 @@ Click for answer
 3   2000          1
 4   2010          3
 \end{verbatim}
+
+\hypertarget{class-activity-12}{%
+\chapter{Class Activity 12}\label{class-activity-12}}
+
+In-class midterm!
+
+\hypertarget{class-activity-13}{%
+\chapter{Class Activity 13}\label{class-activity-13}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(readr)}
+\end{Highlighting}
+\end{Shaded}
+
+In this tutorial, we will learn about string manipulations using regular expressions and the \texttt{stringr} library in R. We will cover different examples and use cases to help you understand the concepts and functions related to string manipulation.
+
+\hypertarget{group-activity-1}{%
+\section{Group Activity 1}\label{group-activity-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"My SSN is 593{-}29{-}9502 and my age is 55"}
+\NormalTok{y }\OtherTok{\textless{}{-}} \StringTok{"My phone number is 612{-}643{-}1539"}
+\NormalTok{z }\OtherTok{\textless{}{-}} \StringTok{"My old SSN number is 39532 9423."}
+\NormalTok{out }\OtherTok{\textless{}{-}} \FunctionTok{str\_flatten}\NormalTok{(}\FunctionTok{c}\NormalTok{(x,y,z), }\AttributeTok{collapse =} \StringTok{". "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{a.-what-characters-in-x-will-str_view_allx--..--find}{%
+\subsection{\texorpdfstring{a. What characters in \texttt{x} will \texttt{str\_view\_all(x,\ "-..-")} find?}{a. What characters in x will str\_view\_all(x, "-..-") find?}}\label{a.-what-characters-in-x-will-str_view_allx--..--find}}
+
+Click for answer
+
+\emph{answer:}
+
+The pattern searches for a dash, followed by any two characters, followed by another dash. In x, it finds ``-29-'' which is a part of the SSN.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view\_all}\NormalTok{(x, }\StringTok{"{-}..{-}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | My SSN is 593<-29->9502 and my age is 55
+\end{verbatim}
+
+\hypertarget{b.-what-pattern-will-str_view_allx--d2--find}{%
+\subsection{\texorpdfstring{b. What pattern will \texttt{str\_view\_all(x,\ "-\textbackslash{}\textbackslash{}d\{2\}-")} find?}{b. What pattern will str\_view\_all(x, "-\textbackslash\textbackslash d\{2\}-") find?}}\label{b.-what-pattern-will-str_view_allx--d2--find}}
+
+Click for answer
+
+\emph{answer:}
+
+The pattern searches for a dash, followed by two digits, followed by another dash. In x, it finds the same ``-29-'' as in the previous example, which is a part of the SSN.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view\_all}\NormalTok{(x, }\StringTok{"{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\}{-}"}\NormalTok{)  }\CommentTok{\# "{-}" then 2 digits then "{-}"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | My SSN is 593<-29->9502 and my age is 55
+\end{verbatim}
+
+\hypertarget{c.-what-pattern-will-str_view_allout-d2.-find}{%
+\subsection{\texorpdfstring{c.~What pattern will \texttt{str\_view\_all(out,\ "\textbackslash{}\textbackslash{}d\{2\}\textbackslash{}\textbackslash{}.*")} find?}{c.~What pattern will str\_view\_all(out, "\textbackslash\textbackslash d\{2\}\textbackslash\textbackslash.*") find?}}\label{c.-what-pattern-will-str_view_allout-d2.-find}}
+
+Click for answer
+
+\emph{answer:}
+
+The pattern searches for two digits followed by an optional period. In out, it finds ``55'' and ``55.'', which represent the age in the first sentence.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view\_all}\NormalTok{(out, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{."}\NormalTok{)  }\CommentTok{\# 2 digits then "."}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | My SSN is 593-29-9502 and my age is< 55.> My phone number is 612-643-1539. My old SSN number is 39532 9423.
+\end{verbatim}
+
+\hypertarget{d.-use-str_view_all-to-determine-the-correct-regex-pattern-to-identify-all-ssn-in-out}{%
+\subsection{\texorpdfstring{d.~Use \texttt{str\_view\_all} to determine the correct regex pattern to identify all SSN in \texttt{out}}{d.~Use str\_view\_all to determine the correct regex pattern to identify all SSN in out}}\label{d.-use-str_view_all-to-determine-the-correct-regex-pattern-to-identify-all-ssn-in-out}}
+
+We can get the SSN with the usual format (\#\#\#-\#\#-\#\#\#\#) with a regex that has 3, 2, and 4 digits separated by a dash.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view\_all}\NormalTok{(out,}\StringTok{"([0{-}8]}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\}){-}(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\}){-}(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | My SSN is <593-29-9502> and my age is 55. My phone number is 612-643-1539. My old SSN number is 39532 9423.
+\end{verbatim}
+
+This misses the oddly formatted SSN in the third entry. Rather than use a dash, we can specify the divider as \texttt{{[}-\textbackslash{}\textbackslash{}s{]}?} which allows either 0 or 1 occurrences of either a dash or space divider:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view\_all}\NormalTok{(out,}\StringTok{"([0{-}8]}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | My SSN is <593-29-9502> and my age is 55. My phone number is 612-643-1539. My old SSN number is <39532 9423>.
+\end{verbatim}
+
+Click for answer
+
+\emph{answer:}
+
+The first pattern finds the SSNs in the standard format (\#\#\#-\#\#-\#\#\#\#) by searching for 3 digits, a dash, 2 digits, another dash, and 4 digits. The second pattern does the same but allows for a space instead of a dash as a divider. It finds all SSNs in out, including the oddly formatted one in the third sentence.
+
+\hypertarget{e.-write-a-regular-expression-to-extract-dates-in-the-format-yyyy-mm-dd-from-a-given-text.}{%
+\subsection{e. Write a regular expression to extract dates in the format YYYY-MM-DD from a given text.}\label{e.-write-a-regular-expression-to-extract-dates-in-the-format-yyyy-mm-dd-from-a-given-text.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{date\_pattern }\OtherTok{\textless{}{-}} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\}{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\}{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\}"}
+\NormalTok{text }\OtherTok{\textless{}{-}} \StringTok{"The event will take place on 2023{-}07{-}20 and end on 2023{-}07{-}22."}
+\FunctionTok{str\_extract\_all}\NormalTok{(text, date\_pattern)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[1]]
+[1] "2023-07-20" "2023-07-22"
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} The pattern searches for 4 digits, a dash, 2 digits, another dash, and 2 digits. In the given text, it finds the dates ``2023-07-20'' and ``2023-07-22''.
+
+\hypertarget{f.-write-a-regular-expression-to-extract-all-words-that-start-with-a-capital-letter-in-a-given-text.}{%
+\subsection{f.~Write a regular expression to extract all words that start with a capital letter in a given text.}\label{f.-write-a-regular-expression-to-extract-all-words-that-start-with-a-capital-letter-in-a-given-text.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{capital\_pattern }\OtherTok{\textless{}{-}} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{b[A{-}Z][a{-}zA{-}Z]*}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{b"}
+\NormalTok{text }\OtherTok{\textless{}{-}} \StringTok{"Alice and Bob went to the Market to buy some Groceries."}
+\FunctionTok{str\_extract\_all}\NormalTok{(text, capital\_pattern)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[[1]]
+[1] "Alice"     "Bob"       "Market"    "Groceries"
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} The pattern searches for a word boundary, followed by an uppercase letter, and then any sequence of letters. In the given text, it finds the words ``Alice'', ``Bob'', ``Market'', and ``Groceries''.
+
+\hypertarget{g-optional-create-a-regular-expression-to-match-urls-considering-both-http-and-https-protocols.}{%
+\subsection{g (Optional) Create a regular expression to match URLs, considering both http and https protocols.}\label{g-optional-create-a-regular-expression-to-match-urls-considering-both-http-and-https-protocols.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{url\_pattern }\OtherTok{\textless{}{-}} \StringTok{"https?://(?:[a{-}zA{-}Z0{-}9{-}]+}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.)+[a{-}zA{-}Z]\{2,\}(?::}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d+)?(?:/}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{S*)?"}
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"https://www.example.com"}\NormalTok{, }\StringTok{"http://example.org/resource?query=123"}\NormalTok{, }\StringTok{"invalid\_url.example.com"}\NormalTok{)}
+\FunctionTok{str\_view}\NormalTok{(urls, url\_pattern)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | <https://www.example.com>
+[2] | <http://example.org/resource?query=123>
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} The pattern searches for either ``\url{http://}'' or ``\url{https://}'', followed by one or more domain segments separated by periods, an optional port number, and an optional path. In the given urls, it matches the first two valid URLs but not the invalid one.
+
+\texttt{https?://:} This part matches the URL protocol (http or https). The \texttt{?} means that the preceding character ``s'' is optional.
+\texttt{(?:{[}a-zA-Z0-9-{]}+\textbackslash{}\textbackslash{}.)+:} This part matches the domain name. The \texttt{(?:\ )} is a non-capturing group, and \texttt{{[}a-zA-Z0-9-{]}+} matches one or more alphanumeric characters or hyphens. The \texttt{\textbackslash{}\textbackslash{}}. matches a period (dot), and the + outside the group means that the pattern inside the group should occur one or more times. \texttt{{[}a-zA-Z{]}\{2,\}:} This part matches the top-level domain (TLD), such as .com or .org, which has at least two alphabetic characters. \texttt{(?::\textbackslash{}\textbackslash{}d+)?:} This part is an optional group that matches a colon followed by one or more digits. It is used to specify a port number in the URL. The ? outside the group makes it optional. \texttt{(?:/\textbackslash{}\textbackslash{}S*)?:} This part is another optional group that matches a forward slash followed by zero or more non-whitespace characters (representing the URL path). Again, the \texttt{?} outside the group makes it optional.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-2}{%
+\section{Group Activity 2}\label{group-activity-2}}
+
+\hypertarget{a.-lets-deal-with-a-number-string-that-is-longer-than-9-digits.}{%
+\subsection{a. Let's deal with a number string that is longer than 9 digits.}\label{a.-lets-deal-with-a-number-string-that-is-longer-than-9-digits.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ssn }\OtherTok{\textless{}{-}} \StringTok{"([0{-}8]}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\})"}
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"123{-}45{-}67890"}\NormalTok{,}\StringTok{"1123 45 6789"}\NormalTok{)}
+\FunctionTok{str\_view\_all}\NormalTok{(test, ssn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | <123-45-6789>0
+[2] | 1<123 45 6789>
+\end{verbatim}
+
+This example captures a 9-digit string as an SSN, but these strings are longer than 9 digits and may not represent an SSN. One way to deal with this is to use the negative lookbehind \texttt{?\textless{}!} and negative lookahead \texttt{?!} operators to ensure that the identified 9-digit string does not have a leading 0 or does not contain more digits.
+
+If we ``look behind'' from the start of the SSN, we should not see another digit:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view\_all}\NormalTok{(test, }\StringTok{"(?\textless{}!}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d)([0{-}8]}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\})"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | <123-45-6789>0
+[2] | 1123 45 6789
+\end{verbatim}
+
+And if we ``look ahead'' from the end of the SSN, we should not see another digit:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view\_all}\NormalTok{(test, }\StringTok{"(?\textless{}!}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d)([0{-}8]}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{2\})[{-}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{.}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]?(}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\})(?!}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | 123-45-67890
+[2] | 1123 45 6789
+\end{verbatim}
+
+For parts b and c, consider the following string.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{string1 }\OtherTok{\textless{}{-}} \StringTok{"100 dollars 100 pesos"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b.-explain-why-the-following-matches-the-first-100-and-not-the-second.}{%
+\subsection{b. Explain why the following matches the first 100 and not the second.}\label{b.-explain-why-the-following-matches-the-first-100-and-not-the-second.}}
+
+Click for answer
+
+\emph{answer:} It looks for one or more digits followed by a space and \texttt{dollars}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view}\NormalTok{(string1, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d+(?= dollars)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | <100> dollars 100 pesos
+\end{verbatim}
+
+\hypertarget{c.-explain-why-the-following-matches-the-second-100-and-not-the-first.}{%
+\subsection{c.~Explain why the following matches the second 100 and not the first.}\label{c.-explain-why-the-following-matches-the-second-100-and-not-the-first.}}
+
+Click for answer
+
+\emph{answer:} It looks for one or more digits not followed by either a digit or space followed by \texttt{dollars}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view}\NormalTok{(string1, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d+(?!}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d| dollars)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | 100 dollars <100> pesos
+\end{verbatim}
+
+For parts d and e, please take a look at \texttt{string2}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{string2 }\OtherTok{\textless{}{-}} \StringTok{"USD100 PESO100"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{d.-explain-why-the-following-matches-the-first-100-and-not-the-second.}{%
+\subsection{d.~Explain why the following matches the first 100 and not the second.}\label{d.-explain-why-the-following-matches-the-first-100-and-not-the-second.}}
+
+Click for answer
+
+\emph{answer:} It looks for exactly 3 digits preceded by USD
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view}\NormalTok{(string2, }\StringTok{"(?\textless{}=USD)}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{3\}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | USD<100> PESO100
+\end{verbatim}
+
+\hypertarget{e.-explain-why-the-following-matches-the-second-100-and-not-the-first.}{%
+\subsection{e. Explain why the following matches the second 100 and not the first.}\label{e.-explain-why-the-following-matches-the-second-100-and-not-the-first.}}
+
+Click for answer
+
+\emph{answer:} It looks for exactly 3 digits that is not preceded by USD
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_view}\NormalTok{(string2, }\StringTok{"(?\textless{}!USD)}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{3\}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] | USD100 PESO<100>
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-3}{%
+\section{Group Activity 3}\label{group-activity-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tweets}\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/deepbas/statdatasets/main/TrumpTweetData.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{a.-what-proportion-of-tweets-text-mention-america}{%
+\subsection{a. What proportion of tweets (text) mention ``America''?}\label{a.-what-proportion-of-tweets-text-mention-america}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tweets }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{prop =} \FunctionTok{mean}\NormalTok{(}\FunctionTok{str\_detect}\NormalTok{(}\FunctionTok{str\_to\_title}\NormalTok{(text), }\StringTok{"America"}\NormalTok{))) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+    prop
+   <dbl>
+1 0.0926
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} About 10\% of tweets mention ``America''.
+
+\hypertarget{b.-what-proportion-of-these-tweets-include-great}{%
+\subsection{b. What proportion of these tweets include ``great''?}\label{b.-what-proportion-of-these-tweets-include-great}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tweets }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{str\_detect}\NormalTok{(}\FunctionTok{str\_to\_title}\NormalTok{(text), }\StringTok{"America"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{prop =} \FunctionTok{mean}\NormalTok{(}\FunctionTok{str\_detect}\NormalTok{(}\FunctionTok{str\_to\_lower}\NormalTok{(text), }\StringTok{"great"}\NormalTok{))) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+   prop
+  <dbl>
+1   0.4
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} About 40\% of tweets mention ``great''.
+
+\hypertarget{c.-what-proportion-of-the-tweets-mention}{%
+\subsection{\texorpdfstring{c.~What proportion of the tweets mention \texttt{@}?}{c.~What proportion of the tweets mention @?}}\label{c.-what-proportion-of-the-tweets-mention}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tweets }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ct =} \FunctionTok{str\_count}\NormalTok{(text, }\StringTok{"@"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(text, ct) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{prop =} \FunctionTok{mean}\NormalTok{(ct}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+   prop
+  <dbl>
+1 0.317
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} About 32\% of tweets mention \texttt{@}.
+
+\hypertarget{d.-remove-the-tweets-having-mentions-.}{%
+\subsection{\texorpdfstring{d.~Remove the tweets having mentions \texttt{@}.}{d.~Remove the tweets having mentions @.}}\label{d.-remove-the-tweets-having-mentions-.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Mentions }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"@[\^{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{s]+"}\NormalTok{)}
+
+\NormalTok{tw\_noMentions }\OtherTok{\textless{}{-}}\NormalTok{ tweets }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{textNoMentions =} \FunctionTok{str\_replace\_all}\NormalTok{(text, Mentions, }\StringTok{""}\NormalTok{))}
+\NormalTok{tw\_noMentions}\SpecialCharTok{$}\NormalTok{text[}\DecValTok{38}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "My daughter @IvankaTrump will be on @Greta tonight at 7pm. Enjoy! https://t.co/QySC5PLFMy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tw\_noMentions}\SpecialCharTok{$}\NormalTok{textNoMentions[}\DecValTok{38}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "My daughter  will be on  tonight at 7pm. Enjoy! https://t.co/QySC5PLFMy"
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} \texttt{@:} This part of the pattern matches the ``@'' symbol, which usually indicates the beginning of a mention in a tweet.
+{[}\^{}\textbackslash s{]}+: This part of the pattern matches one or more characters that are NOT whitespaces. The \texttt{\^{}} inside the square brackets \texttt{{[}\ {]}} negates the character class (meaning it matches any character that is NOT in the specified class). The double backslash \texttt{\textbackslash{}\textbackslash{}} is used to escape the backslash in the R string, so the pattern \texttt{\textbackslash{}\textbackslash{}s} represents the whitespace character class \texttt{\textbackslash{}s}. Finally, the + indicates that the pattern should match one or more occurrences of the non-whitespace characters. Together, this regular expression pattern \texttt{@{[}\^{}\textbackslash{}\textbackslash{}s{]}+} matches any mention in a tweet, which usually starts with ``@'' followed by one or more non-whitespace characters.
+
+\hypertarget{e.-what-poportion-of-tweets-originated-from-an-iphone}{%
+\subsection{e. What poportion of tweets originated from an iPhone?}\label{e.-what-poportion-of-tweets-originated-from-an-iphone}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tweets }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(source) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarize}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prop =}\NormalTok{ count }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(count)) }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{filter}\NormalTok{(source }\SpecialCharTok{==} \StringTok{"iPhone"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 3
+  source count  prop
+  <chr>  <int> <dbl>
+1 iPhone   628 0.415
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:} About 42\% of the tweets originated from an iPhone.
 
 \hypertarget{part-extra-materials}{%
 \part*{Extra Materials}\label{part-extra-materials}}
