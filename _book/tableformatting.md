@@ -12,17 +12,26 @@ library(knitr)
 kable(mtcars[1:5, 1:5], caption = "A basic table using kable")
 ```
 
+\begin{table}
 
-
-Table: (\#tab:unnamed-chunk-1)A basic table using kable
-
-|                  |  mpg| cyl| disp|  hp| drat|
-|:-----------------|----:|---:|----:|---:|----:|
-|Mazda RX4         | 21.0|   6|  160| 110| 3.90|
-|Mazda RX4 Wag     | 21.0|   6|  160| 110| 3.90|
-|Datsun 710        | 22.8|   4|  108|  93| 3.85|
-|Hornet 4 Drive    | 21.4|   6|  258| 110| 3.08|
-|Hornet Sportabout | 18.7|   8|  360| 175| 3.15|
+\caption{(\#tab:unnamed-chunk-1)A basic table using kable}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+  & mpg & cyl & disp & hp & drat\\
+\hline
+Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
+\hline
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
+\hline
+Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
+\hline
+\end{tabular}
+\end{table}
 
 We will also use the `Gapminder` dataset for our examples. This dataset contains information about life expectancy, GDP per capita, and population size for various countries and years.Here's an example of how to display the first 10 rows of the `Gapminder` dataset.
 
@@ -32,22 +41,36 @@ data("gapminder", package = "gapminder")
 knitr::kable(head(gapminder, 10), caption = "First 10 rows of the Gapminder dataset.")
 ```
 
+\begin{table}
 
-
-Table: (\#tab:unnamed-chunk-2)First 10 rows of the Gapminder dataset.
-
-|country     |continent | year| lifeExp|      pop| gdpPercap|
-|:-----------|:---------|----:|-------:|--------:|---------:|
-|Afghanistan |Asia      | 1952|  28.801|  8425333|  779.4453|
-|Afghanistan |Asia      | 1957|  30.332|  9240934|  820.8530|
-|Afghanistan |Asia      | 1962|  31.997| 10267083|  853.1007|
-|Afghanistan |Asia      | 1967|  34.020| 11537966|  836.1971|
-|Afghanistan |Asia      | 1972|  36.088| 13079460|  739.9811|
-|Afghanistan |Asia      | 1977|  38.438| 14880372|  786.1134|
-|Afghanistan |Asia      | 1982|  39.854| 12881816|  978.0114|
-|Afghanistan |Asia      | 1987|  40.822| 13867957|  852.3959|
-|Afghanistan |Asia      | 1992|  41.674| 16317921|  649.3414|
-|Afghanistan |Asia      | 1997|  41.763| 22227415|  635.3414|
+\caption{(\#tab:unnamed-chunk-2)First 10 rows of the Gapminder dataset.}
+\centering
+\begin{tabular}[t]{l|l|r|r|r|r}
+\hline
+country & continent & year & lifeExp & pop & gdpPercap\\
+\hline
+Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.4453\\
+\hline
+Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.8530\\
+\hline
+Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.1007\\
+\hline
+Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.1971\\
+\hline
+Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.9811\\
+\hline
+Afghanistan & Asia & 1977 & 38.438 & 14880372 & 786.1134\\
+\hline
+Afghanistan & Asia & 1982 & 39.854 & 12881816 & 978.0114\\
+\hline
+Afghanistan & Asia & 1987 & 40.822 & 13867957 & 852.3959\\
+\hline
+Afghanistan & Asia & 1992 & 41.674 & 16317921 & 649.3414\\
+\hline
+Afghanistan & Asia & 1997 & 41.763 & 22227415 & 635.3414\\
+\hline
+\end{tabular}
+\end{table}
 
 ### Formatting Tables with `kableExtra`
 
@@ -61,61 +84,26 @@ kable(mtcars[1:5, 1:5], caption = "A formatted table with kableExtra") %>%
   kable_styling("striped", full_width = F)
 ```
 
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-3)A formatted table with kableExtra</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> mpg </th>
-   <th style="text-align:right;"> cyl </th>
-   <th style="text-align:right;"> disp </th>
-   <th style="text-align:right;"> hp </th>
-   <th style="text-align:right;"> drat </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Mazda RX4 </td>
-   <td style="text-align:right;"> 21.0 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 160 </td>
-   <td style="text-align:right;"> 110 </td>
-   <td style="text-align:right;"> 3.90 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mazda RX4 Wag </td>
-   <td style="text-align:right;"> 21.0 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 160 </td>
-   <td style="text-align:right;"> 110 </td>
-   <td style="text-align:right;"> 3.90 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Datsun 710 </td>
-   <td style="text-align:right;"> 22.8 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 108 </td>
-   <td style="text-align:right;"> 93 </td>
-   <td style="text-align:right;"> 3.85 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hornet 4 Drive </td>
-   <td style="text-align:right;"> 21.4 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 258 </td>
-   <td style="text-align:right;"> 110 </td>
-   <td style="text-align:right;"> 3.08 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hornet Sportabout </td>
-   <td style="text-align:right;"> 18.7 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 360 </td>
-   <td style="text-align:right;"> 175 </td>
-   <td style="text-align:right;"> 3.15 </td>
-  </tr>
-</tbody>
-</table>
+\begin{table}
+
+\caption{(\#tab:unnamed-chunk-3)A formatted table with kableExtra}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+  & mpg & cyl & disp & hp & drat\\
+\hline
+Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
+\hline
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
+\hline
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
+\hline
+Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
+\hline
+\end{tabular}
+\end{table}
 
 
 ### Customizing column formats
@@ -132,101 +120,36 @@ gapminder %>%
   kableExtra::column_spec(4, monospace = TRUE)
 ```
 
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-4)Table 3: First 10 rows of the Gapminder dataset with custom column formatting.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> country </th>
-   <th style="text-align:left;"> continent </th>
-   <th style="text-align:right;"> year </th>
-   <th style="text-align:right;"> lifeExp </th>
-   <th style="text-align:right;"> pop </th>
-   <th style="text-align:right;"> gdpPercap </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1952 </td>
-   <td style="text-align:right;font-family: monospace;"> 28.801 </td>
-   <td style="text-align:right;"> 8425333 </td>
-   <td style="text-align:right;"> 779.4453 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1957 </td>
-   <td style="text-align:right;font-family: monospace;"> 30.332 </td>
-   <td style="text-align:right;"> 9240934 </td>
-   <td style="text-align:right;"> 820.8530 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1962 </td>
-   <td style="text-align:right;font-family: monospace;"> 31.997 </td>
-   <td style="text-align:right;"> 10267083 </td>
-   <td style="text-align:right;"> 853.1007 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1967 </td>
-   <td style="text-align:right;font-family: monospace;"> 34.020 </td>
-   <td style="text-align:right;"> 11537966 </td>
-   <td style="text-align:right;"> 836.1971 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1972 </td>
-   <td style="text-align:right;font-family: monospace;"> 36.088 </td>
-   <td style="text-align:right;"> 13079460 </td>
-   <td style="text-align:right;"> 739.9811 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1977 </td>
-   <td style="text-align:right;font-family: monospace;"> 38.438 </td>
-   <td style="text-align:right;"> 14880372 </td>
-   <td style="text-align:right;"> 786.1134 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1982 </td>
-   <td style="text-align:right;font-family: monospace;"> 39.854 </td>
-   <td style="text-align:right;"> 12881816 </td>
-   <td style="text-align:right;"> 978.0114 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1987 </td>
-   <td style="text-align:right;font-family: monospace;"> 40.822 </td>
-   <td style="text-align:right;"> 13867957 </td>
-   <td style="text-align:right;"> 852.3959 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1992 </td>
-   <td style="text-align:right;font-family: monospace;"> 41.674 </td>
-   <td style="text-align:right;"> 16317921 </td>
-   <td style="text-align:right;"> 649.3414 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Afghanistan </td>
-   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
-   <td style="text-align:right;"> 1997 </td>
-   <td style="text-align:right;font-family: monospace;"> 41.763 </td>
-   <td style="text-align:right;"> 22227415 </td>
-   <td style="text-align:right;"> 635.3414 </td>
-  </tr>
-</tbody>
-</table>
+\begin{table}
+
+\caption{(\#tab:unnamed-chunk-4)Table 3: First 10 rows of the Gapminder dataset with custom column formatting.}
+\centering
+\begin{tabular}[t]{l|>{}l|r|>{}r|r|r}
+\hline
+country & continent & year & lifeExp & pop & gdpPercap\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1952 & \ttfamily{28.801} & 8425333 & 779.4453\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1957 & \ttfamily{30.332} & 9240934 & 820.8530\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1962 & \ttfamily{31.997} & 10267083 & 853.1007\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1967 & \ttfamily{34.020} & 11537966 & 836.1971\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1972 & \ttfamily{36.088} & 13079460 & 739.9811\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1977 & \ttfamily{38.438} & 14880372 & 786.1134\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1982 & \ttfamily{39.854} & 12881816 & 978.0114\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1987 & \ttfamily{40.822} & 13867957 & 852.3959\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1992 & \ttfamily{41.674} & 16317921 & 649.3414\\
+\hline
+Afghanistan & \textcolor{red}{\textbf{Asia}} & 1997 & \ttfamily{41.763} & 22227415 & 635.3414\\
+\hline
+\end{tabular}
+\end{table}
 
 
 ### Formatting Tables with flextable
@@ -242,16 +165,72 @@ ft <- set_caption(ft, caption = "A table using flextable")
 ft
 ```
 
-```{=html}
-<div class="tabwid"><style>.cl-2e10ad48{}.cl-2e043702{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2e0969c0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2e098536{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2e098540{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2e09854a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-2e10ad48'>
+```{=latex}
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
 
-```
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
 
-<caption style="margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;">(\#tab:unnamed-chunk-5)<span>A table using flextable</span></caption>
+\setlength{\tabcolsep}{0pt}
 
-```{=html}
+\renewcommand*{\arraystretch}{1.5}
 
-<thead><tr style="overflow-wrap:break-word;"><th class="cl-2e098536"><p class="cl-2e0969c0"><span class="cl-2e043702">mpg</span></p></th><th class="cl-2e098536"><p class="cl-2e0969c0"><span class="cl-2e043702">cyl</span></p></th><th class="cl-2e098536"><p class="cl-2e0969c0"><span class="cl-2e043702">disp</span></p></th><th class="cl-2e098536"><p class="cl-2e0969c0"><span class="cl-2e043702">hp</span></p></th><th class="cl-2e098536"><p class="cl-2e0969c0"><span class="cl-2e043702">drat</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">21.0</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">6</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">160</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">110</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">3.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">21.0</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">6</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">160</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">110</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">3.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">22.8</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">4</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">108</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">93</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">3.85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">21.4</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">6</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">258</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">110</span></p></td><td class="cl-2e098540"><p class="cl-2e0969c0"><span class="cl-2e043702">3.08</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2e09854a"><p class="cl-2e0969c0"><span class="cl-2e043702">18.7</span></p></td><td class="cl-2e09854a"><p class="cl-2e0969c0"><span class="cl-2e043702">8</span></p></td><td class="cl-2e09854a"><p class="cl-2e0969c0"><span class="cl-2e043702">360</span></p></td><td class="cl-2e09854a"><p class="cl-2e0969c0"><span class="cl-2e043702">175</span></p></td><td class="cl-2e09854a"><p class="cl-2e0969c0"><span class="cl-2e043702">3.15</span></p></td></tr></tbody></table></div>
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
+
+\caption{A\ table\ using\ flextable}(\#tab:unnamed-chunk-5)\\
+
+\ascline{1.5pt}{666666}{1-5}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{mpg}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{cyl}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{disp}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{hp}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{drat}}}} \\
+
+\ascline{1.5pt}{666666}{1-5}\endhead
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.90}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.90}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{22.8}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{108}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{93}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.85}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{258}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.08}}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{18.7}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{8}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{360}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{175}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.15}}}} \\
+
+\ascline{1.5pt}{666666}{1-5}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
 ```
 
 
@@ -267,466 +246,20 @@ gt(mtcars[1:5, 1:5]) %>%
   tab_header(title = "A table using gt")
 ```
 
-```{=html}
-<div id="enazhzxups" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-#enazhzxups .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#enazhzxups .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#enazhzxups .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#enazhzxups .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#enazhzxups .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#enazhzxups .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#enazhzxups .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#enazhzxups .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#enazhzxups .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#enazhzxups .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#enazhzxups .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#enazhzxups .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#enazhzxups .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#enazhzxups .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#enazhzxups .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#enazhzxups .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#enazhzxups .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#enazhzxups .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#enazhzxups .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#enazhzxups .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#enazhzxups .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#enazhzxups .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#enazhzxups .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#enazhzxups .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#enazhzxups .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#enazhzxups .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#enazhzxups .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#enazhzxups .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#enazhzxups .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#enazhzxups .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#enazhzxups .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#enazhzxups .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#enazhzxups .gt_left {
-  text-align: left;
-}
-
-#enazhzxups .gt_center {
-  text-align: center;
-}
-
-#enazhzxups .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#enazhzxups .gt_font_normal {
-  font-weight: normal;
-}
-
-#enazhzxups .gt_font_bold {
-  font-weight: bold;
-}
-
-#enazhzxups .gt_font_italic {
-  font-style: italic;
-}
-
-#enazhzxups .gt_super {
-  font-size: 65%;
-}
-
-#enazhzxups .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 75%;
-  vertical-align: 0.4em;
-}
-
-#enazhzxups .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#enazhzxups .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#enazhzxups .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#enazhzxups .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#enazhzxups .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#enazhzxups .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table">
-  <thead class="gt_header">
-    <tr>
-      <td colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>A table using gt</td>
-    </tr>
-    
-  </thead>
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mpg">mpg</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cyl">cyl</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="disp">disp</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="hp">hp</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="drat">drat</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="mpg" class="gt_row gt_right">21.0</td>
-<td headers="cyl" class="gt_row gt_right">6</td>
-<td headers="disp" class="gt_row gt_right">160</td>
-<td headers="hp" class="gt_row gt_right">110</td>
-<td headers="drat" class="gt_row gt_right">3.90</td></tr>
-    <tr><td headers="mpg" class="gt_row gt_right">21.0</td>
-<td headers="cyl" class="gt_row gt_right">6</td>
-<td headers="disp" class="gt_row gt_right">160</td>
-<td headers="hp" class="gt_row gt_right">110</td>
-<td headers="drat" class="gt_row gt_right">3.90</td></tr>
-    <tr><td headers="mpg" class="gt_row gt_right">22.8</td>
-<td headers="cyl" class="gt_row gt_right">4</td>
-<td headers="disp" class="gt_row gt_right">108</td>
-<td headers="hp" class="gt_row gt_right">93</td>
-<td headers="drat" class="gt_row gt_right">3.85</td></tr>
-    <tr><td headers="mpg" class="gt_row gt_right">21.4</td>
-<td headers="cyl" class="gt_row gt_right">6</td>
-<td headers="disp" class="gt_row gt_right">258</td>
-<td headers="hp" class="gt_row gt_right">110</td>
-<td headers="drat" class="gt_row gt_right">3.08</td></tr>
-    <tr><td headers="mpg" class="gt_row gt_right">18.7</td>
-<td headers="cyl" class="gt_row gt_right">8</td>
-<td headers="disp" class="gt_row gt_right">360</td>
-<td headers="hp" class="gt_row gt_right">175</td>
-<td headers="drat" class="gt_row gt_right">3.15</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-```
+\begin{longtable}{rrrrr}
+\caption*{
+{\large A table using gt}
+} \\ 
+\toprule
+mpg & cyl & disp & hp & drat \\ 
+\midrule
+21.0 & 6 & 160 & 110 & 3.90 \\ 
+21.0 & 6 & 160 & 110 & 3.90 \\ 
+22.8 & 4 & 108 & 93 & 3.85 \\ 
+21.4 & 6 & 258 & 110 & 3.08 \\ 
+18.7 & 8 & 360 & 175 & 3.15 \\ 
+\bottomrule
+\end{longtable}
 
 
 
