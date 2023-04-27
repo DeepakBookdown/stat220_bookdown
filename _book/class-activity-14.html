@@ -154,55 +154,30 @@ Click for answer
 <span class="header-section-number">20.1.2</span> b. Conditions and breaks<a class="anchor" aria-label="anchor" href="#b.-conditions-and-breaks"><i class="fas fa-link"></i></a>
 </h3>
 <p>Create a function that iterates through a numeric vector and stops when it encounters the first negative number, returning the position of that negative number. If there are no negative numbers in the vector, the function should return a message stating that there are no negative numbers.</p>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-```r
-find_first_negative <- function(x) {
-  for (i in seq_along(x)) {
-    if (x[i] < 0) {
-      return(paste("The first negative number is at position", i))
-      break
-    }
-  }
-  return("There are no negative numbers in the vector")
-}
-
-find_first_negative <- function(x) {
-  negative_positions <- which(x < 0)
-  
-  if (length(negative_positions) > 0) {
-    return(paste("The first negative number is at position", negative_positions[1]))
-  } else {
-    return("There are no negative numbers in the vector")
-  }
-}
-```
-
-
-```r
-test_vector <- c(5, 12, -7, 20, 15)
-find_first_negative(test_vector)
-```
-
-```
-[1] "The first negative number is at position 3"
-```
-
-</details>
-
--->
-<hr>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">find_first_negative</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">negative_positions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">negative_positions</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"The first negative number is at position"</span>, <span class="va">negative_positions</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"There are no negative numbers in the vector"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">12</span>, <span class="op">-</span><span class="fl">7</span>, <span class="fl">20</span>, <span class="fl">15</span><span class="op">)</span></span>
+<span><span class="fu">find_first_negative</span><span class="op">(</span><span class="va">test_vector</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "The first negative number is at position 3"</code></pre>
+</details><hr>
 </div>
 </div>
 <div id="group-activity-2-1" class="section level2" number="20.2">
 <h2>
 <span class="header-section-number">20.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-1"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">musical_instr_reviews</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/musicreviews.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>ratingOverall <span class="op">=</span> <span class="va">overall</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">musical_instr_reviews</span><span class="op">)</span></span></code></pre></div>
@@ -217,7 +192,7 @@ $ ratingOverall &lt;dbl&gt; 5, 5, 5, 5, 5, 5, 5, 3, 5, 5, 5, 4, …</code></pre>
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">filter_reviews_by_rating</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">rating</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ratingOverall</span> <span class="op">==</span> <span class="va">rating</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
@@ -229,7 +204,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">process_text</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">reviewText</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -244,7 +219,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">create_word_count_table</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -257,44 +232,33 @@ Click for answer
 <h3>
 <span class="header-section-number">20.2.4</span> d. Create the final function that takes the rating and number of words as input arguments and returns a word cloud plot.<a class="anchor" aria-label="anchor" href="#d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot."><i class="fas fa-link"></i></a>
 </h3>
-<!--
-
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-```r
-word_cloud <- function(rating, num.words) {
-  rating <- as.numeric(rating)
-  num.words <- as.numeric(num.words)
-  
-  if (rating >= 1 & rating <= 5) {
-    filtered_reviews <- filter_reviews_by_rating(musical_instr_reviews, rating)
-    processed_reviews <- process_text(filtered_reviews)
-    word_count_table <- create_word_count_table(processed_reviews)
-    
-    comparison.cloud(
-      word_count_table,
-      colors = c("blue", "purple"),
-      scale = c(2, 0.5),
-      max.words = num.words,
-      title.size = 2
-    )
-  } else {
-    warning(" Please enter a rating from 1 to 5")
-  }
-}
-
-word_cloud(rating = "4", num.words = 300)
-```
-
-<img src="class_activity_14_files/figure-html/unnamed-chunk-13-1.png" width="100%" />
-
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">word_cloud</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">rating</span>, <span class="va">num.words</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">rating</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rating</span><span class="op">)</span></span>
+<span>  <span class="va">num.words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">num.words</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">rating</span> <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">rating</span> <span class="op">&lt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">filtered_reviews</span> <span class="op">&lt;-</span> <span class="fu">filter_reviews_by_rating</span><span class="op">(</span><span class="va">musical_instr_reviews</span>, <span class="va">rating</span><span class="op">)</span></span>
+<span>    <span class="va">processed_reviews</span> <span class="op">&lt;-</span> <span class="fu">process_text</span><span class="op">(</span><span class="va">filtered_reviews</span><span class="op">)</span></span>
+<span>    <span class="va">word_count_table</span> <span class="op">&lt;-</span> <span class="fu">create_word_count_table</span><span class="op">(</span><span class="va">processed_reviews</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/comparison.cloud.html">comparison.cloud</a></span><span class="op">(</span></span>
+<span>      <span class="va">word_count_table</span>,</span>
+<span>      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"purple"</span><span class="op">)</span>,</span>
+<span>      scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      max.words <span class="op">=</span> <span class="va">num.words</span>,</span>
+<span>      title.size <span class="op">=</span> <span class="fl">2</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">" Please enter a rating from 1 to 5"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">word_cloud</span><span class="op">(</span>rating <span class="op">=</span> <span class="st">"4"</span>, num.words <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_14_files/figure-html/unnamed-chunk-13-1.png" width="100%"></div>
 </details>
-
--->
-
 </div>
 </div>
 </div>

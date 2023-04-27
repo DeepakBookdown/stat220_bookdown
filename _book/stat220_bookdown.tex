@@ -4304,7 +4304,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 27.94835
+[1] 27.94941
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4737,30 +4737,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     8 9th   Europe           66 9th      
- 2    10 9th   Europe           94 9th      
- 3    11 9th   Asia             53 9th      
- 4    13 9th   Africa           97 9th      
- 5    14 9th   Asia             72 9th      
- 6    19 9th   Asia             90 9th      
- 7    22 9th   South America    58 9th      
- 8    24 9th   Asia             64 9th      
- 9     1 10th  South America    52 10th     
-10     4 10th  North America    65 10th     
-11     7 10th  North America    89 10th     
-12    16 10th  South America    62 10th     
-13    17 10th  North America    81 10th     
-14    20 10th  Africa           52 10th     
-15    21 10th  Middle East      91 10th     
-16     2 11th  Africa           75 11th     
-17     3 11th  North America    98 11th     
-18     5 11th  Africa           65 11th     
-19     6 11th  Asia             64 11th     
-20     9 11th  Europe           57 11th     
-21    12 11th  North America    94 11th     
-22    15 11th  Africa           81 11th     
-23    18 11th  North America    59 11th     
-24    23 11th  Asia             70 11th     
+ 1     2 9th   South America    91 9th      
+ 2     4 9th   North America    73 9th      
+ 3     9 9th   North America    56 9th      
+ 4    10 9th   Europe           91 9th      
+ 5    11 9th   Africa           72 9th      
+ 6    12 9th   Middle East      98 9th      
+ 7    13 9th   South America    84 9th      
+ 8    17 9th   Middle East      98 9th      
+ 9    21 9th   Middle East      77 9th      
+10     5 10th  South America    51 10th     
+11     6 10th  Africa           62 10th     
+12     8 10th  Africa           91 10th     
+13    22 10th  Asia             52 10th     
+14     1 11th  Asia             80 11th     
+15     3 11th  Europe           93 11th     
+16     7 11th  Europe           66 11th     
+17    14 11th  North America    86 11th     
+18    15 11th  Europe           94 11th     
+19    16 11th  Asia             58 11th     
+20    18 11th  North America    66 11th     
+21    19 11th  Africa           65 11th     
+22    20 11th  North America    52 11th     
+23    23 11th  North America    84 11th     
+24    24 11th  Europe           71 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4787,8 +4787,8 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                 9
-2 Asia                 6
+1 EMEA                12
+2 Asia                 3
 3 Americas             9
 \end{verbatim}
 
@@ -4833,8 +4833,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 11th             9
-2 Others          15
+1 11th            11
+2 Others          13
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6001,6 +6001,33 @@ Click for answer
 
 Create a function that iterates through a numeric vector and stops when it encounters the first negative number, returning the position of that negative number. If there are no negative numbers in the vector, the function should return a message stating that there are no negative numbers.
 
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{find\_first\_negative }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  negative\_positions }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(x }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{)}
+  
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(negative\_positions) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The first negative number is at position"}\NormalTok{, negative\_positions[}\DecValTok{1}\NormalTok{]))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"There are no negative numbers in the vector"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{7}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\FunctionTok{find\_first\_negative}\NormalTok{(test\_vector)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "The first negative number is at position 3"
+\end{verbatim}
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{group-activity-2-1}{%
@@ -6069,6 +6096,37 @@ Click for answer
 
 \hypertarget{d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot.}{%
 \subsection{d.~Create the final function that takes the rating and number of words as input arguments and returns a word cloud plot.}\label{d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{word\_cloud }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(rating, num.words) \{}
+\NormalTok{  rating }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(rating)}
+\NormalTok{  num.words }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(num.words)}
+  
+  \ControlFlowTok{if}\NormalTok{ (rating }\SpecialCharTok{\textgreater{}=} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ rating }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) \{}
+\NormalTok{    filtered\_reviews }\OtherTok{\textless{}{-}} \FunctionTok{filter\_reviews\_by\_rating}\NormalTok{(musical\_instr\_reviews, rating)}
+\NormalTok{    processed\_reviews }\OtherTok{\textless{}{-}} \FunctionTok{process\_text}\NormalTok{(filtered\_reviews)}
+\NormalTok{    word\_count\_table }\OtherTok{\textless{}{-}} \FunctionTok{create\_word\_count\_table}\NormalTok{(processed\_reviews)}
+    
+    \FunctionTok{comparison.cloud}\NormalTok{(}
+\NormalTok{      word\_count\_table,}
+      \AttributeTok{colors =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"purple"}\NormalTok{),}
+      \AttributeTok{scale =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\FloatTok{0.5}\NormalTok{),}
+      \AttributeTok{max.words =}\NormalTok{ num.words,}
+      \AttributeTok{title.size =} \DecValTok{2}
+\NormalTok{    )}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{warning}\NormalTok{(}\StringTok{" Please enter a rating from 1 to 5"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\FunctionTok{word\_cloud}\NormalTok{(}\AttributeTok{rating =} \StringTok{"4"}\NormalTok{, }\AttributeTok{num.words =} \DecValTok{300}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_14_files/figure-latex/unnamed-chunk-13-1}
 
 \hypertarget{part-extra-materials}{%
 \part*{Extra Materials}\label{part-extra-materials}}

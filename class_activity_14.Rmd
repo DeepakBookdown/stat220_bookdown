@@ -69,22 +69,11 @@ skewness(x)
 
 Create a function that iterates through a numeric vector and stops when it encounters the first negative number, returning the position of that negative number. If there are no negative numbers in the vector, the function should return a message stating that there are no negative numbers.
 
-<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
 
 ```{r}
-find_first_negative <- function(x) {
-  for (i in seq_along(x)) {
-    if (x[i] < 0) {
-      return(paste("The first negative number is at position", i))
-      break
-    }
-  }
-  return("There are no negative numbers in the vector")
-}
-
 find_first_negative <- function(x) {
   negative_positions <- which(x < 0)
   
@@ -104,7 +93,6 @@ find_first_negative(test_vector)
 
 </details>
 
--->
 
 --------------------------------------------------------------------
 
@@ -168,7 +156,6 @@ create_word_count_table <- function(data) {
 
 ### d. Create the final function that takes the rating and number of words as input arguments and returns a word cloud plot. 
 
-<!--
 
 
 <details>
@@ -202,4 +189,3 @@ word_cloud(rating = "4", num.words = 300)
 
 </details>
 
--->
