@@ -1,0 +1,158 @@
+# Class Activity 15
+
+```{r}
+# load the necessary libraries
+library(tidyverse)
+library(dplyr)
+library(stringr)
+
+
+energy <- read_csv("https://raw.githubusercontent.com/deepbas/statdatasets/main/energy.csv",
+                    col_type = cols(
+                     .default = col_double(), 
+                      Timestamp = col_datetime(format = ""),
+                      dayWeek = col_factor(levels=c("Mon","Tues","Wed","Thurs","Fri","Sat","Sun"))
+                     ))
+```
+
+
+## Group Activity 1
+
+### a. `if` and `for` loop
+
+Write a for loop to iterate over the columns of the 'energy' dataset and print the names of all columns containing the string "House". Please use the function `colnames()` to extract the column names and store the results in a list.
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+```{r}
+# Create an empty list to store the column names
+house_columns <- list()
+
+# Iterate over the columns of the 'energy' dataset
+for (i in seq_along(colnames(energy))) {
+  col_name <- colnames(energy)[i]
+  
+  # Check if the column name contains the string "House"
+  if (str_detect(col_name, "House")) {
+    # Add the column name to the list
+    house_columns[[length(house_columns) + 1]] <- col_name
+  }
+}
+
+# Print the list of house columns
+house_columns <- unlist(house_columns)
+house_columns
+```
+
+</details>
+
+### b. `for` loop and mean
+
+Using a for loop, calculate and print the mean energy consumption of houses you identified in part a.
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+```{r}
+# Assuming the house_columns vector from the previous step
+
+# Create an empty numeric vector to store the mean energy consumption
+mean_energy_consumption <- numeric()
+
+# Iterate over the house_columns vector
+for (house_col in house_columns) {
+  # Calculate the mean energy consumption for the current house column
+  mean_val <- mean(energy[[house_col]], na.rm = TRUE)
+  
+  # Add the mean energy consumption to the vector
+  mean_energy_consumption <- c(mean_energy_consumption, mean_val)
+}
+
+# Combine the house names and mean energy consumption into a dataframe
+house_mean_energy <- bind_cols(House = house_columns, MeanEnergyConsumption = mean_energy_consumption)
+
+# Print the dataframe
+house_mean_energy %>%  knitr::kable()
+```
+
+</details>
+
+------------------------------------------
+
+## Group Activity 2
+
+
+**1.** Make a data frame of quantiles for `energy` buildings in columns 9-90 (you will need `na.rm = TRUE`)
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+```{r}
+qdf <- energy %>% select(9:90) %>%
+  map_dfc(quantile, probs = seq(.1,.9,.1), na.rm = TRUE)
+qdf
+```
+
+</details>
+
+**2.**  Add a variable to identify the quantile
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+```{r}
+qdf <- energy %>% select(9:90) %>%
+  map_dfc(quantile, probs = seq(.1,.9,.1), na.rm = TRUE) %>%  
+  mutate(stat = str_c("quantile_", seq(10,90,10))) 
+qdf
+```
+
+</details>
+
+**3.**  Reshape the data frame to make variables `stat` (describing the quantile), `building` and `quant` (quantile value)
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+
+```{r}
+qdf <- energy %>% select(9:90) %>%
+  map_dfc(quantile, probs = seq(.1,.9,.1), na.rm = TRUE) %>%  
+  mutate(stat = str_c("quantile_", seq(10,90,10))) %>%   
+  pivot_longer(names_to = "building", values_to = "quantiles", 1:82)
+qdf
+```
+
+</details>
+
+**4.**  Plot the KWH value for each quantile on the x-axis for the buildings `Sayles-Hill`, `Language_&_Dining_Center`, `Olin_Hall_of_Science`
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+```{r}
+qdf %>% 
+  filter(building %in% c("Sayles-Hill" ,"Language_&_Dining_Center", "Olin_Hall_of_Science"))  %>%  
+  ggplot(aes(x=quantiles, y=parse_number(stat), color=building)) +
+  geom_point() + 
+  geom_line(aes(group=building)) + 
+  labs(y="Percentile (%)",x="KWH") +
+  scale_y_continuous(breaks=seq(10,90,by=10))
+```
+
+
+</details>
+
