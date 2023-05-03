@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 22 Class Activity 16 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="# load the necessary libraries library(tidyverse) library(stringr) library(polite) library(rvest)  22.1 Group Activity 1 url &lt;-...">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="Chapter 22 Class Activity 16 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="# load the necessary libraries library(tidyverse) library(stringr) library(polite) library(rvest)  22.1 Group Activity 1 url &lt;-...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 22 Class Activity 16 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="# load the necessary libraries library(tidyverse) library(stringr) library(polite) library(rvest)  22.1 Group Activity 1 url &lt;-...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="rstudio.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
+<li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
+<li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
+<li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
+<li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
+<li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
+<li><a class="" href="class-activity-5.html"><span class="header-section-number">11</span> Class Activity 5</a></li>
+<li><a class="" href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></li>
+<li><a class="" href="class-activity-7.html"><span class="header-section-number">13</span> Class Activity 7</a></li>
+<li><a class="" href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></li>
+<li><a class="" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
+<li><a class="" href="class-activity-10.html"><span class="header-section-number">16</span> Class Activity 10</a></li>
+<li><a class="" href="class-activity-11.html"><span class="header-section-number">17</span> Class Activity 11</a></li>
+<li><a class="" href="class-activity-12.html"><span class="header-section-number">18</span> Class Activity 12</a></li>
+<li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
+<li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
+<li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
+<li><a class="active" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li class="book-part">Extra Materials</li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">23</span> Helpful R codes</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-16" class="section level1" number="22">
+<h1>
+<span class="header-section-number">22</span> Class Activity 16<a class="anchor" aria-label="anchor" href="#class-activity-16"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dmi3kno/polite">polite</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span></span></code></pre></div>
+<div id="group-activity-1-3" class="section level2" number="22.1">
+<h2>
+<span class="header-section-number">22.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1-3"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">'https://www.imdb.com/search/title/?groups=best_picture_winner&amp;sort=year,desc&amp;count=100&amp;view=advanced'</span></span>
+<span><span class="va">webpage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>As seen in the slides, we can extract the movie titles using the <code>.lister-item-header a</code> css selector.</p>
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">title_data</span> <span class="op">&lt;-</span> <span class="va">webpage</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">".lister-item-header a"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Now, lets scrape other elements of the webpage one by one using the selector gadget tool.</p>
+<div id="a.-use-the-selector-gadget-tool-to-find-the-css-for-extracting-year-the-movie-came-out." class="section level3" number="22.1.1">
+<h3>
+<span class="header-section-number">22.1.1</span> a. Use the selector gadget tool to find the CSS for extracting year the movie came out.<a class="anchor" aria-label="anchor" href="#a.-use-the-selector-gadget-tool-to-find-the-css-for-extracting-year-the-movie-came-out."><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Tidy the data
+<ul>
+<li>Using <code><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number()</a></code>
+</li>
+<li>Using any regex</li>
+</ul>
+</li>
+</ul>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">year_data</span> <span class="op">&lt;-</span> <span class="va">webpage</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">'.text-muted.unbold'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">year_data1</span> <span class="op">&lt;-</span> <span class="va">webpage</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">'.text-muted.unbold'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract_all</a></span><span class="op">(</span><span class="st">"[0-9]+"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</details>
+</div>
+<div id="b.-next-parse-the-webpage-to-produce-a-vector-of-the-descriptions.-tidy-the-description-by-removing-unwanted-regexes." class="section level3" number="22.1.2">
+<h3>
+<span class="header-section-number">22.1.2</span> b. Next, parse the webpage to produce a vector of the descriptions. Tidy the description by removing unwanted regexes.<a class="anchor" aria-label="anchor" href="#b.-next-parse-the-webpage-to-produce-a-vector-of-the-descriptions.-tidy-the-description-by-removing-unwanted-regexes."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">description_data</span> <span class="op">&lt;-</span> <span class="va">webpage</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">'.ratings-bar+ .text-muted'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">description_data</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led."                                                                      
+[2] "As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family's fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents."
+[3] "A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad."                                                                                             </code></pre>
+</details>
+</div>
+<div id="c.-now-parse-the-runtime-data-by-following-similar-tools-used-for-extracting-year." class="section level3" number="22.1.3">
+<h3>
+<span class="header-section-number">22.1.3</span> c. Now, parse the runtime data by following similar tools used for extracting year.<a class="anchor" aria-label="anchor" href="#c.-now-parse-the-runtime-data-by-following-similar-tools-used-for-extracting-year."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">runtime_data</span> <span class="op">&lt;-</span> <span class="va">webpage</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">'.runtime'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">runtime_data</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] 139 111 107 132 130 123</code></pre>
+</details>
+</div>
+<div id="d.-do-the-same-for-getting-the-ratings-data-using-an-appropriate-selector." class="section level3" number="22.1.4">
+<h3>
+<span class="header-section-number">22.1.4</span> d. Do the same for getting the ratings data using an appropriate selector.<a class="anchor" aria-label="anchor" href="#d.-do-the-same-for-getting-the-ratings-data-using-an-appropriate-selector."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rating_data</span> <span class="op">&lt;-</span> <span class="va">webpage</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">'.ratings-imdb-rating'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</details>
+</div>
+<div id="e.-finally-get-the-number-of-votes-following-similar-tools" class="section level3" number="22.1.5">
+<h3>
+<span class="header-section-number">22.1.5</span> e. Finally, get the number of votes following similar tools<a class="anchor" aria-label="anchor" href="#e.-finally-get-the-number-of-votes-following-similar-tools"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">votes_data</span> <span class="op">&lt;-</span> <span class="va">webpage</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">'.sort-num_votes-visible span:nth-child(2)'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</details><p>We can combine all the information we scraped to produce a nice table that we ca use for further analysis. Please run the following code, once you are done with the prior codes.</p>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">movies_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Year <span class="op">=</span> <span class="va">year_data</span>,</span>
+<span>                      Title <span class="op">=</span> <span class="va">title_data</span>,</span>
+<span>                      Description <span class="op">=</span> <span class="va">description_data</span>, </span>
+<span>                      Runtime <span class="op">=</span> <span class="va">runtime_data</span>,</span>
+<span>                      Rating <span class="op">=</span> <span class="va">rating_data</span>,</span>
+<span>                      Votes <span class="op">=</span> <span class="va">votes_data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">movies_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<table class="table table-sm">
+<colgroup>
+<col width="1%">
+<col width="14%">
+<col width="77%">
+<col width="2%">
+<col width="2%">
+<col width="2%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">Year</th>
+<th align="left">Title</th>
+<th align="left">Description</th>
+<th align="right">Runtime</th>
+<th align="right">Rating</th>
+<th align="right">Votes</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">2022</td>
+<td align="left">Everything Everywhere All at Once</td>
+<td align="left">A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led.</td>
+<td align="right">139</td>
+<td align="right">7.9</td>
+<td align="right">437043</td>
+</tr>
+<tr class="even">
+<td align="right">2021</td>
+<td align="left">CODA</td>
+<td align="left">As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family’s fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents.</td>
+<td align="right">111</td>
+<td align="right">8.0</td>
+<td align="right">144552</td>
+</tr>
+<tr class="odd">
+<td align="right">2020</td>
+<td align="left">Nomadland</td>
+<td align="left">A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad.</td>
+<td align="right">107</td>
+<td align="right">7.3</td>
+<td align="right">169591</td>
+</tr>
+<tr class="even">
+<td align="right">2019</td>
+<td align="left">Parasite</td>
+<td align="left">Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.</td>
+<td align="right">132</td>
+<td align="right">8.5</td>
+<td align="right">847197</td>
+</tr>
+<tr class="odd">
+<td align="right">2018</td>
+<td align="left">Green Book</td>
+<td align="left">A working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South.</td>
+<td align="right">130</td>
+<td align="right">8.2</td>
+<td align="right">515453</td>
+</tr>
+<tr class="even">
+<td align="right">2017</td>
+<td align="left">The Shape of Water</td>
+<td align="left">At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity.</td>
+<td align="right">123</td>
+<td align="right">7.3</td>
+<td align="right">430993</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="left">Moonlight</td>
+<td align="left">A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood.</td>
+<td align="right">111</td>
+<td align="right">7.4</td>
+<td align="right">317144</td>
+</tr>
+<tr class="even">
+<td align="right">2015</td>
+<td align="left">Spotlight</td>
+<td align="left">The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core.</td>
+<td align="right">129</td>
+<td align="right">8.1</td>
+<td align="right">480587</td>
+</tr>
+<tr class="odd">
+<td align="right">2014</td>
+<td align="left">Birdman or (The Unexpected Virtue of Ignorance)</td>
+<td align="left">A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production.</td>
+<td align="right">119</td>
+<td align="right">7.7</td>
+<td align="right">643897</td>
+</tr>
+<tr class="even">
+<td align="right">2013</td>
+<td align="left">12 Years a Slave</td>
+<td align="left">In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery.</td>
+<td align="right">134</td>
+<td align="right">8.1</td>
+<td align="right">713894</td>
+</tr>
+<tr class="odd">
+<td align="right">2012</td>
+<td align="left">Argo</td>
+<td align="left">Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979.</td>
+<td align="right">120</td>
+<td align="right">7.7</td>
+<td align="right">623470</td>
+</tr>
+<tr class="even">
+<td align="right">2011</td>
+<td align="left">The Artist</td>
+<td align="left">An egomaniacal film star develops a relationship with a young dancer against the backdrop of Hollywood’s silent era.</td>
+<td align="right">100</td>
+<td align="right">7.9</td>
+<td align="right">244508</td>
+</tr>
+<tr class="odd">
+<td align="right">2010</td>
+<td align="left">The King’s Speech</td>
+<td align="left">The story of King George VI, his impromptu ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer.</td>
+<td align="right">118</td>
+<td align="right">8.0</td>
+<td align="right">690513</td>
+</tr>
+<tr class="even">
+<td align="right">2008</td>
+<td align="left">Slumdog Millionaire</td>
+<td align="left">A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of “Who Wants to be a Millionaire?”.</td>
+<td align="right">120</td>
+<td align="right">8.0</td>
+<td align="right">857227</td>
+</tr>
+<tr class="odd">
+<td align="right">2008</td>
+<td align="left">The Hurt Locker</td>
+<td align="left">During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work.</td>
+<td align="right">131</td>
+<td align="right">7.5</td>
+<td align="right">460142</td>
+</tr>
+<tr class="even">
+<td align="right">2007</td>
+<td align="left">No Country for Old Men</td>
+<td align="left">Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.</td>
+<td align="right">122</td>
+<td align="right">8.2</td>
+<td align="right">997452</td>
+</tr>
+<tr class="odd">
+<td align="right">2006</td>
+<td align="left">The Departed</td>
+<td align="left">An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.</td>
+<td align="right">151</td>
+<td align="right">8.5</td>
+<td align="right">1351203</td>
+</tr>
+<tr class="even">
+<td align="right">2004</td>
+<td align="left">Crash</td>
+<td align="left">Los Angeles citizens with vastly separate lives collide in interweaving stories of race, loss and redemption.</td>
+<td align="right">112</td>
+<td align="right">7.7</td>
+<td align="right">441805</td>
+</tr>
+<tr class="odd">
+<td align="right">2004</td>
+<td align="left">Million Dollar Baby</td>
+<td align="left">A determined woman works with a hardened boxing trainer to become a professional.</td>
+<td align="right">132</td>
+<td align="right">8.1</td>
+<td align="right">698268</td>
+</tr>
+<tr class="even">
+<td align="right">2003</td>
+<td align="left">The Lord of the Rings: The Return of the King</td>
+<td align="left">Gandalf and Aragorn lead the World of Men against Sauron’s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.</td>
+<td align="right">201</td>
+<td align="right">9.0</td>
+<td align="right">1880715</td>
+</tr>
+<tr class="odd">
+<td align="right">2002</td>
+<td align="left">Chicago</td>
+<td align="left">Two death-row murderesses develop a fierce rivalry while competing for publicity, celebrity, and a sleazy lawyer’s attention.</td>
+<td align="right">113</td>
+<td align="right">7.2</td>
+<td align="right">235218</td>
+</tr>
+<tr class="even">
+<td align="right">2001</td>
+<td align="left">A Beautiful Mind</td>
+<td align="left">After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.</td>
+<td align="right">135</td>
+<td align="right">8.2</td>
+<td align="right">947636</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Gladiator</td>
+<td align="left">A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.</td>
+<td align="right">155</td>
+<td align="right">8.5</td>
+<td align="right">1530331</td>
+</tr>
+<tr class="even">
+<td align="right">1999</td>
+<td align="left">American Beauty</td>
+<td align="left">A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter’s best friend.</td>
+<td align="right">122</td>
+<td align="right">8.3</td>
+<td align="right">1170956</td>
+</tr>
+<tr class="odd">
+<td align="right">1998</td>
+<td align="left">Shakespeare in Love</td>
+<td align="left">The world’s greatest ever playwright, William Shakespeare, is young, out of ideas and short of cash, but meets his ideal woman and is inspired to write one of his most famous plays.</td>
+<td align="right">123</td>
+<td align="right">7.1</td>
+<td align="right">228967</td>
+</tr>
+<tr class="even">
+<td align="right">1997</td>
+<td align="left">Titanic</td>
+<td align="left">A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.</td>
+<td align="right">194</td>
+<td align="right">7.9</td>
+<td align="right">1215565</td>
+</tr>
+<tr class="odd">
+<td align="right">1996</td>
+<td align="left">The English Patient</td>
+<td align="left">At the close of World War II, a young nurse tends to a badly-burned plane crash victim. His past is shown in flashbacks, revealing an involvement in a fateful love affair.</td>
+<td align="right">162</td>
+<td align="right">7.4</td>
+<td align="right">194559</td>
+</tr>
+<tr class="even">
+<td align="right">1995</td>
+<td align="left">Braveheart</td>
+<td align="left">Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.</td>
+<td align="right">178</td>
+<td align="right">8.4</td>
+<td align="right">1053017</td>
+</tr>
+<tr class="odd">
+<td align="right">1994</td>
+<td align="left">Forrest Gump</td>
+<td align="left">The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.</td>
+<td align="right">142</td>
+<td align="right">8.8</td>
+<td align="right">2127618</td>
+</tr>
+<tr class="even">
+<td align="right">1993</td>
+<td align="left">Schindler’s List</td>
+<td align="left">In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.</td>
+<td align="right">195</td>
+<td align="right">9.0</td>
+<td align="right">1380347</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="left">Unforgiven</td>
+<td align="left">Retired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The “Schofield Kid.”</td>
+<td align="right">130</td>
+<td align="right">8.2</td>
+<td align="right">419566</td>
+</tr>
+<tr class="even">
+<td align="right">1991</td>
+<td align="left">The Silence of the Lambs</td>
+<td align="left">A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.</td>
+<td align="right">118</td>
+<td align="right">8.6</td>
+<td align="right">1462048</td>
+</tr>
+<tr class="odd">
+<td align="right">1990</td>
+<td align="left">Dances with Wolves</td>
+<td align="left">Lieutenant John Dunbar, assigned to a remote western Civil War outpost, finds himself engaging with a neighbouring Sioux settlement, causing him to question his own purpose.</td>
+<td align="right">181</td>
+<td align="right">8.0</td>
+<td align="right">275172</td>
+</tr>
+<tr class="even">
+<td align="right">1989</td>
+<td align="left">Driving Miss Daisy</td>
+<td align="left">An old Jewish woman and her African-American chauffeur in the American South have a relationship that grows and improves over the years.</td>
+<td align="right">99</td>
+<td align="right">7.3</td>
+<td align="right">113309</td>
+</tr>
+<tr class="odd">
+<td align="right">1988</td>
+<td align="left">Rain Man</td>
+<td align="left">After a selfish L.A. yuppie learns his estranged father left a fortune to an autistic-savant brother in Ohio that he didn’t know existed, he absconds with his brother and sets out across the country, hoping to gain a larger inheritance.</td>
+<td align="right">133</td>
+<td align="right">8.0</td>
+<td align="right">525308</td>
+</tr>
+<tr class="even">
+<td align="right">1987</td>
+<td align="left">The Last Emperor</td>
+<td align="left">Dramatization of China’s last emperor, Puyi.</td>
+<td align="right">163</td>
+<td align="right">7.7</td>
+<td align="right">106875</td>
+</tr>
+<tr class="odd">
+<td align="right">1986</td>
+<td align="left">Platoon</td>
+<td align="left">Chris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict.</td>
+<td align="right">120</td>
+<td align="right">8.1</td>
+<td align="right">422201</td>
+</tr>
+<tr class="even">
+<td align="right">1985</td>
+<td align="left">Out of Africa</td>
+<td align="left">In 20th-century colonial Kenya, a Danish baroness/plantation owner has a passionate love affair with a free-spirited big-game hunter.</td>
+<td align="right">161</td>
+<td align="right">7.1</td>
+<td align="right">82862</td>
+</tr>
+<tr class="odd">
+<td align="right">1984</td>
+<td align="left">Amadeus</td>
+<td align="left">The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart’s talent and claimed to have murdered him.</td>
+<td align="right">160</td>
+<td align="right">8.4</td>
+<td align="right">408606</td>
+</tr>
+<tr class="even">
+<td align="right">1983</td>
+<td align="left">Terms of Endearment</td>
+<td align="left">Follows hard-to-please Aurora looking for love and her daughter’s family problems.</td>
+<td align="right">132</td>
+<td align="right">7.4</td>
+<td align="right">62573</td>
+</tr>
+<tr class="odd">
+<td align="right">1982</td>
+<td align="left">Gandhi</td>
+<td align="left">The life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest.</td>
+<td align="right">191</td>
+<td align="right">8.0</td>
+<td align="right">235928</td>
+</tr>
+<tr class="even">
+<td align="right">1981</td>
+<td align="left">Chariots of Fire</td>
+<td align="left">Two British track athletes, one a determined Jew and the other a devout Christian, are driven to win in the 1924 Olympics as they wrestle with issues of pride and conscience.</td>
+<td align="right">125</td>
+<td align="right">7.1</td>
+<td align="right">63236</td>
+</tr>
+<tr class="odd">
+<td align="right">1980</td>
+<td align="left">Ordinary People</td>
+<td align="left">The accidental death of the older son of an affluent family deeply strains the relationships among the bitter mother, the good-natured father and the guilt-ridden younger son.</td>
+<td align="right">124</td>
+<td align="right">7.7</td>
+<td align="right">54203</td>
+</tr>
+<tr class="even">
+<td align="right">1979</td>
+<td align="left">Kramer vs. Kramer</td>
+<td align="left">After his wife leaves him, a work-obsessed Manhattan advertising executive is forced to learn long-neglected parenting skills, but a heated custody battle over the couple’s young son deepens the wounds left by the separation.</td>
+<td align="right">105</td>
+<td align="right">7.8</td>
+<td align="right">149060</td>
+</tr>
+<tr class="odd">
+<td align="right">1978</td>
+<td align="left">The Deer Hunter</td>
+<td align="left">An in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania.</td>
+<td align="right">183</td>
+<td align="right">8.1</td>
+<td align="right">345785</td>
+</tr>
+<tr class="even">
+<td align="right">1977</td>
+<td align="left">Annie Hall</td>
+<td align="left">Alvy Singer, a divorced Jewish comedian, reflects on his relationship with ex-lover Annie Hall, an aspiring nightclub singer, which ended abruptly just like his previous marriages.</td>
+<td align="right">93</td>
+<td align="right">8.0</td>
+<td align="right">269846</td>
+</tr>
+<tr class="odd">
+<td align="right">1976</td>
+<td align="left">Rocky</td>
+<td align="left">A small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect.</td>
+<td align="right">120</td>
+<td align="right">8.1</td>
+<td align="right">595993</td>
+</tr>
+<tr class="even">
+<td align="right">1975</td>
+<td align="left">One Flew Over the Cuckoo’s Nest</td>
+<td align="left">In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse.</td>
+<td align="right">133</td>
+<td align="right">8.7</td>
+<td align="right">1025455</td>
+</tr>
+<tr class="odd">
+<td align="right">1974</td>
+<td align="left">The Godfather Part II</td>
+<td align="left">The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.</td>
+<td align="right">202</td>
+<td align="right">9.0</td>
+<td align="right">1296174</td>
+</tr>
+<tr class="even">
+<td align="right">1973</td>
+<td align="left">The Sting</td>
+<td align="left">Two grifters team up to pull off the ultimate con.</td>
+<td align="right">129</td>
+<td align="right">8.3</td>
+<td align="right">268838</td>
+</tr>
+<tr class="odd">
+<td align="right">1972</td>
+<td align="left">The Godfather</td>
+<td align="left">The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.</td>
+<td align="right">175</td>
+<td align="right">9.2</td>
+<td align="right">1901237</td>
+</tr>
+<tr class="even">
+<td align="right">1971</td>
+<td align="left">The French Connection</td>
+<td align="left">A pair of NYPD detectives in the Narcotics Bureau stumble onto a heroin smuggling ring based in Marseilles, but stopping them and capturing their leaders proves an elusive goal.</td>
+<td align="right">104</td>
+<td align="right">7.7</td>
+<td align="right">127161</td>
+</tr>
+<tr class="odd">
+<td align="right">1970</td>
+<td align="left">Patton</td>
+<td align="left">The World War II phase of the career of controversial American general George S. Patton.</td>
+<td align="right">172</td>
+<td align="right">7.9</td>
+<td align="right">104751</td>
+</tr>
+<tr class="even">
+<td align="right">1969</td>
+<td align="left">Midnight Cowboy</td>
+<td align="left">A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process.</td>
+<td align="right">113</td>
+<td align="right">7.8</td>
+<td align="right">114635</td>
+</tr>
+<tr class="odd">
+<td align="right">1968</td>
+<td align="left">Oliver!</td>
+<td align="left">After being sold to a mortician, young orphan Oliver Twist runs away and meets a group of boys trained to be pickpockets by an elderly mentor in 1830s London.</td>
+<td align="right">153</td>
+<td align="right">7.4</td>
+<td align="right">39875</td>
+</tr>
+<tr class="even">
+<td align="right">1967</td>
+<td align="left">In the Heat of the Night</td>
+<td align="left">A black Philadelphia police detective is mistakenly suspected of a local murder while passing through a racially hostile Mississippi town, and after being cleared is reluctantly asked by the police chief to investigate the case.</td>
+<td align="right">110</td>
+<td align="right">7.9</td>
+<td align="right">79164</td>
+</tr>
+<tr class="odd">
+<td align="right">1966</td>
+<td align="left">A Man for All Seasons</td>
+<td align="left">The story of Sir Thomas More, who stood up to King Henry VIII when the King rejected the Roman Catholic Church to obtain a divorce and remarry.</td>
+<td align="right">120</td>
+<td align="right">7.7</td>
+<td align="right">35776</td>
+</tr>
+<tr class="even">
+<td align="right">1965</td>
+<td align="left">The Sound of Music</td>
+<td align="left">A young novice is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer.</td>
+<td align="right">172</td>
+<td align="right">8.1</td>
+<td align="right">243664</td>
+</tr>
+<tr class="odd">
+<td align="right">1964</td>
+<td align="left">My Fair Lady</td>
+<td align="left">In 1910s London, snobbish phonetics professor Henry Higgins agrees to a wager that he can make crude flower girl, Eliza Doolittle, presentable in high society.</td>
+<td align="right">170</td>
+<td align="right">7.8</td>
+<td align="right">98200</td>
+</tr>
+<tr class="even">
+<td align="right">1963</td>
+<td align="left">Tom Jones</td>
+<td align="left">The romantic and chivalrous adventures of adopted bastard Tom Jones in 18th-century England.</td>
+<td align="right">129</td>
+<td align="right">6.4</td>
+<td align="right">13654</td>
+</tr>
+<tr class="odd">
+<td align="right">1962</td>
+<td align="left">Lawrence of Arabia</td>
+<td align="left">The story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks.</td>
+<td align="right">218</td>
+<td align="right">8.3</td>
+<td align="right">300183</td>
+</tr>
+<tr class="even">
+<td align="right">1961</td>
+<td align="left">West Side Story</td>
+<td align="left">Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy.</td>
+<td align="right">153</td>
+<td align="right">7.6</td>
+<td align="right">117144</td>
+</tr>
+<tr class="odd">
+<td align="right">1960</td>
+<td align="left">The Apartment</td>
+<td align="left">A Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue.</td>
+<td align="right">125</td>
+<td align="right">8.3</td>
+<td align="right">185982</td>
+</tr>
+<tr class="even">
+<td align="right">1959</td>
+<td align="left">Ben-Hur</td>
+<td align="left">After a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge.</td>
+<td align="right">212</td>
+<td align="right">8.1</td>
+<td align="right">244552</td>
+</tr>
+<tr class="odd">
+<td align="right">1958</td>
+<td align="left">Gigi</td>
+<td align="left">Weary of the conventions of Parisian society, a rich playboy and a youthful courtesan-in-training enjoy a platonic friendship which may not stay platonic for long.</td>
+<td align="right">115</td>
+<td align="right">6.6</td>
+<td align="right">23658</td>
+</tr>
+<tr class="even">
+<td align="right">1957</td>
+<td align="left">The Bridge on the River Kwai</td>
+<td align="left">British POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it.</td>
+<td align="right">161</td>
+<td align="right">8.1</td>
+<td align="right">225062</td>
+</tr>
+<tr class="odd">
+<td align="right">1956</td>
+<td align="left">Around the World in 80 Days</td>
+<td align="left">A Victorian Englishman bets that with the new steamships and railways he can circumnavigate the globe in eighty days.</td>
+<td align="right">175</td>
+<td align="right">6.7</td>
+<td align="right">28536</td>
+</tr>
+<tr class="even">
+<td align="right">1955</td>
+<td align="left">Marty</td>
+<td align="left">A middle-aged butcher and a school teacher who have given up on the idea of love meet at a dance and fall for each other.</td>
+<td align="right">90</td>
+<td align="right">7.7</td>
+<td align="right">25438</td>
+</tr>
+<tr class="odd">
+<td align="right">1954</td>
+<td align="left">On the Waterfront</td>
+<td align="left">An ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate’s victims.</td>
+<td align="right">108</td>
+<td align="right">8.1</td>
+<td align="right">158121</td>
+</tr>
+<tr class="even">
+<td align="right">1953</td>
+<td align="left">From Here to Eternity</td>
+<td align="left">At a U.S. Army base in 1941 Hawaii, a private is cruelly punished for not boxing on his unit’s team, while his commanding officer’s wife and top aide begin a tentative affair.</td>
+<td align="right">118</td>
+<td align="right">7.6</td>
+<td align="right">48692</td>
+</tr>
+<tr class="odd">
+<td align="right">1952</td>
+<td align="left">The Greatest Show on Earth</td>
+<td align="left">The dramatic lives of trapeze artists, a clown, and an elephant trainer are told against a background of circus spectacle.</td>
+<td align="right">152</td>
+<td align="right">6.6</td>
+<td align="right">15300</td>
+</tr>
+<tr class="even">
+<td align="right">1951</td>
+<td align="left">An American in Paris</td>
+<td align="left">Three friends struggle to find work in Paris. Things become more complicated when two of them fall in love with the same woman.</td>
+<td align="right">114</td>
+<td align="right">7.2</td>
+<td align="right">35165</td>
+</tr>
+<tr class="odd">
+<td align="right">1950</td>
+<td align="left">All About Eve</td>
+<td align="left">A seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends.</td>
+<td align="right">138</td>
+<td align="right">8.2</td>
+<td align="right">133678</td>
+</tr>
+<tr class="even">
+<td align="right">1949</td>
+<td align="left">All the King’s Men</td>
+<td align="left">The rise and fall of a corrupt politician, who makes his friends richer and retains power by dint of a populist appeal.</td>
+<td align="right">110</td>
+<td align="right">7.4</td>
+<td align="right">15732</td>
+</tr>
+<tr class="odd">
+<td align="right">1948</td>
+<td align="left">Hamlet</td>
+<td align="left">Prince Hamlet struggles over whether or not he should kill his uncle, whom he suspects has murdered his father, the former king.</td>
+<td align="right">154</td>
+<td align="right">7.6</td>
+<td align="right">17620</td>
+</tr>
+<tr class="even">
+<td align="right">1947</td>
+<td align="left">Gentleman’s Agreement</td>
+<td align="left">A reporter pretends to be Jewish in order to cover a story on anti-Semitism, and personally discovers the true depths of bigotry and hatred.</td>
+<td align="right">118</td>
+<td align="right">7.2</td>
+<td align="right">17087</td>
+</tr>
+<tr class="odd">
+<td align="right">1946</td>
+<td align="left">The Best Years of Our Lives</td>
+<td align="left">Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed.</td>
+<td align="right">170</td>
+<td align="right">8.1</td>
+<td align="right">66827</td>
+</tr>
+<tr class="even">
+<td align="right">1945</td>
+<td align="left">The Lost Weekend</td>
+<td align="left">The desperate life of a chronic alcoholic is followed through a four-day drinking bout.</td>
+<td align="right">101</td>
+<td align="right">7.9</td>
+<td align="right">38516</td>
+</tr>
+<tr class="odd">
+<td align="right">1944</td>
+<td align="left">Going My Way</td>
+<td align="left">When young Father O’Malley arrives at St. Dominic’s, old Father Fitzgibbon doesn’t think much of the church’s newest member.</td>
+<td align="right">126</td>
+<td align="right">7.0</td>
+<td align="right">12561</td>
+</tr>
+<tr class="even">
+<td align="right">1942</td>
+<td align="left">Casablanca</td>
+<td align="left">A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.</td>
+<td align="right">102</td>
+<td align="right">8.5</td>
+<td align="right">581751</td>
+</tr>
+<tr class="odd">
+<td align="right">1942</td>
+<td align="left">Mrs. Miniver</td>
+<td align="left">A British family struggles to survive the first months of World War II.</td>
+<td align="right">134</td>
+<td align="right">7.6</td>
+<td align="right">18537</td>
+</tr>
+<tr class="even">
+<td align="right">1941</td>
+<td align="left">How Green Was My Valley</td>
+<td align="left">At the turn of the century in a Welsh mining village, the Morgans, he stern, she gentle, raise coal-mining sons and hope their youngest will find a better life.</td>
+<td align="right">118</td>
+<td align="right">7.7</td>
+<td align="right">25232</td>
+</tr>
+<tr class="odd">
+<td align="right">1940</td>
+<td align="left">Rebecca</td>
+<td align="left">A self-conscious woman juggles adjusting to her new role as an aristocrat’s wife and avoiding being intimidated by his first wife’s spectral presence.</td>
+<td align="right">130</td>
+<td align="right">8.1</td>
+<td align="right">140411</td>
+</tr>
+<tr class="even">
+<td align="right">1939</td>
+<td align="left">Gone with the Wind</td>
+<td align="left">American motion picture classic in which a manipulative woman and a roguish man conduct a turbulent romance during the Civil War and Reconstruction periods.</td>
+<td align="right">238</td>
+<td align="right">8.2</td>
+<td align="right">321606</td>
+</tr>
+<tr class="odd">
+<td align="right">1938</td>
+<td align="left">You Can’t Take It with You</td>
+<td align="left">The son of a snobbish Wall Street banker becomes engaged to a woman from a good-natured but decidedly eccentric family, not realizing that his father is trying to force her family from their home for a real estate development.</td>
+<td align="right">126</td>
+<td align="right">7.8</td>
+<td align="right">26724</td>
+</tr>
+<tr class="even">
+<td align="right">1937</td>
+<td align="left">The Life of Emile Zola</td>
+<td align="left">The biopic of the famous French muckraking writer and his involvement in fighting the injustice of the Dreyfus Affair.</td>
+<td align="right">116</td>
+<td align="right">7.2</td>
+<td align="right">8596</td>
+</tr>
+<tr class="odd">
+<td align="right">1936</td>
+<td align="left">The Great Ziegfeld</td>
+<td align="left">The ups and downs of Florenz Ziegfeld Jr., famed producer of extravagant stage revues, are portrayed.</td>
+<td align="right">176</td>
+<td align="right">6.6</td>
+<td align="right">8565</td>
+</tr>
+<tr class="even">
+<td align="right">1935</td>
+<td align="left">Mutiny on the Bounty</td>
+<td align="left">First mate Fletcher Christian leads a revolt against his sadistic commander, Captain Bligh, in this classic seafaring adventure, based on the real-life 1789 mutiny.</td>
+<td align="right">132</td>
+<td align="right">7.6</td>
+<td align="right">23909</td>
+</tr>
+<tr class="odd">
+<td align="right">1934</td>
+<td align="left">It Happened One Night</td>
+<td align="left">A renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops.</td>
+<td align="right">105</td>
+<td align="right">8.1</td>
+<td align="right">106886</td>
+</tr>
+<tr class="even">
+<td align="right">1933</td>
+<td align="left">Cavalcade</td>
+<td align="left">A portrayal of the triumphs and tragedies of two English families, the upper-crust Marryots and the working-class Bridgeses, from 1899 to 1933.</td>
+<td align="right">112</td>
+<td align="right">5.8</td>
+<td align="right">5541</td>
+</tr>
+<tr class="odd">
+<td align="right">1932</td>
+<td align="left">Grand Hotel</td>
+<td align="left">A group of very different individuals staying at a luxurious hotel in Berlin deal with each of their respective dramas.</td>
+<td align="right">112</td>
+<td align="right">7.3</td>
+<td align="right">20091</td>
+</tr>
+<tr class="even">
+<td align="right">1931</td>
+<td align="left">Cimarron</td>
+<td align="left">A newspaper editor settles in an Oklahoma boom town with his reluctant wife at the end of the nineteenth century.</td>
+<td align="right">123</td>
+<td align="right">5.8</td>
+<td align="right">6568</td>
+</tr>
+<tr class="odd">
+<td align="right">1930</td>
+<td align="left">All Quiet on the Western Front</td>
+<td align="left">A German youth eagerly enters World War I, but his enthusiasm wanes as he gets a firsthand view of the horror.</td>
+<td align="right">152</td>
+<td align="right">8.1</td>
+<td align="right">65322</td>
+</tr>
+<tr class="even">
+<td align="right">1929</td>
+<td align="left">The Broadway Melody</td>
+<td align="left">A pair of sisters from the vaudeville circuit try to make it big time on Broadway, but matters of the heart complicate the attempt.</td>
+<td align="right">100</td>
+<td align="right">5.6</td>
+<td align="right">7605</td>
+</tr>
+<tr class="odd">
+<td align="right">1927</td>
+<td align="left">Sunrise</td>
+<td align="left">A sophisticated city woman seduces a farmer and convinces him to murder his wife and join her in the city, but he ends up rekindling his romance with his wife when he changes his mind at the last moment.</td>
+<td align="right">94</td>
+<td align="right">8.1</td>
+<td align="right">52215</td>
+</tr>
+<tr class="even">
+<td align="right">1927</td>
+<td align="left">Wings</td>
+<td align="left">Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I.</td>
+<td align="right">144</td>
+<td align="right">7.6</td>
+<td align="right">13621</td>
+</tr>
+</tbody>
+</table></details><hr>
+</div>
+</div>
+<div id="group-activity-2-3" class="section level2" number="22.2">
+<h2>
+<span class="header-section-number">22.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-3"><i class="fas fa-link"></i></a>
+</h2>
+<div id="a.-scrape-the-names-scores-and-years-of-most-popular-tv-shows-on-imdb" class="section level3" number="22.2.1">
+<h3>
+<span class="header-section-number">22.2.1</span> a. Scrape the names, scores, and years of most popular TV shows on IMDB:<a class="anchor" aria-label="anchor" href="#a.-scrape-the-names-scores-and-years-of-most-popular-tv-shows-on-imdb"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="http://www.imdb.com/chart/tvmeter">www.imdb.com/chart/tvmeter</a>. Create a data frame called <code>tvshows</code> with four variables
+(<code>rank</code>, <code>name</code>, <code>score</code>, <code>year</code>)</p>
+<p>Note:</p>
+<p>It’s easier to use the <code>SelectorGadget</code> and choose the CSS selectors wisely. Otherwise, you’ll have more cleaning to do after scraping.</p>
+<!--
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+
+
+
+```r
+page <- read_html("http://www.imdb.com/chart/tvmeter")
+name <- page %>%
+  html_nodes(".titleColumn a") %>%
+  html_text()
+
+ranks <- page %>%
+  html_nodes(".velocity") %>%
+  html_text() %>%
+  str_extract("\\d+") %>%
+  as.numeric()
+
+scores <-  page %>%
+  html_nodes(".imdbRating") %>%
+  html_text() %>%
+  str_extract("\\d+.\\d+") %>%
+  as.numeric()
+
+# If you don't use the gadget selector carefully, 
+# more string manipulation is needed here
+
+years <- page %>%
+  html_nodes("a+ .secondaryInfo") %>%
+  html_text() %>%
+  str_extract("\\d+") %>%
+  as.numeric()
+```
+
+
+
+```r
+tvshows <- tibble(
+  rank = ranks,
+  name = name,
+  score = scores,
+  year = years
+)
+
+tvshows
+```
+
+```
+# A tibble: 100 × 4
+    rank name            score  year
+   <dbl> <chr>           <dbl> <dbl>
+ 1     1 The Diplomat      8.2  2023
+ 2     2 Succession        8.8  2018
+ 3     3 Beef              8.2  2023
+ 4     4 Ted Lasso         8.8  2020
+ 5     5 The Mandalorian   8.7  2019
+ 6     6 Citadel           6.5  2023
+ 7     7 Love & Death      7.6  2023
+ 8     8 The Night Agent   7.6  2023
+ 9     9 Jury Duty         8.5  2023
+10    10 Yellowjackets     7.9  2021
+# … with 90 more rows
+```
+
+
+</details>
+
+-->
+<hr>
+</div>
+</div>
+<div id="group-activity-3-1" class="section level2" number="22.3">
+<h2>
+<span class="header-section-number">22.3</span> Group Activity 3<a class="anchor" aria-label="anchor" href="#group-activity-3-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="a.-scrape-the-first-table-in-list_of_nasa_missions-wiki-page.-additionally-use-janitorclean_names-to-clean-the-column-names-and-store-the-resulting-table-as-nasa_missions.csv-in-your-working-folder." class="section level3" number="22.3.1">
+<h3>
+<span class="header-section-number">22.3.1</span> a. Scrape the first table in <code>List_of_NASA_missions</code> wiki page. Additionally, use <code>janitor::clean_names()</code> to clean the column names and store the resulting table as <code>NASA_missions.csv</code> in your working folder.<a class="anchor" aria-label="anchor" href="#a.-scrape-the-first-table-in-list_of_nasa_missions-wiki-page.-additionally-use-janitorclean_names-to-clean-the-column-names-and-store-the-resulting-table-as-nasa_missions.csv-in-your-working-folder."><i class="fas fa-link"></i></a>
+</h3>
+<!--
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+
+
+
+
+```r
+# extract data from 
+# the first table on the page
+wiki_NASA <- "https://en.wikipedia.org/wiki/List_of_NASA_missions"
+NASA_missions <- bow(wiki_NASA) %>%scrape() %>% 
+  html_nodes("table") %>% 
+  .[[1]] %>% 
+  html_table() %>% 
+  janitor::clean_names()
+```
+
+
+
+```r
+# Exporting data to CSV
+readr::write_csv(NASA_missions, "NASA_missions.csv")
+```
+
+</details>
+
+-->
+</div>
+<div id="b.-now-write-a-code-snippet-to-scrape-all-the-urls-from-the-anchor-tags-a-on-a-given-wikipedia-page-convert-the-relative-urls-to-absolute-urls-and-store-the-results-in-a-tibble-and-save-it-as-websites.csv-in-your-working-folder." class="section level3" number="22.3.2">
+<h3>
+<span class="header-section-number">22.3.2</span> b. Now, write a code snippet to scrape all the URLs from the anchor tags <code>(&lt;a&gt;)</code> on a given Wikipedia page, convert the relative URLs to absolute URLs, and store the results in a tibble and save it as <code>websites.csv</code> in your working folder.<a class="anchor" aria-label="anchor" href="#b.-now-write-a-code-snippet-to-scrape-all-the-urls-from-the-anchor-tags-a-on-a-given-wikipedia-page-convert-the-relative-urls-to-absolute-urls-and-store-the-results-in-a-tibble-and-save-it-as-websites.csv-in-your-working-folder."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><!--
+
+
+
+```r
+# extract URLs
+websites <-  bow(wiki_NASA) %>% scrape() %>% 
+  html_nodes("a") %>%
+  html_attr("href") %>% 
+  url_absolute("https://en.wikipedia.org/") 
+```
+
+
+
+
+```r
+# Exporting data to CSV
+readr::write_csv(websites, "websites.csv")
+```
+
+
+</details>
+
+--></details>
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></div>
+<div class="next"><a href="helpful-r-codes.html"><span class="header-section-number">23</span> Helpful R codes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#class-activity-16"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li>
+<a class="nav-link" href="#group-activity-1-3"><span class="header-section-number">22.1</span> Group Activity 1</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#a.-use-the-selector-gadget-tool-to-find-the-css-for-extracting-year-the-movie-came-out."><span class="header-section-number">22.1.1</span> a. Use the selector gadget tool to find the CSS for extracting year the movie came out.</a></li>
+<li><a class="nav-link" href="#b.-next-parse-the-webpage-to-produce-a-vector-of-the-descriptions.-tidy-the-description-by-removing-unwanted-regexes."><span class="header-section-number">22.1.2</span> b. Next, parse the webpage to produce a vector of the descriptions. Tidy the description by removing unwanted regexes.</a></li>
+<li><a class="nav-link" href="#c.-now-parse-the-runtime-data-by-following-similar-tools-used-for-extracting-year."><span class="header-section-number">22.1.3</span> c. Now, parse the runtime data by following similar tools used for extracting year.</a></li>
+<li><a class="nav-link" href="#d.-do-the-same-for-getting-the-ratings-data-using-an-appropriate-selector."><span class="header-section-number">22.1.4</span> d. Do the same for getting the ratings data using an appropriate selector.</a></li>
+<li><a class="nav-link" href="#e.-finally-get-the-number-of-votes-following-similar-tools"><span class="header-section-number">22.1.5</span> e. Finally, get the number of votes following similar tools</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#group-activity-2-3"><span class="header-section-number">22.2</span> Group Activity 2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#a.-scrape-the-names-scores-and-years-of-most-popular-tv-shows-on-imdb"><span class="header-section-number">22.2.1</span> a. Scrape the names, scores, and years of most popular TV shows on IMDB:</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#group-activity-3-1"><span class="header-section-number">22.3</span> Group Activity 3</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#a.-scrape-the-first-table-in-list_of_nasa_missions-wiki-page.-additionally-use-janitorclean_names-to-clean-the-column-names-and-store-the-resulting-table-as-nasa_missions.csv-in-your-working-folder."><span class="header-section-number">22.3.1</span> a. Scrape the first table in List_of_NASA_missions wiki page. Additionally, use janitor::clean_names() to clean the column names and store the resulting table as NASA_missions.csv in your working folder.</a></li>
+<li><a class="nav-link" href="#b.-now-write-a-code-snippet-to-scrape-all-the-urls-from-the-anchor-tags-a-on-a-given-wikipedia-page-convert-the-relative-urls-to-absolute-urls-and-store-the-results-in-a-tibble-and-save-it-as-websites.csv-in-your-working-folder."><span class="header-section-number">22.3.2</span> b. Now, write a code snippet to scrape all the URLs from the anchor tags (&lt;a&gt;) on a given Wikipedia page, convert the relative URLs to absolute URLs, and store the results in a tibble and save it as websites.csv in your working folder.</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/class_activity_16.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/class_activity_16.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
