@@ -17,7 +17,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!--
     <script>
     document.addEventListener('DOMContentLoaded', function () {
       const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
@@ -95,6 +96,8 @@
 <li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
 <li class="book-part">Extra Materials</li>
 <li><a class="" href="helpful-r-codes.html"><span class="header-section-number">23</span> Helpful R codes</a></li>
+<li><a class="" href="graph-formatting.html"><span class="header-section-number">24</span> Graph Formatting</a></li>
+<li><a class="" href="table-formatting.html"><span class="header-section-number">25</span> Table Formatting</a></li>
 </ul>
 
         <div class="book-extra">
@@ -137,30 +140,30 @@ Click for answer
 <pre><code># A tibble: 24 × 5
       id grade region        score grade_fac
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;fct&gt;    
- 1     2 9th   Middle East      96 9th      
- 2     3 9th   Middle East      88 9th      
- 3     4 9th   North America    92 9th      
- 4     5 9th   North America    95 9th      
- 5     6 9th   North America    54 9th      
- 6    12 9th   Europe           69 9th      
- 7    14 9th   Middle East      86 9th      
- 8    16 9th   North America    98 9th      
- 9    17 9th   South America    74 9th      
-10    20 9th   North America    94 9th      
-11    21 9th   Europe           89 9th      
-12    23 9th   Asia             93 9th      
-13     1 10th  Africa           81 10th     
-14     9 10th  North America    86 10th     
-15    11 10th  Middle East      72 10th     
-16    18 10th  North America    84 10th     
-17    19 10th  Asia             56 10th     
-18    22 10th  Europe           68 10th     
-19    24 10th  Middle East      62 10th     
-20     7 11th  Middle East      86 11th     
-21     8 11th  Europe           54 11th     
-22    10 11th  South America    91 11th     
-23    13 11th  Middle East      91 11th     
-24    15 11th  Asia             77 11th     </code></pre>
+ 1     5 9th   Europe           55 9th      
+ 2     7 9th   South America    54 9th      
+ 3     8 9th   North America    58 9th      
+ 4     9 9th   South America    58 9th      
+ 5    10 9th   Middle East      95 9th      
+ 6    12 9th   Europe           74 9th      
+ 7    17 9th   Asia             72 9th      
+ 8    20 9th   Africa           71 9th      
+ 9    21 9th   Europe           89 9th      
+10     1 10th  Europe           71 10th     
+11     2 10th  Africa           75 10th     
+12     4 10th  Middle East      91 10th     
+13     6 10th  South America    99 10th     
+14    11 10th  Africa           55 10th     
+15    14 10th  Asia             53 10th     
+16    18 10th  Europe           91 10th     
+17    22 10th  Asia             69 10th     
+18    24 10th  South America    64 10th     
+19     3 11th  Asia             52 11th     
+20    13 11th  North America    92 11th     
+21    15 11th  Europe           78 11th     
+22    16 11th  South America    53 11th     
+23    19 11th  Africa           58 11th     
+24    23 11th  Middle East      77 11th     </code></pre>
 </details>
 </div>
 <div id="b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category." class="section level3" number="16.1.2">
@@ -182,9 +185,9 @@ Click for answer
 <pre><code># A tibble: 3 × 2
   region_collapsed     n
   &lt;fct&gt;            &lt;int&gt;
-1 EMEA                12
-2 Asia                 3
-3 Americas             9</code></pre>
+1 EMEA                13
+2 Asia                 4
+3 Americas             7</code></pre>
 </details>
 </div>
 <div id="c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering." class="section level3" number="16.1.3">
@@ -215,11 +218,12 @@ Click for answer
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_lumped <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_lump.html">fct_lump</a></span><span class="op">(</span><span class="va">grade_fac</span>, n <span class="op">=</span> <span class="fl">1</span>, other_level <span class="op">=</span> <span class="st">"Others"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">grade_lumped</span><span class="op">)</span></span>
 <span><span class="va">students_d</span></span></code></pre></div>
-<pre><code># A tibble: 2 × 2
+<pre><code># A tibble: 3 × 2
   grade_lumped     n
   &lt;fct&gt;        &lt;int&gt;
-1 9th             12
-2 Others          12</code></pre>
+1 9th              9
+2 10th             9
+3 11th             6</code></pre>
 </details>
 </div>
 </div>
@@ -352,7 +356,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-03.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -48,7 +48,7 @@ gapminder %>%
 
 Another option for table formatting is the flextable package.
 
-```{r}
+```{r, eval=FALSE}
 #install.packages("flextable")
 library(flextable)
 ft <- flextable(mtcars[1:5, 1:5])
@@ -61,7 +61,7 @@ ft
 
 The gt package provides another way to create formatted tables in R.
 
-```{r}
+```{r, eval=FALSE}
 #install.packages("gt")
 library(gt)
 gt(mtcars[1:5, 1:5]) %>%
@@ -87,7 +87,7 @@ gapminder %>%
 
 We can use the pander package to create summary tables.
 
-```{r}
+```{r, eval=FALSE}
 #install.packages("pander")
 library(pander)
 pander(summary(mtcars$mpg), caption = "Summary statistics for miles per gallon")
@@ -98,7 +98,7 @@ pander(summary(mtcars$mpg), caption = "Summary statistics for miles per gallon")
 
 Let's perform a t-test comparing the miles per gallon (mpg) for cars with 4 and 6 cylinders.
 
-```{r}
+```{r, , eval=FALSE}
 t_test_result <- t.test(mpg ~ as.factor(cyl), data = mtcars, subset = cyl %in% c(4, 6))
 pander(t_test_result, caption = "Comparing MPG for 4 and 6 cylinder cars")
 ```
@@ -106,7 +106,7 @@ pander(t_test_result, caption = "Comparing MPG for 4 and 6 cylinder cars")
 ### Chi-square test results with pander
 Now let's perform a chi-square test to check for an association between the number of cylinders and the type of transmission (automatic or manual).
 
-```{r}
+```{r, eval=FALSE}
 my_table <- table(mtcars$cyl, mtcars$am)
 chisq_test_result <- chisq.test(my_table)
 pander(chisq_test_result, caption = "Chi-square test for cylinders and transmission type")
@@ -115,7 +115,7 @@ pander(chisq_test_result, caption = "Chi-square test for cylinders and transmiss
 ### Linear regression results with pander
 Finally, let's fit a linear regression model of miles per gallon (mpg) as a function of weight (wt) and display the results.
 
-```{r}
+```{r, eval=FALSE}
 lm_result <- lm(mpg ~ wt, data = mtcars)
 pander(lm_result, caption = "Linear regression of MPG on weight")
 ```

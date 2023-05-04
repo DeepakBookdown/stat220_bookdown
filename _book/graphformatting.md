@@ -26,9 +26,10 @@ ggplot(Cereals, aes(x = calgram)) +
   theme_minimal()
 ```
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-2-1} \caption{A nice figure}(\#fig:unnamed-chunk-2)
-\end{figure}
+<div class="figure">
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-2-1.png" alt="A nice figure" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-2)A nice figure</p>
+</div>
 
 
 ### Customizing titles, axis labels, and legends
@@ -47,8 +48,7 @@ ggplot(data = diamonds, aes(x = carat, y = price, color = cut)) +
   theme_minimal()
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-3-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-3-1.png" width="100%" />
 
 ### Customizing themes
 
@@ -69,8 +69,7 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
         panel.grid.minor = element_line(color = "gray", size = 0.25))
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-4-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-4-1.png" width="100%" />
 
 
 ### Using different color scales
@@ -90,9 +89,10 @@ ggplot(data = diamonds, aes(x = carat, y = price, color = cut)) +
   theme_minimal()
 ```
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/fig4-1} \caption{Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale.}(\#fig:fig4)
-\end{figure}
+<div class="figure">
+<img src="graphformatting_files/figure-epub3/fig4-1.png" alt="Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale." width="100%" />
+<p class="caption">(\#fig:fig4)Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale.</p>
+</div>
 
 
 ### Customizing plot elements
@@ -114,8 +114,7 @@ ggplot(mtcars, aes(x = hp, y = mpg, shape = factor(gear), size = gear)) +
   scale_color_brewer(palette = "Set2")
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-5-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-5-1.png" width="100%" />
 
 
 ### Faceting
@@ -134,8 +133,7 @@ ggplot(data = diamonds %>% filter(carat < 3), aes(x = carat, y = price)) +
   theme_minimal()
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-6-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-6-1.png" width="100%" />
 
 
 ## Graph Sizing in R
@@ -173,8 +171,7 @@ scatter_plot <- ggplot(mtcars, aes(x = hp, y = mpg)) +
 scatter_plot
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-8-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-8-1.png" width="100%" />
 
 
 ### Adjusting the size of points, lines, and bars
@@ -189,8 +186,7 @@ scatter_plot_large_points <- scatter_plot +
 scatter_plot_large_points
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-9-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-9-1.png" width="100%" />
 
 
 ### Adjusting the size of text elements
@@ -209,8 +205,7 @@ scatter_plot_custom_text <- scatter_plot_large_points +
 scatter_plot_custom_text
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-10-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-10-1.png" width="100%" />
 
 ### Adjusting the size of legend elements
 
@@ -232,8 +227,7 @@ iris_scatter_plot <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color =
 iris_scatter_plot
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-11-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-11-1.png" width="100%" />
 
 
 ### Adjusting the size of facet labels
@@ -254,8 +248,7 @@ theme(strip.text = element_text(size = 18, face = "bold"))
 diamonds_facet_plot
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-12-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-12-1.png" width="100%" />
 
 
 
@@ -272,9 +265,10 @@ scatter_plot_custom_ticks <- scatter_plot +
 scatter_plot_custom_ticks
 ```
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/fig6-1} \caption{Scatterplot of mpg vs. hp with customized axis tick size.}(\#fig:fig6)
-\end{figure}
+<div class="figure">
+<img src="graphformatting_files/figure-epub3/fig6-1.png" alt="Scatterplot of mpg vs. hp with customized axis tick size." width="100%" />
+<p class="caption">(\#fig:fig6)Scatterplot of mpg vs. hp with customized axis tick size.</p>
+</div>
 
 
 ### Adding text labels to points
@@ -296,8 +290,7 @@ scatter_plot_labels <- ggplot(mtcars, aes(x = wt, y = mpg)) +
 scatter_plot_labels
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-13-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-13-1.png" width="100%" />
 
 ### Modifying axis limits and scales
 
@@ -317,6 +310,5 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
        y = "Life Expectancy")
 ```
 
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-14-1} 
+<img src="graphformatting_files/figure-epub3/unnamed-chunk-14-1.png" width="100%" />
 

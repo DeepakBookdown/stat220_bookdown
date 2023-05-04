@@ -12,26 +12,17 @@ library(knitr)
 kable(mtcars[1:5, 1:5], caption = "A basic table using kable")
 ```
 
-\begin{table}
 
-\caption{(\#tab:unnamed-chunk-1)A basic table using kable}
-\centering
-\begin{tabular}[t]{l|r|r|r|r|r}
-\hline
-  & mpg & cyl & disp & hp & drat\\
-\hline
-Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
-\hline
-Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
-\hline
-Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
-\hline
-\end{tabular}
-\end{table}
+
+Table: (\#tab:unnamed-chunk-1)A basic table using kable
+
+|                  |  mpg| cyl| disp|  hp| drat|
+|:-----------------|----:|---:|----:|---:|----:|
+|Mazda RX4         | 21.0|   6|  160| 110| 3.90|
+|Mazda RX4 Wag     | 21.0|   6|  160| 110| 3.90|
+|Datsun 710        | 22.8|   4|  108|  93| 3.85|
+|Hornet 4 Drive    | 21.4|   6|  258| 110| 3.08|
+|Hornet Sportabout | 18.7|   8|  360| 175| 3.15|
 
 We will also use the `Gapminder` dataset for our examples. This dataset contains information about life expectancy, GDP per capita, and population size for various countries and years.Here's an example of how to display the first 10 rows of the `Gapminder` dataset.
 
@@ -41,36 +32,22 @@ data("gapminder", package = "gapminder")
 knitr::kable(head(gapminder, 10), caption = "First 10 rows of the Gapminder dataset.")
 ```
 
-\begin{table}
 
-\caption{(\#tab:unnamed-chunk-2)First 10 rows of the Gapminder dataset.}
-\centering
-\begin{tabular}[t]{l|l|r|r|r|r}
-\hline
-country & continent & year & lifeExp & pop & gdpPercap\\
-\hline
-Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.4453\\
-\hline
-Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.8530\\
-\hline
-Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.1007\\
-\hline
-Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.1971\\
-\hline
-Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.9811\\
-\hline
-Afghanistan & Asia & 1977 & 38.438 & 14880372 & 786.1134\\
-\hline
-Afghanistan & Asia & 1982 & 39.854 & 12881816 & 978.0114\\
-\hline
-Afghanistan & Asia & 1987 & 40.822 & 13867957 & 852.3959\\
-\hline
-Afghanistan & Asia & 1992 & 41.674 & 16317921 & 649.3414\\
-\hline
-Afghanistan & Asia & 1997 & 41.763 & 22227415 & 635.3414\\
-\hline
-\end{tabular}
-\end{table}
+
+Table: (\#tab:unnamed-chunk-2)First 10 rows of the Gapminder dataset.
+
+|country     |continent | year| lifeExp|      pop| gdpPercap|
+|:-----------|:---------|----:|-------:|--------:|---------:|
+|Afghanistan |Asia      | 1952|  28.801|  8425333|  779.4453|
+|Afghanistan |Asia      | 1957|  30.332|  9240934|  820.8530|
+|Afghanistan |Asia      | 1962|  31.997| 10267083|  853.1007|
+|Afghanistan |Asia      | 1967|  34.020| 11537966|  836.1971|
+|Afghanistan |Asia      | 1972|  36.088| 13079460|  739.9811|
+|Afghanistan |Asia      | 1977|  38.438| 14880372|  786.1134|
+|Afghanistan |Asia      | 1982|  39.854| 12881816|  978.0114|
+|Afghanistan |Asia      | 1987|  40.822| 13867957|  852.3959|
+|Afghanistan |Asia      | 1992|  41.674| 16317921|  649.3414|
+|Afghanistan |Asia      | 1997|  41.763| 22227415|  635.3414|
 
 ### Formatting Tables with `kableExtra`
 
@@ -84,26 +61,61 @@ kable(mtcars[1:5, 1:5], caption = "A formatted table with kableExtra") %>%
   kable_styling("striped", full_width = F)
 ```
 
-\begin{table}
-
-\caption{(\#tab:unnamed-chunk-3)A formatted table with kableExtra}
-\centering
-\begin{tabular}[t]{l|r|r|r|r|r}
-\hline
-  & mpg & cyl & disp & hp & drat\\
-\hline
-Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
-\hline
-Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
-\hline
-Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
-\hline
-\end{tabular}
-\end{table}
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:unnamed-chunk-3)A formatted table with kableExtra</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> mpg </th>
+   <th style="text-align:right;"> cyl </th>
+   <th style="text-align:right;"> disp </th>
+   <th style="text-align:right;"> hp </th>
+   <th style="text-align:right;"> drat </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Mazda RX4 </td>
+   <td style="text-align:right;"> 21.0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 160 </td>
+   <td style="text-align:right;"> 110 </td>
+   <td style="text-align:right;"> 3.90 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mazda RX4 Wag </td>
+   <td style="text-align:right;"> 21.0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 160 </td>
+   <td style="text-align:right;"> 110 </td>
+   <td style="text-align:right;"> 3.90 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Datsun 710 </td>
+   <td style="text-align:right;"> 22.8 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 108 </td>
+   <td style="text-align:right;"> 93 </td>
+   <td style="text-align:right;"> 3.85 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hornet 4 Drive </td>
+   <td style="text-align:right;"> 21.4 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 258 </td>
+   <td style="text-align:right;"> 110 </td>
+   <td style="text-align:right;"> 3.08 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hornet Sportabout </td>
+   <td style="text-align:right;"> 18.7 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 360 </td>
+   <td style="text-align:right;"> 175 </td>
+   <td style="text-align:right;"> 3.15 </td>
+  </tr>
+</tbody>
+</table>
 
 
 ### Customizing column formats
@@ -120,36 +132,101 @@ gapminder %>%
   kableExtra::column_spec(4, monospace = TRUE)
 ```
 
-\begin{table}
-
-\caption{(\#tab:unnamed-chunk-4)Table 3: First 10 rows of the Gapminder dataset with custom column formatting.}
-\centering
-\begin{tabular}[t]{l|>{}l|r|>{}r|r|r}
-\hline
-country & continent & year & lifeExp & pop & gdpPercap\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1952 & \ttfamily{28.801} & 8425333 & 779.4453\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1957 & \ttfamily{30.332} & 9240934 & 820.8530\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1962 & \ttfamily{31.997} & 10267083 & 853.1007\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1967 & \ttfamily{34.020} & 11537966 & 836.1971\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1972 & \ttfamily{36.088} & 13079460 & 739.9811\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1977 & \ttfamily{38.438} & 14880372 & 786.1134\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1982 & \ttfamily{39.854} & 12881816 & 978.0114\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1987 & \ttfamily{40.822} & 13867957 & 852.3959\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1992 & \ttfamily{41.674} & 16317921 & 649.3414\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1997 & \ttfamily{41.763} & 22227415 & 635.3414\\
-\hline
-\end{tabular}
-\end{table}
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:unnamed-chunk-4)Table 3: First 10 rows of the Gapminder dataset with custom column formatting.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> country </th>
+   <th style="text-align:left;"> continent </th>
+   <th style="text-align:right;"> year </th>
+   <th style="text-align:right;"> lifeExp </th>
+   <th style="text-align:right;"> pop </th>
+   <th style="text-align:right;"> gdpPercap </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1952 </td>
+   <td style="text-align:right;font-family: monospace;"> 28.801 </td>
+   <td style="text-align:right;"> 8425333 </td>
+   <td style="text-align:right;"> 779.4453 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1957 </td>
+   <td style="text-align:right;font-family: monospace;"> 30.332 </td>
+   <td style="text-align:right;"> 9240934 </td>
+   <td style="text-align:right;"> 820.8530 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1962 </td>
+   <td style="text-align:right;font-family: monospace;"> 31.997 </td>
+   <td style="text-align:right;"> 10267083 </td>
+   <td style="text-align:right;"> 853.1007 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1967 </td>
+   <td style="text-align:right;font-family: monospace;"> 34.020 </td>
+   <td style="text-align:right;"> 11537966 </td>
+   <td style="text-align:right;"> 836.1971 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1972 </td>
+   <td style="text-align:right;font-family: monospace;"> 36.088 </td>
+   <td style="text-align:right;"> 13079460 </td>
+   <td style="text-align:right;"> 739.9811 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1977 </td>
+   <td style="text-align:right;font-family: monospace;"> 38.438 </td>
+   <td style="text-align:right;"> 14880372 </td>
+   <td style="text-align:right;"> 786.1134 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1982 </td>
+   <td style="text-align:right;font-family: monospace;"> 39.854 </td>
+   <td style="text-align:right;"> 12881816 </td>
+   <td style="text-align:right;"> 978.0114 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1987 </td>
+   <td style="text-align:right;font-family: monospace;"> 40.822 </td>
+   <td style="text-align:right;"> 13867957 </td>
+   <td style="text-align:right;"> 852.3959 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;font-family: monospace;"> 41.674 </td>
+   <td style="text-align:right;"> 16317921 </td>
+   <td style="text-align:right;"> 649.3414 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;font-weight: bold;color: red !important;"> Asia </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;font-family: monospace;"> 41.763 </td>
+   <td style="text-align:right;"> 22227415 </td>
+   <td style="text-align:right;"> 635.3414 </td>
+  </tr>
+</tbody>
+</table>
 
 
 ### Formatting Tables with flextable
@@ -165,74 +242,6 @@ ft <- set_caption(ft, caption = "A table using flextable")
 ft
 ```
 
-```{=latex}
-\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
-
-\global\setlength{\Oldtabcolsep}{\tabcolsep}
-
-\setlength{\tabcolsep}{0pt}
-
-\renewcommand*{\arraystretch}{1.5}
-
-
-
-\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
-
-\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
-
-\caption{A\ table\ using\ flextable}(\#tab:unnamed-chunk-5)\\
-
-\ascline{1.5pt}{666666}{1-5}
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{mpg}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{cyl}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{disp}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{hp}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{drat}}}} \\
-
-\ascline{1.5pt}{666666}{1-5}\endhead
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.90}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.90}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{22.8}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{108}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{93}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.85}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21.4}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{258}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{110}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.08}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{18.7}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{8}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{360}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{175}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3.15}}}} \\
-
-\ascline{1.5pt}{666666}{1-5}
-
-
-
-\end{longtable}
-
-
-
-\arrayrulecolor[HTML]{000000}
-
-\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
-
-\global\setlength{\tabcolsep}{\Oldtabcolsep}
-
-\renewcommand*{\arraystretch}{1}
-```
-
 
 ### Formatting Tables with gt
 
@@ -245,21 +254,6 @@ library(gt)
 gt(mtcars[1:5, 1:5]) %>%
   tab_header(title = "A table using gt")
 ```
-
-\begin{longtable}{rrrrr}
-\caption*{
-{\large A table using gt}
-} \\ 
-\toprule
-mpg & cyl & disp & hp & drat \\ 
-\midrule
-21.0 & 6 & 160 & 110 & 3.90 \\ 
-21.0 & 6 & 160 & 110 & 3.90 \\ 
-22.8 & 4 & 108 & 93 & 3.85 \\ 
-21.4 & 6 & 258 & 110 & 3.08 \\ 
-18.7 & 8 & 360 & 175 & 3.15 \\ 
-\bottomrule
-\end{longtable}
 
 
 
@@ -283,15 +277,6 @@ pander(summary(mtcars$mpg), caption = "Summary statistics for miles per gallon")
 ```
 
 
---------------------------------------------------
- Min.   1st Qu.   Median   Mean    3rd Qu.   Max. 
------- --------- -------- ------- --------- ------
- 10.4    15.43     19.2    20.09    22.8     33.9 
---------------------------------------------------
-
-Table: Summary statistics for miles per gallon
-
-
 ### t-test results with pander
 
 Let's perform a t-test comparing the miles per gallon (mpg) for cars with 4 and 6 cylinders.
@@ -301,22 +286,6 @@ Let's perform a t-test comparing the miles per gallon (mpg) for cars with 4 and 
 t_test_result <- t.test(mpg ~ as.factor(cyl), data = mtcars, subset = cyl %in% c(4, 6))
 pander(t_test_result, caption = "Comparing MPG for 4 and 6 cylinder cars")
 ```
-
-
--------------------------------------------------------------------
- Test statistic    df         P value       Alternative hypothesis 
----------------- ------- ----------------- ------------------------
-     4.719        12.96   0.0004048 * * *         two.sided        
--------------------------------------------------------------------
-
-Table: Comparing MPG for 4 and 6 cylinder cars (continued below)
-
- 
------------------------------------
- mean in group 4   mean in group 6 
------------------ -----------------
-      26.66             19.74      
------------------------------------
 
 ### Chi-square test results with pander
 Now let's perform a chi-square test to check for an association between the number of cylinders and the type of transmission (automatic or manual).
@@ -328,15 +297,6 @@ chisq_test_result <- chisq.test(my_table)
 pander(chisq_test_result, caption = "Chi-square test for cylinders and transmission type")
 ```
 
-
----------------------------------
- Test statistic   df    P value  
----------------- ---- -----------
-     8.741        2    0.01265 * 
----------------------------------
-
-Table: Chi-square test for cylinders and transmission type
-
 ### Linear regression results with pander
 Finally, let's fit a linear regression model of miles per gallon (mpg) as a function of weight (wt) and display the results.
 
@@ -345,15 +305,4 @@ Finally, let's fit a linear regression model of miles per gallon (mpg) as a func
 lm_result <- lm(mpg ~ wt, data = mtcars)
 pander(lm_result, caption = "Linear regression of MPG on weight")
 ```
-
-
----------------------------------------------------------------
-     &nbsp;        Estimate   Std. Error   t value   Pr(>|t|)  
------------------ ---------- ------------ --------- -----------
- **(Intercept)**    37.29       1.878       19.86    8.242e-19 
-
-     **wt**         -5.344      0.5591     -9.559    1.294e-10 
----------------------------------------------------------------
-
-Table: Linear regression of MPG on weight
 
