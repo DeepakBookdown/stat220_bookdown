@@ -167,7 +167,6 @@ Note:
 
 It's easier to use the `SelectorGadget` and choose the CSS selectors wisely. Otherwise, you'll have more cleaning to do after scraping.
 
-<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -217,7 +216,7 @@ tvshows
 
 </details>
 
--->
+
 
 
 -----------------------------------------------------------
@@ -227,7 +226,7 @@ tvshows
 
 ### a. Scrape the first table in `List_of_NASA_missions` wiki page. Additionally, use `janitor::clean_names()` to clean the column names and store the resulting table as `NASA_missions.csv` in your working folder.
 
-<!--
+
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -254,7 +253,7 @@ readr::write_csv(NASA_missions, "NASA_missions.csv")
 
 </details>
 
--->
+
 
 
 ### b. Now, write a code snippet to scrape all the URLs from the anchor tags `(<a>)` on a given Wikipedia page, convert the relative URLs to absolute URLs, and store the results in a tibble and save it as `websites.csv` in your working folder.
@@ -264,7 +263,7 @@ readr::write_csv(NASA_missions, "NASA_missions.csv")
 <details>
 <summary class="answer">Click for answer</summary>
 
-<!--
+
 
 
 ```{r}
@@ -285,5 +284,5 @@ readr::write_csv(websites, "websites.csv")
 
 </details>
 
--->
+
 
