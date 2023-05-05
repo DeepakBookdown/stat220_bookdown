@@ -9,7 +9,6 @@ library(rvest)
 ```
 
 
-
 ## Group Activity 1
 
 

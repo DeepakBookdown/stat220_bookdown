@@ -101,20 +101,6 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -131,7 +117,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-05-04}
+\date{2023-05-05}
 
 \begin{document}
 \maketitle
@@ -4318,7 +4304,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 27.96943
+[1] 27.97311
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4751,30 +4737,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Asia             86 9th      
- 2     2 9th   South America    94 9th      
- 3     3 9th   Asia             52 9th      
- 4     6 9th   South America    85 9th      
- 5     9 9th   South America    96 9th      
- 6    11 9th   Middle East      64 9th      
- 7    13 9th   Africa           84 9th      
- 8    18 9th   Asia             62 9th      
- 9    19 9th   North America    96 9th      
-10    20 9th   South America    84 9th      
-11     4 10th  Africa           78 10th     
-12     7 10th  Middle East      92 10th     
-13     8 10th  Africa           69 10th     
-14    12 10th  Africa           54 10th     
-15    14 10th  Africa           69 10th     
-16    16 10th  Europe           64 10th     
-17    21 10th  Africa           54 10th     
-18    22 10th  South America    86 10th     
-19    24 10th  Africa           62 10th     
-20     5 11th  Middle East      60 11th     
-21    10 11th  Europe           90 11th     
-22    15 11th  Europe           68 11th     
-23    17 11th  South America    56 11th     
-24    23 11th  Middle East      87 11th     
+ 1     2 9th   South America    82 9th      
+ 2     6 9th   Middle East      60 9th      
+ 3     7 9th   North America    80 9th      
+ 4    17 9th   North America    76 9th      
+ 5    22 9th   Asia             79 9th      
+ 6    24 9th   Middle East      75 9th      
+ 7     1 10th  Middle East      64 10th     
+ 8     5 10th  Africa           80 10th     
+ 9     9 10th  Africa           66 10th     
+10    10 10th  North America    91 10th     
+11    13 10th  Europe           51 10th     
+12    14 10th  Europe           91 10th     
+13    15 10th  Africa           55 10th     
+14    16 10th  Middle East      82 10th     
+15    18 10th  Asia             80 10th     
+16    19 10th  Europe           91 10th     
+17    20 10th  Africa           78 10th     
+18    21 10th  Europe           84 10th     
+19    23 10th  North America    85 10th     
+20     3 11th  Asia             70 11th     
+21     4 11th  South America    74 11th     
+22     8 11th  Africa           71 11th     
+23    11 11th  Africa           57 11th     
+24    12 11th  Asia             80 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4802,8 +4788,8 @@ Click for answer
   region_collapsed     n
   <fct>            <int>
 1 EMEA                14
-2 Asia                 3
-3 Americas             7
+2 Asia                 4
+3 Americas             6
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4824,7 +4810,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "9th"  "10th" "11th"
+[1] "10th" "9th"  "11th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4847,8 +4833,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 9th             10
-2 Others          14
+1 10th            13
+2 Others          11
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6635,197 +6621,197 @@ Click for answer
 \hline
 Year & Title & Description & Runtime & Rating & Votes\\
 \hline
-2022 & Everything Everywhere All at Once & A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led. & 139 & 7.9 & 437434\\
+2022 & Everything Everywhere All at Once & A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led. & 139 & 7.9 & 437988\\
 \hline
-2021 & CODA & As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family's fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents. & 111 & 8.0 & 144597\\
+2021 & CODA & As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family's fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents. & 111 & 8.0 & 144655\\
 \hline
-2020 & Nomadland & A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad. & 107 & 7.3 & 169615\\
+2020 & Nomadland & A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad. & 107 & 7.3 & 169649\\
 \hline
-2019 & Parasite & Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan. & 132 & 8.5 & 847458\\
+2019 & Parasite & Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan. & 132 & 8.5 & 847823\\
 \hline
-2018 & Green Book & A working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South. & 130 & 8.2 & 515564\\
+2018 & Green Book & A working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South. & 130 & 8.2 & 515734\\
 \hline
-2017 & The Shape of Water & At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity. & 123 & 7.3 & 431027\\
+2017 & The Shape of Water & At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity. & 123 & 7.3 & 431072\\
 \hline
-2016 & Moonlight & A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood. & 111 & 7.4 & 317179\\
+2016 & Moonlight & A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood. & 111 & 7.4 & 317216\\
 \hline
-2015 & Spotlight & The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core. & 129 & 8.1 & 480621\\
+2015 & Spotlight & The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core. & 129 & 8.1 & 480698\\
 \hline
-2014 & Birdman or (The Unexpected Virtue of Ignorance) & A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production. & 119 & 7.7 & 643930\\
+2014 & Birdman or (The Unexpected Virtue of Ignorance) & A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production. & 119 & 7.7 & 643990\\
 \hline
-2013 & 12 Years a Slave & In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. & 134 & 8.1 & 713945\\
+2013 & 12 Years a Slave & In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. & 134 & 8.1 & 714032\\
 \hline
-2012 & Argo & Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979. & 120 & 7.7 & 623498\\
+2012 & Argo & Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979. & 120 & 7.7 & 623554\\
 \hline
-2011 & The Artist & An egomaniacal film star develops a relationship with a young dancer against the backdrop of Hollywood's silent era. & 100 & 7.9 & 244514\\
+2011 & The Artist & An egomaniacal film star develops a relationship with a young dancer against the backdrop of Hollywood's silent era. & 100 & 7.9 & 244524\\
 \hline
-2010 & The King's Speech & The story of King George VI, his impromptu ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer. & 118 & 8.0 & 690535\\
+2010 & The King's Speech & The story of King George VI, his impromptu ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer. & 118 & 8.0 & 690592\\
 \hline
-2008 & Slumdog Millionaire & A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?". & 120 & 8.0 & 857254\\
+2008 & Slumdog Millionaire & A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?". & 120 & 8.0 & 857323\\
 \hline
-2008 & The Hurt Locker & During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work. & 131 & 7.5 & 460166\\
+2008 & The Hurt Locker & During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work. & 131 & 7.5 & 460202\\
 \hline
-2007 & No Country for Old Men & Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande. & 122 & 8.2 & 997583\\
+2007 & No Country for Old Men & Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande. & 122 & 8.2 & 997775\\
 \hline
-2006 & The Departed & An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston. & 151 & 8.5 & 1351334\\
+2006 & The Departed & An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston. & 151 & 8.5 & 1351541\\
 \hline
-2004 & Crash & Los Angeles citizens with vastly separate lives collide in interweaving stories of race, loss and redemption. & 112 & 7.7 & 441820\\
+2004 & Crash & Los Angeles citizens with vastly separate lives collide in interweaving stories of race, loss and redemption. & 112 & 7.7 & 441856\\
 \hline
-2004 & Million Dollar Baby & A determined woman works with a hardened boxing trainer to become a professional. & 132 & 8.1 & 698320\\
+2004 & Million Dollar Baby & A determined woman works with a hardened boxing trainer to become a professional. & 132 & 8.1 & 698403\\
 \hline
-2003 & The Lord of the Rings: The Return of the King & Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. & 201 & 9.0 & 1880929\\
+2003 & The Lord of the Rings: The Return of the King & Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. & 201 & 9.0 & 1881248\\
 \hline
-2002 & Chicago & Two death-row murderesses develop a fierce rivalry while competing for publicity, celebrity, and a sleazy lawyer's attention. & 113 & 7.2 & 235232\\
+2002 & Chicago & Two death-row murderesses develop a fierce rivalry while competing for publicity, celebrity, and a sleazy lawyer's attention. & 113 & 7.2 & 235252\\
 \hline
-2001 & A Beautiful Mind & After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish. & 135 & 8.2 & 947726\\
+2001 & A Beautiful Mind & After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish. & 135 & 8.2 & 947847\\
 \hline
-2000 & Gladiator & A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery. & 155 & 8.5 & 1530528\\
+2000 & Gladiator & A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery. & 155 & 8.5 & 1530799\\
 \hline
-1999 & American Beauty & A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend. & 122 & 8.3 & 1171034\\
+1999 & American Beauty & A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend. & 122 & 8.3 & 1171145\\
 \hline
-1998 & Shakespeare in Love & The world's greatest ever playwright, William Shakespeare, is young, out of ideas and short of cash, but meets his ideal woman and is inspired to write one of his most famous plays. & 123 & 7.1 & 228974\\
+1998 & Shakespeare in Love & The world's greatest ever playwright, William Shakespeare, is young, out of ideas and short of cash, but meets his ideal woman and is inspired to write one of his most famous plays. & 123 & 7.1 & 228987\\
 \hline
-1997 & Titanic & A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic. & 194 & 7.9 & 1215681\\
+1997 & Titanic & A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic. & 194 & 7.9 & 1215872\\
 \hline
-1996 & The English Patient & At the close of World War II, a young nurse tends to a badly-burned plane crash victim. His past is shown in flashbacks, revealing an involvement in a fateful love affair. & 162 & 7.4 & 194573\\
+1996 & The English Patient & At the close of World War II, a young nurse tends to a badly-burned plane crash victim. His past is shown in flashbacks, revealing an involvement in a fateful love affair. & 162 & 7.4 & 194584\\
 \hline
-1995 & Braveheart & Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England. & 178 & 8.4 & 1053089\\
+1995 & Braveheart & Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England. & 178 & 8.4 & 1053223\\
 \hline
-1994 & Forrest Gump & The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. & 142 & 8.8 & 2127884\\
+1994 & Forrest Gump & The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. & 142 & 8.8 & 2128313\\
 \hline
-1993 & Schindler's List & In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis. & 195 & 9.0 & 1380499\\
+1993 & Schindler's List & In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis. & 195 & 9.0 & 1380732\\
 \hline
-1992 & Unforgiven & Retired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The "Schofield Kid." & 130 & 8.2 & 419603\\
+1992 & Unforgiven & Retired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The "Schofield Kid." & 130 & 8.2 & 419647\\
 \hline
-1991 & The Silence of the Lambs & A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims. & 118 & 8.6 & 1462210\\
+1991 & The Silence of the Lambs & A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims. & 118 & 8.6 & 1462436\\
 \hline
-1990 & Dances with Wolves & Lieutenant John Dunbar, assigned to a remote western Civil War outpost, finds himself engaging with a neighbouring Sioux settlement, causing him to question his own purpose. & 181 & 8.0 & 275220\\
+1990 & Dances with Wolves & Lieutenant John Dunbar, assigned to a remote western Civil War outpost, finds himself engaging with a neighbouring Sioux settlement, causing him to question his own purpose. & 181 & 8.0 & 275276\\
 \hline
-1989 & Driving Miss Daisy & An old Jewish woman and her African-American chauffeur in the American South have a relationship that grows and improves over the years. & 99 & 7.3 & 113315\\
+1989 & Driving Miss Daisy & An old Jewish woman and her African-American chauffeur in the American South have a relationship that grows and improves over the years. & 99 & 7.3 & 113334\\
 \hline
-1988 & Rain Man & After a selfish L.A. yuppie learns his estranged father left a fortune to an autistic-savant brother in Ohio that he didn't know existed, he absconds with his brother and sets out across the country, hoping to gain a larger inheritance. & 133 & 8.0 & 525344\\
+1988 & Rain Man & After a selfish L.A. yuppie learns his estranged father left a fortune to an autistic-savant brother in Ohio that he didn't know existed, he absconds with his brother and sets out across the country, hoping to gain a larger inheritance. & 133 & 8.0 & 525395\\
 \hline
-1987 & The Last Emperor & Dramatization of China's last emperor, Puyi. & 163 & 7.7 & 106885\\
+1987 & The Last Emperor & Dramatization of China's last emperor, Puyi. & 163 & 7.7 & 106907\\
 \hline
-1986 & Platoon & Chris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict. & 120 & 8.1 & 422229\\
+1986 & Platoon & Chris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict. & 120 & 8.1 & 422275\\
 \hline
-1985 & Out of Africa & In 20th-century colonial Kenya, a Danish baroness/plantation owner has a passionate love affair with a free-spirited big-game hunter. & 161 & 7.1 & 82870\\
+1985 & Out of Africa & In 20th-century colonial Kenya, a Danish baroness/plantation owner has a passionate love affair with a free-spirited big-game hunter. & 161 & 7.1 & 82881\\
 \hline
-1984 & Amadeus & The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart's talent and claimed to have murdered him. & 160 & 8.4 & 408632\\
+1984 & Amadeus & The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart's talent and claimed to have murdered him. & 160 & 8.4 & 408689\\
 \hline
-1983 & Terms of Endearment & Follows hard-to-please Aurora looking for love and her daughter's family problems. & 132 & 7.4 & 62576\\
+1983 & Terms of Endearment & Follows hard-to-please Aurora looking for love and her daughter's family problems. & 132 & 7.4 & 62582\\
 \hline
-1982 & Gandhi & The life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest. & 191 & 8.0 & 235937\\
+1982 & Gandhi & The life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest. & 191 & 8.0 & 235954\\
 \hline
-1981 & Chariots of Fire & Two British track athletes, one a determined Jew and the other a devout Christian, are driven to win in the 1924 Olympics as they wrestle with issues of pride and conscience. & 125 & 7.1 & 63241\\
+1981 & Chariots of Fire & Two British track athletes, one a determined Jew and the other a devout Christian, are driven to win in the 1924 Olympics as they wrestle with issues of pride and conscience. & 125 & 7.1 & 63252\\
 \hline
-1980 & Ordinary People & The accidental death of the older son of an affluent family deeply strains the relationships among the bitter mother, the good-natured father and the guilt-ridden younger son. & 124 & 7.7 & 54209\\
+1980 & Ordinary People & The accidental death of the older son of an affluent family deeply strains the relationships among the bitter mother, the good-natured father and the guilt-ridden younger son. & 124 & 7.7 & 54215\\
 \hline
-1979 & Kramer vs. Kramer & After his wife leaves him, a work-obsessed Manhattan advertising executive is forced to learn long-neglected parenting skills, but a heated custody battle over the couple's young son deepens the wounds left by the separation. & 105 & 7.8 & 149077\\
+1979 & Kramer vs. Kramer & After his wife leaves him, a work-obsessed Manhattan advertising executive is forced to learn long-neglected parenting skills, but a heated custody battle over the couple's young son deepens the wounds left by the separation. & 105 & 7.8 & 149088\\
 \hline
-1978 & The Deer Hunter & An in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania. & 183 & 8.1 & 345812\\
+1978 & The Deer Hunter & An in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania. & 183 & 8.1 & 345847\\
 \hline
-1977 & Annie Hall & Alvy Singer, a divorced Jewish comedian, reflects on his relationship with ex-lover Annie Hall, an aspiring nightclub singer, which ended abruptly just like his previous marriages. & 93 & 8.0 & 269864\\
+1977 & Annie Hall & Alvy Singer, a divorced Jewish comedian, reflects on his relationship with ex-lover Annie Hall, an aspiring nightclub singer, which ended abruptly just like his previous marriages. & 93 & 8.0 & 269891\\
 \hline
-1976 & Rocky & A small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect. & 120 & 8.1 & 596064\\
+1976 & Rocky & A small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect. & 120 & 8.1 & 596190\\
 \hline
-1975 & One Flew Over the Cuckoo's Nest & In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse. & 133 & 8.7 & 1025544\\
+1975 & One Flew Over the Cuckoo's Nest & In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse. & 133 & 8.7 & 1025704\\
 \hline
-1974 & The Godfather Part II & The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate. & 202 & 9.0 & 1296287\\
+1974 & The Godfather Part II & The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate. & 202 & 9.0 & 1296571\\
 \hline
-1973 & The Sting & Two grifters team up to pull off the ultimate con. & 129 & 8.3 & 268855\\
+1973 & The Sting & Two grifters team up to pull off the ultimate con. & 129 & 8.3 & 268887\\
 \hline
-1972 & The Godfather & The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. & 175 & 9.2 & 1901481\\
+1972 & The Godfather & The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. & 175 & 9.2 & 1901934\\
 \hline
-1971 & The French Connection & A pair of NYPD detectives in the Narcotics Bureau stumble onto a heroin smuggling ring based in Marseilles, but stopping them and capturing their leaders proves an elusive goal. & 104 & 7.7 & 127172\\
+1971 & The French Connection & A pair of NYPD detectives in the Narcotics Bureau stumble onto a heroin smuggling ring based in Marseilles, but stopping them and capturing their leaders proves an elusive goal. & 104 & 7.7 & 127186\\
 \hline
-1970 & Patton & The World War II phase of the career of controversial American general George S. Patton. & 172 & 7.9 & 104759\\
+1970 & Patton & The World War II phase of the career of controversial American general George S. Patton. & 172 & 7.9 & 104773\\
 \hline
-1969 & Midnight Cowboy & A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process. & 113 & 7.8 & 114643\\
+1969 & Midnight Cowboy & A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process. & 113 & 7.8 & 114656\\
 \hline
-1968 & Oliver! & After being sold to a mortician, young orphan Oliver Twist runs away and meets a group of boys trained to be pickpockets by an elderly mentor in 1830s London. & 153 & 7.4 & 39877\\
+1968 & Oliver! & After being sold to a mortician, young orphan Oliver Twist runs away and meets a group of boys trained to be pickpockets by an elderly mentor in 1830s London. & 153 & 7.4 & 39882\\
 \hline
-1967 & In the Heat of the Night & A black Philadelphia police detective is mistakenly suspected of a local murder while passing through a racially hostile Mississippi town, and after being cleared is reluctantly asked by the police chief to investigate the case. & 110 & 7.9 & 79174\\
+1967 & In the Heat of the Night & A black Philadelphia police detective is mistakenly suspected of a local murder while passing through a racially hostile Mississippi town, and after being cleared is reluctantly asked by the police chief to investigate the case. & 110 & 7.9 & 79182\\
 \hline
-1966 & A Man for All Seasons & The story of Sir Thomas More, who stood up to King Henry VIII when the King rejected the Roman Catholic Church to obtain a divorce and remarry. & 120 & 7.7 & 35778\\
+1966 & A Man for All Seasons & The story of Sir Thomas More, who stood up to King Henry VIII when the King rejected the Roman Catholic Church to obtain a divorce and remarry. & 120 & 7.7 & 35783\\
 \hline
-1965 & The Sound of Music & A young novice is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer. & 172 & 8.1 & 243695\\
+1965 & The Sound of Music & A young novice is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer. & 172 & 8.1 & 243740\\
 \hline
-1964 & My Fair Lady & In 1910s London, snobbish phonetics professor Henry Higgins agrees to a wager that he can make crude flower girl, Eliza Doolittle, presentable in high society. & 170 & 7.8 & 98206\\
+1964 & My Fair Lady & In 1910s London, snobbish phonetics professor Henry Higgins agrees to a wager that he can make crude flower girl, Eliza Doolittle, presentable in high society. & 170 & 7.8 & 98213\\
 \hline
-1963 & Tom Jones & The romantic and chivalrous adventures of adopted bastard Tom Jones in 18th-century England. & 129 & 6.4 & 13656\\
+1963 & Tom Jones & The romantic and chivalrous adventures of adopted bastard Tom Jones in 18th-century England. & 129 & 6.4 & 13660\\
 \hline
-1962 & Lawrence of Arabia & The story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks. & 218 & 8.3 & 300206\\
+1962 & Lawrence of Arabia & The story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks. & 218 & 8.3 & 300241\\
 \hline
-1961 & West Side Story & Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy. & 153 & 7.6 & 117149\\
+1961 & West Side Story & Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy. & 153 & 7.6 & 117159\\
 \hline
-1960 & The Apartment & A Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue. & 125 & 8.3 & 185997\\
+1960 & The Apartment & A Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue. & 125 & 8.3 & 186018\\
 \hline
-1959 & Ben-Hur & After a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge. & 212 & 8.1 & 244571\\
+1959 & Ben-Hur & After a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge. & 212 & 8.1 & 244597\\
 \hline
-1958 & Gigi & Weary of the conventions of Parisian society, a rich playboy and a youthful courtesan-in-training enjoy a platonic friendship which may not stay platonic for long. & 115 & 6.6 & 23661\\
+1958 & Gigi & Weary of the conventions of Parisian society, a rich playboy and a youthful courtesan-in-training enjoy a platonic friendship which may not stay platonic for long. & 115 & 6.6 & 23663\\
 \hline
-1957 & The Bridge on the River Kwai & British POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it. & 161 & 8.1 & 225080\\
+1957 & The Bridge on the River Kwai & British POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it. & 161 & 8.1 & 225108\\
 \hline
-1956 & Around the World in 80 Days & A Victorian Englishman bets that with the new steamships and railways he can circumnavigate the globe in eighty days. & 175 & 6.7 & 28541\\
+1956 & Around the World in 80 Days & A Victorian Englishman bets that with the new steamships and railways he can circumnavigate the globe in eighty days. & 175 & 6.7 & 28545\\
 \hline
-1955 & Marty & A middle-aged butcher and a school teacher who have given up on the idea of love meet at a dance and fall for each other. & 90 & 7.7 & 25439\\
+1955 & Marty & A middle-aged butcher and a school teacher who have given up on the idea of love meet at a dance and fall for each other. & 90 & 7.7 & 25442\\
 \hline
-1954 & On the Waterfront & An ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate's victims. & 108 & 8.1 & 158133\\
+1954 & On the Waterfront & An ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate's victims. & 108 & 8.1 & 158146\\
 \hline
-1953 & From Here to Eternity & At a U.S. Army base in 1941 Hawaii, a private is cruelly punished for not boxing on his unit's team, while his commanding officer's wife and top aide begin a tentative affair. & 118 & 7.6 & 48694\\
+1953 & From Here to Eternity & At a U.S. Army base in 1941 Hawaii, a private is cruelly punished for not boxing on his unit's team, while his commanding officer's wife and top aide begin a tentative affair. & 118 & 7.6 & 48701\\
 \hline
-1952 & The Greatest Show on Earth & The dramatic lives of trapeze artists, a clown, and an elephant trainer are told against a background of circus spectacle. & 152 & 6.6 & 15303\\
+1952 & The Greatest Show on Earth & The dramatic lives of trapeze artists, a clown, and an elephant trainer are told against a background of circus spectacle. & 152 & 6.6 & 15305\\
 \hline
-1951 & An American in Paris & Three friends struggle to find work in Paris. Things become more complicated when two of them fall in love with the same woman. & 114 & 7.2 & 35167\\
+1951 & An American in Paris & Three friends struggle to find work in Paris. Things become more complicated when two of them fall in love with the same woman. & 114 & 7.2 & 35169\\
 \hline
-1950 & All About Eve & A seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends. & 138 & 8.2 & 133688\\
+1950 & All About Eve & A seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends. & 138 & 8.2 & 133698\\
 \hline
-1949 & All the King's Men & The rise and fall of a corrupt politician, who makes his friends richer and retains power by dint of a populist appeal. & 110 & 7.4 & 15732\\
+1949 & All the King's Men & The rise and fall of a corrupt politician, who makes his friends richer and retains power by dint of a populist appeal. & 110 & 7.4 & 15734\\
 \hline
 1948 & Hamlet & Prince Hamlet struggles over whether or not he should kill his uncle, whom he suspects has murdered his father, the former king. & 154 & 7.6 & 17623\\
 \hline
-1947 & Gentleman's Agreement & A reporter pretends to be Jewish in order to cover a story on anti-Semitism, and personally discovers the true depths of bigotry and hatred. & 118 & 7.2 & 17089\\
+1947 & Gentleman's Agreement & A reporter pretends to be Jewish in order to cover a story on anti-Semitism, and personally discovers the true depths of bigotry and hatred. & 118 & 7.2 & 17090\\
 \hline
-1946 & The Best Years of Our Lives & Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed. & 170 & 8.1 & 66831\\
+1946 & The Best Years of Our Lives & Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed. & 170 & 8.1 & 66839\\
 \hline
-1945 & The Lost Weekend & The desperate life of a chronic alcoholic is followed through a four-day drinking bout. & 101 & 7.9 & 38519\\
+1945 & The Lost Weekend & The desperate life of a chronic alcoholic is followed through a four-day drinking bout. & 101 & 7.9 & 38522\\
 \hline
-1944 & Going My Way & When young Father O'Malley arrives at St. Dominic's, old Father Fitzgibbon doesn't think much of the church's newest member. & 126 & 7.0 & 12563\\
+1944 & Going My Way & When young Father O'Malley arrives at St. Dominic's, old Father Fitzgibbon doesn't think much of the church's newest member. & 126 & 7.0 & 12566\\
 \hline
-1942 & Casablanca & A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco. & 102 & 8.5 & 581806\\
+1942 & Casablanca & A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco. & 102 & 8.5 & 581885\\
 \hline
-1942 & Mrs. Miniver & A British family struggles to survive the first months of World War II. & 134 & 7.6 & 18538\\
+1942 & Mrs. Miniver & A British family struggles to survive the first months of World War II. & 134 & 7.6 & 18539\\
 \hline
-1941 & How Green Was My Valley & At the turn of the century in a Welsh mining village, the Morgans, he stern, she gentle, raise coal-mining sons and hope their youngest will find a better life. & 118 & 7.7 & 25234\\
+1941 & How Green Was My Valley & At the turn of the century in a Welsh mining village, the Morgans, he stern, she gentle, raise coal-mining sons and hope their youngest will find a better life. & 118 & 7.7 & 25238\\
 \hline
-1940 & Rebecca & A self-conscious woman juggles adjusting to her new role as an aristocrat's wife and avoiding being intimidated by his first wife's spectral presence. & 130 & 8.1 & 140426\\
+1940 & Rebecca & A self-conscious woman juggles adjusting to her new role as an aristocrat's wife and avoiding being intimidated by his first wife's spectral presence. & 130 & 8.1 & 140445\\
 \hline
-1939 & Gone with the Wind & American motion picture classic in which a manipulative woman and a roguish man conduct a turbulent romance during the Civil War and Reconstruction periods. & 238 & 8.2 & 321638\\
+1939 & Gone with the Wind & American motion picture classic in which a manipulative woman and a roguish man conduct a turbulent romance during the Civil War and Reconstruction periods. & 238 & 8.2 & 321668\\
 \hline
-1938 & You Can't Take It with You & The son of a snobbish Wall Street banker becomes engaged to a woman from a good-natured but decidedly eccentric family, not realizing that his father is trying to force her family from their home for a real estate development. & 126 & 7.8 & 26727\\
+1938 & You Can't Take It with You & The son of a snobbish Wall Street banker becomes engaged to a woman from a good-natured but decidedly eccentric family, not realizing that his father is trying to force her family from their home for a real estate development. & 126 & 7.8 & 26730\\
 \hline
-1937 & The Life of Emile Zola & The biopic of the famous French muckraking writer and his involvement in fighting the injustice of the Dreyfus Affair. & 116 & 7.2 & 8596\\
+1937 & The Life of Emile Zola & The biopic of the famous French muckraking writer and his involvement in fighting the injustice of the Dreyfus Affair. & 116 & 7.2 & 8594\\
 \hline
 1936 & The Great Ziegfeld & The ups and downs of Florenz Ziegfeld Jr., famed producer of extravagant stage revues, are portrayed. & 176 & 6.6 & 8565\\
 \hline
-1935 & Mutiny on the Bounty & First mate Fletcher Christian leads a revolt against his sadistic commander, Captain Bligh, in this classic seafaring adventure, based on the real-life 1789 mutiny. & 132 & 7.6 & 23910\\
+1935 & Mutiny on the Bounty & First mate Fletcher Christian leads a revolt against his sadistic commander, Captain Bligh, in this classic seafaring adventure, based on the real-life 1789 mutiny. & 132 & 7.6 & 23913\\
 \hline
-1934 & It Happened One Night & A renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops. & 105 & 8.1 & 106896\\
+1934 & It Happened One Night & A renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops. & 105 & 8.1 & 106905\\
 \hline
-1933 & Cavalcade & A portrayal of the triumphs and tragedies of two English families, the upper-crust Marryots and the working-class Bridgeses, from 1899 to 1933. & 112 & 5.8 & 5541\\
+1933 & Cavalcade & A portrayal of the triumphs and tragedies of two English families, the upper-crust Marryots and the working-class Bridgeses, from 1899 to 1933. & 112 & 5.8 & 5543\\
 \hline
-1932 & Grand Hotel & A group of very different individuals staying at a luxurious hotel in Berlin deal with each of their respective dramas. & 112 & 7.3 & 20092\\
+1932 & Grand Hotel & A group of very different individuals staying at a luxurious hotel in Berlin deal with each of their respective dramas. & 112 & 7.3 & 20094\\
 \hline
-1931 & Cimarron & A newspaper editor settles in an Oklahoma boom town with his reluctant wife at the end of the nineteenth century. & 123 & 5.8 & 6569\\
+1931 & Cimarron & A newspaper editor settles in an Oklahoma boom town with his reluctant wife at the end of the nineteenth century. & 123 & 5.8 & 6570\\
 \hline
-1930 & All Quiet on the Western Front & A German youth eagerly enters World War I, but his enthusiasm wanes as he gets a firsthand view of the horror. & 152 & 8.1 & 65328\\
+1930 & All Quiet on the Western Front & A German youth eagerly enters World War I, but his enthusiasm wanes as he gets a firsthand view of the horror. & 152 & 8.1 & 65332\\
 \hline
-1929 & The Broadway Melody & A pair of sisters from the vaudeville circuit try to make it big time on Broadway, but matters of the heart complicate the attempt. & 100 & 5.6 & 7606\\
+1929 & The Broadway Melody & A pair of sisters from the vaudeville circuit try to make it big time on Broadway, but matters of the heart complicate the attempt. & 100 & 5.6 & 7607\\
 \hline
-1927 & Sunrise & A sophisticated city woman seduces a farmer and convinces him to murder his wife and join her in the city, but he ends up rekindling his romance with his wife when he changes his mind at the last moment. & 94 & 8.1 & 52219\\
+1927 & Sunrise & A sophisticated city woman seduces a farmer and convinces him to murder his wife and join her in the city, but he ends up rekindling his romance with his wife when he changes his mind at the last moment. & 94 & 8.1 & 52221\\
 \hline
-1927 & Wings & Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I. & 144 & 7.6 & 13624\\
+1927 & Wings & Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I. & 144 & 7.6 & 13626\\
 \hline
 \end{tabular}
 
@@ -6958,6 +6944,267 @@ Click for answer
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{class-activity-17}{%
+\chapter{Class Activity 17}\label{class-activity-17}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(purrr)}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\FunctionTok{library}\NormalTok{(polite)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-4}{%
+\section{Group Activity 1}\label{group-activity-1-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Go to the \href{https://www.the-numbers.com/movie/budgets/all}{the numbers webpage} and extract the table on the front page.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{session1 }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(}\AttributeTok{url =} \StringTok{"https://www.the{-}numbers.com/movie/budgets/all"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_nodes}\NormalTok{(}\AttributeTok{css =} \StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_table}\NormalTok{()}
+
+\NormalTok{table\_base }\OtherTok{\textless{}{-}}\NormalTok{ session1 }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ .[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} The starting count of the movie gets concatenated to the url in increments of 100.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Write a for loop to store all the data in multiple pages to a single data frame.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(rvest)}
+
+\NormalTok{new\_urls }\OtherTok{\textless{}{-}} \StringTok{"https://www.the{-}numbers.com/movie/budgets/all/"}
+
+\CommentTok{\# Create an empty data frame}
+\NormalTok{df1 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+
+\CommentTok{\# Generate a vector of indices}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{6301}\NormalTok{, }\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-2-4}{%
+\section{Group Activity 2}\label{group-activity-2-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Go to the \href{https://www.scrapethissite.com/pages/forms/}{the numbers webpage} and extract the table on the front page.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{session1 }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(}\AttributeTok{url =} \StringTok{"https://www.scrapethissite.com/pages/forms/"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_nodes}\NormalTok{(}\AttributeTok{css =} \StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_table}\NormalTok{()}
+
+\NormalTok{table\_base }\OtherTok{\textless{}{-}}\NormalTok{ session1 }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ .[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} The url field has \texttt{?page\_num=} added with the number of pages running from 1 to 24.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Write a for loop to store all the data in multiple pages to a single data frame.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(rvest)}
+
+\NormalTok{new\_urls }\OtherTok{\textless{}{-}} \StringTok{"http://scrapethissite.com/pages/forms/?page\_num="}
+
+\CommentTok{\# Create an empty data frame}
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+
+\CommentTok{\# Generate a vector of indices}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{24}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Loop through indices, scrape data, and bind the resulting data frames}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ index) \{}
+\NormalTok{  url }\OtherTok{\textless{}{-}} \FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{new\_urls\}\{i\}"}\NormalTok{)}
+\NormalTok{  webpage }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(url)}
+\NormalTok{  table\_new }\OtherTok{\textless{}{-}} \FunctionTok{html\_table}\NormalTok{(webpage)[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    tibble}\SpecialCharTok{::}\FunctionTok{as\_tibble}\NormalTok{(}\AttributeTok{.name\_repair =} \StringTok{"unique"}\NormalTok{)}
+\NormalTok{  df2[[i]] }\OtherTok{\textless{}{-}}\NormalTok{ table\_new}
+\NormalTok{\}}
+
+\NormalTok{df2\_final }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, df2)}
+\NormalTok{df2\_final1 }\OtherTok{\textless{}{-}} \FunctionTok{reduce}\NormalTok{(df2, dplyr}\SpecialCharTok{::}\NormalTok{bind\_rows)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alternate using map}
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\ControlFlowTok{function}\NormalTok{(i) }\FunctionTok{str\_glue}\NormalTok{(\{new\_urls\}, \{i\}))}
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{str\_glue}\NormalTok{(\{new\_urls\}, \{.x\}))}
+
+
+\NormalTok{sessions }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(urls, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{read\_html}\NormalTok{(.x) }\SpecialCharTok{\%\textgreater{}\%} 
+                  \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+                  \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{                  tibble}\SpecialCharTok{::}\FunctionTok{as\_tibble}\NormalTok{(}\AttributeTok{.name\_repair =} \StringTok{"unique"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{                  janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{())}
+
+\NormalTok{sports\_data }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(urls), }\ControlFlowTok{function}\NormalTok{(i) sessions[[i]][[}\DecValTok{1}\NormalTok{]]))}
+\NormalTok{sports\_data1 }\OtherTok{\textless{}{-}} \FunctionTok{map\_df}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(urls), }\SpecialCharTok{\textasciitilde{}}\NormalTok{sessions[[.x]][[}\DecValTok{1}\NormalTok{]])}
+
+\FunctionTok{glimpse}\NormalTok{(sports\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 582
+Columns: 9
+$ `Team Name`          <chr> "Boston Bruins", "Buffalo Sab~
+$ Year                 <int> 1990, 1990, 1990, 1990, 1990,~
+$ Wins                 <int> 44, 31, 46, 49, 34, 37, 31, 4~
+$ Losses               <int> 24, 30, 26, 23, 38, 37, 38, 2~
+$ `OT Losses`          <int> NA, NA, NA, NA, NA, NA, NA, N~
+$ `Win %`              <dbl> 0.550, 0.388, 0.575, 0.613, 0~
+$ `Goals For (GF)`     <int> 299, 292, 344, 284, 273, 272,~
+$ `Goals Against (GA)` <int> 264, 278, 263, 211, 298, 272,~
+$ `+ / -`              <int> 35, 14, 81, 73, -25, 0, -38, ~
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Create an interactive bar plot to display the number of wins per team and year.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(plotly)}
+
+\NormalTok{bar\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(sports\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Year, }\AttributeTok{y =}\NormalTok{ Wins, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Team Name}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Number of Wins per Team and Year"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
+
+\NormalTok{plotly\_bar }\OtherTok{\textless{}{-}} \FunctionTok{ggplotly}\NormalTok{(bar\_plot)}
+\NormalTok{plotly\_bar}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Explore the relationship between the number of goals scored and the number of goals against for each team in each year with an interactive scatter plot.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scatter\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(sports\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Goals For (GF)}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{Goals Against (GA)}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{color =} \StringTok{\textasciigrave{}}\AttributeTok{Team Name}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{text =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Team:"}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Team Name}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{"\textless{}br\textgreater{}Year:"}\NormalTok{, Year))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Goals Scored vs. Goals Against per Team and Year"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Goals Scored (GF)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Goals Against (GA)"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plotly\_scatter }\OtherTok{\textless{}{-}} \FunctionTok{ggplotly}\NormalTok{(scatter\_plot, }\AttributeTok{tooltip =} \StringTok{"text"}\NormalTok{)}
+\NormalTok{plotly\_scatter}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Visualize team performance per year (wins, losses, and OT losses) using a stacked bar plot.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stacked\_bar\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(sports\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Year, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Team Name}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Wins), }\AttributeTok{position =} \StringTok{"stack"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.4}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ Losses), }\AttributeTok{position =} \StringTok{"stack"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.4}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{OT Losses}\StringTok{\textasciigrave{}}\NormalTok{), }\AttributeTok{position =} \StringTok{"stack"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.4}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Team Performance per Year (Wins, Losses, and OT Losses)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Year"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Number of Games"}\NormalTok{)}
+
+\NormalTok{plotly\_stacked\_bar }\OtherTok{\textless{}{-}} \FunctionTok{ggplotly}\NormalTok{(stacked\_bar\_plot)}
+\NormalTok{plotly\_stacked\_bar}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{part-extra-materials}{%
 \part*{Extra Materials}\label{part-extra-materials}}
 \addcontentsline{toc}{part}{Extra Materials}
@@ -7051,584 +7298,6 @@ Click for answer
   \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{Its\_complicated, }\AttributeTok{name =} \StringTok{\textquotesingle{}It}\SpecialCharTok{\textbackslash{}\textquotesingle{}}\StringTok{s complicated\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{add\_trace}\NormalTok{(}\AttributeTok{y =} \SpecialCharTok{\textasciitilde{}}\NormalTok{Single, }\AttributeTok{name =} \StringTok{\textquotesingle{}Single\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{layout}\NormalTok{(}\AttributeTok{yaxis =} \FunctionTok{list}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}Number of People\textquotesingle{}}\NormalTok{), }\AttributeTok{barmode =} \StringTok{\textquotesingle{}group\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{graph-formatting}{%
-\chapter{Graph Formatting}\label{graph-formatting}}
-
-This worksheet provides a comprehensive guide on graph formatting in R using the ggplot2 package. We will explore various aspects of formatting, such as adding figure numbers, captions, titles, axes labels, customizing themes, and using different color scales.
-
-\hypertarget{load-the-required-packages-and-datasets}{%
-\section{Load the required packages and datasets}\label{load-the-required-packages-and-datasets}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Cereals }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"http://people.carleton.edu/\textasciitilde{}kstclair/data/Cereals.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{graph-theme-and-colors}{%
-\section{Graph theme and colors}\label{graph-theme-and-colors}}
-
-\hypertarget{adding-figure-numbers-and-captions}{%
-\subsection{Adding figure numbers and captions}\label{adding-figure-numbers-and-captions}}
-
-To automatically add figure numbers and captions, include the option fig\_caption: true in the output options at the top of your markdown file. To add captions to the figures, use the fig.cap argument in the R code chunk that creates the figure.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(Cereals, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ calgram)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \FloatTok{0.3}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Histogram of Calorie Content in Cereals"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Calorie Content (g)"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Count"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-2-1} \caption{A nice figure}\label{fig:unnamed-chunk-2}
-\end{figure}
-
-\hypertarget{customizing-titles-axis-labels-and-legends}{%
-\subsection{Customizing titles, axis labels, and legends}\label{customizing-titles-axis-labels-and-legends}}
-
-You can customize titles, axis labels, and legends using the labs() function.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price, }\AttributeTok{color =}\NormalTok{ cut)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds"}\NormalTok{,}
-       \AttributeTok{subtitle =} \StringTok{"Color represents the cut of the diamond"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Price (USD)"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Diamond Cut"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-3-1}
-
-\hypertarget{customizing-themes}{%
-\subsection{Customizing themes}\label{customizing-themes}}
-
-You can customize themes using the \texttt{theme()} function and various \texttt{element\_*()} functions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hp, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Miles per Gallon vs. Horsepower"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Horsepower"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{16}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{color =} \StringTok{"darkblue"}\NormalTok{),}
-        \AttributeTok{axis.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{color =} \StringTok{"darkblue"}\NormalTok{),}
-        \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{),}
-        \AttributeTok{panel.grid.major =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"gray"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{),}
-        \AttributeTok{panel.grid.minor =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"gray"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.25}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-4-1}
-
-\hypertarget{using-different-color-scales}{%
-\subsection{Using different color scales}\label{using-different-color-scales}}
-
-You can use different color scales for both continuous and discrete variables using the \texttt{scale\_color\_*()} and \texttt{scale\_fill\_*()} functions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price, }\AttributeTok{color =}\NormalTok{ cut)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds"}\NormalTok{,}
-       \AttributeTok{subtitle =} \StringTok{"Color represents the cut of the diamond"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Price (USD)"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Diamond Cut"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set1"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/fig4-1} \caption{Scatterplot of price vs. carat of diamonds with color representing the cut and custom color scale.}\label{fig:fig4}
-\end{figure}
-
-\hypertarget{customizing-plot-elements}{%
-\subsection{Customizing plot elements}\label{customizing-plot-elements}}
-
-You can customize plot elements such as points, lines, and bars using the corresponding geom\_*() functions and their arguments.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hp, }\AttributeTok{y =}\NormalTok{ mpg, }\AttributeTok{shape =} \FunctionTok{factor}\NormalTok{(gear), }\AttributeTok{size =}\NormalTok{ gear)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \FunctionTok{factor}\NormalTok{(gear))) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Miles per Gallon vs. Horsepower"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Horsepower"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Number of Gears"}\NormalTok{,}
-       \AttributeTok{shape =} \StringTok{"Number of Gears"}\NormalTok{,}
-       \AttributeTok{size =} \StringTok{"Number of Gears"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{scale\_shape\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{, }\DecValTok{17}\NormalTok{, }\DecValTok{18}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set2"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-5-1}
-
-\hypertarget{faceting-1}{%
-\subsection{Faceting}\label{faceting-1}}
-
-You can create multiple plots based on a categorical variable using the f\texttt{acet\_wrap()} and \texttt{facet\_grid()} functions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(carat }\SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ clarity), }\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Price (USD)"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Clarity"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ cut, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-6-1}
-
-\hypertarget{graph-sizing-in-r}{%
-\section{Graph Sizing in R}\label{graph-sizing-in-r}}
-
-This worksheet demonstrates how to adjust the size of various plots in R using ggplot2. We will explore different techniques to control the size of the plots and their elements.
-
-\hypertarget{load-the-necessary-libraries-and-data}{%
-\subsection{Load the necessary libraries and data}\label{load-the-necessary-libraries-and-data}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(ggplot2)}
-\FunctionTok{library}\NormalTok{(dplyr)}
-
-\CommentTok{\# Load the built{-}in datasets}
-\FunctionTok{data}\NormalTok{(}\StringTok{"mtcars"}\NormalTok{)}
-\FunctionTok{data}\NormalTok{(}\StringTok{"diamonds"}\NormalTok{)}
-\FunctionTok{data}\NormalTok{(}\StringTok{"iris"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{adjusting-the-overall-size-of-the-plot}{%
-\subsection{Adjusting the overall size of the plot}\label{adjusting-the-overall-size-of-the-plot}}
-
-You can control the overall size of the plot using the width and height options within the R Markdown output settings. Another way is to use the ggsave() function when saving the plot as an image file.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{scatter\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ hp, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Miles per Gallon vs. Horsepower"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Horsepower"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Miles per Gallon"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
-
-\NormalTok{scatter\_plot}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-8-1}
-
-\hypertarget{adjusting-the-size-of-points-lines-and-bars}{%
-\subsection{Adjusting the size of points, lines, and bars}\label{adjusting-the-size-of-points-lines-and-bars}}
-
-Use the size parameter within the geom\_*() functions to control the size of points, lines, and bars.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{scatter\_plot\_large\_points }\OtherTok{\textless{}{-}}\NormalTok{ scatter\_plot }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{)}
-
-\NormalTok{scatter\_plot\_large\_points}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-9-1}
-
-\hypertarget{adjusting-the-size-of-text-elements}{%
-\subsection{Adjusting the size of text elements}\label{adjusting-the-size-of-text-elements}}
-
-You can change the size of text elements, such as axis labels and titles, using the theme() function.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{scatter\_plot\_custom\_text }\OtherTok{\textless{}{-}}\NormalTok{ scatter\_plot\_large\_points }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{24}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),}
-        \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{),}
-        \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{),}
-        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{),}
-        \AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{))}
-
-\NormalTok{scatter\_plot\_custom\_text}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-10-1}
-
-\hypertarget{adjusting-the-size-of-legend-elements}{%
-\subsection{Adjusting the size of legend elements}\label{adjusting-the-size-of-legend-elements}}
-
-You can modify the size of the legend elements using the theme() function along with element\_text() and element\_rect().
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{iris\_scatter\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(iris, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Length, }\AttributeTok{y =}\NormalTok{ Sepal.Width, }\AttributeTok{color =}\NormalTok{ Species)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Sepal Length vs. Sepal Width"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Sepal Length"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Sepal Width"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Species"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{),}
-        \AttributeTok{legend.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{14}\NormalTok{),}
-        \AttributeTok{legend.key.size =} \FunctionTok{unit}\NormalTok{(}\FloatTok{1.5}\NormalTok{, }\StringTok{"cm"}\NormalTok{))}
-
-\NormalTok{iris\_scatter\_plot}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-11-1}
-
-\hypertarget{adjusting-the-size-of-facet-labels}{%
-\subsection{Adjusting the size of facet labels}\label{adjusting-the-size-of-facet-labels}}
-
-You can control the size of facet labels using the theme() function along with element\_text().
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{diamonds\_facet\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ diamonds }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(carat }\SpecialCharTok{\textless{}} \DecValTok{3}\NormalTok{), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ carat, }\AttributeTok{y =}\NormalTok{ price)) }\SpecialCharTok{+}
-\FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-\FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{cut) }\SpecialCharTok{+}
-\FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price vs. Carat of Diamonds, Faceted by Cut"}\NormalTok{,}
-\AttributeTok{x =} \StringTok{"Carat"}\NormalTok{,}
-\AttributeTok{y =} \StringTok{"Price"}\NormalTok{) }\SpecialCharTok{+}
-\FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-\FunctionTok{theme}\NormalTok{(}\AttributeTok{strip.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{18}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{))}
-
-\NormalTok{diamonds\_facet\_plot}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-12-1}
-
-\hypertarget{adjusting-the-size-of-axis-ticks}{%
-\subsection{Adjusting the size of axis ticks}\label{adjusting-the-size-of-axis-ticks}}
-
-You can modify the size of axis ticks using the \texttt{theme()} function along with \texttt{element\_line()}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{scatter\_plot\_custom\_ticks }\OtherTok{\textless{}{-}}\NormalTok{ scatter\_plot }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.ticks =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{size =} \FloatTok{1.5}\NormalTok{),}
-        \AttributeTok{axis.ticks.length =} \FunctionTok{unit}\NormalTok{(}\FloatTok{0.3}\NormalTok{, }\StringTok{"cm"}\NormalTok{))}
-
-\NormalTok{scatter\_plot\_custom\_ticks}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/fig6-1} \caption{Scatterplot of mpg vs. hp with customized axis tick size.}\label{fig:fig6}
-\end{figure}
-
-\hypertarget{adding-text-labels-to-points}{%
-\subsection{Adding text labels to points}\label{adding-text-labels-to-points}}
-
-Use the geom\_text() or geom\_label() functions to add text labels to points.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mtcars}\SpecialCharTok{$}\NormalTok{car\_name }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(mtcars)}
-
-\NormalTok{scatter\_plot\_labels }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wt, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ gear)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ car\_name), }\AttributeTok{check\_overlap =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{1.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Scatter plot of MPG vs Weight with Car Labels"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"Weight"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Miles Per Gallon"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Gears"}\NormalTok{)}
-
-\NormalTok{scatter\_plot\_labels}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-13-1}
-
-\hypertarget{modifying-axis-limits-and-scales}{%
-\subsection{Modifying axis limits and scales}\label{modifying-axis-limits-and-scales}}
-
-Use scale\_x\_continuous() and scale\_y\_continuous() to modify axis limits and scales.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{data}\NormalTok{(}\StringTok{"gapminder"}\NormalTok{, }\AttributeTok{package =} \StringTok{"gapminder"}\NormalTok{)}
-
-\FunctionTok{ggplot}\NormalTok{(gapminder, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ gdpPercap, }\AttributeTok{y =}\NormalTok{ lifeExp, }\AttributeTok{color =}\NormalTok{ continent)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{scale\_x\_log10}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{500}\NormalTok{, }\DecValTok{50000}\NormalTok{), }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\DecValTok{30000}\NormalTok{), }\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{dollar\_format}\NormalTok{()) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{90}\NormalTok{), }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{10}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Life Expectancy vs. GDP per Capita"}\NormalTok{,}
-       \AttributeTok{x =} \StringTok{"GDP per Capita (log scale)"}\NormalTok{,}
-       \AttributeTok{y =} \StringTok{"Life Expectancy"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{graphformatting_files/figure-latex/unnamed-chunk-14-1}
-
-\hypertarget{table-formatting}{%
-\chapter{Table Formatting}\label{table-formatting}}
-
-In this worksheet, we will explore various options for outputting and formatting tables in R using the RMarkdown environment.
-
-\hypertarget{basic-table-formatting-with-kable}{%
-\subsection{\texorpdfstring{Basic Table Formatting with \texttt{kable}}{Basic Table Formatting with kable}}\label{basic-table-formatting-with-kable}}
-
-The \texttt{kable()} function from the knitr package provides a simple way to output tables in RMarkdown.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(knitr)}
-\FunctionTok{kable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{caption =} \StringTok{"A basic table using kable"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}
-
-\caption{\label{tab:unnamed-chunk-1}A basic table using kable}
-\centering
-\begin{tabular}[t]{l|r|r|r|r|r}
-\hline
-  & mpg & cyl & disp & hp & drat\\
-\hline
-Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
-\hline
-Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
-\hline
-Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
-\hline
-\end{tabular}
-\end{table}
-
-We will also use the \texttt{Gapminder} dataset for our examples. This dataset contains information about life expectancy, GDP per capita, and population size for various countries and years.Here's an example of how to display the first 10 rows of the \texttt{Gapminder} dataset.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{data}\NormalTok{(}\StringTok{"gapminder"}\NormalTok{, }\AttributeTok{package =} \StringTok{"gapminder"}\NormalTok{)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(gapminder, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{"First 10 rows of the Gapminder dataset."}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}
-
-\caption{\label{tab:unnamed-chunk-2}First 10 rows of the Gapminder dataset.}
-\centering
-\begin{tabular}[t]{l|l|r|r|r|r}
-\hline
-country & continent & year & lifeExp & pop & gdpPercap\\
-\hline
-Afghanistan & Asia & 1952 & 28.801 & 8425333 & 779.4453\\
-\hline
-Afghanistan & Asia & 1957 & 30.332 & 9240934 & 820.8530\\
-\hline
-Afghanistan & Asia & 1962 & 31.997 & 10267083 & 853.1007\\
-\hline
-Afghanistan & Asia & 1967 & 34.020 & 11537966 & 836.1971\\
-\hline
-Afghanistan & Asia & 1972 & 36.088 & 13079460 & 739.9811\\
-\hline
-Afghanistan & Asia & 1977 & 38.438 & 14880372 & 786.1134\\
-\hline
-Afghanistan & Asia & 1982 & 39.854 & 12881816 & 978.0114\\
-\hline
-Afghanistan & Asia & 1987 & 40.822 & 13867957 & 852.3959\\
-\hline
-Afghanistan & Asia & 1992 & 41.674 & 16317921 & 649.3414\\
-\hline
-Afghanistan & Asia & 1997 & 41.763 & 22227415 & 635.3414\\
-\hline
-\end{tabular}
-\end{table}
-
-\hypertarget{formatting-tables-with-kableextra}{%
-\subsection{\texorpdfstring{Formatting Tables with \texttt{kableExtra}}{Formatting Tables with kableExtra}}\label{formatting-tables-with-kableextra}}
-
-To further customize the table appearance, we can use the \texttt{kableExtra} package.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#install.packages("kableExtra") }
-\FunctionTok{library}\NormalTok{(kableExtra)}
-\FunctionTok{kable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{], }\AttributeTok{caption =} \StringTok{"A formatted table with kableExtra"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{kable\_styling}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\AttributeTok{full\_width =}\NormalTok{ F)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}
-
-\caption{\label{tab:unnamed-chunk-3}A formatted table with kableExtra}
-\centering
-\begin{tabular}[t]{l|r|r|r|r|r}
-\hline
-  & mpg & cyl & disp & hp & drat\\
-\hline
-Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90\\
-\hline
-Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85\\
-\hline
-Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08\\
-\hline
-Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15\\
-\hline
-\end{tabular}
-\end{table}
-
-\hypertarget{customizing-column-formats}{%
-\subsection{Customizing column formats}\label{customizing-column-formats}}
-
-Use the \texttt{column\_spec()} function from the \texttt{kableExtra} package to customize the appearance of individual columns.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{gapminder }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Table 3: First 10 rows of the Gapminder dataset with custom column formatting."}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\AttributeTok{full\_width =}\NormalTok{ F) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{column\_spec}\NormalTok{(}\DecValTok{2}\NormalTok{, }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{column\_spec}\NormalTok{(}\DecValTok{4}\NormalTok{, }\AttributeTok{monospace =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}
-
-\caption{\label{tab:unnamed-chunk-4}Table 3: First 10 rows of the Gapminder dataset with custom column formatting.}
-\centering
-\begin{tabular}[t]{l|>{}l|r|>{}r|r|r}
-\hline
-country & continent & year & lifeExp & pop & gdpPercap\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1952 & \ttfamily{28.801} & 8425333 & 779.4453\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1957 & \ttfamily{30.332} & 9240934 & 820.8530\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1962 & \ttfamily{31.997} & 10267083 & 853.1007\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1967 & \ttfamily{34.020} & 11537966 & 836.1971\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1972 & \ttfamily{36.088} & 13079460 & 739.9811\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1977 & \ttfamily{38.438} & 14880372 & 786.1134\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1982 & \ttfamily{39.854} & 12881816 & 978.0114\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1987 & \ttfamily{40.822} & 13867957 & 852.3959\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1992 & \ttfamily{41.674} & 16317921 & 649.3414\\
-\hline
-Afghanistan & \textcolor{red}{\textbf{Asia}} & 1997 & \ttfamily{41.763} & 22227415 & 635.3414\\
-\hline
-\end{tabular}
-\end{table}
-
-\hypertarget{formatting-tables-with-flextable}{%
-\subsection{Formatting Tables with flextable}\label{formatting-tables-with-flextable}}
-
-Another option for table formatting is the flextable package.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#install.packages("flextable")}
-\FunctionTok{library}\NormalTok{(flextable)}
-\NormalTok{ft }\OtherTok{\textless{}{-}} \FunctionTok{flextable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{])}
-\NormalTok{ft }\OtherTok{\textless{}{-}} \FunctionTok{set\_caption}\NormalTok{(ft, }\AttributeTok{caption =} \StringTok{"A table using flextable"}\NormalTok{)}
-\NormalTok{ft}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{formatting-tables-with-gt}{%
-\subsection{Formatting Tables with gt}\label{formatting-tables-with-gt}}
-
-The gt package provides another way to create formatted tables in R.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#install.packages("gt")}
-\FunctionTok{library}\NormalTok{(gt)}
-\FunctionTok{gt}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"A table using gt"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{hiding-r-commands-and-r-output}{%
-\subsection{Hiding R commands and R output}\label{hiding-r-commands-and-r-output}}
-
-As mentioned in the graph formatting handout, adding the chunk option echo=FALSE will display output (like graphs) produced by a chunk but not show the commands used in the chunk. You can stop both R commands and output from being displayed in a document by adding the chunk option include=FALSE.
-
-As you work through a report analysis, you may initially want to see all of your R results as you are writing your report. But after you've summarized results in paragraphs or in tables, you can then use the include=FALSE argument to hide your R commands and output in your final document. If you ever need to rerun or reevaluate your R work for a report, you can easily recreate and edit your analysis since the R chunks used in your original report are still in your R Markdown .Rmd file.
-
-\hypertarget{summary-statistics-with-pander}{%
-\subsection{Summary statistics with pander}\label{summary-statistics-with-pander}}
-
-We can use the pander package to create summary tables.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#install.packages("pander")}
-\FunctionTok{library}\NormalTok{(pander)}
-\FunctionTok{pander}\NormalTok{(}\FunctionTok{summary}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{mpg), }\AttributeTok{caption =} \StringTok{"Summary statistics for miles per gallon"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{t-test-results-with-pander}{%
-\subsection{t-test results with pander}\label{t-test-results-with-pander}}
-
-Let's perform a t-test comparing the miles per gallon (mpg) for cars with 4 and 6 cylinders.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(mpg }\SpecialCharTok{\textasciitilde{}} \FunctionTok{as.factor}\NormalTok{(cyl), }\AttributeTok{data =}\NormalTok{ mtcars, }\AttributeTok{subset =}\NormalTok{ cyl }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{))}
-\FunctionTok{pander}\NormalTok{(t\_test\_result, }\AttributeTok{caption =} \StringTok{"Comparing MPG for 4 and 6 cylinder cars"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{chi-square-test-results-with-pander}{%
-\subsection{Chi-square test results with pander}\label{chi-square-test-results-with-pander}}
-
-Now let's perform a chi-square test to check for an association between the number of cylinders and the type of transmission (automatic or manual).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{my\_table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{cyl, mtcars}\SpecialCharTok{$}\NormalTok{am)}
-\NormalTok{chisq\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(my\_table)}
-\FunctionTok{pander}\NormalTok{(chisq\_test\_result, }\AttributeTok{caption =} \StringTok{"Chi{-}square test for cylinders and transmission type"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{linear-regression-results-with-pander}{%
-\subsection{Linear regression results with pander}\label{linear-regression-results-with-pander}}
-
-Finally, let's fit a linear regression model of miles per gallon (mpg) as a function of weight (wt) and display the results.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{lm\_result }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ wt, }\AttributeTok{data =}\NormalTok{ mtcars)}
-\FunctionTok{pander}\NormalTok{(lm\_result, }\AttributeTok{caption =} \StringTok{"Linear regression of MPG on weight"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
