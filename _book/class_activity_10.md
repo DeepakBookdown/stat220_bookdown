@@ -41,30 +41,30 @@ print(students_a, n = 24)
 # A tibble: 24 × 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Africa           57 9th      
- 2     4 9th   Asia             95 9th      
- 3     5 9th   Asia             59 9th      
- 4    10 9th   Europe           70 9th      
- 5    14 9th   Asia             53 9th      
- 6    15 9th   South America    75 9th      
- 7    24 9th   Middle East      79 9th      
- 8     3 10th  Africa           58 10th     
- 9     7 10th  Africa           61 10th     
-10    16 10th  South America    86 10th     
-11    19 10th  Middle East      64 10th     
-12    23 10th  South America    61 10th     
-13     2 11th  Africa           66 11th     
-14     6 11th  Middle East      73 11th     
-15     8 11th  South America    75 11th     
-16     9 11th  Middle East      88 11th     
-17    11 11th  Africa           51 11th     
-18    12 11th  North America    91 11th     
-19    13 11th  South America    50 11th     
-20    17 11th  Middle East      87 11th     
-21    18 11th  Europe           71 11th     
-22    20 11th  North America    97 11th     
-23    21 11th  North America    66 11th     
-24    22 11th  Asia             77 11th     
+ 1     7 9th   South America    89 9th      
+ 2     9 9th   Africa           65 9th      
+ 3    15 9th   Asia             88 9th      
+ 4    21 9th   Middle East      91 9th      
+ 5    23 9th   South America    93 9th      
+ 6     3 10th  North America    66 10th     
+ 7     5 10th  Europe           80 10th     
+ 8    11 10th  Europe           97 10th     
+ 9    14 10th  Middle East      99 10th     
+10    16 10th  Middle East      78 10th     
+11    17 10th  Africa           54 10th     
+12    20 10th  North America    83 10th     
+13    22 10th  Middle East      60 10th     
+14     1 11th  Middle East      91 11th     
+15     2 11th  Africa           66 11th     
+16     4 11th  North America    60 11th     
+17     6 11th  Middle East      85 11th     
+18     8 11th  South America    86 11th     
+19    10 11th  Asia             72 11th     
+20    12 11th  Asia             52 11th     
+21    13 11th  Asia             76 11th     
+22    18 11th  Africa           99 11th     
+23    19 11th  Middle East      83 11th     
+24    24 11th  Europe           65 11th     
 ```
 
 </details>
@@ -92,9 +92,9 @@ print(students_b)
 # A tibble: 3 × 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                12
+1 EMEA                14
 2 Asia                 4
-3 Americas             8
+3 Americas             6
 ```
 
 </details>
@@ -115,7 +115,7 @@ levels(students_c$grade_infreq)
 ```
 
 ```
-[1] "11th" "9th"  "10th"
+[1] "11th" "10th" "9th" 
 ```
 
 </details>
@@ -139,8 +139,8 @@ students_d
 # A tibble: 2 × 2
   grade_lumped     n
   <fct>        <int>
-1 11th            12
-2 Others          12
+1 11th            11
+2 Others          13
 ```
 
 </details>

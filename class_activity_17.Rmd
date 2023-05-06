@@ -70,7 +70,6 @@ df1 <- list()
 index <- seq(1, 6301, 100)
 ```
 
-<!--
 
 ```{r}
 # Loop through indices, scrape data, and bind the resulting data frames
@@ -105,7 +104,6 @@ movies_data <- do.call(rbind, lapply(1:length(urls), function(i) sessions[[i]][[
 glimpse(movies_data)
 ```
 
--->
 
 </details>
 
