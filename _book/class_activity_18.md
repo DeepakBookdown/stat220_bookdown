@@ -62,12 +62,14 @@ sidebarLayout(
 ## Read Data
 
 
+
 ```r
 table_usafacts <- bow(url = "https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/minnesota") %>%
   scrape() %>%  html_nodes("a") %>%       # find all links
   html_attr("href") %>%     # get the url
   str_subset(".csv")        # find those that end in csv
 ```
+
 
 
 
@@ -222,6 +224,7 @@ server1 <- function(input, output) {
         
 }
 ```
+
 
 
 
