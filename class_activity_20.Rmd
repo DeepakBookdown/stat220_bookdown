@@ -1,0 +1,211 @@
+# Class Activity 20
+
+```{r}
+# load the necessary libraries
+library(tidyverse)
+library(shiny)
+library(rvest)
+library(polite)
+library(leaflet)
+library(sp)
+library(maptools)
+library(rgeos)
+library(stringr)
+library(RColorBrewer)
+library(terra)
+library(raster)
+```
+
+
+## Group Activity 1
+
+### a. Explore COVID-19 vaccination rates across the Midwest with this R script, which scrapes data, processes it, and creates an interactive, state-specific leaflet map for clear visualization.
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:* 
+
+```{r, eval=FALSE}
+# Scrape the data
+covid_final <- read_html("https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota") %>%
+  html_elements(css = "table") %>% html_table() %>% .[[1]] %>%
+  janitor::clean_names() %>%
+  mutate_at(2:4, parse_number) %>% mutate(state = str_to_lower(state)) %>%
+  filter(state %in% c("ohio", "indiana", "michigan", "illinois", "missouri", "wisconsin", "minnesota", 
+                                     "iowa", "kansas", "nebraska", "south dakota", "north dakota"))
+
+# Midwest
+USA_Midwest <- maps::map("state", 
+                         regions = c("ohio", "indiana", "michigan", "illinois", "missouri", "wisconsin", "minnesota", 
+                                     "iowa", "kansas", "nebraska", "south dakota", "north dakota"), 
+                         plot = FALSE, fill = TRUE) %>%
+  map2SpatialPolygons(IDs = str_remove(.$names, "(?=:).+"))
+
+# Merge the data and the map
+map <- SpatialPolygonsDataFrame(USA_Midwest, covid_final, match.ID = FALSE)
+
+# Create bins and color palette
+bins <- seq(min(map$percent_fully_vaccinated), max(map$percent_fully_vaccinated), length.out = 6)
+pal <- colorBin("viridis", domain = map$percent_fully_vaccinated, bins = bins)
+
+# Create labels
+labels <- sprintf("<strong> %s </strong> <br/> Observed: %s", str_to_upper(map$state), map$percent_fully_vaccinated) %>%
+  lapply(htmltools::HTML)
+
+# Plot the map
+leaflet(map) %>% 
+  addTiles() %>% 
+  setView(lng = -93.1616, lat = 44.4583, zoom = 4) %>%
+  addPolygons(
+    color = "grey", 
+    weight = 1,
+    fillColor = ~pal(percent_fully_vaccinated), 
+    fillOpacity = 0.7,
+    highlightOptions = highlightOptions(weight = 5),
+    label = labels
+  ) %>%
+  addLegend(
+    pal = pal, 
+    values = ~percent_fully_vaccinated, 
+    opacity = 0.5, 
+    title = "Percent Vaccn.", 
+    position = "bottomright"
+  )
+
+```
+
+</details>
+
+
+----------------------------------------------------------------------------------------------
+
+## Group Activity 2
+
+### a. Explore the COVID-19 vaccination status across various US regions using this interactive Shiny app. The script extracts data from USAFacts, presents user options to customize the map projection, color palette, and region, and dynamically generates a Leaflet map to visualize the selected data.
+
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:* 
+
+```{r, eval=FALSE}
+# Scrape the data
+covid_final <- read_html("https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota") %>%
+  html_elements(css = "table") %>% html_table() %>% .[[1]] %>%
+  janitor::clean_names() %>%
+  mutate_at(2:4, parse_number) %>% mutate(state = str_to_lower(state))
+
+
+
+# UI
+ui <- fluidPage(
+  titlePanel("Map of States and their vaccination status"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("myvar", "What to project?", choices = names(covid_final)[2:4], selected = names(covid_final)[2]),
+      selectInput("palette", "Choose color palette:", choices = c("viridis", "magma", "inferno", "plasma", "cividis")),
+      selectInput("region", "Select region:", choices = c("Northeast", "Southeast", "Midwest", "South", "West")),
+      actionButton("goButton", "Update map")
+    ),
+    mainPanel(
+      leafletOutput("myplot")
+    )
+  ) 
+)
+
+
+# UI
+ui <- fluidPage(
+  titlePanel("Map of States and their vaccination status"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("myvar", "What to project?", choices = names(covid_final)[2:4], selected = names(covid_final)[2]),
+      selectInput("palette", "Choose color palette:", choices = c("viridis", "magma", "inferno", "plasma", "cividis")),
+      selectInput("region", "Select region:", choices = c("Northeast", "Southeast", "Midwest", "South", "West")),
+      actionButton("goButton", "Update map")
+    ),
+    mainPanel(
+      leafletOutput("myplot")
+    )
+  ) 
+)
+
+# Server
+server <- function(input, output, session) {
+  map_data <- eventReactive(input$goButton, {
+    req(input$region)
+    
+    region_states <- switch(input$region,
+                        "Northeast" = c("maine", "new hampshire", "vermont", "massachusetts", "rhode island", 
+                                        "connecticut", "new york", "pennsylvania", "new jersey"),
+                        "Southeast" = c("delaware", "maryland", "virginia", "west virginia", "north carolina", 
+                                        "south carolina", "georgia", "florida", "kentucky", "tennessee", 
+                                        "mississippi", "alabama", "arkansas", "louisiana"),
+                        "Midwest" = c("ohio", "indiana", "michigan", "illinois", "wisconsin", "minnesota", 
+                                      "iowa", "missouri", "kansas", "nebraska", "south dakota", "north dakota"),
+                        "South" = c("oklahoma", "texas", "new mexico", "arizona"),
+                        "West" = c("colorado", "wyoming", "montana", "idaho", "utah", "nevada", "california", 
+                                   "oregon", "washington"))
+                       
+
+    
+    covid_region <- isolate(covid_final %>%
+      filter(state %in% region_states))
+    
+    USA_region <- maps::map("state", regions = region_states, plot = FALSE, fill = TRUE) %>%
+      map2SpatialPolygons(IDs = str_remove(.$names, "(?=:).+"))
+    
+    SpatialPolygonsDataFrame(USA_region, covid_region, match.ID = FALSE)
+  }, ignoreNULL = FALSE)
+  
+  output$myplot <- renderLeaflet({
+    req(map_data()) # ensure that map_data() is available
+    
+    bins <- seq(min(map_data()[[input$myvar]]), max(map_data()[[input$myvar]]), length.out = 6)
+    pal <- colorBin(input$palette, domain = map_data()[[input$myvar]], bins = bins)
+    
+    labels <- sprintf("<strong> %s </strong> <br/> Observed <strong> %s </strong>  : %s", str_to_upper(map_data()$state), input$myvar, map_data()[[input$myvar]]) %>% 
+      lapply(htmltools::HTML)
+    
+    m <- leaflet(map_data()) %>%
+      addTiles() %>%  setView(lng = -93.1616, lat = 40.4583, zoom = 3.5) %>%
+      addPolygons(
+        color = "grey", 
+        weight = 1,
+        fillColor = ~pal(get(input$myvar)), 
+        fillOpacity = 0.7,
+        highlightOptions = highlightOptions(weight = 5),
+        label = labels
+      ) %>%
+      addLegend(
+        pal = pal, 
+        values = ~get(input$myvar), 
+        opacity = 0.5, 
+        title = str_to_title(input$myvar), 
+        position = "bottomright"
+      )
+    m
+  })
+}
+
+# Run the app
+shinyApp(ui = ui, server = server)
+```
+
+</details>
+
+
+### b. Modify the app in 2a to add an "All" option in the "Select region" input to allow users to view all states at once. 
+
+```{r}
+# your r-code
+
+
+```
+
+
+### c. Open an account on [shinyapps.io](https://www.shinyapps.io/admin/#/dashboard) and follow the steps to deploy one of the apps to [shinyapps.io](https://www.shinyapps.io/admin/#/dashboard).
+
+

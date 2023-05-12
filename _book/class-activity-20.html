@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 26 Class Activity 20 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="# load the necessary libraries library(tidyverse) library(shiny) library(rvest) library(polite) library(leaflet) library(sp) library(maptools) library(rgeos) library(stringr) library(RColorBrewer)...">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="Chapter 26 Class Activity 20 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="# load the necessary libraries library(tidyverse) library(shiny) library(rvest) library(polite) library(leaflet) library(sp) library(maptools) library(rgeos) library(stringr) library(RColorBrewer)...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 26 Class Activity 20 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="# load the necessary libraries library(tidyverse) library(shiny) library(rvest) library(polite) library(leaflet) library(sp) library(maptools) library(rgeos) library(stringr) library(RColorBrewer)...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="rstudio.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
+<li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
+<li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
+<li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
+<li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
+<li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
+<li><a class="" href="class-activity-5.html"><span class="header-section-number">11</span> Class Activity 5</a></li>
+<li><a class="" href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></li>
+<li><a class="" href="class-activity-7.html"><span class="header-section-number">13</span> Class Activity 7</a></li>
+<li><a class="" href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></li>
+<li><a class="" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
+<li><a class="" href="class-activity-10.html"><span class="header-section-number">16</span> Class Activity 10</a></li>
+<li><a class="" href="class-activity-11.html"><span class="header-section-number">17</span> Class Activity 11</a></li>
+<li><a class="" href="class-activity-12.html"><span class="header-section-number">18</span> Class Activity 12</a></li>
+<li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
+<li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
+<li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
+<li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
+<li><a class="" href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></li>
+<li><a class="" href="class-activity-19.html"><span class="header-section-number">25</span> Class Activity 19</a></li>
+<li><a class="active" href="class-activity-20.html"><span class="header-section-number">26</span> Class Activity 20</a></li>
+<li class="book-part">Extra Materials</li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">27</span> Helpful R codes</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-20" class="section level1" number="26">
+<h1>
+<span class="header-section-number">26</span> Class Activity 20<a class="anchor" aria-label="anchor" href="#class-activity-20"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb471"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dmi3kno/polite">polite</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/edzer/sp/">sp</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://maptools.r-forge.r-project.org/">maptools</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/rgeos/">rgeos</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/terra/">terra</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></span></code></pre></div>
+<div id="group-activity-1-5" class="section level2" number="26.1">
+<h2>
+<span class="header-section-number">26.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1-5"><i class="fas fa-link"></i></a>
+</h2>
+<div id="a.-explore-covid-19-vaccination-rates-across-the-midwest-with-this-r-script-which-scrapes-data-processes-it-and-creates-an-interactive-state-specific-leaflet-map-for-clear-visualization." class="section level3" number="26.1.1">
+<h3>
+<span class="header-section-number">26.1.1</span> a. Explore COVID-19 vaccination rates across the Midwest with this R script, which scrapes data, processes it, and creates an interactive, state-specific leaflet map for clear visualization.<a class="anchor" aria-label="anchor" href="#a.-explore-covid-19-vaccination-rates-across-the-midwest-with-this-r-script-which-scrapes-data-processes-it-and-creates-an-interactive-state-specific-leaflet-map-for-clear-visualization."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Scrape the data</span></span>
+<span><span class="va">covid_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="st">"https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span>, <span class="va">parse_number</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>state <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span><span class="op">(</span><span class="va">state</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state</span> <span class="op"><a href="https://rdrr.io/pkg/terra/man/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ohio"</span>, <span class="st">"indiana"</span>, <span class="st">"michigan"</span>, <span class="st">"illinois"</span>, <span class="st">"missouri"</span>, <span class="st">"wisconsin"</span>, <span class="st">"minnesota"</span>, </span>
+<span>                                     <span class="st">"iowa"</span>, <span class="st">"kansas"</span>, <span class="st">"nebraska"</span>, <span class="st">"south dakota"</span>, <span class="st">"north dakota"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Midwest</span></span>
+<span><span class="va">USA_Midwest</span> <span class="op">&lt;-</span> <span class="fu">maps</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/maps/man/map.html">map</a></span><span class="op">(</span><span class="st">"state"</span>, </span>
+<span>                         regions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ohio"</span>, <span class="st">"indiana"</span>, <span class="st">"michigan"</span>, <span class="st">"illinois"</span>, <span class="st">"missouri"</span>, <span class="st">"wisconsin"</span>, <span class="st">"minnesota"</span>, </span>
+<span>                                     <span class="st">"iowa"</span>, <span class="st">"kansas"</span>, <span class="st">"nebraska"</span>, <span class="st">"south dakota"</span>, <span class="st">"north dakota"</span><span class="op">)</span>, </span>
+<span>                         plot <span class="op">=</span> <span class="cn">FALSE</span>, fill <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="http://maptools.r-forge.r-project.org/reference/map2SpatialPolygons.html">map2SpatialPolygons</a></span><span class="op">(</span>IDs <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">names</span>, <span class="st">"(?=:).+"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Merge the data and the map</span></span>
+<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/SpatialPolygons.html">SpatialPolygonsDataFrame</a></span><span class="op">(</span><span class="va">USA_Midwest</span>, <span class="va">covid_final</span>, match.ID <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create bins and color palette</span></span>
+<span><span class="va">bins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/colorNumeric.html">colorBin</a></span><span class="op">(</span><span class="st">"viridis"</span>, domain <span class="op">=</span> <span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span>, bins <span class="op">=</span> <span class="va">bins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create labels</span></span>
+<span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"&lt;strong&gt; %s &lt;/strong&gt; &lt;br/&gt; Observed: %s"</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_upper</a></span><span class="op">(</span><span class="va">map</span><span class="op">$</span><span class="va">state</span><span class="op">)</span>, <span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/HTML.html">HTML</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot the map</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span><span class="va">map</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">93.1616</span>, lat <span class="op">=</span> <span class="fl">44.4583</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addPolygons</a></span><span class="op">(</span></span>
+<span>    color <span class="op">=</span> <span class="st">"grey"</span>, </span>
+<span>    weight <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>    fillColor <span class="op">=</span> <span class="op">~</span><span class="fu">pal</span><span class="op">(</span><span class="va">percent_fully_vaccinated</span><span class="op">)</span>, </span>
+<span>    fillOpacity <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>    highlightOptions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">highlightOptions</a></span><span class="op">(</span>weight <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>    label <span class="op">=</span> <span class="va">labels</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addLegend.html">addLegend</a></span><span class="op">(</span></span>
+<span>    pal <span class="op">=</span> <span class="va">pal</span>, </span>
+<span>    values <span class="op">=</span> <span class="op">~</span><span class="va">percent_fully_vaccinated</span>, </span>
+<span>    opacity <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>    title <span class="op">=</span> <span class="st">"Percent Vaccn."</span>, </span>
+<span>    position <span class="op">=</span> <span class="st">"bottomright"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+</details><hr>
+</div>
+</div>
+<div id="group-activity-2-5" class="section level2" number="26.2">
+<h2>
+<span class="header-section-number">26.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-5"><i class="fas fa-link"></i></a>
+</h2>
+<div id="a.-explore-the-covid-19-vaccination-status-across-various-us-regions-using-this-interactive-shiny-app.-the-script-extracts-data-from-usafacts-presents-user-options-to-customize-the-map-projection-color-palette-and-region-and-dynamically-generates-a-leaflet-map-to-visualize-the-selected-data." class="section level3" number="26.2.1">
+<h3>
+<span class="header-section-number">26.2.1</span> a. Explore the COVID-19 vaccination status across various US regions using this interactive Shiny app. The script extracts data from USAFacts, presents user options to customize the map projection, color palette, and region, and dynamically generates a Leaflet map to visualize the selected data.<a class="anchor" aria-label="anchor" href="#a.-explore-the-covid-19-vaccination-status-across-various-us-regions-using-this-interactive-shiny-app.-the-script-extracts-data-from-usafacts-presents-user-options-to-customize-the-map-projection-color-palette-and-region-and-dynamically-generates-a-leaflet-map-to-visualize-the-selected-data."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Scrape the data</span></span>
+<span><span class="va">covid_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="st">"https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span>, <span class="va">parse_number</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>state <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span><span class="op">(</span><span class="va">state</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="co"># UI</span></span>
+<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Map of States and their vaccination status"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span><span class="st">"myvar"</span>, <span class="st">"What to project?"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">covid_final</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, selected <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">covid_final</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span><span class="st">"palette"</span>, <span class="st">"Choose color palette:"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"viridis"</span>, <span class="st">"magma"</span>, <span class="st">"inferno"</span>, <span class="st">"plasma"</span>, <span class="st">"cividis"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span><span class="st">"region"</span>, <span class="st">"Select region:"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Northeast"</span>, <span class="st">"Southeast"</span>, <span class="st">"Midwest"</span>, <span class="st">"South"</span>, <span class="st">"West"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html">actionButton</a></span><span class="op">(</span><span class="st">"goButton"</span>, <span class="st">"Update map"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">leafletOutput</a></span><span class="op">(</span><span class="st">"myplot"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> </span>
+<span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># UI</span></span>
+<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Map of States and their vaccination status"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span><span class="st">"myvar"</span>, <span class="st">"What to project?"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">covid_final</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, selected <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">covid_final</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span><span class="st">"palette"</span>, <span class="st">"Choose color palette:"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"viridis"</span>, <span class="st">"magma"</span>, <span class="st">"inferno"</span>, <span class="st">"plasma"</span>, <span class="st">"cividis"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span><span class="st">"region"</span>, <span class="st">"Select region:"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Northeast"</span>, <span class="st">"Southeast"</span>, <span class="st">"Midwest"</span>, <span class="st">"South"</span>, <span class="st">"West"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html">actionButton</a></span><span class="op">(</span><span class="st">"goButton"</span>, <span class="st">"Update map"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">leafletOutput</a></span><span class="op">(</span><span class="st">"myplot"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> </span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Server</span></span>
+<span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">map_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">eventReactive</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">goButton</span>, <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/req.html">req</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">region</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="va">region_states</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">region</span>,</span>
+<span>                        <span class="st">"Northeast"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"maine"</span>, <span class="st">"new hampshire"</span>, <span class="st">"vermont"</span>, <span class="st">"massachusetts"</span>, <span class="st">"rhode island"</span>, </span>
+<span>                                        <span class="st">"connecticut"</span>, <span class="st">"new york"</span>, <span class="st">"pennsylvania"</span>, <span class="st">"new jersey"</span><span class="op">)</span>,</span>
+<span>                        <span class="st">"Southeast"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"delaware"</span>, <span class="st">"maryland"</span>, <span class="st">"virginia"</span>, <span class="st">"west virginia"</span>, <span class="st">"north carolina"</span>, </span>
+<span>                                        <span class="st">"south carolina"</span>, <span class="st">"georgia"</span>, <span class="st">"florida"</span>, <span class="st">"kentucky"</span>, <span class="st">"tennessee"</span>, </span>
+<span>                                        <span class="st">"mississippi"</span>, <span class="st">"alabama"</span>, <span class="st">"arkansas"</span>, <span class="st">"louisiana"</span><span class="op">)</span>,</span>
+<span>                        <span class="st">"Midwest"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ohio"</span>, <span class="st">"indiana"</span>, <span class="st">"michigan"</span>, <span class="st">"illinois"</span>, <span class="st">"wisconsin"</span>, <span class="st">"minnesota"</span>, </span>
+<span>                                      <span class="st">"iowa"</span>, <span class="st">"missouri"</span>, <span class="st">"kansas"</span>, <span class="st">"nebraska"</span>, <span class="st">"south dakota"</span>, <span class="st">"north dakota"</span><span class="op">)</span>,</span>
+<span>                        <span class="st">"South"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"oklahoma"</span>, <span class="st">"texas"</span>, <span class="st">"new mexico"</span>, <span class="st">"arizona"</span><span class="op">)</span>,</span>
+<span>                        <span class="st">"West"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"colorado"</span>, <span class="st">"wyoming"</span>, <span class="st">"montana"</span>, <span class="st">"idaho"</span>, <span class="st">"utah"</span>, <span class="st">"nevada"</span>, <span class="st">"california"</span>, </span>
+<span>                                   <span class="st">"oregon"</span>, <span class="st">"washington"</span><span class="op">)</span><span class="op">)</span></span>
+<span>                       </span>
+<span></span>
+<span>    </span>
+<span>    <span class="va">covid_region</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/isolate.html">isolate</a></span><span class="op">(</span><span class="va">covid_final</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state</span> <span class="op"><a href="https://rdrr.io/pkg/terra/man/match.html">%in%</a></span> <span class="va">region_states</span><span class="op">)</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="va">USA_region</span> <span class="op">&lt;-</span> <span class="fu">maps</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/maps/man/map.html">map</a></span><span class="op">(</span><span class="st">"state"</span>, regions <span class="op">=</span> <span class="va">region_states</span>, plot <span class="op">=</span> <span class="cn">FALSE</span>, fill <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="http://maptools.r-forge.r-project.org/reference/map2SpatialPolygons.html">map2SpatialPolygons</a></span><span class="op">(</span>IDs <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">names</span>, <span class="st">"(?=:).+"</span><span class="op">)</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/sp/man/SpatialPolygons.html">SpatialPolygonsDataFrame</a></span><span class="op">(</span><span class="va">USA_region</span>, <span class="va">covid_region</span>, match.ID <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>, ignoreNULL <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">myplot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">renderLeaflet</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/req.html">req</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># ensure that map_data() is available</span></span>
+<span>    </span>
+<span>    <span class="va">bins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">myvar</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">myvar</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span>    <span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/colorNumeric.html">colorBin</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">palette</span>, domain <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">myvar</span><span class="op">]</span><span class="op">]</span>, bins <span class="op">=</span> <span class="va">bins</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"&lt;strong&gt; %s &lt;/strong&gt; &lt;br/&gt; Observed &lt;strong&gt; %s &lt;/strong&gt;  : %s"</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_upper</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">state</span><span class="op">)</span>, <span class="va">input</span><span class="op">$</span><span class="va">myvar</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">myvar</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/HTML.html">HTML</a></span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">93.1616</span>, lat <span class="op">=</span> <span class="fl">40.4583</span>, zoom <span class="op">=</span> <span class="fl">3.5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addPolygons</a></span><span class="op">(</span></span>
+<span>        color <span class="op">=</span> <span class="st">"grey"</span>, </span>
+<span>        weight <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        fillColor <span class="op">=</span> <span class="op">~</span><span class="fu">pal</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myvar</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>        fillOpacity <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>        highlightOptions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">highlightOptions</a></span><span class="op">(</span>weight <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>        label <span class="op">=</span> <span class="va">labels</span></span>
+<span>      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addLegend.html">addLegend</a></span><span class="op">(</span></span>
+<span>        pal <span class="op">=</span> <span class="va">pal</span>, </span>
+<span>        values <span class="op">=</span> <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myvar</span><span class="op">)</span>, </span>
+<span>        opacity <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>        title <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_title</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">myvar</span><span class="op">)</span>, </span>
+<span>        position <span class="op">=</span> <span class="st">"bottomright"</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="va">m</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Run the app</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui</span>, server <span class="op">=</span> <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+</details>
+</div>
+<div id="b.-modify-the-app-in-2a-to-add-an-all-option-in-the-select-region-input-to-allow-users-to-view-all-states-at-once." class="section level3" number="26.2.2">
+<h3>
+<span class="header-section-number">26.2.2</span> b. Modify the app in 2a to add an “All” option in the “Select region” input to allow users to view all states at once.<a class="anchor" aria-label="anchor" href="#b.-modify-the-app-in-2a-to-add-an-all-option-in-the-select-region-input-to-allow-users-to-view-all-states-at-once."><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># your r-code</span></span></code></pre></div>
+</div>
+<div id="c.-open-an-account-on-shinyapps.io-and-follow-the-steps-to-deploy-one-of-the-apps-to-shinyapps.io." class="section level3" number="26.2.3">
+<h3>
+<span class="header-section-number">26.2.3</span> c. Open an account on <a href="https://www.shinyapps.io/admin/#/dashboard">shinyapps.io</a> and follow the steps to deploy one of the apps to <a href="https://www.shinyapps.io/admin/#/dashboard">shinyapps.io</a>.<a class="anchor" aria-label="anchor" href="#c.-open-an-account-on-shinyapps.io-and-follow-the-steps-to-deploy-one-of-the-apps-to-shinyapps.io."><i class="fas fa-link"></i></a>
+</h3>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="class-activity-19.html"><span class="header-section-number">25</span> Class Activity 19</a></div>
+<div class="next"><a href="helpful-r-codes.html"><span class="header-section-number">27</span> Helpful R codes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#class-activity-20"><span class="header-section-number">26</span> Class Activity 20</a></li>
+<li>
+<a class="nav-link" href="#group-activity-1-5"><span class="header-section-number">26.1</span> Group Activity 1</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#a.-explore-covid-19-vaccination-rates-across-the-midwest-with-this-r-script-which-scrapes-data-processes-it-and-creates-an-interactive-state-specific-leaflet-map-for-clear-visualization."><span class="header-section-number">26.1.1</span> a. Explore COVID-19 vaccination rates across the Midwest with this R script, which scrapes data, processes it, and creates an interactive, state-specific leaflet map for clear visualization.</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#group-activity-2-5"><span class="header-section-number">26.2</span> Group Activity 2</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#a.-explore-the-covid-19-vaccination-status-across-various-us-regions-using-this-interactive-shiny-app.-the-script-extracts-data-from-usafacts-presents-user-options-to-customize-the-map-projection-color-palette-and-region-and-dynamically-generates-a-leaflet-map-to-visualize-the-selected-data."><span class="header-section-number">26.2.1</span> a. Explore the COVID-19 vaccination status across various US regions using this interactive Shiny app. The script extracts data from USAFacts, presents user options to customize the map projection, color palette, and region, and dynamically generates a Leaflet map to visualize the selected data.</a></li>
+<li><a class="nav-link" href="#b.-modify-the-app-in-2a-to-add-an-all-option-in-the-select-region-input-to-allow-users-to-view-all-states-at-once."><span class="header-section-number">26.2.2</span> b. Modify the app in 2a to add an “All” option in the “Select region” input to allow users to view all states at once.</a></li>
+<li><a class="nav-link" href="#c.-open-an-account-on-shinyapps.io-and-follow-the-steps-to-deploy-one-of-the-apps-to-shinyapps.io."><span class="header-section-number">26.2.3</span> c. Open an account on shinyapps.io and follow the steps to deploy one of the apps to shinyapps.io.</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/class_activity_20.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/class_activity_20.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-12.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -155,7 +155,7 @@ server <- function(input, output, session) {
     input$refresh
     
     isolate({
-      panel_plot <- ggplot(mtcars, aes_string(x = input$var1, y = input$var2)) +
+       panel_plot <- ggplot(mtcars, aes(x = !!sym(input$var1), y = !!sym(input$var2))) +
         geom_point(aes(color = factor(cyl))) +
         theme_minimal() +
         labs(x = input$var1, y = input$var2, color = "Cylinders") +
@@ -248,7 +248,7 @@ shinyApp(ui, server, options = list(height = 800))
 ```
 
 
-# Exercises
+## Exercises
 
 ### Question 1
 
