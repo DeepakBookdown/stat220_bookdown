@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 27 Class Activity 21 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="# load the necessary libraries library(tidyverse) library(tidymodels) library(mlbench)   library(janitor) library(parsnip) library(kknn) library(paletteer) library(corrr) library(forcats)...">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="Chapter 27 Class Activity 21 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="# load the necessary libraries library(tidyverse) library(tidymodels) library(mlbench)   library(janitor) library(parsnip) library(kknn) library(paletteer) library(corrr) library(forcats)...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 27 Class Activity 21 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="# load the necessary libraries library(tidyverse) library(tidymodels) library(mlbench)   library(janitor) library(parsnip) library(kknn) library(paletteer) library(corrr) library(forcats)...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="rstudio.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
+<li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
+<li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
+<li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
+<li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
+<li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
+<li><a class="" href="class-activity-5.html"><span class="header-section-number">11</span> Class Activity 5</a></li>
+<li><a class="" href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></li>
+<li><a class="" href="class-activity-7.html"><span class="header-section-number">13</span> Class Activity 7</a></li>
+<li><a class="" href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></li>
+<li><a class="" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
+<li><a class="" href="class-activity-10.html"><span class="header-section-number">16</span> Class Activity 10</a></li>
+<li><a class="" href="class-activity-11.html"><span class="header-section-number">17</span> Class Activity 11</a></li>
+<li><a class="" href="class-activity-12.html"><span class="header-section-number">18</span> Class Activity 12</a></li>
+<li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
+<li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
+<li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
+<li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
+<li><a class="" href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></li>
+<li><a class="" href="class-activity-19.html"><span class="header-section-number">25</span> Class Activity 19</a></li>
+<li><a class="" href="class-activity-21.html"><span class="header-section-number">26</span> Class Activity 21</a></li>
+<li><a class="active" href="class-activity-21-1.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
+<li class="book-part">Extra Materials</li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">28</span> Helpful R codes</a></li>
+<li><a class="" href="graph-formatting.html"><span class="header-section-number">29</span> Graph Formatting</a></li>
+<li><a class="" href="table-formatting.html"><span class="header-section-number">30</span> Table Formatting</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-21-1" class="section level1" number="27">
+<h1>
+<span class="header-section-number">27</span> Class Activity 21<a class="anchor" aria-label="anchor" href="#class-activity-21-1"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb475"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">mlbench</span><span class="op">)</span>     </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/parsnip">parsnip</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/KlausVigo/kknn">kknn</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EmilHvitfeldt/paletteer">paletteer</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr">corrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org/">forcats</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span></span></code></pre></div>
+<div id="group-activity-1-6" class="section level2" number="27.1">
+<h2>
+<span class="header-section-number">27.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1-6"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load the data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">PimaIndiansDiabetes2</span><span class="op">)</span></span>
+<span><span class="va">db</span> <span class="op">&lt;-</span> <span class="va">PimaIndiansDiabetes2</span></span>
+<span></span>
+<span><span class="co"># correlation plot of the variables</span></span>
+<span><span class="va">db</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">diabetes</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># only numerical variables</span></span>
+<span>  <span class="fu"><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://corrr.tidymodels.org/reference/stretch.html">stretch</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, fill <span class="op">=</span> <span class="va">r</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://corrr.tidymodels.org/reference/fashion.html">fashion</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/paletteer/man/ggplot2-scales-continuous.html">scale_fill_paletteer_c</a></span><span class="op">(</span><span class="st">"scico::roma"</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_21_files/figure-html/unnamed-chunk-2-1.png" width="100%"></div>
+<ol style="list-style-type: lower-alpha">
+<li>Let’s perform all the steps involved in classifying whether a patient with certain glucose and insulin would have diabetes or not using <code>parsnip</code> package.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb477"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 1 Prepare raw data</span></span>
+<span><span class="va">db_raw</span> <span class="op">&lt;-</span> <span class="va">db</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">glucose</span>, <span class="va">insulin</span>, <span class="va">diabetes</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 2 Create a recipe for data pre-processing</span></span>
+<span><span class="va">db_recipe</span> <span class="op">&lt;-</span> <span class="fu">recipe</span><span class="op">(</span><span class="va">diabetes</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">db_raw</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">step_scale</span><span class="op">(</span><span class="fu">all_predictors</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">step_center</span><span class="op">(</span><span class="fu">all_predictors</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">prep</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 3 Apply the recipe to the data set</span></span>
+<span><span class="va">db_scaled</span> <span class="op">&lt;-</span>  <span class="fu">bake</span><span class="op">(</span><span class="va">db_recipe</span>, <span class="va">db_raw</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 4 Create a model specification</span></span>
+<span><span class="va">knn_spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/nearest_neighbor.html">nearest_neighbor</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"classification"</span>,</span>
+<span>                             engine <span class="op">=</span> <span class="st">"kknn"</span>,</span>
+<span>                             neighbors <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 5 Fit the model on the pre-processed data</span></span>
+<span><span class="va">knn_fit</span> <span class="op">&lt;-</span> <span class="va">knn_spec</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="va">diabetes</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">db_scaled</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 6 Classify</span></span>
+<span><span class="co"># These are standardized value!!</span></span>
+<span><span class="va">new_observations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>glucose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, insulin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/predict.html">predict</a></span><span class="op">(</span><span class="va">knn_fit</span>, new_data <span class="op">=</span> <span class="va">new_observations</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 2 × 1
+  .pred_class
+  &lt;fct&gt;      
+1 neg        
+2 pos        </code></pre>
+</details><ol start="2" style="list-style-type: lower-alpha">
+<li>We already know the labels of some of the patients in the dataset. How well does the model predict their diabetes status? We will see more of this in the coming lectures, but for now try to compare the results for the first 10 cases in the dataset.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb484"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">scaled_observations</span> <span class="op">&lt;-</span> <span class="va">db_scaled</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,<span class="op">]</span></span>
+<span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/predict.html">predict</a></span><span class="op">(</span><span class="va">knn_fit</span>, new_data <span class="op">=</span> <span class="va">scaled_observations</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">scaled_observations</span>, <span class="va">predictions</span>, <span class="va">db_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diabetes</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<table class="table table-sm">
+<thead><tr class="header">
+<th align="right">glucose</th>
+<th align="right">insulin</th>
+<th align="left">diabetes…3</th>
+<th align="left">.pred_class</th>
+<th align="left">diabetes…5</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">-1.0896533</td>
+<td align="right">-0.5221747</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">0.4657189</td>
+<td align="right">0.1005024</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">-1.4460927</td>
+<td align="right">-0.5726620</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+</tr>
+<tr class="even">
+<td align="right">2.4099341</td>
+<td align="right">3.2559608</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">2.1507054</td>
+<td align="right">5.8055711</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="even">
+<td align="right">1.4054229</td>
+<td align="right">0.1594043</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.1499493</td>
+<td align="right">0.6222049</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="even">
+<td align="right">-0.6360031</td>
+<td align="right">-0.6147348</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.2471600</td>
+<td align="right">-0.5053456</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+</tr>
+<tr class="even">
+<td align="right">0.1092794</td>
+<td align="right">0.6642776</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">0.6601404</td>
+<td align="right">-0.0846178</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="even">
+<td align="right">0.0768759</td>
+<td align="right">-0.3454690</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.8304246</td>
+<td align="right">-0.1351051</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">0.7249476</td>
+<td align="right">-0.3875418</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">1.1461942</td>
+<td align="right">0.7484232</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="even">
+<td align="right">-1.1220569</td>
+<td align="right">-0.8587569</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.6360031</td>
+<td align="right">0.3024518</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.3767744</td>
+<td align="right">0.4286701</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">1.8590732</td>
+<td align="right">-0.7241240</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">1.5674409</td>
+<td align="right">0.7063504</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.6360031</td>
+<td align="right">-0.6231494</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.7008102</td>
+<td align="right">-1.0102189</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-1.1220569</td>
+<td align="right">-1.1196081</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">1.7294588</td>
+<td align="right">1.2112238</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">0.8869655</td>
+<td align="right">1.5646351</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">2.0858983</td>
+<td align="right">1.2448820</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.7332138</td>
+<td align="right">-0.3875418</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.5711959</td>
+<td align="right">-0.1182760</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">0.5953333</td>
+<td align="right">-0.2360798</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.8952318</td>
+<td align="right">-0.9933898</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">0.7573512</td>
+<td align="right">-0.4716874</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.7332138</td>
+<td align="right">-0.5558329</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">0.5305261</td>
+<td align="right">-0.1351051</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">0.2064902</td>
+<td align="right">0.9587871</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-1.2840748</td>
+<td align="right">-0.7157095</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.4091780</td>
+<td align="right">-0.2613235</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.7332138</td>
+<td align="right">-0.7157095</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">0.4333153</td>
+<td align="right">-0.3875418</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+<td align="left">pos</td>
+</tr>
+<tr class="odd">
+<td align="right">0.0120687</td>
+<td align="right">0.1678189</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-1.3488820</td>
+<td align="right">-0.9092442</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">0.6277368</td>
+<td align="right">-0.7746114</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">0.6925440</td>
+<td align="right">0.6053758</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-1.6729179</td>
+<td align="right">-0.6736367</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.9600389</td>
+<td align="right">-0.7746114</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.0203349</td>
+<td align="right">0.5380593</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+</tr>
+<tr class="even">
+<td align="right">-1.3488820</td>
+<td align="right">-0.9765607</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">0.1092794</td>
+<td align="right">-0.0341305</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">0.6925440</td>
+<td align="right">-0.1351051</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+</tr>
+<tr class="odd">
+<td align="right">-1.2840748</td>
+<td align="right">-1.1616809</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+<td align="left">neg</td>
+</tr>
+<tr class="even">
+<td align="right">-0.8952318</td>
+<td align="right">-1.0102189</td>
+<td align="left">pos</td>
+<td align="left">neg</td>
+<td align="left">pos</td>
+</tr>
+</tbody>
+</table>
+<p>What is the accuracy percentage?</p>
+<p><em>Answer:</em></p>
+<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">predictions</span> <span class="op">==</span> <span class="va">db_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diabetes</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">50</span></span></code></pre></div>
+<pre><code>[1] 0.78</code></pre>
+</details><ol start="3" style="list-style-type: lower-alpha">
+<li>Repeat part b. with a different model fitted with different number of neighbors. See if the accuracy percentage change in this new setting.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">knn_spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/nearest_neighbor.html">nearest_neighbor</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"classification"</span>,</span>
+<span>                             engine <span class="op">=</span> <span class="st">"kknn"</span>,</span>
+<span>                             weight_func <span class="op">=</span> <span class="st">"rectangular"</span>,</span>
+<span>                             neighbors <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">knn_fit</span> <span class="op">&lt;-</span> <span class="va">knn_spec</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="va">diabetes</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">db_scaled</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">scaled_observations</span> <span class="op">&lt;-</span> <span class="va">db_scaled</span></span>
+<span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/predict.html">predict</a></span><span class="op">(</span><span class="va">knn_fit</span>, new_data <span class="op">=</span> <span class="va">scaled_observations</span><span class="op">)</span></span>
+<span><span class="co"># bind_cols(scaled_observations, predictions, db_raw %&gt;% </span></span>
+<span><span class="co">#            select(diabetes)) %&gt;% knitr::kable()</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">predictions</span> <span class="op">==</span> <span class="va">db_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diabetes</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">392</span></span></code></pre></div>
+<pre><code>[1] 0.8239796</code></pre>
+</details>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="class-activity-21.html"><span class="header-section-number">26</span> Class Activity 21</a></div>
+<div class="next"><a href="helpful-r-codes.html"><span class="header-section-number">28</span> Helpful R codes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#class-activity-21-1"><span class="header-section-number">27</span> Class Activity 21</a></li>
+<li><a class="nav-link" href="#group-activity-1-6"><span class="header-section-number">27.1</span> Group Activity 1</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/class_activity_21.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/class_activity_21.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-14.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
