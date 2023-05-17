@@ -97,12 +97,13 @@
 <li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
 <li><a class="" href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></li>
 <li><a class="" href="class-activity-19.html"><span class="header-section-number">25</span> Class Activity 19</a></li>
-<li><a class="" href="class-activity-21.html"><span class="header-section-number">26</span> Class Activity 21</a></li>
-<li><a class="" href="class-activity-21-1.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
+<li><a class="" href="class-activity-20.html"><span class="header-section-number">26</span> Class Activity 20</a></li>
+<li><a class="" href="class-activity-21.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
+<li><a class="" href="class-activity-22.html"><span class="header-section-number">28</span> Class Activity 22</a></li>
 <li class="book-part">Extra Materials</li>
-<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">28</span> Helpful R codes</a></li>
-<li><a class="" href="graph-formatting.html"><span class="header-section-number">29</span> Graph Formatting</a></li>
-<li><a class="" href="table-formatting.html"><span class="header-section-number">30</span> Table Formatting</a></li>
+<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">29</span> Helpful R codes</a></li>
+<li><a class="" href="graph-formatting.html"><span class="header-section-number">30</span> Graph Formatting</a></li>
+<li><a class="" href="table-formatting.html"><span class="header-section-number">31</span> Table Formatting</a></li>
 </ul>
 
         <div class="book-extra">
@@ -145,30 +146,30 @@ Click for answer
 <pre><code># A tibble: 24 × 5
       id grade region        score grade_fac
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;fct&gt;    
- 1     5 9th   Africa           98 9th      
- 2     9 9th   South America    73 9th      
- 3    16 9th   South America    86 9th      
- 4    19 9th   Europe           92 9th      
- 5    20 9th   Africa           77 9th      
- 6    21 9th   Middle East      56 9th      
- 7     2 10th  Middle East      69 10th     
- 8     3 10th  Middle East      88 10th     
- 9     6 10th  Asia             90 10th     
-10    18 10th  South America    95 10th     
-11    22 10th  Europe           50 10th     
-12    23 10th  North America    69 10th     
-13     1 11th  Asia             53 11th     
-14     4 11th  South America    79 11th     
-15     7 11th  South America    96 11th     
-16     8 11th  South America    62 11th     
-17    10 11th  South America    95 11th     
-18    11 11th  Asia             71 11th     
-19    12 11th  North America    96 11th     
-20    13 11th  Europe           97 11th     
-21    14 11th  South America    85 11th     
-22    15 11th  Asia             78 11th     
-23    17 11th  North America    65 11th     
-24    24 11th  North America    88 11th     </code></pre>
+ 1     4 9th   Asia             67 9th      
+ 2     6 9th   Europe          100 9th      
+ 3    12 9th   Africa           94 9th      
+ 4    13 9th   Europe           93 9th      
+ 5    14 9th   South America    85 9th      
+ 6    17 9th   Africa           86 9th      
+ 7    18 9th   Middle East      88 9th      
+ 8    21 9th   Asia             88 9th      
+ 9    23 9th   North America    98 9th      
+10     2 10th  Africa           71 10th     
+11     3 10th  South America    51 10th     
+12     8 10th  South America    59 10th     
+13     9 10th  Europe           54 10th     
+14    10 10th  Asia             78 10th     
+15    11 10th  Europe           87 10th     
+16    15 10th  South America    65 10th     
+17    24 10th  Middle East      99 10th     
+18     1 11th  South America    68 11th     
+19     5 11th  Asia             66 11th     
+20     7 11th  Middle East      54 11th     
+21    16 11th  North America    91 11th     
+22    19 11th  North America    84 11th     
+23    20 11th  North America    76 11th     
+24    22 11th  Asia             90 11th     </code></pre>
 </details>
 </div>
 <div id="b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category." class="section level3" number="16.1.2">
@@ -190,9 +191,9 @@ Click for answer
 <pre><code># A tibble: 3 × 2
   region_collapsed     n
   &lt;fct&gt;            &lt;int&gt;
-1 EMEA                 8
-2 Asia                 4
-3 Americas            12</code></pre>
+1 EMEA                10
+2 Asia                 5
+3 Americas             9</code></pre>
 </details>
 </div>
 <div id="c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering." class="section level3" number="16.1.3">
@@ -208,7 +209,7 @@ Click for answer
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_infreq <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">grade_infreq</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">students_c</span><span class="op">$</span><span class="va">grade_infreq</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "11th" "9th"  "10th"</code></pre>
+<pre><code>[1] "9th"  "10th" "11th"</code></pre>
 </details>
 </div>
 <div id="d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column." class="section level3" number="16.1.4">
@@ -226,8 +227,8 @@ Click for answer
 <pre><code># A tibble: 2 × 2
   grade_lumped     n
   &lt;fct&gt;        &lt;int&gt;
-1 11th            12
-2 Others          12</code></pre>
+1 9th              9
+2 Others          15</code></pre>
 </details>
 </div>
 </div>
@@ -360,7 +361,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-14.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
