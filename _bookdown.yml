@@ -35,8 +35,9 @@ rmd_files: [
   "class_activity_20.Rmd",
   "class_activity_21.Rmd",
   "class_activity_22.Rmd",
-  "nice_R_codes.Rmd",
-   "graphformatting.Rmd",
-   "tableformatting.Rmd"
+  "class_activity_23.Rmd"
+   # "nice_R_codes.Rmd",
+   # "graphformatting.Rmd",
+   # "tableformatting.Rmd"
 ]
 

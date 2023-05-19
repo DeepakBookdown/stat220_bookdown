@@ -1,7 +1,7 @@
 --- 
 title: "Stat 220 Introduction to Data Science"
 author: "Deepak Bastola"
-date: "2023-05-17"
+date: "2023-05-19"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
