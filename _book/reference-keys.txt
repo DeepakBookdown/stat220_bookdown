@@ -253,3 +253,7 @@ class-activity-23
 group-activity-1-8
 extra-plot-the-metrics
 group-activity-2-7
+class-activity-24
+group-activity-1-9
+group-activity-2-8
+extra-group-activity-3

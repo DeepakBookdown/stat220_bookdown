@@ -117,7 +117,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-05-19}
+\date{2023-05-21}
 
 \begin{document}
 \maketitle
@@ -4304,7 +4304,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.01137
+[1] 28.01825
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4737,30 +4737,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     4 9th   South America    79 9th      
- 2     5 9th   Europe           84 9th      
- 3    12 9th   Middle East      99 9th      
- 4    15 9th   South America    83 9th      
- 5    18 9th   Europe           95 9th      
- 6    19 9th   Europe           88 9th      
- 7    20 9th   Europe           86 9th      
- 8     2 10th  South America    56 10th     
- 9     3 10th  Asia             72 10th     
-10     7 10th  Africa           67 10th     
-11     8 10th  Europe           72 10th     
-12    11 10th  Europe           50 10th     
-13    14 10th  Asia             54 10th     
-14    16 10th  Africa           68 10th     
-15    17 10th  South America    94 10th     
-16    22 10th  Europe           99 10th     
-17    24 10th  Asia             59 10th     
-18     1 11th  Asia             52 11th     
-19     6 11th  Asia             66 11th     
-20     9 11th  Middle East      85 11th     
-21    10 11th  Europe           95 11th     
-22    13 11th  Africa           88 11th     
-23    21 11th  North America    98 11th     
-24    23 11th  North America    78 11th     
+ 1     3 9th   Africa           65 9th      
+ 2     9 9th   North America    85 9th      
+ 3    11 9th   Africa           83 9th      
+ 4    15 9th   North America    88 9th      
+ 5     1 10th  South America    57 10th     
+ 6     2 10th  Africa           99 10th     
+ 7     4 10th  South America    61 10th     
+ 8     5 10th  Europe           54 10th     
+ 9    10 10th  South America    92 10th     
+10    12 10th  Middle East      70 10th     
+11    18 10th  Africa           50 10th     
+12    23 10th  Middle East      78 10th     
+13    24 10th  Middle East      62 10th     
+14     6 11th  Europe           82 11th     
+15     7 11th  Africa           85 11th     
+16     8 11th  Europe           52 11th     
+17    13 11th  Middle East     100 11th     
+18    14 11th  Africa           59 11th     
+19    16 11th  Middle East      65 11th     
+20    17 11th  Asia             72 11th     
+21    19 11th  South America    67 11th     
+22    20 11th  Middle East      97 11th     
+23    21 11th  Europe           62 11th     
+24    22 11th  Africa           64 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4787,8 +4787,8 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                13
-2 Asia                 5
+1 EMEA                17
+2 Asia                 1
 3 Americas             6
 \end{verbatim}
 
@@ -4810,7 +4810,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "9th"  "11th"
+[1] "11th" "10th" "9th" 
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4833,8 +4833,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 10th            10
-2 Others          14
+1 11th            11
+2 Others          13
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6621,197 +6621,197 @@ Click for answer
 \hline
 Year & Title & Description & Runtime & Rating & Votes\\
 \hline
-2022 & Everything Everywhere All at Once & A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led. & 139 & 7.8 & 443934\\
+2022 & Everything Everywhere All at Once & A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led. & 139 & 7.8 & 445069\\
 \hline
-2021 & CODA & As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family's fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents. & 111 & 8.0 & 145471\\
+2021 & CODA & As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family's fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents. & 111 & 8.0 & 145647\\
 \hline
-2020 & Nomadland & A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad. & 107 & 7.3 & 170121\\
+2020 & Nomadland & A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad. & 107 & 7.3 & 170226\\
 \hline
-2019 & Parasite & Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan. & 132 & 8.5 & 851408\\
+2019 & Parasite & Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan. & 132 & 8.5 & 852094\\
 \hline
-2018 & Green Book & A working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South. & 130 & 8.2 & 517470\\
+2018 & Green Book & A working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South. & 130 & 8.2 & 517894\\
 \hline
-2017 & The Shape of Water & At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity. & 123 & 7.3 & 431638\\
+2017 & The Shape of Water & At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity. & 123 & 7.3 & 431758\\
 \hline
-2016 & Moonlight & A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood. & 111 & 7.4 & 317692\\
+2016 & Moonlight & A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood. & 111 & 7.4 & 317800\\
 \hline
-2015 & Spotlight & The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core. & 129 & 8.1 & 481503\\
+2015 & Spotlight & The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core. & 129 & 8.1 & 481652\\
 \hline
-2014 & Birdman or (The Unexpected Virtue of Ignorance) & A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production. & 119 & 7.7 & 644767\\
+2014 & Birdman or (The Unexpected Virtue of Ignorance) & A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production. & 119 & 7.7 & 644926\\
 \hline
-2013 & 12 Years a Slave & In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. & 134 & 8.1 & 714876\\
+2013 & 12 Years a Slave & In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. & 134 & 8.1 & 715060\\
 \hline
-2012 & Argo & Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979. & 120 & 7.7 & 624267\\
+2012 & Argo & Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979. & 120 & 7.7 & 624414\\
 \hline
-2011 & The Artist & An egomaniacal film star develops a relationship with a young dancer against the backdrop of Hollywood's silent era. & 100 & 7.9 & 244694\\
+2011 & The Artist & An egomaniacal film star develops a relationship with a young dancer against the backdrop of Hollywood's silent era. & 100 & 7.9 & 244734\\
 \hline
-2010 & The King's Speech & The story of King George VI, his unexpected ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer. & 118 & 8.0 & 691276\\
+2010 & The King's Speech & The story of King George VI, his unexpected ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer. & 118 & 8.0 & 691438\\
 \hline
-2008 & The Hurt Locker & During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work. & 131 & 7.5 & 460737\\
+2008 & The Hurt Locker & During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work. & 131 & 7.5 & 460834\\
 \hline
-2008 & Slumdog Millionaire & A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?". & 120 & 8.0 & 857975\\
+2008 & Slumdog Millionaire & A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?". & 120 & 8.0 & 858121\\
 \hline
-2007 & No Country for Old Men & Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande. & 122 & 8.2 & 999733\\
+2007 & No Country for Old Men & Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande. & 122 & 8.2 & 1000169\\
 \hline
-2006 & The Departed & An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston. & 151 & 8.5 & 1353928\\
+2006 & The Departed & An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston. & 151 & 8.5 & 1354417\\
 \hline
-2004 & Million Dollar Baby & Frankie, an ill-tempered old coach, reluctantly agrees to train aspiring boxer Maggie. Impressed with her determination and talent, he helps her become the best and the two soon form a close bond. & 132 & 8.1 & 699249\\
+2004 & Million Dollar Baby & Frankie, an ill-tempered old coach, reluctantly agrees to train aspiring boxer Maggie. Impressed with her determination and talent, he helps her become the best and the two soon form a close bond. & 132 & 8.1 & 699397\\
 \hline
-2004 & Crash & Los Angeles citizens with vastly separate lives collide in interweaving stories of race, loss and redemption. & 112 & 7.7 & 442146\\
+2004 & Crash & Los Angeles citizens with vastly separate lives collide in interweaving stories of race, loss and redemption. & 112 & 7.7 & 442206\\
 \hline
-2003 & The Lord of the Rings: The Return of the King & Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. & 201 & 9.0 & 1884195\\
+2003 & The Lord of the Rings: The Return of the King & Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. & 201 & 9.0 & 1884757\\
 \hline
-2002 & Chicago & Two death-row murderesses develop a fierce rivalry while competing for publicity, celebrity, and a sleazy lawyer's attention. & 113 & 7.2 & 235484\\
+2002 & Chicago & Two death-row murderesses develop a fierce rivalry while competing for publicity, celebrity, and a sleazy lawyer's attention. & 113 & 7.2 & 235529\\
 \hline
-2001 & A Beautiful Mind & After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish. & 135 & 8.2 & 949153\\
+2001 & A Beautiful Mind & After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish. & 135 & 8.2 & 949429\\
 \hline
-2000 & Gladiator & A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery. & 155 & 8.5 & 1533672\\
+2000 & Gladiator & A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery. & 155 & 8.5 & 1534241\\
 \hline
-1999 & American Beauty & A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend. & 122 & 8.3 & 1172396\\
+1999 & American Beauty & A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend. & 122 & 8.3 & 1172639\\
 \hline
-1998 & Shakespeare in Love & The world's greatest ever playwright, William Shakespeare, is young, out of ideas and short of cash, but meets his ideal woman and is inspired to write one of his most famous plays. & 123 & 7.1 & 229173\\
+1998 & Shakespeare in Love & The world's greatest ever playwright, William Shakespeare, is young, out of ideas and short of cash, but meets his ideal woman and is inspired to write one of his most famous plays. & 123 & 7.1 & 229214\\
 \hline
-1997 & Titanic & A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic. & 194 & 7.9 & 1217597\\
+1997 & Titanic & A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic. & 194 & 7.9 & 1217959\\
 \hline
-1996 & The English Patient & At the close of World War II, a young nurse tends to a badly-burned plane crash victim. His past is shown in flashbacks, revealing an involvement in a fateful love affair. & 162 & 7.4 & 194765\\
+1996 & The English Patient & At the close of World War II, a young nurse tends to a badly-burned plane crash victim. His past is shown in flashbacks, revealing an involvement in a fateful love affair. & 162 & 7.4 & 194797\\
 \hline
-1995 & Braveheart & Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England. & 178 & 8.4 & 1054525\\
+1995 & Braveheart & Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England. & 178 & 8.4 & 1054774\\
 \hline
-1994 & Forrest Gump & The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. & 142 & 8.8 & 2132321\\
+1994 & Forrest Gump & The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. & 142 & 8.8 & 2133129\\
 \hline
-1993 & Schindler's List & In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis. & 195 & 9.0 & 1382992\\
+1993 & Schindler's List & In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis. & 195 & 9.0 & 1383459\\
 \hline
-1992 & Unforgiven & Retired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The "Schofield Kid." & 130 & 8.2 & 420321\\
+1992 & Unforgiven & Retired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The "Schofield Kid." & 130 & 8.2 & 420458\\
 \hline
-1991 & The Silence of the Lambs & A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims. & 118 & 8.6 & 1465120\\
+1991 & The Silence of the Lambs & A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims. & 118 & 8.6 & 1465637\\
 \hline
-1990 & Dances with Wolves & Lieutenant John Dunbar, assigned to a remote western Civil War outpost, finds himself engaging with a neighbouring Sioux settlement, causing him to question his own purpose. & 181 & 8.0 & 275952\\
+1990 & Dances with Wolves & Lieutenant John Dunbar, assigned to a remote western Civil War outpost, finds himself engaging with a neighbouring Sioux settlement, causing him to question his own purpose. & 181 & 8.0 & 276094\\
 \hline
-1989 & Driving Miss Daisy & An old Jewish woman and her African-American chauffeur in the American South have a relationship that grows and improves over the years. & 99 & 7.3 & 113497\\
+1989 & Driving Miss Daisy & An old Jewish woman and her African-American chauffeur in the American South have a relationship that grows and improves over the years. & 99 & 7.3 & 113522\\
 \hline
-1988 & Rain Man & After a selfish L.A. yuppie learns his estranged father left a fortune to an autistic-savant brother in Ohio that he didn't know existed, he absconds with his brother and sets out across the country, hoping to gain a larger inheritance. & 133 & 8.0 & 526098\\
+1988 & Rain Man & After a selfish L.A. yuppie learns his estranged father left a fortune to an autistic-savant brother in Ohio that he didn't know existed, he absconds with his brother and sets out across the country, hoping to gain a larger inheritance. & 133 & 8.0 & 526238\\
 \hline
-1987 & The Last Emperor & Dramatization of China's last emperor, Puyi. & 163 & 7.7 & 107065\\
+1987 & The Last Emperor & Dramatization of China's last emperor, Puyi. & 163 & 7.7 & 107102\\
 \hline
-1986 & Platoon & Chris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict. & 120 & 8.1 & 422805\\
+1986 & Platoon & Chris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict. & 120 & 8.1 & 422892\\
 \hline
-1985 & Out of Africa & In 20th-century colonial Kenya, a Danish baroness/plantation owner has a passionate love affair with a free-spirited big-game hunter. & 161 & 7.1 & 83041\\
+1985 & Out of Africa & In 20th-century colonial Kenya, a Danish baroness/plantation owner has a passionate love affair with a free-spirited big-game hunter. & 161 & 7.1 & 83067\\
 \hline
-1984 & Amadeus & The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart's talent and claimed to have murdered him. & 160 & 8.4 & 409220\\
+1984 & Amadeus & The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart's talent and claimed to have murdered him. & 160 & 8.4 & 409335\\
 \hline
-1983 & Terms of Endearment & Follows hard-to-please Aurora looking for love and her daughter's family problems. & 132 & 7.4 & 62699\\
+1983 & Terms of Endearment & Follows hard-to-please Aurora looking for love and her daughter's family problems. & 132 & 7.4 & 62720\\
 \hline
-1982 & Gandhi & The life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest. & 191 & 8.0 & 236097\\
+1982 & Gandhi & The life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest. & 191 & 8.0 & 236125\\
 \hline
-1981 & Chariots of Fire & Two British track athletes, one a determined Jew and the other a devout Christian, are driven to win in the 1924 Olympics as they wrestle with issues of pride and conscience. & 125 & 7.1 & 63369\\
+1981 & Chariots of Fire & Two British track athletes, one a determined Jew and the other a devout Christian, are driven to win in the 1924 Olympics as they wrestle with issues of pride and conscience. & 125 & 7.1 & 63389\\
 \hline
-1980 & Ordinary People & The accidental death of the older son of an affluent family deeply strains the relationships among the bitter mother, the good-natured father and the guilt-ridden younger son. & 124 & 7.7 & 54315\\
+1980 & Ordinary People & The accidental death of the older son of an affluent family deeply strains the relationships among the bitter mother, the good-natured father and the guilt-ridden younger son. & 124 & 7.7 & 54328\\
 \hline
-1979 & Kramer vs. Kramer & After his wife leaves him, a work-obsessed Manhattan advertising executive is forced to learn long-neglected parenting skills, but a heated custody battle over the couple's young son deepens the wounds left by the separation. & 105 & 7.8 & 149317\\
+1979 & Kramer vs. Kramer & After his wife leaves him, a work-obsessed Manhattan advertising executive is forced to learn long-neglected parenting skills, but a heated custody battle over the couple's young son deepens the wounds left by the separation. & 105 & 7.8 & 149361\\
 \hline
-1978 & The Deer Hunter & An in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania. & 183 & 8.1 & 346296\\
+1978 & The Deer Hunter & An in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania. & 183 & 8.1 & 346402\\
 \hline
-1977 & Annie Hall & Alvy Singer, a divorced Jewish comedian, reflects on his relationship with ex-lover Annie Hall, an aspiring nightclub singer, which ended abruptly just like his previous marriages. & 93 & 8.0 & 270149\\
+1977 & Annie Hall & Alvy Singer, a divorced Jewish comedian, reflects on his relationship with ex-lover Annie Hall, an aspiring nightclub singer, which ended abruptly just like his previous marriages. & 93 & 8.0 & 270203\\
 \hline
-1976 & Rocky & A small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect. & 120 & 8.1 & 597282\\
+1976 & Rocky & A small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect. & 120 & 8.1 & 597477\\
 \hline
-1975 & One Flew Over the Cuckoo's Nest & In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse. & 133 & 8.7 & 1027293\\
+1975 & One Flew Over the Cuckoo's Nest & In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse. & 133 & 8.7 & 1027636\\
 \hline
-1974 & The Godfather Part II & The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate. & 202 & 9.0 & 1298784\\
+1974 & The Godfather Part II & The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate. & 202 & 9.0 & 1299217\\
 \hline
-1973 & The Sting & Two grifters team up to pull off the ultimate con. & 129 & 8.3 & 269219\\
+1973 & The Sting & Two grifters team up to pull off the ultimate con. & 129 & 8.3 & 269293\\
 \hline
-1972 & The Godfather & Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger. & 175 & 9.2 & 1905691\\
+1972 & The Godfather & Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger. & 175 & 9.2 & 1906455\\
 \hline
-1971 & The French Connection & A pair of NYPD detectives in the Narcotics Bureau stumble onto a heroin smuggling ring based in Marseilles, but stopping them and capturing their leaders proves an elusive goal. & 104 & 7.7 & 127429\\
+1971 & The French Connection & A pair of NYPD detectives in the Narcotics Bureau stumble onto a heroin smuggling ring based in Marseilles, but stopping them and capturing their leaders proves an elusive goal. & 104 & 7.7 & 127472\\
 \hline
-1970 & Patton & The World War II phase of the career of controversial American general George S. Patton. & 172 & 7.9 & 104905\\
+1970 & Patton & The World War II phase of the career of controversial American general George S. Patton. & 172 & 7.9 & 104939\\
 \hline
-1969 & Midnight Cowboy & A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process. & 113 & 7.8 & 114873\\
+1969 & Midnight Cowboy & A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process. & 113 & 7.8 & 114914\\
 \hline
-1968 & Oliver! & After being sold to a mortician, young orphan Oliver Twist runs away and meets a group of boys trained to be pickpockets by an elderly mentor in 1830s London. & 153 & 7.4 & 39946\\
+1968 & Oliver! & After being sold to a mortician, young orphan Oliver Twist runs away and meets a group of boys trained to be pickpockets by an elderly mentor in 1830s London. & 153 & 7.4 & 39960\\
 \hline
-1967 & In the Heat of the Night & A black Philadelphia police detective is mistakenly suspected of a local murder while passing through a racially hostile Mississippi town, and after being cleared is reluctantly asked by the police chief to investigate the case. & 110 & 7.9 & 79347\\
+1967 & In the Heat of the Night & A black Philadelphia police detective is mistakenly suspected of a local murder while passing through a racially hostile Mississippi town, and after being cleared is reluctantly asked by the police chief to investigate the case. & 110 & 7.9 & 79392\\
 \hline
-1966 & A Man for All Seasons & The story of Sir Thomas More, who stood up to King Henry VIII when the King rejected the Roman Catholic Church to obtain a divorce and remarry. & 120 & 7.7 & 35835\\
+1966 & A Man for All Seasons & The story of Sir Thomas More, who stood up to King Henry VIII when the King rejected the Roman Catholic Church to obtain a divorce and remarry. & 120 & 7.7 & 35842\\
 \hline
-1965 & The Sound of Music & A young novice is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer. & 172 & 8.1 & 244165\\
+1965 & The Sound of Music & A young novice is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer. & 172 & 8.1 & 244263\\
 \hline
-1964 & My Fair Lady & In 1910s London, snobbish phonetics professor Henry Higgins agrees to a wager that he can make crude flower girl, Eliza Doolittle, presentable in high society. & 170 & 7.8 & 98341\\
+1964 & My Fair Lady & In 1910s London, snobbish phonetics professor Henry Higgins agrees to a wager that he can make crude flower girl, Eliza Doolittle, presentable in high society. & 170 & 7.8 & 98365\\
 \hline
-1963 & Tom Jones & The romantic and chivalrous adventures of adopted bastard Tom Jones in 18th-century England. & 129 & 6.4 & 13697\\
+1963 & Tom Jones & The romantic and chivalrous adventures of adopted bastard Tom Jones in 18th-century England. & 129 & 6.4 & 13702\\
 \hline
-1962 & Lawrence of Arabia & The story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks. & 218 & 8.3 & 300679\\
+1962 & Lawrence of Arabia & The story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks. & 218 & 8.3 & 300784\\
 \hline
-1961 & West Side Story & Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy. & 153 & 7.6 & 117304\\
+1961 & West Side Story & Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy. & 153 & 7.6 & 117342\\
 \hline
-1960 & The Apartment & A Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue. & 125 & 8.3 & 186330\\
+1960 & The Apartment & A Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue. & 125 & 8.3 & 186391\\
 \hline
-1959 & Ben-Hur & After a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge. & 212 & 8.1 & 244892\\
+1959 & Ben-Hur & After a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge. & 212 & 8.1 & 244946\\
 \hline
-1958 & Gigi & Weary of the conventions of Parisian society, a rich playboy and a youthful courtesan-in-training enjoy a platonic friendship which may not stay platonic for long. & 115 & 6.6 & 23692\\
+1958 & Gigi & Weary of the conventions of Parisian society, a rich playboy and a youthful courtesan-in-training enjoy a platonic friendship which may not stay platonic for long. & 115 & 6.6 & 23696\\
 \hline
-1957 & The Bridge on the River Kwai & British POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it. & 161 & 8.1 & 225395\\
+1957 & The Bridge on the River Kwai & British POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it. & 161 & 8.1 & 225444\\
 \hline
-1956 & Around the World in 80 Days & A Victorian Englishman bets that with the new steamships and railways he can circumnavigate the globe in eighty days. & 175 & 6.7 & 28589\\
+1956 & Around the World in 80 Days & A Victorian Englishman bets that with the new steamships and railways he can circumnavigate the globe in eighty days. & 175 & 6.7 & 28605\\
 \hline
-1955 & Marty & A middle-aged butcher and a school teacher who have given up on the idea of love meet at a dance and fall for each other. & 90 & 7.7 & 25508\\
+1955 & Marty & A middle-aged butcher and a school teacher who have given up on the idea of love meet at a dance and fall for each other. & 90 & 7.7 & 25524\\
 \hline
-1954 & On the Waterfront & An ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate's victims. & 108 & 8.1 & 158340\\
+1954 & On the Waterfront & An ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate's victims. & 108 & 8.1 & 158372\\
 \hline
-1953 & From Here to Eternity & At a U.S. Army base in 1941 Hawaii, a private is cruelly punished for not boxing on his unit's team, while his commanding officer's wife and top aide begin a tentative affair. & 118 & 7.6 & 48787\\
+1953 & From Here to Eternity & At a U.S. Army base in 1941 Hawaii, a private is cruelly punished for not boxing on his unit's team, while his commanding officer's wife and top aide begin a tentative affair. & 118 & 7.6 & 48802\\
 \hline
-1952 & The Greatest Show on Earth & The dramatic lives of trapeze artists, a clown, and an elephant trainer are told against a background of circus spectacle. & 152 & 6.6 & 15338\\
+1952 & The Greatest Show on Earth & The dramatic lives of trapeze artists, a clown, and an elephant trainer are told against a background of circus spectacle. & 152 & 6.6 & 15347\\
 \hline
-1951 & An American in Paris & Three friends struggle to find work in Paris. Things become more complicated when two of them fall in love with the same woman. & 114 & 7.2 & 35231\\
+1951 & An American in Paris & Three friends struggle to find work in Paris. Things become more complicated when two of them fall in love with the same woman. & 114 & 7.2 & 35236\\
 \hline
-1950 & All About Eve & A seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends. & 138 & 8.2 & 133901\\
+1950 & All About Eve & A seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends. & 138 & 8.2 & 133937\\
 \hline
-1949 & All the King's Men & The rise and fall of a corrupt politician, who makes his friends richer and retains power by dint of a populist appeal. & 110 & 7.4 & 15762\\
+1949 & All the King's Men & The rise and fall of a corrupt politician, who makes his friends richer and retains power by dint of a populist appeal. & 110 & 7.4 & 15768\\
 \hline
-1948 & Hamlet & Prince Hamlet struggles over whether or not he should kill his uncle, whom he suspects has murdered his father, the former king. & 154 & 7.6 & 17664\\
+1948 & Hamlet & Prince Hamlet struggles over whether or not he should kill his uncle, whom he suspects has murdered his father, the former king. & 154 & 7.6 & 17667\\
 \hline
-1947 & Gentleman's Agreement & A reporter pretends to be Jewish in order to cover a story on anti-Semitism, and personally discovers the true depths of bigotry and hatred. & 118 & 7.2 & 17123\\
+1947 & Gentleman's Agreement & A reporter pretends to be Jewish in order to cover a story on anti-Semitism, and personally discovers the true depths of bigotry and hatred. & 118 & 7.2 & 17127\\
 \hline
-1946 & The Best Years of Our Lives & Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed. & 170 & 8.1 & 66987\\
+1946 & The Best Years of Our Lives & Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed. & 170 & 8.1 & 67012\\
 \hline
-1945 & The Lost Weekend & The desperate life of a chronic alcoholic is followed through a four-day drinking bout. & 101 & 7.9 & 38593\\
+1945 & The Lost Weekend & The desperate life of a chronic alcoholic is followed through a four-day drinking bout. & 101 & 7.9 & 38613\\
 \hline
-1944 & Going My Way & When young Father O'Malley arrives at St. Dominic's, old Father Fitzgibbon doesn't think much of the church's newest member. & 126 & 7.0 & 12588\\
+1944 & Going My Way & When young Father O'Malley arrives at St. Dominic's, old Father Fitzgibbon doesn't think much of the church's newest member. & 126 & 7.0 & 12593\\
 \hline
-1942 & Casablanca & A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco. & 102 & 8.5 & 582707\\
+1942 & Casablanca & A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco. & 102 & 8.5 & 582889\\
 \hline
-1942 & Mrs. Miniver & A British family struggles to survive the first months of World War II. & 134 & 7.6 & 18567\\
+1942 & Mrs. Miniver & A British family struggles to survive the first months of World War II. & 134 & 7.6 & 18578\\
 \hline
-1941 & How Green Was My Valley & At the turn of the century in a Welsh mining village, the Morgans, he stern, she gentle, raise coal-mining sons and hope their youngest will find a better life. & 118 & 7.7 & 25299\\
+1941 & How Green Was My Valley & At the turn of the century in a Welsh mining village, the Morgans, he stern, she gentle, raise coal-mining sons and hope their youngest will find a better life. & 118 & 7.7 & 25310\\
 \hline
-1940 & Rebecca & A self-conscious woman juggles adjusting to her new role as an aristocrat's wife and avoiding being intimidated by his first wife's spectral presence. & 130 & 8.1 & 140628\\
+1940 & Rebecca & A self-conscious woman juggles adjusting to her new role as an aristocrat's wife and avoiding being intimidated by his first wife's spectral presence. & 130 & 8.1 & 140667\\
 \hline
-1939 & Gone with the Wind & American motion picture classic in which a manipulative woman and a roguish man conduct a turbulent romance during the Civil War and Reconstruction periods. & 238 & 8.2 & 322061\\
+1939 & Gone with the Wind & American motion picture classic in which a manipulative woman and a roguish man conduct a turbulent romance during the Civil War and Reconstruction periods. & 238 & 8.2 & 322131\\
 \hline
-1938 & You Can't Take It with You & The son of a snobbish Wall Street banker becomes engaged to a woman from a good-natured but decidedly eccentric family, not realizing that his father is trying to force her family from their home for a real estate development. & 126 & 7.8 & 26761\\
+1938 & You Can't Take It with You & The son of a snobbish Wall Street banker becomes engaged to a woman from a good-natured but decidedly eccentric family, not realizing that his father is trying to force her family from their home for a real estate development. & 126 & 7.8 & 26770\\
 \hline
-1937 & The Life of Emile Zola & The biopic of the famous French muckraking writer and his involvement in fighting the injustice of the Dreyfus Affair. & 116 & 7.2 & 8612\\
+1937 & The Life of Emile Zola & The biopic of the famous French muckraking writer and his involvement in fighting the injustice of the Dreyfus Affair. & 116 & 7.2 & 8619\\
 \hline
-1936 & The Great Ziegfeld & The ups and downs of Florenz Ziegfeld Jr., famed producer of extravagant stage revues, are portrayed. & 176 & 6.6 & 8596\\
+1936 & The Great Ziegfeld & The ups and downs of Florenz Ziegfeld Jr., famed producer of extravagant stage revues, are portrayed. & 176 & 6.6 & 8602\\
 \hline
-1935 & Mutiny on the Bounty & First mate Fletcher Christian leads a revolt against his sadistic commander, Captain Bligh, in this classic seafaring adventure, based on the real-life 1789 mutiny. & 132 & 7.6 & 23947\\
+1935 & Mutiny on the Bounty & First mate Fletcher Christian leads a revolt against his sadistic commander, Captain Bligh, in this classic seafaring adventure, based on the real-life 1789 mutiny. & 132 & 7.6 & 23951\\
 \hline
-1934 & It Happened One Night & A renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops. & 105 & 8.1 & 107103\\
+1934 & It Happened One Night & A renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops. & 105 & 8.1 & 107150\\
 \hline
-1933 & Cavalcade & A portrayal of the triumphs and tragedies of two English families, the upper-crust Marryots and the working-class Bridgeses, from 1899 to 1933. & 112 & 5.8 & 5557\\
+1933 & Cavalcade & A portrayal of the triumphs and tragedies of two English families, the upper-crust Marryots and the working-class Bridgeses, from 1899 to 1933. & 112 & 5.8 & 5562\\
 \hline
-1932 & Grand Hotel & A group of very different individuals staying at a luxurious hotel in Berlin deal with each of their respective dramas. & 112 & 7.3 & 20118\\
+1932 & Grand Hotel & A group of very different individuals staying at a luxurious hotel in Berlin deal with each of their respective dramas. & 112 & 7.3 & 20126\\
 \hline
-1931 & Cimarron & A newspaper editor settles in an Oklahoma boom town with his reluctant wife at the end of the nineteenth century. & 123 & 5.8 & 6584\\
+1931 & Cimarron & A newspaper editor settles in an Oklahoma boom town with his reluctant wife at the end of the nineteenth century. & 123 & 5.8 & 6591\\
 \hline
-1930 & All Quiet on the Western Front & A German youth eagerly enters World War I, but his enthusiasm wanes as he gets a firsthand view of the horror. & 152 & 8.1 & 65414\\
+1930 & All Quiet on the Western Front & A German youth eagerly enters World War I, but his enthusiasm wanes as he gets a firsthand view of the horror. & 152 & 8.1 & 65441\\
 \hline
-1929 & The Broadway Melody & A pair of sisters from the vaudeville circuit try to make it big time on Broadway, but matters of the heart complicate the attempt. & 100 & 5.6 & 7618\\
+1929 & The Broadway Melody & A pair of sisters from the vaudeville circuit try to make it big time on Broadway, but matters of the heart complicate the attempt. & 100 & 5.6 & 7622\\
 \hline
-1927 & Wings & Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I. & 144 & 7.6 & 13664\\
+1927 & Wings & Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I. & 144 & 7.6 & 13678\\
 \hline
-1927 & Sunrise & A sophisticated city woman seduces a farmer and convinces him to murder his wife and join her in the city, but he ends up rekindling his romance with his wife when he changes his mind at the last moment. & 94 & 8.1 & 52292\\
+1927 & Sunrise & A sophisticated city woman seduces a farmer and convinces him to murder his wife and join her in the city, but he ends up rekindling his romance with his wife when he changes his mind at the last moment. & 94 & 8.1 & 52305\\
 \hline
 \end{tabular}
 
@@ -7061,8 +7061,8 @@ $ ``               <chr> "1", "2", "3", "4", "5", "6", "7"~
 $ ReleaseDate      <chr> "Dec 9, 2022", "Apr 23, 2019", "M~
 $ Movie            <chr> "Avatar: The Way of Water", "Aven~
 $ ProductionBudget <chr> "$460,000,000", "$400,000,000", "~
-$ DomesticGross    <chr> "$684,048,778", "$858,373,000", "~
-$ WorldwideGross   <chr> "$2,319,736,450", "$2,794,731,755~
+$ DomesticGross    <chr> "$684,060,555", "$858,373,000", "~
+$ WorldwideGross   <chr> "$2,319,748,227", "$2,794,731,755~
 \end{verbatim}
 
 \hypertarget{group-activity-2-4}{%
@@ -8693,14 +8693,14 @@ Click for answer
 # Groups:   .metric [4]
   neighbors .metric  .estimator  mean     n std_err .config 
       <dbl> <chr>    <chr>      <dbl> <int>   <dbl> <chr>   
-1         5 accuracy binary     0.751    10  0.0247 Preproc~
-2         6 accuracy binary     0.751    10  0.0247 Preproc~
-3        15 ppv      binary     0.804    10  0.0168 Preproc~
-4        16 ppv      binary     0.804    10  0.0168 Preproc~
-5        39 sens     binary     0.865    10  0.0261 Preproc~
-6        40 sens     binary     0.865    10  0.0261 Preproc~
-7        15 spec     binary     0.552    10  0.0548 Preproc~
-8        16 spec     binary     0.552    10  0.0548 Preproc~
+1        33 accuracy binary     0.777    10  0.0214 Preproc~
+2        34 accuracy binary     0.777    10  0.0214 Preproc~
+3        19 ppv      binary     0.810    10  0.0224 Preproc~
+4        20 ppv      binary     0.810    10  0.0224 Preproc~
+5        33 sens     binary     0.893    10  0.0135 Preproc~
+6        34 sens     binary     0.893    10  0.0135 Preproc~
+7        19 spec     binary     0.543    10  0.0640 Preproc~
+8        20 spec     binary     0.543    10  0.0640 Preproc~
 \end{verbatim}
 
 \hypertarget{extra-plot-the-metrics}{%
@@ -8850,6 +8850,223 @@ Click for answer
 \end{Shaded}
 
 \includegraphics[width=1\linewidth]{class_activity_23_files/figure-latex/unnamed-chunk-13-1}
+
+\hypertarget{class-activity-24}{%
+\chapter{Class Activity 24}\label{class-activity-24}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse) }
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(factoextra)}
+\FunctionTok{library}\NormalTok{(janitor)}
+\FunctionTok{library}\NormalTok{(broom)}
+
+\NormalTok{select }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\NormalTok{select}
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_stata}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{10}\NormalTok{))}
+
+
+\NormalTok{standardize }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{FALSE}\NormalTok{) \{}
+\NormalTok{  (x }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na.rm =}\NormalTok{ na.rm)) }\SpecialCharTok{/} \FunctionTok{sd}\NormalTok{(x, }\AttributeTok{na.rm =}\NormalTok{ na.rm)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-9}{%
+\section{Group Activity 1}\label{group-activity-1-9}}
+
+Let's look at the following data tibble that randomly creates some \texttt{x-} and \texttt{y-} coordinates around the cluster centroids that we just saw in class. Please answer the questions based on this data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+
+\NormalTok{my\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{X1 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{120}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{7.33}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{)),}
+  \AttributeTok{X2 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{120}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{6.33}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{))}
+\NormalTok{)}
+
+\NormalTok{my\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_24_files/figure-latex/unnamed-chunk-2-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  How many clusters can you identify in the data?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Answers may vary
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Fit \texttt{kmeans} algorithm to the data picking the number of clusters you previously identified in part \texttt{a}.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{res\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =} \DecValTok{3}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Add the cluster association to the dataset and make a scatter plot color-coded by the cluster association.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{augment}\NormalTok{(res\_kmeans, }\AttributeTok{data =}\NormalTok{ my\_df) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2, }\AttributeTok{color =}\NormalTok{ .cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_24_files/figure-latex/unnamed-chunk-4-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Repeat parts \texttt{b-c} for identifying more number of clusters than what you picked in part a.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{res\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =} \DecValTok{5}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{augment}\NormalTok{(res\_kmeans, }\AttributeTok{data =}\NormalTok{ my\_df) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2, }\AttributeTok{color =}\NormalTok{ .cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_24_files/figure-latex/unnamed-chunk-6-1}
+
+\hypertarget{group-activity-2-8}{%
+\section{Group Activity 2}\label{group-activity-2-8}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Aggregate the total within sum of squares for each k to the data table \texttt{multi\_kmeans}.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{k =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{model =}\NormalTok{ purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(k, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =}\NormalTok{ .x, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)),}
+    \AttributeTok{tot.withinss =}\NormalTok{ purrr}\SpecialCharTok{::}\FunctionTok{map\_dbl}\NormalTok{(model, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{glance}\NormalTok{(.x)}\SpecialCharTok{$}\NormalTok{tot.withinss)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Make an elbow plot modifying the code below:
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_kmeans }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(k, tot.withinss)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{15}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_24_files/figure-latex/unnamed-chunk-8-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  After picking an optimal number of cluster, use the in-built function in the \texttt{factoextra} package to construct the final cluster plot.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{kmeans.final }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\DecValTok{5}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\FunctionTok{fviz\_cluster}\NormalTok{(kmeans.final, }\AttributeTok{data =}\NormalTok{ my\_df, }\AttributeTok{ggtheme =} \FunctionTok{theme\_stata}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_24_files/figure-latex/unnamed-chunk-9-1}
+
+\hypertarget{extra-group-activity-3}{%
+\section{(Extra) Group Activity 3}\label{extra-group-activity-3}}
+
+Let's look at the following data tibble that randomly creates some \texttt{x-} and \texttt{y-} coordinates around the cluster centroids. Now, there are more clusters and the data points are closer to each other. Please repeat the analysis as seen above to find the optimal number of clusters.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+
+\NormalTok{my\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{X1 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{240}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{7.33}\NormalTok{, }\FloatTok{2.5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{)),}
+  \AttributeTok{X2 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{240}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{6.33}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{, }\FloatTok{3.5}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\FloatTok{5.5}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{))}
+\NormalTok{)}
+
+\NormalTok{my\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_24_files/figure-latex/unnamed-chunk-10-1}
 
   \bibliography{book.bib,packages.bib}
 
