@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 31 Class Activity 25 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="# load the necessary libraries library(tidyverse) library(tidymodels) library(yardstick) # extra package for getting metrics library(parsnip) # tidy interface to models library(ggthemes)...">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="Chapter 31 Class Activity 25 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="# load the necessary libraries library(tidyverse) library(tidymodels) library(yardstick) # extra package for getting metrics library(parsnip) # tidy interface to models library(ggthemes)...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 31 Class Activity 25 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="# load the necessary libraries library(tidyverse) library(tidymodels) library(yardstick) # extra package for getting metrics library(parsnip) # tidy interface to models library(ggthemes)...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="rstudio.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
+<li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
+<li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
+<li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
+<li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
+<li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
+<li><a class="" href="class-activity-5.html"><span class="header-section-number">11</span> Class Activity 5</a></li>
+<li><a class="" href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></li>
+<li><a class="" href="class-activity-7.html"><span class="header-section-number">13</span> Class Activity 7</a></li>
+<li><a class="" href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></li>
+<li><a class="" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
+<li><a class="" href="class-activity-10.html"><span class="header-section-number">16</span> Class Activity 10</a></li>
+<li><a class="" href="class-activity-11.html"><span class="header-section-number">17</span> Class Activity 11</a></li>
+<li><a class="" href="class-activity-12.html"><span class="header-section-number">18</span> Class Activity 12</a></li>
+<li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
+<li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
+<li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
+<li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
+<li><a class="" href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></li>
+<li><a class="" href="class-activity-19.html"><span class="header-section-number">25</span> Class Activity 19</a></li>
+<li><a class="" href="class-activity-20.html"><span class="header-section-number">26</span> Class Activity 20</a></li>
+<li><a class="" href="class-activity-21.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
+<li><a class="" href="class-activity-22.html"><span class="header-section-number">28</span> Class Activity 22</a></li>
+<li><a class="" href="class-activity-23.html"><span class="header-section-number">29</span> Class Activity 23</a></li>
+<li><a class="" href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></li>
+<li><a class="active" href="class-activity-25.html"><span class="header-section-number">31</span> Class Activity 25</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-25" class="section level1" number="31">
+<h1>
+<span class="header-section-number">31</span> Class Activity 25<a class="anchor" aria-label="anchor" href="#class-activity-25"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb537"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/yardstick">yardstick</a></span><span class="op">)</span> <span class="co"># extra package for getting metrics</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/parsnip">parsnip</a></span><span class="op">)</span> <span class="co"># tidy interface to models</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/koalaverse/vip/">vip</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.statlearning.com">ISLR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.milbo.org/rpart-plot/index.html">rpart.plot</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/imbs-hl/ranger">ranger</a></span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">fire</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/Algeriafires.csv"</span><span class="op">)</span></span>
+<span><span class="va">fire</span> <span class="op">&lt;-</span> <span class="va">fire</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">13</span><span class="op">)</span>, <span class="va">as.numeric</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>classes <span class="op">=</span> <span class="fu"><a href="https://generics.r-lib.org/reference/coercion-factor.html">as.factor</a></span><span class="op">(</span><span class="va">classes</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">year</span>, <span class="op">-</span><span class="va">day</span>, <span class="op">-</span><span class="va">month</span><span class="op">)</span></span></code></pre></div>
+<div id="group-activity-1-10" class="section level2" number="31.1">
+<h2>
+<span class="header-section-number">31.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1-10"><i class="fas fa-link"></i></a>
+</h2>
+<p>Use the <code>fire</code> data set and predict fire using all available predictor variables.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Split the dataset into training and test set by the proportion <span class="math inline">\(80\)</span> to <span class="math inline">\(20\)</span>, create a 10 fold cross validation object, and a recipe t0 preprocess the data.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">314</span><span class="op">)</span> <span class="co"># Remember to always set your seed.</span></span>
+<span></span>
+<span><span class="va">fire_split</span> <span class="op">&lt;-</span> <span class="fu">initial_split</span><span class="op">(</span><span class="va">fire</span>, prop <span class="op">=</span> <span class="fl">0.80</span>,  strata <span class="op">=</span> <span class="va">classes</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">fire_train</span> <span class="op">&lt;-</span> <span class="va">fire_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">training</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">fire_test</span> <span class="op">&lt;-</span> <span class="va">fire_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">testing</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create folds for cross validation on the training data set</span></span>
+<span></span>
+<span><span class="va">fire_folds</span> <span class="op">&lt;-</span> <span class="fu">vfold_cv</span><span class="op">(</span><span class="va">fire_train</span>, v <span class="op">=</span> <span class="fl">10</span>, strata <span class="op">=</span> <span class="va">classes</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">fire_recipe</span> <span class="op">&lt;-</span> <span class="fu">recipe</span><span class="op">(</span><span class="va">classes</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">fire_train</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu">step_dummy</span><span class="op">(</span><span class="fu">all_nominal</span><span class="op">(</span><span class="op">)</span>, <span class="op">-</span><span class="fu">all_outcomes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu">prep</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="2" style="list-style-type: lower-alpha">
+<li>Specify a decision tree classification model with <code>rpart</code> computational engine. Prepare the model for tuning (i.e., fitting with a range of parameters for validation purposes).</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb539"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/decision_tree.html">decision_tree</a></span><span class="op">(</span>cost_complexity <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                            tree_depth <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                            min_n <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>              <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">'rpart'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>              <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_args.html">set_mode</a></span><span class="op">(</span><span class="st">'classification'</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="3" style="list-style-type: lower-alpha">
+<li>Combine the model and recipe into a workflow to easily manage the model-building process.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_workflow</span> <span class="op">&lt;-</span> <span class="fu">workflow</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>                 <span class="fu">add_model</span><span class="op">(</span><span class="va">tree_model</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>                 <span class="fu">add_recipe</span><span class="op">(</span><span class="va">fire_recipe</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="4" style="list-style-type: lower-alpha">
+<li>Create a grid of hyper-parameter values to test</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_grid</span> <span class="op">&lt;-</span> <span class="fu">grid_random</span><span class="op">(</span><span class="fu">cost_complexity</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                          <span class="fu">tree_depth</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                          <span class="fu">min_n</span><span class="op">(</span><span class="op">)</span>, </span>
+<span>                          size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="5" style="list-style-type: lower-alpha">
+<li>Tune decision tree workflow</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">314</span><span class="op">)</span></span>
+<span><span class="va">tree_tuning</span> <span class="op">&lt;-</span> <span class="va">tree_workflow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>               <span class="fu">tune_grid</span><span class="op">(</span>resamples <span class="op">=</span> <span class="va">fire_folds</span>,</span>
+<span>                         grid <span class="op">=</span> <span class="va">tree_grid</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="6" style="list-style-type: lower-alpha">
+<li>Show the best models under the accuracy criteria.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb543"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_tuning</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">show_best</span><span class="op">(</span><span class="st">'accuracy'</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 5 × 9
+  cost_c…¹ tree_…² min_n .metric .esti…³  mean     n std_err
+     &lt;dbl&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;
+1 6.85e- 8       9     2 accura… binary  0.974    10  0.0118
+2 1.37e-10       6     3 accura… binary  0.968    10  0.0143
+3 5.22e- 3       3    18 accura… binary  0.963    10  0.0161
+4 1.03e- 4      11    26 accura… binary  0.963    10  0.0161
+5 5.77e- 3       6    33 accura… binary  0.963    10  0.0161
+# … with 1 more variable: .config &lt;chr&gt;, and abbreviated
+#   variable names ¹​cost_complexity, ²​tree_depth,
+#   ³​.estimator</code></pre>
+</details><ol start="7" style="list-style-type: lower-alpha">
+<li>Select best model based on accuracy and view the best parameters. What is the corresponding tree depth?</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb545"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">best_tree</span> <span class="op">&lt;-</span> <span class="va">tree_tuning</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu">select_best</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">'accuracy'</span><span class="op">)</span></span>
+<span><span class="va">best_tree</span></span></code></pre></div>
+<pre><code># A tibble: 1 × 4
+  cost_complexity tree_depth min_n .config              
+            &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;chr&gt;                
+1    0.0000000685          9     2 Preprocessor1_Model04</code></pre>
+</details><ol start="8" style="list-style-type: lower-alpha">
+<li>Using the <code>best_tree</code> object, finalize the workflow using <code>finalize_workflow()</code>.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb547"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">final_tree_workflow</span> <span class="op">&lt;-</span> <span class="va">tree_workflow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">finalize_workflow</span><span class="op">(</span><span class="va">best_tree</span><span class="op">)</span></span></code></pre></div>
+</details><ol style="list-style-type: lower-roman">
+<li>Fit the train data to the finalized workflow and extract the fit.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_wf_fit</span> <span class="op">&lt;-</span> <span class="va">final_tree_workflow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">fire_train</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree_fit</span> <span class="op">&lt;-</span> <span class="va">tree_wf_fit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu">extract_fit_parsnip</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="10" style="list-style-type: lower-alpha">
+<li>Construct variable importance plot. What can you conclude from this plot?</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/vip/man/vip.html">vip</a></span><span class="op">(</span><span class="va">tree_fit</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-12-1.png" width="100%"></div>
+</details><ol start="11" style="list-style-type: lower-alpha">
+<li>Construct a decision tree. What do you see in this plot?</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb551"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/rpart.plot/man/rpart.plot.html">rpart.plot</a></span><span class="op">(</span><span class="va">tree_fit</span><span class="op">$</span><span class="va">fit</span>, roundint <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-13-1.png" width="100%"></div>
+</details><hr>
+</div>
+<div id="group-activity-2-9" class="section level2" number="31.2">
+<h2>
+<span class="header-section-number">31.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-9"><i class="fas fa-link"></i></a>
+</h2>
+<p>Use the <code>fire</code> dataset again to fit a random forest algorithm to produce optimal set of variables used in predicting fire. Use the same recipe defined earlier in group activity 1.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Specify a decision tree classification model with <code>ranger</code> computational engine and <code>impurity</code> for variable importance. Prepare the model for tuning (i.e., fitting with a range of parameters for validation purposes).</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rf_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/rand_forest.html">rand_forest</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                        trees <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                        min_n <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>            <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">'ranger'</span>, importance <span class="op">=</span> <span class="st">"impurity"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>            <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_args.html">set_mode</a></span><span class="op">(</span><span class="st">'classification'</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="2" style="list-style-type: lower-alpha">
+<li>Define a workflow object.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rf_workflow</span> <span class="op">&lt;-</span> <span class="fu">workflow</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>               <span class="fu">add_model</span><span class="op">(</span><span class="va">rf_model</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>               <span class="fu">add_recipe</span><span class="op">(</span><span class="va">fire_recipe</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="3" style="list-style-type: lower-alpha">
+<li>Create a grid of hyper parameter values to test. Try different values.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb554"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rf_grid</span> <span class="op">&lt;-</span> <span class="fu">grid_random</span><span class="op">(</span><span class="fu">mtry</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">range_set</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                       <span class="fu">trees</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                       <span class="fu">min_n</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                       size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="4" style="list-style-type: lower-alpha">
+<li>Tune the random forest workflow. Use the <code>fire_folds</code> object from before with 10 cross validation routine.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb555"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rf_tuning</span> <span class="op">&lt;-</span> <span class="va">rf_workflow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>             <span class="fu">tune_grid</span><span class="op">(</span>resamples <span class="op">=</span> <span class="va">fire_folds</span>,</span>
+<span>                       grid <span class="op">=</span> <span class="va">rf_grid</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="5" style="list-style-type: lower-alpha">
+<li>Select the best model based on accuracy.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb556"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">best_rf</span> <span class="op">&lt;-</span> <span class="va">rf_tuning</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>           <span class="fu">select_best</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">'accuracy'</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="6" style="list-style-type: lower-alpha">
+<li>Finalize the workflow, fit the model, and extract the parameters.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb557"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">final_rf_workflow</span> <span class="op">&lt;-</span> <span class="va">rf_workflow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>                     <span class="fu">finalize_workflow</span><span class="op">(</span><span class="va">best_rf</span><span class="op">)</span></span>
+<span><span class="va">rf_wf_fit</span> <span class="op">&lt;-</span> <span class="va">final_rf_workflow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>             <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">fire_train</span><span class="op">)</span></span>
+<span><span class="va">rf_fit</span> <span class="op">&lt;-</span> <span class="va">rf_wf_fit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>          <span class="fu">extract_fit_parsnip</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</details><ol start="7" style="list-style-type: lower-alpha">
+<li>Plot the variable importance. What can you conclude from this plot?</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb558"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/vip/man/vip.html">vip</a></span><span class="op">(</span><span class="va">rf_fit</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-20-1.png" width="100%"></div>
+</details>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#class-activity-25"><span class="header-section-number">31</span> Class Activity 25</a></li>
+<li><a class="nav-link" href="#group-activity-1-10"><span class="header-section-number">31.1</span> Group Activity 1</a></li>
+<li><a class="nav-link" href="#group-activity-2-9"><span class="header-section-number">31.2</span> Group Activity 2</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/class_activity_25.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/class_activity_25.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-24.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
