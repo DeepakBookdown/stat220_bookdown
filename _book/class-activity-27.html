@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 32 Class Activity 27 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="# load the necessary libraries library(tidyverse) library(parsnip) # tidy interface to models library(ggthemes) library(tidymodels) library(vip) library(readxl) theme_set(theme_stata(base_size =...">
+<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta property="og:title" content="Chapter 32 Class Activity 27 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="# load the necessary libraries library(tidyverse) library(parsnip) # tidy interface to models library(ggthemes) library(tidymodels) library(vip) library(readxl) theme_set(theme_stata(base_size =...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 32 Class Activity 27 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="# load the necessary libraries library(tidyverse) library(parsnip) # tidy interface to models library(ggthemes) library(tidymodels) library(vip) library(readxl) theme_set(theme_stata(base_size =...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="rstudio.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
+<li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
+<li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
+<li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
+<li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
+<li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
+<li><a class="" href="class-activity-5.html"><span class="header-section-number">11</span> Class Activity 5</a></li>
+<li><a class="" href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></li>
+<li><a class="" href="class-activity-7.html"><span class="header-section-number">13</span> Class Activity 7</a></li>
+<li><a class="" href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></li>
+<li><a class="" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
+<li><a class="" href="class-activity-10.html"><span class="header-section-number">16</span> Class Activity 10</a></li>
+<li><a class="" href="class-activity-11.html"><span class="header-section-number">17</span> Class Activity 11</a></li>
+<li><a class="" href="class-activity-12.html"><span class="header-section-number">18</span> Class Activity 12</a></li>
+<li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
+<li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
+<li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
+<li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
+<li><a class="" href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></li>
+<li><a class="" href="class-activity-19.html"><span class="header-section-number">25</span> Class Activity 19</a></li>
+<li><a class="" href="class-activity-20.html"><span class="header-section-number">26</span> Class Activity 20</a></li>
+<li><a class="" href="class-activity-21.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
+<li><a class="" href="class-activity-22.html"><span class="header-section-number">28</span> Class Activity 22</a></li>
+<li><a class="" href="class-activity-23.html"><span class="header-section-number">29</span> Class Activity 23</a></li>
+<li><a class="" href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></li>
+<li><a class="" href="class-activity-25.html"><span class="header-section-number">31</span> Class Activity 25</a></li>
+<li><a class="active" href="class-activity-27.html"><span class="header-section-number">32</span> Class Activity 27</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-27" class="section level1" number="32">
+<h1>
+<span class="header-section-number">32</span> Class Activity 27<a class="anchor" aria-label="anchor" href="#class-activity-27"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb559"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/parsnip">parsnip</a></span><span class="op">)</span> <span class="co"># tidy interface to models</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/koalaverse/vip/">vip</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_stata.html">theme_stata</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">select</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span></span>
+<span></span>
+<span><span class="co"># Load the data</span></span>
+<span><span class="va">street_address</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/street_address.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div id="group-activity-1-11" class="section level2" number="32.1">
+<h2>
+<span class="header-section-number">32.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1-11"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="group-activity-1-address-classification-using-random-forest-in-r" class="section level2" number="32.2">
+<h2>
+<span class="header-section-number">32.2</span> Group Activity 1: Address Classification using Random Forest in R<a class="anchor" aria-label="anchor" href="#group-activity-1-address-classification-using-random-forest-in-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this tutorial, we will use a Random Forest model to classify whether a given address is correctly formatted. The dataset consists of synthetic examples generated by chatgpt, with certain cases based on various features extracted from the address. The outcome variable is the Label, which indicates if the address is correctly formatted.</p>
+<div class="sourceCode" id="cb560"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">street_address</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 102
+Columns: 16
+$ Address                   &lt;chr&gt; "\"123 collin ave, 44045…
+$ Length                    &lt;dbl&gt; 27, 26, 30, 28, 27, 21, …
+$ `Number of Words`         &lt;dbl&gt; 5, 5, 5, 5, 5, 4, 4, 4, …
+$ `State Code`              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 0, …
+$ `Zip Code`                &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 0, 1, …
+$ `Levenshtein Distance`    &lt;dbl&gt; 0, 1, 3, 1, 1, 4, 6, 3, …
+$ `Presence of apt no`      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, …
+$ `Presence of street no`   &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, …
+$ `Presence of street name` &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, …
+$ `Presence of city`        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 0, 0, …
+$ `Presence of state`       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 0, …
+$ `Presence of zip code`    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 0, 1, …
+$ `State code correctness`  &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 0, …
+$ `Zip code correctness`    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 0, 1, …
+$ `Typo in street name`     &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 1, 1, …
+$ Label                     &lt;chr&gt; "Correct", "Incorrect", …</code></pre>
+<div id="splitting-the-data" class="section level3" number="32.2.1">
+<h3>
+<span class="header-section-number">32.2.1</span> Splitting the Data<a class="anchor" aria-label="anchor" href="#splitting-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>The first step is to split our data into a training set and a testing set. We will use 75% of the data for training and reserve 25% for testing.</p>
+<div class="sourceCode" id="cb562"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Set random seed for reproducibility</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">314</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Split data into training and testing set</span></span>
+<span><span class="va">db_split</span> <span class="op">&lt;-</span> <span class="fu">initial_split</span><span class="op">(</span><span class="va">street_address</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span>, prop <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
+<span><span class="va">db_train</span> <span class="op">&lt;-</span> <span class="fu">training</span><span class="op">(</span><span class="va">db_split</span><span class="op">)</span></span>
+<span><span class="va">db_test</span> <span class="op">&lt;-</span> <span class="fu">testing</span><span class="op">(</span><span class="va">db_split</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="preprocessing" class="section level3" number="32.2.2">
+<h3>
+<span class="header-section-number">32.2.2</span> Preprocessing<a class="anchor" aria-label="anchor" href="#preprocessing"><i class="fas fa-link"></i></a>
+</h3>
+<p>Our data contains categorical variables, so we need to convert them into numerical form using dummy variables. We define a recipe to do this preprocessing.</p>
+<div class="sourceCode" id="cb563"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create a recipe for preprocessing</span></span>
+<span><span class="va">db_recipe</span> <span class="op">&lt;-</span> <span class="fu">recipe</span><span class="op">(</span><span class="va">label</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">db_train</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">step_dummy</span><span class="op">(</span><span class="fu">all_nominal</span><span class="op">(</span><span class="op">)</span>, <span class="op">-</span><span class="fu">all_outcomes</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">prep</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="defining-the-model" class="section level3" number="32.2.3">
+<h3>
+<span class="header-section-number">32.2.3</span> Defining the Model<a class="anchor" aria-label="anchor" href="#defining-the-model"><i class="fas fa-link"></i></a>
+</h3>
+<p>We will use a Random Forest model for our classification task. Random Forest is a powerful machine learning algorithm that can handle both regression and classification problems. It works well with both categorical and numerical data.</p>
+<div class="sourceCode" id="cb564"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Define the model specification</span></span>
+<span><span class="va">rf_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/rand_forest.html">rand_forest</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                        trees <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>                        min_n <span class="op">=</span> <span class="fu"><a href="https://hardhat.tidymodels.org/reference/tune.html">tune</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_engine.html">set_engine</a></span><span class="op">(</span><span class="st">'ranger'</span>, importance <span class="op">=</span> <span class="st">"impurity"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://parsnip.tidymodels.org/reference/set_args.html">set_mode</a></span><span class="op">(</span><span class="st">'classification'</span><span class="op">)</span></span></code></pre></div>
+<p>We then combine our model and preprocessing recipe into a workflow.</p>
+<div class="sourceCode" id="cb565"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Combine the model and recipe into a workflow </span></span>
+<span><span class="va">rf_workflow</span> <span class="op">&lt;-</span> <span class="fu">workflow</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">add_model</span><span class="op">(</span><span class="va">rf_model</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">add_recipe</span><span class="op">(</span><span class="va">db_recipe</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="cross-validation" class="section level3" number="32.2.4">
+<h3>
+<span class="header-section-number">32.2.4</span> Cross Validation<a class="anchor" aria-label="anchor" href="#cross-validation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Next, we will perform cross-validation on our training data to avoid overfitting. This will also help us tune our model parameters.</p>
+<div class="sourceCode" id="cb566"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create folds for cross validation on the training data set</span></span>
+<span><span class="va">db_folds</span> <span class="op">&lt;-</span> <span class="fu">vfold_cv</span><span class="op">(</span><span class="va">db_train</span>, v <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="hyperparameter-tuning" class="section level3" number="32.2.5">
+<h3>
+<span class="header-section-number">32.2.5</span> Hyperparameter Tuning<a class="anchor" aria-label="anchor" href="#hyperparameter-tuning"><i class="fas fa-link"></i></a>
+</h3>
+<p>We define a grid of parameters for tuning our model. We will use a random search strategy for our grid, which is more efficient than an exhaustive grid search.</p>
+<div class="sourceCode" id="cb567"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Define the grid for tuning</span></span>
+<span><span class="va">rf_grid</span> <span class="op">&lt;-</span> <span class="fu">grid_random</span><span class="op">(</span></span>
+<span>  <span class="fu">mtry</span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>  <span class="fu">min_n</span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>  size <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>We then use this grid to tune our model.</p>
+<div class="sourceCode" id="cb568"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Tune the model</span></span>
+<span><span class="va">rf_tuning</span> <span class="op">&lt;-</span> <span class="fu">tune_grid</span><span class="op">(</span></span>
+<span>  <span class="va">rf_workflow</span>,</span>
+<span>  resamples <span class="op">=</span> <span class="va">db_folds</span>,</span>
+<span>  grid <span class="op">=</span> <span class="va">rf_grid</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>After tuning, we select the best model based on accuracy, finalize the workflow with the best parameters, and then fit the model on the training data.</p>
+<div class="sourceCode" id="cb569"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Select the best model based on accuracy</span></span>
+<span><span class="va">best_rf</span> <span class="op">&lt;-</span> <span class="fu">select_best</span><span class="op">(</span><span class="va">rf_tuning</span>, metric <span class="op">=</span> <span class="st">"accuracy"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Finalize the workflow with the best parameters</span></span>
+<span><span class="va">final_rf_workflow</span> <span class="op">&lt;-</span> <span class="fu">finalize_workflow</span><span class="op">(</span><span class="va">rf_workflow</span>, <span class="va">best_rf</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit the model on the training data</span></span>
+<span><span class="va">rf_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="va">final_rf_workflow</span>, data <span class="op">=</span> <span class="va">db_train</span><span class="op">)</span></span></code></pre></div>
+<p>We can also plot the importance of each feature in our model. This tells us which features have the greatest impact on the model’s decision-making process.</p>
+<div class="sourceCode" id="cb570"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Extract the fitted model and plot feature importance</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/koalaverse/vip/">vip</a></span><span class="op">)</span></span>
+<span><span class="va">rf_fit_parsnip</span> <span class="op">&lt;-</span> <span class="fu">extract_fit_parsnip</span><span class="op">(</span><span class="va">rf_fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/vip/man/vip.html">vip</a></span><span class="op">(</span><span class="va">rf_fit_parsnip</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_27_files/figure-html/unnamed-chunk-11-1.png" width="100%"></div>
+</div>
+<div id="making-predictions" class="section level3" number="32.2.6">
+<h3>
+<span class="header-section-number">32.2.6</span> Making Predictions<a class="anchor" aria-label="anchor" href="#making-predictions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now that our model is trained, we can use it to make predictions on our test data.</p>
+<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Make predictions on the test data</span></span>
+<span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/predict.html">predict</a></span><span class="op">(</span><span class="va">rf_fit</span>, new_data <span class="op">=</span> <span class="va">db_test</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compare predictions to true outcomes</span></span>
+<span><span class="va">db_results</span> <span class="op">&lt;-</span> <span class="va">db_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">label</span>, <span class="va">.pred_class</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Print confusion matrix</span></span>
+<span><span class="fu"><a href="https://yardstick.tidymodels.org/reference/conf_mat.html">conf_mat</a></span><span class="op">(</span><span class="va">db_results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">label</span><span class="op">)</span><span class="op">)</span>, truth <span class="op">=</span> <span class="va">label</span>, estimate <span class="op">=</span> <span class="va">.pred_class</span><span class="op">)</span></span></code></pre></div>
+<pre><code>           Truth
+Prediction  Correct Incorrect
+  Correct         3         0
+  Incorrect       1        22</code></pre>
+</div>
+<div id="feature-extraction" class="section level3" number="32.2.7">
+<h3>
+<span class="header-section-number">32.2.7</span> Feature Extraction<a class="anchor" aria-label="anchor" href="#feature-extraction"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb573"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Define function to extract features</span></span>
+<span><span class="va">extract_features</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">address</span>, <span class="va">correct_address</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="co"># Split the addresses into components</span></span>
+<span>  <span class="va">components</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">address</span>, <span class="st">",\\s*"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span>  <span class="va">correct_components</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">correct_address</span>, <span class="st">",\\s*"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="co"># Extract specific components</span></span>
+<span>  <span class="va">street_apt</span> <span class="op">&lt;-</span> <span class="va">components</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="va">city</span> <span class="op">&lt;-</span> <span class="va">components</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>  <span class="va">state_zip</span> <span class="op">&lt;-</span> <span class="va">components</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="co"># Further split specific components</span></span>
+<span>  <span class="va">street_apt_split</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"\\s+"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span>  <span class="va">state_zip_split</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">state_zip</span>, <span class="st">"\\s+"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="co"># Identify each component</span></span>
+<span>  <span class="va">street_number</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"^\\d+"</span><span class="op">)</span></span>
+<span>  <span class="va">street_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"^\\d+\\s?"</span>, <span class="st">""</span><span class="op">)</span> <span class="co"># remove the street number</span></span>
+<span>  <span class="va">apt_number</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"(?i)apt"</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">state</span> <span class="op">&lt;-</span> <span class="va">state_zip_split</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="va">zip_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">address</span>, <span class="st">"\\d+"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Calculate features</span></span>
+<span>  <span class="va">length</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">address</span><span class="op">)</span></span>
+<span>  <span class="va">num_words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">address</span>, <span class="st">"\\w+"</span><span class="op">)</span></span>
+<span>  <span class="va">state_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="st">"MN"</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">zip_code_present</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">zip_code</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">zip_code_correctness</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">zip_code</span> <span class="op">==</span> <span class="st">"55057"</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Calculate the Levenshtein distance between the provided and correct address</span></span>
+<span>  <span class="va">levenshtein_distance</span> <span class="op">&lt;-</span> <span class="fu">stringdist</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html">stringdist</a></span><span class="op">(</span><span class="va">address</span>, <span class="va">correct_address</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Return as a data frame</span></span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>    length <span class="op">=</span> <span class="va">length</span>,</span>
+<span>    number_of_words <span class="op">=</span> <span class="va">num_words</span>,</span>
+<span>    state_code <span class="op">=</span> <span class="va">state_code</span>,</span>
+<span>    zip_code <span class="op">=</span> <span class="va">zip_code_present</span>,</span>
+<span>    levenshtein_distance <span class="op">=</span> <span class="va">levenshtein_distance</span>,</span>
+<span>    presence_of_apt_no <span class="op">=</span> <span class="va">apt_number</span>,</span>
+<span>    presence_of_street_no <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">street_number</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    presence_of_street_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">street_name</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    presence_of_city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    presence_of_state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">state</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    presence_of_zip_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">zip_code_present</span><span class="op">)</span>,</span>
+<span>    state_code_correctness <span class="op">=</span> <span class="va">state_code</span>,</span>
+<span>    zip_code_correctness <span class="op">=</span> <span class="va">zip_code_correctness</span>,</span>
+<span>    typo_in_street_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">levenshtein_distance</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>Here’s how we can use this function:</p>
+<div class="sourceCode" id="cb574"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Use the function</span></span>
+<span><span class="va">new_address1</span> <span class="op">&lt;-</span> <span class="st">"505 6th St,  Northfield, MN, 55057"</span></span>
+<span><span class="va">new_address_features1</span> <span class="op">&lt;-</span> <span class="fu">extract_features</span><span class="op">(</span><span class="va">new_address1</span>, <span class="st">"505 6th St,  Northfield, MN, 55057"</span><span class="op">)</span></span>
+<span><span class="va">new_address_features1</span></span></code></pre></div>
+<pre><code># A tibble: 1 × 14
+  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
+   &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+1     34           6       1       1       0       0       1
+# … with 7 more variables: presence_of_street_name &lt;int&gt;,
+#   presence_of_city &lt;int&gt;, presence_of_state &lt;int&gt;,
+#   presence_of_zip_code &lt;int&gt;,
+#   state_code_correctness &lt;dbl&gt;,
+#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;,
+#   and abbreviated variable names ¹​number_of_words,
+#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …</code></pre>
+<div class="sourceCode" id="cb576"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">new_address2</span> <span class="op">&lt;-</span> <span class="st">"505 6th st E, Apt 1Z, Northfield, MN, 5557"</span></span>
+<span><span class="va">new_address_features2</span> <span class="op">&lt;-</span> <span class="fu">extract_features</span><span class="op">(</span><span class="va">new_address2</span>, <span class="st">"505 6th St,  Northfield, MN, 55057"</span><span class="op">)</span></span>
+<span><span class="va">new_address_features2</span></span></code></pre></div>
+<pre><code># A tibble: 1 × 14
+  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
+   &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+1     42           9       0       1      11       0       1
+# … with 7 more variables: presence_of_street_name &lt;int&gt;,
+#   presence_of_city &lt;int&gt;, presence_of_state &lt;int&gt;,
+#   presence_of_zip_code &lt;int&gt;,
+#   state_code_correctness &lt;dbl&gt;,
+#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;,
+#   and abbreviated variable names ¹​number_of_words,
+#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …</code></pre>
+<p>Now we have extracted the features from the new addresses, let’s use our trained Random Forest model to predict whether the address formatting is correct or not.</p>
+<div class="sourceCode" id="cb578"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Predict the class for the new data</span></span>
+<span><span class="va">new_data_predictions1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/predict.html">predict</a></span><span class="op">(</span><span class="va">rf_fit</span>, new_data <span class="op">=</span> <span class="va">new_address_features1</span><span class="op">)</span></span>
+<span><span class="va">new_data_predictions2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/predict.html">predict</a></span><span class="op">(</span><span class="va">rf_fit</span>, new_data <span class="op">=</span> <span class="va">new_address_features2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View the predictions</span></span>
+<span><span class="va">new_data_predictions1</span></span></code></pre></div>
+<pre><code># A tibble: 1 × 1
+  .pred_class
+  &lt;fct&gt;      
+1 Correct    </code></pre>
+<div class="sourceCode" id="cb580"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">new_data_predictions2</span></span></code></pre></div>
+<pre><code># A tibble: 1 × 1
+  .pred_class
+  &lt;fct&gt;      
+1 Incorrect  </code></pre>
+<p>This will give us the predicted class (correctly formatted or not) for each of the new addresses.</p>
+<p>In this tutorial, we walked through the steps of splitting data into training and testing sets, pre-processing the data, defining the model specification, creating folds for cross validation, tuning the model, selecting the best model, fitting the model on the training data, extracting feature importance, making predictions on the test data and finally, making predictions on new data.</p>
+<p>We hope this tutorial helped you understand how to build a Random Forest model for address formatting correctness prediction. Happy coding!</p>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="class-activity-25.html"><span class="header-section-number">31</span> Class Activity 25</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#class-activity-27"><span class="header-section-number">32</span> Class Activity 27</a></li>
+<li><a class="nav-link" href="#group-activity-1-11"><span class="header-section-number">32.1</span> Group Activity 1</a></li>
+<li>
+<a class="nav-link" href="#group-activity-1-address-classification-using-random-forest-in-r"><span class="header-section-number">32.2</span> Group Activity 1: Address Classification using Random Forest in R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#splitting-the-data"><span class="header-section-number">32.2.1</span> Splitting the Data</a></li>
+<li><a class="nav-link" href="#preprocessing"><span class="header-section-number">32.2.2</span> Preprocessing</a></li>
+<li><a class="nav-link" href="#defining-the-model"><span class="header-section-number">32.2.3</span> Defining the Model</a></li>
+<li><a class="nav-link" href="#cross-validation"><span class="header-section-number">32.2.4</span> Cross Validation</a></li>
+<li><a class="nav-link" href="#hyperparameter-tuning"><span class="header-section-number">32.2.5</span> Hyperparameter Tuning</a></li>
+<li><a class="nav-link" href="#making-predictions"><span class="header-section-number">32.2.6</span> Making Predictions</a></li>
+<li><a class="nav-link" href="#feature-extraction"><span class="header-section-number">32.2.7</span> Feature Extraction</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/class_activity_27.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/class_activity_27.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-29.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

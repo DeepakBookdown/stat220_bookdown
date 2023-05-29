@@ -102,6 +102,7 @@
 <li><a class="" href="class-activity-23.html"><span class="header-section-number">29</span> Class Activity 23</a></li>
 <li><a class="" href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></li>
 <li><a class="" href="class-activity-25.html"><span class="header-section-number">31</span> Class Activity 25</a></li>
+<li><a class="" href="class-activity-27.html"><span class="header-section-number">32</span> Class Activity 27</a></li>
 </ul>
 
         <div class="book-extra">
@@ -144,30 +145,30 @@ Click for answer
 <pre><code># A tibble: 24 × 5
       id grade region        score grade_fac
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;fct&gt;    
- 1     3 9th   Middle East      79 9th      
- 2     4 9th   Middle East      85 9th      
- 3     5 9th   Africa           52 9th      
- 4     8 9th   Asia             62 9th      
- 5    10 9th   Middle East      73 9th      
- 6    13 9th   Asia             61 9th      
- 7    15 9th   Asia             75 9th      
- 8    21 9th   South America    87 9th      
- 9     1 10th  South America    67 10th     
-10     2 10th  Africa           64 10th     
-11     7 10th  South America    65 10th     
-12    17 10th  Africa           63 10th     
-13    18 10th  South America   100 10th     
-14    20 10th  Asia             56 10th     
-15    22 10th  Africa           75 10th     
-16    23 10th  Asia             83 10th     
-17     6 11th  Africa           51 11th     
-18     9 11th  Asia             72 11th     
-19    11 11th  South America    74 11th     
-20    12 11th  South America    91 11th     
-21    14 11th  Africa           70 11th     
-22    16 11th  Asia             64 11th     
-23    19 11th  Asia             83 11th     
-24    24 11th  Middle East      79 11th     </code></pre>
+ 1     1 9th   Europe           91 9th      
+ 2    10 9th   Africa           79 9th      
+ 3    11 9th   Middle East      93 9th      
+ 4    14 9th   Asia             67 9th      
+ 5    17 9th   Middle East      75 9th      
+ 6    18 9th   Europe           99 9th      
+ 7    21 9th   Europe           62 9th      
+ 8    22 9th   South America    97 9th      
+ 9    24 9th   South America    69 9th      
+10     5 10th  Asia             53 10th     
+11     6 10th  South America    80 10th     
+12     7 10th  South America    69 10th     
+13     8 10th  South America    94 10th     
+14     9 10th  South America    59 10th     
+15    12 10th  Africa           95 10th     
+16    13 10th  South America    68 10th     
+17    16 10th  Asia             89 10th     
+18    20 10th  Africa           76 10th     
+19     2 11th  Asia             54 11th     
+20     3 11th  Middle East      90 11th     
+21     4 11th  North America    93 11th     
+22    15 11th  Asia             81 11th     
+23    19 11th  North America    61 11th     
+24    23 11th  North America    68 11th     </code></pre>
 </details>
 </div>
 <div id="b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category." class="section level3" number="16.1.2">
@@ -189,9 +190,9 @@ Click for answer
 <pre><code># A tibble: 3 × 2
   region_collapsed     n
   &lt;fct&gt;            &lt;int&gt;
-1 EMEA                10
-2 Asia                 8
-3 Americas             6</code></pre>
+1 EMEA                 9
+2 Asia                 5
+3 Americas            10</code></pre>
 </details>
 </div>
 <div id="c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering." class="section level3" number="16.1.3">
@@ -225,9 +226,9 @@ Click for answer
 <pre><code># A tibble: 3 × 2
   grade_lumped     n
   &lt;fct&gt;        &lt;int&gt;
-1 9th              8
-2 10th             8
-3 11th             8</code></pre>
+1 9th              9
+2 10th             9
+3 11th             6</code></pre>
 </details>
 </div>
 </div>
@@ -360,7 +361,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-24.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

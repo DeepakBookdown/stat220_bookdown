@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 37 Feature Extraction | Stat 220 Introduction to Data Science</title>
+
+    <meta name="author" content="Deepak Bastola" />
+  
+   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 37 Feature Extraction | Stat 220 Introduction to Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 37 Feature Extraction | Stat 220 Introduction to Data Science" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.2/transition.js"></script>
+    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="feature-extraction" class="section level1" number="37">
+<h1><span class="header-section-number">Chapter 37</span> Feature Extraction</h1>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="feature-extraction.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function to extract features</span></span>
+<span id="cb15-2"><a href="feature-extraction.html#cb15-2" aria-hidden="true" tabindex="-1"></a>extract_features <span class="ot">&lt;-</span> <span class="cf">function</span>(address, correct_address) {</span>
+<span id="cb15-3"><a href="feature-extraction.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-4"><a href="feature-extraction.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Split the addresses into components</span></span>
+<span id="cb15-5"><a href="feature-extraction.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  components <span class="ot">&lt;-</span> <span class="fu">str_split</span>(address, <span class="st">&quot;,</span><span class="sc">\\</span><span class="st">s*&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb15-6"><a href="feature-extraction.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  correct_components <span class="ot">&lt;-</span> <span class="fu">str_split</span>(correct_address, <span class="st">&quot;,</span><span class="sc">\\</span><span class="st">s*&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb15-7"><a href="feature-extraction.html#cb15-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-8"><a href="feature-extraction.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract specific components</span></span>
+<span id="cb15-9"><a href="feature-extraction.html#cb15-9" aria-hidden="true" tabindex="-1"></a>  street_apt <span class="ot">&lt;-</span> components[<span class="dv">1</span>]</span>
+<span id="cb15-10"><a href="feature-extraction.html#cb15-10" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> components[<span class="dv">2</span>]</span>
+<span id="cb15-11"><a href="feature-extraction.html#cb15-11" aria-hidden="true" tabindex="-1"></a>  state_zip <span class="ot">&lt;-</span> components[<span class="dv">3</span>]</span>
+<span id="cb15-12"><a href="feature-extraction.html#cb15-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-13"><a href="feature-extraction.html#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Further split specific components</span></span>
+<span id="cb15-14"><a href="feature-extraction.html#cb15-14" aria-hidden="true" tabindex="-1"></a>  street_apt_split <span class="ot">&lt;-</span> <span class="fu">str_split</span>(street_apt, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb15-15"><a href="feature-extraction.html#cb15-15" aria-hidden="true" tabindex="-1"></a>  state_zip_split <span class="ot">&lt;-</span> <span class="fu">str_split</span>(state_zip, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb15-16"><a href="feature-extraction.html#cb15-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-17"><a href="feature-extraction.html#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify each component</span></span>
+<span id="cb15-18"><a href="feature-extraction.html#cb15-18" aria-hidden="true" tabindex="-1"></a>  street_number <span class="ot">&lt;-</span> <span class="fu">str_extract</span>(street_apt, <span class="st">&quot;^</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
+<span id="cb15-19"><a href="feature-extraction.html#cb15-19" aria-hidden="true" tabindex="-1"></a>  street_name <span class="ot">&lt;-</span> <span class="fu">str_replace</span>(street_apt, <span class="st">&quot;^</span><span class="sc">\\</span><span class="st">d+</span><span class="sc">\\</span><span class="st">s?&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="co"># remove the street number</span></span>
+<span id="cb15-20"><a href="feature-extraction.html#cb15-20" aria-hidden="true" tabindex="-1"></a>  apt_number <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(street_apt, <span class="st">&quot;(?i)apt&quot;</span>), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb15-21"><a href="feature-extraction.html#cb15-21" aria-hidden="true" tabindex="-1"></a>  state <span class="ot">&lt;-</span> state_zip_split[<span class="dv">1</span>]</span>
+<span id="cb15-22"><a href="feature-extraction.html#cb15-22" aria-hidden="true" tabindex="-1"></a>  zip_code <span class="ot">&lt;-</span> <span class="fu">str_extract</span>(address, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>)</span>
+<span id="cb15-23"><a href="feature-extraction.html#cb15-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-24"><a href="feature-extraction.html#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate features</span></span>
+<span id="cb15-25"><a href="feature-extraction.html#cb15-25" aria-hidden="true" tabindex="-1"></a>  length <span class="ot">&lt;-</span> <span class="fu">str_length</span>(address)</span>
+<span id="cb15-26"><a href="feature-extraction.html#cb15-26" aria-hidden="true" tabindex="-1"></a>  num_words <span class="ot">&lt;-</span> <span class="fu">str_count</span>(address, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">w+&quot;</span>)</span>
+<span id="cb15-27"><a href="feature-extraction.html#cb15-27" aria-hidden="true" tabindex="-1"></a>  state_code <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(state <span class="sc">==</span> <span class="st">&quot;MN&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb15-28"><a href="feature-extraction.html#cb15-28" aria-hidden="true" tabindex="-1"></a>  zip_code_present <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(zip_code), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb15-29"><a href="feature-extraction.html#cb15-29" aria-hidden="true" tabindex="-1"></a>  zip_code_correctness <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(zip_code <span class="sc">==</span> <span class="st">&quot;55057&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb15-30"><a href="feature-extraction.html#cb15-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-31"><a href="feature-extraction.html#cb15-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the Levenshtein distance between the provided and correct address</span></span>
+<span id="cb15-32"><a href="feature-extraction.html#cb15-32" aria-hidden="true" tabindex="-1"></a>  levenshtein_distance <span class="ot">&lt;-</span> stringdist<span class="sc">::</span><span class="fu">stringdist</span>(address, correct_address)</span>
+<span id="cb15-33"><a href="feature-extraction.html#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-34"><a href="feature-extraction.html#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return as a data frame</span></span>
+<span id="cb15-35"><a href="feature-extraction.html#cb15-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb15-36"><a href="feature-extraction.html#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">length =</span> length,</span>
+<span id="cb15-37"><a href="feature-extraction.html#cb15-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">number_of_words =</span> num_words,</span>
+<span id="cb15-38"><a href="feature-extraction.html#cb15-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">state_code =</span> state_code,</span>
+<span id="cb15-39"><a href="feature-extraction.html#cb15-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">zip_code =</span> zip_code_present,</span>
+<span id="cb15-40"><a href="feature-extraction.html#cb15-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">levenshtein_distance =</span> levenshtein_distance,</span>
+<span id="cb15-41"><a href="feature-extraction.html#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">presence_of_apt_no =</span> apt_number,</span>
+<span id="cb15-42"><a href="feature-extraction.html#cb15-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">presence_of_street_no =</span> <span class="fu">as.integer</span>(<span class="sc">!</span><span class="fu">is.na</span>(street_number)),</span>
+<span id="cb15-43"><a href="feature-extraction.html#cb15-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">presence_of_street_name =</span> <span class="fu">as.integer</span>(<span class="sc">!</span><span class="fu">is.na</span>(street_name)),</span>
+<span id="cb15-44"><a href="feature-extraction.html#cb15-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">presence_of_city =</span> <span class="fu">as.integer</span>(<span class="sc">!</span><span class="fu">is.na</span>(city)),</span>
+<span id="cb15-45"><a href="feature-extraction.html#cb15-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">presence_of_state =</span> <span class="fu">as.integer</span>(<span class="sc">!</span><span class="fu">is.na</span>(state)),</span>
+<span id="cb15-46"><a href="feature-extraction.html#cb15-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">presence_of_zip_code =</span> <span class="fu">as.integer</span>(zip_code_present),</span>
+<span id="cb15-47"><a href="feature-extraction.html#cb15-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">state_code_correctness =</span> state_code,</span>
+<span id="cb15-48"><a href="feature-extraction.html#cb15-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">zip_code_correctness =</span> zip_code_correctness,</span>
+<span id="cb15-49"><a href="feature-extraction.html#cb15-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">typo_in_street_name =</span> <span class="fu">as.integer</span>(levenshtein_distance <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb15-50"><a href="feature-extraction.html#cb15-50" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-51"><a href="feature-extraction.html#cb15-51" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Here’s how we can use this function:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="feature-extraction.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function</span></span>
+<span id="cb16-2"><a href="feature-extraction.html#cb16-2" aria-hidden="true" tabindex="-1"></a>new_address1 <span class="ot">&lt;-</span> <span class="st">&quot;505 6th St,  Northfield, MN, 55057&quot;</span></span>
+<span id="cb16-3"><a href="feature-extraction.html#cb16-3" aria-hidden="true" tabindex="-1"></a>new_address_features1 <span class="ot">&lt;-</span> <span class="fu">extract_features</span>(new_address1, <span class="st">&quot;505 6th St,  Northfield, MN, 55057&quot;</span>)</span>
+<span id="cb16-4"><a href="feature-extraction.html#cb16-4" aria-hidden="true" tabindex="-1"></a>new_address_features1</span></code></pre></div>
+<pre><code># A tibble: 1 × 14
+  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
+   &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+1     34           6       1       1       0       0       1
+# … with 7 more variables: presence_of_street_name &lt;int&gt;,
+#   presence_of_city &lt;int&gt;, presence_of_state &lt;int&gt;,
+#   presence_of_zip_code &lt;int&gt;,
+#   state_code_correctness &lt;dbl&gt;,
+#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;,
+#   and abbreviated variable names ¹​number_of_words,
+#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="feature-extraction.html#cb18-1" aria-hidden="true" tabindex="-1"></a>new_address2 <span class="ot">&lt;-</span> <span class="st">&quot;505 6th st E, Apt 1Z, Northfield, MN, 5557&quot;</span></span>
+<span id="cb18-2"><a href="feature-extraction.html#cb18-2" aria-hidden="true" tabindex="-1"></a>new_address_features2 <span class="ot">&lt;-</span> <span class="fu">extract_features</span>(new_address2, <span class="st">&quot;505 6th St,  Northfield, MN, 55057&quot;</span>)</span>
+<span id="cb18-3"><a href="feature-extraction.html#cb18-3" aria-hidden="true" tabindex="-1"></a>new_address_features2</span></code></pre></div>
+<pre><code># A tibble: 1 × 14
+  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
+   &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+1     42           9       0       1      11       0       1
+# … with 7 more variables: presence_of_street_name &lt;int&gt;,
+#   presence_of_city &lt;int&gt;, presence_of_state &lt;int&gt;,
+#   presence_of_zip_code &lt;int&gt;,
+#   state_code_correctness &lt;dbl&gt;,
+#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;,
+#   and abbreviated variable names ¹​number_of_words,
+#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …</code></pre>
+<p>Now we have extracted the features from the new addresses, let’s use our trained Random Forest model to predict whether the address formatting is correct or not.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="feature-extraction.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict the class for the new data</span></span>
+<span id="cb20-2"><a href="feature-extraction.html#cb20-2" aria-hidden="true" tabindex="-1"></a>new_data_predictions1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf_fit, <span class="at">new_data =</span> new_address_features1)</span>
+<span id="cb20-3"><a href="feature-extraction.html#cb20-3" aria-hidden="true" tabindex="-1"></a>new_data_predictions2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf_fit, <span class="at">new_data =</span> new_address_features2)</span>
+<span id="cb20-4"><a href="feature-extraction.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="feature-extraction.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># View the predictions</span></span>
+<span id="cb20-6"><a href="feature-extraction.html#cb20-6" aria-hidden="true" tabindex="-1"></a>new_data_predictions1</span></code></pre></div>
+<pre><code># A tibble: 1 × 1
+  .pred_class
+  &lt;fct&gt;      
+1 Correct    </code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="feature-extraction.html#cb22-1" aria-hidden="true" tabindex="-1"></a>new_data_predictions2</span></code></pre></div>
+<pre><code># A tibble: 1 × 1
+  .pred_class
+  &lt;fct&gt;      
+1 Incorrect  </code></pre>
+<p>This will give us the predicted class (correctly formatted or not) for each of the new addresses.</p>
+<p>In this tutorial, we walked through the steps of splitting data into training and testing sets, pre-processing the data, defining the model specification, creating folds for cross validation, tuning the model, selecting the best model, fitting the model on the training data, extracting feature importance, making predictions on the test data and finally, making predictions on new data.</p>
+<p>We hope this tutorial helped you understand how to build a Random Forest model for address formatting correctness prediction. Happy coding!</p>
+
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-24.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+</body>
+
+</html>

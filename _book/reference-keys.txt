@@ -260,3 +260,13 @@ extra-group-activity-3
 class-activity-25
 group-activity-1-10
 group-activity-2-9
+class-activity-27
+group-activity-1-11
+group-activity-1-address-classification-using-random-forest-in-r
+splitting-the-data
+preprocessing
+defining-the-model
+cross-validation
+hyperparameter-tuning
+making-predictions
+feature-extraction
