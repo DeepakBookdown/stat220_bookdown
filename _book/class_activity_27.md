@@ -211,28 +211,39 @@ extract_features <- function(address, correct_address) {
   components <- str_split(address, ",\\s*")[[1]]
   correct_components <- str_split(correct_address, ",\\s*")[[1]]
   
-  # Extract specific components
+  # Extract specific components from the input and correct addresses
   street_apt <- components[1]
   city <- components[2]
   state_zip <- components[3]
   
+  correct_street_apt <- correct_components[1]
+  correct_city <- correct_components[2]
+  correct_state_zip <- correct_components[3]
+  
   # Further split specific components
   street_apt_split <- str_split(street_apt, "\\s+")[[1]]
   state_zip_split <- str_split(state_zip, "\\s+")[[1]]
+  
+  correct_state_zip_split <- str_split(correct_state_zip, "\\s+")[[1]]
   
   # Identify each component
   street_number <- str_extract(street_apt, "^\\d+")
   street_name <- str_replace(street_apt, "^\\d+\\s?", "") # remove the street number
   apt_number <- ifelse(str_detect(street_apt, "(?i)apt"), 1, 0)
   state <- state_zip_split[1]
-  zip_code <- str_extract(address, "\\d+")
+  
+  # Get the last occurrence of a number sequence, likely to be the zip code
+  zip_code <- tail(str_extract_all(address, "\\d+")[[1]], n = 1)
+  
+  correct_state <- correct_state_zip_split[1]
+  correct_zip_code <- tail(str_extract_all(correct_address, "\\d+")[[1]], n = 1)
   
   # Calculate features
   length <- str_length(address)
   num_words <- str_count(address, "\\w+")
-  state_code <- ifelse(state == "MN", 1, 0)
+  state_code <- ifelse(state == correct_state, 1, 0)
   zip_code_present <- ifelse(!is.na(zip_code), 1, 0)
-  zip_code_correctness <- ifelse(zip_code == "55057", 1, 0)
+  zip_code_correctness <- ifelse(zip_code == correct_zip_code, 1, 0)
   
   # Calculate the Levenshtein distance between the provided and correct address
   levenshtein_distance <- stringdist::stringdist(address, correct_address)

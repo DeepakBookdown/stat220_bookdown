@@ -286,28 +286,39 @@ Prediction  Correct Incorrect
 <span>  <span class="va">components</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">address</span>, <span class="st">",\\s*"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span>  <span class="va">correct_components</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">correct_address</span>, <span class="st">",\\s*"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span>  </span>
-<span>  <span class="co"># Extract specific components</span></span>
+<span>  <span class="co"># Extract specific components from the input and correct addresses</span></span>
 <span>  <span class="va">street_apt</span> <span class="op">&lt;-</span> <span class="va">components</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span>  <span class="va">city</span> <span class="op">&lt;-</span> <span class="va">components</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span>  <span class="va">state_zip</span> <span class="op">&lt;-</span> <span class="va">components</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span>  </span>
+<span>  <span class="va">correct_street_apt</span> <span class="op">&lt;-</span> <span class="va">correct_components</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="va">correct_city</span> <span class="op">&lt;-</span> <span class="va">correct_components</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>  <span class="va">correct_state_zip</span> <span class="op">&lt;-</span> <span class="va">correct_components</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span>  </span>
 <span>  <span class="co"># Further split specific components</span></span>
 <span>  <span class="va">street_apt_split</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"\\s+"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span>  <span class="va">state_zip_split</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">state_zip</span>, <span class="st">"\\s+"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="va">correct_state_zip_split</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split</a></span><span class="op">(</span><span class="va">correct_state_zip</span>, <span class="st">"\\s+"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span>  </span>
 <span>  <span class="co"># Identify each component</span></span>
 <span>  <span class="va">street_number</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"^\\d+"</span><span class="op">)</span></span>
 <span>  <span class="va">street_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"^\\d+\\s?"</span>, <span class="st">""</span><span class="op">)</span> <span class="co"># remove the street number</span></span>
 <span>  <span class="va">apt_number</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">street_apt</span>, <span class="st">"(?i)apt"</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span>  <span class="va">state</span> <span class="op">&lt;-</span> <span class="va">state_zip_split</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
-<span>  <span class="va">zip_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">address</span>, <span class="st">"\\d+"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Get the last occurrence of a number sequence, likely to be the zip code</span></span>
+<span>  <span class="va">zip_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/headtail.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract_all</a></span><span class="op">(</span><span class="va">address</span>, <span class="st">"\\d+"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">correct_state</span> <span class="op">&lt;-</span> <span class="va">correct_state_zip_split</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="va">correct_zip_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/headtail.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract_all</a></span><span class="op">(</span><span class="va">correct_address</span>, <span class="st">"\\d+"</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># Calculate features</span></span>
 <span>  <span class="va">length</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">address</span><span class="op">)</span></span>
 <span>  <span class="va">num_words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">address</span>, <span class="st">"\\w+"</span><span class="op">)</span></span>
-<span>  <span class="va">state_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="st">"MN"</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">state_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="va">correct_state</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span>  <span class="va">zip_code_present</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">zip_code</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span>  <span class="va">zip_code_correctness</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">zip_code</span> <span class="op">==</span> <span class="st">"55057"</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">zip_code_correctness</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">zip_code</span> <span class="op">==</span> <span class="va">correct_zip_code</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="co"># Calculate the Levenshtein distance between the provided and correct address</span></span>
 <span>  <span class="va">levenshtein_distance</span> <span class="op">&lt;-</span> <span class="fu">stringdist</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html">stringdist</a></span><span class="op">(</span><span class="va">address</span>, <span class="va">correct_address</span><span class="op">)</span></span>
@@ -426,7 +437,7 @@ Prediction  Correct Incorrect
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-05-30.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-06-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
