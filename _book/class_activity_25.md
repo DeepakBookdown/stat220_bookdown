@@ -141,16 +141,14 @@ tree_tuning %>% show_best('accuracy')
 
 ```
 # A tibble: 5 × 9
-  cost_c…¹ tree_…² min_n .metric .esti…³  mean     n std_err
-     <dbl>   <int> <int> <chr>   <chr>   <dbl> <int>   <dbl>
-1 6.85e- 8       9     2 accura… binary  0.974    10  0.0118
-2 1.37e-10       6     3 accura… binary  0.968    10  0.0143
-3 5.22e- 3       3    18 accura… binary  0.963    10  0.0161
-4 1.03e- 4      11    26 accura… binary  0.963    10  0.0161
-5 5.77e- 3       6    33 accura… binary  0.963    10  0.0161
-# … with 1 more variable: .config <chr>, and abbreviated
-#   variable names ¹​cost_complexity, ²​tree_depth,
-#   ³​.estimator
+  cost_complexity tree_depth min_n .metric  .estimator  mean
+            <dbl>      <int> <int> <chr>    <chr>      <dbl>
+1        6.85e- 8          9     2 accuracy binary     0.974
+2        1.37e-10          6     3 accuracy binary     0.968
+3        5.22e- 3          3    18 accuracy binary     0.963
+4        1.03e- 4         11    26 accuracy binary     0.963
+5        5.77e- 3          6    33 accuracy binary     0.963
+# ℹ 3 more variables: n <int>, std_err <dbl>, .config <chr>
 ```
 
 </details>

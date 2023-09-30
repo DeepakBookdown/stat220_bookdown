@@ -41,30 +41,30 @@ print(students_a, n = 24)
 # A tibble: 24 × 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     3 9th   North America    88 9th      
- 2     4 9th   South America    63 9th      
- 3     5 9th   Africa           93 9th      
- 4    12 9th   Africa           85 9th      
- 5    14 9th   Europe           75 9th      
- 6    16 9th   Asia             72 9th      
- 7    17 9th   Asia             85 9th      
- 8    19 9th   South America    86 9th      
- 9    22 9th   South America    57 9th      
-10     1 10th  Europe           50 10th     
-11     7 10th  Asia             81 10th     
-12     8 10th  Europe           68 10th     
-13     9 10th  North America    68 10th     
-14    11 10th  Europe           55 10th     
-15    20 10th  Europe           93 10th     
-16    21 10th  Asia             74 10th     
-17    23 10th  Africa           72 10th     
-18     2 11th  North America    72 11th     
-19     6 11th  Europe           63 11th     
-20    10 11th  South America    87 11th     
-21    13 11th  Middle East      61 11th     
-22    15 11th  Middle East      58 11th     
-23    18 11th  South America    65 11th     
-24    24 11th  Middle East      68 11th     
+ 1     4 9th   North America    61 9th      
+ 2     6 9th   Europe           66 9th      
+ 3    11 9th   Europe           73 9th      
+ 4    15 9th   Middle East      81 9th      
+ 5    17 9th   Asia             55 9th      
+ 6    18 9th   Asia             85 9th      
+ 7    19 9th   Europe           64 9th      
+ 8    21 9th   North America    53 9th      
+ 9    23 9th   Europe           94 9th      
+10     5 10th  Middle East      76 10th     
+11    12 10th  South America    87 10th     
+12    20 10th  Asia             66 10th     
+13    24 10th  South America    94 10th     
+14     1 11th  Europe           86 11th     
+15     2 11th  Asia             96 11th     
+16     3 11th  South America    87 11th     
+17     7 11th  Europe           93 11th     
+18     8 11th  Asia             74 11th     
+19     9 11th  Europe           83 11th     
+20    10 11th  North America    72 11th     
+21    13 11th  Europe           52 11th     
+22    14 11th  South America    95 11th     
+23    16 11th  North America    91 11th     
+24    22 11th  North America    94 11th     
 ```
 
 </details>
@@ -92,9 +92,9 @@ print(students_b)
 # A tibble: 3 × 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                12
-2 Asia                 4
-3 Americas             8
+1 Asia                 5
+2 EMEA                10
+3 Americas             9
 ```
 
 </details>
@@ -115,7 +115,7 @@ levels(students_c$grade_infreq)
 ```
 
 ```
-[1] "9th"  "10th" "11th"
+[1] "11th" "9th"  "10th"
 ```
 
 </details>
@@ -139,8 +139,8 @@ students_d
 # A tibble: 2 × 2
   grade_lumped     n
   <fct>        <int>
-1 9th              9
-2 Others          15
+1 11th            11
+2 Others          13
 ```
 
 </details>
@@ -169,8 +169,8 @@ forcats::gss_cat
  8  2000 Divorced       44 White $7000 … Ind,ne… Prot… Luth…
  9  2000 Married        44 White $25000… Not st… Prot… Other
 10  2000 Married        47 White $25000… Strong… Prot… Sout…
-# … with 21,473 more rows, and 1 more variable:
-#   tvhours <int>
+# ℹ 21,473 more rows
+# ℹ 1 more variable: tvhours <int>
 ```
 
 Use `gss_cat` to answer the following questions.

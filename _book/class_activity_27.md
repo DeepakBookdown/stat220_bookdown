@@ -281,16 +281,15 @@ new_address_features1
 
 ```
 # A tibble: 1 × 14
-  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
-   <int>       <int>   <dbl>   <dbl>   <dbl>   <dbl>   <int>
-1     34           6       1       1       0       0       1
-# … with 7 more variables: presence_of_street_name <int>,
-#   presence_of_city <int>, presence_of_state <int>,
-#   presence_of_zip_code <int>,
+  length number_of_words state_code zip_code
+   <int>           <int>      <dbl>    <dbl>
+1     34               6          1        1
+# ℹ 10 more variables: levenshtein_distance <dbl>,
+#   presence_of_apt_no <dbl>, presence_of_street_no <int>,
+#   presence_of_street_name <int>, presence_of_city <int>,
+#   presence_of_state <int>, presence_of_zip_code <int>,
 #   state_code_correctness <dbl>,
-#   zip_code_correctness <dbl>, typo_in_street_name <int>,
-#   and abbreviated variable names ¹​number_of_words,
-#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …
+#   zip_code_correctness <dbl>, typo_in_street_name <int>
 ```
 
 ```r
@@ -301,16 +300,15 @@ new_address_features2
 
 ```
 # A tibble: 1 × 14
-  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
-   <int>       <int>   <dbl>   <dbl>   <dbl>   <dbl>   <int>
-1     42           9       0       1      11       0       1
-# … with 7 more variables: presence_of_street_name <int>,
-#   presence_of_city <int>, presence_of_state <int>,
-#   presence_of_zip_code <int>,
+  length number_of_words state_code zip_code
+   <int>           <int>      <dbl>    <dbl>
+1     42               9          0        1
+# ℹ 10 more variables: levenshtein_distance <dbl>,
+#   presence_of_apt_no <dbl>, presence_of_street_no <int>,
+#   presence_of_street_name <int>, presence_of_city <int>,
+#   presence_of_state <int>, presence_of_zip_code <int>,
 #   state_code_correctness <dbl>,
-#   zip_code_correctness <dbl>, typo_in_street_name <int>,
-#   and abbreviated variable names ¹​number_of_words,
-#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …
+#   zip_code_correctness <dbl>, typo_in_street_name <int>
 ```
 
 

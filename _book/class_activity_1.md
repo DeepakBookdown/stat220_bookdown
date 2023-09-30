@@ -66,7 +66,7 @@ babynames %>% filter(name=='Aimee')
  8  1887 F     Aimee    18 0.000116 
  9  1888 F     Aimee    12 0.0000633
 10  1889 F     Aimee    16 0.0000846
-# … with 140 more rows
+# ℹ 140 more rows
 ```
 
 ```r

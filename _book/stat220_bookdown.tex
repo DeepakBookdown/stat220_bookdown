@@ -5,16 +5,19 @@
 \documentclass[
 ]{book}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -44,13 +47,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -58,7 +61,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -67,7 +70,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -122,7 +125,7 @@
 \bibliographystyle{apalike}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Stat 220 Introduction to Data Science},
   pdfauthor={Deepak Bastola},
@@ -131,7 +134,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2023-06-01}
+\date{2023-09-30}
 
 \begin{document}
 \maketitle
@@ -166,9 +169,6 @@ If you have taken Stat 120, 230, or 250 at Carleton, you will find yourself well
 \item
   Draw informed conclusions from your data and communicate your findings using both written and interactive platforms.
 \end{itemize}
-
-\hypertarget{course-requirements}{%
-\section{Course Requirements}\label{course-requirements}}
 
 \hypertarget{part-set-up-instructions}{%
 \part*{Set-up Instructions}\label{part-set-up-instructions}}
@@ -1478,7 +1478,7 @@ Let's use the package tidyverse to do some exploratory data analysis.
  8  1887 F     Aimee    18 0.000116 
  9  1888 F     Aimee    12 0.0000633
 10  1889 F     Aimee    16 0.0000846
-# ... with 140 more rows
+# i 140 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -3098,7 +3098,7 @@ Click for answer
  8  1884 M     Rose      5 0.0000407
  9  1885 F     Rose   1164 0.00820  
 10  1885 M     Rose      9 0.0000776
-# ... with 237 more rows
+# i 237 more rows
 \end{verbatim}
 
 \hypertarget{c.-use-filter-to-choose-all-rows-where-name-is-john-and-sex-is-m.}{%
@@ -3126,7 +3126,7 @@ Click for answer
  8  1887 M     John   8110 0.0742
  9  1888 M     John   9247 0.0712
 10  1889 M     John   8548 0.0718
-# ... with 128 more rows
+# i 128 more rows
 \end{verbatim}
 
 \hypertarget{problem-3-arrange}{%
@@ -3157,7 +3157,7 @@ Click for answer
  8  1882 M     William  9298 0.0762
  9  1886 M     John     9026 0.0758
 10  1885 M     John     8756 0.0755
-# ... with 1,924,655 more rows
+# i 1,924,655 more rows
 \end{verbatim}
 
 \hypertarget{b.-use-arrange-to-sort-the-babynames-dataset-by-year-ascending-and-then-by-prop-descending.}{%
@@ -3185,7 +3185,7 @@ Click for answer
  8  1880 F     Anna     2604 0.0267
  9  1880 M     Joseph   2632 0.0222
 10  1880 M     Thomas   2534 0.0214
-# ... with 1,924,655 more rows
+# i 1,924,655 more rows
 \end{verbatim}
 
 \hypertarget{problem-4-mutate}{%
@@ -3216,7 +3216,7 @@ Click for answer
  8  1880 F     Alice      1414 0.0145   1880
  9  1880 F     Bertha     1320 0.0135   1880
 10  1880 F     Sarah      1288 0.0132   1880
-# ... with 1,924,655 more rows
+# i 1,924,655 more rows
 \end{verbatim}
 
 \hypertarget{problem-5-summarize-or-summarise}{%
@@ -3257,7 +3257,7 @@ Click for answer
  8  1887 M     Dee      39 0.000357
  9  1888 M     Dee      35 0.000269
 10  1889 M     Dee      24 0.000202
-# ... with 126 more rows
+# i 126 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -3335,7 +3335,7 @@ Click for answer
  8  1882 M     William  9298 0.0762     8
  9  1886 M     John     9026 0.0758     9
 10  1885 M     John     8756 0.0755    10
-# ... with 1,924,655 more rows
+# i 1,924,655 more rows
 \end{verbatim}
 
 \hypertarget{b.-compute-each-names-rank-within-its-year-and-sex.}{%
@@ -3364,7 +3364,7 @@ Click for answer
  8  1880 F     Alice      1414 0.0145     8
  9  1880 F     Bertha     1320 0.0135     9
 10  1880 F     Sarah      1288 0.0132    10
-# ... with 1,924,655 more rows
+# i 1,924,655 more rows
 \end{verbatim}
 
 \hypertarget{c.-then-compute-the-median-rank-for-each-combination-of-name-and-sex-and-arrange-the-results-from-highest-median-rank-to-lowest.}{%
@@ -3398,7 +3398,7 @@ Click for answer
  8 Elizabeth F      10  
  9 Joseph    M      10  
 10 Thomas    M      11  
-# ... with 107,963 more rows
+# i 107,963 more rows
 \end{verbatim}
 
 \hypertarget{class-activity-7}{%
@@ -3442,7 +3442,7 @@ Click for answer
  8  1889 F     Rhea     31 0.000164 
  9  1890 F     Rhea     39 0.000193 
 10  1891 F     Rhea     24 0.000122 
-# ... with 126 more rows
+# i 126 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -3465,7 +3465,7 @@ Click for answer
  8  1889 F     Rhea     31 0.000164 
  9  1890 F     Rhea     39 0.000193 
 10  1891 F     Rhea     24 0.000122 
-# ... with 126 more rows
+# i 126 more rows
 \end{verbatim}
 
 \hypertarget{b.-names-that-were-used-by-exactly-5-or-6-children-in-1990}{%
@@ -3493,7 +3493,7 @@ Click for answer
  8  1990 F     Acadia       6 0.00000292
  9  1990 F     Adilenne     6 0.00000292
 10  1990 F     Adriena      6 0.00000292
-# ... with 6,134 more rows
+# i 6,134 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -3516,7 +3516,7 @@ Click for answer
  8  1990 F     Acadia       6 0.00000292
  9  1990 F     Adilenne     6 0.00000292
 10  1990 F     Adriena      6 0.00000292
-# ... with 6,134 more rows
+# i 6,134 more rows
 \end{verbatim}
 
 \hypertarget{c.-names-that-are-one-of-apple-yoroi-ada}{%
@@ -3544,7 +3544,7 @@ Click for answer
  8  1886 F     Ada     915 0.00595  
  9  1886 M     Ada       6 0.0000504
 10  1887 F     Ada     910 0.00586  
-# ... with 190 more rows
+# i 190 more rows
 \end{verbatim}
 
 \hypertarget{d.-store-the-data-tibble-in-part-c-into-a-new-tibble-and-change-all-the-character-columns-to-upper-case.-also-rename-the-n-variable-to-count.}{%
@@ -3573,7 +3573,7 @@ Click for answer
  8  1886 F     ADA     915 0.00595  
  9  1886 M     ADA       6 0.0000504
 10  1887 F     ADA     910 0.00586  
-# ... with 190 more rows
+# i 190 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -3596,7 +3596,7 @@ Click for answer
  8  1886 F     ADA     915 0.00595  
  9  1886 M     ADA       6 0.0000504
 10  1887 F     ADA     910 0.00586  
-# ... with 190 more rows
+# i 190 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -3619,7 +3619,7 @@ Click for answer
  8  1886 F     Ada     915 0.00595  
  9  1886 M     Ada       6 0.0000504
 10  1887 F     Ada     910 0.00586  
-# ... with 190 more rows
+# i 190 more rows
 \end{verbatim}
 
 \hypertarget{e.-change-all-the-column-names-to-upper-case-in-the-previous-problem.}{%
@@ -3647,7 +3647,7 @@ Click for answer
  8  1886 F     Ada     915 0.00595  
  9  1886 M     Ada       6 0.0000504
 10  1887 F     Ada     910 0.00586  
-# ... with 190 more rows
+# i 190 more rows
 \end{verbatim}
 
 \hypertarget{f.-what-do-these-commands-do}{%
@@ -3952,7 +3952,7 @@ Click for answer
  8 Jimmy  Page      Guitar     Led ~ <NA>  <NA>     NA <NA> 
  9 Joe    Perry     Guitar     <NA>  <NA>  <NA>     NA <NA> 
 10 Elvis  Presley   Vocals     <NA>  <NA>  <NA>     NA <NA> 
-# ... with 20 more rows
+# i 20 more rows
 \end{verbatim}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -4318,7 +4318,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.04708
+[1] 28.37873
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4503,7 +4503,7 @@ Click for answer
  8     7     6 date in ISO8601 17 August 2010 ""   
  9     8     6 date in ISO8601 17 August 2010 ""   
 10     9     4 a number        N/A            ""   
-# ... with 546 more rows
+# i 546 more rows
 \end{verbatim}
 
 \hypertarget{c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any.}{%
@@ -4538,7 +4538,7 @@ Click for answer
  8     7     6 date in ISO8601 17 August 2010 ""   
  9     8     6 date in ISO8601 17 August 2010 ""   
 10     9     4 a number        N/A            ""   
-# ... with 546 more rows
+# i 546 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -4583,8 +4583,8 @@ Click for answer
 
 \begin{verbatim}
 # A tibble: 0 x 5
-# ... with 5 variables: row <int>, col <int>,
-#   expected <chr>, actual <chr>, file <chr>
+# i 5 variables: row <int>, col <int>, expected <chr>,
+#   actual <chr>, file <chr>
 \end{verbatim}
 
 \hypertarget{your-turn-2-1}{%
@@ -4619,8 +4619,8 @@ Click for answer
 
 \begin{verbatim}
 # A tibble: 0 x 5
-# ... with 5 variables: row <int>, col <int>,
-#   expected <chr>, actual <chr>, file <chr>
+# i 5 variables: row <int>, col <int>, expected <chr>,
+#   actual <chr>, file <chr>
 \end{verbatim}
 
 \hypertarget{b-importing-mildly-tricky-data}{%
@@ -4637,8 +4637,8 @@ Click for answer
 
 \begin{verbatim}
 # A tibble: 0 x 5
-# ... with 5 variables: row <int>, col <int>,
-#   expected <chr>, actual <chr>, file <chr>
+# i 5 variables: row <int>, col <int>, expected <chr>,
+#   actual <chr>, file <chr>
 \end{verbatim}
 
 \hypertarget{c-importing-tricky-data-1}{%
@@ -4683,8 +4683,8 @@ Click for answer
 
 \begin{verbatim}
 # A tibble: 0 x 5
-# ... with 5 variables: row <int>, col <int>,
-#   expected <chr>, actual <chr>, file <chr>
+# i 5 variables: row <int>, col <int>, expected <chr>,
+#   actual <chr>, file <chr>
 \end{verbatim}
 
 \begin{Shaded}
@@ -4751,30 +4751,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     2 9th   Asia             63 9th      
- 2    13 9th   Middle East      78 9th      
- 3    14 9th   Middle East      50 9th      
- 4    19 9th   Africa           99 9th      
- 5    21 9th   Asia             99 9th      
- 6    23 9th   South America    55 9th      
- 7     5 10th  Asia             68 10th     
- 8     6 10th  Africa           68 10th     
- 9     7 10th  Middle East      75 10th     
-10     8 10th  Africa           60 10th     
-11     9 10th  Asia             95 10th     
-12    10 10th  North America    74 10th     
-13    11 10th  Europe           69 10th     
-14    16 10th  Africa           82 10th     
-15    17 10th  North America    52 10th     
-16    18 10th  Africa           96 10th     
-17    20 10th  Asia             61 10th     
-18    24 10th  South America    92 10th     
-19     1 11th  North America    89 11th     
-20     3 11th  Europe           98 11th     
-21     4 11th  South America    76 11th     
-22    12 11th  North America    69 11th     
-23    15 11th  North America    93 11th     
-24    22 11th  North America    66 11th     
+ 1     3 9th   North America    74 9th      
+ 2     4 9th   Africa           91 9th      
+ 3     6 9th   Asia             63 9th      
+ 4     8 9th   Africa           79 9th      
+ 5    10 9th   North America    77 9th      
+ 6    13 9th   North America    72 9th      
+ 7    15 9th   Asia             67 9th      
+ 8    17 9th   North America    59 9th      
+ 9    22 9th   Europe           61 9th      
+10    23 9th   North America    55 9th      
+11    24 9th   Africa           88 9th      
+12     2 10th  North America    92 10th     
+13     7 10th  North America    91 10th     
+14    11 10th  Asia             78 10th     
+15    14 10th  North America    91 10th     
+16    18 10th  Europe           72 10th     
+17    20 10th  Middle East      72 10th     
+18     1 11th  North America    93 11th     
+19     5 11th  Africa           79 11th     
+20     9 11th  North America    65 11th     
+21    12 11th  Europe           71 11th     
+22    16 11th  Middle East      89 11th     
+23    19 11th  Africa           80 11th     
+24    21 11th  Middle East      64 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4801,9 +4801,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                10
-2 Asia                 5
-3 Americas             9
+1 EMEA                11
+2 Asia                 3
+3 Americas            10
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4824,7 +4824,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "9th"  "11th"
+[1] "9th"  "11th" "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4847,8 +4847,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 10th            12
-2 Others          12
+1 9th             11
+2 Others          13
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -4877,8 +4877,8 @@ Lets import the \texttt{gss\_cat} dataset from the \texttt{forcats} library. Thi
  8  2000 Divorced       44 White $7000 ~ Ind,ne~ Prot~ Luth~
  9  2000 Married        44 White $25000~ Not st~ Prot~ Other
 10  2000 Married        47 White $25000~ Strong~ Prot~ Sout~
-# ... with 21,473 more rows, and 1 more variable:
-#   tvhours <int>
+# i 21,473 more rows
+# i 1 more variable: tvhours <int>
 \end{verbatim}
 
 Use \texttt{gss\_cat} to answer the following questions.
@@ -6367,24 +6367,24 @@ Click for answer
 
 \begin{verbatim}
 # A tibble: 9 x 82
-  100_Neva~1 104_M~2 106_W~3 Allen~4 Alumn~5 Arbor~6 Art_S~7
-       <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-1     0.0972    1.04   0.601   0.756    17.0    0.13    0.23
-2     0.120     1.11   0.632   0.781    18.1    0.23    0.28
-3     0.183     1.18   0.673   0.941    18.4    0.25    0.33
-4     0.461     1.18   0.681   0.983    20.3    0.28    0.4 
-5     0.710     1.42   0.692   1.00     21.0    0.32    0.47
-6     0.795     1.42   0.865   1.01     21.8    0.38    0.57
-7     0.915     1.54   1.10    1.07     21.9    0.44    0.73
-8     1.11      1.56   1.20    1.07     22      0.52    0.88
-9     1.24      1.67   1.27    1.25     22.5    0.71    1.09
-# ... with 75 more variables: Benton_House <dbl>,
-#   Berg_House <dbl>, Bird_House <dbl>,
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# i 79 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
 #   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
 #   `Cassat_Hall_/_James_Hall` <dbl>,
-#   `Center_for_Mathematics_&_Computing` <dbl>,
-#   Chaney_House <dbl>, Clader_House <dbl>,
-#   College_Warehouse <dbl>, Cowling_Gym <dbl>, ...
+#   `Center_for_Mathematics_&_Computing` <dbl>, ...
 \end{verbatim}
 
 \textbf{2.} Add a variable to identify the quantile
@@ -6404,24 +6404,24 @@ Click for answer
 
 \begin{verbatim}
 # A tibble: 9 x 83
-  100_Neva~1 104_M~2 106_W~3 Allen~4 Alumn~5 Arbor~6 Art_S~7
-       <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-1     0.0972    1.04   0.601   0.756    17.0    0.13    0.23
-2     0.120     1.11   0.632   0.781    18.1    0.23    0.28
-3     0.183     1.18   0.673   0.941    18.4    0.25    0.33
-4     0.461     1.18   0.681   0.983    20.3    0.28    0.4 
-5     0.710     1.42   0.692   1.00     21.0    0.32    0.47
-6     0.795     1.42   0.865   1.01     21.8    0.38    0.57
-7     0.915     1.54   1.10    1.07     21.9    0.44    0.73
-8     1.11      1.56   1.20    1.07     22      0.52    0.88
-9     1.24      1.67   1.27    1.25     22.5    0.71    1.09
-# ... with 76 more variables: Benton_House <dbl>,
-#   Berg_House <dbl>, Bird_House <dbl>,
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# i 80 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
 #   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
 #   `Cassat_Hall_/_James_Hall` <dbl>,
-#   `Center_for_Mathematics_&_Computing` <dbl>,
-#   Chaney_House <dbl>, Clader_House <dbl>,
-#   College_Warehouse <dbl>, Cowling_Gym <dbl>, ...
+#   `Center_for_Mathematics_&_Computing` <dbl>, ...
 \end{verbatim}
 
 \textbf{3.} Reshape the data frame to make variables \texttt{stat} (describing the quantile), \texttt{building} and \texttt{quant} (quantile value)
@@ -6454,7 +6454,7 @@ Click for answer
  8 quantile_10 Benton_House                        1.59  
  9 quantile_10 Berg_House                          1.06  
 10 quantile_10 Bird_House                          1.42  
-# ... with 728 more rows
+# i 728 more rows
 \end{verbatim}
 
 \textbf{4.} Plot the KWH value for each quantile on the x-axis for the buildings \texttt{Sayles-Hill}, \texttt{Language\_\&\_Dining\_Center}, \texttt{Olin\_Hall\_of\_Science}
@@ -6635,197 +6635,197 @@ Click for answer
 \hline
 Year & Title & Description & Runtime & Rating & Votes\\
 \hline
-2022 & Everything Everywhere All at Once & A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led. & 139 & 7.8 & 448835\\
+2022 & Everything Everywhere All at Once & A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led. & 139 & 7.8 & 480684\\
 \hline
-2021 & CODA & As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family's fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents. & 111 & 8.0 & 146156\\
+2021 & CODA & As a CODA (Child of Deaf Adults) Ruby is the only hearing person in her deaf family. When the family's fishing business is threatened, Ruby finds herself torn between pursuing her passion at Berklee College of Music and her fear of abandoning her parents. & 111 & 8.0 & 153301\\
 \hline
-2020 & Nomadland & A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad. & 107 & 7.3 & 170568\\
+2020 & Nomadland & A woman in her sixties, after losing everything in the Great Recession, embarks on a journey through the American West, living as a van-dwelling modern-day nomad. & 107 & 7.3 & 174695\\
 \hline
-2019 & Parasite & Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan. & 132 & 8.5 & 854706\\
+2019 & Parasite & Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan. & 132 & 8.5 & 890599\\
 \hline
-2018 & Green Book & A working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South. & 130 & 8.2 & 519143\\
+2018 & Green Book & A working-class Italian-American bouncer becomes the driver for an African-American classical pianist on a tour of venues through the 1960s American South. & 130 & 8.2 & 536372\\
 \hline
-2017 & The Shape of Water & At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity. & 123 & 7.3 & 432187\\
+2017 & The Shape of Water & At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity. & 123 & 7.3 & 437637\\
 \hline
-2016 & Moonlight & A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood. & 111 & 7.4 & 318215\\
+2016 & Moonlight & A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood. & 111 & 7.4 & 323250\\
 \hline
-2015 & Spotlight & The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core. & 129 & 8.1 & 482188\\
+2015 & Spotlight & The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core. & 129 & 8.1 & 489894\\
 \hline
-2014 & Birdman or (The Unexpected Virtue of Ignorance) & A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production. & 119 & 7.7 & 645527\\
+2014 & Birdman or (The Unexpected Virtue of Ignorance) & A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production. & 119 & 7.7 & 653030\\
 \hline
-2013 & 12 Years a Slave & In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. & 134 & 8.1 & 715752\\
+2013 & 12 Years a Slave & In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. & 134 & 8.1 & 725627\\
 \hline
-2012 & Argo & Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979. & 120 & 7.7 & 624898\\
+2012 & Argo & Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979. & 120 & 7.7 & 630057\\
 \hline
-2011 & The Artist & An egomaniacal film star develops a relationship with a young dancer against the backdrop of Hollywood's silent era. & 100 & 7.9 & 244827\\
+2011 & The Artist & An egomaniacal film star develops a relationship with a young dancer against the backdrop of Hollywood's silent era. & 100 & 7.9 & 246216\\
 \hline
-2010 & The King's Speech & The story of King George VI, his unexpected ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer. & 118 & 8.0 & 691878\\
+2010 & The King's Speech & The story of King George VI, his unexpected ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer. & 118 & 8.0 & 697792\\
 \hline
-2008 & Slumdog Millionaire & A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?". & 120 & 8.0 & 858672\\
+2008 & The Hurt Locker & During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work. & 131 & 7.5 & 465755\\
 \hline
-2008 & The Hurt Locker & During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work. & 131 & 7.5 & 461179\\
+2008 & Slumdog Millionaire & A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?" & 120 & 8.0 & 865624\\
 \hline
-2007 & No Country for Old Men & Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande. & 122 & 8.2 & 1001648\\
+2007 & No Country for Old Men & Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande. & 122 & 8.2 & 1024289\\
 \hline
-2006 & The Departed & An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston. & 151 & 8.5 & 1356264\\
+2006 & The Departed & An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston. & 151 & 8.5 & 1381775\\
 \hline
-2004 & Crash & Los Angeles citizens with vastly separate lives collide in interweaving stories of race, loss and redemption. & 112 & 7.7 & 442415\\
+2004 & Crash & Los Angeles citizens with vastly separate lives collide in interweaving stories of race, loss and redemption. & 112 & 7.7 & 444830\\
 \hline
-2004 & Million Dollar Baby & Frankie, an ill-tempered old coach, reluctantly agrees to train aspiring boxer Maggie. Impressed with her determination and talent, he helps her become the best and the two soon form a close bond. & 132 & 8.1 & 699994\\
+2004 & Million Dollar Baby & Frankie, an ill-tempered old coach, reluctantly agrees to train aspiring boxer Maggie. Impressed with her determination and talent, he helps her become the best and the two soon form a close bond. & 132 & 8.1 & 708000\\
 \hline
-2003 & The Lord of the Rings: The Return of the King & Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. & 201 & 9.0 & 1887097\\
+2003 & The Lord of the Rings: The Return of the King & Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. & 201 & 9.0 & 1919067\\
 \hline
-2002 & Chicago & Two death-row murderesses develop a fierce rivalry while competing for publicity, celebrity, and a sleazy lawyer's attention. & 113 & 7.2 & 235715\\
+2002 & Chicago & Two death-row murderesses develop a fierce rivalry while competing for publicity, celebrity, and a sleazy lawyer's attention. & 113 & 7.2 & 238127\\
 \hline
-2001 & A Beautiful Mind & After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish. & 135 & 8.2 & 950380\\
+2001 & A Beautiful Mind & After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish. & 135 & 8.2 & 963833\\
 \hline
-2000 & Gladiator & A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery. & 155 & 8.5 & 1536149\\
+2000 & Gladiator & A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery. & 155 & 8.5 & 1565132\\
 \hline
-1999 & American Beauty & A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend. & 122 & 8.3 & 1173562\\
+1999 & American Beauty & A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend. & 122 & 8.3 & 1187030\\
 \hline
-1998 & Shakespeare in Love & The world's greatest ever playwright, William Shakespeare, is young, out of ideas and short of cash, but meets his ideal woman and is inspired to write one of his most famous plays. & 123 & 7.1 & 229354\\
+1998 & Shakespeare in Love & The world's greatest ever playwright, William Shakespeare, is young, out of ideas and short of cash, but meets his ideal woman and is inspired to write one of his most famous plays. & 123 & 7.1 & 231000\\
 \hline
-1997 & Titanic & A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic. & 194 & 7.9 & 1219291\\
+1997 & Titanic & A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic. & 194 & 7.9 & 1247984\\
 \hline
-1996 & The English Patient & At the close of World War II, a young nurse tends to a badly-burned plane crash victim. His past is shown in flashbacks, revealing an involvement in a fateful love affair. & 162 & 7.4 & 194913\\
+1996 & The English Patient & At the close of World War II, a young nurse tends to a badly-burned plane crash victim. His past is shown in flashbacks, revealing an involvement in a fateful love affair. & 162 & 7.4 & 196610\\
 \hline
-1995 & Braveheart & Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England. & 178 & 8.3 & 1055749\\
+1995 & Braveheart & Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England. & 178 & 8.3 & 1069358\\
 \hline
-1994 & Forrest Gump & The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. & 142 & 8.8 & 2136115\\
+1994 & Forrest Gump & The history of the United States from the 1950s to the '70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart. & 142 & 8.8 & 2181731\\
 \hline
-1993 & Schindler's List & In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis. & 195 & 9.0 & 1385138\\
+1993 & Schindler's List & In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis. & 195 & 9.0 & 1409260\\
 \hline
-1992 & Unforgiven & Retired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The "Schofield Kid." & 130 & 8.2 & 420903\\
+1992 & Unforgiven & Retired Old West gunslinger William Munny reluctantly takes on one last job, with the help of his old partner Ned Logan and a young man, The "Schofield Kid." & 130 & 8.2 & 426710\\
 \hline
-1991 & The Silence of the Lambs & A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims. & 118 & 8.6 & 1467541\\
+1991 & The Silence of the Lambs & A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims. & 118 & 8.6 & 1496075\\
 \hline
-1990 & Dances with Wolves & Lieutenant John Dunbar, assigned to a remote western Civil War outpost, finds himself engaging with a neighbouring Sioux settlement, causing him to question his own purpose. & 181 & 8.0 & 276541\\
+1990 & Dances with Wolves & Lieutenant John Dunbar, assigned to a remote western Civil War outpost, finds himself engaging with a neighbouring Sioux settlement, causing him to question his own purpose. & 181 & 8.0 & 281889\\
 \hline
-1989 & Driving Miss Daisy & An old Jewish woman and her African-American chauffeur in the American South have a relationship that grows and improves over the years. & 99 & 7.3 & 113663\\
+1989 & Driving Miss Daisy & An old Jewish woman and her African-American chauffeur in the American South have a relationship that grows and improves over the years. & 99 & 7.3 & 115179\\
 \hline
-1988 & Rain Man & After a selfish L.A. yuppie learns his estranged father left a fortune to an autistic-savant brother in Ohio that he didn't know existed, he absconds with his brother and sets out across the country, hoping to gain a larger inheritance. & 133 & 8.0 & 526765\\
+1988 & Rain Man & After a selfish L.A. yuppie learns his estranged father left a fortune to an autistic-savant brother in Ohio that he didn't know existed, he absconds with his brother and sets out across the country, hoping to gain a larger inheritance. & 133 & 8.0 & 534164\\
 \hline
-1987 & The Last Emperor & Dramatization of China's last emperor, Puyi. & 163 & 7.7 & 107215\\
+1987 & The Last Emperor & Bernardo Bertolucci's Oscar-winning dramatisation of the life story of China's last emperor, Pu Yi. & 163 & 7.7 & 108669\\
 \hline
-1986 & Platoon & Chris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict. & 120 & 8.1 & 423287\\
+1986 & Platoon & Chris Taylor, a neophyte recruit in Vietnam, finds himself caught in a battle of wills between two sergeants, one good and the other evil. A shrewd examination of the brutality of war and the duality of man in conflict. & 120 & 8.1 & 428933\\
 \hline
-1985 & Out of Africa & In 20th-century colonial Kenya, a Danish baroness/plantation owner has a passionate love affair with a free-spirited big-game hunter. & 161 & 7.1 & 83168\\
+1985 & Out of Africa & In 20th-century colonial Kenya, a Danish baroness/plantation owner has a passionate love affair with a free-spirited big-game hunter. & 161 & 7.1 & 84266\\
 \hline
-1984 & Amadeus & The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart's talent and claimed to have murdered him. & 160 & 8.4 & 409743\\
+1984 & Amadeus & The life, success and troubles of Wolfgang Amadeus Mozart, as told by Antonio Salieri, the contemporaneous composer who was deeply jealous of Mozart's talent and claimed to have murdered him. & 160 & 8.4 & 417524\\
 \hline
-1983 & Terms of Endearment & Follows hard-to-please Aurora looking for love and her daughter's family problems. & 132 & 7.4 & 62812\\
+1983 & Terms of Endearment & Follows hard-to-please Aurora looking for love and her daughter's family problems. & 132 & 7.4 & 63778\\
 \hline
-1982 & Gandhi & The life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest. & 191 & 8.0 & 236217\\
+1982 & Gandhi & The life of the lawyer who became the famed leader of the Indian revolts against the British rule through his philosophy of nonviolent protest. & 191 & 8.0 & 237614\\
 \hline
-1981 & Chariots of Fire & Two British track athletes, one a determined Jew and the other a devout Christian, are driven to win in the 1924 Olympics as they wrestle with issues of pride and conscience. & 125 & 7.1 & 63465\\
+1981 & Chariots of Fire & Two British track athletes, one a determined Jew and the other a devout Christian, are driven to win in the 1924 Olympics as they wrestle with issues of pride and conscience. & 125 & 7.1 & 64276\\
 \hline
-1980 & Ordinary People & The accidental death of the older son of an affluent family deeply strains the relationships among the bitter mother, the good-natured father and the guilt-ridden younger son. & 124 & 7.7 & 54415\\
+1980 & Ordinary People & The accidental death of the older son of an affluent family deeply strains the relationships among the bitter mother, the good-natured father and the guilt-ridden younger son. & 124 & 7.7 & 55180\\
 \hline
-1979 & Kramer vs. Kramer & After his wife leaves him, a work-obsessed Manhattan advertising executive is forced to learn long-neglected parenting skills, but a heated custody battle over the couple's young son deepens the wounds left by the separation. & 105 & 7.8 & 149488\\
+1979 & Kramer vs. Kramer & After his wife leaves him, a work-obsessed Manhattan advertising executive is forced to learn long-neglected parenting skills, but a heated custody battle over the couple's young son deepens the wounds left by the separation. & 105 & 7.8 & 151370\\
 \hline
-1978 & The Deer Hunter & An in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania. & 183 & 8.1 & 346716\\
+1978 & The Deer Hunter & An in-depth examination of the ways in which the Vietnam War impacts and disrupts the lives of several friends in a small steel mill town in Pennsylvania. & 183 & 8.1 & 352648\\
 \hline
-1977 & Annie Hall & Alvy Singer, a divorced Jewish comedian, reflects on his relationship with ex-lover Annie Hall, an aspiring nightclub singer, which ended abruptly just like his previous marriages. & 93 & 8.0 & 270368\\
+1977 & Annie Hall & Alvy Singer, a divorced Jewish comedian, reflects on his relationship with ex-lover Annie Hall, an aspiring nightclub singer, which ended abruptly just like his previous marriages. & 93 & 8.0 & 273006\\
 \hline
-1976 & Rocky & A small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect. & 120 & 8.1 & 598296\\
+1976 & Rocky & A small-time Philadelphia boxer gets a supremely rare chance to fight the world heavyweight champion in a bout in which he strives to go the distance for his self-respect. & 120 & 8.1 & 610538\\
 \hline
-1975 & One Flew Over the Cuckoo's Nest & In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse. & 133 & 8.7 & 1028772\\
+1975 & One Flew Over the Cuckoo's Nest & In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse. & 133 & 8.7 & 1044777\\
 \hline
-1974 & The Godfather Part II & The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate. & 202 & 9.0 & 1300948\\
+1974 & The Godfather Part II & The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate. & 202 & 9.0 & 1326449\\
 \hline
-1973 & The Sting & Two grifters team up to pull off the ultimate con. & 129 & 8.3 & 269591\\
+1973 & The Sting & Two grifters team up to pull off the ultimate con. & 129 & 8.3 & 273104\\
 \hline
-1972 & The Godfather & Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger. & 175 & 9.2 & 1909424\\
+1972 & The Godfather & Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger. & 175 & 9.2 & 1953200\\
 \hline
-1971 & The French Connection & A pair of NYPD detectives in the Narcotics Bureau stumble onto a heroin smuggling ring based in Marseilles, but stopping them and capturing their leaders proves an elusive goal. & 104 & 7.7 & 127619\\
+1971 & The French Connection & A pair of NYPD detectives in the Narcotics Bureau stumble onto a heroin smuggling ring based in Marseilles, but stopping them and capturing their leaders proves an elusive goal. & 104 & 7.7 & 131011\\
 \hline
-1970 & Patton & The World War II phase of the career of controversial American general George S. Patton. & 172 & 7.9 & 105045\\
+1970 & Patton & The World War II phase of the career of controversial American general George S. Patton. & 172 & 7.9 & 106141\\
 \hline
-1969 & Midnight Cowboy & A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process. & 113 & 7.8 & 115035\\
+1969 & Midnight Cowboy & A naive hustler travels from Texas to New York City to seek personal fortune, finding a new friend in the process. & 113 & 7.8 & 116939\\
 \hline
-1968 & Oliver! & After being sold to a mortician, young orphan Oliver Twist runs away and meets a group of boys trained to be pickpockets by an elderly mentor in 1830s London. & 153 & 7.4 & 40002\\
+1968 & Oliver! & After being sold to a mortician, young orphan Oliver Twist runs away and meets a group of boys trained to be pickpockets by an elderly mentor in 1830s London. & 153 & 7.4 & 40485\\
 \hline
-1967 & In the Heat of the Night & A black Philadelphia police detective is mistakenly suspected of a local murder while passing through a racially hostile Mississippi town, and after being cleared is reluctantly asked by the police chief to investigate the case. & 110 & 7.9 & 79524\\
+1967 & In the Heat of the Night & A black Philadelphia police detective is mistakenly suspected of a local murder while passing through a racially hostile Mississippi town, and after being cleared is reluctantly asked by the police chief to investigate the case. & 110 & 7.9 & 81148\\
 \hline
-1966 & A Man for All Seasons & The story of Sir Thomas More, who stood up to King Henry VIII when the King rejected the Roman Catholic Church to obtain a divorce and remarry. & 120 & 7.7 & 35880\\
+1966 & A Man for All Seasons & The story of Sir Thomas More, who stood up to King Henry VIII when the King rejected the Roman Catholic Church to obtain a divorce and remarry. & 120 & 7.7 & 36349\\
 \hline
-1965 & The Sound of Music & A young novice is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer. & 172 & 8.1 & 244592\\
+1965 & The Sound of Music & A young novice is sent by her convent in 1930s Austria to become a governess to the seven children of a widowed naval officer. & 172 & 8.1 & 249682\\
 \hline
-1964 & My Fair Lady & In 1910s London, snobbish phonetics professor Henry Higgins agrees to a wager that he can make crude flower girl, Eliza Doolittle, presentable in high society. & 170 & 7.8 & 98437\\
+1964 & My Fair Lady & In 1910s London, snobbish phonetics professor Henry Higgins agrees to a wager that he can make crude flower girl, Eliza Doolittle, presentable in high society. & 170 & 7.8 & 99401\\
 \hline
-1963 & Tom Jones & The romantic and chivalrous adventures of adopted bastard Tom Jones in 18th-century England. & 129 & 6.4 & 13720\\
+1963 & Tom Jones & The romantic and chivalrous adventures of adopted bastard Tom Jones in 18th-century England. & 129 & 6.4 & 13911\\
 \hline
-1962 & Lawrence of Arabia & The story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks. & 218 & 8.3 & 301134\\
+1962 & Lawrence of Arabia & The story of T.E. Lawrence, the English officer who successfully united and led the diverse, often warring, Arab tribes during World War I in order to fight the Turks. & 218 & 8.3 & 306015\\
 \hline
-1961 & West Side Story & Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy. & 153 & 7.6 & 117447\\
+1961 & West Side Story & Two youngsters from rival New York City gangs fall in love, but tensions between their respective friends build toward tragedy. & 153 & 7.6 & 118702\\
 \hline
-1960 & The Apartment & A Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue. & 125 & 8.3 & 186584\\
+1960 & The Apartment & A Manhattan insurance clerk tries to rise in his company by letting its executives use his apartment for trysts, but complications and a romance of his own ensue. & 125 & 8.3 & 190422\\
 \hline
-1959 & Ben-Hur & After a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge. & 212 & 8.1 & 245150\\
+1959 & Ben-Hur & After a Jewish prince is betrayed and sent into slavery by a Roman friend in 1st-century Jerusalem, he regains his freedom and comes back for revenge. & 212 & 8.1 & 248119\\
 \hline
-1958 & Gigi & Weary of the conventions of Parisian society, a rich playboy and a youthful courtesan-in-training enjoy a platonic friendship which may not stay platonic for long. & 115 & 6.6 & 23708\\
+1958 & Gigi & Weary of the conventions of Parisian society, a rich playboy and a youthful courtesan-in-training enjoy a platonic friendship which may not stay platonic for long. & 115 & 6.6 & 23968\\
 \hline
-1957 & The Bridge on the River Kwai & British POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it. & 161 & 8.1 & 225644\\
+1957 & The Bridge on the River Kwai & British POWs are forced to build a railway bridge across the river Kwai for their Japanese captors in occupied Burma, not knowing that the allied forces are planning a daring commando raid through the jungle to destroy it. & 161 & 8.1 & 228699\\
 \hline
-1956 & Around the World in 80 Days & A Victorian Englishman bets that with the new steamships and railways he can circumnavigate the globe in eighty days. & 175 & 6.7 & 28628\\
+1956 & Around the World in 80 Days & A Victorian Englishman bets that with the new steamships and railways he can circumnavigate the globe in eighty days. & 175 & 6.7 & 28984\\
 \hline
-1955 & Marty & A middle-aged butcher and a school teacher who have given up on the idea of love meet at a dance and fall for each other. & 90 & 7.7 & 25557\\
+1955 & Marty & A middle-aged butcher and a school teacher who have given up on the idea of love meet at a dance and fall for each other. & 90 & 7.7 & 26077\\
 \hline
-1954 & On the Waterfront & An ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate's victims. & 108 & 8.1 & 158510\\
+1954 & On the Waterfront & An ex-prize fighter turned New Jersey longshoreman struggles to stand up to his corrupt union bosses, including his older brother, as he starts to connect with the grieving sister of one of the syndicate's victims. & 108 & 8.1 & 160869\\
 \hline
-1953 & From Here to Eternity & At a U.S. Army base in 1941 Hawaii, a private is cruelly punished for not boxing on his unit's team, while his commanding officer's wife and top aide begin a tentative affair. & 118 & 7.6 & 48863\\
+1953 & From Here to Eternity & At a U.S. Army base in 1941 Hawaii, a private is cruelly punished for not boxing on his unit's team, while his commanding officer's wife and top aide begin a tentative affair. & 118 & 7.6 & 49598\\
 \hline
-1952 & The Greatest Show on Earth & The dramatic lives of trapeze artists, a clown, and an elephant trainer are told against a background of circus spectacle. & 152 & 6.6 & 15367\\
+1952 & The Greatest Show on Earth & The dramatic lives of trapeze artists, a clown, and an elephant trainer are told against a background of circus spectacle. & 152 & 6.6 & 15575\\
 \hline
-1951 & An American in Paris & Three friends struggle to find work in Paris. Things become more complicated when two of them fall in love with the same woman. & 114 & 7.2 & 35265\\
+1951 & An American in Paris & Three friends struggle to find work in Paris. Things become more complicated when two of them fall in love with the same woman. & 114 & 7.2 & 35885\\
 \hline
-1950 & All About Eve & A seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends. & 138 & 8.2 & 134065\\
+1950 & All About Eve & A seemingly timid but secretly ruthless ingénue insinuates herself into the lives of an aging Broadway star and her circle of theater friends. & 138 & 8.2 & 135920\\
 \hline
-1949 & All the King's Men & The rise and fall of a corrupt politician, who makes his friends richer and retains power by dint of a populist appeal. & 110 & 7.4 & 15785\\
+1949 & All the King's Men & The rise and fall of a corrupt politician, who makes his friends richer and retains power by dint of a populist appeal. & 110 & 7.4 & 16044\\
 \hline
-1948 & Hamlet & Prince Hamlet struggles over whether or not he should kill his uncle, whom he suspects has murdered his father, the former king. & 154 & 7.6 & 17693\\
+1948 & Hamlet & Prince Hamlet struggles over whether or not he should kill his uncle, whom he suspects has murdered his father, the former king. & 154 & 7.6 & 17898\\
 \hline
-1947 & Gentleman's Agreement & A reporter pretends to be Jewish in order to cover a story on anti-Semitism, and personally discovers the true depths of bigotry and hatred. & 118 & 7.2 & 17149\\
+1947 & Gentleman's Agreement & A reporter pretends to be Jewish in order to cover a story on anti-Semitism, and personally discovers the true depths of bigotry and hatred. & 118 & 7.2 & 17371\\
 \hline
-1946 & The Best Years of Our Lives & Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed. & 170 & 8.1 & 67103\\
+1946 & The Best Years of Our Lives & Three World War II veterans, two of them traumatized or disabled, return home to the American midwest to discover that they and their families have been irreparably changed. & 170 & 8.1 & 68442\\
 \hline
-1945 & The Lost Weekend & The desperate life of a chronic alcoholic is followed through a four-day drinking bout. & 101 & 7.9 & 38669\\
+1945 & The Lost Weekend & The desperate life of a chronic alcoholic is followed through a four-day drinking bout. & 101 & 7.9 & 39204\\
 \hline
-1944 & Going My Way & When young Father O'Malley arrives at St. Dominic's, old Father Fitzgibbon doesn't think much of the church's newest member. & 126 & 7.0 & 12604\\
+1944 & Going My Way & When young Father O'Malley arrives at St. Dominic's, old Father Fitzgibbon doesn't think much of the church's newest member. & 126 & 7.0 & 12786\\
 \hline
-1942 & Casablanca & A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco. & 102 & 8.5 & 583498\\
+1942 & Casablanca & A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco. & 102 & 8.5 & 592452\\
 \hline
-1942 & Mrs. Miniver & A British family struggles to survive the first months of World War II. & 134 & 7.6 & 18614\\
+1942 & Mrs. Miniver & A British family struggles to survive the first months of World War II. & 134 & 7.6 & 18969\\
 \hline
-1941 & How Green Was My Valley & At the turn of the century in a Welsh mining village, the Morgans, he stern, she gentle, raise coal-mining sons and hope their youngest will find a better life. & 118 & 7.7 & 25335\\
+1941 & How Green Was My Valley & At the turn of the century in a Welsh mining village, the Morgans, he stern, she gentle, raise coal-mining sons and hope their youngest will find a better life. & 118 & 7.7 & 25728\\
 \hline
-1940 & Rebecca & A self-conscious woman juggles adjusting to her new role as an aristocrat's wife and avoiding being intimidated by his first wife's spectral presence. & 130 & 8.1 & 140793\\
+1940 & Rebecca & A self-conscious woman juggles adjusting to her new role as an aristocrat's wife and avoiding being intimidated by his first wife's spectral presence. & 130 & 8.1 & 143130\\
 \hline
-1939 & Gone with the Wind & A sheltered and manipulative Southern belle and a roguish profiteer face off in a turbulent romance as the society around them crumbles with the end of slavery and is rebuilt during the Civil War and Reconstruction periods. & 238 & 8.2 & 322435\\
+1939 & Gone with the Wind & A sheltered and manipulative Southern belle and a roguish profiteer face off in a turbulent romance as the society around them crumbles with the end of slavery and is rebuilt during the Civil War and Reconstruction periods. & 238 & 8.2 & 326880\\
 \hline
-1938 & You Can't Take It with You & The son of a snobbish Wall Street banker becomes engaged to a woman from a good-natured but decidedly eccentric family, not realizing that his father is trying to force her family from their home for a real estate development. & 126 & 7.8 & 26789\\
+1938 & You Can't Take It with You & The son of a snobbish Wall Street banker becomes engaged to a woman from a good-natured but decidedly eccentric family, not realizing that his father is trying to force her family from their home for a real estate development. & 126 & 7.8 & 27110\\
 \hline
-1937 & The Life of Emile Zola & The biopic of the famous French muckraking writer and his involvement in fighting the injustice of the Dreyfus Affair. & 116 & 7.2 & 8627\\
+1937 & The Life of Emile Zola & The biopic of the famous French muckraking writer and his involvement in fighting the injustice of the Dreyfus Affair. & 116 & 7.2 & 8753\\
 \hline
-1936 & The Great Ziegfeld & The ups and downs of Florenz Ziegfeld Jr., famed producer of extravagant stage revues, are portrayed. & 176 & 6.6 & 8620\\
+1936 & The Great Ziegfeld & The ups and downs of Florenz Ziegfeld Jr., famed producer of extravagant stage revues, are portrayed. & 176 & 6.6 & 8744\\
 \hline
-1935 & Mutiny on the Bounty & First mate Fletcher Christian leads a revolt against his sadistic commander, Captain Bligh, in this classic seafaring adventure, based on the real-life 1789 mutiny. & 132 & 7.6 & 23982\\
+1935 & Mutiny on the Bounty & First mate Fletcher Christian leads a revolt against his sadistic commander, Captain Bligh, in this classic seafaring adventure, based on the real-life 1789 mutiny. & 132 & 7.6 & 24296\\
 \hline
-1934 & It Happened One Night & A renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops. & 105 & 8.1 & 107285\\
+1934 & It Happened One Night & A renegade reporter trailing a young runaway heiress for a big story joins her on a bus heading from Florida to New York, and they end up stuck with each other when the bus leaves them behind at one of the stops. & 105 & 8.1 & 109127\\
 \hline
-1933 & Cavalcade & A portrayal of the triumphs and tragedies of two English families, the upper-crust Marryots and the working-class Bridgeses, from 1899 to 1933. & 112 & 5.8 & 5570\\
+1933 & Cavalcade & A portrayal of the triumphs and tragedies of two English families, the upper-crust Marryots and the working-class Bridgeses, from 1899 to 1933. & 112 & 5.8 & 5679\\
 \hline
-1932 & Grand Hotel & A group of very different individuals staying at a luxurious hotel in Berlin deal with each of their respective dramas. & 112 & 7.3 & 20144\\
+1932 & Grand Hotel & A group of very different individuals staying at a luxurious hotel in Berlin deal with each of their respective dramas. & 112 & 7.3 & 20383\\
 \hline
-1931 & Cimarron & A newspaper editor settles in an Oklahoma boom town with his reluctant wife at the end of the nineteenth century. & 123 & 5.8 & 6600\\
+1931 & Cimarron & A newspaper editor settles in an Oklahoma boom town with his reluctant wife at the end of the nineteenth century. & 123 & 5.8 & 6706\\
 \hline
-1930 & All Quiet on the Western Front & A German youth eagerly enters World War I, but his enthusiasm wanes as he gets a firsthand view of the horror. & 152 & 8.1 & 65492\\
+1930 & All Quiet on the Western Front & A German youth eagerly enters World War I, but his enthusiasm wanes as he gets a firsthand view of the horror. & 152 & 8.1 & 66263\\
 \hline
-1929 & The Broadway Melody & A pair of sisters from the vaudeville circuit try to make it big time on Broadway, but matters of the heart complicate the attempt. & 100 & 5.6 & 7630\\
+1929 & The Broadway Melody & A pair of sisters from the vaudeville circuit try to make it big time on Broadway, but matters of the heart complicate the attempt. & 100 & 5.6 & 7759\\
 \hline
-1927 & Sunrise & A sophisticated city woman seduces a farmer and convinces him to murder his wife and join her in the city, but he ends up rekindling his romance with his wife when he changes his mind at the last moment. & 94 & 8.1 & 52337\\
+1927 & Sunrise & A sophisticated city woman seduces a farmer and convinces him to murder his wife and join her in the city, but he ends up rekindling his romance with his wife when he changes his mind at the last moment. & 94 & 8.1 & 52914\\
 \hline
-1927 & Wings & Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I. & 144 & 7.6 & 13694\\
+1927 & Wings & Two young men, one rich, one middle class, who are in love with the same woman, become fighter pilots in World War I. & 144 & 7.6 & 13997\\
 \hline
 \end{tabular}
 
@@ -6890,20 +6890,9 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 100 x 4
-    rank name                      score  year
-   <dbl> <chr>                     <dbl> <dbl>
- 1     1 Succession                  8.9  2018
- 2     2 Ted Lasso                   8.8  2020
- 3     3 Silo                        8.2  2023
- 4     4 FUBAR                       6.5  2023
- 5     5 Love & Death                7.6  2023
- 6     6 The Marvelous Mrs. Maisel   8.7  2017
- 7     7 From                        7.7  2022
- 8     8 Barry                       8.4  2018
- 9     9 Yellowjackets               7.8  2021
-10    10 XO, Kitty                   6.7  2023
-# ... with 90 more rows
+# A tibble: 0 x 4
+# i 4 variables: rank <dbl>, name <chr>, score <dbl>,
+#   year <dbl>
 \end{verbatim}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -7069,14 +7058,14 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-Rows: 6,396
+Rows: 6,400
 Columns: 6
 $ ``               <chr> "1", "2", "3", "4", "5", "6", "7"~
 $ ReleaseDate      <chr> "Dec 9, 2022", "Apr 23, 2019", "M~
 $ Movie            <chr> "Avatar: The Way of Water", "Aven~
 $ ProductionBudget <chr> "$460,000,000", "$400,000,000", "~
 $ DomesticGross    <chr> "$684,075,767", "$858,373,000", "~
-$ WorldwideGross   <chr> "$2,320,091,943", "$2,794,731,755~
+$ WorldwideGross   <chr> "$2,319,591,720", "$2,788,912,285~
 \end{verbatim}
 
 \hypertarget{group-activity-2-4}{%
@@ -8703,22 +8692,20 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 12 x 7
+# A tibble: 10 x 7
 # Groups:   .metric [4]
    neighbors .metric  .estimator  mean     n std_err .config
        <dbl> <chr>    <chr>      <dbl> <int>   <dbl> <chr>  
- 1        23 accuracy binary     0.747    10  0.0253 Prepro~
- 2        24 accuracy binary     0.747    10  0.0253 Prepro~
- 3        21 ppv      binary     0.771    10  0.0190 Prepro~
- 4        22 ppv      binary     0.771    10  0.0190 Prepro~
- 5        23 sens     binary     0.875    10  0.0251 Prepro~
- 6        24 sens     binary     0.875    10  0.0251 Prepro~
- 7        37 sens     binary     0.875    10  0.0228 Prepro~
- 8        38 sens     binary     0.875    10  0.0228 Prepro~
- 9        39 sens     binary     0.875    10  0.0251 Prepro~
-10        40 sens     binary     0.875    10  0.0251 Prepro~
-11        21 spec     binary     0.531    10  0.0524 Prepro~
-12        22 spec     binary     0.531    10  0.0524 Prepro~
+ 1        29 accuracy binary     0.766    10  0.0113 Prepro~
+ 2        30 accuracy binary     0.766    10  0.0113 Prepro~
+ 3        31 accuracy binary     0.766    10  0.0123 Prepro~
+ 4        32 accuracy binary     0.766    10  0.0123 Prepro~
+ 5        17 ppv      binary     0.808    10  0.0172 Prepro~
+ 6        18 ppv      binary     0.808    10  0.0172 Prepro~
+ 7        39 sens     binary     0.886    10  0.0145 Prepro~
+ 8        40 sens     binary     0.886    10  0.0145 Prepro~
+ 9        17 spec     binary     0.579    10  0.0462 Prepro~
+10        18 spec     binary     0.579    10  0.0462 Prepro~
 \end{verbatim}
 
 \hypertarget{extra-plot-the-metrics}{%
@@ -9252,16 +9239,14 @@ Click for answer
 
 \begin{verbatim}
 # A tibble: 5 x 9
-  cost_c~1 tree_~2 min_n .metric .esti~3  mean     n std_err
-     <dbl>   <int> <int> <chr>   <chr>   <dbl> <int>   <dbl>
-1 6.85e- 8       9     2 accura~ binary  0.974    10  0.0118
-2 1.37e-10       6     3 accura~ binary  0.968    10  0.0143
-3 5.22e- 3       3    18 accura~ binary  0.963    10  0.0161
-4 1.03e- 4      11    26 accura~ binary  0.963    10  0.0161
-5 5.77e- 3       6    33 accura~ binary  0.963    10  0.0161
-# ... with 1 more variable: .config <chr>, and abbreviated
-#   variable names 1: cost_complexity, 2: tree_depth,
-#   3: .estimator
+  cost_complexity tree_depth min_n .metric  .estimator  mean
+            <dbl>      <int> <int> <chr>    <chr>      <dbl>
+1        6.85e- 8          9     2 accuracy binary     0.974
+2        1.37e-10          6     3 accuracy binary     0.968
+3        5.22e- 3          3    18 accuracy binary     0.963
+4        1.03e- 4         11    26 accuracy binary     0.963
+5        5.77e- 3          6    33 accuracy binary     0.963
+# i 3 more variables: n <int>, std_err <dbl>, .config <chr>
 \end{verbatim}
 
 \begin{enumerate}
@@ -9814,16 +9799,15 @@ Here's how we can use this function:
 
 \begin{verbatim}
 # A tibble: 1 x 14
-  length number_of~1 state~2 zip_c~3 leven~4 prese~5 prese~6
-   <int>       <int>   <dbl>   <dbl>   <dbl>   <dbl>   <int>
-1     34           6       1       1       0       0       1
-# ... with 7 more variables: presence_of_street_name <int>,
-#   presence_of_city <int>, presence_of_state <int>,
-#   presence_of_zip_code <int>,
+  length number_of_words state_code zip_code
+   <int>           <int>      <dbl>    <dbl>
+1     34               6          1        1
+# i 10 more variables: levenshtein_distance <dbl>,
+#   presence_of_apt_no <dbl>, presence_of_street_no <int>,
+#   presence_of_street_name <int>, presence_of_city <int>,
+#   presence_of_state <int>, presence_of_zip_code <int>,
 #   state_code_correctness <dbl>,
-#   zip_code_correctness <dbl>, typo_in_street_name <int>,
-#   and abbreviated variable names 1: number_of_words,
-#   2: state_code, 3: zip_code, ...
+#   zip_code_correctness <dbl>, typo_in_street_name <int>
 \end{verbatim}
 
 \begin{Shaded}
@@ -9836,16 +9820,15 @@ Here's how we can use this function:
 
 \begin{verbatim}
 # A tibble: 1 x 14
-  length number_of~1 state~2 zip_c~3 leven~4 prese~5 prese~6
-   <int>       <int>   <dbl>   <dbl>   <dbl>   <dbl>   <int>
-1     42           9       0       1      11       0       1
-# ... with 7 more variables: presence_of_street_name <int>,
-#   presence_of_city <int>, presence_of_state <int>,
-#   presence_of_zip_code <int>,
+  length number_of_words state_code zip_code
+   <int>           <int>      <dbl>    <dbl>
+1     42               9          0        1
+# i 10 more variables: levenshtein_distance <dbl>,
+#   presence_of_apt_no <dbl>, presence_of_street_no <int>,
+#   presence_of_street_name <int>, presence_of_city <int>,
+#   presence_of_state <int>, presence_of_zip_code <int>,
 #   state_code_correctness <dbl>,
-#   zip_code_correctness <dbl>, typo_in_street_name <int>,
-#   and abbreviated variable names 1: number_of_words,
-#   2: state_code, 3: zip_code, ...
+#   zip_code_correctness <dbl>, typo_in_street_name <int>
 \end{verbatim}
 
 Now we have extracted the features from the new addresses, let's use our trained Random Forest model to predict whether the address formatting is correct or not.

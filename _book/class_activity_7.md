@@ -35,7 +35,7 @@ filter(babynames, name == "Rhea", sex == "F")
  8  1889 F     Rhea     31 0.000164 
  9  1890 F     Rhea     39 0.000193 
 10  1891 F     Rhea     24 0.000122 
-# … with 126 more rows
+# ℹ 126 more rows
 ```
 
 ```r
@@ -56,7 +56,7 @@ babynames %>%  filter(name == "Rhea", sex == "F")
  8  1889 F     Rhea     31 0.000164 
  9  1890 F     Rhea     39 0.000193 
 10  1891 F     Rhea     24 0.000122 
-# … with 126 more rows
+# ℹ 126 more rows
 ```
 
 </details>
@@ -85,7 +85,7 @@ filter(babynames, year == 1990, n == 5 | n == 6)
  8  1990 F     Acadia       6 0.00000292
  9  1990 F     Adilenne     6 0.00000292
 10  1990 F     Adriena      6 0.00000292
-# … with 6,134 more rows
+# ℹ 6,134 more rows
 ```
 
 ```r
@@ -106,7 +106,7 @@ babynames %>% filter(year == "1990", n == 5 | n == 6)
  8  1990 F     Acadia       6 0.00000292
  9  1990 F     Adilenne     6 0.00000292
 10  1990 F     Adriena      6 0.00000292
-# … with 6,134 more rows
+# ℹ 6,134 more rows
 ```
 
 </details>
@@ -135,7 +135,7 @@ filter(babynames, name == "Apple" | name == "Yoroi" | name == "Ada")
  8  1886 F     Ada     915 0.00595  
  9  1886 M     Ada       6 0.0000504
 10  1887 F     Ada     910 0.00586  
-# … with 190 more rows
+# ℹ 190 more rows
 ```
 
 </details>
@@ -165,7 +165,7 @@ aya %>% mutate_if(is.character, toupper)
  8  1886 F     ADA     915 0.00595  
  9  1886 M     ADA       6 0.0000504
 10  1887 F     ADA     910 0.00586  
-# … with 190 more rows
+# ℹ 190 more rows
 ```
 
 ```r
@@ -186,7 +186,7 @@ aya %>% mutate_at(vars(name), toupper)
  8  1886 F     ADA     915 0.00595  
  9  1886 M     ADA       6 0.0000504
 10  1887 F     ADA     910 0.00586  
-# … with 190 more rows
+# ℹ 190 more rows
 ```
 
 ```r
@@ -207,7 +207,7 @@ aya %>% rename(count = n)
  8  1886 F     Ada     915 0.00595  
  9  1886 M     Ada       6 0.0000504
 10  1887 F     Ada     910 0.00586  
-# … with 190 more rows
+# ℹ 190 more rows
 ```
 
 </details>
@@ -236,7 +236,7 @@ aya %>% rename_at(vars(year:prop), toupper)
  8  1886 F     Ada     915 0.00595  
  9  1886 M     Ada       6 0.0000504
 10  1887 F     Ada     910 0.00586  
-# … with 190 more rows
+# ℹ 190 more rows
 ```
 
 </details>
@@ -522,7 +522,7 @@ all_info
  8 Jimmy  Page      Guitar     Led … <NA>  <NA>     NA <NA> 
  9 Joe    Perry     Guitar     <NA>  <NA>  <NA>     NA <NA> 
 10 Elvis  Presley   Vocals     <NA>  <NA>  <NA>     NA <NA> 
-# … with 20 more rows
+# ℹ 20 more rows
 ```
 
 </details>

@@ -7,7 +7,7 @@
 <title>Chapter 15 Class Activity 9 | Stat 220 Introduction to Data Science</title>
 <meta name="author" content="Deepak Bastola">
 <meta name="description" content="# load the necessary libraries library(tidyverse)  15.1 Your Turn 1  15.1.1 a) read_csv() Use read_csv() to import the desserts data set from...">
-<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 15 Class Activity 9 | Stat 220 Introduction to Data Science">
 <meta property="og:type" content="book">
 <meta property="og:description" content="# load the necessary libraries library(tidyverse)  15.1 Your Turn 1  15.1.1 a) read_csv() Use read_csv() to import the desserts data set from...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="# load the necessary libraries library(tidyverse)  15.1 Your Turn 1  15.1.1 a) read_csv() Use read_csv() to import the desserts data set from...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!--
     <script>
@@ -43,7 +43,8 @@
     });
     </script>
 
-    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -185,7 +186,7 @@ Click for answer
  8     7     6 date in ISO8601 17 August 2010 ""   
  9     8     6 date in ISO8601 17 August 2010 ""   
 10     9     4 a number        N/A            ""   
-# … with 546 more rows</code></pre>
+# ℹ 546 more rows</code></pre>
 </details>
 </div>
 <div id="c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any." class="section level3" number="15.1.3">
@@ -216,7 +217,7 @@ Click for answer
  8     7     6 date in ISO8601 17 August 2010 ""   
  9     8     6 date in ISO8601 17 August 2010 ""   
 10     9     4 a number        N/A            ""   
-# … with 546 more rows</code></pre>
+# ℹ 546 more rows</code></pre>
 <div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">url</span>,</span>
 <span>    col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
@@ -247,7 +248,7 @@ Click for answer
 <span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">desserts</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 0 × 5
-# … with 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
 #   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
 </details>
 </div>
@@ -274,7 +275,7 @@ Click for answer
 <code class="sourceCode R"><span><span class="va">simple1</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/simple-1.dat"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">simple1</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 0 × 5
-# … with 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
 #   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
 </details>
 </div>
@@ -288,7 +289,7 @@ Click for answer
 <code class="sourceCode R"><span><span class="va">mild1</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/mild-1.csv"</span>, delim <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">mild1</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 0 × 5
-# … with 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
 #   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
 </details>
 </div>
@@ -322,7 +323,7 @@ Click for answer
 <code class="sourceCode R"><span><span class="va">tricky2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/tricky-2.csv"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">tricky2</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 0 × 5
-# … with 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
 #   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
 <div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Fix missing values</span></span>
@@ -381,7 +382,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-06-01.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-09-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

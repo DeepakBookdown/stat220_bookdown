@@ -119,7 +119,7 @@ babynames %>% filter(name == "Rose")
  8  1884 M     Rose      5 0.0000407
  9  1885 F     Rose   1164 0.00820  
 10  1885 M     Rose      9 0.0000776
-# … with 237 more rows
+# ℹ 237 more rows
 ```
 
 </details>
@@ -149,7 +149,7 @@ babynames %>% filter(name == "John", sex == "M")
  8  1887 M     John   8110 0.0742
  9  1888 M     John   9247 0.0712
 10  1889 M     John   8548 0.0718
-# … with 128 more rows
+# ℹ 128 more rows
 ```
 
 
@@ -181,7 +181,7 @@ babynames %>% arrange(desc(prop))
  8  1882 M     William  9298 0.0762
  9  1886 M     John     9026 0.0758
 10  1885 M     John     8756 0.0755
-# … with 1,924,655 more rows
+# ℹ 1,924,655 more rows
 ```
 
 </details>
@@ -211,7 +211,7 @@ babynames %>% arrange(year, desc(prop))
  8  1880 F     Anna     2604 0.0267
  9  1880 M     Joseph   2632 0.0222
 10  1880 M     Thomas   2534 0.0214
-# … with 1,924,655 more rows
+# ℹ 1,924,655 more rows
 ```
 
 
@@ -245,7 +245,7 @@ babynames %>% mutate(decade = (year %/% 10) * 10)
  8  1880 F     Alice      1414 0.0145   1880
  9  1880 F     Bertha     1320 0.0135   1880
 10  1880 F     Sarah      1288 0.0132   1880
-# … with 1,924,655 more rows
+# ℹ 1,924,655 more rows
 ```
 
 
@@ -284,7 +284,7 @@ babynames %>%
  8  1887 M     Dee      39 0.000357
  9  1888 M     Dee      35 0.000269
 10  1889 M     Dee      24 0.000202
-# … with 126 more rows
+# ℹ 126 more rows
 ```
 
 ```r
@@ -362,7 +362,7 @@ babynames %>% mutate(rank = min_rank(desc(prop))) %>% arrange(rank)
  8  1882 M     William  9298 0.0762     8
  9  1886 M     John     9026 0.0758     9
 10  1885 M     John     8756 0.0755    10
-# … with 1,924,655 more rows
+# ℹ 1,924,655 more rows
 ```
 
 </details>
@@ -394,7 +394,7 @@ babynames %>% group_by(year, sex) %>% mutate(rank = min_rank(desc(prop)))
  8  1880 F     Alice      1414 0.0145     8
  9  1880 F     Bertha     1320 0.0135     9
 10  1880 F     Sarah      1288 0.0132    10
-# … with 1,924,655 more rows
+# ℹ 1,924,655 more rows
 ```
 
 </details>
@@ -430,7 +430,7 @@ babynames %>%
  8 Elizabeth F      10  
  9 Joseph    M      10  
 10 Thomas    M      11  
-# … with 107,963 more rows
+# ℹ 107,963 more rows
 ```
 
 

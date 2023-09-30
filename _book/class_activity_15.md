@@ -186,24 +186,24 @@ qdf
 
 ```
 # A tibble: 9 × 82
-  100_Neva…¹ 104_M…² 106_W…³ Allen…⁴ Alumn…⁵ Arbor…⁶ Art_S…⁷
-       <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-1     0.0972    1.04   0.601   0.756    17.0    0.13    0.23
-2     0.120     1.11   0.632   0.781    18.1    0.23    0.28
-3     0.183     1.18   0.673   0.941    18.4    0.25    0.33
-4     0.461     1.18   0.681   0.983    20.3    0.28    0.4 
-5     0.710     1.42   0.692   1.00     21.0    0.32    0.47
-6     0.795     1.42   0.865   1.01     21.8    0.38    0.57
-7     0.915     1.54   1.10    1.07     21.9    0.44    0.73
-8     1.11      1.56   1.20    1.07     22      0.52    0.88
-9     1.24      1.67   1.27    1.25     22.5    0.71    1.09
-# … with 75 more variables: Benton_House <dbl>,
-#   Berg_House <dbl>, Bird_House <dbl>,
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# ℹ 79 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
 #   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
 #   `Cassat_Hall_/_James_Hall` <dbl>,
-#   `Center_for_Mathematics_&_Computing` <dbl>,
-#   Chaney_House <dbl>, Clader_House <dbl>,
-#   College_Warehouse <dbl>, Cowling_Gym <dbl>, …
+#   `Center_for_Mathematics_&_Computing` <dbl>, …
 ```
 
 </details>
@@ -225,24 +225,24 @@ qdf
 
 ```
 # A tibble: 9 × 83
-  100_Neva…¹ 104_M…² 106_W…³ Allen…⁴ Alumn…⁵ Arbor…⁶ Art_S…⁷
-       <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-1     0.0972    1.04   0.601   0.756    17.0    0.13    0.23
-2     0.120     1.11   0.632   0.781    18.1    0.23    0.28
-3     0.183     1.18   0.673   0.941    18.4    0.25    0.33
-4     0.461     1.18   0.681   0.983    20.3    0.28    0.4 
-5     0.710     1.42   0.692   1.00     21.0    0.32    0.47
-6     0.795     1.42   0.865   1.01     21.8    0.38    0.57
-7     0.915     1.54   1.10    1.07     21.9    0.44    0.73
-8     1.11      1.56   1.20    1.07     22      0.52    0.88
-9     1.24      1.67   1.27    1.25     22.5    0.71    1.09
-# … with 76 more variables: Benton_House <dbl>,
-#   Berg_House <dbl>, Bird_House <dbl>,
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# ℹ 80 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
 #   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
 #   `Cassat_Hall_/_James_Hall` <dbl>,
-#   `Center_for_Mathematics_&_Computing` <dbl>,
-#   Chaney_House <dbl>, Clader_House <dbl>,
-#   College_Warehouse <dbl>, Cowling_Gym <dbl>, …
+#   `Center_for_Mathematics_&_Computing` <dbl>, …
 ```
 
 </details>
@@ -278,7 +278,7 @@ qdf
  8 quantile_10 Benton_House                        1.59  
  9 quantile_10 Berg_House                          1.06  
 10 quantile_10 Bird_House                          1.42  
-# … with 728 more rows
+# ℹ 728 more rows
 ```
 
 </details>

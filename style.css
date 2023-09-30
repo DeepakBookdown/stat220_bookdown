@@ -20,7 +20,7 @@
 */
 
 body {
-  margin: 10rem;
+  margin: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: #28435D;
@@ -29,6 +29,19 @@ body {
   letter-spacing: 0.25px;
 }
 
+/* Smaller screens (e.g., mobile devices) */
+@media (max-width: 600px) { 
+  body {
+    margin: 1rem;  /* Reduced margin for smaller devices */
+  }
+}
+
+/* Larger screens (e.g., desktops) */
+@media (min-width: 1201px) {
+  body {
+    margin: 4rem;  /* Increased margin for larger screens */
+  }
+}
 
 
 /* Style for collapsible summary */
@@ -216,6 +229,11 @@ fade {
   opacity: 0.5; 
 }
 
+@media (max-width: 768px) { 
+  body {
+    margin: 2rem;
+  }
+}
 
 
 inline-c, remark-inline-code {

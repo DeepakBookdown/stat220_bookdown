@@ -7,7 +7,7 @@
 <title>Chapter 12 Class Activity 6 | Stat 220 Introduction to Data Science</title>
 <meta name="author" content="Deepak Bastola">
 <meta name="description" content="# load the necessary libraries library(dplyr) library(ggplot2) library(babynames) We will work with the babynames dataset again in this class activity. The header of the dataset looks like this:...">
-<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 12 Class Activity 6 | Stat 220 Introduction to Data Science">
 <meta property="og:type" content="book">
 <meta property="og:description" content="# load the necessary libraries library(dplyr) library(ggplot2) library(babynames) We will work with the babynames dataset again in this class activity. The header of the dataset looks like this:...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="# load the necessary libraries library(dplyr) library(ggplot2) library(babynames) We will work with the babynames dataset again in this class activity. The header of the dataset looks like this:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!--
     <script>
@@ -43,7 +43,8 @@
     });
     </script>
 
-    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -259,7 +260,7 @@ Click for answer
  8  1884 M     Rose      5 0.0000407
  9  1885 F     Rose   1164 0.00820  
 10  1885 M     Rose      9 0.0000776
-# … with 237 more rows</code></pre>
+# ℹ 237 more rows</code></pre>
 </details>
 </div>
 <div id="c.-use-filter-to-choose-all-rows-where-name-is-john-and-sex-is-m." class="section level3" number="12.2.3">
@@ -283,7 +284,7 @@ Click for answer
  8  1887 M     John   8110 0.0742
  9  1888 M     John   9247 0.0712
 10  1889 M     John   8548 0.0718
-# … with 128 more rows</code></pre>
+# ℹ 128 more rows</code></pre>
 </details>
 </div>
 </div>
@@ -312,7 +313,7 @@ Click for answer
  8  1882 M     William  9298 0.0762
  9  1886 M     John     9026 0.0758
 10  1885 M     John     8756 0.0755
-# … with 1,924,655 more rows</code></pre>
+# ℹ 1,924,655 more rows</code></pre>
 </details>
 </div>
 <div id="b.-use-arrange-to-sort-the-babynames-dataset-by-year-ascending-and-then-by-prop-descending." class="section level3" number="12.3.2">
@@ -336,7 +337,7 @@ Click for answer
  8  1880 F     Anna     2604 0.0267
  9  1880 M     Joseph   2632 0.0222
 10  1880 M     Thomas   2534 0.0214
-# … with 1,924,655 more rows</code></pre>
+# ℹ 1,924,655 more rows</code></pre>
 </details>
 </div>
 </div>
@@ -365,7 +366,7 @@ Click for answer
  8  1880 F     Alice      1414 0.0145   1880
  9  1880 F     Bertha     1320 0.0135   1880
 10  1880 F     Sarah      1288 0.0132   1880
-# … with 1,924,655 more rows</code></pre>
+# ℹ 1,924,655 more rows</code></pre>
 </details>
 </div>
 </div>
@@ -397,7 +398,7 @@ Click for answer
  8  1887 M     Dee      39 0.000357
  9  1888 M     Dee      35 0.000269
 10  1889 M     Dee      24 0.000202
-# … with 126 more rows</code></pre>
+# ℹ 126 more rows</code></pre>
 <div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">==</span> <span class="st">"Dee"</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">"M"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -458,7 +459,7 @@ Click for answer
  8  1882 M     William  9298 0.0762     8
  9  1886 M     John     9026 0.0758     9
 10  1885 M     John     8756 0.0755    10
-# … with 1,924,655 more rows</code></pre>
+# ℹ 1,924,655 more rows</code></pre>
 </details>
 </div>
 <div id="b.-compute-each-names-rank-within-its-year-and-sex." class="section level3" number="12.6.2">
@@ -483,7 +484,7 @@ Click for answer
  8  1880 F     Alice      1414 0.0145     8
  9  1880 F     Bertha     1320 0.0135     9
 10  1880 F     Sarah      1288 0.0132    10
-# … with 1,924,655 more rows</code></pre>
+# ℹ 1,924,655 more rows</code></pre>
 </details>
 </div>
 <div id="c.-then-compute-the-median-rank-for-each-combination-of-name-and-sex-and-arrange-the-results-from-highest-median-rank-to-lowest." class="section level3" number="12.6.3">
@@ -513,7 +514,7 @@ Click for answer
  8 Elizabeth F      10  
  9 Joseph    M      10  
 10 Thomas    M      11  
-# … with 107,963 more rows</code></pre>
+# ℹ 107,963 more rows</code></pre>
 </details>
 </div>
 </div>
@@ -567,7 +568,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-06-01.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-09-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

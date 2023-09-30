@@ -77,7 +77,7 @@ problems(desserts)
  8     7     6 date in ISO8601 17 August 2010 ""   
  9     8     6 date in ISO8601 17 August 2010 ""   
 10     9     4 a number        N/A            ""   
-# … with 546 more rows
+# ℹ 546 more rows
 ```
 
 </details>
@@ -114,7 +114,7 @@ problems(desserts)
  8     7     6 date in ISO8601 17 August 2010 ""   
  9     8     6 date in ISO8601 17 August 2010 ""   
 10     9     4 a number        N/A            ""   
-# … with 546 more rows
+# ℹ 546 more rows
 ```
 
 
@@ -161,7 +161,7 @@ problems(desserts)
 
 ```
 # A tibble: 0 × 5
-# … with 5 variables: row <int>, col <int>, expected <chr>,
+# ℹ 5 variables: row <int>, col <int>, expected <chr>,
 #   actual <chr>, file <chr>
 ```
 
@@ -196,7 +196,7 @@ problems(simple1)
 
 ```
 # A tibble: 0 × 5
-# … with 5 variables: row <int>, col <int>, expected <chr>,
+# ℹ 5 variables: row <int>, col <int>, expected <chr>,
 #   actual <chr>, file <chr>
 ```
 
@@ -215,7 +215,7 @@ problems(mild1)
 
 ```
 # A tibble: 0 × 5
-# … with 5 variables: row <int>, col <int>, expected <chr>,
+# ℹ 5 variables: row <int>, col <int>, expected <chr>,
 #   actual <chr>, file <chr>
 ```
 
@@ -262,7 +262,7 @@ problems(tricky2)
 
 ```
 # A tibble: 0 × 5
-# … with 5 variables: row <int>, col <int>, expected <chr>,
+# ℹ 5 variables: row <int>, col <int>, expected <chr>,
 #   actual <chr>, file <chr>
 ```
 

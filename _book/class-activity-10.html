@@ -7,7 +7,7 @@
 <title>Chapter 16 Class Activity 10 | Stat 220 Introduction to Data Science</title>
 <meta name="author" content="Deepak Bastola">
 <meta name="description" content='# load the necessary libraries library(tidyverse) library(tidyr)  16.1 Your Turn 1 students &lt;- tibble(  id = 1:24,  grade = sample(c("9th", "10th", "11th"), 24, replace = TRUE),  region =...'>
-<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 16 Class Activity 10 | Stat 220 Introduction to Data Science">
 <meta property="og:type" content="book">
 <meta property="og:description" content='# load the necessary libraries library(tidyverse) library(tidyr)  16.1 Your Turn 1 students &lt;- tibble(  id = 1:24,  grade = sample(c("9th", "10th", "11th"), 24, replace = TRUE),  region =...'>
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content='# load the necessary libraries library(tidyverse) library(tidyr)  16.1 Your Turn 1 students &lt;- tibble(  id = 1:24,  grade = sample(c("9th", "10th", "11th"), 24, replace = TRUE),  region =...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!--
     <script>
@@ -43,7 +43,8 @@
     });
     </script>
 
-    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -150,30 +151,30 @@ Click for answer
 <pre><code># A tibble: 24 × 5
       id grade region        score grade_fac
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;fct&gt;    
- 1     2 9th   Europe           99 9th      
- 2     3 9th   South America    57 9th      
- 3     6 9th   Europe           58 9th      
- 4     7 9th   North America    84 9th      
- 5     9 9th   Africa           59 9th      
- 6    17 9th   South America    96 9th      
- 7     1 10th  North America   100 10th     
- 8     4 10th  North America    86 10th     
- 9     5 10th  South America    68 10th     
-10     8 10th  Africa           66 10th     
-11    11 10th  Africa           71 10th     
-12    12 10th  Africa           61 10th     
-13    18 10th  Europe           79 10th     
-14    24 10th  North America    90 10th     
-15    10 11th  Asia             58 11th     
-16    13 11th  Africa           91 11th     
-17    14 11th  Africa           89 11th     
-18    15 11th  Asia             94 11th     
-19    16 11th  South America    92 11th     
-20    19 11th  North America    89 11th     
-21    20 11th  Middle East      80 11th     
-22    21 11th  North America    59 11th     
-23    22 11th  Africa           59 11th     
-24    23 11th  South America    52 11th     </code></pre>
+ 1     6 9th   Europe           98 9th      
+ 2     9 9th   Middle East      64 9th      
+ 3    11 9th   Europe           80 9th      
+ 4    12 9th   North America    63 9th      
+ 5    13 9th   South America    73 9th      
+ 6    19 9th   Asia             78 9th      
+ 7    20 9th   Middle East      79 9th      
+ 8    23 9th   Asia             62 9th      
+ 9    24 9th   South America    88 9th      
+10     2 10th  South America    66 10th     
+11     4 10th  Asia             75 10th     
+12     7 10th  Asia             72 10th     
+13     8 10th  Europe           85 10th     
+14    14 10th  Middle East      98 10th     
+15    15 10th  Asia             55 10th     
+16    16 10th  South America    71 10th     
+17    17 10th  Europe           99 10th     
+18     1 11th  North America    78 11th     
+19     3 11th  North America    94 11th     
+20     5 11th  South America    76 11th     
+21    10 11th  Europe           73 11th     
+22    18 11th  North America    53 11th     
+23    21 11th  South America    86 11th     
+24    22 11th  Middle East      97 11th     </code></pre>
 </details>
 </div>
 <div id="b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category." class="section level3" number="16.1.2">
@@ -195,9 +196,9 @@ Click for answer
 <pre><code># A tibble: 3 × 2
   region_collapsed     n
   &lt;fct&gt;            &lt;int&gt;
-1 EMEA                11
-2 Asia                 2
-3 Americas            11</code></pre>
+1 Asia                 5
+2 EMEA                 9
+3 Americas            10</code></pre>
 </details>
 </div>
 <div id="c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering." class="section level3" number="16.1.3">
@@ -213,7 +214,7 @@ Click for answer
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_infreq <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">grade_infreq</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">students_c</span><span class="op">$</span><span class="va">grade_infreq</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "11th" "10th" "9th" </code></pre>
+<pre><code>[1] "9th"  "10th" "11th"</code></pre>
 </details>
 </div>
 <div id="d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column." class="section level3" number="16.1.4">
@@ -231,8 +232,8 @@ Click for answer
 <pre><code># A tibble: 2 × 2
   grade_lumped     n
   &lt;fct&gt;        &lt;int&gt;
-1 11th            10
-2 Others          14</code></pre>
+1 9th              9
+2 Others          15</code></pre>
 </details>
 </div>
 </div>
@@ -257,8 +258,8 @@ Click for answer
  8  2000 Divorced       44 White $7000 … Ind,ne… Prot… Luth…
  9  2000 Married        44 White $25000… Not st… Prot… Other
 10  2000 Married        47 White $25000… Strong… Prot… Sout…
-# … with 21,473 more rows, and 1 more variable:
-#   tvhours &lt;int&gt;</code></pre>
+# ℹ 21,473 more rows
+# ℹ 1 more variable: tvhours &lt;int&gt;</code></pre>
 <p>Use <code>gss_cat</code> to answer the following questions.</p>
 <div id="a.-which-religions-watch-the-least-tv" class="section level3" number="16.2.1">
 <h3>
@@ -365,7 +366,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-06-01.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-09-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

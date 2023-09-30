@@ -7,7 +7,7 @@
 <title>Chapter 32 Class Activity 27 | Stat 220 Introduction to Data Science</title>
 <meta name="author" content="Deepak Bastola">
 <meta name="description" content="# load the necessary libraries library(tidyverse) library(parsnip) # tidy interface to models library(ggthemes) library(tidymodels) library(vip) library(readxl) theme_set(theme_stata(base_size =...">
-<meta name="generator" content="bookdown 0.33 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 32 Class Activity 27 | Stat 220 Introduction to Data Science">
 <meta property="og:type" content="book">
 <meta property="og:description" content="# load the necessary libraries library(tidyverse) library(parsnip) # tidy interface to models library(ggthemes) library(tidymodels) library(vip) library(readxl) theme_set(theme_stata(base_size =...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="# load the necessary libraries library(tidyverse) library(parsnip) # tidy interface to models library(ggthemes) library(tidymodels) library(vip) library(readxl) theme_set(theme_stata(base_size =...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!--
     <script>
@@ -43,7 +43,8 @@
     });
     </script>
 
-    --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -174,7 +175,7 @@ $ Label                     &lt;chr&gt; "Correct", "Incorrect", …</code></pre>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">314</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Split data into training and testing set</span></span>
-<span><span class="va">db_split</span> <span class="op">&lt;-</span> <span class="fu">initial_split</span><span class="op">(</span><span class="va">street_address</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span>, prop <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
+<span><span class="va">db_split</span> <span class="op">&lt;-</span> <span class="fu">initial_split</span><span class="op">(</span><span class="va">street_address</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span>, prop <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
 <span><span class="va">db_train</span> <span class="op">&lt;-</span> <span class="fu">training</span><span class="op">(</span><span class="va">db_split</span><span class="op">)</span></span>
 <span><span class="va">db_test</span> <span class="op">&lt;-</span> <span class="fu">testing</span><span class="op">(</span><span class="va">db_split</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -252,7 +253,7 @@ $ Label                     &lt;chr&gt; "Correct", "Incorrect", …</code></pre>
 <code class="sourceCode R"><span><span class="co"># Extract the fitted model and plot feature importance</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/koalaverse/vip/">vip</a></span><span class="op">)</span></span>
 <span><span class="va">rf_fit_parsnip</span> <span class="op">&lt;-</span> <span class="fu">extract_fit_parsnip</span><span class="op">(</span><span class="va">rf_fit</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/vip/man/vip.html">vip</a></span><span class="op">(</span><span class="va">rf_fit_parsnip</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://koalaverse.github.io/vip/reference/vip.html">vip</a></span><span class="op">(</span><span class="va">rf_fit_parsnip</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="class_activity_27_files/figure-html/unnamed-chunk-11-1.png" width="100%"></div>
 </div>
 <div id="making-predictions" class="section level3" number="32.2.6">
@@ -348,31 +349,29 @@ Prediction  Correct Incorrect
 <span><span class="va">new_address_features1</span> <span class="op">&lt;-</span> <span class="fu">extract_features</span><span class="op">(</span><span class="va">new_address1</span>, <span class="st">"505 6th St,  Northfield, MN, 55057"</span><span class="op">)</span></span>
 <span><span class="va">new_address_features1</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 14
-  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
-   &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
-1     34           6       1       1       0       0       1
-# … with 7 more variables: presence_of_street_name &lt;int&gt;,
-#   presence_of_city &lt;int&gt;, presence_of_state &lt;int&gt;,
-#   presence_of_zip_code &lt;int&gt;,
+  length number_of_words state_code zip_code
+   &lt;int&gt;           &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+1     34               6          1        1
+# ℹ 10 more variables: levenshtein_distance &lt;dbl&gt;,
+#   presence_of_apt_no &lt;dbl&gt;, presence_of_street_no &lt;int&gt;,
+#   presence_of_street_name &lt;int&gt;, presence_of_city &lt;int&gt;,
+#   presence_of_state &lt;int&gt;, presence_of_zip_code &lt;int&gt;,
 #   state_code_correctness &lt;dbl&gt;,
-#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;,
-#   and abbreviated variable names ¹​number_of_words,
-#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …</code></pre>
+#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;</code></pre>
 <div class="sourceCode" id="cb576"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_address2</span> <span class="op">&lt;-</span> <span class="st">"505 6th st E, Apt 1Z, Northfield, MN, 5557"</span></span>
 <span><span class="va">new_address_features2</span> <span class="op">&lt;-</span> <span class="fu">extract_features</span><span class="op">(</span><span class="va">new_address2</span>, <span class="st">"505 6th St,  Northfield, MN, 55057"</span><span class="op">)</span></span>
 <span><span class="va">new_address_features2</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 14
-  length number_of…¹ state…² zip_c…³ leven…⁴ prese…⁵ prese…⁶
-   &lt;int&gt;       &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
-1     42           9       0       1      11       0       1
-# … with 7 more variables: presence_of_street_name &lt;int&gt;,
-#   presence_of_city &lt;int&gt;, presence_of_state &lt;int&gt;,
-#   presence_of_zip_code &lt;int&gt;,
+  length number_of_words state_code zip_code
+   &lt;int&gt;           &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+1     42               9          0        1
+# ℹ 10 more variables: levenshtein_distance &lt;dbl&gt;,
+#   presence_of_apt_no &lt;dbl&gt;, presence_of_street_no &lt;int&gt;,
+#   presence_of_street_name &lt;int&gt;, presence_of_city &lt;int&gt;,
+#   presence_of_state &lt;int&gt;, presence_of_zip_code &lt;int&gt;,
 #   state_code_correctness &lt;dbl&gt;,
-#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;,
-#   and abbreviated variable names ¹​number_of_words,
-#   ²​state_code, ³​zip_code, ⁴​levenshtein_distance, …</code></pre>
+#   zip_code_correctness &lt;dbl&gt;, typo_in_street_name &lt;int&gt;</code></pre>
 <p>Now we have extracted the features from the new addresses, let’s use our trained Random Forest model to predict whether the address formatting is correct or not.</p>
 <div class="sourceCode" id="cb578"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict the class for the new data</span></span>
@@ -437,7 +436,7 @@ Prediction  Correct Incorrect
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-06-01.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2023-09-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
