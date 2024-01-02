@@ -1,10 +1,9 @@
-# (PART\*) Class Activities {-}
 
-# Class Activity 0
-
+# Github Tutorial
 
 
-```{r, eval=FALSE}
+
+```r
 # load the required libraries
 library(credentials) # to help with PAT access
 library(gitcreds)
@@ -92,7 +91,8 @@ This will create a new GitHub repository on your Github account. Follow further 
 3. Configure Git with your name and email address if you haven't already. Run the following commands in the R console, replacing "Your Name" and "youremail@example.com" with your information:
 </blockquote>
 
-```{r, eval=FALSE}
+
+```r
 usethis::use_git_config(user.name = "Your Name", user.email = "youremail@example.com")
 ```
 
@@ -108,20 +108,23 @@ usethis::use_git_config(user.name = "Your Name", user.email = "youremail@example
 
 6. In the R console, load the usethis package:
 
-```{r, eval=FALSE}
+
+```r
 library(usethis)
 ```
 
 7. Initialize a Git repository for your project by running:
 
-```{r, eval=FALSE}
+
+```r
 usethis::use_git()
 ```
 
 
 8. Now, let's create a new GitHub repository using the usethis::use_github() function. Run the following command:
 
-```{r, eval=FALSE}
+
+```r
 usethis::use_github()
 ```
 
