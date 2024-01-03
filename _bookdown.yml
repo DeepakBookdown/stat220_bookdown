@@ -12,8 +12,8 @@ rmd_files: [
   "software.Rmd",
   "github.Rmd",
   "rmarkdown.Rmd",
-  "github_tutorial.Rmd" 
-  # "class_activity_1.Rmd", 
+  "github_tutorial.Rmd",
+   "class_activity_1.Rmd"
   # "class_activity_2.Rmd",
   # "class_activity_3.Rmd",
   # "class_activity_4.Rmd",

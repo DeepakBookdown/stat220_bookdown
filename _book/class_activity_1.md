@@ -1,3 +1,5 @@
+# (PART\*) Class Activities {-}
+
 
 # Class Activity 1
 
@@ -125,7 +127,7 @@ ggplot(data=your_name_data, aes(x=year, y=prop)) +
 
 <img src="class_activity_1_files/figure-epub3/unnamed-chunk-6-1.png" width="100%" />
 
-4. Compare the popularity of your first name with a randomly chosen name from the dataset. Examine the generated plot and compare the popularity of your first name with the randomly chosen name. Consider the following points:
+4 (Optional). Compare the popularity of your first name with a randomly chosen name from the dataset. Examine the generated plot and compare the popularity of your first name with the randomly chosen name. Consider the following points:
 
 Are there differences in popularity trends between the two names? Is one name consistently more popular than the other, or do their popularity levels change over time? Are there any interesting patterns or trends in the data, such as periods of rapid increase or decrease in popularity?
 
