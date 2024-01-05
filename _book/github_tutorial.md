@@ -99,6 +99,7 @@ usethis::use_git_config(user.name = "Your Name", user.email = "youremail@example
 
 
 <blockquote>
+
 4. Create a new R project in RStudio by clicking on "File" > "New Project" > "New Directory" > "New Project." Give your project a name and choose a location on your computer to save it. Click "Create Project."
 
 5. Make a new file or copy and paste a .Rmd file that you want to have in your repo and save it to your requirement.
@@ -134,6 +135,7 @@ usethis::use_github()
 </blockquote>
 
 
+<!--
 
 ## (Optional) Tutorial 3: Creating a new GitHub repository using RStudio's Git terminal
 
@@ -174,6 +176,6 @@ git push -u origin main
 
 </blockquote>
 
-
+-->
 
 

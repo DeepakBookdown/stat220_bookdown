@@ -102,6 +102,8 @@ average_a1
 **Answer:** The average of the values in `a1` is 7.
 </details>
 
+<!--
+
 ## Extras (Optional)
 
 In this worksheet, you will learn how to use the `write_csv()` function from the `readr` package to save a data object from your R session to a file in your working directory.
@@ -185,4 +187,7 @@ write_csv(my_data, "example_data.csv")
 write_csv(students, "student_data.csv")
 ```
 </details>
+
+
+-->
 

@@ -159,7 +159,7 @@ Directions for both Windows & Mac here:
 
 We will use Slack for all course communication. [Sign up for our course
 Slack team
-here](https://join.slack.com/t/slack-eqx6534/shared_invite/zt-1rw47q6fp-pM9VWJLQ0obCGlGVgRvg2Q)!
+here](https://join.slack.com/t/datasciencewinter24/shared_invite/zt-2a2xv06eo-csIThOBrnJ_UY~jImBiUoQ)!
 You will need to create an account with a username, and log in to read
 and post. You can download a
 standalone Slack application to your

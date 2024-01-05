@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-01-02}
+\date{2024-01-04}
 
 \begin{document}
 \maketitle
@@ -693,7 +693,7 @@ Directions for both Windows \& Mac here:
 \hypertarget{slack}{%
 \section{Slack}\label{slack}}
 
-We will use Slack for all course communication. \href{https://join.slack.com/t/slack-eqx6534/shared_invite/zt-1rw47q6fp-pM9VWJLQ0obCGlGVgRvg2Q}{Sign up for our course
+We will use Slack for all course communication. \href{https://join.slack.com/t/datasciencewinter24/shared_invite/zt-2a2xv06eo-csIThOBrnJ_UY~jImBiUoQ}{Sign up for our course
 Slack team
 here}!
 You will need to create an account with a username, and log in to read
@@ -744,7 +744,7 @@ Everyone needs to connect Git and GitHub by doing the following:
   Register for account on GitHub (\url{https://github.com/}). I recommend
   using a username that incorporates your name (e.g., dbastola) and Carleton email address for your Github account.
 \item
-  If you haven't done so already, accept the invite to the class organization \href{https://github.com/DataScienceSpring23}{DataScienceSpring23}. This organization is where all course homework files and project repositories will live.
+  If you haven't done so already, accept the invite to the class organization \href{https://github.com/DataScienceWinter24}{DataScienceWinter24}. This organization is where all course homework files and project repositories will live.
 \item
   Setup options in Git by running the following code chunk in your
   console:
@@ -832,7 +832,7 @@ repository will contain assignment details (README, .Rmd).
 \def\labelenumi{\arabic{enumi}.}
 \item
   Go to our course GitHub organization page
-  (\href{https://github.com/DataScienceSpring23}{DataScienceSpring23}) and find your homework repo, such as \texttt{hw1-username} (where your username is attached).
+  (\href{https://github.com/DataScienceWinter24}{DataScienceWinter24}) and find your homework repo, such as \texttt{hw1-username} (where your username is attached).
 \item
   Enter the online assignment repository on GitHub. Click the green
   \textbf{``Code''} button. Most of you should just use the default setting
@@ -936,7 +936,7 @@ Collaborative Github assignments are pretty similar to individual assignments.
 \hypertarget{creating-a-grouppartner-assignment-repo-and-project}{%
 \subsection{Creating a group/partner assignment repo and project}\label{creating-a-grouppartner-assignment-repo-and-project}}
 
-Go to our course GitHub organization page(\href{https://github.com/DataScienceSpring23}{DataScienceSpring23}) and find the repo for your group, for example if your group name is ``team01'' the you might find the \texttt{mp1-team01} repo. Clone this repo to your computer/maize account using the same steps done for an individual assignment (see steps 2-3).
+Go to our course GitHub organization page(\href{https://github.com/DataScienceWinter24}{DataScienceWinter24}) and find the repo for your group, for example if your group name is ``team01'' the you might find the \texttt{mp1-team01} repo. Clone this repo to your computer/maize account using the same steps done for an individual assignment (see steps 2-3).
 
 \hypertarget{working-with-collaborative-repos}{%
 \subsubsection{Working with collaborative repos}\label{working-with-collaborative-repos}}
@@ -1319,70 +1319,6 @@ This will create a new GitHub repository on your Github account. Follow further 
   Follow the instructions in the R console, and your GitHub repository will be created. Note the repository URL, as you will need it in the next activity.
 \end{enumerate}
 
-\hypertarget{optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal}{%
-\section{(Optional) Tutorial 3: Creating a new GitHub repository using RStudio's Git terminal}\label{optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Create a new R project in RStudio by clicking on ``File'' \textgreater{} ``New Project'' \textgreater{} ``New Directory'' \textgreater{} ``New Project.'' Give your project a name and choose a location on your computer to save it. Click ``Create Project.''
-\item
-  Initialize a Git repository for your project. Click on the ``Terminal'' tab in the bottom right pane of RStudio and run the following command:
-\end{enumerate}
-
-\begin{verbatim}
-git init
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Configure Git with your name and email address if you haven't already. Run the following commands in the terminal, replacing ``Your Name'' and ``\href{mailto:youremail@example.com}{\nolinkurl{youremail@example.com}}'' with your information:
-\end{enumerate}
-
-\begin{verbatim}
-git config user.name "Your Name"
-git config user.email "youremail@example.com"
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  Commit your project files to the Git repository. Run the following commands in the terminal:
-\end{enumerate}
-
-\begin{verbatim}
-git add .
-git commit -m "Initial commit"
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\item
-  Go to your GitHub account, click on the ``+'' icon in the upper right corner, and select ``New repository.'' Give your repository a name (it's recommended to use the same name as your R project), and click ``Create repository.''
-\item
-  In the ``\ldots or push an existing repository from the command line'' section of your new GitHub repository, copy the commands under this section. It should look similar to the following (replace and with your GitHub username and repository name):
-\end{enumerate}
-
-\begin{verbatim}
-git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-git branch -M main
-git push -u origin main
-\end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{6}
-\tightlist
-\item
-  Paste the copied commands into the RStudio terminal and execute them. This will link your local Git repository to the remote GitHub repository and push your initial commit to the GitHub repository.
-\end{enumerate}
-
 \hypertarget{part-class-activities}{%
 \part*{Class Activities}\label{part-class-activities}}
 \addcontentsline{toc}{part}{Class Activities}
@@ -1715,6 +1651,144 @@ Click for answer
 \textbf{Answer:}
 
 R Markdown plays a crucial role in creating reproducible research documents by allowing you to combine text, code, and output (e.g., tables, figures) within a single document. This integration of narrative, data, and results makes it easier to document your data analysis process, ensuring that others can easily understand, reproduce, and build upon your work. R Markdown also supports various output formats (e.g., HTML, PDF, Word) to make it easy to share your research findings with others.
+
+\hypertarget{class-activity-2}{%
+\chapter{Class Activity 2}\label{class-activity-2}}
+
+Let's practice some common data assignments and manipulations in R.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Create a vector of all integers from 4 to 10, and save it as \texttt{a1}.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a1 }\OtherTok{\textless{}{-}} \DecValTok{4}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create a vector of \emph{even} integers from 4 to 10, and save it as \texttt{a2}.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a2 }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{by=}\DecValTok{2}\NormalTok{)}
+\NormalTok{a2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  4  6  8 10
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What do you get when you add \texttt{a1} to \texttt{a2}?
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a1\_plus\_a2 }\OtherTok{\textless{}{-}}\NormalTok{ a1 }\SpecialCharTok{+}\NormalTok{ a2}
+\NormalTok{a1\_plus\_a2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1]  8 11 14 17 12 15 18
+\end{verbatim}
+
+\textbf{Answer:} When you add \texttt{a1} to \texttt{a2}, you get a vector containing the element-wise sum: 8, 11, 14, 17, 12, 15, 18.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What does the command \texttt{sum(a1)} do?
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum\_a1 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(a1)}
+\NormalTok{sum\_a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 49
+\end{verbatim}
+
+\textbf{Answer:} The command \texttt{sum(a1)} calculates the sum of all elements in the vector \texttt{a1}. In this case, it returns 49.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  What does the command \texttt{length(a1)} do?
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{length\_a1 }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(a1)}
+\NormalTok{length\_a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 7
+\end{verbatim}
+
+\textbf{Answer:} The command \texttt{length(a1)} returns the number of elements in the vector \texttt{a1}. In this case, there are 7 elements.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Use the \texttt{sum} and \texttt{length} commands to calculate the average of the values in \texttt{a1}.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_a1 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(a1) }\SpecialCharTok{/} \FunctionTok{length}\NormalTok{(a1)}
+\NormalTok{average\_a1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 7
+\end{verbatim}
+
+\textbf{Answer:} The average of the values in \texttt{a1} is 7.
 
   \bibliography{book.bib,packages.bib}
 

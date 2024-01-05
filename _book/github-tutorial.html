@@ -79,6 +79,7 @@
 <li><a class="active" href="github-tutorial.html"><span class="header-section-number">6</span> Github Tutorial</a></li>
 <li class="book-part">Class Activities</li>
 <li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
 </ul>
 
         <div class="book-extra">
@@ -184,40 +185,49 @@
 <ol start="9" style="list-style-type: decimal">
 <li>Follow the instructions in the R console, and your GitHub repository will be created. Note the repository URL, as you will need it in the next activity.</li>
 </ol>
-</div>
-</div>
-<div id="optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal" class="section level2" number="6.3">
-<h2>
-<span class="header-section-number">6.3</span> (Optional) Tutorial 3: Creating a new GitHub repository using RStudio’s Git terminal<a class="anchor" aria-label="anchor" href="#optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal"><i class="fas fa-link"></i></a>
-</h2>
+<!--
+
+## (Optional) Tutorial 3: Creating a new GitHub repository using RStudio's Git terminal
+
 <blockquote>
-<ol style="list-style-type: decimal">
-<li><p>Create a new R project in RStudio by clicking on “File” &gt; “New Project” &gt; “New Directory” &gt; “New Project.” Give your project a name and choose a location on your computer to save it. Click “Create Project.”</p></li>
-<li><p>Initialize a Git repository for your project. Click on the “Terminal” tab in the bottom right pane of RStudio and run the following command:</p></li>
-</ol>
-<pre><code>git init</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Configure Git with your name and email address if you haven’t already. Run the following commands in the terminal, replacing “Your Name” and “<a href="mailto:youremail@example.com" class="email">youremail@example.com</a>” with your information:</li>
-</ol>
-<pre><code>git config user.name "Your Name"
-git config user.email "youremail@example.com"</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Commit your project files to the Git repository. Run the following commands in the terminal:</li>
-</ol>
-<pre><code>git add .
-git commit -m "Initial commit"</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li><p>Go to your GitHub account, click on the “+” icon in the upper right corner, and select “New repository.” Give your repository a name (it’s recommended to use the same name as your R project), and click “Create repository.”</p></li>
-<li><p>In the “…or push an existing repository from the command line” section of your new GitHub repository, copy the commands under this section. It should look similar to the following (replace <your-username> and <your-repo-name> with your GitHub username and repository name):</your-repo-name></your-username></p></li>
-</ol>
-<pre><code>git remote add origin https://github.com/&lt;your-username&gt;/&lt;your-repo-name&gt;.git
+1. Create a new R project in RStudio by clicking on "File" > "New Project" > "New Directory" > "New Project." Give your project a name and choose a location on your computer to save it. Click "Create Project."
+
+2. Initialize a Git repository for your project. Click on the "Terminal" tab in the bottom right pane of RStudio and run the following command:
+
+```
+git init
+```
+
+3. Configure Git with your name and email address if you haven't already. Run the following commands in the terminal, replacing "Your Name" and "youremail@example.com" with your information:
+
+```
+git config user.name "Your Name"
+git config user.email "youremail@example.com"
+```
+
+4. Commit your project files to the Git repository. Run the following commands in the terminal:
+
+```
+git add .
+git commit -m "Initial commit"
+```
+
+5. Go to your GitHub account, click on the "+" icon in the upper right corner, and select "New repository." Give your repository a name (it's recommended to use the same name as your R project), and click "Create repository."
+
+6. In the "…or push an existing repository from the command line" section of your new GitHub repository, copy the commands under this section. It should look similar to the following (replace <your-username> and <your-repo-name> with your GitHub username and repository name):
+
+```
+git remote add origin https://github.com/<your-username>/<your-repo-name>.git
 git branch -M main
-git push -u origin main</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li>Paste the copied commands into the RStudio terminal and execute them. This will link your local Git repository to the remote GitHub repository and push your initial commit to the GitHub repository.</li>
-</ol>
+git push -u origin main
+```
+
+7. Paste the copied commands into the RStudio terminal and execute them. This will link your local Git repository to the remote GitHub repository and push your initial commit to the GitHub repository.
+
 </blockquote>
 
+-->
+</div>
 </div>
 </div>
 
@@ -234,7 +244,6 @@ git push -u origin main</code></pre>
 <li>
 <a class="nav-link" href="#tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio"><span class="header-section-number">6.2</span> Tutorial 2: Creating a new GitHub repository using usethis R package (RStudio to Github) (Works ONLY on local RStudio)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#prerequisites"><span class="header-section-number">6.2.1</span> Prerequisites</a></li></ul>
 </li>
-<li><a class="nav-link" href="#optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal"><span class="header-section-number">6.3</span> (Optional) Tutorial 3: Creating a new GitHub repository using RStudio’s Git terminal</a></li>
 </ul>
 
       <div class="book-extra">
@@ -252,7 +261,7 @@ git push -u origin main</code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-02.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

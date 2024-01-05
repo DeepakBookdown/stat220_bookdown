@@ -49,7 +49,6 @@ github-tutorial
 tutorial-1-creating-and-cloning-a-repository-starting-from-github-to-rstudio
 tutorial-2-creating-a-new-github-repository-using-usethis-r-package-rstudio-to-github-works-only-on-local-rstudio
 prerequisites
-optional-tutorial-3-creating-a-new-github-repository-using-rstudios-git-terminal
 class-activity-1
 extras-optional
 part-1-setting-working-directory-and-loading-data
@@ -59,3 +58,4 @@ questions
 how-does-the-weight-of-a-car-wt-affect-its-miles-per-gallon-mpg-based-on-the-scatter-plot-you-created
 what-is-the-importance-of-setting-a-working-directory-in-r
 explain-the-role-of-r-markdown-in-creating-reproducible-research-documents.
+class-activity-2
