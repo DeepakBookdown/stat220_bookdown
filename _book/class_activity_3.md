@@ -234,6 +234,8 @@ dim(x.mat[1:2,1:2])
 
 - Using `my.list`, show three ways to write one command that gives the 3rd entry of variable `x` in data frame `myDf`
 
+<!--
+
 <details>
 <summary class="answer">Click for answer</summary>
 *Answer:*
@@ -273,8 +275,12 @@ my.list$myVec[3]
 ```
 </details>
 
+-->
 
 - What class of object does the command `my.list[3]` return?
+
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -291,7 +297,11 @@ class(my.list[3])
 ```
 </details>
 
+-->
+
 - What class of object does the command `my.list[[3]]` return?
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -308,7 +318,13 @@ class(my.list[[3]])
 ```
 </details>
 
-- What class of object does the command `unlist(my.list)` return? Why are all the entries `character`s?
+-->
+
+
+- What class of object does the command `unlist(my.list)` return? Why are all the entries `characters`?
+
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -325,4 +341,4 @@ class(unlist(my.list))
 ```
 </details>
 
-
+-->

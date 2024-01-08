@@ -59,3 +59,7 @@ how-does-the-weight-of-a-car-wt-affect-its-miles-per-gallon-mpg-based-on-the-sca
 what-is-the-importance-of-setting-a-working-directory-in-r
 explain-the-role-of-r-markdown-in-creating-reproducible-research-documents.
 class-activity-2
+class-activity-3
+question-1-data-types
+question-2-subsetting-and-coercion
+question-3-lists
