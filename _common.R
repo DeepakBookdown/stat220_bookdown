@@ -16,3 +16,4 @@ knitr::opts_chunk$set(collapse = FALSE,
 library(tidyverse) 
 library(GGally)
 library(ggthemes)
+library(evaluate)

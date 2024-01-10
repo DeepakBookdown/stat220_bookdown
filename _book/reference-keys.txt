@@ -63,3 +63,12 @@ class-activity-3
 question-1-data-types
 question-2-subsetting-and-coercion
 question-3-lists
+class-activity-4
+your-turn-1
+scatterplot
+bar-plot
+histogram
+boxplot
+faceting
+variable-transformation
+optional-lne-plot
