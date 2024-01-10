@@ -238,108 +238,53 @@ Click for answer
 <li>Using <code>my.list</code>, show three ways to write one command that gives the 3rd entry of variable <code>x</code> in data frame <code>myDf</code>
 </li>
 </ul>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-*Answer:*
-
-
-```r
-# code
-my.list[[1]][3]
-```
-
-```
-[1] 9
-```
-
-```r
-my.list[["myVec"]][3]
-```
-
-```
-[1] 9
-```
-
-```r
-my.list[1]$myVec[3]
-```
-
-```
-[1] 9
-```
-
-```r
-my.list$myVec[3]
-```
-
-```
-[1] 9
-```
-</details>
-
---><ul>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># code</span></span>
+<span><span class="va">my.list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>[1] 9</code></pre>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="st">"myVec"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>[1] 9</code></pre>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">$</span><span class="va">myVec</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>[1] 9</code></pre>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">$</span><span class="va">myVec</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>[1] 9</code></pre>
+</details><ul>
 <li>What class of object does the command <code>my.list[3]</code> return?</li>
 </ul>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-*Answer:*
-
-
-```r
-# code
-class(my.list[3])
-```
-
-```
-[1] "list"
-```
-</details>
-
---><ul>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># code</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">my.list</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "list"</code></pre>
+</details><ul>
 <li>What class of object does the command <code>my.list[[3]]</code> return?</li>
 </ul>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-*Answer:*
-
-
-```r
-# code
-class(my.list[[3]])
-```
-
-```
-[1] "character"
-```
-</details>
-
---><ul>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># code</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">my.list</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "character"</code></pre>
+</details><ul>
 <li>What class of object does the command <code>unlist(my.list)</code> return? Why are all the entries <code>characters</code>?</li>
 </ul>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-*Answer:*
-
-
-```r
-# code
-class(unlist(my.list))
-```
-
-```
-[1] "character"
-```
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># code</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">my.list</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "character"</code></pre>
 </details>
-
--->
 </div>
 </div>
   <div class="chapter-nav">
@@ -369,7 +314,7 @@ class(unlist(my.list))
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-09.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

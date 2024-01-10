@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-01-09}
+\date{2024-01-10}
 
 \begin{document}
 \maketitle
@@ -2079,11 +2079,71 @@ NULL
   Using \texttt{my.list}, show three ways to write one command that gives the 3rd entry of variable \texttt{x} in data frame \texttt{myDf}
 \end{itemize}
 
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\NormalTok{my.list[[}\DecValTok{1}\NormalTok{]][}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.list[[}\StringTok{"myVec"}\NormalTok{]][}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.list[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{$}\NormalTok{myVec[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.list}\SpecialCharTok{$}\NormalTok{myVec[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 9
+\end{verbatim}
+
 \begin{itemize}
 \tightlist
 \item
   What class of object does the command \texttt{my.list{[}3{]}} return?
 \end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{class}\NormalTok{(my.list[}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "list"
+\end{verbatim}
 
 \begin{itemize}
 \tightlist
@@ -2091,11 +2151,41 @@ NULL
   What class of object does the command \texttt{my.list{[}{[}3{]}{]}} return?
 \end{itemize}
 
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{class}\NormalTok{(my.list[[}\DecValTok{3}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
+
 \begin{itemize}
 \tightlist
 \item
   What class of object does the command \texttt{unlist(my.list)} return? Why are all the entries \texttt{characters}?
 \end{itemize}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# code}
+\FunctionTok{class}\NormalTok{(}\FunctionTok{unlist}\NormalTok{(my.list))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
 
 \hypertarget{class-activity-4}{%
 \chapter{Class Activity 4}\label{class-activity-4}}
