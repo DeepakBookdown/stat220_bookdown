@@ -125,7 +125,7 @@
 Click for answer
 </summary><p><em>Answer:</em> Changing colors using <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual()</a></code> allows for better distinction between categories and enhances the plot’s readability.</p>
 <div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">Y</span>, color <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">Y</span>, color <span class="op">=</span> <span class="va">Category</span>, group <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="st">"red"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"blue"</span>, <span class="st">"C"</span> <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">p</span></span></code></pre></div>
@@ -137,12 +137,30 @@ Click for answer
 Click for answer
 </summary><p><em>Answer:</em> Changing the shapes using scale_shape_manual() helps to distinguish between categories and improves the plot’s readability</p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">Y</span>, shape <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">Y</span>, shape <span class="op">=</span> <span class="va">Category</span>,  group <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_shape_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="fl">16</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="fl">17</span>, <span class="st">"C"</span> <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p</span></span></code></pre></div>
 <div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-4-1.png" width="100%"></div>
+</details><ol start="3" style="list-style-type: lower-alpha">
+<li>Try modifying the plot by combining color, shape, and theme customizations. Additionally, try using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> to add trend lines for each category. Pay attention to how each element affects the overall readability and interpretability of the plot.</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Base plot</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">Y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">Category</span>, shape <span class="op">=</span> <span class="va">Category</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Assign color and shape based on Category</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">Category</span>, color <span class="op">=</span> <span class="va">Category</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Add trend lines for each category</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_shape_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="fl">19</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="fl">8</span>, <span class="st">"C"</span> <span class="op">=</span> <span class="fl">24</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Customize shapes for categories</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Customize color palette</span></span>
+<span>  <span class="fu">ggthemes</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_tufte.html">theme_tufte</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Separate Trend Lines for Each Category"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-5-1.png" width="100%"></div>
 </details>
 </div>
 <div id="problem-2-us-maps" class="section level2" number="11.2">
@@ -150,7 +168,7 @@ Click for answer
 <span class="header-section-number">11.2</span> Problem 2: US maps<a class="anchor" aria-label="anchor" href="#problem-2-us-maps"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now, let’s learn about the effect of changing various coordinate systems in <code>ggplot2</code> using a map example from the <code>usmap</code> package. We will explore the different types of coordinate systems available in ggplot2 and how they can be applied to the map visualization.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("usmap")   #uncomment to install</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usmap.dev">usmap</a></span><span class="op">)</span></span></code></pre></div>
 <div id="a.-plot-a-simple-map-of-the-united-states-using-ggplot2-and-the-usmap-package." class="section level3" number="11.2.1">
@@ -160,10 +178,10 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/usmap/man/plot_usmap.html">plot_usmap</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-6-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-7-1.png" width="100%"></div>
 </details>
 </div>
 <div id="b.-apply-the-coord_flip-function-to-the-map-to-flip-the-x-and-y-axes." class="section level3" number="11.2.2">
@@ -173,10 +191,10 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us_flipped</span> <span class="op">&lt;-</span> <span class="va">us</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us_flipped</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-7-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-8-1.png" width="100%"></div>
 </details>
 </div>
 <div id="c.-apply-the-coord_polar-function-to-the-map-to-transform-the-plot-to-a-polar-coordinate-system" class="section level3" number="11.2.3">
@@ -186,10 +204,10 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us_polar</span> <span class="op">&lt;-</span> <span class="va">us</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us_polar</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-8-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-9-1.png" width="100%"></div>
 </details>
 </div>
 <div id="d.-apply-the-coord_quickmap-function-to-the-map-to-provide-an-approximation-for-a-map-projection." class="section level3" number="11.2.4">
@@ -199,10 +217,10 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us_quickmap</span> <span class="op">&lt;-</span> <span class="va">us</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us_quickmap</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-9-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-10-1.png" width="100%"></div>
 </details>
 </div>
 </div>
@@ -211,7 +229,7 @@ Click for answer
 <span class="header-section-number">11.3</span> Problem 3: Chloropeth map<a class="anchor" aria-label="anchor" href="#problem-3-chloropeth-map"><i class="fas fa-link"></i></a>
 </h2>
 <p>In today’s class we created <code>cloropleth</code> maps of states in the US based on ACS data.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span></span>
 <span><span class="va">ACS</span> <span class="op">&lt;-</span> <span class="va">ACS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/ACS.csv"</span><span class="op">)</span></span>
 <span><span class="va">ACS</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ACS</span>, <span class="op">!</span><span class="op">(</span><span class="va">region</span>  <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Alaska"</span>, <span class="st">"Hawaii"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># only 48+D.C.</span></span>
@@ -224,12 +242,12 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># map median income</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html">expand_limits</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">states</span><span class="op">$</span><span class="va">long</span>, y<span class="op">=</span><span class="va">states</span><span class="op">$</span><span class="va">lat</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Median Income"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-11-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-12-1.png" width="100%"></div>
 </details>
 </div>
 <div id="b-mapping-deviations-from-national-median-income" class="section level3" number="11.3.2">
@@ -240,12 +258,12 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># compare state income to national income</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span> <span class="op">-</span> <span class="fl">27000</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html">expand_limits</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">states</span><span class="op">$</span><span class="va">long</span>, y<span class="op">=</span><span class="va">states</span><span class="op">$</span><span class="va">lat</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Deviation from national median income"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-12-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-13-1.png" width="100%"></div>
 </details>
 </div>
 <div id="c-changing-numerically-scaled-color" class="section level3" number="11.3.3">
@@ -256,13 +274,13 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># change to a diverging color</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span> <span class="op">-</span> <span class="fl">27000</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html">expand_limits</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">states</span><span class="op">$</span><span class="va">long</span>, y<span class="op">=</span><span class="va">states</span><span class="op">$</span><span class="va">lat</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Deviation from national median income"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"div"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-13-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-14-1.png" width="100%"></div>
 </details>
 </div>
 <div id="d-fixing-a-midpoint-on-a-diverging-scale" class="section level3" number="11.3.4">
@@ -273,7 +291,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># change to a gradient fill color</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span> <span class="op">-</span> <span class="fl">27000</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
@@ -284,31 +302,67 @@ Click for answer
 <span>    high <span class="op">=</span> <span class="st">"maroon"</span>, <span class="co"># Set the high color to green</span></span>
 <span>    midpoint <span class="op">=</span> <span class="fl">0</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-14-1.png" width="100%"></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-15-1.png" width="100%"></div>
 </details>
 </div>
-</div>
-<div id="optional" class="section level2" number="11.4">
-<h2>
-<span class="header-section-number">11.4</span> (Optional)<a class="anchor" aria-label="anchor" href="#optional"><i class="fas fa-link"></i></a>
-</h2>
-<p>Let’s learn how to create a polar bar plot with custom colors.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  Category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, labels <span class="op">=</span> <span class="va">month.abb</span><span class="op">)</span>,</span>
-<span>  Value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">28</span>, <span class="fl">50</span>, <span class="fl">45</span>, <span class="fl">60</span>, <span class="fl">75</span>, <span class="fl">80</span>, <span class="fl">77</span>, <span class="fl">60</span>, <span class="fl">48</span>, <span class="fl">32</span>, <span class="fl">20</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<div id="e-polygon-map" class="section level3" number="11.3.5">
+<h3>
+<span class="header-section-number">11.3.5</span> (e) Polygon map<a class="anchor" aria-label="anchor" href="#e-polygon-map"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Merge income data with geographic information</span></span>
+<span><span class="va">income_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">states</span>, <span class="va">ACS</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"region"</span> <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Next, we will use this merged data to create a polygon map that focuses on the boundaries and shapes of each state, colored by median income.</p>
+<div id="understanding-mercator-projection" class="section level4" number="11.3.5.1">
+<h4>
+<span class="header-section-number">11.3.5.1</span> Understanding Mercator Projection<a class="anchor" aria-label="anchor" href="#understanding-mercator-projection"><i class="fas fa-link"></i></a>
+</h4>
+<p>The Mercator projection is a cylindrical map projection that was widely used for navigation charts because it represents lines of constant course, known as rhumb lines, as straight segments. However, this projection distorts the size of objects as the latitude increases from the Equator to the poles. For example, Greenland appears larger than Africa on a Mercator projection map, while in reality, Africa is about 14 times larger.</p>
+<p>For this task, you will create a polygon map to visualize the <code>MedianIncome</code> across different states using the Mercator projection. Pay attention to the shapes and sizes of states as depicted on the map.</p>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Category</span>, y <span class="op">=</span> <span class="va">Value</span>, fill <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set3"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Polar Bar Plot Example"</span>, x <span class="op">=</span> <span class="st">"Month"</span>, y <span class="op">=</span> <span class="st">"Value"</span><span class="op">)</span></span>
-<span><span class="va">p</span></span></code></pre></div>
-<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-16-1.png" width="100%"></div>
+</summary><div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">income_data</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="st">"+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"</span><span class="op">)</span>, datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Median Income"</span>, title <span class="op">=</span> <span class="st">"Median Income by State"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-17-1.png" width="100%"></div>
 </details>
+</div>
+</div>
+<div id="f-visualizing-relative-income-deviation-with-robinson-projection" class="section level3" number="11.3.6">
+<h3>
+<span class="header-section-number">11.3.6</span> (f) Visualizing Relative Income Deviation with Robinson Projection<a class="anchor" aria-label="anchor" href="#f-visualizing-relative-income-deviation-with-robinson-projection"><i class="fas fa-link"></i></a>
+</h3>
+<p>The Robinson projection is a map projection of a world map which shows the entire globe as if it were flat. It was specifically created in an attempt to find a good compromise to the problem of readily showing the whole globe as a flat image. The projection is neither equal-area nor conformal, abandoning both for a compromise. The Robinson projection is widely used for thematic and educational maps due to its visually pleasing representation of the Earth.</p>
+<p>For this task, you will visualize the relative income deviation across states using the Robinson projection. Consider how the projection’s compromise between size and shape affects the presentation of income data.</p>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate income deviation as a percentage</span></span>
+<span><span class="va">national_median</span> <span class="op">&lt;-</span> <span class="fl">27000</span></span>
+<span></span>
+<span><span class="co"># Merge the updated income data with geographic information</span></span>
+<span><span class="va">ACS</span><span class="op">$</span><span class="va">IncomeDeviationPercent</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="op">(</span><span class="va">ACS</span><span class="op">$</span><span class="va">MedianIncome</span> <span class="op">-</span> <span class="va">national_median</span><span class="op">)</span> <span class="op">/</span> <span class="va">national_median</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
+<span><span class="va">income_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">states</span>, <span class="va">ACS</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"region"</span> <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Define the CRS for Robinson projection</span></span>
+<span><span class="va">robinson_crs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="st">"+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot the income deviation using Robinson projection with geom_polygon</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">income_data</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">IncomeDeviationPercent</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="va">robinson_crs</span>, datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Income Deviation (%)"</span>, title <span class="op">=</span> <span class="st">"Income Deviation from National Median by State (%) (Robinson Projection)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Spectral"</span>, name <span class="op">=</span> <span class="st">"Deviation (%)"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-18-1.png" width="100%"></div>
+</details>
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -333,9 +387,10 @@ Click for answer
 <li><a class="nav-link" href="#b-mapping-deviations-from-national-median-income"><span class="header-section-number">11.3.2</span> (b) Mapping deviations from national median income</a></li>
 <li><a class="nav-link" href="#c-changing-numerically-scaled-color"><span class="header-section-number">11.3.3</span> (c) Changing numerically scaled color</a></li>
 <li><a class="nav-link" href="#d-fixing-a-midpoint-on-a-diverging-scale"><span class="header-section-number">11.3.4</span> (d) Fixing a midpoint on a diverging scale</a></li>
+<li><a class="nav-link" href="#e-polygon-map"><span class="header-section-number">11.3.5</span> (e) Polygon map</a></li>
+<li><a class="nav-link" href="#f-visualizing-relative-income-deviation-with-robinson-projection"><span class="header-section-number">11.3.6</span> (f) Visualizing Relative Income Deviation with Robinson Projection</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#optional"><span class="header-section-number">11.4</span> (Optional)</a></li>
 </ul>
 
       <div class="book-extra">

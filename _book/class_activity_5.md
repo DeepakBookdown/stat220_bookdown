@@ -41,7 +41,7 @@ a. Modify the scatter plot to use custom colors for each category using `scale_c
 
 
 ```r
-p <- ggplot(data, aes(x = X, y = Y, color = Category)) +
+p <- ggplot(data, aes(x = X, y = Y, color = Category, group = Category)) +
   geom_point(size = 3) +
   scale_color_manual(values = c("A" = "red", "B" = "blue", "C" = "green"))
 p
@@ -60,7 +60,7 @@ b. Modify the scatter plot to use custom shapes for each category using `scale_s
 
 
 ```r
-p <- ggplot(data, aes(x = X, y = Y, shape = Category)) +
+p <- ggplot(data, aes(x = X, y = Y, shape = Category,  group = Category)) +
   geom_point(size = 3) +
   scale_shape_manual(values = c("A" = 16, "B" = 17, "C" = 18))
 
@@ -68,6 +68,30 @@ p
 ```
 
 <img src="class_activity_5_files/figure-epub3/unnamed-chunk-4-1.png" width="100%" />
+
+</details>
+
+
+c. Try modifying the plot by combining color, shape, and theme customizations. Additionally, try using `geom_smooth()` to add trend lines for each category. Pay attention to how each element affects the overall readability and interpretability of the plot.
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+```r
+# Base plot
+p <- ggplot(data, aes(x = X, y = Y)) +
+  geom_point(aes(color = Category, shape = Category), size = 3) + # Assign color and shape based on Category
+  geom_smooth(aes(group = Category, color = Category), method = "lm", se = FALSE) + # Add trend lines for each category
+  scale_shape_manual(values = c("A" = 19, "B" = 8, "C" = 24)) + # Customize shapes for categories
+  scale_color_brewer(palette = "Dark2") + # Customize color palette
+  ggthemes::theme_tufte() + 
+  labs(title = "Separate Trend Lines for Each Category")
+
+p
+```
+
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-5-1.png" width="100%" />
 
 </details>
 
@@ -95,7 +119,7 @@ us <- plot_usmap()
 us
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-6-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
 
 </details>
 
@@ -111,7 +135,7 @@ us_flipped <- us + coord_flip()
 us_flipped
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-8-1.png" width="100%" />
 
 </details>
 
@@ -128,7 +152,7 @@ us_polar <- us + coord_polar()
 us_polar
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-8-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-9-1.png" width="100%" />
 
 </details>
 
@@ -144,7 +168,7 @@ us_quickmap <- us + coord_quickmap()
 us_quickmap
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-9-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-10-1.png" width="100%" />
 
 </details>
 
@@ -177,7 +201,7 @@ ggplot(data=ACS) + coord_map() +
   expand_limits(x=states$long, y=states$lat) + ggtitle("Median Income")
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-11-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-12-1.png" width="100%" />
 
 </details>
 
@@ -197,7 +221,7 @@ ggplot(data=ACS) + coord_map() +
   expand_limits(x=states$long, y=states$lat) + ggtitle("Deviation from national median income")
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-12-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-13-1.png" width="100%" />
 
 </details>
 
@@ -218,7 +242,7 @@ ggplot(data=ACS) + coord_map() +
   scale_fill_distiller(type = "div")
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-13-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-14-1.png" width="100%" />
 
 </details>
 
@@ -244,38 +268,83 @@ ggplot(data=ACS) + coord_map() +
   )
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-14-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-15-1.png" width="100%" />
 
 
 </details>
 
-## (Optional) 
 
-Let's learn how to create a polar bar plot with custom colors.
 
+### (e) Polygon map
 
 
 ```r
-data <- data.frame(
-  Category = factor(1:12, labels = month.abb),
-  Value = c(30, 28, 50, 45, 60, 75, 80, 77, 60, 48, 32, 20)
-)
+# Merge income data with geographic information
+income_data <- left_join(states, ACS, by = c("region" = "region"))
 ```
+
+
+Next, we will use this merged data to create a polygon map that focuses on the boundaries and shapes of each state, colored by median income.
+
+#### Understanding Mercator Projection
+
+The Mercator projection is a cylindrical map projection that was widely used for navigation charts because it represents lines of constant course, known as rhumb lines, as straight segments. However, this projection distorts the size of objects as the latitude increases from the Equator to the poles. For example, Greenland appears larger than Africa on a Mercator projection map, while in reality, Africa is about 14 times larger.
+
+For this task, you will create a polygon map to visualize the `MedianIncome` across different states using the Mercator projection. Pay attention to the shapes and sizes of states as depicted on the map.
 
 
 <details>
 <summary class="answer">Click for answer</summary>
 
+
 ```r
-p <- ggplot(data, aes(x = Category, y = Value, fill = Category)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar(theta = "y") +
-  scale_fill_brewer(palette = "Set3") +
-  labs(title = "Polar Bar Plot Example", x = "Month", y = "Value")
-p
+library(sf)
+
+ggplot(data = income_data) +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = MedianIncome), color = "white", size = 0.2) +
+  coord_sf(crs = st_crs("+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"), datum = NA) +
+  labs(fill = "Median Income", title = "Median Income by State") +
+  theme_minimal() +
+  scale_fill_viridis_c()
 ```
 
-<img src="class_activity_5_files/figure-epub3/unnamed-chunk-16-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-17-1.png" width="100%" />
+
+</details>
+
+### (f) Visualizing Relative Income Deviation with Robinson Projection
+
+The Robinson projection is a map projection of a world map which shows the entire globe as if it were flat. It was specifically created in an attempt to find a good compromise to the problem of readily showing the whole globe as a flat image. The projection is neither equal-area nor conformal, abandoning both for a compromise. The Robinson projection is widely used for thematic and educational maps due to its visually pleasing representation of the Earth.
+
+For this task, you will visualize the relative income deviation across states using the Robinson projection. Consider how the projection's compromise between size and shape affects the presentation of income data.
+
+<details>
+<summary class="answer">Click for answer</summary>
+
+
+```r
+# Calculate income deviation as a percentage
+national_median <- 27000
+
+# Merge the updated income data with geographic information
+ACS$IncomeDeviationPercent <- ((ACS$MedianIncome - national_median) / national_median) * 100
+income_data <- left_join(states, ACS, by = c("region" = "region"))
+
+# Define the CRS for Robinson projection
+robinson_crs <- st_crs("+proj=robin +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs")
+
+# Plot the income deviation using Robinson projection with geom_polygon
+ggplot(data = income_data) +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = IncomeDeviationPercent), color = "white", size = 0.2) +
+  coord_sf(crs = robinson_crs, datum = NA) +
+  labs(fill = "Income Deviation (%)", title = "Income Deviation from National Median by State (%) (Robinson Projection)") +
+  theme_minimal() +
+  scale_fill_distiller(palette = "Spectral", name = "Deviation (%)")
+```
+
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-18-1.png" width="100%" />
 
 
 </details>
+
+

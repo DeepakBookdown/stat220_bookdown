@@ -84,4 +84,6 @@ a-mapping-median-income
 b-mapping-deviations-from-national-median-income
 c-changing-numerically-scaled-color
 d-fixing-a-midpoint-on-a-diverging-scale
-optional
+e-polygon-map
+understanding-mercator-projection
+f-visualizing-relative-income-deviation-with-robinson-projection
