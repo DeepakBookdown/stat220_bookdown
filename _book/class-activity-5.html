@@ -7,7 +7,7 @@
 <title>Chapter 11 Class Activity 5 | Stat 220 Introduction to Data Science</title>
 <meta name="author" content="Deepak Bastola">
 <meta name="description" content="# Load the required libraries library(tidyverse) library(ggplot2) library(ggthemes)  11.1 Problem 1: Changing color and shape scales In this problem, you will learn about the effects of changing...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 11 Class Activity 5 | Stat 220 Introduction to Data Science">
 <meta property="og:type" content="book">
 <meta property="og:description" content="# Load the required libraries library(tidyverse) library(ggplot2) library(ggthemes)  11.1 Problem 1: Changing color and shape scales In this problem, you will learn about the effects of changing...">
@@ -16,9 +16,8 @@
 <meta name="twitter:description" content="# Load the required libraries library(tidyverse) library(ggplot2) library(ggthemes)  11.1 Problem 1: Changing color and shape scales In this problem, you will learn about the effects of changing...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<!--
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
     <script>
     document.addEventListener('DOMContentLoaded', function () {
       const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
@@ -77,38 +76,13 @@
 <li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
 <li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
 <li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
+<li><a class="" href="github-tutorial.html"><span class="header-section-number">6</span> Github Tutorial</a></li>
 <li class="book-part">Class Activities</li>
-<li><a class="" href="class-activity-0.html"><span class="header-section-number">6</span> Class Activity 0</a></li>
 <li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
 <li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
 <li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
 <li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
 <li><a class="active" href="class-activity-5.html"><span class="header-section-number">11</span> Class Activity 5</a></li>
-<li><a class="" href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></li>
-<li><a class="" href="class-activity-7.html"><span class="header-section-number">13</span> Class Activity 7</a></li>
-<li><a class="" href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></li>
-<li><a class="" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
-<li><a class="" href="class-activity-10.html"><span class="header-section-number">16</span> Class Activity 10</a></li>
-<li><a class="" href="class-activity-11.html"><span class="header-section-number">17</span> Class Activity 11</a></li>
-<li><a class="" href="class-activity-12.html"><span class="header-section-number">18</span> Class Activity 12</a></li>
-<li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
-<li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
-<li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
-<li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
-<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
-<li><a class="" href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></li>
-<li><a class="" href="class-activity-19.html"><span class="header-section-number">25</span> Class Activity 19</a></li>
-<li><a class="" href="class-activity-20.html"><span class="header-section-number">26</span> Class Activity 20</a></li>
-<li><a class="" href="class-activity-21.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
-<li><a class="" href="class-activity-22.html"><span class="header-section-number">28</span> Class Activity 22</a></li>
-<li><a class="" href="class-activity-23.html"><span class="header-section-number">29</span> Class Activity 23</a></li>
-<li><a class="" href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></li>
-<li><a class="" href="class-activity-25.html"><span class="header-section-number">31</span> Class Activity 25</a></li>
-<li><a class="" href="class-activity-27.html"><span class="header-section-number">32</span> Class Activity 27</a></li>
-<li class="book-part">Extra Materials</li>
-<li><a class="" href="helpful-r-codes.html"><span class="header-section-number">33</span> Helpful R codes</a></li>
-<li><a class="" href="graph-formatting.html"><span class="header-section-number">34</span> Graph Formatting</a></li>
-<li><a class="" href="table-formatting.html"><span class="header-section-number">35</span> Table Formatting</a></li>
 </ul>
 
         <div class="book-extra">
@@ -120,7 +94,7 @@
 <h1>
 <span class="header-section-number">11</span> Class Activity 5<a class="anchor" aria-label="anchor" href="#class-activity-5"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the required libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
@@ -130,7 +104,7 @@
 <span class="header-section-number">11.1</span> Problem 1: Changing color and shape scales<a class="anchor" aria-label="anchor" href="#problem-1-changing-color-and-shape-scales"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this problem, you will learn about the effects of changing colors, scales, and shapes in <code>ggplot2</code> for both gradient and discrete color choices. You will be given a series of questions and examples to enhance your understanding. Consider the following scatter plot</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Generate sample data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
@@ -150,7 +124,7 @@
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em> Changing colors using <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual()</a></code> allows for better distinction between categories and enhances the plot’s readability.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">Y</span>, color <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="st">"red"</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="st">"blue"</span>, <span class="st">"C"</span> <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span><span class="op">)</span></span>
@@ -162,7 +136,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em> Changing the shapes using scale_shape_manual() helps to distinguish between categories and improves the plot’s readability</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">Y</span>, shape <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_shape_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="fl">16</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="fl">17</span>, <span class="st">"C"</span> <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span></span>
@@ -176,7 +150,7 @@ Click for answer
 <span class="header-section-number">11.2</span> Problem 2: US maps<a class="anchor" aria-label="anchor" href="#problem-2-us-maps"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now, let’s learn about the effect of changing various coordinate systems in <code>ggplot2</code> using a map example from the <code>usmap</code> package. We will explore the different types of coordinate systems available in ggplot2 and how they can be applied to the map visualization.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("usmap")   #uncomment to install</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usmap.dev">usmap</a></span><span class="op">)</span></span></code></pre></div>
 <div id="a.-plot-a-simple-map-of-the-united-states-using-ggplot2-and-the-usmap-package." class="section level3" number="11.2.1">
@@ -186,7 +160,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/usmap/man/plot_usmap.html">plot_usmap</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us</span></span></code></pre></div>
 <div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-6-1.png" width="100%"></div>
@@ -199,7 +173,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us_flipped</span> <span class="op">&lt;-</span> <span class="va">us</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us_flipped</span></span></code></pre></div>
 <div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-7-1.png" width="100%"></div>
@@ -212,7 +186,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us_polar</span> <span class="op">&lt;-</span> <span class="va">us</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us_polar</span></span></code></pre></div>
 <div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-8-1.png" width="100%"></div>
@@ -225,7 +199,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">us_quickmap</span> <span class="op">&lt;-</span> <span class="va">us</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">us_quickmap</span></span></code></pre></div>
 <div class="inline-figure"><img src="class_activity_5_files/figure-html/unnamed-chunk-9-1.png" width="100%"></div>
@@ -237,7 +211,7 @@ Click for answer
 <span class="header-section-number">11.3</span> Problem 3: Chloropeth map<a class="anchor" aria-label="anchor" href="#problem-3-chloropeth-map"><i class="fas fa-link"></i></a>
 </h2>
 <p>In today’s class we created <code>cloropleth</code> maps of states in the US based on ACS data.</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">states</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span></span>
 <span><span class="va">ACS</span> <span class="op">&lt;-</span> <span class="va">ACS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/ACS.csv"</span><span class="op">)</span></span>
 <span><span class="va">ACS</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ACS</span>, <span class="op">!</span><span class="op">(</span><span class="va">region</span>  <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Alaska"</span>, <span class="st">"Hawaii"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># only 48+D.C.</span></span>
@@ -250,7 +224,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># map median income</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
@@ -266,7 +240,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># compare state income to national income</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span> <span class="op">-</span> <span class="fl">27000</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
@@ -282,7 +256,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># change to a diverging color</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span> <span class="op">-</span> <span class="fl">27000</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
@@ -299,7 +273,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># change to a gradient fill color</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">ACS</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_map.html">geom_map</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>map_id <span class="op">=</span> <span class="va">region</span>, fill <span class="op">=</span> <span class="va">MedianIncome</span> <span class="op">-</span> <span class="fl">27000</span><span class="op">)</span>, map <span class="op">=</span> <span class="va">states</span><span class="op">)</span> <span class="op">+</span></span>
@@ -319,14 +293,14 @@ Click for answer
 <span class="header-section-number">11.4</span> (Optional)<a class="anchor" aria-label="anchor" href="#optional"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s learn how to create a polar bar plot with custom colors.</p>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  Category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, labels <span class="op">=</span> <span class="va">month.abb</span><span class="op">)</span>,</span>
 <span>  Value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">28</span>, <span class="fl">50</span>, <span class="fl">45</span>, <span class="fl">60</span>, <span class="fl">75</span>, <span class="fl">80</span>, <span class="fl">77</span>, <span class="fl">60</span>, <span class="fl">48</span>, <span class="fl">32</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Category</span>, y <span class="op">=</span> <span class="va">Value</span>, fill <span class="op">=</span> <span class="va">Category</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -339,7 +313,7 @@ Click for answer
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></div>
-<div class="next"><a href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -379,7 +353,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-02.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

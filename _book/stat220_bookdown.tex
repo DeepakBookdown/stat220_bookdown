@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-01-10}
+\date{2024-01-11}
 
 \begin{document}
 \maketitle
@@ -2501,6 +2501,294 @@ Click for answer
 \end{Shaded}
 
 \includegraphics[width=1\linewidth]{class_activity_4_files/figure-latex/unnamed-chunk-15-1}
+
+\hypertarget{class-activity-5}{%
+\chapter{Class Activity 5}\label{class-activity-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the required libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{problem-1-changing-color-and-shape-scales}{%
+\section{Problem 1: Changing color and shape scales}\label{problem-1-changing-color-and-shape-scales}}
+
+In this problem, you will learn about the effects of changing colors, scales, and shapes in \texttt{ggplot2} for both gradient and discrete color choices. You will be given a series of questions and examples to enhance your understanding. Consider the following scatter plot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate sample data}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Category =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{50}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{)),}
+  \AttributeTok{X =} \DecValTok{10} \SpecialCharTok{\^{}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{2}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{),}
+  \AttributeTok{Y =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ X, }\AttributeTok{y =}\NormalTok{ Y, }\AttributeTok{color =}\NormalTok{ Category)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{)}
+
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-2-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Modify the scatter plot to use custom colors for each category using \texttt{scale\_color\_manual()}. What is the effect of changing the colors on the plot's readability?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Changing colors using \texttt{scale\_color\_manual()} allows for better distinction between categories and enhances the plot's readability.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ X, }\AttributeTok{y =}\NormalTok{ Y, }\AttributeTok{color =}\NormalTok{ Category)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"B"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"C"} \OtherTok{=} \StringTok{"green"}\NormalTok{))}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-3-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Modify the scatter plot to use custom shapes for each category using \texttt{scale\_shape\_manual()}. What is the effect of changing the shapes on the plot's readability?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Changing the shapes using scale\_shape\_manual() helps to distinguish between categories and improves the plot's readability
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ X, }\AttributeTok{y =}\NormalTok{ Y, }\AttributeTok{shape =}\NormalTok{ Category)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_shape\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"} \OtherTok{=} \DecValTok{16}\NormalTok{, }\StringTok{"B"} \OtherTok{=} \DecValTok{17}\NormalTok{, }\StringTok{"C"} \OtherTok{=} \DecValTok{18}\NormalTok{))}
+
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-4-1}
+
+\hypertarget{problem-2-us-maps}{%
+\section{Problem 2: US maps}\label{problem-2-us-maps}}
+
+Now, let's learn about the effect of changing various coordinate systems in \texttt{ggplot2} using a map example from the \texttt{usmap} package. We will explore the different types of coordinate systems available in ggplot2 and how they can be applied to the map visualization.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("usmap")   \#uncomment to install}
+\FunctionTok{library}\NormalTok{(usmap)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{a.-plot-a-simple-map-of-the-united-states-using-ggplot2-and-the-usmap-package.}{%
+\subsection{\texorpdfstring{a. Plot a simple map of the United States using \texttt{ggplot2} and the \texttt{usmap} package.}{a. Plot a simple map of the United States using ggplot2 and the usmap package.}}\label{a.-plot-a-simple-map-of-the-united-states-using-ggplot2-and-the-usmap-package.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{us }\OtherTok{\textless{}{-}} \FunctionTok{plot\_usmap}\NormalTok{()}
+\NormalTok{us}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-6-1}
+
+\hypertarget{b.-apply-the-coord_flip-function-to-the-map-to-flip-the-x-and-y-axes.}{%
+\subsection{\texorpdfstring{b. Apply the \texttt{coord\_flip()} function to the map to flip the x and y axes.}{b. Apply the coord\_flip() function to the map to flip the x and y axes.}}\label{b.-apply-the-coord_flip-function-to-the-map-to-flip-the-x-and-y-axes.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{us\_flipped }\OtherTok{\textless{}{-}}\NormalTok{ us }\SpecialCharTok{+} \FunctionTok{coord\_flip}\NormalTok{()}
+\NormalTok{us\_flipped}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-7-1}
+
+\hypertarget{c.-apply-the-coord_polar-function-to-the-map-to-transform-the-plot-to-a-polar-coordinate-system}{%
+\subsection{\texorpdfstring{c.~Apply the \texttt{coord\_polar()} function to the map to transform the plot to a polar coordinate system}{c.~Apply the coord\_polar() function to the map to transform the plot to a polar coordinate system}}\label{c.-apply-the-coord_polar-function-to-the-map-to-transform-the-plot-to-a-polar-coordinate-system}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{us\_polar }\OtherTok{\textless{}{-}}\NormalTok{ us }\SpecialCharTok{+} \FunctionTok{coord\_polar}\NormalTok{()}
+\NormalTok{us\_polar}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-8-1}
+
+\hypertarget{d.-apply-the-coord_quickmap-function-to-the-map-to-provide-an-approximation-for-a-map-projection.}{%
+\subsection{\texorpdfstring{d.~Apply the \texttt{coord\_quickmap()} function to the map to provide an approximation for a map projection.}{d.~Apply the coord\_quickmap() function to the map to provide an approximation for a map projection.}}\label{d.-apply-the-coord_quickmap-function-to-the-map-to-provide-an-approximation-for-a-map-projection.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{us\_quickmap }\OtherTok{\textless{}{-}}\NormalTok{ us }\SpecialCharTok{+} \FunctionTok{coord\_quickmap}\NormalTok{()}
+\NormalTok{us\_quickmap}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-9-1}
+
+\hypertarget{problem-3-chloropeth-map}{%
+\section{Problem 3: Chloropeth map}\label{problem-3-chloropeth-map}}
+
+In today's class we created \texttt{cloropleth} maps of states in the US based on ACS data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{states }\OtherTok{\textless{}{-}} \FunctionTok{map\_data}\NormalTok{(}\StringTok{"state"}\NormalTok{)}
+\NormalTok{ACS }\OtherTok{\textless{}{-}}\NormalTok{ ACS }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/deepbas/statdatasets/main/ACS.csv"}\NormalTok{)}
+\NormalTok{ACS }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(ACS, }\SpecialCharTok{!}\NormalTok{(region  }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Alaska"}\NormalTok{, }\StringTok{"Hawaii"}\NormalTok{))) }\CommentTok{\# only 48+D.C.}
+\NormalTok{ACS}\SpecialCharTok{$}\NormalTok{region }\OtherTok{\textless{}{-}} \FunctionTok{tolower}\NormalTok{(ACS}\SpecialCharTok{$}\NormalTok{region)  }\CommentTok{\# lower case (match states regions)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{a-mapping-median-income}{%
+\subsection{(a) Mapping median income}\label{a-mapping-median-income}}
+
+Create a \texttt{cloropleth} plot that uses color to create a \texttt{MedianIncome} map of the US.
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# map median income}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{ACS) }\SpecialCharTok{+} \FunctionTok{coord\_map}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_map}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{map\_id =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ MedianIncome), }\AttributeTok{map =}\NormalTok{ states) }\SpecialCharTok{+}
+  \FunctionTok{expand\_limits}\NormalTok{(}\AttributeTok{x=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{long, }\AttributeTok{y=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{lat) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Median Income"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-11-1}
+
+\hypertarget{b-mapping-deviations-from-national-median-income}{%
+\subsection{(b) Mapping deviations from national median income}\label{b-mapping-deviations-from-national-median-income}}
+
+The median income in the US in 2016 was estimated to be \$27,000. Redraw your map in (a) to visualize each state's deviation from national median income.
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# compare state income to national income}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{ACS) }\SpecialCharTok{+} \FunctionTok{coord\_map}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_map}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{map\_id =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ MedianIncome }\SpecialCharTok{{-}} \DecValTok{27000}\NormalTok{), }\AttributeTok{map =}\NormalTok{ states) }\SpecialCharTok{+}
+  \FunctionTok{expand\_limits}\NormalTok{(}\AttributeTok{x=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{long, }\AttributeTok{y=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{lat) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Deviation from national median income"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-12-1}
+
+\hypertarget{c-changing-numerically-scaled-color}{%
+\subsection{(c) Changing numerically scaled color}\label{c-changing-numerically-scaled-color}}
+
+You should use a \emph{diverging} color for (b) to highlight larger deviations from the national median. Add \texttt{scale\_fill\_distiller} to the map from (b) and select a diverging palette.
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# change to a diverging color}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{ACS) }\SpecialCharTok{+} \FunctionTok{coord\_map}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_map}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{map\_id =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ MedianIncome }\SpecialCharTok{{-}} \DecValTok{27000}\NormalTok{), }\AttributeTok{map =}\NormalTok{ states) }\SpecialCharTok{+}
+  \FunctionTok{expand\_limits}\NormalTok{(}\AttributeTok{x=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{long, }\AttributeTok{y=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{lat) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Deviation from national median income"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_distiller}\NormalTok{(}\AttributeTok{type =} \StringTok{"div"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-13-1}
+
+\hypertarget{d-fixing-a-midpoint-on-a-diverging-scale}{%
+\subsection{(d) Fixing a midpoint on a diverging scale}\label{d-fixing-a-midpoint-on-a-diverging-scale}}
+
+Use \texttt{scale\_fill\_gradient2} to fix a midpoint scale value at white color, with diverging colors for larger positive and negative values. Apply these colors to your map in (b) and fix the \texttt{midpoint} at an appropriate value.
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# change to a gradient fill color}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{ACS) }\SpecialCharTok{+} \FunctionTok{coord\_map}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_map}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{map\_id =}\NormalTok{ region, }\AttributeTok{fill =}\NormalTok{ MedianIncome }\SpecialCharTok{{-}} \DecValTok{27000}\NormalTok{), }\AttributeTok{map =}\NormalTok{ states) }\SpecialCharTok{+}
+  \FunctionTok{expand\_limits}\NormalTok{(}\AttributeTok{x=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{long, }\AttributeTok{y=}\NormalTok{states}\SpecialCharTok{$}\NormalTok{lat) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Deviation from national median income"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_gradient2}\NormalTok{(}
+    \AttributeTok{low =} \StringTok{"lightblue"}\NormalTok{,    }\CommentTok{\# Set the low color to red}
+    \AttributeTok{mid =} \StringTok{"white"}\NormalTok{, }\CommentTok{\# Set the mid color to yellow}
+    \AttributeTok{high =} \StringTok{"maroon"}\NormalTok{, }\CommentTok{\# Set the high color to green}
+    \AttributeTok{midpoint =} \DecValTok{0}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-14-1}
+
+\hypertarget{optional}{%
+\section{(Optional)}\label{optional}}
+
+Let's learn how to create a polar bar plot with custom colors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Category =} \FunctionTok{factor}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{labels =}\NormalTok{ month.abb),}
+  \AttributeTok{Value =} \FunctionTok{c}\NormalTok{(}\DecValTok{30}\NormalTok{, }\DecValTok{28}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{77}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{32}\NormalTok{, }\DecValTok{20}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Category, }\AttributeTok{y =}\NormalTok{ Value, }\AttributeTok{fill =}\NormalTok{ Category)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{width =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_polar}\NormalTok{(}\AttributeTok{theta =} \StringTok{"y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set3"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Polar Bar Plot Example"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Month"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Value"}\NormalTok{)}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-16-1}
 
   \bibliography{book.bib,packages.bib}
 
