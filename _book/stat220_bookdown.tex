@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-01-11}
+\date{2024-01-14}
 
 \begin{document}
 \maketitle
@@ -2858,6 +2858,447 @@ Click for answer
 \end{Shaded}
 
 \includegraphics[width=1\linewidth]{class_activity_5_files/figure-latex/unnamed-chunk-18-1}
+
+\hypertarget{class-activity-6}{%
+\chapter{Class Activity 6}\label{class-activity-6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(babynames)}
+\end{Highlighting}
+\end{Shaded}
+
+We will work with the \texttt{babynames} dataset again in this class activity. The header of the dataset looks like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(babynames))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{r|l|l|r|r}
+\hline
+year & sex & name & n & prop\\
+\hline
+1880 & F & Mary & 7065 & 0.0723836\\
+\hline
+1880 & F & Anna & 2604 & 0.0266790\\
+\hline
+1880 & F & Emma & 2003 & 0.0205215\\
+\hline
+1880 & F & Elizabeth & 1939 & 0.0198658\\
+\hline
+1880 & F & Minnie & 1746 & 0.0178884\\
+\hline
+1880 & F & Margaret & 1578 & 0.0161672\\
+\hline
+\end{tabular}
+
+In this tutorial, we will learn about the five main verbs of dplyr and how to use them to manipulate data:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{select()}: Choose columns from a data frame
+\item
+  \texttt{filter()}: Choose rows based on a condition
+\item
+  \texttt{arrange()}: Sort the rows of a data frame
+\item
+  \texttt{mutate()}: Add new columns based on existing columns
+\item
+  \texttt{summarise()}: Aggregate data and compute summary statistics
+\end{itemize}
+
+\hypertarget{problem-1-select}{%
+\section{\texorpdfstring{Problem 1: \texttt{select()}}{Problem 1: select()}}\label{problem-1-select}}
+
+Which of these is NOT a way to select the \texttt{name} and \texttt{n} columns together?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{select}\NormalTok{(babynames, }\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(year, sex, prop))  }\CommentTok{\#1}
+\FunctionTok{select}\NormalTok{(babynames, name}\SpecialCharTok{:}\NormalTok{n)   }\CommentTok{\#2}
+\FunctionTok{select}\NormalTok{(babynames, }\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"n"}\NormalTok{)) }\CommentTok{\#3}
+\FunctionTok{select}\NormalTok{(babynames, }\FunctionTok{ends\_with}\NormalTok{(}\StringTok{"n"}\NormalTok{))  }\CommentTok{\#4}
+\end{Highlighting}
+\end{Shaded}
+
+Click for answer
+
+\emph{Answer:} 4 is not the way to select the \texttt{name} and \texttt{n} columns together
+
+\hypertarget{problem-2-filter}{%
+\section{\texorpdfstring{Problem 2: \texttt{filter()}}{Problem 2: filter()}}\label{problem-2-filter}}
+
+Use \texttt{filter()} with the logical operators to extract:
+
+\hypertarget{a.-all-of-the-names-where-prop-is-greater-than-or-equal-to-0.08}{%
+\subsection{a. All of the names where prop is greater than or equal to 0.08}\label{a.-all-of-the-names-where-prop-is-greater-than-or-equal-to-0.08}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(babynames, prop }\SpecialCharTok{\textgreater{}=} \FloatTok{0.08}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 3 x 5
+   year sex   name        n   prop
+  <dbl> <chr> <chr>   <int>  <dbl>
+1  1880 M     John     9655 0.0815
+2  1880 M     William  9532 0.0805
+3  1881 M     John     8769 0.0810
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alternate}
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(prop }\SpecialCharTok{\textgreater{}=} \FloatTok{0.08}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 3 x 5
+   year sex   name        n   prop
+  <dbl> <chr> <chr>   <int>  <dbl>
+1  1880 M     John     9655 0.0815
+2  1880 M     William  9532 0.0805
+3  1881 M     John     8769 0.0810
+\end{verbatim}
+
+\hypertarget{b.-all-of-the-babies-named-rose}{%
+\subsection{b. All of the babies named ``Rose''}\label{b.-all-of-the-babies-named-rose}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \StringTok{"Rose"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 247 x 5
+    year sex   name      n      prop
+   <dbl> <chr> <chr> <int>     <dbl>
+ 1  1880 F     Rose    700 0.00717  
+ 2  1880 M     Rose      7 0.0000591
+ 3  1881 F     Rose    734 0.00743  
+ 4  1882 F     Rose    886 0.00766  
+ 5  1883 F     Rose    877 0.00730  
+ 6  1883 M     Rose      5 0.0000445
+ 7  1884 F     Rose   1060 0.00770  
+ 8  1884 M     Rose      5 0.0000407
+ 9  1885 F     Rose   1164 0.00820  
+10  1885 M     Rose      9 0.0000776
+# i 237 more rows
+\end{verbatim}
+
+\hypertarget{c.-use-filter-to-choose-all-rows-where-name-is-john-and-sex-is-m.}{%
+\subsection{c.~Use filter() to choose all rows where name is ``John'' and sex is ``M''.}\label{c.-use-filter-to-choose-all-rows-where-name-is-john-and-sex-is-m.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \StringTok{"John"}\NormalTok{, sex }\SpecialCharTok{==} \StringTok{"M"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 138 x 5
+    year sex   name      n   prop
+   <dbl> <chr> <chr> <int>  <dbl>
+ 1  1880 M     John   9655 0.0815
+ 2  1881 M     John   8769 0.0810
+ 3  1882 M     John   9557 0.0783
+ 4  1883 M     John   8894 0.0791
+ 5  1884 M     John   9388 0.0765
+ 6  1885 M     John   8756 0.0755
+ 7  1886 M     John   9026 0.0758
+ 8  1887 M     John   8110 0.0742
+ 9  1888 M     John   9247 0.0712
+10  1889 M     John   8548 0.0718
+# i 128 more rows
+\end{verbatim}
+
+\hypertarget{problem-3-arrange}{%
+\section{\texorpdfstring{Problem 3: \texttt{arrange()}}{Problem 3: arrange()}}\label{problem-3-arrange}}
+
+\hypertarget{a.-use-arrange-to-sort-the-babynames-dataset-by-the-prop-column-in-descending-order.}{%
+\subsection{\texorpdfstring{a. Use \texttt{arrange()} to sort the babynames dataset by the prop column in descending order.}{a. Use arrange() to sort the babynames dataset by the prop column in descending order.}}\label{a.-use-arrange-to-sort-the-babynames-dataset-by-the-prop-column-in-descending-order.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(prop))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1,924,665 x 5
+    year sex   name        n   prop
+   <dbl> <chr> <chr>   <int>  <dbl>
+ 1  1880 M     John     9655 0.0815
+ 2  1881 M     John     8769 0.0810
+ 3  1880 M     William  9532 0.0805
+ 4  1883 M     John     8894 0.0791
+ 5  1881 M     William  8524 0.0787
+ 6  1882 M     John     9557 0.0783
+ 7  1884 M     John     9388 0.0765
+ 8  1882 M     William  9298 0.0762
+ 9  1886 M     John     9026 0.0758
+10  1885 M     John     8756 0.0755
+# i 1,924,655 more rows
+\end{verbatim}
+
+\hypertarget{b.-use-arrange-to-sort-the-babynames-dataset-by-year-ascending-and-then-by-prop-descending.}{%
+\subsection{\texorpdfstring{b. Use \texttt{arrange()} to sort the babynames dataset by year (ascending) and then by prop (descending).}{b. Use arrange() to sort the babynames dataset by year (ascending) and then by prop (descending).}}\label{b.-use-arrange-to-sort-the-babynames-dataset-by-year-ascending-and-then-by-prop-descending.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(year, }\FunctionTok{desc}\NormalTok{(prop))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1,924,665 x 5
+    year sex   name        n   prop
+   <dbl> <chr> <chr>   <int>  <dbl>
+ 1  1880 M     John     9655 0.0815
+ 2  1880 M     William  9532 0.0805
+ 3  1880 F     Mary     7065 0.0724
+ 4  1880 M     James    5927 0.0501
+ 5  1880 M     Charles  5348 0.0452
+ 6  1880 M     George   5126 0.0433
+ 7  1880 M     Frank    3242 0.0274
+ 8  1880 F     Anna     2604 0.0267
+ 9  1880 M     Joseph   2632 0.0222
+10  1880 M     Thomas   2534 0.0214
+# i 1,924,655 more rows
+\end{verbatim}
+
+\hypertarget{problem-4-mutate}{%
+\section{\texorpdfstring{Problem 4: \texttt{mutate()}}{Problem 4: mutate()}}\label{problem-4-mutate}}
+
+\hypertarget{a.-use-mutate-to-create-a-new-column-called-decade-which-contains-the-decade-the-record-is-in-e.g.-1990-for-the-years-1990-1999.}{%
+\subsection{\texorpdfstring{a. Use \texttt{mutate()} to create a new column called decade which contains the decade the record is in (e.g., 1990 for the years 1990-1999).}{a. Use mutate() to create a new column called decade which contains the decade the record is in (e.g., 1990 for the years 1990-1999).}}\label{a.-use-mutate-to-create-a-new-column-called-decade-which-contains-the-decade-the-record-is-in-e.g.-1990-for-the-years-1990-1999.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{decade =}\NormalTok{ (year }\SpecialCharTok{\%/\%} \DecValTok{10}\NormalTok{) }\SpecialCharTok{*} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1,924,665 x 6
+    year sex   name          n   prop decade
+   <dbl> <chr> <chr>     <int>  <dbl>  <dbl>
+ 1  1880 F     Mary       7065 0.0724   1880
+ 2  1880 F     Anna       2604 0.0267   1880
+ 3  1880 F     Emma       2003 0.0205   1880
+ 4  1880 F     Elizabeth  1939 0.0199   1880
+ 5  1880 F     Minnie     1746 0.0179   1880
+ 6  1880 F     Margaret   1578 0.0162   1880
+ 7  1880 F     Ida        1472 0.0151   1880
+ 8  1880 F     Alice      1414 0.0145   1880
+ 9  1880 F     Bertha     1320 0.0135   1880
+10  1880 F     Sarah      1288 0.0132   1880
+# i 1,924,655 more rows
+\end{verbatim}
+
+\hypertarget{problem-5-summarize-or-summarise}{%
+\section{\texorpdfstring{Problem 5: \texttt{summarize()} or \texttt{summarise()}}{Problem 5: summarize() or summarise()}}\label{problem-5-summarize-or-summarise}}
+
+Use the codes mentioned so far to compute three statistics:
+
+\begin{itemize}
+\tightlist
+\item
+  the total number of children who ever had your name
+\item
+  the maximum number of children given your name in a single year
+\item
+  the mean number of children given your name per year/decade (optional)
+\end{itemize}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \StringTok{"Dee"}\NormalTok{, sex }\SpecialCharTok{==} \StringTok{"M"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 136 x 5
+    year sex   name      n     prop
+   <dbl> <chr> <chr> <int>    <dbl>
+ 1  1880 M     Dee      20 0.000169
+ 2  1881 M     Dee      32 0.000296
+ 3  1882 M     Dee      23 0.000188
+ 4  1883 M     Dee      22 0.000196
+ 5  1884 M     Dee      27 0.000220
+ 6  1885 M     Dee      28 0.000241
+ 7  1886 M     Dee      26 0.000218
+ 8  1887 M     Dee      39 0.000357
+ 9  1888 M     Dee      35 0.000269
+10  1889 M     Dee      24 0.000202
+# i 126 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \StringTok{"Dee"}\NormalTok{, sex }\SpecialCharTok{==} \StringTok{"M"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{max\_number =} \FunctionTok{max}\NormalTok{(n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+  max_number
+       <int>
+1        125
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \StringTok{"Dee"}\NormalTok{, sex }\SpecialCharTok{==} \StringTok{"M"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{decade =}\NormalTok{ (year }\SpecialCharTok{\%/\%} \DecValTok{10}\NormalTok{) }\SpecialCharTok{*} \DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(decade) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{total =} \FunctionTok{sum}\NormalTok{(n),}
+            \AttributeTok{max =} \FunctionTok{max}\NormalTok{(n), }
+            \AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 14 x 4
+   decade total   max   mean
+    <dbl> <int> <int>  <dbl>
+ 1   1880   276    39  27.6 
+ 2   1890   271    43  27.1 
+ 3   1900   302    38  30.2 
+ 4   1910   818   125  81.8 
+ 5   1920  1090   125 109   
+ 6   1930  1010   118 101   
+ 7   1940   967   120  96.7 
+ 8   1950   957   118  95.7 
+ 9   1960   683   102  68.3 
+10   1970   380    57  38   
+11   1980   217    30  21.7 
+12   1990   130    17  13   
+13   2000    87    13   9.67
+14   2010    52    12   7.43
+\end{verbatim}
+
+\hypertarget{problem-6}{%
+\section{Problem 6}\label{problem-6}}
+
+\hypertarget{a.-use-min_rank-and-mutate-to-rank-each-row-in-babynames-from-largest-prop-to-smallest-prop.}{%
+\subsection{\texorpdfstring{a. Use \texttt{min\_rank()} and \texttt{mutate()} to rank each row in babynames from largest prop to smallest prop.}{a. Use min\_rank() and mutate() to rank each row in babynames from largest prop to smallest prop.}}\label{a.-use-min_rank-and-mutate-to-rank-each-row-in-babynames-from-largest-prop-to-smallest-prop.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rank =} \FunctionTok{min\_rank}\NormalTok{(}\FunctionTok{desc}\NormalTok{(prop))) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(rank)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1,924,665 x 6
+    year sex   name        n   prop  rank
+   <dbl> <chr> <chr>   <int>  <dbl> <int>
+ 1  1880 M     John     9655 0.0815     1
+ 2  1881 M     John     8769 0.0810     2
+ 3  1880 M     William  9532 0.0805     3
+ 4  1883 M     John     8894 0.0791     4
+ 5  1881 M     William  8524 0.0787     5
+ 6  1882 M     John     9557 0.0783     6
+ 7  1884 M     John     9388 0.0765     7
+ 8  1882 M     William  9298 0.0762     8
+ 9  1886 M     John     9026 0.0758     9
+10  1885 M     John     8756 0.0755    10
+# i 1,924,655 more rows
+\end{verbatim}
+
+\hypertarget{b.-compute-each-names-rank-within-its-year-and-sex.}{%
+\subsection{b. Compute each name's rank within its year and sex.}\label{b.-compute-each-names-rank-within-its-year-and-sex.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(year, sex) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rank =} \FunctionTok{min\_rank}\NormalTok{(}\FunctionTok{desc}\NormalTok{(prop)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1,924,665 x 6
+# Groups:   year, sex [276]
+    year sex   name          n   prop  rank
+   <dbl> <chr> <chr>     <int>  <dbl> <int>
+ 1  1880 F     Mary       7065 0.0724     1
+ 2  1880 F     Anna       2604 0.0267     2
+ 3  1880 F     Emma       2003 0.0205     3
+ 4  1880 F     Elizabeth  1939 0.0199     4
+ 5  1880 F     Minnie     1746 0.0179     5
+ 6  1880 F     Margaret   1578 0.0162     6
+ 7  1880 F     Ida        1472 0.0151     7
+ 8  1880 F     Alice      1414 0.0145     8
+ 9  1880 F     Bertha     1320 0.0135     9
+10  1880 F     Sarah      1288 0.0132    10
+# i 1,924,655 more rows
+\end{verbatim}
+
+\hypertarget{c.-then-compute-the-median-rank-for-each-combination-of-name-and-sex-and-arrange-the-results-from-highest-median-rank-to-lowest.}{%
+\subsection{c.~Then compute the median rank for each combination of name and sex, and arrange the results from highest median rank to lowest.}\label{c.-then-compute-the-median-rank-for-each-combination-of-name-and-sex-and-arrange-the-results-from-highest-median-rank-to-lowest.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babynames }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(year, sex) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rank =} \FunctionTok{min\_rank}\NormalTok{(}\FunctionTok{desc}\NormalTok{(prop))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(name, sex) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{score =} \FunctionTok{median}\NormalTok{(rank)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(score) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 107,973 x 3
+# Groups:   name [97,310]
+   name      sex   score
+   <chr>     <chr> <dbl>
+ 1 Mary      F       1  
+ 2 James     M       3  
+ 3 John      M       3  
+ 4 William   M       4  
+ 5 Robert    M       6  
+ 6 Michael   M       7.5
+ 7 Charles   M       9  
+ 8 Elizabeth F      10  
+ 9 Joseph    M      10  
+10 Thomas    M      11  
+# i 107,963 more rows
+\end{verbatim}
 
   \bibliography{book.bib,packages.bib}
 
