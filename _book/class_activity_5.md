@@ -78,6 +78,7 @@ c. Try modifying the plot by combining color, shape, and theme customizations. A
 <summary class="answer">Click for answer</summary>
 *Answer:*
 
+
 ```r
 # Base plot
 p <- ggplot(data, aes(x = X, y = Y)) +
