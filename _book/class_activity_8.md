@@ -9,8 +9,7 @@ library(lubridate)
 
 ## Your turn 1
 
-The following code chinks create the data objects used in this exercise. Please run the chunks and answer the questions.
-
+In the provided R code, we start with two datasets, `DBP_wide` and `BP_wide`, representing blood pressure measurements in a wide format. We then demonstrate how to transform `BP_wide` into a long format using `pivot_longer()`.
 
 
 ```r
@@ -273,7 +272,7 @@ exact_age
 ```
 
 ```
-[1] 28.63623
+[1] 28.68068
 ```
 
 </details>
