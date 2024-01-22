@@ -254,6 +254,8 @@ tricky1[6, ] <- c(tricky1[4, 1], NA, tricky1[4, 3:5])
 <details>
 <summary class="answer">Click for answer</summary>
 
+<!--
+
 
 ```r
 tricky2 <- read_csv("https://deepbas.io/data/tricky-2.csv")
@@ -281,5 +283,8 @@ tricky2_part2 <- read_csv(
 # Combine parts
 data_combined <- full_join(tricky2_part1, tricky2_part2)
 ```
+
+
+-->
 
 </details>

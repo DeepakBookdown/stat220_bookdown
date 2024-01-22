@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 15 Class Activity 9 | Stat 220 Introduction to Data Science</title>
+<meta name="author" content="Deepak Bastola">
+<meta name="description" content="# load the necessary libraries library(tidyverse)  15.1 Your Turn 1  15.1.1 a) read_csv() Use read_csv() to import the desserts data set from...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="Chapter 15 Class Activity 9 | Stat 220 Introduction to Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="# load the necessary libraries library(tidyverse)  15.1 Your Turn 1  15.1.1 a) read_csv() Use read_csv() to import the desserts data set from...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 15 Class Activity 9 | Stat 220 Introduction to Data Science">
+<meta name="twitter:description" content="# load the necessary libraries library(tidyverse)  15.1 Your Turn 1  15.1.1 a) read_csv() Use read_csv() to import the desserts data set from...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!--
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.book .book-body h1, .book .book-body h2, .book .book-body h3');
+      const tocLinks = document.querySelectorAll('.book .book-body .tocify .tocify-item a');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              const link = Array.from(tocLinks).find((link) => link.getAttribute('href').endsWith('#' + id));
+              if (link) {
+                tocLinks.forEach((l) => l.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      headers.forEach((header) => observer.observe(header));
+    });
+    </script>
+
+    --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stat 220 Introduction to Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course overview</a></li>
+<li class="book-part">Set-up Instructions</li>
+<li><a class="" href="rstudio.html"><span class="header-section-number">1</span> What is R, RStudio, and RMarkdown?</a></li>
+<li><a class="" href="assignments.html"><span class="header-section-number">2</span> Assignments in Stat 220</a></li>
+<li><a class="" href="software.html"><span class="header-section-number">3</span> Software in Stat 220</a></li>
+<li><a class="" href="github.html"><span class="header-section-number">4</span> GitHub Guide for Students in Stat 220</a></li>
+<li><a class="" href="r-markdown-syntax.html"><span class="header-section-number">5</span> R Markdown Syntax</a></li>
+<li><a class="" href="github-tutorial.html"><span class="header-section-number">6</span> Github Tutorial</a></li>
+<li class="book-part">Class Activities</li>
+<li><a class="" href="class-activity-1.html"><span class="header-section-number">7</span> Class Activity 1</a></li>
+<li><a class="" href="class-activity-2.html"><span class="header-section-number">8</span> Class Activity 2</a></li>
+<li><a class="" href="class-activity-3.html"><span class="header-section-number">9</span> Class Activity 3</a></li>
+<li><a class="" href="class-activity-4.html"><span class="header-section-number">10</span> Class Activity 4</a></li>
+<li><a class="" href="class-activity-5.html"><span class="header-section-number">11</span> Class Activity 5</a></li>
+<li><a class="" href="class-activity-6.html"><span class="header-section-number">12</span> Class Activity 6</a></li>
+<li><a class="" href="class-activity-7.html"><span class="header-section-number">13</span> Class Activity 7</a></li>
+<li><a class="" href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></li>
+<li><a class="active" href="class-activity-9.html"><span class="header-section-number">15</span> Class Activity 9</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="class-activity-9" class="section level1" number="15">
+<h1>
+<span class="header-section-number">15</span> Class Activity 9<a class="anchor" aria-label="anchor" href="#class-activity-9"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<div id="your-turn-1-2" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Your Turn 1<a class="anchor" aria-label="anchor" href="#your-turn-1-2"><i class="fas fa-link"></i></a>
+</h2>
+<div id="a-read_csv" class="section level3" number="15.1.1">
+<h3>
+<span class="header-section-number">15.1.1</span> a) <code>read_csv()</code><a class="anchor" aria-label="anchor" href="#a-read_csv"><i class="fas fa-link"></i></a>
+</h3>
+<p>Use <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> to import the <code>desserts</code> data set from <a href="https://raw.githubusercontent.com/deepbas/statdatasets/main/desserts.csv" class="uri">https://raw.githubusercontent.com/deepbas/statdatasets/main/desserts.csv</a>. Use <code>glimpse</code> to see if the data import is alright.</p>
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/desserts.csv"</span></span>
+<span><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">desserts</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 549
+Columns: 16
+$ series                &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ episode               &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ baker                 &lt;chr&gt; "Annetha", "David", "Edd", "…
+$ technical             &lt;chr&gt; "2nd", "3rd", "1st", "N/A", …
+$ result                &lt;chr&gt; "IN", "IN", "IN", "IN", "IN"…
+$ uk_airdate            &lt;chr&gt; "17 August 2010", "17 August…
+$ us_season             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, …
+$ us_airdate            &lt;date&gt; NA, NA, NA, NA, NA, NA, NA,…
+$ showstopper_chocolate &lt;chr&gt; "chocolate", "chocolate", "n…
+$ showstopper_dessert   &lt;chr&gt; "other", "other", "other", "…
+$ showstopper_fruit     &lt;chr&gt; "no fruit", "no fruit", "no …
+$ showstopper_nut       &lt;chr&gt; "no nut", "no nut", "no nut"…
+$ signature_chocolate   &lt;chr&gt; "no chocolate", "chocolate",…
+$ signature_dessert     &lt;chr&gt; "cake", "cake", "cake", "cak…
+$ signature_fruit       &lt;chr&gt; "no fruit", "fruit", "fruit"…
+$ signature_nut         &lt;chr&gt; "no nut", "no nut", "no nut"…</code></pre>
+</div>
+<div id="b-are-there-any-issues-with-the-data-import-if-so-what-are-they" class="section level3" number="15.1.2">
+<h3>
+<span class="header-section-number">15.1.2</span> b) Are there any issues with the data import? If so, what are they?<a class="anchor" aria-label="anchor" href="#b-are-there-any-issues-with-the-data-import-if-so-what-are-they"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> Based on the output of glimpse, we can see that the ‘technical’ column should be a numeric column and the ‘uk_airdate’ column should be a date column. We can also identify any issues with missing values.</p>
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># your r-code</span></span>
+<span></span>
+<span><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">url</span>,</span>
+<span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    technical <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    uk_airdate <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_datetime.html">col_date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">desserts</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 556 × 5
+     row   col expected        actual         file 
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;
+ 1     2     6 date in ISO8601 17 August 2010 ""   
+ 2     3     6 date in ISO8601 17 August 2010 ""   
+ 3     4     6 date in ISO8601 17 August 2010 ""   
+ 4     5     4 a number        N/A            ""   
+ 5     5     6 date in ISO8601 17 August 2010 ""   
+ 6     6     6 date in ISO8601 17 August 2010 ""   
+ 7     7     4 a number        N/A            ""   
+ 8     7     6 date in ISO8601 17 August 2010 ""   
+ 9     8     6 date in ISO8601 17 August 2010 ""   
+10     9     4 a number        N/A            ""   
+# ℹ 546 more rows</code></pre>
+</details>
+</div>
+<div id="c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any." class="section level3" number="15.1.3">
+<h3>
+<span class="header-section-number">15.1.3</span> c) Import the dataset with correct data types, if needed. Fix the problems, if any.<a class="anchor" aria-label="anchor" href="#c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any."><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">url</span>,</span>
+<span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    technical <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    uk_airdate <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_datetime.html">col_date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">desserts</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 556 × 5
+     row   col expected        actual         file 
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;
+ 1     2     6 date in ISO8601 17 August 2010 ""   
+ 2     3     6 date in ISO8601 17 August 2010 ""   
+ 3     4     6 date in ISO8601 17 August 2010 ""   
+ 4     5     4 a number        N/A            ""   
+ 5     5     6 date in ISO8601 17 August 2010 ""   
+ 6     6     6 date in ISO8601 17 August 2010 ""   
+ 7     7     4 a number        N/A            ""   
+ 8     7     6 date in ISO8601 17 August 2010 ""   
+ 9     8     6 date in ISO8601 17 August 2010 ""   
+10     9     4 a number        N/A            ""   
+# ℹ 546 more rows</code></pre>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">url</span>,</span>
+<span>    col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    technical <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, </span>
+<span>    uk_airdate <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_datetime.html">col_date</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%d %B %Y"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> </span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">desserts</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 7 × 5
+    row   col expected actual file 
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;
+1     5     4 a number N/A    ""   
+2     7     4 a number N/A    ""   
+3     9     4 a number N/A    ""   
+4    11     4 a number N/A    ""   
+5    35     4 a number N/A    ""   
+6    36     4 a number N/A    ""   
+7    37     4 a number N/A    ""   </code></pre>
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">desserts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">url</span>,</span>
+<span>  col_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    technical <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, </span>
+<span>    uk_airdate <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_datetime.html">col_date</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%d %B %Y"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"N/A"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">desserts</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+#   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
+</details>
+</div>
+</div>
+<div id="your-turn-2-1" class="section level2" number="15.2">
+<h2>
+<span class="header-section-number">15.2</span> Your Turn 2<a class="anchor" aria-label="anchor" href="#your-turn-2-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Use the appropriate <code>read_&lt;type&gt;()</code> function to import the following data sets:</p>
+<ul>
+<li><p><code>https://deepbas.io/data/simple-1.dat</code></p></li>
+<li><p><code>https://deepbas.io/data/mild-1.csv</code></p></li>
+<li><p><code>https://deepbas.io/data/tricky-1.csv</code></p></li>
+<li><p><code>https://deepbas.io/data/tricky-2.csv</code></p></li>
+</ul>
+<p>Identify and fix any issues you encounter.</p>
+<div id="a-importing-simple-data" class="section level3" number="15.2.1">
+<h3>
+<span class="header-section-number">15.2.1</span> a) Importing simple data:<a class="anchor" aria-label="anchor" href="#a-importing-simple-data"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">simple1</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/simple-1.dat"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">simple1</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+#   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
+</details>
+</div>
+<div id="b-importing-mildly-tricky-data" class="section level3" number="15.2.2">
+<h3>
+<span class="header-section-number">15.2.2</span> b) Importing mildly tricky data:<a class="anchor" aria-label="anchor" href="#b-importing-mildly-tricky-data"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mild1</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/mild-1.csv"</span>, delim <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">mild1</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+#   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
+</details>
+</div>
+<div id="c-importing-tricky-data-1" class="section level3" number="15.2.3">
+<h3>
+<span class="header-section-number">15.2.3</span> c) Importing tricky data 1:<a class="anchor" aria-label="anchor" href="#c-importing-tricky-data-1"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tricky1</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/tricky-1.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">tricky1</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 2 × 5
+    row   col expected  actual    file 
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;
+1     4     4 5 columns 4 columns ""   
+2     7     4 5 columns 4 columns ""   </code></pre>
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Fix missing values</span></span>
+<span><span class="va">tricky1</span><span class="op">[</span><span class="fl">3</span>, <span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">tricky1</span><span class="op">[</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, <span class="cn">NA</span>, <span class="va">tricky1</span><span class="op">[</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">tricky1</span><span class="op">[</span><span class="fl">6</span>, <span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">tricky1</span><span class="op">[</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">]</span>, <span class="cn">NA</span>, <span class="va">tricky1</span><span class="op">[</span><span class="fl">4</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+</details>
+</div>
+<div id="d-importing-tricky-data-2" class="section level3" number="15.2.4">
+<h3>
+<span class="header-section-number">15.2.4</span> d) Importing tricky data 2:<a class="anchor" aria-label="anchor" href="#d-importing-tricky-data-2"><i class="fas fa-link"></i></a>
+</h3>
+<details><summary class="answer">
+Click for answer
+</summary><!--
+
+
+```r
+tricky2 <- read_csv("https://deepbas.io/data/tricky-2.csv")
+problems(tricky2)
+```
+
+```
+# A tibble: 0 × 5
+# ℹ 5 variables: row <int>, col <int>, expected <chr>,
+#   actual <chr>, file <chr>
+```
+
+```r
+# Fix missing values
+tricky2_part1 <- read_csv("https://deepbas.io/data/tricky-2.csv", n_max = 7) %>%
+  separate(city, c("city", "state"), sep = ",") %>%
+  select(-c(7))
+
+tricky2_part2 <- read_csv(
+  "https://deepbas.io/data/tricky-2.csv",
+  skip = 8, 
+  col_names = c("iata", "airport", "city", "state",  "latitude", "longitude")
+)
+
+# Combine parts
+data_combined <- full_join(tricky2_part1, tricky2_part2)
+```
+
+
+--></details>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="class-activity-8.html"><span class="header-section-number">14</span> Class Activity 8</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#class-activity-9"><span class="header-section-number">15</span> Class Activity 9</a></li>
+<li>
+<a class="nav-link" href="#your-turn-1-2"><span class="header-section-number">15.1</span> Your Turn 1</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#a-read_csv"><span class="header-section-number">15.1.1</span> a) read_csv()</a></li>
+<li><a class="nav-link" href="#b-are-there-any-issues-with-the-data-import-if-so-what-are-they"><span class="header-section-number">15.1.2</span> b) Are there any issues with the data import? If so, what are they?</a></li>
+<li><a class="nav-link" href="#c-import-the-dataset-with-correct-data-types-if-needed.-fix-the-problems-if-any."><span class="header-section-number">15.1.3</span> c) Import the dataset with correct data types, if needed. Fix the problems, if any.</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#your-turn-2-1"><span class="header-section-number">15.2</span> Your Turn 2</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#a-importing-simple-data"><span class="header-section-number">15.2.1</span> a) Importing simple data:</a></li>
+<li><a class="nav-link" href="#b-importing-mildly-tricky-data"><span class="header-section-number">15.2.2</span> b) Importing mildly tricky data:</a></li>
+<li><a class="nav-link" href="#c-importing-tricky-data-1"><span class="header-section-number">15.2.3</span> c) Importing tricky data 1:</a></li>
+<li><a class="nav-link" href="#d-importing-tricky-data-2"><span class="header-section-number">15.2.4</span> d) Importing tricky data 2:</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/class_activity_9.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/class_activity_9.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-21.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
