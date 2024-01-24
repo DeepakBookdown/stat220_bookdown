@@ -141,3 +141,13 @@ a-importing-simple-data
 b-importing-mildly-tricky-data
 c-importing-tricky-data-1
 d-importing-tricky-data-2
+class-activity-10
+your-turn-1-3
+a.-create-a-new-column-grade_fac-by-converting-the-grade-column-into-a-factor.-reorder-the-levels-of-grade_fac-to-be-9th-10th-and-11th.-sort-the-dataset-based-on-the-grade_fac-column.
+b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.
+c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.
+d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.
+your-turn-2-2
+a.-which-religions-watch-the-least-tv
+b.-do-married-people-watch-more-or-less-tv-than-single-people
+c.-collapse-the-marital-variable-to-have-levels-married-not_married-and-no_answer.-include-never-married-divorced-and-widowed-in-not_married
