@@ -26,6 +26,8 @@ students <- tibble(
 
 *Answer:* 
 
+<!--
+
 ```{r}
 students_a <- students %>%
   mutate(grade_fac = factor(grade)) %>%
@@ -36,11 +38,15 @@ print(students_a, n = 24)
 
 </details>
 
+-->
 
 ### b. Create a new column `region_fac` by converting the `region` column into a factor. Collapse the `region_fac` levels into three categories: "Americas", "EMEA" and "Asia". Count the number of students in each collapsed region category.
 
 <details>
 <summary class="answer">Click for answer</summary>
+
+<!--
+
 *Answer:*
 
 ```{r}
@@ -56,11 +62,14 @@ print(students_b)
 
 </details>
 
+-->
 
 ### c. Create a new column `grade_infreq` that is a copy of the `grade_fac` column. Reorder the levels of `grade_infreq` based on their frequency in the dataset. Print the levels of `grade_infreq` to check the ordering.
 
 <details>
 <summary class="answer">Click for answer</summary>
+<!--
+
 *Answer:*
 ```{r}
 students_c <- students_a %>%
@@ -72,11 +81,15 @@ levels(students_c$grade_infreq)
 
 </details>
 
+-->
+
 
 ### d. Create a new column `grade_lumped` by lumping the least frequent level of the `grade_fac` column into an 'Others' category. Count the number of students in each of the categories of the `grade_lumped` column.
 
 <details>
 <summary class="answer">Click for answer</summary>
+<!--
+
 *Answer:*
 
 ```{r}
@@ -87,6 +100,7 @@ students_d
 ```
 
 </details>
+-->
 
 ## Your Turn 2
 
@@ -103,6 +117,9 @@ Use `gss_cat` to answer the following questions.
 
 <details>
 <summary class="answer">Click for answer</summary>
+
+<!--
+
 *Answer:*
 ```{r}
 # your r-code
@@ -116,11 +133,14 @@ gss_cat %>%
 
 </details>
 
+-->
 
 ### b. Do married people watch more or less TV than single people?
 
 <details>
 <summary class="answer">Click for answer</summary>
+<!--
+
 *Answer:*
 ```{r}
 # your r-code
@@ -135,11 +155,14 @@ gss_cat %>%
 
 </details>
 
+-->
 
 ### c. Collapse the `marital` variable to have levels `married`, `not_married`, and `no_answer`. Include `"Never married"`, `"Divorced"`, and "`Widowed"` in `not_married`
 
 <details>
 <summary class="answer">Click for answer</summary>
+<!--
+
 *Answer:*
 
 ```{r}
@@ -165,3 +188,4 @@ levels(marital_c$maritalStatus)
 
 </details>
 
+-->

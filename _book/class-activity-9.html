@@ -298,38 +298,27 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><!--
-
-
-```r
-tricky2 <- read_csv("https://deepbas.io/data/tricky-2.csv")
-problems(tricky2)
-```
-
-```
-# A tibble: 0 × 5
-# ℹ 5 variables: row <int>, col <int>, expected <chr>,
-#   actual <chr>, file <chr>
-```
-
-```r
-# Fix missing values
-tricky2_part1 <- read_csv("https://deepbas.io/data/tricky-2.csv", n_max = 7) %>%
-  separate(city, c("city", "state"), sep = ",") %>%
-  select(-c(7))
-
-tricky2_part2 <- read_csv(
-  "https://deepbas.io/data/tricky-2.csv",
-  skip = 8, 
-  col_names = c("iata", "airport", "city", "state",  "latitude", "longitude")
-)
-
-# Combine parts
-data_combined <- full_join(tricky2_part1, tricky2_part2)
-```
-
-
---></details>
+</summary><div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tricky2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/tricky-2.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">tricky2</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;,
+#   actual &lt;chr&gt;, file &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Fix missing values</span></span>
+<span><span class="va">tricky2_part1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://deepbas.io/data/tricky-2.csv"</span>, n_max <span class="op">=</span> <span class="fl">7</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">city</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"state"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tricky2_part2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://deepbas.io/data/tricky-2.csv"</span>,</span>
+<span>  skip <span class="op">=</span> <span class="fl">8</span>, </span>
+<span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"iata"</span>, <span class="st">"airport"</span>, <span class="st">"city"</span>, <span class="st">"state"</span>,  <span class="st">"latitude"</span>, <span class="st">"longitude"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Combine parts</span></span>
+<span><span class="va">data_combined</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">tricky2_part1</span>, <span class="va">tricky2_part2</span><span class="op">)</span></span></code></pre></div>
+</details>
 </div>
 </div>
 </div>
@@ -372,7 +361,7 @@ data_combined <- full_join(tricky2_part1, tricky2_part2)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-23.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

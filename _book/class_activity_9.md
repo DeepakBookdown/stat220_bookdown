@@ -254,7 +254,6 @@ tricky1[6, ] <- c(tricky1[4, 1], NA, tricky1[4, 3:5])
 <details>
 <summary class="answer">Click for answer</summary>
 
-<!--
 
 
 ```r
@@ -285,6 +284,5 @@ data_combined <- full_join(tricky2_part1, tricky2_part2)
 ```
 
 
--->
 
 </details>

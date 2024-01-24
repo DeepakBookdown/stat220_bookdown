@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-01-23}
+\date{2024-01-24}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.69405
+[1] 28.69583
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4573,6 +4573,37 @@ Click for answer
 
 Click for answer
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tricky2 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://deepbas.io/data/tricky{-}2.csv"}\NormalTok{)}
+\FunctionTok{problems}\NormalTok{(tricky2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 0 x 5
+# i 5 variables: row <int>, col <int>, expected <chr>,
+#   actual <chr>, file <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fix missing values}
+\NormalTok{tricky2\_part1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://deepbas.io/data/tricky{-}2.csv"}\NormalTok{, }\AttributeTok{n\_max =} \DecValTok{7}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate}\NormalTok{(city, }\FunctionTok{c}\NormalTok{(}\StringTok{"city"}\NormalTok{, }\StringTok{"state"}\NormalTok{), }\AttributeTok{sep =} \StringTok{","}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{))}
+
+\NormalTok{tricky2\_part2 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}
+  \StringTok{"https://deepbas.io/data/tricky{-}2.csv"}\NormalTok{,}
+  \AttributeTok{skip =} \DecValTok{8}\NormalTok{, }
+  \AttributeTok{col\_names =} \FunctionTok{c}\NormalTok{(}\StringTok{"iata"}\NormalTok{, }\StringTok{"airport"}\NormalTok{, }\StringTok{"city"}\NormalTok{, }\StringTok{"state"}\NormalTok{,  }\StringTok{"latitude"}\NormalTok{, }\StringTok{"longitude"}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Combine parts}
+\NormalTok{data\_combined }\OtherTok{\textless{}{-}} \FunctionTok{full\_join}\NormalTok{(tricky2\_part1, tricky2\_part2)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{class-activity-10}{%
 \chapter{Class Activity 10}\label{class-activity-10}}
 
@@ -4605,119 +4636,20 @@ Click for answer
 
 \emph{Answer:}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{students\_a }\OtherTok{\textless{}{-}}\NormalTok{ students }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{grade\_fac =} \FunctionTok{factor}\NormalTok{(grade)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{grade\_fac =} \FunctionTok{fct\_relevel}\NormalTok{(grade\_fac, }\FunctionTok{c}\NormalTok{(}\StringTok{"9th"}\NormalTok{, }\StringTok{"10th"}\NormalTok{, }\StringTok{"11th"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{arrange}\NormalTok{(grade\_fac) }
-\FunctionTok{print}\NormalTok{(students\_a, }\AttributeTok{n =} \DecValTok{24}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-# A tibble: 24 x 5
-      id grade region        score grade_fac
-   <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Middle East      58 9th      
- 2     3 9th   Africa           70 9th      
- 3     4 9th   Asia             55 9th      
- 4     6 9th   Europe           68 9th      
- 5     8 9th   North America    99 9th      
- 6    16 9th   North America    63 9th      
- 7    19 9th   South America    58 9th      
- 8     7 10th  Middle East      69 10th     
- 9     9 10th  South America    58 10th     
-10    10 10th  Asia             72 10th     
-11    15 10th  North America    57 10th     
-12    17 10th  North America    76 10th     
-13    18 10th  Europe           50 10th     
-14    20 10th  Asia             75 10th     
-15    21 10th  Asia             90 10th     
-16    22 10th  North America    59 10th     
-17     2 11th  North America    69 11th     
-18     5 11th  Asia             57 11th     
-19    11 11th  Asia             94 11th     
-20    12 11th  South America    80 11th     
-21    13 11th  South America    64 11th     
-22    14 11th  Middle East      55 11th     
-23    23 11th  Middle East      67 11th     
-24    24 11th  Asia             54 11th     
-\end{verbatim}
-
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
 \subsection{\texorpdfstring{b. Create a new column \texttt{region\_fac} by converting the \texttt{region} column into a factor. Collapse the \texttt{region\_fac} levels into three categories: ``Americas'', ``EMEA'' and ``Asia''. Count the number of students in each collapsed region category.}{b. Create a new column region\_fac by converting the region column into a factor. Collapse the region\_fac levels into three categories: ``Americas'', ``EMEA'' and ``Asia''. Count the number of students in each collapsed region category.}}\label{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}}
 
 Click for answer
-
-\emph{Answer:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{students\_b }\OtherTok{\textless{}{-}}\NormalTok{ students\_a }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{region\_fac =} \FunctionTok{factor}\NormalTok{(region)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{region\_collapsed =} \FunctionTok{fct\_collapse}\NormalTok{(region\_fac, }
-                                         \AttributeTok{Americas =} \FunctionTok{c}\NormalTok{(}\StringTok{"North America"}\NormalTok{, }\StringTok{"South America"}\NormalTok{), }
-                                         \AttributeTok{EMEA =} \FunctionTok{c}\NormalTok{(}\StringTok{"Europe"}\NormalTok{, }\StringTok{"Middle East"}\NormalTok{, }\StringTok{"Africa"}\NormalTok{), }
-                                         \AttributeTok{Asia =} \StringTok{"Asia"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{count}\NormalTok{(region\_collapsed)}
-\FunctionTok{print}\NormalTok{(students\_b)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-# A tibble: 3 x 2
-  region_collapsed     n
-  <fct>            <int>
-1 EMEA                 7
-2 Asia                 7
-3 Americas            10
-\end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
 \subsection{\texorpdfstring{c.~Create a new column \texttt{grade\_infreq} that is a copy of the \texttt{grade\_fac} column. Reorder the levels of \texttt{grade\_infreq} based on their frequency in the dataset. Print the levels of \texttt{grade\_infreq} to check the ordering.}{c.~Create a new column grade\_infreq that is a copy of the grade\_fac column. Reorder the levels of grade\_infreq based on their frequency in the dataset. Print the levels of grade\_infreq to check the ordering.}}\label{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}}
 
 Click for answer
 
-\emph{Answer:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{students\_c }\OtherTok{\textless{}{-}}\NormalTok{ students\_a }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{grade\_infreq =}\NormalTok{ grade\_fac) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{grade\_infreq =} \FunctionTok{fct\_infreq}\NormalTok{(grade\_infreq))}
-
-\FunctionTok{levels}\NormalTok{(students\_c}\SpecialCharTok{$}\NormalTok{grade\_infreq)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] "10th" "11th" "9th" 
-\end{verbatim}
-
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
 \subsection{\texorpdfstring{d.~Create a new column \texttt{grade\_lumped} by lumping the least frequent level of the \texttt{grade\_fac} column into an `Others' category. Count the number of students in each of the categories of the \texttt{grade\_lumped} column.}{d.~Create a new column grade\_lumped by lumping the least frequent level of the grade\_fac column into an `Others' category. Count the number of students in each of the categories of the grade\_lumped column.}}\label{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}}
 
 Click for answer
-
-\emph{Answer:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{students\_d }\OtherTok{\textless{}{-}}\NormalTok{ students\_a }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{grade\_lumped =} \FunctionTok{fct\_lump}\NormalTok{(grade\_fac, }\AttributeTok{n =} \DecValTok{1}\NormalTok{, }\AttributeTok{other\_level =} \StringTok{"Others"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{count}\NormalTok{(grade\_lumped)}
-\NormalTok{students\_d}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-# A tibble: 2 x 2
-  grade_lumped     n
-  <fct>        <int>
-1 10th             9
-2 Others          15
-\end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
 \section{Your Turn 2}\label{your-turn-2-2}}
@@ -4756,75 +4688,15 @@ Use \texttt{gss\_cat} to answer the following questions.
 
 Click for answer
 
-\emph{Answer:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# your r{-}code}
-\NormalTok{gss\_cat }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{drop\_na}\NormalTok{(tvhours) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(relig) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{tvhours =} \FunctionTok{mean}\NormalTok{(tvhours)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(tvhours, }\FunctionTok{fct\_reorder}\NormalTok{(relig, tvhours))) }\SpecialCharTok{+}
-    \FunctionTok{geom\_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{class_activity_10_files/figure-latex/unnamed-chunk-8-1}
-
 \hypertarget{b.-do-married-people-watch-more-or-less-tv-than-single-people}{%
 \subsection{b. Do married people watch more or less TV than single people?}\label{b.-do-married-people-watch-more-or-less-tv-than-single-people}}
 
 Click for answer
 
-\emph{Answer:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# your r{-}code}
-\NormalTok{gss\_cat }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{drop\_na}\NormalTok{(tvhours) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(marital) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{tvhours =} \FunctionTok{mean}\NormalTok{(tvhours)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(tvhours, }\FunctionTok{fct\_reorder}\NormalTok{(marital, tvhours))) }\SpecialCharTok{+}
-    \FunctionTok{geom\_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics[width=1\linewidth]{class_activity_10_files/figure-latex/unnamed-chunk-9-1}
-
 \hypertarget{c.-collapse-the-marital-variable-to-have-levels-married-not_married-and-no_answer.-include-never-married-divorced-and-widowed-in-not_married}{%
 \subsection{\texorpdfstring{c.~Collapse the \texttt{marital} variable to have levels \texttt{married}, \texttt{not\_married}, and \texttt{no\_answer}. Include \texttt{"Never\ married"}, \texttt{"Divorced"}, and ``\texttt{Widowed"} in \texttt{not\_married}}{c.~Collapse the marital variable to have levels married, not\_married, and no\_answer. Include "Never married", "Divorced", and ``Widowed" in not\_married}}\label{c.-collapse-the-marital-variable-to-have-levels-married-not_married-and-no_answer.-include-never-married-divorced-and-widowed-in-not_married}}
 
 Click for answer
-
-\emph{Answer:}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# your r{-}code}
-\NormalTok{gss\_cat }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{drop\_na}\NormalTok{(tvhours) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{select}\NormalTok{(marital, tvhours) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}
-    \AttributeTok{maritalStatus =}
-      \FunctionTok{fct\_collapse}\NormalTok{(}
-\NormalTok{        marital,}
-        \AttributeTok{married =} \FunctionTok{c}\NormalTok{(}\StringTok{"Married"}\NormalTok{,}
-                    \StringTok{"Separated"}\NormalTok{),}
-        \AttributeTok{not\_married =} \FunctionTok{c}\NormalTok{(}\StringTok{"Never married"}\NormalTok{,}
-                        \StringTok{"Divorced"}\NormalTok{,}
-                        \StringTok{"Widowed"}\NormalTok{),}
-        \AttributeTok{no\_answer =} \FunctionTok{c}\NormalTok{(}\StringTok{"No answer"}\NormalTok{)) }
-\NormalTok{  ) }\OtherTok{{-}\textgreater{}}\NormalTok{ marital\_c}
-
-\FunctionTok{levels}\NormalTok{(marital\_c}\SpecialCharTok{$}\NormalTok{maritalStatus)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] "no_answer"   "not_married" "married"    
-\end{verbatim}
 
   \bibliography{book.bib,packages.bib}
 
