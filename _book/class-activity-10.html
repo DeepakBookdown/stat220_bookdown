@@ -121,50 +121,39 @@
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<!--
-
-
-```r
-students_a <- students %>%
-  mutate(grade_fac = factor(grade)) %>%
-  mutate(grade_fac = fct_relevel(grade_fac, c("9th", "10th", "11th"))) %>%
-  arrange(grade_fac) 
-print(students_a, n = 24)
-```
-
-```
-# A tibble: 24 × 5
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">students_a</span> <span class="op">&lt;-</span> <span class="va">students</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_fac <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">grade</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_fac <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">grade_fac</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"9th"</span>, <span class="st">"10th"</span>, <span class="st">"11th"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">grade_fac</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">students_a</span>, n <span class="op">=</span> <span class="fl">24</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 24 × 5
       id grade region        score grade_fac
-   <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Asia             51 9th      
- 2     2 9th   Middle East      81 9th      
- 3     4 9th   Europe           69 9th      
- 4     6 9th   Africa           64 9th      
- 5    10 9th   South America   100 9th      
- 6    11 9th   South America    99 9th      
- 7    17 9th   North America    89 9th      
- 8    19 9th   Asia             85 9th      
- 9    21 9th   South America    56 9th      
-10    24 9th   Middle East      95 9th      
-11     3 10th  Middle East      84 10th     
-12     7 10th  Middle East      80 10th     
-13     9 10th  Middle East      92 10th     
-14    13 10th  Asia             93 10th     
-15    18 10th  Europe           62 10th     
-16    22 10th  North America    57 10th     
-17     5 11th  Asia             91 11th     
-18     8 11th  Europe           92 11th     
-19    12 11th  South America    65 11th     
-20    14 11th  Africa           71 11th     
-21    15 11th  Europe           99 11th     
-22    16 11th  Middle East      66 11th     
-23    20 11th  Middle East      57 11th     
-24    23 11th  South America    61 11th     
-```
-
-</details>
-
--->
+   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;fct&gt;    
+ 1     1 9th   North America    74 9th      
+ 2     2 9th   Africa           91 9th      
+ 3     7 9th   Europe           56 9th      
+ 4     8 9th   Middle East      73 9th      
+ 5     9 9th   Asia             91 9th      
+ 6    10 9th   North America    62 9th      
+ 7    12 9th   Africa           78 9th      
+ 8    16 9th   Europe           54 9th      
+ 9    17 9th   Africa           58 9th      
+10    22 9th   South America    75 9th      
+11    23 9th   Asia             83 9th      
+12     5 10th  Middle East      66 10th     
+13    14 10th  Africa           96 10th     
+14    19 10th  Middle East      59 10th     
+15    20 10th  Africa           97 10th     
+16     3 11th  Middle East      79 11th     
+17     4 11th  Asia             87 11th     
+18     6 11th  Middle East      83 11th     
+19    11 11th  Africa           61 11th     
+20    13 11th  Asia             95 11th     
+21    15 11th  North America    69 11th     
+22    18 11th  Asia             79 11th     
+23    21 11th  North America    62 11th     
+24    24 11th  Europe           75 11th     </code></pre>
 </details>
 </div>
 <div id="b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category." class="section level3" number="16.1.2">
@@ -173,34 +162,23 @@ print(students_a, n = 24)
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><!--
-
-*Answer:*
-
-
-```r
-students_b <- students_a %>%
-  mutate(region_fac = factor(region)) %>%
-  mutate(region_collapsed = fct_collapse(region_fac, 
-                                         Americas = c("North America", "South America"), 
-                                         EMEA = c("Europe", "Middle East", "Africa"), 
-                                         Asia = "Asia")) %>%
-  count(region_collapsed)
-print(students_b)
-```
-
-```
-# A tibble: 3 × 2
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">students_b</span> <span class="op">&lt;-</span> <span class="va">students_a</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>region_fac <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>region_collapsed <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_collapse.html">fct_collapse</a></span><span class="op">(</span><span class="va">region_fac</span>, </span>
+<span>                                         Americas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"North America"</span>, <span class="st">"South America"</span><span class="op">)</span>, </span>
+<span>                                         EMEA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Europe"</span>, <span class="st">"Middle East"</span>, <span class="st">"Africa"</span><span class="op">)</span>, </span>
+<span>                                         Asia <span class="op">=</span> <span class="st">"Asia"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">region_collapsed</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">students_b</span><span class="op">)</span></span></code></pre></div>
+<pre><code># A tibble: 3 × 2
   region_collapsed     n
-  <fct>            <int>
-1 EMEA                13
-2 Asia                 4
-3 Americas             7
-```
-
+  &lt;fct&gt;            &lt;int&gt;
+1 EMEA                14
+2 Asia                 5
+3 Americas             5</code></pre>
 </details>
-
---></details>
 </div>
 <div id="c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering." class="section level3" number="16.1.3">
 <h3>
@@ -208,25 +186,15 @@ print(students_b)
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><!--
-
-*Answer:*
-
-```r
-students_c <- students_a %>%
-  mutate(grade_infreq = grade_fac) %>%
-  mutate(grade_infreq = fct_infreq(grade_infreq))
-
-levels(students_c$grade_infreq)
-```
-
-```
-[1] "9th"  "11th" "10th"
-```
-
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">students_c</span> <span class="op">&lt;-</span> <span class="va">students_a</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_infreq <span class="op">=</span> <span class="va">grade_fac</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_infreq <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">grade_infreq</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">students_c</span><span class="op">$</span><span class="va">grade_infreq</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "9th"  "11th" "10th"</code></pre>
 </details>
-
---></details>
 </div>
 <div id="d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column." class="section level3" number="16.1.4">
 <h3>
@@ -234,28 +202,18 @@ levels(students_c$grade_infreq)
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><!--
-
-*Answer:*
-
-
-```r
-students_d <- students_a %>%
-  mutate(grade_lumped = fct_lump(grade_fac, n = 1, other_level = "Others")) %>%
-  count(grade_lumped)
-students_d
-```
-
-```
-# A tibble: 2 × 2
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">students_d</span> <span class="op">&lt;-</span> <span class="va">students_a</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_lumped <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_lump.html">fct_lump</a></span><span class="op">(</span><span class="va">grade_fac</span>, n <span class="op">=</span> <span class="fl">1</span>, other_level <span class="op">=</span> <span class="st">"Others"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">grade_lumped</span><span class="op">)</span></span>
+<span><span class="va">students_d</span></span></code></pre></div>
+<pre><code># A tibble: 2 × 2
   grade_lumped     n
-  <fct>        <int>
-1 9th             10
-2 Others          14
-```
-
+  &lt;fct&gt;        &lt;int&gt;
+1 9th             11
+2 Others          13</code></pre>
 </details>
---></details>
 </div>
 </div>
 <div id="your-turn-2-2" class="section level2" number="16.2">
@@ -263,7 +221,7 @@ students_d
 <span class="header-section-number">16.2</span> Your Turn 2<a class="anchor" aria-label="anchor" href="#your-turn-2-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Lets import the <code>gss_cat</code> dataset from the <code>forcats</code> library. This datast contains a sample of categorical variables from the General Social survey.</p>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># import gss_cat dataset from forcats library</span></span>
 <span><span class="fu">forcats</span><span class="fu">::</span><span class="va"><a href="https://forcats.tidyverse.org/reference/gss_cat.html">gss_cat</a></span></span></code></pre></div>
 <pre><code># A tibble: 21,483 × 9
@@ -288,25 +246,17 @@ students_d
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><!--
-
-*Answer:*
-
-```r
-# your r-code
-gss_cat %>%
-  drop_na(tvhours) %>%
-  group_by(relig) %>%
-  summarize(tvhours = mean(tvhours)) %>%
-  ggplot(aes(tvhours, fct_reorder(relig, tvhours))) +
-    geom_point()
-```
-
-<img src="class_activity_10_files/figure-html/unnamed-chunk-8-1.png" width="100%" />
-
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># your r-code</span></span>
+<span><span class="va">gss_cat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">tvhours</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">relig</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>tvhours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">tvhours</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">tvhours</span>, <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">relig</span>, <span class="va">tvhours</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_10_files/figure-html/unnamed-chunk-8-1.png" width="100%"></div>
 </details>
-
---></details>
 </div>
 <div id="b.-do-married-people-watch-more-or-less-tv-than-single-people" class="section level3" number="16.2.2">
 <h3>
@@ -314,25 +264,17 @@ gss_cat %>%
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><!--
-
-*Answer:*
-
-```r
-# your r-code
-gss_cat %>%
-  drop_na(tvhours) %>%
-  group_by(marital) %>%
-  summarize(tvhours = mean(tvhours)) %>%
-  ggplot(aes(tvhours, fct_reorder(marital, tvhours))) +
-    geom_point()
-```
-
-<img src="class_activity_10_files/figure-html/unnamed-chunk-9-1.png" width="100%" />
-
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># your r-code</span></span>
+<span><span class="va">gss_cat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">tvhours</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">marital</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>tvhours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">tvhours</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">tvhours</span>, <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">marital</span>, <span class="va">tvhours</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_10_files/figure-html/unnamed-chunk-9-1.png" width="100%"></div>
 </details>
-
---></details>
 </div>
 <div id="c.-collapse-the-marital-variable-to-have-levels-married-not_married-and-no_answer.-include-never-married-divorced-and-widowed-in-not_married" class="section level3" number="16.2.3">
 <h3>
@@ -340,38 +282,27 @@ gss_cat %>%
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><!--
-
-*Answer:*
-
-
-```r
-# your r-code
-gss_cat %>%
-  drop_na(tvhours) %>%
-  select(marital, tvhours) %>%
-  mutate(
-    maritalStatus =
-      fct_collapse(
-        marital,
-        married = c("Married",
-                    "Separated"),
-        not_married = c("Never married",
-                        "Divorced",
-                        "Widowed"),
-        no_answer = c("No answer")) 
-  ) -> marital_c
-
-levels(marital_c$maritalStatus)
-```
-
-```
-[1] "no_answer"   "not_married" "married"    
-```
-
+</summary><p><em>Answer:</em></p>
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># your r-code</span></span>
+<span><span class="va">gss_cat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">tvhours</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">marital</span>, <span class="va">tvhours</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    maritalStatus <span class="op">=</span></span>
+<span>      <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_collapse.html">fct_collapse</a></span><span class="op">(</span></span>
+<span>        <span class="va">marital</span>,</span>
+<span>        married <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Married"</span>,</span>
+<span>                    <span class="st">"Separated"</span><span class="op">)</span>,</span>
+<span>        not_married <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Never married"</span>,</span>
+<span>                        <span class="st">"Divorced"</span>,</span>
+<span>                        <span class="st">"Widowed"</span><span class="op">)</span>,</span>
+<span>        no_answer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No answer"</span><span class="op">)</span><span class="op">)</span> </span>
+<span>  <span class="op">)</span> <span class="op">-&gt;</span> <span class="va">marital_c</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">marital_c</span><span class="op">$</span><span class="va">maritalStatus</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "no_answer"   "not_married" "married"    </code></pre>
 </details>
-
---></details>
 </div>
 </div>
 </div>
@@ -414,7 +345,7 @@ levels(marital_c$maritalStatus)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-24.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-01-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

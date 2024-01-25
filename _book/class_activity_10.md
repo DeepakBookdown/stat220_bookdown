@@ -28,7 +28,6 @@ students <- tibble(
 
 *Answer:* 
 
-<!--
 
 
 ```r
@@ -43,42 +42,40 @@ print(students_a, n = 24)
 # A tibble: 24 × 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1    11 9th   South America    56 9th      
- 2    14 9th   Europe           57 9th      
- 3    16 9th   South America    78 9th      
- 4    17 9th   Asia             69 9th      
- 5    19 9th   Asia             96 9th      
- 6    21 9th   Africa           95 9th      
- 7     1 10th  North America    69 10th     
- 8     2 10th  Europe           58 10th     
- 9     3 10th  Middle East      92 10th     
-10     5 10th  Africa           60 10th     
-11     9 10th  Middle East      59 10th     
-12    12 10th  Asia             92 10th     
-13    13 10th  North America    80 10th     
-14    18 10th  Africa           80 10th     
-15    22 10th  Asia             64 10th     
-16     4 11th  North America    58 11th     
-17     6 11th  North America   100 11th     
-18     7 11th  Middle East      57 11th     
-19     8 11th  Europe           81 11th     
-20    10 11th  Africa           55 11th     
-21    15 11th  Middle East      57 11th     
-22    20 11th  Middle East      70 11th     
-23    23 11th  Middle East      51 11th     
-24    24 11th  Middle East      87 11th     
+ 1     2 9th   Asia             81 9th      
+ 2     4 9th   Asia             83 9th      
+ 3     6 9th   Africa           55 9th      
+ 4    10 9th   Europe           67 9th      
+ 5    11 9th   South America    63 9th      
+ 6    17 9th   North America    52 9th      
+ 7     5 10th  Asia             60 10th     
+ 8     8 10th  Europe           95 10th     
+ 9     9 10th  Europe           65 10th     
+10    12 10th  Asia             60 10th     
+11    16 10th  North America    67 10th     
+12    19 10th  Africa           51 10th     
+13    21 10th  Europe           74 10th     
+14    23 10th  Africa           84 10th     
+15    24 10th  Africa           76 10th     
+16     1 11th  North America    52 11th     
+17     3 11th  South America    85 11th     
+18     7 11th  Europe           69 11th     
+19    13 11th  Middle East      57 11th     
+20    14 11th  Middle East      63 11th     
+21    15 11th  Europe           86 11th     
+22    18 11th  Asia             71 11th     
+23    20 11th  Europe           54 11th     
+24    22 11th  Europe           60 11th     
 ```
 
 </details>
 
--->
 
 ### b. Create a new column `region_fac` by converting the `region` column into a factor. Collapse the `region_fac` levels into three categories: "Americas", "EMEA" and "Asia". Count the number of students in each collapsed region category.
 
 <details>
 <summary class="answer">Click for answer</summary>
 
-<!--
 
 *Answer:*
 
@@ -99,19 +96,17 @@ print(students_b)
   region_collapsed     n
   <fct>            <int>
 1 EMEA                14
-2 Asia                 4
-3 Americas             6
+2 Asia                 5
+3 Americas             5
 ```
 
 </details>
 
--->
 
 ### c. Create a new column `grade_infreq` that is a copy of the `grade_fac` column. Reorder the levels of `grade_infreq` based on their frequency in the dataset. Print the levels of `grade_infreq` to check the ordering.
 
 <details>
 <summary class="answer">Click for answer</summary>
-<!--
 
 *Answer:*
 
@@ -129,14 +124,12 @@ levels(students_c$grade_infreq)
 
 </details>
 
--->
 
 
 ### d. Create a new column `grade_lumped` by lumping the least frequent level of the `grade_fac` column into an 'Others' category. Count the number of students in each of the categories of the `grade_lumped` column.
 
 <details>
 <summary class="answer">Click for answer</summary>
-<!--
 
 *Answer:*
 
@@ -158,7 +151,7 @@ students_d
 ```
 
 </details>
--->
+
 
 ## Your Turn 2
 
@@ -195,7 +188,6 @@ Use `gss_cat` to answer the following questions.
 <details>
 <summary class="answer">Click for answer</summary>
 
-<!--
 
 *Answer:*
 
@@ -213,13 +205,11 @@ gss_cat %>%
 
 </details>
 
--->
 
 ### b. Do married people watch more or less TV than single people?
 
 <details>
 <summary class="answer">Click for answer</summary>
-<!--
 
 *Answer:*
 
@@ -237,13 +227,11 @@ gss_cat %>%
 
 </details>
 
--->
 
 ### c. Collapse the `marital` variable to have levels `married`, `not_married`, and `no_answer`. Include `"Never married"`, `"Divorced"`, and "`Widowed"` in `not_married`
 
 <details>
 <summary class="answer">Click for answer</summary>
-<!--
 
 *Answer:*
 
@@ -274,4 +262,3 @@ levels(marital_c$maritalStatus)
 
 </details>
 
--->
