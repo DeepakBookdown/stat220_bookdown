@@ -28,8 +28,11 @@ my_sentence
 
 a. What happens when a `str_c` entry is a vector?
 
+<!--
+
 <details>
 <summary class="answer">Click for answer</summary>
+
 
 *Answer:* When an entry in `str_c` is a vector, it will combine the strings with each element of the vector, creating multiple combined strings.
 
@@ -47,10 +50,15 @@ my_sentences
 
 </details>
 
+-->
+
 b. How do you combine strings with `str_glue`?
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
+
 
 *Answer:* You can combine strings with `str_glue` using curly braces `{}` to insert variables directly into the string.
 
@@ -78,7 +86,12 @@ Central Park is great for boating.
 
 </details>
 
+-->
+
+
 c. What does `str_flatten` do?
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -97,7 +110,12 @@ str_flatten(my_sentences, collapse = " and ")
 
 </details>
 
+-->
+
+
 d. What will using a `\n` separator do in the command below?
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -119,7 +137,11 @@ jogging
 
 </details>
 
+-->
+
 e. Does `str_length` count spaces and special characters??
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -146,8 +168,11 @@ str_length(p)
 
 </details>
 
+-->
+
 f. How do you count the number of `e`'s in a string?
 
+<!--
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -168,7 +193,11 @@ vowel_count
 
 </details>
 
+-->
+
 g. What happens with negative positions?
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -217,7 +246,11 @@ negative_substr
 
 </details>
 
+-->
+
 i. With a vector of positions?
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -236,8 +269,12 @@ str_sub(my_sentence, start = c(1, 9), end = c(4, 15))
 
 </details>
 
+-->
+
 j. How do you extract multiple `substrings` using a vector of positions?
 
+
+<!--
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -256,6 +293,8 @@ substrs
 ```
 
 </details>
+
+-->
 
 -----------------------------------------------------------------------
 
