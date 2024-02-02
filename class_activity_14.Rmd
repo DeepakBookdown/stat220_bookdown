@@ -65,7 +65,7 @@ skewness(x)
 </details>
 
 
-### b.  Conditions and breaks
+### b. (Optional)  Conditions and breaks
 
 Create a function that iterates through a numeric vector and stops when it encounters the first negative number, returning the position of that negative number. If there are no negative numbers in the vector, the function should return a message stating that there are no negative numbers.
 

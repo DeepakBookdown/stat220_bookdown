@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-01-28}
+\date{2024-02-01}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.7081
+[1] 28.71938
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     2 9th   South America    51 9th      
- 2     3 9th   Middle East      78 9th      
- 3     4 9th   Middle East      76 9th      
- 4     5 9th   Africa           68 9th      
- 5     6 9th   Africa           92 9th      
- 6     8 9th   Europe           72 9th      
- 7    11 9th   Africa           93 9th      
- 8    13 9th   Middle East      64 9th      
- 9    16 9th   Europe           85 9th      
-10    19 9th   Africa           91 9th      
-11     1 10th  South America    97 10th     
-12     7 10th  North America    53 10th     
-13     9 10th  Africa           73 10th     
-14    17 10th  Asia             81 10th     
-15    18 10th  Africa           51 10th     
-16    21 10th  Europe           59 10th     
-17    23 10th  Africa           72 10th     
-18    24 10th  South America    90 10th     
-19    10 11th  Middle East      65 11th     
-20    12 11th  Middle East      99 11th     
-21    14 11th  Middle East      53 11th     
-22    15 11th  Africa           70 11th     
-23    20 11th  South America    87 11th     
-24    22 11th  North America    84 11th     
+ 1     5 9th   Middle East      50 9th      
+ 2     7 9th   Europe           89 9th      
+ 3    11 9th   Middle East      85 9th      
+ 4    12 9th   Africa           53 9th      
+ 5    13 9th   Middle East      87 9th      
+ 6    14 9th   Middle East      77 9th      
+ 7    19 9th   North America    69 9th      
+ 8    23 9th   Africa           62 9th      
+ 9     1 10th  North America    73 10th     
+10     3 10th  Africa           69 10th     
+11     6 10th  Middle East      82 10th     
+12     9 10th  North America    92 10th     
+13    15 10th  North America    65 10th     
+14    17 10th  Asia             59 10th     
+15    18 10th  Asia             72 10th     
+16     2 11th  Europe           61 11th     
+17     4 11th  South America    81 11th     
+18     8 11th  Europe          100 11th     
+19    10 11th  North America    76 11th     
+20    16 11th  South America    84 11th     
+21    20 11th  North America    75 11th     
+22    21 11th  Asia             63 11th     
+23    22 11th  Africa           65 11th     
+24    24 11th  Africa           92 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                17
-2 Asia                 1
-3 Americas             6
+1 EMEA                13
+2 Asia                 3
+3 Americas             8
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "9th"  "10th" "11th"
+[1] "11th" "9th"  "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 9th             10
-2 Others          14
+1 11th             9
+2 Others          15
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -5605,6 +5605,222 @@ Click for answer
 Click for answer
 
 \emph{Answer:} About 42\% of the tweets originated from an iPhone.
+
+\hypertarget{class-activity-13}{%
+\chapter{Class Activity 13}\label{class-activity-13}}
+
+In-class Midterm 1 !!
+
+\hypertarget{class-activity-14}{%
+\chapter{Class Activity 14}\label{class-activity-14}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(wordcloud)}
+\FunctionTok{library}\NormalTok{(reshape2)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tidyr)}
+\FunctionTok{library}\NormalTok{(tidytext)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-1}{%
+\section{Group Activity 1}\label{group-activity-1-1}}
+
+\hypertarget{a.-variance-and-skewness}{%
+\subsection{a. Variance and Skewness}\label{a.-variance-and-skewness}}
+
+The variance of a random variable \(x\) is defined as:
+
+\[\operatorname{Var}(x)=\frac{1}{n-1} \sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\]
+
+where \(x_i = (\sum_i^n x_i)/n\) is the sample mean. Also, the skewness of the random variable \(x\) is defined as:
+
+\[\operatorname{Skew}(x)=\frac{\frac{1}{n-2}\left(\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{3}\right)}{\operatorname{Var}(x)^{3 /2}}\]
+
+Please write functions to calculate the variance and skewness of \(\{12, 45, 54, 34, 56, 30, 67, \text{NA}\}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{67}\NormalTok{, }\ConstantTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# function to calculate the variance of a vector}
+\NormalTok{var }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(x) }\CommentTok{\# omit NA values}
+  \FunctionTok{sum}\NormalTok{((x }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(x)) }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ (}\FunctionTok{length}\NormalTok{(x) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 346.619
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# function to calculate the skewness of a vector}
+\NormalTok{skewness }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(x) }\CommentTok{\# omit NA values}
+  \FunctionTok{sum}\NormalTok{((x }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(x)) }\SpecialCharTok{\^{}} \DecValTok{3}\NormalTok{) }\SpecialCharTok{/}\NormalTok{((}\FunctionTok{length}\NormalTok{(x) }\SpecialCharTok{{-}} \DecValTok{2}\NormalTok{) }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(x) }\SpecialCharTok{\^{}}\NormalTok{ (}\DecValTok{3} \SpecialCharTok{/} \DecValTok{2}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{skewness}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -0.3930586
+\end{verbatim}
+
+\hypertarget{b.-optional-conditions-and-breaks}{%
+\subsection{b. (Optional) Conditions and breaks}\label{b.-optional-conditions-and-breaks}}
+
+Create a function that iterates through a numeric vector and stops when it encounters the first negative number, returning the position of that negative number. If there are no negative numbers in the vector, the function should return a message stating that there are no negative numbers.
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{find\_first\_negative }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  negative\_positions }\OtherTok{\textless{}{-}} \FunctionTok{which}\NormalTok{(x }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{)}
+  
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(negative\_positions) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The first negative number is at position"}\NormalTok{, negative\_positions[}\DecValTok{1}\NormalTok{]))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{"There are no negative numbers in the vector"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{7}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\FunctionTok{find\_first\_negative}\NormalTok{(test\_vector)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "The first negative number is at position 3"
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-2-1}{%
+\section{Group Activity 2}\label{group-activity-2-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{musical\_instr\_reviews }\OtherTok{\textless{}{-}}  \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/deepbas/statdatasets/main/musicreviews.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{ratingOverall =}\NormalTok{ overall)}
+\FunctionTok{glimpse}\NormalTok{(musical\_instr\_reviews)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 10,261
+Columns: 3
+$ reviewerName  <chr> "cassandra tu \"Yeah, well, that's j~
+$ reviewText    <chr> "not much to write about here but it~
+$ ratingOverall <dbl> 5, 5, 5, 5, 5, 5, 5, 3, 5, 5, 5, 4, ~
+\end{verbatim}
+
+\hypertarget{a.-write-a-function-to-filter-the-dataset-based-on-the-provided-rating}{%
+\subsection{a. Write a function to filter the dataset based on the provided rating:}\label{a.-write-a-function-to-filter-the-dataset-based-on-the-provided-rating}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{filter\_reviews\_by\_rating }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, rating) \{}
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(ratingOverall }\SpecialCharTok{==}\NormalTok{ rating)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b.-write-a-function-to-process-the-text-and-remove-stop-words}{%
+\subsection{b. Write a function to process the text and remove stop words:}\label{b.-write-a-function-to-process-the-text-and-remove-stop-words}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{process\_text }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data) \{}
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(reviewText) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{unnest\_tokens}\NormalTok{(}\AttributeTok{output =}\NormalTok{ word, }\AttributeTok{input =}\NormalTok{ reviewText) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{anti\_join}\NormalTok{(stop\_words)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{c.-write-a-function-to-join-the-processed-text-with-sentiment-data-and-create-a-word-count-table.}{%
+\subsection{c.~Write a function to join the processed text with sentiment data and create a word count table.}\label{c.-write-a-function-to-join-the-processed-text-with-sentiment-data-and-create-a-word-count-table.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{create\_word\_count\_table }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data) \{}
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{inner\_join}\NormalTok{(}\FunctionTok{get\_sentiments}\NormalTok{(}\StringTok{"bing"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{count}\NormalTok{(word, sentiment, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    reshape2}\SpecialCharTok{::}\FunctionTok{acast}\NormalTok{(word }\SpecialCharTok{\textasciitilde{}}\NormalTok{ sentiment, }\AttributeTok{value.var =} \StringTok{"n"}\NormalTok{, }\AttributeTok{fill =} \DecValTok{0}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot.}{%
+\subsection{d.~Create the final function that takes the rating and number of words as input arguments and returns a word cloud plot.}\label{d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{word\_cloud }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(rating, num.words) \{}
+\NormalTok{  rating }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(rating)}
+\NormalTok{  num.words }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(num.words)}
+  
+  \ControlFlowTok{if}\NormalTok{ (rating }\SpecialCharTok{\textgreater{}=} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ rating }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) \{}
+\NormalTok{    filtered\_reviews }\OtherTok{\textless{}{-}} \FunctionTok{filter\_reviews\_by\_rating}\NormalTok{(musical\_instr\_reviews, rating)}
+\NormalTok{    processed\_reviews }\OtherTok{\textless{}{-}} \FunctionTok{process\_text}\NormalTok{(filtered\_reviews)}
+\NormalTok{    word\_count\_table }\OtherTok{\textless{}{-}} \FunctionTok{create\_word\_count\_table}\NormalTok{(processed\_reviews)}
+    
+    \FunctionTok{comparison.cloud}\NormalTok{(}
+\NormalTok{      word\_count\_table,}
+      \AttributeTok{colors =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"purple"}\NormalTok{),}
+      \AttributeTok{scale =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\FloatTok{0.5}\NormalTok{),}
+      \AttributeTok{max.words =}\NormalTok{ num.words,}
+      \AttributeTok{title.size =} \DecValTok{2}
+\NormalTok{    )}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{warning}\NormalTok{(}\StringTok{" Please enter a rating from 1 to 5"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\FunctionTok{word\_cloud}\NormalTok{(}\AttributeTok{rating =} \StringTok{"4"}\NormalTok{, }\AttributeTok{num.words =} \DecValTok{300}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_14_files/figure-latex/unnamed-chunk-13-1}
 
   \bibliography{book.bib,packages.bib}
 
