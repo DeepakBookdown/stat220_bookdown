@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-02}
+\date{2024-02-03}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.72056
+[1] 28.72354
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Middle East      59 9th      
- 2     5 9th   Europe           97 9th      
- 3     7 9th   Asia             91 9th      
- 4     8 9th   Africa           76 9th      
- 5     9 9th   South America    50 9th      
- 6    10 9th   Middle East      83 9th      
- 7    11 9th   South America    74 9th      
- 8    15 9th   North America    92 9th      
- 9     2 10th  Europe           89 10th     
-10     3 10th  Africa           81 10th     
-11     4 10th  South America    65 10th     
-12    12 10th  Africa           62 10th     
-13    16 10th  Europe           73 10th     
-14    17 10th  Europe           96 10th     
-15    19 10th  Africa           71 10th     
-16    20 10th  Asia             68 10th     
-17    21 10th  Africa           64 10th     
-18    24 10th  Africa           71 10th     
-19     6 11th  South America    76 11th     
-20    13 11th  Africa           76 11th     
-21    14 11th  Middle East      70 11th     
-22    18 11th  South America    67 11th     
-23    22 11th  Middle East      95 11th     
-24    23 11th  Asia             67 11th     
+ 1     9 9th   Europe           97 9th      
+ 2    16 9th   South America    73 9th      
+ 3    21 9th   Africa           89 9th      
+ 4     1 10th  Africa           51 10th     
+ 5     2 10th  South America    75 10th     
+ 6     4 10th  Asia             80 10th     
+ 7     7 10th  Asia             57 10th     
+ 8     8 10th  Asia             57 10th     
+ 9    10 10th  South America    53 10th     
+10    11 10th  Africa           93 10th     
+11    17 10th  Middle East      86 10th     
+12    19 10th  Europe           55 10th     
+13    20 10th  Asia             50 10th     
+14    23 10th  Middle East      78 10th     
+15     3 11th  North America    85 11th     
+16     5 11th  Africa           66 11th     
+17     6 11th  Asia             91 11th     
+18    12 11th  Asia             78 11th     
+19    13 11th  Middle East      96 11th     
+20    14 11th  North America    92 11th     
+21    15 11th  Europe           89 11th     
+22    18 11th  South America    85 11th     
+23    22 11th  Asia             64 11th     
+24    24 11th  Middle East      90 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,8 +4700,8 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                15
-2 Asia                 3
+1 EMEA                11
+2 Asia                 7
 3 Americas             6
 \end{verbatim}
 
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "9th"  "11th"
+[1] "10th" "11th" "9th" 
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 10th            10
-2 Others          14
+1 10th            11
+2 Others          13
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -5790,6 +5790,37 @@ Click for answer
 
 \hypertarget{d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot.}{%
 \subsection{d.~Create the final function that takes the rating and number of words as input arguments and returns a word cloud plot.}\label{d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{word\_cloud }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(rating, num.words) \{}
+\NormalTok{  rating }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(rating)}
+\NormalTok{  num.words }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(num.words)}
+  
+  \ControlFlowTok{if}\NormalTok{ (rating }\SpecialCharTok{\textgreater{}=} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ rating }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{) \{}
+\NormalTok{    filtered\_reviews }\OtherTok{\textless{}{-}} \FunctionTok{filter\_reviews\_by\_rating}\NormalTok{(musical\_instr\_reviews, rating)}
+\NormalTok{    processed\_reviews }\OtherTok{\textless{}{-}} \FunctionTok{process\_text}\NormalTok{(filtered\_reviews)}
+\NormalTok{    word\_count\_table }\OtherTok{\textless{}{-}} \FunctionTok{create\_word\_count\_table}\NormalTok{(processed\_reviews)}
+    
+    \FunctionTok{comparison.cloud}\NormalTok{(}
+\NormalTok{      word\_count\_table,}
+      \AttributeTok{colors =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"purple"}\NormalTok{),}
+      \AttributeTok{scale =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\FloatTok{0.5}\NormalTok{),}
+      \AttributeTok{max.words =}\NormalTok{ num.words,}
+      \AttributeTok{title.size =} \DecValTok{2}
+\NormalTok{    )}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{warning}\NormalTok{(}\StringTok{" Please enter a rating from 1 to 5"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\FunctionTok{word\_cloud}\NormalTok{(}\AttributeTok{rating =} \StringTok{"4"}\NormalTok{, }\AttributeTok{num.words =} \DecValTok{300}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_14_files/figure-latex/unnamed-chunk-13-1}
 
   \bibliography{book.bib,packages.bib}
 

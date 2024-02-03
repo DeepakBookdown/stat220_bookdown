@@ -231,42 +231,33 @@ Click for answer
 <h3>
 <span class="header-section-number">20.2.4</span> d. Create the final function that takes the rating and number of words as input arguments and returns a word cloud plot.<a class="anchor" aria-label="anchor" href="#d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot."><i class="fas fa-link"></i></a>
 </h3>
-<!--
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-```r
-word_cloud <- function(rating, num.words) {
-  rating <- as.numeric(rating)
-  num.words <- as.numeric(num.words)
-  
-  if (rating >= 1 & rating <= 5) {
-    filtered_reviews <- filter_reviews_by_rating(musical_instr_reviews, rating)
-    processed_reviews <- process_text(filtered_reviews)
-    word_count_table <- create_word_count_table(processed_reviews)
-    
-    comparison.cloud(
-      word_count_table,
-      colors = c("blue", "purple"),
-      scale = c(2, 0.5),
-      max.words = num.words,
-      title.size = 2
-    )
-  } else {
-    warning(" Please enter a rating from 1 to 5")
-  }
-}
-
-word_cloud(rating = "4", num.words = 300)
-```
-
-<img src="class_activity_14_files/figure-html/unnamed-chunk-13-1.png" width="100%" />
-
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">word_cloud</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">rating</span>, <span class="va">num.words</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">rating</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rating</span><span class="op">)</span></span>
+<span>  <span class="va">num.words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">num.words</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">rating</span> <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">rating</span> <span class="op">&lt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">filtered_reviews</span> <span class="op">&lt;-</span> <span class="fu">filter_reviews_by_rating</span><span class="op">(</span><span class="va">musical_instr_reviews</span>, <span class="va">rating</span><span class="op">)</span></span>
+<span>    <span class="va">processed_reviews</span> <span class="op">&lt;-</span> <span class="fu">process_text</span><span class="op">(</span><span class="va">filtered_reviews</span><span class="op">)</span></span>
+<span>    <span class="va">word_count_table</span> <span class="op">&lt;-</span> <span class="fu">create_word_count_table</span><span class="op">(</span><span class="va">processed_reviews</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/comparison.cloud.html">comparison.cloud</a></span><span class="op">(</span></span>
+<span>      <span class="va">word_count_table</span>,</span>
+<span>      colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"purple"</span><span class="op">)</span>,</span>
+<span>      scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      max.words <span class="op">=</span> <span class="va">num.words</span>,</span>
+<span>      title.size <span class="op">=</span> <span class="fl">2</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">" Please enter a rating from 1 to 5"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">word_cloud</span><span class="op">(</span>rating <span class="op">=</span> <span class="st">"4"</span>, num.words <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_14_files/figure-html/unnamed-chunk-13-1.png" width="100%"></div>
 </details>
-
--->
-
 </div>
 </div>
 </div>
@@ -308,7 +299,7 @@ word_cloud(rating = "4", num.words = 300)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-02.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

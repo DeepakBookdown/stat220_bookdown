@@ -188,7 +188,6 @@ create_word_count_table <- function(data) {
 ### d. Create the final function that takes the rating and number of words as input arguments and returns a word cloud plot. 
 
 
-<!--
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -222,4 +221,4 @@ word_cloud(rating = "4", num.words = 300)
 
 </details>
 
--->
+
