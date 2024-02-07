@@ -285,6 +285,7 @@ qdf
 
 **4.**  Plot the KWH value for each quantile on the x-axis for the buildings `Sayles-Hill`, `Language_&_Dining_Center`, `Olin_Hall_of_Science`
 
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -306,3 +307,4 @@ qdf %>%
 
 </details>
 
+-->

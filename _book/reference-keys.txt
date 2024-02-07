@@ -186,3 +186,8 @@ a.-write-a-function-to-filter-the-dataset-based-on-the-provided-rating
 b.-write-a-function-to-process-the-text-and-remove-stop-words
 c.-write-a-function-to-join-the-processed-text-with-sentiment-data-and-create-a-word-count-table.
 d.-create-the-final-function-that-takes-the-rating-and-number-of-words-as-input-arguments-and-returns-a-word-cloud-plot.
+class-activity-15
+group-activity-1-2
+a.-if-and-for-loop
+b.-for-loop-and-mean
+group-activity-2-2

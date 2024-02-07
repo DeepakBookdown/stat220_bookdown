@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-03}
+\date{2024-02-06}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.72354
+[1] 28.73271
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     9 9th   Europe           97 9th      
- 2    16 9th   South America    73 9th      
- 3    21 9th   Africa           89 9th      
- 4     1 10th  Africa           51 10th     
- 5     2 10th  South America    75 10th     
- 6     4 10th  Asia             80 10th     
- 7     7 10th  Asia             57 10th     
- 8     8 10th  Asia             57 10th     
- 9    10 10th  South America    53 10th     
-10    11 10th  Africa           93 10th     
-11    17 10th  Middle East      86 10th     
-12    19 10th  Europe           55 10th     
-13    20 10th  Asia             50 10th     
-14    23 10th  Middle East      78 10th     
-15     3 11th  North America    85 11th     
-16     5 11th  Africa           66 11th     
-17     6 11th  Asia             91 11th     
-18    12 11th  Asia             78 11th     
-19    13 11th  Middle East      96 11th     
-20    14 11th  North America    92 11th     
-21    15 11th  Europe           89 11th     
-22    18 11th  South America    85 11th     
-23    22 11th  Asia             64 11th     
-24    24 11th  Middle East      90 11th     
+ 1     3 9th   Middle East      63 9th      
+ 2     5 9th   Asia             57 9th      
+ 3     8 9th   Asia             82 9th      
+ 4    10 9th   Europe           97 9th      
+ 5    11 9th   Middle East      98 9th      
+ 6    14 9th   Asia             86 9th      
+ 7    23 9th   North America    88 9th      
+ 8     1 10th  Asia             94 10th     
+ 9     4 10th  Asia             55 10th     
+10     6 10th  Europe           71 10th     
+11     9 10th  South America    96 10th     
+12    13 10th  Europe           64 10th     
+13    17 10th  North America    52 10th     
+14    19 10th  Africa           69 10th     
+15    20 10th  Europe           53 10th     
+16     2 11th  Asia             51 11th     
+17     7 11th  Middle East      89 11th     
+18    12 11th  Middle East      83 11th     
+19    15 11th  Africa           85 11th     
+20    16 11th  Europe           90 11th     
+21    18 11th  Middle East      93 11th     
+22    21 11th  North America    76 11th     
+23    22 11th  Africa           71 11th     
+24    24 11th  Africa           84 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                11
-2 Asia                 7
-3 Americas             6
+1 EMEA                14
+2 Asia                 6
+3 Americas             4
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "11th" "9th" 
+[1] "11th" "10th" "9th" 
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 10th            11
-2 Others          13
+1 11th             9
+2 Others          15
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -5821,6 +5821,323 @@ Click for answer
 \end{Shaded}
 
 \includegraphics[width=1\linewidth]{class_activity_14_files/figure-latex/unnamed-chunk-13-1}
+
+\hypertarget{class-activity-15}{%
+\chapter{Class Activity 15}\label{class-activity-15}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(stringr)}
+
+
+\NormalTok{energy }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/deepbas/statdatasets/main/energy.csv"}\NormalTok{,}
+                    \AttributeTok{col\_type =} \FunctionTok{cols}\NormalTok{(}
+                     \AttributeTok{.default =} \FunctionTok{col\_double}\NormalTok{(), }
+                      \AttributeTok{Timestamp =} \FunctionTok{col\_datetime}\NormalTok{(}\AttributeTok{format =} \StringTok{""}\NormalTok{),}
+                      \AttributeTok{dayWeek =} \FunctionTok{col\_factor}\NormalTok{(}\AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Mon"}\NormalTok{,}\StringTok{"Tues"}\NormalTok{,}\StringTok{"Wed"}\NormalTok{,}\StringTok{"Thurs"}\NormalTok{,}\StringTok{"Fri"}\NormalTok{,}\StringTok{"Sat"}\NormalTok{,}\StringTok{"Sun"}\NormalTok{))}
+\NormalTok{                     ))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-2}{%
+\section{Group Activity 1}\label{group-activity-1-2}}
+
+\hypertarget{a.-if-and-for-loop}{%
+\subsection{\texorpdfstring{a. \texttt{if} and \texttt{for} loop}{a. if and for loop}}\label{a.-if-and-for-loop}}
+
+Write a for loop to iterate over the columns of the `energy' dataset and print the names of all columns containing the string ``House''. Please use the function \texttt{colnames()} to extract the column names and store the results in a list.
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create an empty list to store the column names}
+\NormalTok{house\_columns }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+
+\CommentTok{\# Iterate over the columns of the \textquotesingle{}energy\textquotesingle{} dataset}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(energy))) \{}
+\NormalTok{  col\_name }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(energy)[i]}
+  
+  \CommentTok{\# Check if the column name contains the string "House"}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{str\_detect}\NormalTok{(col\_name, }\StringTok{"House"}\NormalTok{)) \{}
+    \CommentTok{\# Add the column name to the list}
+\NormalTok{    house\_columns[[}\FunctionTok{length}\NormalTok{(house\_columns) }\SpecialCharTok{+} \DecValTok{1}\NormalTok{]] }\OtherTok{\textless{}{-}}\NormalTok{ col\_name}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Print the list of house columns}
+\NormalTok{house\_columns }\OtherTok{\textless{}{-}} \FunctionTok{unlist}\NormalTok{(house\_columns)}
+\NormalTok{house\_columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] "Allen_House"                     
+ [2] "Alumni_Guest_House/Johnson_House"
+ [3] "Benton_House"                    
+ [4] "Berg_House"                      
+ [5] "Bird_House"                      
+ [6] "Chaney_House"                    
+ [7] "Clader_House"                    
+ [8] "Dacie_Moses_House"               
+ [9] "Douglas_House"                   
+[10] "Farm_House"                      
+[11] "Geffert_House"                   
+[12] "Headley_House"                   
+[13] "Henrickson_House"                
+[14] "Henry_House"                     
+[15] "Hill_House"                      
+[16] "Hilton_House"                    
+[17] "Hoppin_House_(Alumni)"           
+[18] "Huntington_House"                
+[19] "Jewett_House"                    
+[20] "Jones_House"                     
+[21] "Nutting_House"                   
+[22] "Page_House_West"                 
+[23] "Parish_House_"                   
+[24] "Parr_House"                      
+[25] "Pollock_House"                   
+[26] "Prentice_House"                  
+[27] "Rayment_House"                   
+[28] "Rice_House"                      
+[29] "Rogers_House"                    
+[30] "Ryberg_House"                    
+[31] "Seccombe_House"                  
+[32] "Sperry_House"                    
+[33] "Stimson_House"                   
+[34] "Strong_House"                    
+[35] "Whittier_House"                  
+[36] "Wilson_House"                    
+\end{verbatim}
+
+\hypertarget{b.-for-loop-and-mean}{%
+\subsection{\texorpdfstring{b. \texttt{for} loop and mean}{b. for loop and mean}}\label{b.-for-loop-and-mean}}
+
+Using a for loop, calculate and print the mean energy consumption of houses you identified in part a.
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Assuming the house\_columns vector from the previous step}
+
+\CommentTok{\# Create an empty numeric vector to store the mean energy consumption}
+\NormalTok{mean\_energy\_consumption }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{()}
+
+\CommentTok{\# Iterate over the house\_columns vector}
+\ControlFlowTok{for}\NormalTok{ (house\_col }\ControlFlowTok{in}\NormalTok{ house\_columns) \{}
+  \CommentTok{\# Calculate the mean energy consumption for the current house column}
+\NormalTok{  mean\_val }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(energy[[house\_col]], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+  
+  \CommentTok{\# Add the mean energy consumption to the vector}
+\NormalTok{  mean\_energy\_consumption }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(mean\_energy\_consumption, mean\_val)}
+\NormalTok{\}}
+
+\CommentTok{\# Combine the house names and mean energy consumption into a dataframe}
+\NormalTok{house\_mean\_energy }\OtherTok{\textless{}{-}} \FunctionTok{bind\_cols}\NormalTok{(}\AttributeTok{House =}\NormalTok{ house\_columns, }\AttributeTok{MeanEnergyConsumption =}\NormalTok{ mean\_energy\_consumption)}
+
+\CommentTok{\# Print the dataframe}
+\NormalTok{house\_mean\_energy }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{  knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r}
+\hline
+House & MeanEnergyConsumption\\
+\hline
+Allen\_House & 0.9821865\\
+\hline
+Alumni\_Guest\_House/Johnson\_House & 20.2631152\\
+\hline
+Benton\_House & 1.8849290\\
+\hline
+Berg\_House & 1.3174340\\
+\hline
+Bird\_House & 2.3222680\\
+\hline
+Chaney\_House & 1.0715123\\
+\hline
+Clader\_House & 0.4646776\\
+\hline
+Dacie\_Moses\_House & 1.2776465\\
+\hline
+Douglas\_House & 0.7219500\\
+\hline
+Farm\_House & 5.0599020\\
+\hline
+Geffert\_House & 0.9360400\\
+\hline
+Headley\_House & 1.4555605\\
+\hline
+Henrickson\_House & 3.4407858\\
+\hline
+Henry\_House & 1.3639619\\
+\hline
+Hill\_House & 1.4735884\\
+\hline
+Hilton\_House & 0.4248030\\
+\hline
+Hoppin\_House\_(Alumni) & 1.8760474\\
+\hline
+Huntington\_House & 1.2395238\\
+\hline
+Jewett\_House & 0.8987697\\
+\hline
+Jones\_House & 0.8680271\\
+\hline
+Nutting\_House & 4.3967234\\
+\hline
+Page\_House\_West & 1.8923490\\
+\hline
+Parish\_House\_ & 12.6793378\\
+\hline
+Parr\_House & 9.7210618\\
+\hline
+Pollock\_House & 1.1831426\\
+\hline
+Prentice\_House & 0.9089497\\
+\hline
+Rayment\_House & 0.8005664\\
+\hline
+Rice\_House & 1.1568457\\
+\hline
+Rogers\_House & 0.5634289\\
+\hline
+Ryberg\_House & 1.0729988\\
+\hline
+Seccombe\_House & 2.6874199\\
+\hline
+Sperry\_House & 0.7052983\\
+\hline
+Stimson\_House & 2.0659904\\
+\hline
+Strong\_House & 2.5410595\\
+\hline
+Whittier\_House & 1.0424369\\
+\hline
+Wilson\_House & 1.0435830\\
+\hline
+\end{tabular}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-2-2}{%
+\section{Group Activity 2}\label{group-activity-2-2}}
+
+\textbf{1.} Make a data frame of quantiles for \texttt{energy} buildings in columns 9-90 (you will need \texttt{na.rm\ =\ TRUE})
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qdf }\OtherTok{\textless{}{-}}\NormalTok{ energy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{9}\SpecialCharTok{:}\DecValTok{90}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map\_dfc}\NormalTok{(quantile, }\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{9}\NormalTok{,.}\DecValTok{1}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{qdf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 9 x 82
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# i 79 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
+#   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
+#   `Cassat_Hall_/_James_Hall` <dbl>,
+#   `Center_for_Mathematics_&_Computing` <dbl>, ...
+\end{verbatim}
+
+\textbf{2.} Add a variable to identify the quantile
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qdf }\OtherTok{\textless{}{-}}\NormalTok{ energy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{9}\SpecialCharTok{:}\DecValTok{90}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map\_dfc}\NormalTok{(quantile, }\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{9}\NormalTok{,.}\DecValTok{1}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{stat =} \FunctionTok{str\_c}\NormalTok{(}\StringTok{"quantile\_"}\NormalTok{, }\FunctionTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{90}\NormalTok{,}\DecValTok{10}\NormalTok{))) }
+\NormalTok{qdf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 9 x 83
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# i 80 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
+#   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
+#   `Cassat_Hall_/_James_Hall` <dbl>,
+#   `Center_for_Mathematics_&_Computing` <dbl>, ...
+\end{verbatim}
+
+\textbf{3.} Reshape the data frame to make variables \texttt{stat} (describing the quantile), \texttt{building} and \texttt{quant} (quantile value)
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qdf }\OtherTok{\textless{}{-}}\NormalTok{ energy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{9}\SpecialCharTok{:}\DecValTok{90}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map\_dfc}\NormalTok{(quantile, }\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{9}\NormalTok{,.}\DecValTok{1}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{stat =} \FunctionTok{str\_c}\NormalTok{(}\StringTok{"quantile\_"}\NormalTok{, }\FunctionTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{90}\NormalTok{,}\DecValTok{10}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}   
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{names\_to =} \StringTok{"building"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"quantiles"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{82}\NormalTok{)}
+\NormalTok{qdf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 738 x 3
+   stat        building                         quantiles
+   <chr>       <chr>                                <dbl>
+ 1 quantile_10 100_Nevada_Street                   0.0972
+ 2 quantile_10 104_Maple_St.                       1.04  
+ 3 quantile_10 106_Winona_St.                      0.601 
+ 4 quantile_10 Allen_House                         0.756 
+ 5 quantile_10 Alumni_Guest_House/Johnson_House   17.0   
+ 6 quantile_10 Arboretum_Office                    0.13  
+ 7 quantile_10 Art_Studios                         0.23  
+ 8 quantile_10 Benton_House                        1.59  
+ 9 quantile_10 Berg_House                          1.06  
+10 quantile_10 Bird_House                          1.42  
+# i 728 more rows
+\end{verbatim}
+
+\textbf{4.} Plot the KWH value for each quantile on the x-axis for the buildings \texttt{Sayles-Hill}, \texttt{Language\_\&\_Dining\_Center}, \texttt{Olin\_Hall\_of\_Science}
 
   \bibliography{book.bib,packages.bib}
 
