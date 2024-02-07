@@ -24,6 +24,8 @@ energy <- read_csv("https://raw.githubusercontent.com/deepbas/statdatasets/main/
 Write a for loop to iterate over the columns of the 'energy' dataset and print the names of all columns containing the string "House". Please use the function `colnames()` to extract the column names and store the results in a list.
 
 
+
+
 <details>
 <summary class="answer">Click for answer</summary>
 *Answer:*
@@ -172,6 +174,7 @@ house_mean_energy %>%  knitr::kable()
 
 **1.** Make a data frame of quantiles for `energy` buildings in columns 9-90 (you will need `na.rm = TRUE`)
 
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -208,8 +211,11 @@ qdf
 
 </details>
 
+-->
+
 **2.**  Add a variable to identify the quantile
 
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -282,6 +288,8 @@ qdf
 ```
 
 </details>
+
+-->
 
 **4.**  Plot the KWH value for each quantile on the x-axis for the buildings `Sayles-Hill`, `Language_&_Dining_Center`, `Olin_Hall_of_Science`
 

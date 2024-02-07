@@ -372,16 +372,23 @@ Click for answer
 <span class="header-section-number">21.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-2"><i class="fas fa-link"></i></a>
 </h2>
 <p><strong>1.</strong> Make a data frame of quantiles for <code>energy</code> buildings in columns 9-90 (you will need <code>na.rm = TRUE</code>)</p>
-<details><summary class="answer">
-Click for answer
-</summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">qdf</span> <span class="op">&lt;-</span> <span class="va">energy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">90</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfc</a></span><span class="op">(</span><span class="va">quantile</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">.1</span>,<span class="fl">.9</span>,<span class="fl">.1</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">qdf</span></span></code></pre></div>
-<pre><code># A tibble: 9 × 82
+<!--
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+
+```r
+qdf <- energy %>% select(9:90) %>%
+  map_dfc(quantile, probs = seq(.1,.9,.1), na.rm = TRUE)
+qdf
+```
+
+```
+# A tibble: 9 × 82
   `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
-                &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
+                <dbl>           <dbl>            <dbl>
 1              0.0972            1.04            0.601
 2              0.120             1.11            0.632
 3              0.183             1.18            0.673
@@ -391,25 +398,37 @@ Click for answer
 7              0.915             1.54            1.10 
 8              1.11              1.56            1.20 
 9              1.24              1.67            1.27 
-# ℹ 79 more variables: Allen_House &lt;dbl&gt;,
-#   `Alumni_Guest_House/Johnson_House` &lt;dbl&gt;,
-#   Arboretum_Office &lt;dbl&gt;, Art_Studios &lt;dbl&gt;,
-#   Benton_House &lt;dbl&gt;, Berg_House &lt;dbl&gt;, Bird_House &lt;dbl&gt;,
-#   Boliou_Memorial_Art_Bldg. &lt;dbl&gt;, Burton_Hall &lt;dbl&gt;,
-#   `Cassat_Hall_/_James_Hall` &lt;dbl&gt;,
-#   `Center_for_Mathematics_&amp;_Computing` &lt;dbl&gt;, …</code></pre>
-</details><p><strong>2.</strong> Add a variable to identify the quantile</p>
-<details><summary class="answer">
-Click for answer
-</summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">qdf</span> <span class="op">&lt;-</span> <span class="va">energy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">90</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfc</a></span><span class="op">(</span><span class="va">quantile</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">.1</span>,<span class="fl">.9</span>,<span class="fl">.1</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"quantile_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">90</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
-<span><span class="va">qdf</span></span></code></pre></div>
-<pre><code># A tibble: 9 × 83
+# ℹ 79 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
+#   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
+#   `Cassat_Hall_/_James_Hall` <dbl>,
+#   `Center_for_Mathematics_&_Computing` <dbl>, …
+```
+
+</details>
+
+-->
+<p><strong>2.</strong> Add a variable to identify the quantile</p>
+<!--
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+
+```r
+qdf <- energy %>% select(9:90) %>%
+  map_dfc(quantile, probs = seq(.1,.9,.1), na.rm = TRUE) %>%  
+  mutate(stat = str_c("quantile_", seq(10,90,10))) 
+qdf
+```
+
+```
+# A tibble: 9 × 83
   `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
-                &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
+                <dbl>           <dbl>            <dbl>
 1              0.0972            1.04            0.601
 2              0.120             1.11            0.632
 3              0.183             1.18            0.673
@@ -419,26 +438,38 @@ Click for answer
 7              0.915             1.54            1.10 
 8              1.11              1.56            1.20 
 9              1.24              1.67            1.27 
-# ℹ 80 more variables: Allen_House &lt;dbl&gt;,
-#   `Alumni_Guest_House/Johnson_House` &lt;dbl&gt;,
-#   Arboretum_Office &lt;dbl&gt;, Art_Studios &lt;dbl&gt;,
-#   Benton_House &lt;dbl&gt;, Berg_House &lt;dbl&gt;, Bird_House &lt;dbl&gt;,
-#   Boliou_Memorial_Art_Bldg. &lt;dbl&gt;, Burton_Hall &lt;dbl&gt;,
-#   `Cassat_Hall_/_James_Hall` &lt;dbl&gt;,
-#   `Center_for_Mathematics_&amp;_Computing` &lt;dbl&gt;, …</code></pre>
-</details><p><strong>3.</strong> Reshape the data frame to make variables <code>stat</code> (describing the quantile), <code>building</code> and <code>quant</code> (quantile value)</p>
-<details><summary class="answer">
-Click for answer
-</summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">qdf</span> <span class="op">&lt;-</span> <span class="va">energy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">9</span><span class="op">:</span><span class="fl">90</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfc</a></span><span class="op">(</span><span class="va">quantile</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">.1</span>,<span class="fl">.9</span>,<span class="fl">.1</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"quantile_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">90</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>   </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">"building"</span>, values_to <span class="op">=</span> <span class="st">"quantiles"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">82</span><span class="op">)</span></span>
-<span><span class="va">qdf</span></span></code></pre></div>
-<pre><code># A tibble: 738 × 3
+# ℹ 80 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
+#   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
+#   `Cassat_Hall_/_James_Hall` <dbl>,
+#   `Center_for_Mathematics_&_Computing` <dbl>, …
+```
+
+</details>
+
+**3.**  Reshape the data frame to make variables `stat` (describing the quantile), `building` and `quant` (quantile value)
+
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:*
+
+
+
+```r
+qdf <- energy %>% select(9:90) %>%
+  map_dfc(quantile, probs = seq(.1,.9,.1), na.rm = TRUE) %>%  
+  mutate(stat = str_c("quantile_", seq(10,90,10))) %>%   
+  pivot_longer(names_to = "building", values_to = "quantiles", 1:82)
+qdf
+```
+
+```
+# A tibble: 738 × 3
    stat        building                         quantiles
-   &lt;chr&gt;       &lt;chr&gt;                                &lt;dbl&gt;
+   <chr>       <chr>                                <dbl>
  1 quantile_10 100_Nevada_Street                   0.0972
  2 quantile_10 104_Maple_St.                       1.04  
  3 quantile_10 106_Winona_St.                      0.601 
@@ -449,8 +480,13 @@ Click for answer
  8 quantile_10 Benton_House                        1.59  
  9 quantile_10 Berg_House                          1.06  
 10 quantile_10 Bird_House                          1.42  
-# ℹ 728 more rows</code></pre>
-</details><p><strong>4.</strong> Plot the KWH value for each quantile on the x-axis for the buildings <code>Sayles-Hill</code>, <code>Language_&amp;_Dining_Center</code>, <code>Olin_Hall_of_Science</code></p>
+# ℹ 728 more rows
+```
+
+</details>
+
+-->
+<p><strong>4.</strong> Plot the KWH value for each quantile on the x-axis for the buildings <code>Sayles-Hill</code>, <code>Language_&amp;_Dining_Center</code>, <code>Olin_Hall_of_Science</code></p>
 <!--
 
 <details>
@@ -508,7 +544,7 @@ qdf %>%
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-06.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
