@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.73418
+[1] 28.73486
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     2 9th   Asia             95 9th      
- 2     3 9th   Europe           80 9th      
- 3     5 9th   South America    52 9th      
- 4     6 9th   Asia             69 9th      
- 5    15 9th   Middle East      94 9th      
- 6    18 9th   Middle East      51 9th      
- 7    19 9th   North America    79 9th      
- 8    20 9th   Africa           97 9th      
- 9    12 10th  South America    94 10th     
-10    13 10th  North America    86 10th     
-11    14 10th  Europe           70 10th     
-12    16 10th  South America    52 10th     
-13    22 10th  Middle East      91 10th     
-14    23 10th  North America    91 10th     
-15     1 11th  South America    55 11th     
-16     4 11th  Europe           97 11th     
-17     7 11th  Europe           56 11th     
-18     8 11th  Middle East      59 11th     
-19     9 11th  North America    86 11th     
-20    10 11th  Europe           60 11th     
-21    11 11th  South America    74 11th     
-22    17 11th  South America    82 11th     
-23    21 11th  Asia             54 11th     
-24    24 11th  North America    59 11th     
+ 1     3 9th   Asia             59 9th      
+ 2     6 9th   Africa           94 9th      
+ 3     7 9th   Europe           58 9th      
+ 4    15 9th   Europe           70 9th      
+ 5    20 9th   Asia             64 9th      
+ 6    22 9th   Middle East      62 9th      
+ 7     9 10th  Middle East      80 10th     
+ 8    10 10th  South America    88 10th     
+ 9    14 10th  Asia             76 10th     
+10    17 10th  Middle East      56 10th     
+11    23 10th  South America    94 10th     
+12    24 10th  Asia             74 10th     
+13     1 11th  North America    89 11th     
+14     2 11th  South America    87 11th     
+15     4 11th  South America    73 11th     
+16     5 11th  Africa           59 11th     
+17     8 11th  Middle East      62 11th     
+18    11 11th  Asia             54 11th     
+19    12 11th  North America    81 11th     
+20    13 11th  North America    94 11th     
+21    16 11th  Asia             91 11th     
+22    18 11th  Europe          100 11th     
+23    19 11th  South America    84 11th     
+24    21 11th  Africa           51 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4701,8 +4701,8 @@ Click for answer
   region_collapsed     n
   <fct>            <int>
 1 EMEA                10
-2 Asia                 3
-3 Americas            11
+2 Asia                 6
+3 Americas             8
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 11th            10
-2 Others          14
+1 11th            12
+2 Others          12
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6033,9 +6033,129 @@ Wilson\_House & 1.0435830\\
 
 \textbf{1.} Make a data frame of quantiles for \texttt{energy} buildings in columns 9-90 (you will need \texttt{na.rm\ =\ TRUE})
 
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qdf }\OtherTok{\textless{}{-}}\NormalTok{ energy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{9}\SpecialCharTok{:}\DecValTok{90}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map\_dfc}\NormalTok{(quantile, }\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{9}\NormalTok{,.}\DecValTok{1}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{qdf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 9 x 82
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# i 79 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
+#   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
+#   `Cassat_Hall_/_James_Hall` <dbl>,
+#   `Center_for_Mathematics_&_Computing` <dbl>, ...
+\end{verbatim}
+
 \textbf{2.} Add a variable to identify the quantile
 
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qdf }\OtherTok{\textless{}{-}}\NormalTok{ energy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{9}\SpecialCharTok{:}\DecValTok{90}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map\_dfc}\NormalTok{(quantile, }\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{9}\NormalTok{,.}\DecValTok{1}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{stat =} \FunctionTok{str\_c}\NormalTok{(}\StringTok{"quantile\_"}\NormalTok{, }\FunctionTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{90}\NormalTok{,}\DecValTok{10}\NormalTok{))) }
+\NormalTok{qdf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 9 x 83
+  `100_Nevada_Street` `104_Maple_St.` `106_Winona_St.`
+                <dbl>           <dbl>            <dbl>
+1              0.0972            1.04            0.601
+2              0.120             1.11            0.632
+3              0.183             1.18            0.673
+4              0.461             1.18            0.681
+5              0.710             1.42            0.692
+6              0.795             1.42            0.865
+7              0.915             1.54            1.10 
+8              1.11              1.56            1.20 
+9              1.24              1.67            1.27 
+# i 80 more variables: Allen_House <dbl>,
+#   `Alumni_Guest_House/Johnson_House` <dbl>,
+#   Arboretum_Office <dbl>, Art_Studios <dbl>,
+#   Benton_House <dbl>, Berg_House <dbl>, Bird_House <dbl>,
+#   Boliou_Memorial_Art_Bldg. <dbl>, Burton_Hall <dbl>,
+#   `Cassat_Hall_/_James_Hall` <dbl>,
+#   `Center_for_Mathematics_&_Computing` <dbl>, ...
+\end{verbatim}
+
+\textbf{3.} Reshape the data frame to make variables \texttt{stat} (describing the quantile), \texttt{building} and \texttt{quant} (quantile value)
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qdf }\OtherTok{\textless{}{-}}\NormalTok{ energy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\DecValTok{9}\SpecialCharTok{:}\DecValTok{90}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map\_dfc}\NormalTok{(quantile, }\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{,.}\DecValTok{9}\NormalTok{,.}\DecValTok{1}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{stat =} \FunctionTok{str\_c}\NormalTok{(}\StringTok{"quantile\_"}\NormalTok{, }\FunctionTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{90}\NormalTok{,}\DecValTok{10}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}   
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{names\_to =} \StringTok{"building"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"quantiles"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{82}\NormalTok{)}
+\NormalTok{qdf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 738 x 3
+   stat        building                         quantiles
+   <chr>       <chr>                                <dbl>
+ 1 quantile_10 100_Nevada_Street                   0.0972
+ 2 quantile_10 104_Maple_St.                       1.04  
+ 3 quantile_10 106_Winona_St.                      0.601 
+ 4 quantile_10 Allen_House                         0.756 
+ 5 quantile_10 Alumni_Guest_House/Johnson_House   17.0   
+ 6 quantile_10 Arboretum_Office                    0.13  
+ 7 quantile_10 Art_Studios                         0.23  
+ 8 quantile_10 Benton_House                        1.59  
+ 9 quantile_10 Berg_House                          1.06  
+10 quantile_10 Bird_House                          1.42  
+# i 728 more rows
+\end{verbatim}
+
 \textbf{4.} Plot the KWH value for each quantile on the x-axis for the buildings \texttt{Sayles-Hill}, \texttt{Language\_\&\_Dining\_Center}, \texttt{Olin\_Hall\_of\_Science}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{qdf }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(building }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Sayles{-}Hill"}\NormalTok{ ,}\StringTok{"Language\_\&\_Dining\_Center"}\NormalTok{, }\StringTok{"Olin\_Hall\_of\_Science"}\NormalTok{))  }\SpecialCharTok{\%\textgreater{}\%}  
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{quantiles, }\AttributeTok{y=}\FunctionTok{parse\_number}\NormalTok{(stat), }\AttributeTok{color=}\NormalTok{building)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group=}\NormalTok{building)) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{"Percentile (\%)"}\NormalTok{,}\AttributeTok{x=}\StringTok{"KWH"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{breaks=}\FunctionTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{90}\NormalTok{,}\AttributeTok{by=}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_15_files/figure-latex/unnamed-chunk-7-1}
 
   \bibliography{book.bib,packages.bib}
 
