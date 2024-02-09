@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-07}
+\date{2024-02-08}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.73486
+[1] 28.73822
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     3 9th   Asia             59 9th      
- 2     6 9th   Africa           94 9th      
- 3     7 9th   Europe           58 9th      
- 4    15 9th   Europe           70 9th      
- 5    20 9th   Asia             64 9th      
- 6    22 9th   Middle East      62 9th      
- 7     9 10th  Middle East      80 10th     
- 8    10 10th  South America    88 10th     
- 9    14 10th  Asia             76 10th     
-10    17 10th  Middle East      56 10th     
-11    23 10th  South America    94 10th     
-12    24 10th  Asia             74 10th     
-13     1 11th  North America    89 11th     
-14     2 11th  South America    87 11th     
-15     4 11th  South America    73 11th     
-16     5 11th  Africa           59 11th     
-17     8 11th  Middle East      62 11th     
-18    11 11th  Asia             54 11th     
-19    12 11th  North America    81 11th     
-20    13 11th  North America    94 11th     
-21    16 11th  Asia             91 11th     
-22    18 11th  Europe          100 11th     
-23    19 11th  South America    84 11th     
-24    21 11th  Africa           51 11th     
+ 1     1 9th   North America    60 9th      
+ 2     2 9th   Middle East      86 9th      
+ 3     3 9th   South America    99 9th      
+ 4     6 9th   South America    78 9th      
+ 5     8 9th   Europe           62 9th      
+ 6    10 9th   Europe           94 9th      
+ 7    11 9th   North America    89 9th      
+ 8    15 9th   Asia             68 9th      
+ 9    16 9th   North America    97 9th      
+10    18 9th   Africa           82 9th      
+11    20 9th   Africa           51 9th      
+12    22 9th   Africa           77 9th      
+13    23 9th   Asia             62 9th      
+14     4 10th  North America    87 10th     
+15     9 10th  Asia             59 10th     
+16    12 10th  Middle East      67 10th     
+17    13 10th  Asia             73 10th     
+18     5 11th  North America    97 11th     
+19     7 11th  North America    95 11th     
+20    14 11th  South America    55 11th     
+21    17 11th  Middle East      73 11th     
+22    19 11th  Europe           66 11th     
+23    21 11th  Asia             91 11th     
+24    24 11th  Asia             69 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                10
+1 EMEA                 9
 2 Asia                 6
-3 Americas             8
+3 Americas             9
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "11th" "9th"  "10th"
+[1] "9th"  "11th" "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 11th            12
-2 Others          12
+1 9th             13
+2 Others          11
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6156,6 +6156,151 @@ Click for answer
 \end{Shaded}
 
 \includegraphics[width=1\linewidth]{class_activity_15_files/figure-latex/unnamed-chunk-7-1}
+
+\hypertarget{class-activity-16}{%
+\chapter{Class Activity 16}\label{class-activity-16}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(polite)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-3}{%
+\section{Group Activity 1}\label{group-activity-1-3}}
+
+\hypertarget{a.-scrape-the-first-table-in-list_of_nasa_missions-wiki-page.-additionally-use-janitorclean_names-to-clean-the-column-names-and-store-the-resulting-table-as-nasa_missions.csv-in-your-working-folder.}{%
+\subsection{\texorpdfstring{a. Scrape the first table in \texttt{List\_of\_NASA\_missions} wiki page. Additionally, use \texttt{janitor::clean\_names()} to clean the column names and store the resulting table as \texttt{NASA\_missions.csv} in your working folder.}{a. Scrape the first table in List\_of\_NASA\_missions wiki page. Additionally, use janitor::clean\_names() to clean the column names and store the resulting table as NASA\_missions.csv in your working folder.}}\label{a.-scrape-the-first-table-in-list_of_nasa_missions-wiki-page.-additionally-use-janitorclean_names-to-clean-the-column-names-and-store-the-resulting-table-as-nasa_missions.csv-in-your-working-folder.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wiki\_NASA }\OtherTok{\textless{}{-}} \StringTok{"https://en.wikipedia.org/wiki/List\_of\_NASA\_missions"}
+
+\CommentTok{\# Scrape the data and write the first table to a CSV file}
+\FunctionTok{bow}\NormalTok{(wiki\_NASA) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{html\_table}\NormalTok{(}\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{write\_csv}\NormalTok{(}\StringTok{"NASA\_missions.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b.-now-write-a-code-snippet-to-scrape-all-the-urls-from-the-anchor-tags-on-a-given-wikipedia-page-convert-the-relative-urls-to-absolute-urls-and-store-the-results-in-a-tibble-and-save-it-as-nasa_missions_urls.csv-in-your-working-folder.}{%
+\subsection{\texorpdfstring{b. Now, write a code snippet to scrape all the URLs from the anchor tags () on a given Wikipedia page, convert the relative URLs to absolute URLs, and store the results in a tibble and save it as \texttt{NASA\_missions\_urls.csv} in your working folder.}{b. Now, write a code snippet to scrape all the URLs from the anchor tags () on a given Wikipedia page, convert the relative URLs to absolute URLs, and store the results in a tibble and save it as NASA\_missions\_urls.csv in your working folder.}}\label{b.-now-write-a-code-snippet-to-scrape-all-the-urls-from-the-anchor-tags-on-a-given-wikipedia-page-convert-the-relative-urls-to-absolute-urls-and-store-the-results-in-a-tibble-and-save-it-as-nasa_missions_urls.csv-in-your-working-folder.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Scrape the data and write the URLs to a CSV file}
+\FunctionTok{bow}\NormalTok{(wiki\_NASA) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{"a"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_attr}\NormalTok{(}\StringTok{"href"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{url\_absolute}\NormalTok{(}\StringTok{"https://en.wikipedia.org/"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{url =}\NormalTok{ .) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{write\_csv}\NormalTok{(}\StringTok{"NASA\_missions\_urls.csv"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-2-3}{%
+\section{Group Activity 2}\label{group-activity-2-3}}
+
+\hypertarget{a.-how-do-you-scrape-a-table-from-a-web-page-using-rvest-clean-the-column-names-with-janitor-and-prepare-the-data-for-analysis-in-r}{%
+\subsection{\texorpdfstring{a. How do you scrape a table from a web page using \texttt{rvest}, clean the column names with \texttt{janitor}, and prepare the data for analysis in R?}{a. How do you scrape a table from a web page using rvest, clean the column names with janitor, and prepare the data for analysis in R?}}\label{a.-how-do-you-scrape-a-table-from-a-web-page-using-rvest-clean-the-column-names-with-janitor-and-prepare-the-data-for-analysis-in-r}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{yf }\OtherTok{\textless{}{-}} \StringTok{"https://finance.yahoo.com/quote/CL\%3DF/history?p=CL\%3DF"}
+  \FunctionTok{bow}\NormalTok{(yf) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{slice}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{date =}\NormalTok{ lubridate}\SpecialCharTok{::}\FunctionTok{mdy}\NormalTok{(date)) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{mutate\_at}\NormalTok{(}\FunctionTok{vars}\NormalTok{(open}\SpecialCharTok{:}\NormalTok{adj\_close), as.numeric) }\OtherTok{{-}\textgreater{}}\NormalTok{ ticker}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b.-write-the-r-code-to-create-a-time-trend-plot-of-opening-prices-from-the-scraped-data-using-ggplot2.}{%
+\subsection{\texorpdfstring{b. Write the R code to create a time trend plot of opening prices from the scraped data using \texttt{ggplot2.}}{b. Write the R code to create a time trend plot of opening prices from the scraped data using ggplot2.}}\label{b.-write-the-r-code-to-create-a-time-trend-plot-of-opening-prices-from-the-scraped-data-using-ggplot2.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(ticker, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ open)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+} \CommentTok{\# Plot lines}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \CommentTok{\# Add points}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_labels =} \StringTok{"\%b \%d, \%Y"}\NormalTok{, }\AttributeTok{date\_breaks =} \StringTok{"1 week"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Time Trend of Opening Prices"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Date"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Opening Price"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_16_files/figure-latex/unnamed-chunk-5-1}
+
+\hypertarget{c.-how-can-you-transform-the-data-into-a-long-format-suitable-for-plotting-multiple-price-types-with-ggplot2}{%
+\subsection{\texorpdfstring{c.~How can you transform the data into a long format suitable for plotting multiple price types with \texttt{ggplot2}?}{c.~How can you transform the data into a long format suitable for plotting multiple price types with ggplot2?}}\label{c.-how-can-you-transform-the-data-into-a-long-format-suitable-for-plotting-multiple-price-types-with-ggplot2}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ticker\_long }\OtherTok{\textless{}{-}}\NormalTok{ ticker }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(open, close, adj\_close), }\AttributeTok{names\_to =} \StringTok{"PriceType"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"Price"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{d.-show-how-to-create-a-ggplot2-visualization-that-includes-lines-and-points-with-different-colors-and-shapes-for-each-price-type-and-make-the-x-axis-dates-legible.}{%
+\subsection{\texorpdfstring{d.~Show how to create a \texttt{ggplot2} visualization that includes lines and points, with different colors and shapes for each price type, and make the x-axis dates legible.}{d.~Show how to create a ggplot2 visualization that includes lines and points, with different colors and shapes for each price type, and make the x-axis dates legible.}}\label{d.-show-how-to-create-a-ggplot2-visualization-that-includes-lines-and-points-with-different-colors-and-shapes-for-each-price-type-and-make-the-x-axis-dates-legible.}}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(ticker\_long, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ Price, }\AttributeTok{color =}\NormalTok{ PriceType)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{shape =}\NormalTok{ PriceType), }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Different shapes for each price type}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"open"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"close"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"adj\_close"} \OtherTok{=} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_labels =} \StringTok{"\%b \%d, \%Y"}\NormalTok{, }\AttributeTok{date\_breaks =} \StringTok{"1 week"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Time Trend of Stock Prices"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Date"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Price"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{),}
+    \AttributeTok{legend.position =} \StringTok{"bottom"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{shape =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price Type"}\NormalTok{), }\AttributeTok{color =} \FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title =} \StringTok{"Price Type"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_16_files/figure-latex/unnamed-chunk-7-1}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-3-1}{%
+\section{Group Activity 3}\label{group-activity-3-1}}
+
+In this activity, you'll scrape web data using \texttt{rvest} and tidy up the results into a well-formatted table. Start by extracting job titles from a given URL, then gather the associated company names, and trim any leading or trailing whitespace from the location data. Next, retrieve the posting dates and the URLs for the full job descriptions. Finally, combine all these elements into a single dataframe, ensuring that each piece of information aligns correctly. Your task is to produce a clean and informative table that could be useful for job seekers. To facilitate the selection of the correct CSS selectors, you may find the \texttt{SelectorGadget} Chrome extension particularly useful.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{url }\OtherTok{\textless{}{-}} \StringTok{"https://realpython.github.io/fake{-}jobs/"}
+\end{Highlighting}
+\end{Shaded}
+
 
   \bibliography{book.bib,packages.bib}
 

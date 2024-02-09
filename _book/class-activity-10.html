@@ -93,6 +93,7 @@
 <li><a class="" href="class-activity-13.html"><span class="header-section-number">19</span> Class Activity 13</a></li>
 <li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
 <li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
+<li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
 </ul>
 
         <div class="book-extra">
@@ -135,30 +136,30 @@ Click for answer
 <pre><code># A tibble: 24 × 5
       id grade region        score grade_fac
    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;fct&gt;    
- 1     1 9th   North America    99 9th      
- 2     2 9th   Europe           80 9th      
- 3     4 9th   Middle East      75 9th      
- 4     6 9th   Africa           75 9th      
- 5     8 9th   Africa           95 9th      
- 6     9 9th   North America    87 9th      
- 7    10 9th   Africa           97 9th      
- 8    14 9th   North America    57 9th      
- 9    15 9th   Middle East      87 9th      
-10    20 9th   Asia             51 9th      
-11    21 9th   North America    83 9th      
-12    22 9th   Africa           74 9th      
-13    23 9th   North America    89 9th      
-14     3 10th  South America    79 10th     
-15     5 10th  South America    50 10th     
-16     7 10th  Europe           76 10th     
-17    13 10th  Middle East      70 10th     
-18    17 10th  North America    51 10th     
-19    19 10th  North America    89 10th     
-20    24 10th  South America    73 10th     
-21    11 11th  South America    71 11th     
-22    12 11th  Europe           89 11th     
-23    16 11th  Africa           99 11th     
-24    18 11th  Europe           84 11th     </code></pre>
+ 1     6 9th   Europe           76 9th      
+ 2     8 9th   Middle East      75 9th      
+ 3    12 9th   Europe           89 9th      
+ 4    15 9th   Africa           91 9th      
+ 5    18 9th   Middle East      59 9th      
+ 6    23 9th   Europe           67 9th      
+ 7    24 9th   North America    94 9th      
+ 8     1 10th  Europe           51 10th     
+ 9     2 10th  Middle East      77 10th     
+10     4 10th  Africa           52 10th     
+11     7 10th  Asia             95 10th     
+12    11 10th  Europe           93 10th     
+13    17 10th  Middle East      67 10th     
+14     3 11th  Africa           69 11th     
+15     5 11th  Africa           96 11th     
+16     9 11th  South America    69 11th     
+17    10 11th  Asia             83 11th     
+18    13 11th  Africa           69 11th     
+19    14 11th  North America    54 11th     
+20    16 11th  North America    81 11th     
+21    19 11th  South America    79 11th     
+22    20 11th  North America    92 11th     
+23    21 11th  Middle East      86 11th     
+24    22 11th  Asia             72 11th     </code></pre>
 </details>
 </div>
 <div id="b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category." class="section level3" number="16.1.2">
@@ -180,9 +181,9 @@ Click for answer
 <pre><code># A tibble: 3 × 2
   region_collapsed     n
   &lt;fct&gt;            &lt;int&gt;
-1 EMEA                12
-2 Asia                 1
-3 Americas            11</code></pre>
+1 EMEA                15
+2 Asia                 3
+3 Americas             6</code></pre>
 </details>
 </div>
 <div id="c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering." class="section level3" number="16.1.3">
@@ -198,7 +199,7 @@ Click for answer
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_infreq <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="va">grade_infreq</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">students_c</span><span class="op">$</span><span class="va">grade_infreq</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "9th"  "10th" "11th"</code></pre>
+<pre><code>[1] "11th" "9th"  "10th"</code></pre>
 </details>
 </div>
 <div id="d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column." class="section level3" number="16.1.4">
@@ -216,8 +217,8 @@ Click for answer
 <pre><code># A tibble: 2 × 2
   grade_lumped     n
   &lt;fct&gt;        &lt;int&gt;
-1 9th             13
-2 Others          11</code></pre>
+1 11th            11
+2 Others          13</code></pre>
 </details>
 </div>
 </div>
@@ -350,7 +351,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-07.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

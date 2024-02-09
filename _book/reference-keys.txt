@@ -191,3 +191,13 @@ group-activity-1-2
 a.-if-and-for-loop
 b.-for-loop-and-mean
 group-activity-2-2
+class-activity-16
+group-activity-1-3
+a.-scrape-the-first-table-in-list_of_nasa_missions-wiki-page.-additionally-use-janitorclean_names-to-clean-the-column-names-and-store-the-resulting-table-as-nasa_missions.csv-in-your-working-folder.
+b.-now-write-a-code-snippet-to-scrape-all-the-urls-from-the-anchor-tags-on-a-given-wikipedia-page-convert-the-relative-urls-to-absolute-urls-and-store-the-results-in-a-tibble-and-save-it-as-nasa_missions_urls.csv-in-your-working-folder.
+group-activity-2-3
+a.-how-do-you-scrape-a-table-from-a-web-page-using-rvest-clean-the-column-names-with-janitor-and-prepare-the-data-for-analysis-in-r
+b.-write-the-r-code-to-create-a-time-trend-plot-of-opening-prices-from-the-scraped-data-using-ggplot2.
+c.-how-can-you-transform-the-data-into-a-long-format-suitable-for-plotting-multiple-price-types-with-ggplot2
+d.-show-how-to-create-a-ggplot2-visualization-that-includes-lines-and-points-with-different-colors-and-shapes-for-each-price-type-and-make-the-x-axis-dates-legible.
+group-activity-3-1
