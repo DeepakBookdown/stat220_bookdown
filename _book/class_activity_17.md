@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Class Activity 17
 
 
@@ -25,7 +30,7 @@ library(polite)
 
 
 ```r
-session1 <- bow(url = "https://www.the-numbers.com/movie/budgets/all") %>% scrape() %>%
+session1 <- read_html("https://www.the-numbers.com/movie/budgets/all") %>%
   html_nodes(css = "table") %>%
   html_table()
 
@@ -77,16 +82,25 @@ index <- seq(1, 6301, 100)
 
 ```r
 # Loop through indices, scrape data, and bind the resulting data frames
+start_time <- proc.time() # Capture start time
 for (i in 1:length(index)) {
   url <- str_glue("{new_urls}{index[i]}")
   webpage <- read_html(url)
   table_new <- html_table(webpage)[[1]] %>%
-    tibble::as_tibble(.name_repair = "unique") %>% 
-    janitor::clean_names() %>% 
-    mutate(x1 = as.character(x1))
+    janitor::clean_names() %>%
+    mutate(across(everything(), as.character))
   df1[[i]] <- table_new
 }
+end_time <- proc.time() # Capture end time
+end_time - start_time # Calculate duration
+```
 
+```
+   user  system elapsed 
+  3.703   0.149  39.780 
+```
+
+```r
 df1_final <- do.call(rbind, df1)
 df1_final1 <- reduce(df1, dplyr::bind_rows)
 ```
@@ -94,30 +108,30 @@ df1_final1 <- reduce(df1, dplyr::bind_rows)
 
 
 ```r
-# alternate using map/lapply
+# alternate using map_df()
+start_time <- proc.time() # Capture start time
+
 urls <- map(index, function(i) str_glue({new_urls}, {index[i]}))
 urls <- map(index, ~str_glue({new_urls}, {.x}))
 
+library(tidyverse)
+library(rvest)
+library(glue)
+library(janitor)
 
-sessions <- map(urls, ~read_html(.x) %>% 
-                  html_nodes("table") %>% 
-                  html_table() %>% 
-                  tibble::as_tibble(.name_repair = "unique") %>% 
-                  janitor::clean_names())
-
-movies_data <- do.call(rbind, lapply(1:length(urls), function(i) sessions[[i]][[1]]))
-glimpse(movies_data)
+# Assuming 'urls' is already defined
+movies_data <- map_df(urls, ~read_html(.x) %>%
+                        html_table() %>%
+                        .[[1]] %>%
+                        janitor::clean_names() %>% 
+                        mutate(across(everything(), as.character))) 
+end_time <- proc.time() # Capture end time
+end_time - start_time # Calculate duration
 ```
 
 ```
-Rows: 6,400
-Columns: 6
-$ ``               <chr> "1", "2", "3", "4", "5", "6", "7"…
-$ ReleaseDate      <chr> "Dec 9, 2022", "Apr 23, 2019", "M…
-$ Movie            <chr> "Avatar: The Way of Water", "Aven…
-$ ProductionBudget <chr> "$460,000,000", "$400,000,000", "…
-$ DomesticGross    <chr> "$684,075,767", "$858,373,000", "…
-$ WorldwideGross   <chr> "$2,319,591,720", "$2,788,912,285…
+   user  system elapsed 
+  3.743   0.057  28.079 
 ```
 
 
@@ -129,7 +143,7 @@ $ WorldwideGross   <chr> "$2,319,591,720", "$2,788,912,285…
 
 1. Go to the [the numbers webpage](https://www.scrapethissite.com/pages/forms/) and extract the table on the front page.
 
-
+<!--
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -137,7 +151,7 @@ $ WorldwideGross   <chr> "$2,319,591,720", "$2,788,912,285…
 
 
 ```r
-session1 <- bow(url = "https://www.scrapethissite.com/pages/forms/") %>% scrape() %>%
+session1 <- read_html("https://www.scrapethissite.com/pages/forms/") %>%
   html_nodes(css = "table") %>%
   html_table()
 
@@ -146,12 +160,12 @@ table_base <- session1 %>% .[[1]]
 
 
 </details>
-
+-->
 
 2. Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
 
 
-
+<!--
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -161,11 +175,11 @@ table_base <- session1 %>% .[[1]]
 
 </details>
 
-
+-->
 
 3. Write a for loop to store all the data in multiple pages to a single data frame.
 
-
+<!--
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -178,9 +192,6 @@ library(rvest)
 
 new_urls <- "http://scrapethissite.com/pages/forms/?page_num="
 
-# Create an empty data frame
-df2 <- list()
-
 # Generate a vector of indices
 index <- seq(1, 24)
 ```
@@ -189,17 +200,49 @@ index <- seq(1, 24)
 
 
 ```r
-# Loop through indices, scrape data, and bind the resulting data frames
+df2 <- list()
+start_time <- proc.time() # Capture start time
+
 for (i in index) {
   url <- str_glue("{new_urls}{i}")
   webpage <- read_html(url)
   table_new <- html_table(webpage)[[1]] %>%
-    tibble::as_tibble(.name_repair = "unique")
+    janitor::clean_names() %>%
+    #set_names(~ifelse(is.na(.) | . == "", paste("V", seq_along(.), sep=""), .)) %>%
+    mutate(across(everything(), as.character))
   df2[[i]] <- table_new
 }
+end_time <- proc.time() # Capture end time
+end_time - start_time # Calculate duration
+```
 
-df2_final <- do.call(rbind, df2)
-df2_final1 <- reduce(df2, dplyr::bind_rows)
+```
+   user  system elapsed 
+  1.535   0.048   8.963 
+```
+
+```r
+df2_final <- bind_rows(df2)
+df2_final
+```
+
+```
+# A tibble: 582 × 9
+   team_name        year  wins  losses ot_losses win_percent
+   <chr>            <chr> <chr> <chr>  <chr>     <chr>      
+ 1 Boston Bruins    1990  44    24     <NA>      0.55       
+ 2 Buffalo Sabres   1990  31    30     <NA>      0.388      
+ 3 Calgary Flames   1990  46    26     <NA>      0.575      
+ 4 Chicago Blackha… 1990  49    23     <NA>      0.613      
+ 5 Detroit Red Win… 1990  34    38     <NA>      0.425      
+ 6 Edmonton Oilers  1990  37    37     <NA>      0.463      
+ 7 Hartford Whalers 1990  31    38     <NA>      0.388      
+ 8 Los Angeles Kin… 1990  46    24     <NA>      0.575      
+ 9 Minnesota North… 1990  27    39     <NA>      0.338      
+10 Montreal Canadi… 1990  39    30     <NA>      0.487      
+# ℹ 572 more rows
+# ℹ 3 more variables: goals_for_gf <chr>,
+#   goals_against_ga <chr>, x <chr>
 ```
 
 
@@ -207,119 +250,47 @@ df2_final1 <- reduce(df2, dplyr::bind_rows)
 ```r
 # alternate using map
 urls <- map(index, function(i) str_glue({new_urls}, {i}))
-urls <- map(index, ~str_glue({new_urls}, {.x}))
+urls <- map(index, ~str_glue("{new_urls}{.x}"))
 
+start_time <- proc.time() # Capture start time
+sports_data <- map_df(urls, ~read_html(.x) %>%
+                  html_table() %>%
+                  .[[1]] %>%
+                  janitor::clean_names() %>%
+                  mutate(across(everything(), as.character)))
 
-sessions <- map(urls, ~read_html(.x) %>% 
-                  html_nodes("table") %>% 
-                  html_table() %>% 
-                  tibble::as_tibble(.name_repair = "unique") %>% 
-                  janitor::clean_names())
-
-sports_data <- do.call(rbind, lapply(1:length(urls), function(i) sessions[[i]][[1]]))
-sports_data1 <- map_df(1:length(urls), ~sessions[[.x]][[1]])
-
-glimpse(sports_data)
+end_time <- proc.time() # Capture end time
+end_time - start_time # Calculate duration
 ```
 
 ```
-Rows: 582
-Columns: 9
-$ `Team Name`          <chr> "Boston Bruins", "Buffalo Sab…
-$ Year                 <int> 1990, 1990, 1990, 1990, 1990,…
-$ Wins                 <int> 44, 31, 46, 49, 34, 37, 31, 4…
-$ Losses               <int> 24, 30, 26, 23, 38, 37, 38, 2…
-$ `OT Losses`          <int> NA, NA, NA, NA, NA, NA, NA, N…
-$ `Win %`              <dbl> 0.550, 0.388, 0.575, 0.613, 0…
-$ `Goals For (GF)`     <int> 299, 292, 344, 284, 273, 272,…
-$ `Goals Against (GA)` <int> 264, 278, 263, 211, 298, 272,…
-$ `+ / -`              <int> 35, 14, 81, 73, -25, 0, -38, …
+   user  system elapsed 
+  1.546   0.071   8.770 
+```
+
+```r
+sports_data
+```
+
+```
+# A tibble: 582 × 9
+   team_name        year  wins  losses ot_losses win_percent
+   <chr>            <chr> <chr> <chr>  <chr>     <chr>      
+ 1 Boston Bruins    1990  44    24     <NA>      0.55       
+ 2 Buffalo Sabres   1990  31    30     <NA>      0.388      
+ 3 Calgary Flames   1990  46    26     <NA>      0.575      
+ 4 Chicago Blackha… 1990  49    23     <NA>      0.613      
+ 5 Detroit Red Win… 1990  34    38     <NA>      0.425      
+ 6 Edmonton Oilers  1990  37    37     <NA>      0.463      
+ 7 Hartford Whalers 1990  31    38     <NA>      0.388      
+ 8 Los Angeles Kin… 1990  46    24     <NA>      0.575      
+ 9 Minnesota North… 1990  27    39     <NA>      0.338      
+10 Montreal Canadi… 1990  39    30     <NA>      0.487      
+# ℹ 572 more rows
+# ℹ 3 more variables: goals_for_gf <chr>,
+#   goals_against_ga <chr>, x <chr>
 ```
 
 </details>
 
-
-
-4. Create an interactive bar plot to display the number of wins per team and year.
-
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-
-
-
-```r
-library(plotly)
-
-bar_plot <- ggplot(sports_data, aes(x = Year, y = Wins, fill = `Team Name`)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Number of Wins per Team and Year") +
-  theme(legend.position = "bottom")
-
-plotly_bar <- ggplotly(bar_plot)
-plotly_bar
-```
-
-
-</details>
-
-
-5. Explore the relationship between the number of goals scored and the number of goals against for each team in each year with an interactive scatter plot.
-
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-
-
-
-```r
-scatter_plot <- ggplot(sports_data, aes(x = `Goals For (GF)`, y = `Goals Against (GA)`, color = `Team Name`, text = paste("Team:", `Team Name`, "<br>Year:", Year))) +
-  geom_point() +
-  labs(title = "Goals Scored vs. Goals Against per Team and Year") +
-  theme(legend.position = "bottom") +
-  xlab("Goals Scored (GF)") +
-  ylab("Goals Against (GA)") 
-```
-
-
-
-```r
-plotly_scatter <- ggplotly(scatter_plot, tooltip = "text")
-plotly_scatter
-```
-
-</details>
-
-
-
-6. Visualize team performance per year (wins, losses, and OT losses) using a stacked bar plot.
-
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-
-```r
-stacked_bar_plot <- ggplot(sports_data, aes(x = Year, fill = `Team Name`)) +
-  geom_bar(aes(y = Wins), position = "stack", stat = "identity", width = 0.4, alpha = 0.8) +
-  geom_bar(aes(y = Losses), position = "stack", stat = "identity", width = 0.4, alpha = 0.8) +
-  geom_bar(aes(y = `OT Losses`), position = "stack", stat = "identity", width = 0.4, alpha = 0.8) +
-  labs(title = "Team Performance per Year (Wins, Losses, and OT Losses)") +
-  theme(legend.position = "bottom") +
-  xlab("Year") +
-  ylab("Number of Games")
-
-plotly_stacked_bar <- ggplotly(stacked_bar_plot)
-plotly_stacked_bar
-```
-
-
-</details>
-
-
-
+-->

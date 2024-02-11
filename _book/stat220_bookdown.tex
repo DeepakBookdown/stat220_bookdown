@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-08}
+\date{2024-02-11}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.73822
+[1] 28.74578
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   North America    60 9th      
- 2     2 9th   Middle East      86 9th      
- 3     3 9th   South America    99 9th      
- 4     6 9th   South America    78 9th      
- 5     8 9th   Europe           62 9th      
- 6    10 9th   Europe           94 9th      
- 7    11 9th   North America    89 9th      
- 8    15 9th   Asia             68 9th      
- 9    16 9th   North America    97 9th      
-10    18 9th   Africa           82 9th      
-11    20 9th   Africa           51 9th      
-12    22 9th   Africa           77 9th      
-13    23 9th   Asia             62 9th      
-14     4 10th  North America    87 10th     
-15     9 10th  Asia             59 10th     
-16    12 10th  Middle East      67 10th     
-17    13 10th  Asia             73 10th     
-18     5 11th  North America    97 11th     
-19     7 11th  North America    95 11th     
-20    14 11th  South America    55 11th     
-21    17 11th  Middle East      73 11th     
-22    19 11th  Europe           66 11th     
+ 1     9 9th   Middle East      89 9th      
+ 2    10 9th   North America    72 9th      
+ 3    12 9th   Africa           57 9th      
+ 4    13 9th   Middle East      72 9th      
+ 5    15 9th   North America    61 9th      
+ 6    23 9th   North America    78 9th      
+ 7    24 9th   Middle East      60 9th      
+ 8     2 10th  Middle East      55 10th     
+ 9     4 10th  Middle East      97 10th     
+10     5 10th  Europe           62 10th     
+11    11 10th  North America    58 10th     
+12    14 10th  Africa           78 10th     
+13    16 10th  Asia             53 10th     
+14    19 10th  Africa           72 10th     
+15     1 11th  North America    79 11th     
+16     3 11th  Europe           54 11th     
+17     6 11th  Asia             78 11th     
+18     7 11th  Asia             56 11th     
+19     8 11th  South America    54 11th     
+20    17 11th  North America    79 11th     
+21    18 11th  Middle East      86 11th     
+22    20 11th  Asia             76 11th     
 23    21 11th  Asia             91 11th     
-24    24 11th  Asia             69 11th     
+24    22 11th  Asia             91 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                 9
+1 EMEA                11
 2 Asia                 6
-3 Americas             9
+3 Americas             7
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "9th"  "11th" "10th"
+[1] "11th" "9th"  "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 9th             13
-2 Others          11
+1 11th            10
+2 Others          14
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -4894,6 +4894,23 @@ Let's learn about combining strings with different separators first.
   What happens when a \texttt{str\_c} entry is a vector?
 \end{enumerate}
 
+Click for answer
+
+\emph{Answer:} When an entry in \texttt{str\_c} is a vector, it will combine the strings with each element of the vector, creating multiple combined strings.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentences }\OtherTok{\textless{}{-}} \FunctionTok{str\_c}\NormalTok{(place, }\StringTok{" is great for "}\NormalTok{, activities, }\StringTok{"."}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)}
+\NormalTok{my\_sentences}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park is great for jogging."   
+[2] "Central Park is great for picnicking."
+[3] "Central Park is great for boating."   
+\end{verbatim}
+
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
 \setcounter{enumi}{1}
@@ -4901,6 +4918,34 @@ Let's learn about combining strings with different separators first.
 \item
   How do you combine strings with \texttt{str\_glue}?
 \end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can combine strings with \texttt{str\_glue} using curly braces \texttt{\{\}} to insert variables directly into the string.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentence }\OtherTok{\textless{}{-}} \FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{place\} is great for \{activity\}."}\NormalTok{)}
+\NormalTok{my\_sentence}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Central Park is great for jogging.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentences1 }\OtherTok{\textless{}{-}} \FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{place\} is great for \{activities\}."}\NormalTok{)}
+\NormalTok{my\_sentences1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Central Park is great for jogging.
+Central Park is great for picnicking.
+Central Park is great for boating.
+\end{verbatim}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -4910,6 +4955,20 @@ Let's learn about combining strings with different separators first.
   What does \texttt{str\_flatten} do?
 \end{enumerate}
 
+Click for answer
+
+\emph{Answer:} \texttt{str\_flatten} collapses a character vector into a single string by concatenating the elements with a specified separator.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_flatten}\NormalTok{(my\_sentences, }\AttributeTok{collapse =} \StringTok{" and "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park is great for jogging. and Central Park is great for picnicking. and Central Park is great for boating."
+\end{verbatim}
+
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
 \setcounter{enumi}{3}
@@ -4917,6 +4976,23 @@ Let's learn about combining strings with different separators first.
 \item
   What will using a \texttt{\textbackslash{}n} separator do in the command below?
 \end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Using a \texttt{\textbackslash{}n} separator in the command will insert a newline character between the strings being combined, making them display on separate lines when printed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{str\_c}\NormalTok{(place, }\StringTok{" is great for "}\NormalTok{, activity, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\FunctionTok{writeLines}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Central Park
+ is great for 
+jogging
+\end{verbatim}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -4926,6 +5002,30 @@ Let's learn about combining strings with different separators first.
   Does \texttt{str\_length} count spaces and special characters??
 \end{enumerate}
 
+Click for answer
+
+\emph{Answer:} Yes, \texttt{str\_length} counts spaces and special characters as part of the string's length.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park\n is great for \njogging"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_length}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 35
+\end{verbatim}
+
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
 \setcounter{enumi}{5}
@@ -4933,6 +5033,23 @@ Let's learn about combining strings with different separators first.
 \item
   How do you count the number of \texttt{e}'s in a string?
 \end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can count the number of \texttt{e}`s in a string using \texttt{str\_count} with a pattern that matches the character 'e'.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{text }\OtherTok{\textless{}{-}} \StringTok{"The quick brown fox jumps over the lazy dog."}
+\NormalTok{pattern }\OtherTok{\textless{}{-}} \StringTok{"e"}
+\NormalTok{vowel\_count }\OtherTok{\textless{}{-}} \FunctionTok{str\_count}\NormalTok{(text, pattern)}
+\NormalTok{vowel\_count}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 3
+\end{verbatim}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -4942,12 +5059,75 @@ Let's learn about combining strings with different separators first.
   What happens with negative positions?
 \end{enumerate}
 
+Click for answer
+
+\emph{Answer:} Negative positions in \texttt{str\_sub} count the positions from the end of the string rather than from the beginning.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \SpecialCharTok{{-}}\DecValTok{3}\NormalTok{, }\AttributeTok{end =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "ng."
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  How do you extract a \texttt{substring} with positive and negative positions?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can extract a \texttt{substring} with positive and negative positions using \texttt{str\_sub} and specifying the start and end positions with either positive or negative numbers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentence }\OtherTok{\textless{}{-}} \StringTok{"Central Park is great for jogging."}
+\NormalTok{positive\_substr }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \DecValTok{1}\NormalTok{, }\AttributeTok{end =} \DecValTok{12}\NormalTok{)}
+\NormalTok{negative\_substr }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \SpecialCharTok{{-}}\DecValTok{8}\NormalTok{, }\AttributeTok{end =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{positive\_substr}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{negative\_substr}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "jogging."
+\end{verbatim}
+
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \tightlist
 \item
   With a vector of positions?
 \end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Using a vector of positions with \texttt{str\_sub} will extract \texttt{substrings} starting and ending at the specified positions in the vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{), }\AttributeTok{end =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{15}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Cent"    "Park is"
+\end{verbatim}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -4956,6 +5136,22 @@ Let's learn about combining strings with different separators first.
 \item
   How do you extract multiple \texttt{substrings} using a vector of positions?
 \end{enumerate}
+
+Click for answer
+
+\emph{Answer:} You can extract multiple \texttt{substrings} using a vector of positions with \texttt{str\_sub} by specifying the start and end positions in separate vectors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_sentence }\OtherTok{\textless{}{-}} \StringTok{"Central Park is great for jogging."}
+\NormalTok{substrs }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(my\_sentence, }\AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{24}\NormalTok{), }\AttributeTok{end =} \FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{30}\NormalTok{))}
+\NormalTok{substrs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Central Park" "is gre"       "or jogg"     
+\end{verbatim}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -6301,6 +6497,195 @@ In this activity, you'll scrape web data using \texttt{rvest} and tidy up the re
 \end{Highlighting}
 \end{Shaded}
 
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{title }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(url) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_elements}\NormalTok{(}\AttributeTok{css =} \StringTok{".is{-}5"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{()   }\CommentTok{\# part 1}
+\NormalTok{company }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(url) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_elements}\NormalTok{(}\AttributeTok{css =} \StringTok{".company"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{() }\CommentTok{\# part 2}
+\NormalTok{location }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(url) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_elements}\NormalTok{(}\AttributeTok{css =} \StringTok{".location"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{str\_trim}\NormalTok{() }\CommentTok{\# part 3}
+\NormalTok{time }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(url) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_elements}\NormalTok{(}\AttributeTok{css =} \StringTok{"time"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_text}\NormalTok{() }\CommentTok{\# part 4}
+\NormalTok{html }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(url) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{html\_element}\NormalTok{(}\AttributeTok{css =} \StringTok{".card{-}footer{-}item+ .card{-}footer{-}item"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_attr}\NormalTok{(}\StringTok{"href"}\NormalTok{)  }\CommentTok{\# part 5}
+
+\CommentTok{\# Create a dataframe}
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{title =}\NormalTok{ title, }\AttributeTok{company =}\NormalTok{ company, }\AttributeTok{location =}\NormalTok{ location, }\AttributeTok{time =}\NormalTok{ time, }\AttributeTok{html =}\NormalTok{ html) }\CommentTok{\# port 6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 100 x 5
+   title                     company    location time  html 
+   <chr>                     <chr>      <chr>    <chr> <chr>
+ 1 Senior Python Developer   Payne, Ro~ Stewart~ 2021~ http~
+ 2 Energy engineer           Vasquez-D~ Christo~ 2021~ http~
+ 3 Legal executive           Jackson, ~ Port Er~ 2021~ http~
+ 4 Fitness centre manager    Savage-Br~ East Se~ 2021~ http~
+ 5 Product manager           Ramirez I~ North J~ 2021~ http~
+ 6 Medical technical officer Rogers-Ya~ Davidvi~ 2021~ http~
+ 7 Physiological scientist   Kramer-Kl~ South C~ 2021~ http~
+ 8 Textile designer          Meyers-Jo~ Port Jo~ 2021~ http~
+ 9 Television floor manager  Hughes-Wi~ Osborne~ 2021~ http~
+10 Waste management officer  Jones, Wi~ Scottto~ 2021~ http~
+# i 90 more rows
+\end{verbatim}
+
+\hypertarget{class-activity-17}{%
+\chapter{Class Activity 17}\label{class-activity-17}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(purrr)}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\FunctionTok{library}\NormalTok{(polite)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-4}{%
+\section{Group Activity 1}\label{group-activity-1-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Go to the \href{https://www.the-numbers.com/movie/budgets/all}{the numbers webpage} and extract the table on the front page.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{session1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\StringTok{"https://www.the{-}numbers.com/movie/budgets/all"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_nodes}\NormalTok{(}\AttributeTok{css =} \StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_table}\NormalTok{()}
+
+\NormalTok{table\_base }\OtherTok{\textless{}{-}}\NormalTok{ session1 }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ .[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} The starting count of the movie gets concatenated to the url in increments of 100.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Write a for loop to store all the data in multiple pages to a single data frame.
+\end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(rvest)}
+
+\NormalTok{new\_urls }\OtherTok{\textless{}{-}} \StringTok{"https://www.the{-}numbers.com/movie/budgets/all/"}
+
+\CommentTok{\# Create an empty data frame}
+\NormalTok{df1 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+
+\CommentTok{\# Generate a vector of indices}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{6301}\NormalTok{, }\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Loop through indices, scrape data, and bind the resulting data frames}
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture start time}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(index)) \{}
+\NormalTok{  url }\OtherTok{\textless{}{-}} \FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{new\_urls\}\{index[i]\}"}\NormalTok{)}
+\NormalTok{  webpage }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(url)}
+\NormalTok{  table\_new }\OtherTok{\textless{}{-}} \FunctionTok{html\_table}\NormalTok{(webpage)[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), as.character))}
+\NormalTok{  df1[[i]] }\OtherTok{\textless{}{-}}\NormalTok{ table\_new}
+\NormalTok{\}}
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture end time}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time }\CommentTok{\# Calculate duration}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   user  system elapsed 
+  3.676   0.132  30.301 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df1\_final }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, df1)}
+\NormalTok{df1\_final1 }\OtherTok{\textless{}{-}} \FunctionTok{reduce}\NormalTok{(df1, dplyr}\SpecialCharTok{::}\NormalTok{bind\_rows)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alternate using map\_df()}
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture start time}
+
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\ControlFlowTok{function}\NormalTok{(i) }\FunctionTok{str\_glue}\NormalTok{(\{new\_urls\}, \{index[i]\}))}
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{str\_glue}\NormalTok{(\{new\_urls\}, \{.x\}))}
+
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\FunctionTok{library}\NormalTok{(glue)}
+\FunctionTok{library}\NormalTok{(janitor)}
+
+\CommentTok{\# Assuming \textquotesingle{}urls\textquotesingle{} is already defined}
+\NormalTok{movies\_data }\OtherTok{\textless{}{-}} \FunctionTok{map\_df}\NormalTok{(urls, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{read\_html}\NormalTok{(.x) }\SpecialCharTok{\%\textgreater{}\%}
+                        \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{                        .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{                        janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+                        \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), as.character))) }
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture end time}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time }\CommentTok{\# Calculate duration}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   user  system elapsed 
+  3.672   0.141  42.118 
+\end{verbatim}
+
+\hypertarget{group-activity-2-4}{%
+\section{Group Activity 2}\label{group-activity-2-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Go to the \href{https://www.scrapethissite.com/pages/forms/}{the numbers webpage} and extract the table on the front page.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Write a for loop to store all the data in multiple pages to a single data frame.
+\end{enumerate}
 
   \bibliography{book.bib,packages.bib}
 

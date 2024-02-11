@@ -151,7 +151,7 @@ In this activity, you'll scrape web data using `rvest` and tidy up the results i
 url <- "https://realpython.github.io/fake-jobs/"
 ```
 
-<!--
+
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -191,5 +191,5 @@ tibble(title = title, company = company, location = location, time = time, html 
 
 </details>
 
--->
+
 

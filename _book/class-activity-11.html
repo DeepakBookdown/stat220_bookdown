@@ -94,6 +94,7 @@
 <li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
 <li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
 <li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
 </ul>
 
         <div class="book-extra">
@@ -124,262 +125,121 @@
 <ol style="list-style-type: lower-alpha">
 <li>What happens when a <code>str_c</code> entry is a vector?</li>
 </ol>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-*Answer:* When an entry in `str_c` is a vector, it will combine the strings with each element of the vector, creating multiple combined strings.
-
-
-```r
-my_sentences <- str_c(place, " is great for ", activities, ".", sep = "")
-my_sentences
-```
-
-```
-[1] "Central Park is great for jogging."   
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> When an entry in <code>str_c</code> is a vector, it will combine the strings with each element of the vector, creating multiple combined strings.</p>
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_sentences</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">place</span>, <span class="st">" is great for "</span>, <span class="va">activities</span>, <span class="st">"."</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="va">my_sentences</span></span></code></pre></div>
+<pre><code>[1] "Central Park is great for jogging."   
 [2] "Central Park is great for picnicking."
-[3] "Central Park is great for boating."   
-```
-
-</details>
-
---><ol start="2" style="list-style-type: lower-alpha">
+[3] "Central Park is great for boating."   </code></pre>
+</details><ol start="2" style="list-style-type: lower-alpha">
 <li>How do you combine strings with <code>str_glue</code>?</li>
 </ol>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-*Answer:* You can combine strings with `str_glue` using curly braces `{}` to insert variables directly into the string.
-
-
-
-```r
-my_sentence <- str_glue("{place} is great for {activity}.")
-my_sentence
-```
-
-```
-Central Park is great for jogging.
-```
-
-```r
-my_sentences1 <- str_glue("{place} is great for {activities}.")
-my_sentences1
-```
-
-```
-Central Park is great for jogging.
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> You can combine strings with <code>str_glue</code> using curly braces <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> to insert variables directly into the string.</p>
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_sentence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{place} is great for {activity}."</span><span class="op">)</span></span>
+<span><span class="va">my_sentence</span></span></code></pre></div>
+<pre><code>Central Park is great for jogging.</code></pre>
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_sentences1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{place} is great for {activities}."</span><span class="op">)</span></span>
+<span><span class="va">my_sentences1</span></span></code></pre></div>
+<pre><code>Central Park is great for jogging.
 Central Park is great for picnicking.
-Central Park is great for boating.
-```
-
-</details>
-
---><ol start="3" style="list-style-type: lower-alpha">
+Central Park is great for boating.</code></pre>
+</details><ol start="3" style="list-style-type: lower-alpha">
 <li>What does <code>str_flatten</code> do?</li>
 </ol>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* `str_flatten` collapses a character vector into a single string by concatenating the elements with a specified separator.
-
-
-
-```r
-str_flatten(my_sentences, collapse = " and ")
-```
-
-```
-[1] "Central Park is great for jogging. and Central Park is great for picnicking. and Central Park is great for boating."
-```
-
-</details>
-
---><ol start="4" style="list-style-type: lower-alpha">
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> <code>str_flatten</code> collapses a character vector into a single string by concatenating the elements with a specified separator.</p>
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_flatten.html">str_flatten</a></span><span class="op">(</span><span class="va">my_sentences</span>, collapse <span class="op">=</span> <span class="st">" and "</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "Central Park is great for jogging. and Central Park is great for picnicking. and Central Park is great for boating."</code></pre>
+</details><ol start="4" style="list-style-type: lower-alpha">
 <li>What will using a <code>\n</code> separator do in the command below?</li>
 </ol>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* Using a `\n` separator in the command will insert a newline character between the strings being combined, making them display on separate lines when printed.
-
-
-
-```r
-p <- str_c(place, " is great for ", activity, sep = "\n")
-writeLines(p)
-```
-
-```
-Central Park
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> Using a <code>\n</code> separator in the command will insert a newline character between the strings being combined, making them display on separate lines when printed.</p>
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">place</span>, <span class="st">" is great for "</span>, <span class="va">activity</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html">writeLines</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Central Park
  is great for 
-jogging
-```
-
-</details>
-
---><ol start="5" style="list-style-type: lower-alpha">
+jogging</code></pre>
+</details><ol start="5" style="list-style-type: lower-alpha">
 <li>Does <code>str_length</code> count spaces and special characters??</li>
 </ol>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* Yes, `str_length` counts spaces and special characters as part of the string's length.
-
-
-
-```r
-p
-```
-
-```
-[1] "Central Park\n is great for \njogging"
-```
-
-```r
-str_length(p)
-```
-
-```
-[1] 35
-```
-
-</details>
-
---><ol start="6" style="list-style-type: lower-alpha">
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> Yes, <code>str_length</code> counts spaces and special characters as part of the string’s length.</p>
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span></span></code></pre></div>
+<pre><code>[1] "Central Park\n is great for \njogging"</code></pre>
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] 35</code></pre>
+</details><ol start="6" style="list-style-type: lower-alpha">
 <li>How do you count the number of <code>e</code>’s in a string?</li>
 </ol>
-<!--
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* You can count the number of `e`'s in a string using `str_count` with a pattern that matches the character 'e'.
-
-
-
-```r
-text <- "The quick brown fox jumps over the lazy dog."
-pattern <- "e"
-vowel_count <- str_count(text, pattern)
-vowel_count
-```
-
-```
-[1] 3
-```
-
-</details>
-
---><ol start="7" style="list-style-type: lower-alpha">
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> You can count the number of <code>e</code>‘s in a string using <code>str_count</code> with a pattern that matches the character ’e’.</p>
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">text</span> <span class="op">&lt;-</span> <span class="st">"The quick brown fox jumps over the lazy dog."</span></span>
+<span><span class="va">pattern</span> <span class="op">&lt;-</span> <span class="st">"e"</span></span>
+<span><span class="va">vowel_count</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">text</span>, <span class="va">pattern</span><span class="op">)</span></span>
+<span><span class="va">vowel_count</span></span></code></pre></div>
+<pre><code>[1] 3</code></pre>
+</details><ol start="7" style="list-style-type: lower-alpha">
 <li>What happens with negative positions?</li>
 </ol>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* Negative positions in `str_sub` count the positions from the end of the string rather than from the beginning.
-
-
-
-```r
-str_sub(my_sentence, start = -3, end = -1)
-```
-
-```
-[1] "ng."
-```
-
-</details>
-
-h. How do you extract a `substring` with positive and negative positions?
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* You can extract a `substring` with positive and negative positions using `str_sub` and specifying the start and end positions with either positive or negative numbers.
-
-
-
-```r
-my_sentence <- "Central Park is great for jogging."
-positive_substr <- str_sub(my_sentence, start = 1, end = 12)
-negative_substr <- str_sub(my_sentence, start = -8, end = -1)
-positive_substr
-```
-
-```
-[1] "Central Park"
-```
-
-```r
-negative_substr
-```
-
-```
-[1] "jogging."
-```
-
-</details>
-
---><ol style="list-style-type: lower-roman">
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> Negative positions in <code>str_sub</code> count the positions from the end of the string rather than from the beginning.</p>
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">my_sentence</span>, start <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, end <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "ng."</code></pre>
+</details><ol start="8" style="list-style-type: lower-alpha">
+<li>How do you extract a <code>substring</code> with positive and negative positions?</li>
+</ol>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> You can extract a <code>substring</code> with positive and negative positions using <code>str_sub</code> and specifying the start and end positions with either positive or negative numbers.</p>
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_sentence</span> <span class="op">&lt;-</span> <span class="st">"Central Park is great for jogging."</span></span>
+<span><span class="va">positive_substr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">my_sentence</span>, start <span class="op">=</span> <span class="fl">1</span>, end <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="va">negative_substr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">my_sentence</span>, start <span class="op">=</span> <span class="op">-</span><span class="fl">8</span>, end <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">positive_substr</span></span></code></pre></div>
+<pre><code>[1] "Central Park"</code></pre>
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">negative_substr</span></span></code></pre></div>
+<pre><code>[1] "jogging."</code></pre>
+</details><ol style="list-style-type: lower-roman">
 <li>With a vector of positions?</li>
 </ol>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* Using a vector of positions with `str_sub` will extract `substrings` starting and ending at the specified positions in the vector.
-
-
-
-```r
-str_sub(my_sentence, start = c(1, 9), end = c(4, 15))
-```
-
-```
-[1] "Cent"    "Park is"
-```
-
-</details>
-
---><ol start="10" style="list-style-type: lower-alpha">
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> Using a vector of positions with <code>str_sub</code> will extract <code>substrings</code> starting and ending at the specified positions in the vector.</p>
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">my_sentence</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">9</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] "Cent"    "Park is"</code></pre>
+</details><ol start="10" style="list-style-type: lower-alpha">
 <li>How do you extract multiple <code>substrings</code> using a vector of positions?</li>
 </ol>
-<!--
-<details>
-<summary class="answer">Click for answer</summary>
-
-*Answer:* You can extract multiple `substrings` using a vector of positions with `str_sub` by specifying the start and end positions in separate vectors.
-
-
-
-```r
-my_sentence <- "Central Park is great for jogging."
-substrs <- str_sub(my_sentence, start = c(1, 14, 24), end = c(12, 19, 30))
-substrs
-```
-
-```
-[1] "Central Park" "is gre"       "or jogg"     
-```
-
-</details>
-
---><hr>
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> You can extract multiple <code>substrings</code> using a vector of positions with <code>str_sub</code> by specifying the start and end positions in separate vectors.</p>
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_sentence</span> <span class="op">&lt;-</span> <span class="st">"Central Park is great for jogging."</span></span>
+<span><span class="va">substrs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">my_sentence</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">14</span>, <span class="fl">24</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">19</span>, <span class="fl">30</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">substrs</span></span></code></pre></div>
+<pre><code>[1] "Central Park" "is gre"       "or jogg"     </code></pre>
+</details><hr>
 </div>
 <div id="problem-2" class="section level2" number="17.2">
 <h2>
@@ -388,7 +248,7 @@ substrs
 <ol style="list-style-type: lower-alpha">
 <li>Use the string parsing functions that you learned today to do tasks described in the comments below:</li>
 </ol>
-<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="st">"12%"</span>  <span class="co"># remove %</span></span>
 <span><span class="va">s2</span> <span class="op">&lt;-</span> <span class="st">"New Jersey_*"</span>  <span class="co"># remove _*</span></span>
 <span><span class="va">s3</span> <span class="op">&lt;-</span> <span class="st">"2,150"</span>    <span class="co"># remove comma(,)</span></span>
@@ -396,7 +256,7 @@ substrs
 <span><span class="va">s5</span> <span class="op">&lt;-</span> <span class="st">"123 Main St, Springfield, MA, 01101"</span>   <span class="co"># separate info</span></span></code></pre></div>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cleaning steps</span></span>
 <span><span class="va">s1_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">s1</span>, <span class="st">"%"</span>, <span class="st">""</span><span class="op">)</span></span>
 <span><span class="va">s2_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">s2</span>, <span class="st">"_\\*"</span>, <span class="st">""</span><span class="op">)</span></span>
@@ -407,16 +267,16 @@ Click for answer
 <span><span class="co"># Print cleaned strings</span></span>
 <span><span class="va">s1_clean</span></span></code></pre></div>
 <pre><code>[1] "12"</code></pre>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s2_clean</span></span></code></pre></div>
 <pre><code>[1] "New Jersey"</code></pre>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s3_clean</span></span></code></pre></div>
 <pre><code>[1] "2150"</code></pre>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s4_clean</span></span></code></pre></div>
 <pre><code>[1] "#datascience"</code></pre>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s5_clean</span></span></code></pre></div>
 <pre><code>[[1]]
 [1] "123 Main St" "Springfield" "MA"          "01101"      </code></pre>
@@ -429,7 +289,7 @@ Click for answer
 <ol style="list-style-type: lower-alpha">
 <li>Use the string parsing functions that you learned today to do tasks described in the comments below:</li>
 </ol>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="st">"25%"</span>  <span class="co"># remove %</span></span>
 <span><span class="va">s2</span> <span class="op">&lt;-</span> <span class="st">"Los Angeles_#"</span>  <span class="co"># remove _#</span></span>
 <span><span class="va">s3</span> <span class="op">&lt;-</span> <span class="st">"1,250"</span>    <span class="co"># remove comma(,)</span></span>
@@ -437,7 +297,7 @@ Click for answer
 <span><span class="va">s5</span> <span class="op">&lt;-</span> <span class="st">"456 Main St, San Francisco, CA, 94107"</span>   <span class="co"># separate info</span></span></code></pre></div>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cleaning steps</span></span>
 <span><span class="va">s1_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">s1</span>, <span class="st">"%"</span>, <span class="st">""</span><span class="op">)</span></span>
 <span><span class="va">s2_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">s2</span>, <span class="st">"_#"</span>, <span class="st">""</span><span class="op">)</span></span>
@@ -448,16 +308,16 @@ Click for answer
 <span><span class="co"># Print cleaned strings</span></span>
 <span><span class="va">s1_clean</span></span></code></pre></div>
 <pre><code>[1] "25"</code></pre>
-<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s2_clean</span></span></code></pre></div>
 <pre><code>[1] "Los Angeles"</code></pre>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s3_clean</span></span></code></pre></div>
 <pre><code>[1] "1250"</code></pre>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s4_clean</span></span></code></pre></div>
 <pre><code>[1] "#machinelearning"</code></pre>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">s5_clean</span></span></code></pre></div>
 <pre><code>[[1]]
 [1] "456 Main St"   "San Francisco" "CA"           
@@ -471,7 +331,7 @@ Click for answer
 <ol style="list-style-type: lower-alpha">
 <li>Let’s look at the following dataset containing information about movies and their release years. We’ll extract the release year from the movie title, create a new column with decades, and count the number of movies in each decade.</li>
 </ol>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample dataset</span></span>
 <span><span class="va">movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
@@ -496,7 +356,7 @@ Click for answer
 10 Fight Club (1999)              </code></pre>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Processing the dataset</span></span>
 <span><span class="va">movies_processed</span> <span class="op">&lt;-</span> <span class="va">movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -546,7 +406,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-08.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

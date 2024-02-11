@@ -94,6 +94,7 @@
 <li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
 <li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
 <li><a class="active" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
 </ul>
 
         <div class="book-extra">
@@ -105,7 +106,7 @@
 <h1>
 <span class="header-section-number">22</span> Class Activity 16<a class="anchor" aria-label="anchor" href="#class-activity-16"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
@@ -121,7 +122,7 @@
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wiki_NASA</span> <span class="op">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/List_of_NASA_missions"</span></span>
 <span></span>
 <span><span class="co"># Scrape the data and write the first table to a CSV file</span></span>
@@ -140,7 +141,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scrape the data and write the URLs to a CSV file</span></span>
 <span><span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">wiki_NASA</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -162,7 +163,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">yf</span> <span class="op">&lt;-</span> <span class="st">"https://finance.yahoo.com/quote/CL%3DF/history?p=CL%3DF"</span></span>
 <span>  <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">yf</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -178,7 +179,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">ticker</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">open</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Plot lines</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Add points</span></span>
@@ -195,7 +196,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ticker_long</span> <span class="op">&lt;-</span> <span class="va">ticker</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">open</span>, <span class="va">close</span>, <span class="va">adj_close</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"PriceType"</span>, values_to <span class="op">=</span> <span class="st">"Price"</span><span class="op">)</span></span></code></pre></div>
 </details>
@@ -206,7 +207,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">ticker_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">Price</span>, color <span class="op">=</span> <span class="va">PriceType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="va">PriceType</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Different shapes for each price type</span></span>
@@ -228,30 +229,22 @@ Click for answer
 <span class="header-section-number">22.3</span> Group Activity 3<a class="anchor" aria-label="anchor" href="#group-activity-3-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this activity, you’ll scrape web data using <code>rvest</code> and tidy up the results into a well-formatted table. Start by extracting job titles from a given URL, then gather the associated company names, and trim any leading or trailing whitespace from the location data. Next, retrieve the posting dates and the URLs for the full job descriptions. Finally, combine all these elements into a single dataframe, ensuring that each piece of information aligns correctly. Your task is to produce a clean and informative table that could be useful for job seekers. To facilitate the selection of the correct CSS selectors, you may find the <code>SelectorGadget</code> Chrome extension particularly useful.</p>
-<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://realpython.github.io/fake-jobs/"</span></span></code></pre></div>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-
-```r
-title <- bow(url) %>% scrape() %>% html_elements(css = ".is-5") %>% html_text()   # part 1
-company <- bow(url) %>% scrape() %>% html_elements(css = ".company") %>% html_text() # part 2
-location <- bow(url) %>% scrape() %>% html_elements(css = ".location") %>% html_text() %>% str_trim() # part 3
-time <- bow(url) %>% scrape() %>% html_elements(css = "time") %>% html_text() # part 4
-html <- bow(url) %>% scrape() %>%  html_element(css = ".card-footer-item+ .card-footer-item") %>% html_attr("href")  # part 5
-
-# Create a dataframe
-tibble(title = title, company = company, location = location, time = time, html = html) # port 6
-```
-
-```
-# A tibble: 100 × 5
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">".is-5"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span>   <span class="co"># part 1</span></span>
+<span><span class="va">company</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">".company"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># part 2</span></span>
+<span><span class="va">location</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">".location"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_trim</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># part 3</span></span>
+<span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># part 4</span></span>
+<span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">".card-footer-item+ .card-footer-item"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span>  <span class="co"># part 5</span></span>
+<span></span>
+<span><span class="co"># Create a dataframe</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">title</span>, company <span class="op">=</span> <span class="va">company</span>, location <span class="op">=</span> <span class="va">location</span>, time <span class="op">=</span> <span class="va">time</span>, html <span class="op">=</span> <span class="va">html</span><span class="op">)</span> <span class="co"># port 6</span></span></code></pre></div>
+<pre><code># A tibble: 100 × 5
    title                     company    location time  html 
-   <chr>                     <chr>      <chr>    <chr> <chr>
+   &lt;chr&gt;                     &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
  1 Senior Python Developer   Payne, Ro… Stewart… 2021… http…
  2 Energy engineer           Vasquez-D… Christo… 2021… http…
  3 Legal executive           Jackson, … Port Er… 2021… http…
@@ -262,21 +255,13 @@ tibble(title = title, company = company, location = location, time = time, html 
  8 Textile designer          Meyers-Jo… Port Jo… 2021… http…
  9 Television floor manager  Hughes-Wi… Osborne… 2021… http…
 10 Waste management officer  Jones, Wi… Scottto… 2021… http…
-# ℹ 90 more rows
-```
-
-
-
-
+# ℹ 90 more rows</code></pre>
 </details>
-
--->
-
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></div>
-<div class="empty"></div>
+<div class="next"><a href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -313,7 +298,7 @@ tibble(title = title, company = company, location = location, time = time, html 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-08.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

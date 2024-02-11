@@ -94,6 +94,7 @@
 <li><a class="active" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
 <li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
 <li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
 </ul>
 
         <div class="book-extra">
@@ -105,7 +106,7 @@
 <h1>
 <span class="header-section-number">20</span> Class Activity 14<a class="anchor" aria-label="anchor" href="#class-activity-14"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://blog.fellstat.com/?cat=11">wordcloud</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>
@@ -126,26 +127,26 @@
 <p>where <span class="math inline">\(x_i = (\sum_i^n x_i)/n\)</span> is the sample mean. Also, the skewness of the random variable <span class="math inline">\(x\)</span> is defined as:</p>
 <p><span class="math display">\[\operatorname{Skew}(x)=\frac{\frac{1}{n-2}\left(\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{3}\right)}{\operatorname{Var}(x)^{3 /2}}\]</span></p>
 <p>Please write functions to calculate the variance and skewness of <span class="math inline">\(\{12, 45, 54, 34, 56, 30, 67, \text{NA}\}\)</span>.</p>
-<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">45</span>, <span class="fl">54</span>, <span class="fl">34</span>, <span class="fl">56</span>, <span class="fl">30</span>, <span class="fl">67</span>, <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># function to calculate the variance of a vector</span></span>
 <span><span class="va">var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># omit NA values</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 346.619</code></pre>
-<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># function to calculate the skewness of a vector</span></span>
 <span><span class="va">skewness</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># omit NA values</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">^</span> <span class="fl">3</span><span class="op">)</span> <span class="op">/</span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">^</span> <span class="op">(</span><span class="fl">3</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">skewness</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] -0.3930586</code></pre>
 </details>
@@ -157,7 +158,7 @@ Click for answer
 <p>Create a function that iterates through a numeric vector and stops when it encounters the first negative number, returning the position of that negative number. If there are no negative numbers in the vector, the function should return a message stating that there are no negative numbers.</p>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">find_first_negative</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">negative_positions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span></span>
 <span>  </span>
@@ -167,7 +168,7 @@ Click for answer
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"There are no negative numbers in the vector"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">12</span>, <span class="op">-</span><span class="fl">7</span>, <span class="fl">20</span>, <span class="fl">15</span><span class="op">)</span></span>
 <span><span class="fu">find_first_negative</span><span class="op">(</span><span class="va">test_vector</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] "The first negative number is at position 3"</code></pre>
@@ -178,7 +179,7 @@ Click for answer
 <h2>
 <span class="header-section-number">20.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-1"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">musical_instr_reviews</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/musicreviews.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>ratingOverall <span class="op">=</span> <span class="va">overall</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">musical_instr_reviews</span><span class="op">)</span></span></code></pre></div>
@@ -193,7 +194,7 @@ $ ratingOverall &lt;dbl&gt; 5, 5, 5, 5, 5, 5, 5, 3, 5, 5, 5, 4, …</code></pre>
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">filter_reviews_by_rating</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">rating</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ratingOverall</span> <span class="op">==</span> <span class="va">rating</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
@@ -205,7 +206,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">process_text</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">reviewText</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -220,7 +221,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">create_word_count_table</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -235,7 +236,7 @@ Click for answer
 </h3>
 <details><summary class="answer">
 Click for answer
-</summary><div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">word_cloud</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">rating</span>, <span class="va">num.words</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">rating</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">rating</span><span class="op">)</span></span>
 <span>  <span class="va">num.words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">num.words</span><span class="op">)</span></span>
@@ -301,7 +302,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-08.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

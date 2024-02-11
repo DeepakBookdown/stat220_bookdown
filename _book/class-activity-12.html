@@ -94,6 +94,7 @@
 <li><a class="" href="class-activity-14.html"><span class="header-section-number">20</span> Class Activity 14</a></li>
 <li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
 <li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
+<li><a class="" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
 </ul>
 
         <div class="book-extra">
@@ -105,7 +106,7 @@
 <h1>
 <span class="header-section-number">18</span> Class Activity 12<a class="anchor" aria-label="anchor" href="#class-activity-12"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
@@ -115,7 +116,7 @@
 <h2>
 <span class="header-section-number">18.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"My SSN is 593-29-9502 and my age is 55"</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="st">"My phone number is 612-643-1539"</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="st">"My old SSN number is 39532 9423."</span></span>
@@ -128,7 +129,7 @@
 Click for answer
 </summary><p><em>answer:</em></p>
 <p>The pattern searches for a dash, followed by any two characters, followed by another dash. In x, it finds “-29-” which is a part of the SSN.</p>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"-..-"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ My SSN is 593&lt;-29-&gt;9502 and my age is 55</code></pre>
 </details>
@@ -141,7 +142,7 @@ Click for answer
 Click for answer
 </summary><p><em>answer:</em></p>
 <p>The pattern searches for a dash, followed by two digits, followed by another dash. In x, it finds the same “-29-” as in the previous example, which is a part of the SSN.</p>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"-\\d{2}-"</span><span class="op">)</span>  <span class="co"># "-" then 2 digits then "-"</span></span></code></pre></div>
 <pre><code>[1] │ My SSN is 593&lt;-29-&gt;9502 and my age is 55</code></pre>
 </details>
@@ -154,7 +155,7 @@ Click for answer
 Click for answer
 </summary><p><em>answer:</em></p>
 <p>The pattern searches for two digits followed by an optional period. In out, it finds “55” and “55.”, which represent the age in the first sentence.</p>
-<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"\\s\\d{2}\\."</span><span class="op">)</span>  <span class="co"># 2 digits then "."</span></span></code></pre></div>
 <pre><code>[1] │ My SSN is 593-29-9502 and my age is&lt; 55.&gt; My phone number is 612-643-1539. My old SSN number is 39532 9423.</code></pre>
 </details>
@@ -164,11 +165,11 @@ Click for answer
 <span class="header-section-number">18.1.4</span> d. Use <code>str_view_all</code> to determine the correct regex pattern to identify all SSN in <code>out</code><a class="anchor" aria-label="anchor" href="#d.-use-str_view_all-to-determine-the-correct-regex-pattern-to-identify-all-ssn-in-out"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can get the SSN with the usual format (###-##-####) with a regex that has 3, 2, and 4 digits separated by a dash.</p>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">out</span>,<span class="st">"([0-8]\\d{2})-(\\d{2})-(\\d{4})"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ My SSN is &lt;593-29-9502&gt; and my age is 55. My phone number is 612-643-1539. My old SSN number is 39532 9423.</code></pre>
 <p>This misses the oddly formatted SSN in the third entry. Rather than use a dash, we can specify the divider as <code>[-\\s]?</code> which allows either 0 or 1 occurrences of either a dash or space divider:</p>
-<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">out</span>,<span class="st">"([0-8]\\d{2})[-\\s]?(\\d{2})[-\\s]?(\\d{4})"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ My SSN is &lt;593-29-9502&gt; and my age is 55. My phone number is 612-643-1539. My old SSN number is &lt;39532 9423&gt;.</code></pre>
 <details><summary class="answer">
@@ -181,7 +182,7 @@ Click for answer
 <h3>
 <span class="header-section-number">18.1.5</span> e. Write a regular expression to extract dates in the format YYYY-MM-DD from a given text.<a class="anchor" aria-label="anchor" href="#e.-write-a-regular-expression-to-extract-dates-in-the-format-yyyy-mm-dd-from-a-given-text."><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">date_pattern</span> <span class="op">&lt;-</span> <span class="st">"\\d{4}-\\d{2}-\\d{2}"</span></span>
 <span><span class="va">text</span> <span class="op">&lt;-</span> <span class="st">"The event will take place on 2023-07-20 and end on 2023-07-22."</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract_all</a></span><span class="op">(</span><span class="va">text</span>, <span class="va">date_pattern</span><span class="op">)</span></span></code></pre></div>
@@ -196,7 +197,7 @@ Click for answer
 <h3>
 <span class="header-section-number">18.1.6</span> f. Write a regular expression to extract all words that start with a capital letter in a given text.<a class="anchor" aria-label="anchor" href="#f.-write-a-regular-expression-to-extract-all-words-that-start-with-a-capital-letter-in-a-given-text."><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">capital_pattern</span> <span class="op">&lt;-</span> <span class="st">"\\b[A-Z][a-zA-Z]*\\b"</span></span>
 <span><span class="va">text</span> <span class="op">&lt;-</span> <span class="st">"Alice and Bob went to the Market to buy some Groceries."</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract_all</a></span><span class="op">(</span><span class="va">text</span>, <span class="va">capital_pattern</span><span class="op">)</span></span></code></pre></div>
@@ -216,7 +217,7 @@ Click for answer
 <h3>
 <span class="header-section-number">18.2.1</span> a. Let’s deal with a number string that is longer than 9 digits.<a class="anchor" aria-label="anchor" href="#a.-lets-deal-with-a-number-string-that-is-longer-than-9-digits."><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ssn</span> <span class="op">&lt;-</span> <span class="st">"([0-8]\\d{2})[-\\s]?(\\d{2})[-\\s]?(\\d{4})"</span></span>
 <span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"123-45-67890"</span>,<span class="st">"1123 45 6789"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">test</span>, <span class="va">ssn</span><span class="op">)</span></span></code></pre></div>
@@ -224,17 +225,17 @@ Click for answer
 [2] │ 1&lt;123 45 6789&gt;</code></pre>
 <p>This example captures a 9-digit string as an SSN, but these strings are longer than 9 digits and may not represent an SSN. One way to deal with this is to use the negative lookbehind <code>?&lt;!</code> and negative lookahead <code>?!</code> operators to ensure that the identified 9-digit string does not have a leading 0 or does not contain more digits.</p>
 <p>If we “look behind” from the start of the SSN, we should not see another digit:</p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">test</span>, <span class="st">"(?&lt;!\\d)([0-8]\\d{2})[-\\.\\s]?(\\d{2})[-\\.\\s]?(\\d{4})"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ &lt;123-45-6789&gt;0
 [2] │ 1123 45 6789</code></pre>
 <p>And if we “look ahead” from the end of the SSN, we should not see another digit:</p>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view_all</a></span><span class="op">(</span><span class="va">test</span>, <span class="st">"(?&lt;!\\d)([0-8]\\d{2})[-\\.\\s]?(\\d{2})[-\\.\\s]?(\\d{4})(?!\\d)"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ 123-45-67890
 [2] │ 1123 45 6789</code></pre>
 <p>For parts b and c, consider the following string.</p>
-<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">string1</span> <span class="op">&lt;-</span> <span class="st">"100 dollars 100 pesos"</span></span></code></pre></div>
 </div>
 <div id="b.-explain-why-the-following-matches-the-first-100-and-not-the-second." class="section level3" number="18.2.2">
@@ -244,7 +245,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>answer:</em> It looks for one or more digits followed by a space and <code>dollars</code></p>
-<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">string1</span>, <span class="st">"\\d+(?= dollars)"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ &lt;100&gt; dollars 100 pesos</code></pre>
 </details>
@@ -256,11 +257,11 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>answer:</em> It looks for one or more digits not followed by either a digit or space followed by <code>dollars</code></p>
-<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">string1</span>, <span class="st">"\\d+(?!\\d| dollars)"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ 100 dollars &lt;100&gt; pesos</code></pre>
 <p>For parts d and e, please take a look at <code>string2</code>.</p>
-<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">string2</span> <span class="op">&lt;-</span> <span class="st">"USD100 PESO100"</span></span></code></pre></div>
 </details>
 </div>
@@ -271,7 +272,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>answer:</em> It looks for exactly 3 digits preceded by USD</p>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">string2</span>, <span class="st">"(?&lt;=USD)\\d{3}"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ USD&lt;100&gt; PESO100</code></pre>
 </details>
@@ -283,7 +284,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>answer:</em> It looks for exactly 3 digits that is not preceded by USD</p>
-<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">string2</span>, <span class="st">"(?&lt;!USD)\\d{3}"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] │ USD100 PESO&lt;100&gt;</code></pre>
 </details><hr>
@@ -293,13 +294,13 @@ Click for answer
 <h2>
 <span class="header-section-number">18.3</span> Group Activity 3<a class="anchor" aria-label="anchor" href="#group-activity-3"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tweets</span><span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/deepbas/statdatasets/main/TrumpTweetData.csv"</span><span class="op">)</span></span></code></pre></div>
 <div id="a.-what-proportion-of-tweets-text-mention-america" class="section level3" number="18.3.1">
 <h3>
 <span class="header-section-number">18.3.1</span> a. What proportion of tweets (text) mention “America”?<a class="anchor" aria-label="anchor" href="#a.-what-proportion-of-tweets-text-mention-america"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tweets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_title</a></span><span class="op">(</span><span class="va">text</span><span class="op">)</span>, <span class="st">"America"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <pre><code># A tibble: 1 × 1
@@ -315,7 +316,7 @@ Click for answer
 <h3>
 <span class="header-section-number">18.3.2</span> b. What proportion of these tweets include “great”?<a class="anchor" aria-label="anchor" href="#b.-what-proportion-of-these-tweets-include-great"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tweets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_title</a></span><span class="op">(</span><span class="va">text</span><span class="op">)</span>, <span class="st">"America"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span><span class="op">(</span><span class="va">text</span><span class="op">)</span>, <span class="st">"great"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <pre><code># A tibble: 1 × 1
@@ -331,7 +332,7 @@ Click for answer
 <h3>
 <span class="header-section-number">18.3.3</span> c. What proportion of the tweets mention <code>@</code>?<a class="anchor" aria-label="anchor" href="#c.-what-proportion-of-the-tweets-mention"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tweets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ct <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">text</span>, <span class="st">"@"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">text</span>, <span class="va">ct</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ct</span><span class="op">&gt;</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -348,13 +349,13 @@ Click for answer
 <h3>
 <span class="header-section-number">18.3.4</span> d. Remove the tweets having mentions <code>@</code>.<a class="anchor" aria-label="anchor" href="#d.-remove-the-tweets-having-mentions-."><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Mentions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"@[^\\s]+"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tw_noMentions</span> <span class="op">&lt;-</span> <span class="va">tweets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>textNoMentions <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">text</span>, <span class="va">Mentions</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">tw_noMentions</span><span class="op">$</span><span class="va">text</span><span class="op">[</span><span class="fl">38</span><span class="op">]</span></span></code></pre></div>
 <pre><code>[1] "My daughter @IvankaTrump will be on @Greta tonight at 7pm. Enjoy! https://t.co/QySC5PLFMy"</code></pre>
-<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tw_noMentions</span><span class="op">$</span><span class="va">textNoMentions</span><span class="op">[</span><span class="fl">38</span><span class="op">]</span></span></code></pre></div>
 <pre><code>[1] "My daughter  will be on  tonight at 7pm. Enjoy! https://t.co/QySC5PLFMy"</code></pre>
 <details><summary class="answer">
@@ -367,7 +368,7 @@ Click for answer
 <h3>
 <span class="header-section-number">18.3.5</span> e. What poportion of tweets originated from an iPhone?<a class="anchor" aria-label="anchor" href="#e.-what-poportion-of-tweets-originated-from-an-iphone"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tweets</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="va">count</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"iPhone"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 3
@@ -433,7 +434,7 @@ Click for answer
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-08.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

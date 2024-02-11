@@ -201,3 +201,6 @@ b.-write-the-r-code-to-create-a-time-trend-plot-of-opening-prices-from-the-scrap
 c.-how-can-you-transform-the-data-into-a-long-format-suitable-for-plotting-multiple-price-types-with-ggplot2
 d.-show-how-to-create-a-ggplot2-visualization-that-includes-lines-and-points-with-different-colors-and-shapes-for-each-price-type-and-make-the-x-axis-dates-legible.
 group-activity-3-1
+class-activity-17
+group-activity-1-4
+group-activity-2-4
