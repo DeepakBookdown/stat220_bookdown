@@ -53,7 +53,7 @@ table_base <- session1 %>% .[[1]]
 </details>
 
 
-3. Write a for loop to store all the data in multiple pages to a single data frame.
+3. Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using `purrr:map_df()` as well.
 
 
 
@@ -95,6 +95,9 @@ df1_final1 <- reduce(df1, dplyr::bind_rows)
 ```
 
 
+
+<!--
+
 ```{r}
 # alternate using map_df()
 start_time <- proc.time() # Capture start time
@@ -117,6 +120,7 @@ end_time <- proc.time() # Capture end time
 end_time - start_time # Calculate duration
 ```
 
+-->
 
 </details>
 
@@ -124,7 +128,7 @@ end_time - start_time # Calculate duration
 
 ## Group Activity 2
 
-1. Go to the [the numbers webpage](https://www.scrapethissite.com/pages/forms/) and extract the table on the front page.
+1. Go to the [scrapethissite](https://www.scrapethissite.com/pages/forms/) and extract the table on the front page.
 
 <!--
 <details>
@@ -159,7 +163,7 @@ table_base <- session1 %>% .[[1]]
 
 -->
 
-3. Write a for loop to store all the data in multiple pages to a single data frame.
+3. Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using `purrr:map_df()` as well.
 
 <!--
 <details>

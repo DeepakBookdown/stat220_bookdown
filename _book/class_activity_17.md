@@ -55,7 +55,7 @@ table_base <- session1 %>% .[[1]]
 </details>
 
 
-3. Write a for loop to store all the data in multiple pages to a single data frame.
+3. Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using `purrr:map_df()` as well.
 
 
 
@@ -97,7 +97,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.703   0.149  39.780 
+  3.693   0.109  35.778 
 ```
 
 ```r
@@ -105,6 +105,9 @@ df1_final <- do.call(rbind, df1)
 df1_final1 <- reduce(df1, dplyr::bind_rows)
 ```
 
+
+
+<!--
 
 
 ```r
@@ -131,9 +134,10 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.743   0.057  28.079 
+  3.792   0.058  32.974 
 ```
 
+-->
 
 </details>
 
@@ -141,7 +145,7 @@ end_time - start_time # Calculate duration
 
 ## Group Activity 2
 
-1. Go to the [the numbers webpage](https://www.scrapethissite.com/pages/forms/) and extract the table on the front page.
+1. Go to the [scrapethissite](https://www.scrapethissite.com/pages/forms/) and extract the table on the front page.
 
 <!--
 <details>
@@ -177,7 +181,7 @@ table_base <- session1 %>% .[[1]]
 
 -->
 
-3. Write a for loop to store all the data in multiple pages to a single data frame.
+3. Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using `purrr:map_df()` as well.
 
 <!--
 <details>
@@ -218,7 +222,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.535   0.048   8.963 
+  1.475   0.081   8.508 
 ```
 
 ```r
@@ -265,7 +269,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.546   0.071   8.770 
+  1.511   0.083   8.297 
 ```
 
 ```r

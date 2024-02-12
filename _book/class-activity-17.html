@@ -136,7 +136,7 @@ Click for answer
 Click for answer
 </summary><p><em>Answer:</em> The starting count of the movie gets concatenated to the url in increments of 100.</p>
 </details><ol start="3" style="list-style-type: decimal">
-<li>Write a for loop to store all the data in multiple pages to a single data frame.</li>
+<li>Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using <code>purrr:map_df()</code> as well.</li>
 </ol>
 <details><summary class="answer">
 Click for answer
@@ -165,32 +165,41 @@ Click for answer
 <span><span class="va">end_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture end time</span></span>
 <span><span class="va">end_time</span> <span class="op">-</span> <span class="va">start_time</span> <span class="co"># Calculate duration</span></span></code></pre></div>
 <pre><code>   user  system elapsed 
-  3.709   0.112  63.892 </code></pre>
+  3.696   0.164  41.752 </code></pre>
 <div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df1_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">df1</span><span class="op">)</span></span>
 <span><span class="va">df1_final1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html">reduce</a></span><span class="op">(</span><span class="va">df1</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># alternate using map_df()</span></span>
-<span><span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture start time</span></span>
-<span></span>
-<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">index</span>, <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="op">{</span><span class="va">new_urls</span><span class="op">}</span>, <span class="op">{</span><span class="va">index</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">index</span>, <span class="op">~</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="op">{</span><span class="va">new_urls</span><span class="op">}</span>, <span class="op">{</span><span class="va">.x</span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://glue.tidyverse.org/">glue</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Assuming 'urls' is already defined</span></span>
-<span><span class="va">movies_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_df</a></span><span class="op">(</span><span class="va">urls</span>, <span class="op">~</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>                        <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>                        <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>                        <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>                        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
-<span><span class="va">end_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture end time</span></span>
-<span><span class="va">end_time</span> <span class="op">-</span> <span class="va">start_time</span> <span class="co"># Calculate duration</span></span></code></pre></div>
-<pre><code>   user  system elapsed 
-  3.763   0.061  27.783 </code></pre>
+<!--
+
+
+```r
+# alternate using map_df()
+start_time <- proc.time() # Capture start time
+
+urls <- map(index, function(i) str_glue({new_urls}, {index[i]}))
+urls <- map(index, ~str_glue({new_urls}, {.x}))
+
+library(tidyverse)
+library(rvest)
+library(glue)
+library(janitor)
+
+# Assuming 'urls' is already defined
+movies_data <- map_df(urls, ~read_html(.x) %>%
+                        html_table() %>%
+                        .[[1]] %>%
+                        janitor::clean_names() %>% 
+                        mutate(across(everything(), as.character))) 
+end_time <- proc.time() # Capture end time
+end_time - start_time # Calculate duration
+```
+
+```
+   user  system elapsed 
+  3.863   0.109  37.018 
+```
+
+-->
 </details>
 </div>
 <div id="group-activity-2-4" class="section level2" number="23.2">
@@ -231,7 +240,7 @@ table_base <- session1 %>% .[[1]]
 </details>
 
 --><ol start="3" style="list-style-type: decimal">
-<li>Write a for loop to store all the data in multiple pages to a single data frame.</li>
+<li>Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using <code>purrr:map_df()</code> as well.</li>
 </ol>
 <!--
 <details>
@@ -272,7 +281,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.595   0.074   9.683 
+  1.532   0.052   8.405 
 ```
 
 ```r
@@ -319,7 +328,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.554   0.067   8.928 
+  1.435   0.062   8.584 
 ```
 
 ```r
