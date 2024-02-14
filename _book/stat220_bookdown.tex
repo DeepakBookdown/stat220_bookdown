@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-11}
+\date{2024-02-13}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.74688
+[1] 28.75192
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     3 9th   North America   100 9th      
- 2     8 9th   Middle East      67 9th      
- 3    10 9th   Europe           82 9th      
- 4    19 9th   Middle East      55 9th      
- 5    20 9th   Asia             62 9th      
- 6    21 9th   South America    60 9th      
- 7     1 10th  Africa           78 10th     
- 8     2 10th  Asia             62 10th     
- 9     4 10th  Africa           79 10th     
-10     6 10th  Asia             65 10th     
-11    11 10th  Asia             69 10th     
-12    13 10th  Middle East      86 10th     
-13    16 10th  South America    92 10th     
-14    17 10th  North America    72 10th     
-15    22 10th  Africa           99 10th     
-16     5 11th  South America    56 11th     
-17     7 11th  South America    64 11th     
-18     9 11th  Europe           91 11th     
-19    12 11th  Middle East      56 11th     
-20    14 11th  Asia             75 11th     
-21    15 11th  South America    70 11th     
-22    18 11th  North America    95 11th     
-23    23 11th  Europe           63 11th     
-24    24 11th  South America    93 11th     
+ 1     1 9th   North America    80 9th      
+ 2     5 9th   North America    52 9th      
+ 3     6 9th   Europe           74 9th      
+ 4     9 9th   Middle East      91 9th      
+ 5    13 9th   Asia             59 9th      
+ 6    14 9th   South America    84 9th      
+ 7    15 9th   Middle East      82 9th      
+ 8    16 9th   Europe           56 9th      
+ 9    23 9th   Africa           54 9th      
+10     3 10th  Middle East      65 10th     
+11     7 10th  Asia             72 10th     
+12    11 10th  North America    68 10th     
+13    21 10th  Middle East      90 10th     
+14     2 11th  South America    61 11th     
+15     4 11th  South America    95 11th     
+16     8 11th  Africa           81 11th     
+17    10 11th  Africa           59 11th     
+18    12 11th  Europe           74 11th     
+19    17 11th  North America    79 11th     
+20    18 11th  Europe           65 11th     
+21    19 11th  South America    87 11th     
+22    20 11th  Africa           58 11th     
+23    22 11th  Middle East      87 11th     
+24    24 11th  South America    53 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,8 +4700,8 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                10
-2 Asia                 5
+1 EMEA                13
+2 Asia                 2
 3 Americas             9
 \end{verbatim}
 
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "11th" "9th" 
+[1] "11th" "9th"  "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4743,12 +4743,11 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 3 x 2
+# A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 10th             9
-2 11th             9
-3 Others           6
+1 11th            11
+2 Others          13
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6623,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.756   0.093  62.631 
+  3.711   0.140  46.693 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6651,6 +6650,10 @@ Click for answer
   Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
 \end{enumerate}
 
+Click for answer
+
+\emph{Answer:} The url field has \texttt{?page\_num=} added with the number of pages running from 1 to 24.
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{2}
@@ -6658,6 +6661,345 @@ Click for answer
 \item
   Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using \texttt{purrr:map\_df()} as well.
 \end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(rvest)}
+
+\NormalTok{new\_urls }\OtherTok{\textless{}{-}} \StringTok{"http://scrapethissite.com/pages/forms/?page\_num="}
+
+\CommentTok{\# Generate a vector of indices}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{24}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture start time}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ index) \{}
+\NormalTok{  url }\OtherTok{\textless{}{-}} \FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{new\_urls\}\{i\}"}\NormalTok{)}
+\NormalTok{  webpage }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(url)}
+\NormalTok{  table\_new }\OtherTok{\textless{}{-}} \FunctionTok{html\_table}\NormalTok{(webpage)[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \CommentTok{\#set\_names(\textasciitilde{}ifelse(is.na(.) | . == "", paste("V", seq\_along(.), sep=""), .)) \%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), as.character))}
+\NormalTok{  df2[[i]] }\OtherTok{\textless{}{-}}\NormalTok{ table\_new}
+\NormalTok{\}}
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture end time}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time }\CommentTok{\# Calculate duration}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   user  system elapsed 
+  1.532   0.065   8.986 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df2\_final }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(df2)}
+\NormalTok{df2\_final}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 582 x 9
+   team_name        year  wins  losses ot_losses win_percent
+   <chr>            <chr> <chr> <chr>  <chr>     <chr>      
+ 1 Boston Bruins    1990  44    24     <NA>      0.55       
+ 2 Buffalo Sabres   1990  31    30     <NA>      0.388      
+ 3 Calgary Flames   1990  46    26     <NA>      0.575      
+ 4 Chicago Blackha~ 1990  49    23     <NA>      0.613      
+ 5 Detroit Red Win~ 1990  34    38     <NA>      0.425      
+ 6 Edmonton Oilers  1990  37    37     <NA>      0.463      
+ 7 Hartford Whalers 1990  31    38     <NA>      0.388      
+ 8 Los Angeles Kin~ 1990  46    24     <NA>      0.575      
+ 9 Minnesota North~ 1990  27    39     <NA>      0.338      
+10 Montreal Canadi~ 1990  39    30     <NA>      0.487      
+# i 572 more rows
+# i 3 more variables: goals_for_gf <chr>,
+#   goals_against_ga <chr>, x <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alternate using map}
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\ControlFlowTok{function}\NormalTok{(i) }\FunctionTok{str\_glue}\NormalTok{(\{new\_urls\}, \{i\}))}
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{str\_glue}\NormalTok{(}\StringTok{"\{new\_urls\}\{.x\}"}\NormalTok{))}
+
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture start time}
+\NormalTok{sports\_data }\OtherTok{\textless{}{-}} \FunctionTok{map\_df}\NormalTok{(urls, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{read\_html}\NormalTok{(.x) }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{                  .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{                  janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+                  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), as.character)))}
+
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture end time}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time }\CommentTok{\# Calculate duration}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   user  system elapsed 
+  1.437   0.063   9.198 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sports\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 582 x 9
+   team_name        year  wins  losses ot_losses win_percent
+   <chr>            <chr> <chr> <chr>  <chr>     <chr>      
+ 1 Boston Bruins    1990  44    24     <NA>      0.55       
+ 2 Buffalo Sabres   1990  31    30     <NA>      0.388      
+ 3 Calgary Flames   1990  46    26     <NA>      0.575      
+ 4 Chicago Blackha~ 1990  49    23     <NA>      0.613      
+ 5 Detroit Red Win~ 1990  34    38     <NA>      0.425      
+ 6 Edmonton Oilers  1990  37    37     <NA>      0.463      
+ 7 Hartford Whalers 1990  31    38     <NA>      0.388      
+ 8 Los Angeles Kin~ 1990  46    24     <NA>      0.575      
+ 9 Minnesota North~ 1990  27    39     <NA>      0.338      
+10 Montreal Canadi~ 1990  39    30     <NA>      0.487      
+# i 572 more rows
+# i 3 more variables: goals_for_gf <chr>,
+#   goals_against_ga <chr>, x <chr>
+\end{verbatim}
+
+\hypertarget{class-activity-18}{%
+\chapter{Class Activity 18}\label{class-activity-18}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(shiny)}
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(janitor)}
+\FunctionTok{library}\NormalTok{(purrr)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(DT)}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\FunctionTok{library}\NormalTok{(polite)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{introduction-to-shiny-apps}{%
+\section{Introduction to Shiny Apps}\label{introduction-to-shiny-apps}}
+
+Shiny is a powerful R package that enables the creation of interactive web applications directly from R. A Shiny app consists of two main components:
+
+\begin{itemize}
+\item
+  \emph{User Interface (UI):} Defines the layout and appearance of your app.
+\item
+  \emph{Server Function:} Contains the logic to manage user inputs and generate outputs.
+\end{itemize}
+
+\hypertarget{step-1-setting-up-a-basic-shiny-app}{%
+\subsubsection{Step 1: Setting Up a Basic Shiny App}\label{step-1-setting-up-a-basic-shiny-app}}
+
+Start with a simple ``Hello World!'' app to understand the basic structure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}\StringTok{"Hello World!"}\NormalTok{)}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{\}}
+\FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui, }\AttributeTok{server =}\NormalTok{ server, }\AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{height =} \DecValTok{200}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-2-enhancing-the-ui-with-more-information}{%
+\subsubsection{Step 2: Enhancing the UI with More Information}\label{step-2-enhancing-the-ui-with-more-information}}
+
+Add more elements to the UI to make it informative.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Tracking Covid in Minnesota"}\NormalTok{),}
+  \FunctionTok{h1}\NormalTok{(}\StringTok{"A Detailed Overview"}\NormalTok{),}
+  \FunctionTok{p}\NormalTok{(}\StringTok{"elements1"}\NormalTok{, }\StringTok{"elements2"}\NormalTok{),}
+  \FunctionTok{br}\NormalTok{(),}
+  \FunctionTok{p}\NormalTok{(}\StringTok{"Detailed Information:"}\NormalTok{, }\FunctionTok{strong}\NormalTok{(}\StringTok{"Critical Data Points"}\NormalTok{))}
+\NormalTok{)}
+
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{\}}
+\FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui, }\AttributeTok{server =}\NormalTok{ server, }\AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{height =} \DecValTok{200}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-3-structuring-the-app-with-a-sidebar-layout}{%
+\subsubsection{Step 3: Structuring the App with a Sidebar Layout}\label{step-3-structuring-the-app-with-a-sidebar-layout}}
+
+Organize the app's layout using sidebarLayout to separate inputs from results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Tracking Covid in Minnesota"}\NormalTok{),}
+  \FunctionTok{sidebarLayout}\NormalTok{(}
+    \FunctionTok{sidebarPanel}\NormalTok{(}\FunctionTok{p}\NormalTok{(}\StringTok{"Inputs will be placed here"}\NormalTok{)),}
+    \FunctionTok{mainPanel}\NormalTok{(}\FunctionTok{p}\NormalTok{(}\StringTok{"Results will be displayed here"}\NormalTok{))}
+\NormalTok{  )}
+\NormalTok{)}
+
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{\}}
+\FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui, }\AttributeTok{server =}\NormalTok{ server, }\AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{height =} \DecValTok{200}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-4-reading-and-preparing-data}{%
+\subsubsection{Step 4: Reading and Preparing Data}\label{step-4-reading-and-preparing-data}}
+
+Fetch and prepare Covid data for Minnesota for analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table\_usafacts }\OtherTok{\textless{}{-}} \FunctionTok{bow}\NormalTok{(}\AttributeTok{url =} \StringTok{"https://usafacts.org/visualizations/coronavirus{-}covid{-}19{-}spread{-}map/state/minnesota"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{scrape}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{html\_nodes}\NormalTok{(}\StringTok{"a"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}       \CommentTok{\# find all links}
+  \FunctionTok{html\_attr}\NormalTok{(}\StringTok{"href"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}     \CommentTok{\# get the url}
+  \FunctionTok{str\_subset}\NormalTok{(}\StringTok{".csv"}\NormalTok{)        }\CommentTok{\# find those that end in csv}
+
+\NormalTok{covid\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(table\_usafacts[}\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(State }\SpecialCharTok{==} \StringTok{"MN"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{countyFIPS, }\SpecialCharTok{{-}}\NormalTok{StateFIPS, }\SpecialCharTok{{-}}\NormalTok{State) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{names\_to =} \StringTok{"Dates"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"Cases"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{dates =} \FunctionTok{ymd}\NormalTok{(dates),}
+         \AttributeTok{counties =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{str\_remove}\NormalTok{(county\_name, }\StringTok{" County"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{county\_name)}
+
+\FunctionTok{head}\NormalTok{(covid\_data, }\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-5-incorporating-user-inputs}{%
+\subsubsection{Step 5: Incorporating User Inputs}\label{step-5-incorporating-user-inputs}}
+
+Enhance the UI with inputs for filtering data based on user selection.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Tracking Covid in Minnesota"}\NormalTok{),}
+  \FunctionTok{sidebarLayout}\NormalTok{(}
+    \FunctionTok{sidebarPanel}\NormalTok{(}
+      \FunctionTok{sliderInput}\NormalTok{(}\StringTok{"monthInput"}\NormalTok{, }\StringTok{"Select Month Range"}\NormalTok{, }\AttributeTok{min =} \DecValTok{1}\NormalTok{, }\AttributeTok{max =} \DecValTok{12}\NormalTok{, }\AttributeTok{value =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{)),}
+      \FunctionTok{selectInput}\NormalTok{(}\StringTok{"countyInput"}\NormalTok{, }\StringTok{"Select County"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{unique}\NormalTok{(covid\_data}\SpecialCharTok{$}\NormalTok{counties))}
+\NormalTok{    ),}
+    \FunctionTok{mainPanel}\NormalTok{(}
+      \FunctionTok{plotOutput}\NormalTok{(}\StringTok{"covidPlot"}\NormalTok{),}
+      \FunctionTok{tableOutput}\NormalTok{(}\StringTok{"covidTable"}\NormalTok{)}
+\NormalTok{    )}
+\NormalTok{  )}
+\NormalTok{)}
+
+
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{\}}
+
+\FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui, }\AttributeTok{server =}\NormalTok{ server)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-6-developing-the-server-logic}{%
+\subsubsection{Step 6: Developing the Server Logic}\label{step-6-developing-the-server-logic}}
+
+Implement server logic to respond to user inputs and generate outputs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+  \CommentTok{\# Filter data based on inputs}
+\NormalTok{  filtered\_data }\OtherTok{\textless{}{-}} \FunctionTok{reactive}\NormalTok{(\{}
+\NormalTok{    covid\_data }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{filter}\NormalTok{(counties }\SpecialCharTok{==}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{countyInput, }
+             \FunctionTok{month}\NormalTok{(dates) }\SpecialCharTok{\textgreater{}=}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{monthInput[}\DecValTok{1}\NormalTok{], }
+             \FunctionTok{month}\NormalTok{(dates) }\SpecialCharTok{\textless{}=}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{monthInput[}\DecValTok{2}\NormalTok{])}
+\NormalTok{  \})}
+  
+  \CommentTok{\# Generate plot}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{covidPlot }\OtherTok{\textless{}{-}} \FunctionTok{renderPlot}\NormalTok{(\{}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{filtered\_data}\NormalTok{(), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ dates, }\AttributeTok{y =}\NormalTok{ cases, }\AttributeTok{color =}\NormalTok{ counties)) }\SpecialCharTok{+}
+      \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+      \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+      \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Covid Cases Over Time"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of Cases"}\NormalTok{)}
+\NormalTok{  \})}
+  
+  \CommentTok{\# Generate table}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{covidTable }\OtherTok{\textless{}{-}} \FunctionTok{renderTable}\NormalTok{(\{}
+    \FunctionTok{filtered\_data}\NormalTok{()}
+\NormalTok{  \})}
+\NormalTok{\}}
+
+\CommentTok{\# Launch the app}
+\FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui, }\AttributeTok{server =}\NormalTok{ server)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{implementation-2}{%
+\subsection{Implementation 2}\label{implementation-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ui1 }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+    \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Tracking Covid in Minnesota"}\NormalTok{),}
+    \FunctionTok{sidebarLayout}\NormalTok{(}
+        \FunctionTok{sidebarPanel}\NormalTok{(}
+          \FunctionTok{sliderInput}\NormalTok{(}\StringTok{"monthInput"}\NormalTok{, }\StringTok{"Month"}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{12}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{)),}
+          \FunctionTok{radioButtons}\NormalTok{(}\StringTok{"yearInput"}\NormalTok{, }\StringTok{"Year"}\NormalTok{,}
+                  \AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{"2020"}\NormalTok{, }\StringTok{"2021"}\NormalTok{, }\StringTok{"2022"}\NormalTok{, }\StringTok{"2023"}\NormalTok{),}
+                  \AttributeTok{selected =} \StringTok{"2020"}\NormalTok{),}
+          \FunctionTok{selectInput}\NormalTok{(}\AttributeTok{inputId =} \StringTok{"dv"}\NormalTok{, }\AttributeTok{label =} \StringTok{"County"}\NormalTok{,}
+                        \AttributeTok{choices =} \FunctionTok{levels}\NormalTok{(covid\_data}\SpecialCharTok{$}\NormalTok{counties),}
+                        \AttributeTok{selected =} \FunctionTok{c}\NormalTok{(}\StringTok{"Aitkin"}\NormalTok{))}
+\NormalTok{    ),}
+        \FunctionTok{mainPanel}\NormalTok{(}
+            \FunctionTok{plotOutput}\NormalTok{(}\AttributeTok{outputId =} \StringTok{"plot"}\NormalTok{), }\FunctionTok{br}\NormalTok{(),}
+\NormalTok{            DT}\SpecialCharTok{::}\FunctionTok{dataTableOutput}\NormalTok{(}\AttributeTok{outputId =} \StringTok{"table"}\NormalTok{)}
+\NormalTok{        )}
+\NormalTok{    )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{server1 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{    filtered\_data }\OtherTok{\textless{}{-}} \FunctionTok{reactive}\NormalTok{(\{}
+        \FunctionTok{subset}\NormalTok{(covid\_data,}
+\NormalTok{               counties }\SpecialCharTok{\%in\%}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{dv }\SpecialCharTok{\&}
+\NormalTok{               month }\SpecialCharTok{\textgreater{}=}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{monthInput[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{\&}\NormalTok{ month }\SpecialCharTok{\textless{}=}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{monthInput[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{\&} 
+\NormalTok{          year }\SpecialCharTok{==}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{yearInput) \})}
+
+\NormalTok{    output}\SpecialCharTok{$}\NormalTok{plot }\OtherTok{\textless{}{-}} \FunctionTok{renderPlot}\NormalTok{(\{}
+        \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{filtered\_data}\NormalTok{(), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{dates, }\AttributeTok{y=}\NormalTok{cases, }\AttributeTok{color=}\NormalTok{counties)) }\SpecialCharTok{+} \FunctionTok{theme\_economist\_white}\NormalTok{()}\SpecialCharTok{+}
+                \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha=}\FloatTok{0.5}\NormalTok{, }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+                    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Number of Cases"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{xlab}\NormalTok{(}\StringTok{"Date"}\NormalTok{)\})}
+
+\NormalTok{    output}\SpecialCharTok{$}\NormalTok{table }\OtherTok{\textless{}{-}}\NormalTok{ DT}\SpecialCharTok{::}\FunctionTok{renderDataTable}\NormalTok{(\{}
+        \FunctionTok{filtered\_data}\NormalTok{()\})}
+        
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{app1 }\OtherTok{\textless{}{-}} \FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui1, }\AttributeTok{server =}\NormalTok{ server1, }\AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{height =} \DecValTok{1200}\NormalTok{))}
+\NormalTok{app1}
+\end{Highlighting}
+\end{Shaded}
+
 
   \bibliography{book.bib,packages.bib}
 

@@ -95,6 +95,7 @@
 <li><a class="" href="class-activity-15.html"><span class="header-section-number">21</span> Class Activity 15</a></li>
 <li><a class="" href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></li>
 <li><a class="active" href="class-activity-17.html"><span class="header-section-number">23</span> Class Activity 17</a></li>
+<li><a class="" href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></li>
 </ul>
 
         <div class="book-extra">
@@ -165,7 +166,7 @@ Click for answer
 <span><span class="va">end_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture end time</span></span>
 <span><span class="va">end_time</span> <span class="op">-</span> <span class="va">start_time</span> <span class="co"># Calculate duration</span></span></code></pre></div>
 <pre><code>   user  system elapsed 
-  3.696   0.164  41.752 </code></pre>
+  4.806   0.098  70.891 </code></pre>
 <div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df1_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">df1</span><span class="op">)</span></span>
 <span><span class="va">df1_final1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html">reduce</a></span><span class="op">(</span><span class="va">df1</span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">)</span></span></code></pre></div>
@@ -196,7 +197,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.863   0.109  37.018 
+  4.711   0.102  35.326 
 ```
 
 -->
@@ -207,7 +208,7 @@ end_time - start_time # Calculate duration
 <span class="header-section-number">23.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-4"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li>Go to the <a href="https://www.scrapethissite.com/pages/forms/">the numbers webpage</a> and extract the table on the front page.</li>
+<li>Go to the <a href="https://www.scrapethissite.com/pages/forms/">scrapethissite</a> and extract the table on the front page.</li>
 </ol>
 <!--
 <details>
@@ -229,139 +230,98 @@ table_base <- session1 %>% .[[1]]
 --><ol start="2" style="list-style-type: decimal">
 <li>Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?</li>
 </ol>
-<!--
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-
-*Answer:* The url field has `?page_num=` added with the number of pages running from 1 to 24.
-
-</details>
-
---><ol start="3" style="list-style-type: decimal">
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em> The url field has <code>?page_num=</code> added with the number of pages running from 1 to 24.</p>
+</details><ol start="3" style="list-style-type: decimal">
 <li>Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using <code>purrr:map_df()</code> as well.</li>
 </ol>
-<!--
-<details>
-<summary class="answer">Click for answer</summary>
-
-
-
-
-```r
-library(tidyverse)
-library(rvest)
-
-new_urls <- "http://scrapethissite.com/pages/forms/?page_num="
-
-# Generate a vector of indices
-index <- seq(1, 24)
-```
-
-
-
-
-```r
-df2 <- list()
-start_time <- proc.time() # Capture start time
-
-for (i in index) {
-  url <- str_glue("{new_urls}{i}")
-  webpage <- read_html(url)
-  table_new <- html_table(webpage)[[1]] %>%
-    janitor::clean_names() %>%
-    #set_names(~ifelse(is.na(.) | . == "", paste("V", seq_along(.), sep=""), .)) %>%
-    mutate(across(everything(), as.character))
-  df2[[i]] <- table_new
-}
-end_time <- proc.time() # Capture end time
-end_time - start_time # Calculate duration
-```
-
-```
-   user  system elapsed 
-  1.532   0.052   8.405 
-```
-
-```r
-df2_final <- bind_rows(df2)
-df2_final
-```
-
-```
-# A tibble: 582 × 9
+<details><summary class="answer">
+Click for answer
+</summary><div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">new_urls</span> <span class="op">&lt;-</span> <span class="st">"http://scrapethissite.com/pages/forms/?page_num="</span></span>
+<span></span>
+<span><span class="co"># Generate a vector of indices</span></span>
+<span><span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">24</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture start time</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">index</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{new_urls}{i}"</span><span class="op">)</span></span>
+<span>  <span class="va">webpage</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
+<span>  <span class="va">table_new</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="va">webpage</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="co">#set_names(~ifelse(is.na(.) | . == "", paste("V", seq_along(.), sep=""), .)) %&gt;%</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">df2</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">table_new</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">end_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture end time</span></span>
+<span><span class="va">end_time</span> <span class="op">-</span> <span class="va">start_time</span> <span class="co"># Calculate duration</span></span></code></pre></div>
+<pre><code>   user  system elapsed 
+  1.553   0.090   8.747 </code></pre>
+<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df2_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df2</span><span class="op">)</span></span>
+<span><span class="va">df2_final</span></span></code></pre></div>
+<pre><code># A tibble: 582 × 9
    team_name        year  wins  losses ot_losses win_percent
-   <chr>            <chr> <chr> <chr>  <chr>     <chr>      
- 1 Boston Bruins    1990  44    24     <NA>      0.55       
- 2 Buffalo Sabres   1990  31    30     <NA>      0.388      
- 3 Calgary Flames   1990  46    26     <NA>      0.575      
- 4 Chicago Blackha… 1990  49    23     <NA>      0.613      
- 5 Detroit Red Win… 1990  34    38     <NA>      0.425      
- 6 Edmonton Oilers  1990  37    37     <NA>      0.463      
- 7 Hartford Whalers 1990  31    38     <NA>      0.388      
- 8 Los Angeles Kin… 1990  46    24     <NA>      0.575      
- 9 Minnesota North… 1990  27    39     <NA>      0.338      
-10 Montreal Canadi… 1990  39    30     <NA>      0.487      
+   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      
+ 1 Boston Bruins    1990  44    24     &lt;NA&gt;      0.55       
+ 2 Buffalo Sabres   1990  31    30     &lt;NA&gt;      0.388      
+ 3 Calgary Flames   1990  46    26     &lt;NA&gt;      0.575      
+ 4 Chicago Blackha… 1990  49    23     &lt;NA&gt;      0.613      
+ 5 Detroit Red Win… 1990  34    38     &lt;NA&gt;      0.425      
+ 6 Edmonton Oilers  1990  37    37     &lt;NA&gt;      0.463      
+ 7 Hartford Whalers 1990  31    38     &lt;NA&gt;      0.388      
+ 8 Los Angeles Kin… 1990  46    24     &lt;NA&gt;      0.575      
+ 9 Minnesota North… 1990  27    39     &lt;NA&gt;      0.338      
+10 Montreal Canadi… 1990  39    30     &lt;NA&gt;      0.487      
 # ℹ 572 more rows
-# ℹ 3 more variables: goals_for_gf <chr>,
-#   goals_against_ga <chr>, x <chr>
-```
-
-
-
-```r
-# alternate using map
-urls <- map(index, function(i) str_glue({new_urls}, {i}))
-urls <- map(index, ~str_glue("{new_urls}{.x}"))
-
-start_time <- proc.time() # Capture start time
-sports_data <- map_df(urls, ~read_html(.x) %>%
-                  html_table() %>%
-                  .[[1]] %>%
-                  janitor::clean_names() %>%
-                  mutate(across(everything(), as.character)))
-
-end_time <- proc.time() # Capture end time
-end_time - start_time # Calculate duration
-```
-
-```
-   user  system elapsed 
-  1.435   0.062   8.584 
-```
-
-```r
-sports_data
-```
-
-```
-# A tibble: 582 × 9
+# ℹ 3 more variables: goals_for_gf &lt;chr&gt;,
+#   goals_against_ga &lt;chr&gt;, x &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># alternate using map</span></span>
+<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">index</span>, <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="op">{</span><span class="va">new_urls</span><span class="op">}</span>, <span class="op">{</span><span class="va">i</span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">index</span>, <span class="op">~</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{new_urls}{.x}"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">start_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture start time</span></span>
+<span><span class="va">sports_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_df</a></span><span class="op">(</span><span class="va">urls</span>, <span class="op">~</span><span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                  <span class="va">.</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">end_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Capture end time</span></span>
+<span><span class="va">end_time</span> <span class="op">-</span> <span class="va">start_time</span> <span class="co"># Calculate duration</span></span></code></pre></div>
+<pre><code>   user  system elapsed 
+  1.475   0.052   8.549 </code></pre>
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sports_data</span></span></code></pre></div>
+<pre><code># A tibble: 582 × 9
    team_name        year  wins  losses ot_losses win_percent
-   <chr>            <chr> <chr> <chr>  <chr>     <chr>      
- 1 Boston Bruins    1990  44    24     <NA>      0.55       
- 2 Buffalo Sabres   1990  31    30     <NA>      0.388      
- 3 Calgary Flames   1990  46    26     <NA>      0.575      
- 4 Chicago Blackha… 1990  49    23     <NA>      0.613      
- 5 Detroit Red Win… 1990  34    38     <NA>      0.425      
- 6 Edmonton Oilers  1990  37    37     <NA>      0.463      
- 7 Hartford Whalers 1990  31    38     <NA>      0.388      
- 8 Los Angeles Kin… 1990  46    24     <NA>      0.575      
- 9 Minnesota North… 1990  27    39     <NA>      0.338      
-10 Montreal Canadi… 1990  39    30     <NA>      0.487      
+   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      
+ 1 Boston Bruins    1990  44    24     &lt;NA&gt;      0.55       
+ 2 Buffalo Sabres   1990  31    30     &lt;NA&gt;      0.388      
+ 3 Calgary Flames   1990  46    26     &lt;NA&gt;      0.575      
+ 4 Chicago Blackha… 1990  49    23     &lt;NA&gt;      0.613      
+ 5 Detroit Red Win… 1990  34    38     &lt;NA&gt;      0.425      
+ 6 Edmonton Oilers  1990  37    37     &lt;NA&gt;      0.463      
+ 7 Hartford Whalers 1990  31    38     &lt;NA&gt;      0.388      
+ 8 Los Angeles Kin… 1990  46    24     &lt;NA&gt;      0.575      
+ 9 Minnesota North… 1990  27    39     &lt;NA&gt;      0.338      
+10 Montreal Canadi… 1990  39    30     &lt;NA&gt;      0.487      
 # ℹ 572 more rows
-# ℹ 3 more variables: goals_for_gf <chr>,
-#   goals_against_ga <chr>, x <chr>
-```
-
+# ℹ 3 more variables: goals_for_gf &lt;chr&gt;,
+#   goals_against_ga &lt;chr&gt;, x &lt;chr&gt;</code></pre>
 </details>
-
--->
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="class-activity-16.html"><span class="header-section-number">22</span> Class Activity 16</a></div>
-<div class="empty"></div>
+<div class="next"><a href="class-activity-18.html"><span class="header-section-number">24</span> Class Activity 18</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -385,7 +345,7 @@ sports_data
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-11.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

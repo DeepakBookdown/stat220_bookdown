@@ -97,7 +97,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.693   0.109  35.778 
+  3.749   0.138  39.244 
 ```
 
 ```r
@@ -134,7 +134,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.792   0.058  32.974 
+  3.873   0.093  37.883 
 ```
 
 -->
@@ -169,7 +169,7 @@ table_base <- session1 %>% .[[1]]
 2. Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
 
 
-<!--
+
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -179,11 +179,11 @@ table_base <- session1 %>% .[[1]]
 
 </details>
 
--->
+
 
 3. Write a for loop to store all the data in multiple pages to a single data frame. Please do the same using `purrr:map_df()` as well.
 
-<!--
+
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -222,7 +222,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.475   0.081   8.508 
+  1.499   0.089   8.582 
 ```
 
 ```r
@@ -269,7 +269,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.511   0.083   8.297 
+  1.478   0.096   8.500 
 ```
 
 ```r
@@ -297,4 +297,3 @@ sports_data
 
 </details>
 
--->
