@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-13}
+\date{2024-02-16}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.75192
+[1] 28.75891
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   North America    80 9th      
- 2     5 9th   North America    52 9th      
- 3     6 9th   Europe           74 9th      
- 4     9 9th   Middle East      91 9th      
- 5    13 9th   Asia             59 9th      
- 6    14 9th   South America    84 9th      
- 7    15 9th   Middle East      82 9th      
- 8    16 9th   Europe           56 9th      
- 9    23 9th   Africa           54 9th      
-10     3 10th  Middle East      65 10th     
-11     7 10th  Asia             72 10th     
-12    11 10th  North America    68 10th     
-13    21 10th  Middle East      90 10th     
-14     2 11th  South America    61 11th     
-15     4 11th  South America    95 11th     
-16     8 11th  Africa           81 11th     
-17    10 11th  Africa           59 11th     
-18    12 11th  Europe           74 11th     
-19    17 11th  North America    79 11th     
-20    18 11th  Europe           65 11th     
-21    19 11th  South America    87 11th     
-22    20 11th  Africa           58 11th     
-23    22 11th  Middle East      87 11th     
-24    24 11th  South America    53 11th     
+ 1     2 9th   Middle East      95 9th      
+ 2     3 9th   South America    67 9th      
+ 3     7 9th   North America    85 9th      
+ 4    10 9th   Africa           68 9th      
+ 5    13 9th   Middle East      61 9th      
+ 6    18 9th   South America    71 9th      
+ 7    19 9th   Europe           70 9th      
+ 8     1 10th  Asia             62 10th     
+ 9     6 10th  Africa           60 10th     
+10     8 10th  South America    56 10th     
+11    11 10th  Asia             57 10th     
+12    14 10th  Asia             99 10th     
+13    15 10th  Middle East      77 10th     
+14    17 10th  South America    65 10th     
+15    20 10th  South America    50 10th     
+16    21 10th  Middle East      81 10th     
+17    23 10th  Middle East      55 10th     
+18    24 10th  Middle East      85 10th     
+19     4 11th  Middle East      73 11th     
+20     5 11th  Europe           59 11th     
+21     9 11th  North America    88 11th     
+22    12 11th  Middle East      70 11th     
+23    16 11th  Europe           53 11th     
+24    22 11th  Europe           83 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                13
-2 Asia                 2
-3 Americas             9
+1 EMEA                14
+2 Asia                 3
+3 Americas             7
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "11th" "9th"  "10th"
+[1] "10th" "9th"  "11th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,7 +4746,7 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 11th            11
+1 10th            11
 2 Others          13
 \end{verbatim}
 
@@ -6622,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.711   0.140  46.693 
+  3.757   0.145  60.703 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6697,7 +6697,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.532   0.065   8.986 
+  1.577   0.066   8.789 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6746,7 +6746,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.437   0.063   9.198 
+  1.537   0.087   8.923 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6997,6 +6997,248 @@ Implement server logic to respond to user inputs and generate outputs.
 \begin{Highlighting}[]
 \NormalTok{app1 }\OtherTok{\textless{}{-}} \FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui1, }\AttributeTok{server =}\NormalTok{ server1, }\AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{height =} \DecValTok{1200}\NormalTok{))}
 \NormalTok{app1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{class-activity-19}{%
+\chapter{Class Activity 19}\label{class-activity-19}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# List of required packages}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(shiny)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(babynames)}
+\end{Highlighting}
+\end{Shaded}
+
+Explore the magic firsthand! Simply paste the code provided in the slides into the field below and run it to witness the output in action.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Try the Shiny Code Yourself! 1}
+\FunctionTok{library}\NormalTok{(shiny)}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Updating Plot Based on User Input"}\NormalTok{),}
+  \FunctionTok{sidebarLayout}\NormalTok{(}
+    \FunctionTok{sidebarPanel}\NormalTok{(}
+      \FunctionTok{numericInput}\NormalTok{(}\StringTok{"obs"}\NormalTok{, }\StringTok{"Number of observations:"}\NormalTok{, }
+                   \AttributeTok{value =} \DecValTok{100}\NormalTok{, }\AttributeTok{min =} \DecValTok{1}\NormalTok{)}
+\NormalTok{    ),}
+    \FunctionTok{mainPanel}\NormalTok{( }\FunctionTok{plotOutput}\NormalTok{(}\StringTok{"distPlot"}\NormalTok{))}
+\NormalTok{  )}
+\NormalTok{)}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{distPlot }\OtherTok{\textless{}{-}} \FunctionTok{renderPlot}\NormalTok{(\{}
+    \FunctionTok{hist}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{obs))}
+\NormalTok{  \})}
+\NormalTok{\}}
+\FunctionTok{shinyApp}\NormalTok{(ui, server)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Try the Shiny Code Yourself! 2}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{mainPanel}\NormalTok{(}
+    \FunctionTok{actionButton}\NormalTok{(}\StringTok{"addButton"}\NormalTok{, }\StringTok{"Add 1"}\NormalTok{),}
+    \FunctionTok{textOutput}\NormalTok{(}\StringTok{"result"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{)}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  sum\_so\_far }\OtherTok{\textless{}{-}} \FunctionTok{eventReactive}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{addButton, \{}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.null}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{addButton)) \{}
+      \DecValTok{0}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{      input}\SpecialCharTok{$}\NormalTok{addButton}
+\NormalTok{    \}}
+\NormalTok{  \})}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{renderText}\NormalTok{(\{}
+    \FunctionTok{paste}\NormalTok{(}\StringTok{"Sum so far:"}\NormalTok{, }\FunctionTok{sum\_so\_far}\NormalTok{())}
+\NormalTok{  \})}
+\NormalTok{\}}
+\FunctionTok{shinyApp}\NormalTok{(ui, server)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Try the Shiny Code Yourself! 3}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{mainPanel}\NormalTok{(}
+    \FunctionTok{numericInput}\NormalTok{(}\StringTok{"obs"}\NormalTok{, }\StringTok{"Number of observations"}\NormalTok{, }\AttributeTok{value =} \DecValTok{100}\NormalTok{, }\AttributeTok{min =} \DecValTok{1}\NormalTok{),}
+    \FunctionTok{actionButton}\NormalTok{(}\StringTok{"updateButton"}\NormalTok{, }\StringTok{"Update Plot"}\NormalTok{),}
+    \FunctionTok{plotOutput}\NormalTok{(}\StringTok{"distPlot"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{)}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  data\_to\_plot }\OtherTok{\textless{}{-}} \FunctionTok{eventReactive}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{updateButton, \{}
+    \FunctionTok{rnorm}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{obs)}
+\NormalTok{  \})}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{distPlot }\OtherTok{\textless{}{-}} \FunctionTok{renderPlot}\NormalTok{(\{}
+    \FunctionTok{hist}\NormalTok{(}\FunctionTok{data\_to\_plot}\NormalTok{())}
+\NormalTok{  \})}
+\NormalTok{\}}
+\FunctionTok{shinyApp}\NormalTok{(ui, server)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Try the Shiny Code Yourself! 4}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Simple Counter"}\NormalTok{),}
+  \FunctionTok{numericInput}\NormalTok{(}\StringTok{"adjustValue"}\NormalTok{, }\StringTok{"Adjust by:"}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+  \FunctionTok{actionButton}\NormalTok{(}\StringTok{"incrementButton"}\NormalTok{, }\StringTok{"Increment"}\NormalTok{),}
+  \FunctionTok{actionButton}\NormalTok{(}\StringTok{"decrementButton"}\NormalTok{, }\StringTok{"Decrement"}\NormalTok{),}
+  \FunctionTok{br}\NormalTok{(),}
+  \FunctionTok{textOutput}\NormalTok{(}\StringTok{"currentValue"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  counter }\OtherTok{\textless{}{-}} \FunctionTok{reactiveValues}\NormalTok{(}\AttributeTok{value =} \DecValTok{0}\NormalTok{)}
+  \FunctionTok{observeEvent}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{incrementButton, \{}
+\NormalTok{    counter}\SpecialCharTok{$}\NormalTok{value }\OtherTok{\textless{}{-}}\NormalTok{ counter}\SpecialCharTok{$}\NormalTok{value }\SpecialCharTok{+}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{adjustValue}
+\NormalTok{  \})}
+  \FunctionTok{observeEvent}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{decrementButton, \{}
+\NormalTok{    counter}\SpecialCharTok{$}\NormalTok{value }\OtherTok{\textless{}{-}}\NormalTok{ counter}\SpecialCharTok{$}\NormalTok{value }\SpecialCharTok{{-}}\NormalTok{ input}\SpecialCharTok{$}\NormalTok{adjustValue}
+\NormalTok{  \})}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{currentValue }\OtherTok{\textless{}{-}} \FunctionTok{renderText}\NormalTok{(\{}
+    \FunctionTok{paste}\NormalTok{(}\StringTok{"Current Value:"}\NormalTok{, counter}\SpecialCharTok{$}\NormalTok{value)}
+\NormalTok{  \})}
+\NormalTok{\}}
+\FunctionTok{shinyApp}\NormalTok{(ui, server)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Try the Shiny Code Yourself! 5}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{mainPanel}\NormalTok{(}
+    \FunctionTok{actionButton}\NormalTok{(}\StringTok{"showAlert"}\NormalTok{, }\StringTok{"Show Alert"}\NormalTok{),}
+    \FunctionTok{textOutput}\NormalTok{(}\StringTok{"alertCount"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{)}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  alert\_counter }\OtherTok{\textless{}{-}} \FunctionTok{reactiveValues}\NormalTok{(}\AttributeTok{count =} \DecValTok{0}\NormalTok{)}
+  \FunctionTok{observeEvent}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{showAlert, \{}
+    \FunctionTok{showModal}\NormalTok{(}\FunctionTok{modalDialog}\NormalTok{(}
+      \AttributeTok{title =} \StringTok{"Alert"}\NormalTok{,}
+      \StringTok{"This is an alert message!"}
+\NormalTok{    ))}
+\NormalTok{    alert\_counter}\SpecialCharTok{$}\NormalTok{count }\OtherTok{\textless{}{-}}\NormalTok{ alert\_counter}\SpecialCharTok{$}\NormalTok{count }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{  \})}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{alertCount }\OtherTok{\textless{}{-}} \FunctionTok{renderText}\NormalTok{(\{}
+    \FunctionTok{paste}\NormalTok{(}\StringTok{"Number of alerts shown:"}\NormalTok{, alert\_counter}\SpecialCharTok{$}\NormalTok{count)}
+\NormalTok{  \})}
+\NormalTok{\}}
+\FunctionTok{shinyApp}\NormalTok{(ui, server)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Try the Shiny Code Yourself! 6}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{textInput}\NormalTok{(}\StringTok{"textInput"}\NormalTok{, }\StringTok{"Enter some text"}\NormalTok{),}
+  \FunctionTok{actionButton}\NormalTok{(}\StringTok{"submitButton"}\NormalTok{, }\StringTok{"Submit"}\NormalTok{),}
+  \FunctionTok{textOutput}\NormalTok{(}\StringTok{"outputText"}\NormalTok{),}
+  \FunctionTok{textOutput}\NormalTok{(}\StringTok{"counter"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  counter }\OtherTok{\textless{}{-}} \FunctionTok{reactiveValues}\NormalTok{(}\AttributeTok{clicks =} \DecValTok{0}\NormalTok{)}
+  \FunctionTok{observeEvent}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{submitButton, \{}
+\NormalTok{    counter}\SpecialCharTok{$}\NormalTok{clicks }\OtherTok{\textless{}{-}}\NormalTok{ counter}\SpecialCharTok{$}\NormalTok{clicks }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{    output}\SpecialCharTok{$}\NormalTok{outputText }\OtherTok{\textless{}{-}} \FunctionTok{renderText}\NormalTok{(\{}
+      \CommentTok{\# Using isolate() to prevent reactivity on textInput changes}
+      \FunctionTok{paste}\NormalTok{(}\StringTok{"You submitted:"}\NormalTok{, }\FunctionTok{isolate}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{textInput))}
+\NormalTok{    \})}
+\NormalTok{    output}\SpecialCharTok{$}\NormalTok{counter }\OtherTok{\textless{}{-}} \FunctionTok{renderText}\NormalTok{(\{}
+      \FunctionTok{paste}\NormalTok{(}\StringTok{"Submit button clicked"}\NormalTok{, counter}\SpecialCharTok{$}\NormalTok{clicks, }\StringTok{"times"}\NormalTok{)}
+\NormalTok{    \})}
+\NormalTok{  \})}
+\NormalTok{\}}
+\FunctionTok{shinyApp}\NormalTok{(ui, server)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-1}{%
+\section{Question 1}\label{question-1}}
+
+We are utilizing the \texttt{babynames} dataset to explore and visualize how the popularity of specific names has evolved over time in a Shiny app.
+
+\hypertarget{a-create-a-user-interface-ui-by-using-textinput-for-the-baby-name-input-selectinput-for-gender-selection-and-adding-an-actionbutton-to-initiate-the-search.}{%
+\subsection{\texorpdfstring{(a) Create a user interface (UI) by using \texttt{textInput} for the baby name input, \texttt{selectInput} for gender selection, and adding an \texttt{actionButton} to initiate the search.}{(a) Create a user interface (UI) by using textInput for the baby name input, selectInput for gender selection, and adding an actionButton to initiate the search.}}\label{a-create-a-user-interface-ui-by-using-textinput-for-the-baby-name-input-selectinput-for-gender-selection-and-adding-an-actionbutton-to-initiate-the-search.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fill in the portions marked with \# fill \#}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Baby Names Trend"}\NormalTok{),}
+  \FunctionTok{sidebarLayout}\NormalTok{(}
+    \FunctionTok{sidebarPanel}\NormalTok{(}
+      \FunctionTok{textAreaInput}\NormalTok{(}\StringTok{"name"}\NormalTok{, }\StringTok{"Enter a Baby Name:"}\NormalTok{, }\StringTok{"Emma"}\NormalTok{),}
+      \FunctionTok{selectizeInput}\NormalTok{(}\StringTok{"gender"}\NormalTok{, }\StringTok{"Select Gender:"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"} \OtherTok{=} \StringTok{"M"}\NormalTok{, }\StringTok{"Female"} \OtherTok{=} \StringTok{"F"}\NormalTok{)),}
+      \FunctionTok{actionButton}\NormalTok{(}\StringTok{"goButton"}\NormalTok{, }\StringTok{"Show Trend"}\NormalTok{)}
+\NormalTok{    ),}
+    \FunctionTok{mainPanel}\NormalTok{(}\FunctionTok{plotOutput}\NormalTok{(}\StringTok{"nameTrend"}\NormalTok{))}
+\NormalTok{  )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b-filter-the-babynames-dataset-based-on-user-inputs-for-name-and-gender-by-utilizing-eventreactive-to-respond-to-the-action-button-press-and-apply-filter-within-this-reactive-context-using-isolate-to-access-the-inputs-without-establishing-reactive-dependencies.}{%
+\subsection{\texorpdfstring{(b) Filter the \texttt{babynames} dataset based on user inputs for name and gender by utilizing \texttt{eventReactive} to respond to the action button press, and apply filter within this reactive context, using \texttt{isolate} to access the inputs without establishing reactive dependencies.}{(b) Filter the babynames dataset based on user inputs for name and gender by utilizing eventReactive to respond to the action button press, and apply filter within this reactive context, using isolate to access the inputs without establishing reactive dependencies.}}\label{b-filter-the-babynames-dataset-based-on-user-inputs-for-name-and-gender-by-utilizing-eventreactive-to-respond-to-the-action-button-press-and-apply-filter-within-this-reactive-context-using-isolate-to-access-the-inputs-without-establishing-reactive-dependencies.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fill in the portions marked with \# fill \#}
+
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  nameData }\OtherTok{\textless{}{-}} \FunctionTok{eventReactive}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{goButton, \{}
+    \FunctionTok{req}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{name) }\CommentTok{\# Ensure the name input is not empty}
+\NormalTok{    babynames }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \FunctionTok{isolate}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{name), sex }\SpecialCharTok{==} \FunctionTok{isolate}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{gender))}
+\NormalTok{  \})}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{c-create-a-line-plot-to-visualize-the-trend-of-a-selected-baby-name-over-the-years-by-using-renderplot-showing-the-number-of-occurrences-n-of-the-name-across-different-years-year-in-addition-to-what-you-did-in-part-b.}{%
+\subsection{\texorpdfstring{(c) Create a line plot to visualize the trend of a selected baby name over the years by using \texttt{renderPlot}, showing the number of occurrences \texttt{(n)} of the name across different years \texttt{(year)} in addition to what you did in part b.}{(c) Create a line plot to visualize the trend of a selected baby name over the years by using renderPlot, showing the number of occurrences (n) of the name across different years (year) in addition to what you did in part b.}}\label{c-create-a-line-plot-to-visualize-the-trend-of-a-selected-baby-name-over-the-years-by-using-renderplot-showing-the-number-of-occurrences-n-of-the-name-across-different-years-year-in-addition-to-what-you-did-in-part-b.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output) \{}
+\NormalTok{  nameData }\OtherTok{\textless{}{-}} \FunctionTok{eventReactive}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{goButton, \{}
+    \FunctionTok{req}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{name) }\CommentTok{\# Ensure the name input is not empty}
+\NormalTok{    babynames }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{filter}\NormalTok{(name }\SpecialCharTok{==} \FunctionTok{isolate}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{name), sex }\SpecialCharTok{==} \FunctionTok{isolate}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{gender))}
+\NormalTok{  \})}
+  
+  
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{nameTrend }\OtherTok{\textless{}{-}} \FunctionTok{renderPlot}\NormalTok{(\{}
+    \FunctionTok{req}\NormalTok{(}\FunctionTok{nameData}\NormalTok{()) }
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{nameData}\NormalTok{(), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ year, }\AttributeTok{y =}\NormalTok{ n)) }\SpecialCharTok{+}
+      \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+      \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Trend for name"}\NormalTok{, }\FunctionTok{isolate}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{name)),}
+           \AttributeTok{x =} \StringTok{"Year"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of Babies"}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{theme\_minimal}\NormalTok{()}
+\NormalTok{  \})}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Remember, without \texttt{isolate}, any change to the inputs \texttt{(input\$name\ and\ input\$gender)} would immediately trigger the reactive expressions (\texttt{nameData} and the plotting logic within \texttt{renderPlot}) to re-execute. This means the plot would update every time the user types a letter in the name input field or changes the gender, rather than waiting for the user to press the \texttt{goButton}.
+
+\hypertarget{d-run-the-shiny-app-by-combining-the-ui-and-server-components-using-shinyapp.}{%
+\subsection{\texorpdfstring{(d) Run the Shiny app by combining the UI and server components using \texttt{shinyApp.}}{(d) Run the Shiny app by combining the UI and server components using shinyApp.}}\label{d-run-the-shiny-app-by-combining-the-ui-and-server-components-using-shinyapp.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shinyApp}\NormalTok{(ui, server, }\AttributeTok{options =} \FunctionTok{list}\NormalTok{(}\AttributeTok{height =} \DecValTok{800}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 

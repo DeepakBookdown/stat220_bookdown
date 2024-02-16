@@ -213,3 +213,9 @@ step-4-reading-and-preparing-data
 step-5-incorporating-user-inputs
 step-6-developing-the-server-logic
 implementation-2
+class-activity-19
+question-1
+a-create-a-user-interface-ui-by-using-textinput-for-the-baby-name-input-selectinput-for-gender-selection-and-adding-an-actionbutton-to-initiate-the-search.
+b-filter-the-babynames-dataset-based-on-user-inputs-for-name-and-gender-by-utilizing-eventreactive-to-respond-to-the-action-button-press-and-apply-filter-within-this-reactive-context-using-isolate-to-access-the-inputs-without-establishing-reactive-dependencies.
+c-create-a-line-plot-to-visualize-the-trend-of-a-selected-baby-name-over-the-years-by-using-renderplot-showing-the-number-of-occurrences-n-of-the-name-across-different-years-year-in-addition-to-what-you-did-in-part-b.
+d-run-the-shiny-app-by-combining-the-ui-and-server-components-using-shinyapp.

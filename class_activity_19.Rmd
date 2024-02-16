@@ -2,369 +2,223 @@
 
 ```{r}
 # List of required packages
-pkgs <- c("tidyverse", "ggthemes", "rvest", "polite", "ggiraph", "shiny", "bslib", "stringr")
-
-# Check and install missing packages
-for (pkg in pkgs) {
-  if (!requireNamespace(pkg, quietly = TRUE)) 
-    install.packages(pkg)
-}
-```
-
-
-## Reactive
-
-### a. Create a Shiny app that allows users to input a number and displays its square and cube in real-time using reactive expressions and text outputs.
-
-
-```{r, eval=FALSE}
+library(tidyverse)
 library(shiny)
-
-ui <- fluidPage(
-  numericInput("number", "Enter a number", value = 1, min = 1),
-  textOutput("square"),
-  textOutput("cube")
-)
-
-server <- function(input, output) {
-  # Create a reactive expression to store the number
-  number <- reactive({
-    input$number
-  })
-
-  output$square <- renderText({
-    paste("Square of the number:", number()^2)
-  })
-
-  output$cube <- renderText({
-    paste("Cube of the number:", number()^3)
-  })
-}
-
-shinyApp(ui, server, options = list(height = 800))
-
+library(dplyr)
+library(babynames)
 ```
 
 
 
-## Action button
-
-### b. Create a Shiny app that takes user-selected gear numbers and generates a polar coordinate plot of miles per gallon (mpg) using the mtcars dataset and ggplot2.
+Explore the magic firsthand! Simply paste the code provided in the slides into the field below and run it to witness the output in action.
 
 ```{r, eval=FALSE}
+# Try the Shiny Code Yourself! 1
 library(shiny)
-library(ggplot2)
-
 ui <- fluidPage(
-  selectInput("gear", "Number of Gears", 
-              choices = unique(mtcars$gear), 
-              selected = 3),
-  actionButton("goButton", "Go!"),
-  plotOutput("distPlot")
+  titlePanel("Updating Plot Based on User Input"),
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("obs", "Number of observations:", 
+                   value = 100, min = 1)
+    ),
+    mainPanel( plotOutput("distPlot"))
+  )
 )
-
 server <- function(input, output) {
   output$distPlot <- renderPlot({
-   
-    input$goButton
-
-    # Use isolate() to avoid dependency on input$gear
-    selected_gear <- isolate(input$gear)
-    gear_data <- subset(mtcars, gear == selected_gear)
-
-    # Plot the polar coordinate plot of miles per gallon (mpg) for the selected number of gears
-    p <- ggplot(gear_data, aes(x = factor(1), y = mpg, fill = factor(cyl))) +
-      geom_bar(stat = "identity", width = 1) +
-      coord_polar(theta = "y") +
-      theme_void() +
-      labs(title = stringr::str_c("Polar Coordinate Plot for ", selected_gear, " Gears"),
-           fill = "Cylinders")
-      
-    print(p)
+    hist(rnorm(input$obs))
   })
 }
-
-shinyApp(ui, server, options = list(height = 800))
-
+shinyApp(ui, server)
 ```
 
 
-
-## Reactive Values
-
-### c. Create a Shiny app with increment and decrement buttons to manipulate a counter and display its value in real-time using reactive values and text output.
+```{r, eval=FALSE}
+# Try the Shiny Code Yourself! 2
+ui <- fluidPage(
+  mainPanel(
+    actionButton("addButton", "Add 1"),
+    textOutput("result")
+  )
+)
+server <- function(input, output) {
+  sum_so_far <- eventReactive(input$addButton, {
+    if (is.null(input$addButton)) {
+      0
+    } else {
+      input$addButton
+    }
+  })
+  output$result <- renderText({
+    paste("Sum so far:", sum_so_far())
+  })
+}
+shinyApp(ui, server)
+```
 
 ```{r, eval=FALSE}
-library(shiny)
-
+# Try the Shiny Code Yourself! 3
 ui <- fluidPage(
-  actionButton("increment", "Increment"),
-  actionButton("decrement", "Decrement"),
+  mainPanel(
+    numericInput("obs", "Number of observations", value = 100, min = 1),
+    actionButton("updateButton", "Update Plot"),
+    plotOutput("distPlot")
+  )
+)
+server <- function(input, output) {
+  data_to_plot <- eventReactive(input$updateButton, {
+    rnorm(input$obs)
+  })
+  output$distPlot <- renderPlot({
+    hist(data_to_plot())
+  })
+}
+shinyApp(ui, server)
+```
+
+```{r, eval=FALSE}
+# Try the Shiny Code Yourself! 4
+ui <- fluidPage(
+  titlePanel("Simple Counter"),
+  numericInput("adjustValue", "Adjust by:", 1),
+  actionButton("incrementButton", "Increment"),
+  actionButton("decrementButton", "Decrement"),
+  br(),
+  textOutput("currentValue")
+)
+server <- function(input, output) {
+  counter <- reactiveValues(value = 0)
+  observeEvent(input$incrementButton, {
+    counter$value <- counter$value + input$adjustValue
+  })
+  observeEvent(input$decrementButton, {
+    counter$value <- counter$value - input$adjustValue
+  })
+  output$currentValue <- renderText({
+    paste("Current Value:", counter$value)
+  })
+}
+shinyApp(ui, server)
+```
+
+```{r, eval=FALSE}
+# Try the Shiny Code Yourself! 5
+ui <- fluidPage(
+  mainPanel(
+    actionButton("showAlert", "Show Alert"),
+    textOutput("alertCount")
+  )
+)
+server <- function(input, output) {
+  alert_counter <- reactiveValues(count = 0)
+  observeEvent(input$showAlert, {
+    showModal(modalDialog(
+      title = "Alert",
+      "This is an alert message!"
+    ))
+    alert_counter$count <- alert_counter$count + 1
+  })
+  output$alertCount <- renderText({
+    paste("Number of alerts shown:", alert_counter$count)
+  })
+}
+shinyApp(ui, server)
+```
+
+```{r, eval=FALSE}
+# Try the Shiny Code Yourself! 6
+ui <- fluidPage(
+  textInput("textInput", "Enter some text"),
+  actionButton("submitButton", "Submit"),
+  textOutput("outputText"),
   textOutput("counter")
 )
-
 server <- function(input, output) {
-  # Create a reactiveValues object to store the counter
-  counter <- reactiveValues(value = 0)
-
-  observeEvent(input$increment, {
-    counter$value <- counter$value + 1
-  })
-
-  observeEvent(input$decrement, {
-    counter$value <- counter$value - 1
-  })
-
-  output$counter <- renderText({
-    paste("Counter value:", counter$value)
+  counter <- reactiveValues(clicks = 0)
+  observeEvent(input$submitButton, {
+    counter$clicks <- counter$clicks + 1
+    output$outputText <- renderText({
+      # Using isolate() to prevent reactivity on textInput changes
+      paste("You submitted:", isolate(input$textInput))
+    })
+    output$counter <- renderText({
+      paste("Submit button clicked", counter$clicks, "times")
+    })
   })
 }
-
-shinyApp(ui, server, options = list(height = 800))
-
+shinyApp(ui, server)
 ```
 
 
-## Isolate
 
-### d. Create a Shiny app that allows users to select two variables from the mtcars dataset and generates a color-coded scatter plot, which refreshes only when an action button is clicked, using ggplot2 and isolate() function.
+## Question 1
+
+We are utilizing the `babynames` dataset to explore and visualize how the popularity of specific names has evolved over time in a Shiny app.
+
+
+### (a) Create a user interface (UI) by using `textInput` for the baby name input, `selectInput` for gender selection, and adding an `actionButton` to initiate the search.
 
 ```{r, eval=FALSE}
-
+# fill in the portions marked with # fill #
 ui <- fluidPage(
-  theme = bslib::bs_theme(version = 4, bootswatch = "flatly"),
-  titlePanel("Panel Plot Demo with Shiny and bslib"),
-  
+  titlePanel("Baby Names Trend"),
   sidebarLayout(
     sidebarPanel(
-      selectInput("var1", "Variable 1:", choices = colnames(mtcars), selected = "mpg"),
-      selectInput("var2", "Variable 2:", choices = colnames(mtcars), selected = "wt"),
-      actionButton("refresh", "Refresh Plot")
+      textAreaInput("name", "Enter a Baby Name:", "Emma"),
+      selectizeInput("gender", "Select Gender:", choices = c("Male" = "M", "Female" = "F")),
+      actionButton("goButton", "Show Trend")
     ),
-    
-    mainPanel(
-      plotOutput("panelPlot")
-    )
+    mainPanel(plotOutput("nameTrend"))
   )
 )
-
-server <- function(input, output, session) {
-  
-  output$panelPlot <- renderPlot({
-    input$refresh
-    
-    isolate({
-       panel_plot <- ggplot(mtcars, aes(x = !!sym(input$var1), y = !!sym(input$var2))) +
-        geom_point(aes(color = factor(cyl))) +
-        theme_minimal() +
-        labs(x = input$var1, y = input$var2, color = "Cylinders") +
-        theme(legend.position = "bottom")
-      
-      print(panel_plot)
-    })
-  })
-}
-
-shinyApp(ui, server, options = list(height = 800))
-
 ```
 
 
-## EventReactive
+### (b) Filter the `babynames` dataset based on user inputs for name and gender by utilizing `eventReactive` to respond to the action button press, and apply filter within this reactive context, using `isolate` to access the inputs without establishing reactive dependencies.
 
-### e. Create a Shiny app that takes user-selected MPG threshold and calculates the number of observations above the threshold, updating the results only when an action button is clicked, using eventReactive() and renderText().
 
 ```{r, eval=FALSE}
-library(shiny)
-
-ui <- fluidPage(
-  sliderInput("mpg_threshold", "MPG Threshold", min(mtcars$mpg), max(mtcars$mpg), value = 20, step = 0.5),
-  actionButton("goButton", "Go!"),
-  textOutput("num_obs")
-)
+# fill in the portions marked with # fill #
 
 server <- function(input, output) {
-  # Use eventReactive() to update the number of observations above the threshold
-  num_obs_above_threshold <- eventReactive(input$goButton, {
-    sum(mtcars$mpg > input$mpg_threshold)
-  })
-
-  output$num_obs <- renderText({
-    paste("Number of observations above the threshold:", num_obs_above_threshold())
+  nameData <- eventReactive(input$goButton, {
+    req(input$name) # Ensure the name input is not empty
+    babynames %>% 
+      filter(name == isolate(input$name), sex == isolate(input$gender))
   })
 }
-
-shinyApp(ui, server, options = list(height = 800))
 
 ```
 
 
-
-### More with `isolate`
-
-```{r, eval=FALSE}
-library(shiny)
-library(bslib)
-library(ggplot2)
-
-ui <- fluidPage(
-  theme = bs_theme(version = 4, bootswatch = "flatly"),
-  titlePanel("Interactive Plot Demo with Shiny, bslib, and ggplot2"),
-  
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("var1", "Variable 1:", choices = colnames(mtcars), selected = "mpg"),
-      selectInput("var2", "Variable 2:", choices = colnames(mtcars), selected = "wt"),
-      actionButton("refresh", "Refresh Plot")
-    ),
-    
-    mainPanel(
-      plotOutput("Plot")
-    )
-  )
-)
-
-server <- function(input, output, session) {
-  
-  output$Plot <- renderPlot({
-    input$refresh
-    
-    isolate({
-      p <- ggplot(data = mtcars, 
-                  mapping = aes(x = !!sym(input$var1), y = !!sym(input$var2), color = factor(cyl))) +
-        geom_point(size = 3) +
-        scale_color_viridis_d(option = "viridis", name = "Cylinders") +
-        theme_minimal() +
-        theme(legend.position = "bottom") +
-        labs(x = input$var1, y = input$var2)
-      
-      print(p)
-    })
-  })
-}
-
-shinyApp(ui, server, options = list(height = 800))
-
-
-
-```
-
-
-## Exercises
-
-### Question 1
-
-Explain how to create a Shiny app that takes a user-inputted number and displays its square and cube in real-time using reactive expressions and text outputs.
-
-*Answer:* Create a numericInput for the user to enter a number, and two textOutput elements for square and cube. In the server function, define a reactive expression to store the user input. Use renderText to display the square, cube, and factorial of the number.
-
-<!--
+### (c) Create a line plot to visualize the trend of a selected baby name over the years by using `renderPlot`, showing the number of occurrences `(n)` of the name across different years `(year)` in addition to what you did in part b.
 
 ```{r, eval=FALSE}
-library(shiny)
-
-ui <- fluidPage(
-  numericInput("number", "Enter a number", value = 1, min = 1),
-  textOutput("square"),
-  textOutput("cube"),
-  textOutput("factorial")
-)
-
 server <- function(input, output) {
-  number <- reactive({
-    input$number
-  })
-
-  output$square <- renderText({
-    paste("Square of the number:", number()^2)
-  })
-
-  output$cube <- renderText({
-    paste("Cube of the number:", number()^3)
+  nameData <- eventReactive(input$goButton, {
+    req(input$name) # Ensure the name input is not empty
+    babynames %>% 
+      filter(name == isolate(input$name), sex == isolate(input$gender))
   })
   
-  output$factorial <- renderText({
-    paste("Factorial of the number:", factorial(number()))
+  
+  output$nameTrend <- renderPlot({
+    req(nameData()) 
+    ggplot(nameData(), aes(x = year, y = n)) +
+      geom_line() +
+      labs(title = paste("Trend for name", isolate(input$name)),
+           x = "Year", y = "Number of Babies") +
+      theme_minimal()
   })
 }
-
-shinyApp(ui, server, options = list(height = 800))
-
 ```
 
--->
+Remember, without `isolate`, any change to the inputs `(input$name and input$gender)` would immediately trigger the reactive expressions (`nameData` and the plotting logic within `renderPlot`) to re-execute. This means the plot would update every time the user types a letter in the name input field or changes the gender, rather than waiting for the user to press the `goButton`.
 
-
-### Question 2
-
-How can you create a Shiny app that allows users to select two variables from the mtcars dataset and generates a color-coded scatter plot, which refreshes only when an action button is clicked, using ggplot2 and isolate() function?
-
-*Answer:* Use selectInput to let users choose variables, and an actionButton to trigger plot refresh. In the server function, create a renderPlot that depends on the action button input. Within renderPlot, use isolate() to access the selected variables without triggering reactivity. Create the scatter plot with ggplot2, and display it using print().
-
-<!--
+### (d) Run the Shiny app by combining the UI and server components using `shinyApp.`
 
 ```{r, eval=FALSE}
-library(shiny)
-library(ggplot2)
-
-ui <- fluidPage(
-  selectInput("var1", "Variable 1:", choices = colnames(mtcars), selected = "mpg"),
-  selectInput("var2", "Variable 2:", choices = colnames(mtcars), selected = "wt"),
-  actionButton("refresh", "Refresh Plot"),
-  plotOutput("panelPlot")
-)
-
-server <- function(input, output, session) {
-  output$panelPlot <- renderPlot({
-    input$refresh
-
-    isolate({
-      panel_plot <- ggplot(mtcars, aes_string(x = input$var1, y = input$var2)) +
-        geom_point(aes(color = factor(cyl))) +
-        theme_minimal() +
-        labs(x = input$var1, y = input$var2, color = "Cylinders") +
-        theme(legend.position = "bottom")
-
-      print(panel_plot)
-    })
-  })
-}
-
 shinyApp(ui, server, options = list(height = 800))
-
 ```
 
--->
-
-### Question 3
-
-How do you create a Shiny app that takes a user-selected MPG threshold and calculates the number of observations above the threshold, updating the results only when an action button is clicked, using eventReactive() and renderText()?
-
-*Answer:* Create a sliderInput for the MPG threshold and an actionButton to trigger the calculation. In the server function, use eventReactive() to perform the calculation based on the action button input. Then, use renderText() to display the result, which updates only when the action button is clicked.
-
-<!--
-
-```{r, eval=FALSE}
-library(shiny)
-
-ui <- fluidPage(
-  sliderInput("mpg_threshold", "MPG Threshold", min(mtcars$mpg), max(mtcars$mpg), value = 20, step = 0.5),
-  actionButton("goButton", "Go!"),
-  textOutput("num_obs")
-)
-
-server <- function(input, output) {
-  num_obs_above_threshold <- eventReactive(input$goButton, {
-    sum(mtcars$mpg > input$mpg_threshold)
-  })
-
-  output$num_obs <- renderText({
-    paste("Number of observations above the threshold:", num_obs_above_threshold())
-  })
-}
-
-shinyApp(ui, server, options = list(height = 800))
-
-```
-
--->
