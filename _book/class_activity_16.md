@@ -92,7 +92,7 @@ ggplot(ticker, aes(x = date, y = open)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
 ```
 
-<img src="class_activity_16_files/figure-epub3/unnamed-chunk-5-1.png" width="100%" />
+<img src="class_activity_16_files/figure-html/unnamed-chunk-5-1.png" width="100%" />
 
 
 </details>
@@ -134,7 +134,7 @@ ggplot(ticker_long, aes(x = date, y = Price, color = PriceType)) +
   guides(shape = guide_legend(title = "Price Type"), color = guide_legend(title = "Price Type"))
 ```
 
-<img src="class_activity_16_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
+<img src="class_activity_16_files/figure-html/unnamed-chunk-7-1.png" width="100%" />
 
 
 </details>

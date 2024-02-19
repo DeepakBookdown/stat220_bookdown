@@ -301,7 +301,7 @@ qdf %>%
   scale_y_continuous(breaks=seq(10,90,by=10))
 ```
 
-<img src="class_activity_15_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
+<img src="class_activity_15_files/figure-html/unnamed-chunk-7-1.png" width="100%" />
 
 
 </details>

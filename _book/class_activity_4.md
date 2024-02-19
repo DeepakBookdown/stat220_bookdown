@@ -25,7 +25,7 @@ ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-3-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-3-1.png" width="100%" />
 
 b. You _must_ remember to put the aesthetic mappings in the `aes()` function! What happens if you forget? 
 
@@ -41,7 +41,7 @@ If you forget to put the aesthetic mappings inside the aes() function, ggplot2 w
 ggplot(data = dino_data , x = x , y = y)
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-4-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-4-1.png" width="100%" />
 
 </details>
 
@@ -58,7 +58,7 @@ ggplot(data = dino_data) +
    geom_point(aes(x = x, y = y)) 
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-5-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-5-1.png" width="100%" />
 
 </details>
 
@@ -94,7 +94,7 @@ ggplot(data = dataset_counts, aes(x = dataset, y = count)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-7-1.png" width="100%" />
 
 </details>
 
@@ -112,7 +112,7 @@ ggplot(data = dino_data, aes(x = x)) +
   geom_histogram(binwidth = 1) 
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-8-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-8-1.png" width="100%" />
 
 </details>
 
@@ -129,7 +129,7 @@ ggplot(data = dino_data, aes(x = x)) +
   geom_density(color = "red")
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-9-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-9-1.png" width="100%" />
 
 </details>
 
@@ -149,7 +149,7 @@ ggplot(data = datasaurus_dozen, aes(x = dataset, y = x)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-10-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-10-1.png" width="100%" />
 
 </details>
 
@@ -169,7 +169,7 @@ ggplot(data = datasaurus_dozen, aes(x = x, y = y)) +
   theme_minimal()
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-11-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-11-1.png" width="100%" />
 
 </details>
 
@@ -219,7 +219,7 @@ library(gridExtra)
 grid.arrange(p1, p2, nrow = 1)
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-14-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-14-1.png" width="100%" />
 
 </details>
 
@@ -243,7 +243,7 @@ ggplot(data = dino_data, aes(x = x, y = rolling_mean_y)) +
   theme_minimal()
 ```
 
-<img src="class_activity_4_files/figure-epub3/unnamed-chunk-15-1.png" width="100%" />
+<img src="class_activity_4_files/figure-html/unnamed-chunk-15-1.png" width="100%" />
 
 </details>
 

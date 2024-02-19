@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-16}
+\date{2024-02-17}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.75891
+[1] 28.76319
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     2 9th   Middle East      95 9th      
- 2     3 9th   South America    67 9th      
- 3     7 9th   North America    85 9th      
- 4    10 9th   Africa           68 9th      
- 5    13 9th   Middle East      61 9th      
- 6    18 9th   South America    71 9th      
- 7    19 9th   Europe           70 9th      
- 8     1 10th  Asia             62 10th     
- 9     6 10th  Africa           60 10th     
-10     8 10th  South America    56 10th     
-11    11 10th  Asia             57 10th     
-12    14 10th  Asia             99 10th     
-13    15 10th  Middle East      77 10th     
-14    17 10th  South America    65 10th     
-15    20 10th  South America    50 10th     
-16    21 10th  Middle East      81 10th     
-17    23 10th  Middle East      55 10th     
-18    24 10th  Middle East      85 10th     
-19     4 11th  Middle East      73 11th     
-20     5 11th  Europe           59 11th     
-21     9 11th  North America    88 11th     
-22    12 11th  Middle East      70 11th     
-23    16 11th  Europe           53 11th     
-24    22 11th  Europe           83 11th     
+ 1     4 9th   South America    71 9th      
+ 2     5 9th   North America    97 9th      
+ 3     7 9th   North America    52 9th      
+ 4    10 9th   Middle East      88 9th      
+ 5    11 9th   Africa           75 9th      
+ 6    16 9th   Africa           72 9th      
+ 7    17 9th   South America    90 9th      
+ 8    18 9th   Middle East      52 9th      
+ 9    21 9th   Asia             89 9th      
+10    23 9th   South America    52 9th      
+11    24 9th   Africa           63 9th      
+12     1 10th  Africa           99 10th     
+13     3 10th  South America    98 10th     
+14     6 10th  South America    74 10th     
+15     8 10th  Middle East      79 10th     
+16    12 10th  North America    61 10th     
+17    13 10th  North America    78 10th     
+18    14 10th  North America    79 10th     
+19    15 10th  Asia             75 10th     
+20    19 10th  North America    94 10th     
+21    22 10th  Asia             88 10th     
+22     2 11th  Middle East      80 11th     
+23     9 11th  Middle East      78 11th     
+24    20 11th  Middle East      73 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                14
+1 EMEA                10
 2 Asia                 3
-3 Americas             7
+3 Americas            11
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "9th"  "11th"
+[1] "9th"  "10th" "11th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,7 +4746,7 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 10th            11
+1 9th             11
 2 Others          13
 \end{verbatim}
 
@@ -6622,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.757   0.145  60.703 
+  3.941   0.098  32.636 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6697,7 +6697,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.577   0.066   8.789 
+  1.479   0.063   8.597 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6746,7 +6746,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.537   0.087   8.923 
+  1.473   0.072   8.466 
 \end{verbatim}
 
 \begin{Shaded}
@@ -7242,6 +7242,216 @@ Remember, without \texttt{isolate}, any change to the inputs \texttt{(input\$nam
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{class-activity-20}{%
+\chapter{Class Activity 20}\label{class-activity-20}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(shiny)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\FunctionTok{library}\NormalTok{(polite)}
+\FunctionTok{library}\NormalTok{(leaflet)}
+\FunctionTok{library}\NormalTok{(sp)}
+\FunctionTok{library}\NormalTok{(maptools)}
+\FunctionTok{library}\NormalTok{(rgeos)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(RColorBrewer)}
+\FunctionTok{library}\NormalTok{(terra)}
+\FunctionTok{library}\NormalTok{(raster)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-5}{%
+\section{Group Activity 1}\label{group-activity-1-5}}
+
+\hypertarget{a.-explore-covid-19-vaccination-rates-across-the-midwest-with-this-r-script-which-scrapes-data-processes-it-and-creates-an-interactive-state-specific-leaflet-map-for-clear-visualization.}{%
+\subsection{a. Explore COVID-19 vaccination rates across the Midwest with this R script, which scrapes data, processes it, and creates an interactive, state-specific leaflet map for clear visualization.}\label{a.-explore-covid-19-vaccination-rates-across-the-midwest-with-this-r-script-which-scrapes-data-processes-it-and-creates-an-interactive-state-specific-leaflet-map-for-clear-visualization.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Scrape the data}
+\NormalTok{covid\_final }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\StringTok{"https://usafacts.org/visualizations/covid{-}vaccine{-}tracker{-}states/state/minnesota"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_elements}\NormalTok{(}\AttributeTok{css =} \StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate\_at}\NormalTok{(}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, parse\_number) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{state =} \FunctionTok{str\_to\_lower}\NormalTok{(state)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(state }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"ohio"}\NormalTok{, }\StringTok{"indiana"}\NormalTok{, }\StringTok{"michigan"}\NormalTok{, }\StringTok{"illinois"}\NormalTok{, }\StringTok{"missouri"}\NormalTok{, }\StringTok{"wisconsin"}\NormalTok{, }\StringTok{"minnesota"}\NormalTok{, }
+                                     \StringTok{"iowa"}\NormalTok{, }\StringTok{"kansas"}\NormalTok{, }\StringTok{"nebraska"}\NormalTok{, }\StringTok{"south dakota"}\NormalTok{, }\StringTok{"north dakota"}\NormalTok{))}
+
+\CommentTok{\# Midwest}
+\NormalTok{USA\_Midwest }\OtherTok{\textless{}{-}}\NormalTok{ maps}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\StringTok{"state"}\NormalTok{, }
+                         \AttributeTok{regions =} \FunctionTok{c}\NormalTok{(}\StringTok{"ohio"}\NormalTok{, }\StringTok{"indiana"}\NormalTok{, }\StringTok{"michigan"}\NormalTok{, }\StringTok{"illinois"}\NormalTok{, }\StringTok{"missouri"}\NormalTok{, }\StringTok{"wisconsin"}\NormalTok{, }\StringTok{"minnesota"}\NormalTok{, }
+                                     \StringTok{"iowa"}\NormalTok{, }\StringTok{"kansas"}\NormalTok{, }\StringTok{"nebraska"}\NormalTok{, }\StringTok{"south dakota"}\NormalTok{, }\StringTok{"north dakota"}\NormalTok{), }
+                         \AttributeTok{plot =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map2SpatialPolygons}\NormalTok{(}\AttributeTok{IDs =} \FunctionTok{str\_remove}\NormalTok{(.}\SpecialCharTok{$}\NormalTok{names, }\StringTok{"(?=:).+"}\NormalTok{))}
+
+\CommentTok{\# Merge the data and the map}
+\NormalTok{map }\OtherTok{\textless{}{-}} \FunctionTok{SpatialPolygonsDataFrame}\NormalTok{(USA\_Midwest, covid\_final, }\AttributeTok{match.ID =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Create bins and color palette}
+\NormalTok{bins }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated), }\FunctionTok{max}\NormalTok{(map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated), }\AttributeTok{length.out =} \DecValTok{6}\NormalTok{)}
+\NormalTok{pal }\OtherTok{\textless{}{-}} \FunctionTok{colorBin}\NormalTok{(}\StringTok{"viridis"}\NormalTok{, }\AttributeTok{domain =}\NormalTok{ map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated, }\AttributeTok{bins =}\NormalTok{ bins)}
+
+\CommentTok{\# Create labels}
+\NormalTok{labels }\OtherTok{\textless{}{-}} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\textless{}strong\textgreater{} \%s \textless{}/strong\textgreater{} \textless{}br/\textgreater{} Observed: \%s"}\NormalTok{, }\FunctionTok{str\_to\_upper}\NormalTok{(map}\SpecialCharTok{$}\NormalTok{state), map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{lapply}\NormalTok{(htmltools}\SpecialCharTok{::}\NormalTok{HTML)}
+
+\CommentTok{\# Plot the map}
+\FunctionTok{leaflet}\NormalTok{(map) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{addTiles}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{setView}\NormalTok{(}\AttributeTok{lng =} \SpecialCharTok{{-}}\FloatTok{93.1616}\NormalTok{, }\AttributeTok{lat =} \FloatTok{44.4583}\NormalTok{, }\AttributeTok{zoom =} \DecValTok{4}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{addPolygons}\NormalTok{(}
+    \AttributeTok{color =} \StringTok{"grey"}\NormalTok{, }
+    \AttributeTok{weight =} \DecValTok{1}\NormalTok{,}
+    \AttributeTok{fillColor =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{pal}\NormalTok{(percent\_fully\_vaccinated), }
+    \AttributeTok{fillOpacity =} \FloatTok{0.7}\NormalTok{,}
+    \AttributeTok{highlightOptions =} \FunctionTok{highlightOptions}\NormalTok{(}\AttributeTok{weight =} \DecValTok{5}\NormalTok{),}
+    \AttributeTok{label =}\NormalTok{ labels}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{addLegend}\NormalTok{(}
+    \AttributeTok{pal =}\NormalTok{ pal, }
+    \AttributeTok{values =} \SpecialCharTok{\textasciitilde{}}\NormalTok{percent\_fully\_vaccinated, }
+    \AttributeTok{opacity =} \FloatTok{0.5}\NormalTok{, }
+    \AttributeTok{title =} \StringTok{"Percent Vaccn."}\NormalTok{, }
+    \AttributeTok{position =} \StringTok{"bottomright"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-2-5}{%
+\section{Group Activity 2}\label{group-activity-2-5}}
+
+\hypertarget{a.-explore-the-covid-19-vaccination-status-across-various-us-regions-using-this-interactive-shiny-app.-the-script-extracts-data-from-usafacts-presents-user-options-to-customize-the-map-projection-color-palette-and-region-and-dynamically-generates-a-leaflet-map-to-visualize-the-selected-data.}{%
+\subsection{a. Explore the COVID-19 vaccination status across various US regions using this interactive Shiny app. The script extracts data from USAFacts, presents user options to customize the map projection, color palette, and region, and dynamically generates a Leaflet map to visualize the selected data.}\label{a.-explore-the-covid-19-vaccination-status-across-various-us-regions-using-this-interactive-shiny-app.-the-script-extracts-data-from-usafacts-presents-user-options-to-customize-the-map-projection-color-palette-and-region-and-dynamically-generates-a-leaflet-map-to-visualize-the-selected-data.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Scrape the data}
+\NormalTok{covid\_final }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\StringTok{"https://usafacts.org/visualizations/covid{-}vaccine{-}tracker{-}states/state/minnesota"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_elements}\NormalTok{(}\AttributeTok{css =} \StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate\_at}\NormalTok{(}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, parse\_number) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{state =} \FunctionTok{str\_to\_lower}\NormalTok{(state))}
+
+
+
+\CommentTok{\# UI}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Map of States and their vaccination status"}\NormalTok{),}
+  \FunctionTok{sidebarLayout}\NormalTok{(}
+    \FunctionTok{sidebarPanel}\NormalTok{(}
+      \FunctionTok{selectInput}\NormalTok{(}\StringTok{"myvar"}\NormalTok{, }\StringTok{"What to project?"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{names}\NormalTok{(covid\_final)[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{], }\AttributeTok{selected =} \FunctionTok{names}\NormalTok{(covid\_final)[}\DecValTok{2}\NormalTok{]),}
+      \FunctionTok{selectInput}\NormalTok{(}\StringTok{"palette"}\NormalTok{, }\StringTok{"Choose color palette:"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{"viridis"}\NormalTok{, }\StringTok{"magma"}\NormalTok{, }\StringTok{"inferno"}\NormalTok{, }\StringTok{"plasma"}\NormalTok{, }\StringTok{"cividis"}\NormalTok{)),}
+      \FunctionTok{selectInput}\NormalTok{(}\StringTok{"region"}\NormalTok{, }\StringTok{"Select region:"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{"Northeast"}\NormalTok{, }\StringTok{"Southeast"}\NormalTok{, }\StringTok{"Midwest"}\NormalTok{, }\StringTok{"South"}\NormalTok{, }\StringTok{"West"}\NormalTok{)),}
+      \FunctionTok{actionButton}\NormalTok{(}\StringTok{"goButton"}\NormalTok{, }\StringTok{"Update map"}\NormalTok{)}
+\NormalTok{    ),}
+    \FunctionTok{mainPanel}\NormalTok{(}
+      \FunctionTok{leafletOutput}\NormalTok{(}\StringTok{"myplot"}\NormalTok{)}
+\NormalTok{    )}
+\NormalTok{  ) }
+\NormalTok{)}
+
+
+\CommentTok{\# UI}
+\NormalTok{ui }\OtherTok{\textless{}{-}} \FunctionTok{fluidPage}\NormalTok{(}
+  \FunctionTok{titlePanel}\NormalTok{(}\StringTok{"Map of States and their vaccination status"}\NormalTok{),}
+  \FunctionTok{sidebarLayout}\NormalTok{(}
+    \FunctionTok{sidebarPanel}\NormalTok{(}
+      \FunctionTok{selectInput}\NormalTok{(}\StringTok{"myvar"}\NormalTok{, }\StringTok{"What to project?"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{names}\NormalTok{(covid\_final)[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{], }\AttributeTok{selected =} \FunctionTok{names}\NormalTok{(covid\_final)[}\DecValTok{2}\NormalTok{]),}
+      \FunctionTok{selectInput}\NormalTok{(}\StringTok{"palette"}\NormalTok{, }\StringTok{"Choose color palette:"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{"viridis"}\NormalTok{, }\StringTok{"magma"}\NormalTok{, }\StringTok{"inferno"}\NormalTok{, }\StringTok{"plasma"}\NormalTok{, }\StringTok{"cividis"}\NormalTok{)),}
+      \FunctionTok{selectInput}\NormalTok{(}\StringTok{"region"}\NormalTok{, }\StringTok{"Select region:"}\NormalTok{, }\AttributeTok{choices =} \FunctionTok{c}\NormalTok{(}\StringTok{"Northeast"}\NormalTok{, }\StringTok{"Southeast"}\NormalTok{, }\StringTok{"Midwest"}\NormalTok{, }\StringTok{"South"}\NormalTok{, }\StringTok{"West"}\NormalTok{)),}
+      \FunctionTok{actionButton}\NormalTok{(}\StringTok{"goButton"}\NormalTok{, }\StringTok{"Update map"}\NormalTok{)}
+\NormalTok{    ),}
+    \FunctionTok{mainPanel}\NormalTok{(}
+      \FunctionTok{leafletOutput}\NormalTok{(}\StringTok{"myplot"}\NormalTok{)}
+\NormalTok{    )}
+\NormalTok{  ) }
+\NormalTok{)}
+
+\CommentTok{\# Server}
+\NormalTok{server }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(input, output, session) \{}
+\NormalTok{  map\_data }\OtherTok{\textless{}{-}} \FunctionTok{eventReactive}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{goButton, \{}
+    \FunctionTok{req}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{region)}
+    
+\NormalTok{    region\_states }\OtherTok{\textless{}{-}} \ControlFlowTok{switch}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{region,}
+                        \StringTok{"Northeast"} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"maine"}\NormalTok{, }\StringTok{"new hampshire"}\NormalTok{, }\StringTok{"vermont"}\NormalTok{, }\StringTok{"massachusetts"}\NormalTok{, }\StringTok{"rhode island"}\NormalTok{, }
+                                        \StringTok{"connecticut"}\NormalTok{, }\StringTok{"new york"}\NormalTok{, }\StringTok{"pennsylvania"}\NormalTok{, }\StringTok{"new jersey"}\NormalTok{),}
+                        \StringTok{"Southeast"} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"delaware"}\NormalTok{, }\StringTok{"maryland"}\NormalTok{, }\StringTok{"virginia"}\NormalTok{, }\StringTok{"west virginia"}\NormalTok{, }\StringTok{"north carolina"}\NormalTok{, }
+                                        \StringTok{"south carolina"}\NormalTok{, }\StringTok{"georgia"}\NormalTok{, }\StringTok{"florida"}\NormalTok{, }\StringTok{"kentucky"}\NormalTok{, }\StringTok{"tennessee"}\NormalTok{, }
+                                        \StringTok{"mississippi"}\NormalTok{, }\StringTok{"alabama"}\NormalTok{, }\StringTok{"arkansas"}\NormalTok{, }\StringTok{"louisiana"}\NormalTok{),}
+                        \StringTok{"Midwest"} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"ohio"}\NormalTok{, }\StringTok{"indiana"}\NormalTok{, }\StringTok{"michigan"}\NormalTok{, }\StringTok{"illinois"}\NormalTok{, }\StringTok{"wisconsin"}\NormalTok{, }\StringTok{"minnesota"}\NormalTok{, }
+                                      \StringTok{"iowa"}\NormalTok{, }\StringTok{"missouri"}\NormalTok{, }\StringTok{"kansas"}\NormalTok{, }\StringTok{"nebraska"}\NormalTok{, }\StringTok{"south dakota"}\NormalTok{, }\StringTok{"north dakota"}\NormalTok{),}
+                        \StringTok{"South"} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"oklahoma"}\NormalTok{, }\StringTok{"texas"}\NormalTok{, }\StringTok{"new mexico"}\NormalTok{, }\StringTok{"arizona"}\NormalTok{),}
+                        \StringTok{"West"} \OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"colorado"}\NormalTok{, }\StringTok{"wyoming"}\NormalTok{, }\StringTok{"montana"}\NormalTok{, }\StringTok{"idaho"}\NormalTok{, }\StringTok{"utah"}\NormalTok{, }\StringTok{"nevada"}\NormalTok{, }\StringTok{"california"}\NormalTok{, }
+                                   \StringTok{"oregon"}\NormalTok{, }\StringTok{"washington"}\NormalTok{))}
+                       
+
+    
+\NormalTok{    covid\_region }\OtherTok{\textless{}{-}} \FunctionTok{isolate}\NormalTok{(covid\_final }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{filter}\NormalTok{(state }\SpecialCharTok{\%in\%}\NormalTok{ region\_states))}
+    
+\NormalTok{    USA\_region }\OtherTok{\textless{}{-}}\NormalTok{ maps}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\StringTok{"state"}\NormalTok{, }\AttributeTok{regions =}\NormalTok{ region\_states, }\AttributeTok{plot =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{map2SpatialPolygons}\NormalTok{(}\AttributeTok{IDs =} \FunctionTok{str\_remove}\NormalTok{(.}\SpecialCharTok{$}\NormalTok{names, }\StringTok{"(?=:).+"}\NormalTok{))}
+    
+    \FunctionTok{SpatialPolygonsDataFrame}\NormalTok{(USA\_region, covid\_region, }\AttributeTok{match.ID =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{  \}, }\AttributeTok{ignoreNULL =} \ConstantTok{FALSE}\NormalTok{)}
+  
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{myplot }\OtherTok{\textless{}{-}} \FunctionTok{renderLeaflet}\NormalTok{(\{}
+    \FunctionTok{req}\NormalTok{(}\FunctionTok{map\_data}\NormalTok{()) }\CommentTok{\# ensure that map\_data() is available}
+    
+\NormalTok{    bins }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(}\FunctionTok{map\_data}\NormalTok{()[[input}\SpecialCharTok{$}\NormalTok{myvar]]), }\FunctionTok{max}\NormalTok{(}\FunctionTok{map\_data}\NormalTok{()[[input}\SpecialCharTok{$}\NormalTok{myvar]]), }\AttributeTok{length.out =} \DecValTok{6}\NormalTok{)}
+\NormalTok{    pal }\OtherTok{\textless{}{-}} \FunctionTok{colorBin}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{palette, }\AttributeTok{domain =} \FunctionTok{map\_data}\NormalTok{()[[input}\SpecialCharTok{$}\NormalTok{myvar]], }\AttributeTok{bins =}\NormalTok{ bins)}
+    
+\NormalTok{    labels }\OtherTok{\textless{}{-}} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\textless{}strong\textgreater{} \%s \textless{}/strong\textgreater{} \textless{}br/\textgreater{} Observed \textless{}strong\textgreater{} \%s \textless{}/strong\textgreater{}  : \%s"}\NormalTok{, }\FunctionTok{str\_to\_upper}\NormalTok{(}\FunctionTok{map\_data}\NormalTok{()}\SpecialCharTok{$}\NormalTok{state), input}\SpecialCharTok{$}\NormalTok{myvar, }\FunctionTok{map\_data}\NormalTok{()[[input}\SpecialCharTok{$}\NormalTok{myvar]]) }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{lapply}\NormalTok{(htmltools}\SpecialCharTok{::}\NormalTok{HTML)}
+    
+\NormalTok{    m }\OtherTok{\textless{}{-}} \FunctionTok{leaflet}\NormalTok{(}\FunctionTok{map\_data}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{addTiles}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{setView}\NormalTok{(}\AttributeTok{lng =} \SpecialCharTok{{-}}\FloatTok{93.1616}\NormalTok{, }\AttributeTok{lat =} \FloatTok{40.4583}\NormalTok{, }\AttributeTok{zoom =} \FloatTok{3.5}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{addPolygons}\NormalTok{(}
+        \AttributeTok{color =} \StringTok{"grey"}\NormalTok{, }
+        \AttributeTok{weight =} \DecValTok{1}\NormalTok{,}
+        \AttributeTok{fillColor =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{pal}\NormalTok{(}\FunctionTok{get}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{myvar)), }
+        \AttributeTok{fillOpacity =} \FloatTok{0.7}\NormalTok{,}
+        \AttributeTok{highlightOptions =} \FunctionTok{highlightOptions}\NormalTok{(}\AttributeTok{weight =} \DecValTok{5}\NormalTok{),}
+        \AttributeTok{label =}\NormalTok{ labels}
+\NormalTok{      ) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{addLegend}\NormalTok{(}
+        \AttributeTok{pal =}\NormalTok{ pal, }
+        \AttributeTok{values =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{get}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{myvar), }
+        \AttributeTok{opacity =} \FloatTok{0.5}\NormalTok{, }
+        \AttributeTok{title =} \FunctionTok{str\_to\_title}\NormalTok{(input}\SpecialCharTok{$}\NormalTok{myvar), }
+        \AttributeTok{position =} \StringTok{"bottomright"}
+\NormalTok{      )}
+\NormalTok{    m}
+\NormalTok{  \})}
+\NormalTok{\}}
+
+\CommentTok{\# Run the app}
+\FunctionTok{shinyApp}\NormalTok{(}\AttributeTok{ui =}\NormalTok{ ui, }\AttributeTok{server =}\NormalTok{ server)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b.-modify-the-app-in-2a-to-add-an-all-option-in-the-select-region-input-to-allow-users-to-view-all-states-at-once.}{%
+\subsection{b. Modify the app in 2a to add an ``All'' option in the ``Select region'' input to allow users to view all states at once.}\label{b.-modify-the-app-in-2a-to-add-an-all-option-in-the-select-region-input-to-allow-users-to-view-all-states-at-once.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# your r{-}code}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{c.-open-an-account-on-shinyapps.io-and-follow-the-steps-to-deploy-one-of-the-apps-to-shinyapps.io.}{%
+\subsection{\texorpdfstring{c.~Open an account on \href{https://www.shinyapps.io/admin/\#/dashboard}{shinyapps.io} and follow the steps to deploy one of the apps to \href{https://www.shinyapps.io/admin/\#/dashboard}{shinyapps.io}.}{c.~Open an account on shinyapps.io and follow the steps to deploy one of the apps to shinyapps.io.}}\label{c.-open-an-account-on-shinyapps.io-and-follow-the-steps-to-deploy-one-of-the-apps-to-shinyapps.io.}}
 
   \bibliography{book.bib,packages.bib}
 
