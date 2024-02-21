@@ -228,7 +228,8 @@ q3-how-do-we-integrate-the-vaccination-data-with-the-geographical-map
 q4-how-do-we-categorize-vaccination-rates-for-visualization
 q5-how-do-we-add-informative-labels-to-the-map
 q6-how-do-we-plot-the-finalized-map-with-leaflet
-q7.-deploying-a-shiny-app-to-shinyapps.io
+q7-think-about-how-would-you-include-your-favorite-state-beside-these-midwestern-states-to-the-leaflet-plot.-how-would-you-go-about-including-all-the-states-you-may-exclude-alaska-and-hawaii-from-the-analysis.
+q8.-deploying-a-shiny-app-to-shinyapps.io
 step-1-create-your-shiny-app
 step-2-organize-your-app-folder
 step-3-deploy-your-app-to-shinyapps.io

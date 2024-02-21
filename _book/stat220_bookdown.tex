@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-20}
+\date{2024-02-21}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.7715
+[1] 28.77356
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Europe           64 9th      
- 2     3 9th   Asia             90 9th      
- 3     6 9th   Middle East      87 9th      
- 4     9 9th   Europe           94 9th      
- 5    11 9th   Europe           69 9th      
- 6    15 9th   North America    87 9th      
- 7    18 9th   Europe           65 9th      
- 8    19 9th   South America    99 9th      
- 9     2 10th  Europe           84 10th     
-10     4 10th  Europe           76 10th     
-11     8 10th  Middle East      77 10th     
-12    12 10th  South America    97 10th     
-13    14 10th  North America    82 10th     
-14    16 10th  Middle East      71 10th     
-15    20 10th  Europe           82 10th     
-16    22 10th  North America    95 10th     
-17    24 10th  Europe           87 10th     
-18     5 11th  South America   100 11th     
-19     7 11th  South America    82 11th     
-20    10 11th  Asia             90 11th     
-21    13 11th  Middle East      70 11th     
-22    17 11th  Middle East      94 11th     
-23    21 11th  Asia             69 11th     
-24    23 11th  Middle East      57 11th     
+ 1     2 9th   Africa           74 9th      
+ 2     4 9th   Africa           74 9th      
+ 3     9 9th   Africa           54 9th      
+ 4    10 9th   Europe           93 9th      
+ 5    12 9th   Asia             91 9th      
+ 6    13 9th   Africa           94 9th      
+ 7    14 9th   Asia             79 9th      
+ 8    16 9th   South America    85 9th      
+ 9    24 9th   Middle East      67 9th      
+10     1 10th  Asia             88 10th     
+11     3 10th  Asia             77 10th     
+12     5 10th  Africa           53 10th     
+13     7 10th  Asia             54 10th     
+14     8 10th  Middle East      63 10th     
+15    21 10th  Europe           90 10th     
+16    22 10th  South America    58 10th     
+17     6 11th  North America    91 11th     
+18    11 11th  Asia             56 11th     
+19    15 11th  Asia             89 11th     
+20    17 11th  North America    69 11th     
+21    18 11th  Africa           82 11th     
+22    19 11th  South America    68 11th     
+23    20 11th  South America    67 11th     
+24    23 11th  North America    75 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,8 +4700,8 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 Asia                 3
-2 EMEA                14
+1 EMEA                10
+2 Asia                 7
 3 Americas             7
 \end{verbatim}
 
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "10th" "9th"  "11th"
+[1] "9th"  "11th" "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,7 +4746,7 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 10th             9
+1 9th              9
 2 Others          15
 \end{verbatim}
 
@@ -6622,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.767   0.160  45.167 
+  3.809   0.113  47.202 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6697,7 +6697,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.565   0.079   8.630 
+  1.502   0.077   8.779 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6746,7 +6746,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.574   0.068   8.321 
+  1.531   0.067   8.794 
 \end{verbatim}
 
 \begin{Shaded}
@@ -7374,8 +7374,57 @@ Labels enhance the map's interactivity by providing detailed information on hove
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{q7.-deploying-a-shiny-app-to-shinyapps.io}{%
-\subsection{\texorpdfstring{Q7. Deploying a Shiny App to \texttt{shinyapps.io}}{Q7. Deploying a Shiny App to shinyapps.io}}\label{q7.-deploying-a-shiny-app-to-shinyapps.io}}
+\hypertarget{q7-think-about-how-would-you-include-your-favorite-state-beside-these-midwestern-states-to-the-leaflet-plot.-how-would-you-go-about-including-all-the-states-you-may-exclude-alaska-and-hawaii-from-the-analysis.}{%
+\subsection{\texorpdfstring{Q7: Think about how would you include your favorite state beside these midwestern states to the leaflet plot. How would you go about including all the states? You may exclude \texttt{Alaska} and \texttt{Hawaii} from the analysis.}{Q7: Think about how would you include your favorite state beside these midwestern states to the leaflet plot. How would you go about including all the states? You may exclude Alaska and Hawaii from the analysis.}}\label{q7-think-about-how-would-you-include-your-favorite-state-beside-these-midwestern-states-to-the-leaflet-plot.-how-would-you-go-about-including-all-the-states-you-may-exclude-alaska-and-hawaii-from-the-analysis.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_final }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\StringTok{"https://usafacts.org/visualizations/covid{-}vaccine{-}tracker{-}states/state/minnesota"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_elements}\NormalTok{(}\AttributeTok{css =} \StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate\_at}\NormalTok{(}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, parse\_number) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{state =} \FunctionTok{str\_to\_lower}\NormalTok{(state)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(state }\SpecialCharTok{\%in\%} \FunctionTok{setdiff}\NormalTok{(state, }\FunctionTok{c}\NormalTok{(}\StringTok{"hawaii"}\NormalTok{, }\StringTok{"alaska"}\NormalTok{)))}
+
+\NormalTok{all\_states }\OtherTok{\textless{}{-}}\NormalTok{ covid\_final}\SpecialCharTok{$}\NormalTok{state }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{unique}\NormalTok{()}
+
+\NormalTok{USA\_all }\OtherTok{\textless{}{-}}\NormalTok{ maps}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\StringTok{"state"}\NormalTok{ , }
+                         \AttributeTok{plot =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{map2SpatialPolygons}\NormalTok{(}\AttributeTok{IDs =} \FunctionTok{str\_remove}\NormalTok{(.}\SpecialCharTok{$}\NormalTok{names, }\StringTok{"(?=:).+"}\NormalTok{))}
+
+\NormalTok{map }\OtherTok{\textless{}{-}} \FunctionTok{SpatialPolygonsDataFrame}\NormalTok{(USA\_all, covid\_final, }\AttributeTok{match.ID =} \ConstantTok{FALSE}\NormalTok{)}
+
+\NormalTok{bins }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated), }\FunctionTok{max}\NormalTok{(map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated), }\AttributeTok{length.out =} \DecValTok{6}\NormalTok{)}
+\NormalTok{pal }\OtherTok{\textless{}{-}} \FunctionTok{colorBin}\NormalTok{(}\StringTok{"viridis"}\NormalTok{, }\AttributeTok{domain =}\NormalTok{ map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated, }\AttributeTok{bins =}\NormalTok{ bins)}
+
+\NormalTok{labels }\OtherTok{\textless{}{-}} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\textless{}strong\textgreater{} \%s \textless{}/strong\textgreater{} \textless{}br/\textgreater{} Observed: \%s"}\NormalTok{, }\FunctionTok{str\_to\_upper}\NormalTok{(map}\SpecialCharTok{$}\NormalTok{state), map}\SpecialCharTok{$}\NormalTok{percent\_fully\_vaccinated) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{lapply}\NormalTok{(htmltools}\SpecialCharTok{::}\NormalTok{HTML)}
+
+\FunctionTok{leaflet}\NormalTok{(map) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{addTiles}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{setView}\NormalTok{(}\AttributeTok{lng =} \SpecialCharTok{{-}}\FloatTok{93.1616}\NormalTok{, }\AttributeTok{lat =} \FloatTok{44.4583}\NormalTok{, }\AttributeTok{zoom =} \DecValTok{4}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{addPolygons}\NormalTok{(}
+    \AttributeTok{color =} \StringTok{"grey"}\NormalTok{, }
+    \AttributeTok{weight =} \DecValTok{1}\NormalTok{,}
+    \AttributeTok{fillColor =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{pal}\NormalTok{(percent\_fully\_vaccinated), }
+    \AttributeTok{fillOpacity =} \FloatTok{0.7}\NormalTok{,}
+    \AttributeTok{highlightOptions =} \FunctionTok{highlightOptions}\NormalTok{(}\AttributeTok{weight =} \DecValTok{5}\NormalTok{),}
+    \AttributeTok{label =}\NormalTok{ labels}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{addLegend}\NormalTok{(}
+    \AttributeTok{pal =}\NormalTok{ pal, }
+    \AttributeTok{values =} \SpecialCharTok{\textasciitilde{}}\NormalTok{percent\_fully\_vaccinated, }
+    \AttributeTok{opacity =} \FloatTok{0.5}\NormalTok{, }
+    \AttributeTok{title =} \StringTok{"Percent Vaccinated"}\NormalTok{, }
+    \AttributeTok{position =} \StringTok{"bottomright"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{q8.-deploying-a-shiny-app-to-shinyapps.io}{%
+\subsection{\texorpdfstring{Q8. Deploying a Shiny App to \texttt{shinyapps.io}}{Q8. Deploying a Shiny App to shinyapps.io}}\label{q8.-deploying-a-shiny-app-to-shinyapps.io}}
 
 Open an account on \href{https://www.shinyapps.io/admin/\#/dashboard}{shinyapps.io} and follow the steps to deploy one of the apps to \href{https://www.shinyapps.io/admin/\#/dashboard}{shinyapps.io}.
 

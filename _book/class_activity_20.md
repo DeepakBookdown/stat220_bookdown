@@ -122,8 +122,54 @@ leaflet(map) %>%
 ```
 
 
+### Q7: Think about how would you include your favorite state beside these midwestern states to the leaflet plot. How would you go about including all the states? You may exclude `Alaska` and `Hawaii` from the analysis.
 
-### Q7. Deploying a Shiny App to `shinyapps.io`
+
+```r
+covid_final <- read_html("https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota") %>%
+  html_elements(css = "table") %>% 
+  html_table() %>% 
+  .[[1]] %>%
+  janitor::clean_names() %>%
+  mutate_at(2:4, parse_number) %>% 
+  mutate(state = str_to_lower(state)) %>% 
+  filter(state %in% setdiff(state, c("hawaii", "alaska")))
+
+all_states <- covid_final$state %>% unique()
+
+USA_all <- maps::map("state" , 
+                         plot = FALSE, fill = TRUE) %>%
+  map2SpatialPolygons(IDs = str_remove(.$names, "(?=:).+"))
+
+map <- SpatialPolygonsDataFrame(USA_all, covid_final, match.ID = FALSE)
+
+bins <- seq(min(map$percent_fully_vaccinated), max(map$percent_fully_vaccinated), length.out = 6)
+pal <- colorBin("viridis", domain = map$percent_fully_vaccinated, bins = bins)
+
+labels <- sprintf("<strong> %s </strong> <br/> Observed: %s", str_to_upper(map$state), map$percent_fully_vaccinated) %>%
+  lapply(htmltools::HTML)
+
+leaflet(map) %>% 
+  addTiles() %>% 
+  setView(lng = -93.1616, lat = 44.4583, zoom = 4) %>%
+  addPolygons(
+    color = "grey", 
+    weight = 1,
+    fillColor = ~pal(percent_fully_vaccinated), 
+    fillOpacity = 0.7,
+    highlightOptions = highlightOptions(weight = 5),
+    label = labels
+  ) %>%
+  addLegend(
+    pal = pal, 
+    values = ~percent_fully_vaccinated, 
+    opacity = 0.5, 
+    title = "Percent Vaccinated", 
+    position = "bottomright"
+  )
+```
+
+### Q8. Deploying a Shiny App to `shinyapps.io`
 
 
 Open an account on [shinyapps.io](https://www.shinyapps.io/admin/#/dashboard) and follow the steps to deploy one of the apps to [shinyapps.io](https://www.shinyapps.io/admin/#/dashboard).
