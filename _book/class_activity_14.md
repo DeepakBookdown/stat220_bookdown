@@ -217,7 +217,7 @@ word_cloud <- function(rating, num.words) {
 word_cloud(rating = "4", num.words = 300)
 ```
 
-<img src="class_activity_14_files/figure-html/unnamed-chunk-13-1.png" width="100%" />
+<img src="class_activity_14_files/figure-epub3/unnamed-chunk-13-1.png" width="100%" />
 
 </details>
 

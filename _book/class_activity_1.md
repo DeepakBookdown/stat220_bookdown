@@ -90,7 +90,7 @@ ggplot(data=filtered_names, aes(x=year, y=prop)) +
 ```
 
 <div class="figure">
-<img src="class_activity_1_files/figure-html/trend-1.png" alt="A trend chart" width="100%" />
+<img src="class_activity_1_files/figure-epub3/trend-1.png" alt="A trend chart" width="100%" />
 <p class="caption">(\#fig:trend)A trend chart</p>
 </div>
 
@@ -125,7 +125,7 @@ ggplot(data=your_name_data, aes(x=year, y=prop)) +
   ylab(paste('Prop. of Babies Named', your_name))
 ```
 
-<img src="class_activity_1_files/figure-html/unnamed-chunk-6-1.png" width="100%" />
+<img src="class_activity_1_files/figure-epub3/unnamed-chunk-6-1.png" width="100%" />
 
 4 (Optional). Compare the popularity of your first name with a randomly chosen name from the dataset. Examine the generated plot and compare the popularity of your first name with the randomly chosen name. Consider the following points:
 
@@ -152,7 +152,7 @@ ggplot(data=combined_data, aes(x=year, y=prop)) +
   xlab('Year') 
 ```
 
-<img src="class_activity_1_files/figure-html/unnamed-chunk-7-1.png" width="100%" />
+<img src="class_activity_1_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
 
 
 ## Extras (optional)
@@ -233,7 +233,7 @@ ggplot(data = mtcars, aes(x = wt, y = mpg)) +
   theme_minimal()
 ```
 
-<img src="class_activity_1_files/figure-html/unnamed-chunk-12-1.png" width="100%" />
+<img src="class_activity_1_files/figure-epub3/unnamed-chunk-12-1.png" width="100%" />
 
 
 3. Knit your R Markdown file to create an output document. Click the "Knit" button at the top of the RStudio script editor, and choose the output format you prefer (e.g., HTML, PDF, or Word).

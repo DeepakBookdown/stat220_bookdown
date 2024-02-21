@@ -39,7 +39,7 @@ Explore COVID-19 vaccination rates across the Midwest with this R script, which 
 To analyze COVID-19 vaccination rates, we start by scraping the necessary data from a webpage. This involves selecting the specific HTML elements that contain the data, parsing it into a readable format, and cleaning the column names for easier manipulation. We also filter the data to include only certain states for focused analysis.
 
 
-```{r}
+```{r, eval=FALSE}
 covid_final <- read_html("https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota") %>%
   html_elements(css = "table") %>% 
   html_table() %>% 
@@ -57,7 +57,7 @@ covid_final <- read_html("https://usafacts.org/visualizations/covid-vaccine-trac
 Next, we create a spatial representation of the Midwest states. This involves mapping state boundaries and converting them into a spatial polygons format, which `Leaflet` can use to plot the data geographically.
 
 
-```{r}
+```{r, eval=FALSE}
 USA_Midwest <- maps::map("state", 
                          regions = c("ohio", "indiana", "michigan", "illinois", "missouri", "wisconsin", "minnesota", 
                                      "iowa", "kansas", "nebraska", "south dakota", "north dakota"), 
@@ -70,7 +70,7 @@ USA_Midwest <- maps::map("state",
 
 Merging the COVID-19 vaccination data with the geographical map allows us to visualize vaccination rates across different regions. This step combines the spatial polygons with the vaccination data based on state names.
 
-```{r}
+```{r, eval=FALSE}
 map <- SpatialPolygonsDataFrame(USA_Midwest, covid_final, match.ID = FALSE)
 ```
 
@@ -78,7 +78,7 @@ map <- SpatialPolygonsDataFrame(USA_Midwest, covid_final, match.ID = FALSE)
 
 To visually differentiate regions based on their vaccination rates, we create bins of vaccination percentages and assign a color palette. This helps in categorizing states into different levels of vaccination coverage.
 
-```{r}
+```{r, eval=FALSE}
 bins <- seq(min(map$percent_fully_vaccinated), max(map$percent_fully_vaccinated), length.out = 6)
 pal <- colorBin("viridis", domain = map$percent_fully_vaccinated, bins = bins)
 ```
@@ -87,7 +87,7 @@ pal <- colorBin("viridis", domain = map$percent_fully_vaccinated, bins = bins)
 
 Labels enhance the map's interactivity by providing detailed information on hover or click. Here, we format the labels to display the state name and its observed vaccination rate.
 
-```{r}
+```{r, eval=FALSE}
 labels <- sprintf("<strong> %s </strong> <br/> Observed: %s", str_to_upper(map$state), map$percent_fully_vaccinated) %>%
   lapply(htmltools::HTML)
 ```
@@ -95,7 +95,7 @@ labels <- sprintf("<strong> %s </strong> <br/> Observed: %s", str_to_upper(map$s
 
 ### Q6: How do we plot the finalized map with Leaflet?
 
-```{r}
+```{r, eval=FALSE}
 leaflet(map) %>% 
   addTiles() %>% 
   setView(lng = -93.1616, lat = 44.4583, zoom = 4) %>%
@@ -135,7 +135,7 @@ Ensure your app.R file is saved in a dedicated folder for your app. This folder 
 
 Before deploying, you'll need to set up an account on `shinyapps.io`. Use the rsconnect package to authenticate your R session with your `shinyapps.io` account. You will need the API key from your `shinyapps.io` account dashboard.
 
-```r
+```
 library(rsconnect)
 rsconnect::setAccountInfo(name='<account-name>',
                           token='<api-token>',
@@ -144,13 +144,13 @@ rsconnect::setAccountInfo(name='<account-name>',
 
 Replace `<account-name>`, `<api-token>`, and `<api-secret>` with your actual account name and API key details. Navigate to your app folder in RStudio, or set the working directory to your app folder in R: 
 
-```r
+```
 setwd("/path/to/your/app")
 ```
 
 Deploy your app using the `deployApp` function:
 
-```r
+```
 rsconnect::deployApp()
 ```
 

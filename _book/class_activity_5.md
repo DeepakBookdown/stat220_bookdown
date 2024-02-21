@@ -31,7 +31,7 @@ p <- ggplot(data, aes(x = X, y = Y, color = Category)) +
 p
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-2-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-2-1.png" width="100%" />
 
 a. Modify the scatter plot to use custom colors for each category using `scale_color_manual()`. What is the effect of changing the colors on the plot's readability?
 
@@ -47,7 +47,7 @@ p <- ggplot(data, aes(x = X, y = Y, color = Category, group = Category)) +
 p
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-3-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-3-1.png" width="100%" />
 
 </details>
 
@@ -67,7 +67,7 @@ p <- ggplot(data, aes(x = X, y = Y, shape = Category,  group = Category)) +
 p
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-4-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-4-1.png" width="100%" />
 
 </details>
 
@@ -92,7 +92,7 @@ p <- ggplot(data, aes(x = X, y = Y)) +
 p
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-5-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-5-1.png" width="100%" />
 
 </details>
 
@@ -120,7 +120,7 @@ us <- plot_usmap()
 us
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-7-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-7-1.png" width="100%" />
 
 </details>
 
@@ -136,7 +136,7 @@ us_flipped <- us + coord_flip()
 us_flipped
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-8-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-8-1.png" width="100%" />
 
 </details>
 
@@ -153,7 +153,7 @@ us_polar <- us + coord_polar()
 us_polar
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-9-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-9-1.png" width="100%" />
 
 </details>
 
@@ -169,7 +169,7 @@ us_quickmap <- us + coord_quickmap()
 us_quickmap
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-10-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-10-1.png" width="100%" />
 
 </details>
 
@@ -202,7 +202,7 @@ ggplot(data=ACS) + coord_map() +
   expand_limits(x=states$long, y=states$lat) + ggtitle("Median Income")
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-12-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-12-1.png" width="100%" />
 
 </details>
 
@@ -222,7 +222,7 @@ ggplot(data=ACS) + coord_map() +
   expand_limits(x=states$long, y=states$lat) + ggtitle("Deviation from national median income")
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-13-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-13-1.png" width="100%" />
 
 </details>
 
@@ -243,7 +243,7 @@ ggplot(data=ACS) + coord_map() +
   scale_fill_distiller(type = "div")
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-14-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-14-1.png" width="100%" />
 
 </details>
 
@@ -269,7 +269,7 @@ ggplot(data=ACS) + coord_map() +
   )
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-15-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-15-1.png" width="100%" />
 
 
 </details>
@@ -309,7 +309,7 @@ ggplot(data = income_data) +
   scale_fill_viridis_c()
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-17-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-17-1.png" width="100%" />
 
 </details>
 
@@ -343,7 +343,7 @@ ggplot(data = income_data) +
   scale_fill_distiller(palette = "Spectral", name = "Deviation (%)")
 ```
 
-<img src="class_activity_5_files/figure-html/unnamed-chunk-18-1.png" width="100%" />
+<img src="class_activity_5_files/figure-epub3/unnamed-chunk-18-1.png" width="100%" />
 
 
 </details>

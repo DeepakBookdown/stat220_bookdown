@@ -12,6 +12,12 @@ library(paletteer)
 library(corrr)
 library(forcats)
 library(ggthemes)
+
+# function that standardizes
+standardize <- function(x, na.rm = FALSE) {
+  (x - mean(x, na.rm = na.rm)) / 
+    sd(x, na.rm = na.rm)
+}
 ```
 
 
@@ -22,7 +28,7 @@ library(ggthemes)
 ```{r}
 # Load the data
 data(PimaIndiansDiabetes2)
-db <- PimaIndiansDiabetes2
+db <- PimaIndiansDiabetes2 %>% drop_na()
 
 # correlation plot of the variables
 db %>%
@@ -36,7 +42,35 @@ db %>%
 ```
 
 
-a. Let's  perform all the steps involved in classifying whether a patient with certain glucose and insulin would have diabetes or not using `parsnip` package.
+
+a. Create a scatter plot using ggplot2 to visualize the classification of diabetes status based on glucose and insulin levels, color-coding negative cases in blue and positive cases in red.
+
+
+```{r}
+ggplot(db, aes(x = glucose, y = insulin, color = diabetes)) +
+  geom_point(alpha = 0.6) +
+  theme_minimal() + 
+  labs(title = "Glucose vs. Insulin by Diabetes Status",
+       x = "Glucose",
+       y = "Insulin",
+       color = "Diabetes Status") + 
+  scale_color_manual(values = c("neg" = "blue", "pos" = "red"))
+```
+
+
+
+
+b. Using the provided standardization function, apply it to both the glucose and insulin columns of your dataset to create new standardized columns, then plot these standardized values to analyze diabetes status.
+
+
+```{r}
+db_std <- db %>%
+  mutate(glucose_std = standardize(glucose),
+         insulin_std = standardize(insulin))
+```
+
+
+c. Let's  perform all the steps involved in classifying whether a patient with certain glucose and insulin would have diabetes or not.
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -44,13 +78,13 @@ a. Let's  perform all the steps involved in classifying whether a patient with c
 
 ```{r}
 # 1 Prepare raw data
-db_raw <- db %>% drop_na() %>%  select(glucose, insulin, diabetes)
+db_raw <- db  %>%  select(glucose, insulin, diabetes)
 ```
 
 
 ```{r}
 # 2 Create a recipe for data pre-processing
-db_recipe <- recipe(diabetes ~ ., data = db_raw) %>%
+db_recipe <- recipe(diabetes ~ glucose + insulin, data = db_raw) %>%
   step_scale(all_predictors()) %>%
   step_center(all_predictors()) %>%
   prep()
@@ -74,7 +108,7 @@ knn_spec <- nearest_neighbor(mode = "classification",
 ```{r}
 # 5 Fit the model on the pre-processed data
 knn_fit <- knn_spec %>%
- fit(diabetes ~ ., data = db_scaled)
+ fit(diabetes ~ insulin + diabetes, data = db_scaled)
 ```
 
 
@@ -88,7 +122,7 @@ predict(knn_fit, new_data = new_observations)
 </details>
 
 
-b. We already know the labels of some of the patients in the dataset. How well does the model predict their diabetes status? We will see more of this in the coming lectures, but for now try to compare the results for the first 10 cases in the dataset.
+d. We already know the labels of some of the patients in the dataset. How well does the model predict their diabetes status? We will see more of this in the coming lectures, but for now try to compare the results for the first 10 cases in the dataset.
 
 
 <details>
@@ -98,9 +132,7 @@ b. We already know the labels of some of the patients in the dataset. How well d
 ```{r}
 scaled_observations <- db_scaled[1:50,]
 predictions <- predict(knn_fit, new_data = scaled_observations)
-bind_cols(scaled_observations, predictions, db_raw %>% 
-            select(diabetes) %>% 
-            slice(1:50)) %>% knitr::kable()
+bind_cols(scaled_observations, predictions) -> predict_data
 ```
 
 What is the accuracy percentage?
@@ -109,12 +141,22 @@ What is the accuracy percentage?
 
 ```{r}
 sum(predictions == db_raw %>% select(diabetes) %>% slice(1:50))/50
+
+# alternate
+accuracy_percentage <- predict_data %>%
+  mutate(correct_prediction = diabetes == .pred_class) %>%
+  summarize(accuracy = mean(correct_prediction, na.rm = TRUE)) %>%
+  pull(accuracy) * 100
+
+accuracy_percentage
 ```
 
 </details>
 
 
-c. Repeat part b. with a different model fitted with different number of neighbors. See if the accuracy percentage change in this new setting.
+e. Repeat part d. with a different model fitted with different number of neighbors. See if the accuracy percentage change in this new setting.
+
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -124,17 +166,24 @@ c. Repeat part b. with a different model fitted with different number of neighbo
 knn_spec <- nearest_neighbor(mode = "classification",
                              engine = "kknn",
                              weight_func = "rectangular",
-                             neighbors = 3)
+                             neighbors = 2)
 knn_fit <- knn_spec %>%
  fit(diabetes ~ ., data = db_scaled)
 
 scaled_observations <- db_scaled
 predictions <- predict(knn_fit, new_data = scaled_observations)
-# bind_cols(scaled_observations, predictions, db_raw %>% 
-#            select(diabetes)) %>% knitr::kable()
 
-sum(predictions == db_raw %>% select(diabetes))/392
+bind_cols(scaled_observations, predictions) -> predict_data
+
+# accuracy percentage
+accuracy_percentage <- predict_data %>%
+  mutate(correct_prediction = diabetes == .pred_class) %>%
+  summarize(accuracy = mean(correct_prediction, na.rm = TRUE)) %>%
+  pull(accuracy) * 100
+
+accuracy_percentage
 ```
 
 </details>
 
+-->
