@@ -100,12 +100,13 @@ c. Classify the penguins in the `test` data frame.
 
 <details>
 <summary class="answer">Click for answer</summary>
+
 *Answer:* 
 
 
 ```r
 test_features <- db_test %>% select(glucose, insulin) 
-db_pred <- predict(db_fit, test_features)
+db_pred <- predict(db_fit, test_features, type = "raw")
 
 db_results <- db_test %>% 
   select(glucose, insulin, diabetes) %>% 
@@ -115,13 +116,13 @@ head(db_results, 6)
 ```
 
 ```
-   glucose insulin diabetes .pred_class
-4       89      94      neg         neg
-7       78      88      pos         neg
-15     166     175      pos         pos
-19     103      83      neg         neg
-32     158     245      pos         pos
-36     103     192      neg         neg
+   glucose insulin diabetes predicted
+4       89      94      neg       neg
+7       78      88      pos       neg
+15     166     175      pos       pos
+19     103      83      neg       neg
+32     158     245      pos       pos
+36     103     192      neg       neg
 ```
 
 </details>
@@ -135,7 +136,7 @@ Calculate the accuracy, sensitivity, specificity, and positive predictive value 
 
 
 ```r
-conf_mat(db_results, truth = diabetes, estimate = .pred_class)
+conf_mat(db_results, truth = diabetes, estimate = predicted)
 ```
 
 ```
@@ -152,7 +153,7 @@ Prediction pos neg
 
 ```r
 accuracy(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 ```
 
 ```
@@ -164,7 +165,7 @@ accuracy(db_results, truth = diabetes,
 
 ```r
 sens(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 ```
 
 ```
@@ -176,7 +177,7 @@ sens(db_results, truth = diabetes,
 
 ```r
 spec(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 ```
 
 ```
@@ -188,7 +189,7 @@ spec(db_results, truth = diabetes,
 
 ```r
 ppv(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 ```
 
 ```

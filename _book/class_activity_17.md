@@ -97,7 +97,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.754   0.120  47.052 
+  3.890   0.113  34.963 
 ```
 
 ```r
@@ -134,7 +134,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.837   0.112  61.483 
+  3.821   0.133  40.598 
 ```
 
 -->
@@ -222,7 +222,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.491   0.060   8.519 
+  1.582   0.124   8.673 
 ```
 
 ```r
@@ -269,7 +269,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.473   0.077   8.646 
+  1.617   0.051   8.850 
 ```
 
 ```r

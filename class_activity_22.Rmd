@@ -94,11 +94,12 @@ c. Classify the penguins in the `test` data frame.
 
 <details>
 <summary class="answer">Click for answer</summary>
+
 *Answer:* 
 
 ```{r}
 test_features <- db_test %>% select(glucose, insulin) 
-db_pred <- predict(db_fit, test_features)
+db_pred <- predict(db_fit, test_features, type = "raw")
 
 db_results <- db_test %>% 
   select(glucose, insulin, diabetes) %>% 
@@ -117,7 +118,7 @@ head(db_results, 6)
 Calculate the accuracy, sensitivity, specificity, and positive predictive value by hand using the following confusion matrix.
 
 ```{r}
-conf_mat(db_results, truth = diabetes, estimate = .pred_class)
+conf_mat(db_results, truth = diabetes, estimate = predicted)
 ```
 
 <details>
@@ -126,16 +127,16 @@ conf_mat(db_results, truth = diabetes, estimate = .pred_class)
 
 ```{r}
 accuracy(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 
 sens(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 
 spec(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 
 ppv(db_results, truth = diabetes,
-         estimate = .pred_class)
+         estimate = predicted)
 ```
 
 </details>

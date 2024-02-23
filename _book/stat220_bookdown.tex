@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-21}
+\date{2024-02-22}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.77356
+[1] 28.7769
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     2 9th   Africa           74 9th      
- 2     4 9th   Africa           74 9th      
- 3     9 9th   Africa           54 9th      
- 4    10 9th   Europe           93 9th      
- 5    12 9th   Asia             91 9th      
- 6    13 9th   Africa           94 9th      
- 7    14 9th   Asia             79 9th      
- 8    16 9th   South America    85 9th      
- 9    24 9th   Middle East      67 9th      
-10     1 10th  Asia             88 10th     
-11     3 10th  Asia             77 10th     
-12     5 10th  Africa           53 10th     
-13     7 10th  Asia             54 10th     
-14     8 10th  Middle East      63 10th     
-15    21 10th  Europe           90 10th     
-16    22 10th  South America    58 10th     
-17     6 11th  North America    91 11th     
-18    11 11th  Asia             56 11th     
-19    15 11th  Asia             89 11th     
-20    17 11th  North America    69 11th     
-21    18 11th  Africa           82 11th     
-22    19 11th  South America    68 11th     
-23    20 11th  South America    67 11th     
-24    23 11th  North America    75 11th     
+ 1     1 9th   Africa           59 9th      
+ 2     3 9th   Asia             86 9th      
+ 3     6 9th   Middle East      90 9th      
+ 4     7 9th   Middle East      91 9th      
+ 5     9 9th   North America    59 9th      
+ 6    11 9th   Asia             90 9th      
+ 7    16 9th   Africa           80 9th      
+ 8    17 9th   Asia             73 9th      
+ 9    18 9th   Asia             96 9th      
+10    19 9th   Asia             79 9th      
+11    20 9th   North America    63 9th      
+12    23 9th   Asia             52 9th      
+13     2 10th  Asia             54 10th     
+14     8 10th  Africa           85 10th     
+15    10 10th  Middle East      52 10th     
+16    12 10th  Asia            100 10th     
+17    13 10th  South America    50 10th     
+18    14 10th  North America    59 10th     
+19    21 10th  Middle East      80 10th     
+20    24 10th  Europe           54 10th     
+21     4 11th  North America    68 11th     
+22     5 11th  Middle East      81 11th     
+23    15 11th  North America    59 11th     
+24    22 11th  North America    52 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,8 +4700,8 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                10
-2 Asia                 7
+1 EMEA                 9
+2 Asia                 8
 3 Americas             7
 \end{verbatim}
 
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "9th"  "11th" "10th"
+[1] "9th"  "10th" "11th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 9th              9
-2 Others          15
+1 9th             12
+2 Others          12
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6622,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.809   0.113  47.202 
+  3.906   0.157  71.445 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6697,7 +6697,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.502   0.077   8.779 
+  1.637   0.064   8.661 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6746,7 +6746,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.531   0.067   8.794 
+  1.575   0.099   8.862 
 \end{verbatim}
 
 \begin{Shaded}
@@ -7677,6 +7677,282 @@ What is the accuracy percentage?
 \item
   Repeat part d.~with a different model fitted with different number of neighbors. See if the accuracy percentage change in this new setting.
 \end{enumerate}
+
+\hypertarget{class-activity-22}{%
+\chapter{Class Activity 22}\label{class-activity-22}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse) }
+\FunctionTok{library}\NormalTok{(tidymodels)}
+\FunctionTok{library}\NormalTok{(mlbench)     }\CommentTok{\# for PimaIndiansDiabetes2 dataset}
+\FunctionTok{library}\NormalTok{(janitor)}
+\FunctionTok{library}\NormalTok{(parsnip)}
+\FunctionTok{library}\NormalTok{(kknn)}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(purrr)}
+\FunctionTok{library}\NormalTok{(forcats)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-7}{%
+\section{Group Activity 1}\label{group-activity-1-7}}
+
+Load the \texttt{mlbench} package to get \texttt{PimaIndiansDiabetes2} dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the data {-} diabetes}
+\FunctionTok{data}\NormalTok{(PimaIndiansDiabetes2)}
+\NormalTok{db }\OtherTok{\textless{}{-}}\NormalTok{ PimaIndiansDiabetes2}
+\NormalTok{db }\OtherTok{\textless{}{-}}\NormalTok{ db }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{drop\_na}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{diabetes =} \FunctionTok{fct\_rev}\NormalTok{(}\FunctionTok{factor}\NormalTok{(diabetes))) }
+\NormalTok{db\_raw }\OtherTok{\textless{}{-}}\NormalTok{ db }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(glucose, insulin, diabetes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Split the data \texttt{75-25} into training and test set using the following code.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\NormalTok{db\_split }\OtherTok{\textless{}{-}} \FunctionTok{initial\_split}\NormalTok{(db, }\AttributeTok{prop =} \FloatTok{0.75}\NormalTok{)}
+
+\CommentTok{\# Create training data}
+\NormalTok{db\_train }\OtherTok{\textless{}{-}}\NormalTok{ db\_split }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{training}\NormalTok{()}
+
+\CommentTok{\# Create testing data}
+\NormalTok{db\_test }\OtherTok{\textless{}{-}}\NormalTok{ db\_split }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{testing}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Follow the steps to train a 7-NN classifier using the \texttt{tidymodels} toolkit
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# define recipe and preprocess the data}
+\NormalTok{db\_recipe }\OtherTok{\textless{}{-}} \FunctionTok{recipe}\NormalTok{(diabetes }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ db\_raw) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_scale}\NormalTok{(}\FunctionTok{all\_predictors}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_center}\NormalTok{(}\FunctionTok{all\_predictors}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{prep}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# specify the model}
+\NormalTok{db\_knn\_spec7 }\OtherTok{\textless{}{-}} \FunctionTok{nearest\_neighbor}\NormalTok{(}\AttributeTok{mode =} \StringTok{"classification"}\NormalTok{,}
+                             \AttributeTok{engine =} \StringTok{"kknn"}\NormalTok{,}
+                             \AttributeTok{weight\_func =} \StringTok{"rectangular"}\NormalTok{,}
+                             \AttributeTok{neighbors =} \DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# define the workflow}
+\NormalTok{db\_workflow }\OtherTok{\textless{}{-}} \FunctionTok{workflow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{add\_recipe}\NormalTok{(db\_recipe) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_model}\NormalTok{(db\_knn\_spec7)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit the model}
+\NormalTok{db\_fit }\OtherTok{\textless{}{-}} \FunctionTok{fit}\NormalTok{(db\_workflow, }\AttributeTok{data =}\NormalTok{ db\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Classify the penguins in the \texttt{test} data frame.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_features }\OtherTok{\textless{}{-}}\NormalTok{ db\_test }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(glucose, insulin) }
+\NormalTok{db\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(db\_fit, test\_features, }\AttributeTok{type =} \StringTok{"raw"}\NormalTok{)}
+
+\NormalTok{db\_results }\OtherTok{\textless{}{-}}\NormalTok{ db\_test }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(glucose, insulin, diabetes) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{bind\_cols}\NormalTok{(}\AttributeTok{predicted =}\NormalTok{ db\_pred)}
+
+\FunctionTok{head}\NormalTok{(db\_results, }\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   glucose insulin diabetes predicted
+4       89      94      neg       neg
+7       78      88      pos       neg
+15     166     175      pos       pos
+19     103      83      neg       neg
+32     158     245      pos       pos
+36     103     192      neg       neg
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-2-6}{%
+\section{Group Activity 2}\label{group-activity-2-6}}
+
+Calculate the accuracy, sensitivity, specificity, and positive predictive value by hand using the following confusion matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{conf\_mat}\NormalTok{(db\_results, }\AttributeTok{truth =}\NormalTok{ diabetes, }\AttributeTok{estimate =}\NormalTok{ predicted)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          Truth
+Prediction pos neg
+       pos  17   8
+       neg  12  61
+\end{verbatim}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{accuracy}\NormalTok{(db\_results, }\AttributeTok{truth =}\NormalTok{ diabetes,}
+         \AttributeTok{estimate =}\NormalTok{ predicted)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 3
+  .metric  .estimator .estimate
+  <chr>    <chr>          <dbl>
+1 accuracy binary         0.796
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sens}\NormalTok{(db\_results, }\AttributeTok{truth =}\NormalTok{ diabetes,}
+         \AttributeTok{estimate =}\NormalTok{ predicted)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 3
+  .metric .estimator .estimate
+  <chr>   <chr>          <dbl>
+1 sens    binary         0.586
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{spec}\NormalTok{(db\_results, }\AttributeTok{truth =}\NormalTok{ diabetes,}
+         \AttributeTok{estimate =}\NormalTok{ predicted)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 3
+  .metric .estimator .estimate
+  <chr>   <chr>          <dbl>
+1 spec    binary         0.884
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ppv}\NormalTok{(db\_results, }\AttributeTok{truth =}\NormalTok{ diabetes,}
+         \AttributeTok{estimate =}\NormalTok{ predicted)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 3
+  .metric .estimator .estimate
+  <chr>   <chr>          <dbl>
+1 ppv     binary          0.68
+\end{verbatim}
+
+\hypertarget{extra-code-to-recreate-the-plot-in-the-slides-for-the-diabetes-dataset.}{%
+\section{\texorpdfstring{Extra: Code to recreate the plot in the \texttt{slides} for the \texttt{diabetes} dataset.}{Extra: Code to recreate the plot in the slides for the diabetes dataset.}}\label{extra-code-to-recreate-the-plot-in-the-slides-for-the-diabetes-dataset.}}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{metrics\_for\_k }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(k, db\_train, db\_test)\{}
+\NormalTok{db\_knn\_spec }\OtherTok{\textless{}{-}} \FunctionTok{nearest\_neighbor}\NormalTok{(}\AttributeTok{mode =} \StringTok{"classification"}\NormalTok{,}
+                             \AttributeTok{engine =} \StringTok{"kknn"}\NormalTok{,}
+                             \AttributeTok{weight\_func =} \StringTok{"rectangular"}\NormalTok{,}
+                             \AttributeTok{neighbors =}\NormalTok{ k)}
+
+\NormalTok{db\_knn\_wkflow }\OtherTok{\textless{}{-}} \FunctionTok{workflow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_recipe}\NormalTok{(db\_recipe) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_model}\NormalTok{(db\_knn\_spec)}
+
+\NormalTok{db\_knn\_fit }\OtherTok{\textless{}{-}} \FunctionTok{fit}\NormalTok{(db\_knn\_wkflow, }\AttributeTok{data =}\NormalTok{ db\_train)}
+\NormalTok{test\_features }\OtherTok{\textless{}{-}}\NormalTok{ db\_test }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(glucose, insulin)}
+\NormalTok{nn1\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(db\_knn\_fit, test\_features, }\AttributeTok{type =} \StringTok{"raw"}\NormalTok{)}
+
+\NormalTok{db\_results }\OtherTok{\textless{}{-}}\NormalTok{ db\_test }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(diabetes) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{bind\_cols}\NormalTok{(}\AttributeTok{predicted =}\NormalTok{ nn1\_pred)}
+\NormalTok{custom\_metrics }\OtherTok{\textless{}{-}} \FunctionTok{metric\_set}\NormalTok{(accuracy, sens, spec, ppv)}
+
+\NormalTok{metrics }\OtherTok{\textless{}{-}} \FunctionTok{custom\_metrics}\NormalTok{(db\_results,}
+               \AttributeTok{truth =}\NormalTok{ diabetes,}
+               \AttributeTok{estimate =}\NormalTok{ predicted) }
+\NormalTok{metrics }\OtherTok{\textless{}{-}}\NormalTok{ metrics }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{.estimator) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{k =} \FunctionTok{rep}\NormalTok{(k,}\DecValTok{4}\NormalTok{))}
+
+\FunctionTok{return}\NormalTok{(}\AttributeTok{list =}\NormalTok{ metrics)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{optim.results }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ k, }\AttributeTok{y =}\NormalTok{ .estimate, }\AttributeTok{color =}\NormalTok{ forcats}\SpecialCharTok{::}\FunctionTok{fct\_reorder2}\NormalTok{(.metric, k, .estimate ))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+\NormalTok{  ggthemes}\SpecialCharTok{::}\FunctionTok{scale\_color\_wsj}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =}\NormalTok{ k) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{panel.grid.minor.x =} \FunctionTok{element\_blank}\NormalTok{(),}
+        \AttributeTok{axis.text=}\FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size=}\DecValTok{6}\NormalTok{, }\AttributeTok{angle =} \DecValTok{20}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{color=}\StringTok{\textquotesingle{}Metric\textquotesingle{}}\NormalTok{, }\AttributeTok{y =} \StringTok{"Estimate"}\NormalTok{, }\AttributeTok{x =} \StringTok{"K"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_22_files/figure-latex/unnamed-chunk-13-1}
 
   \bibliography{book.bib,packages.bib}
 

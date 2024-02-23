@@ -235,3 +235,7 @@ step-2-organize-your-app-folder
 step-3-deploy-your-app-to-shinyapps.io
 class-activity-21
 group-activity-1-6
+class-activity-22
+group-activity-1-7
+group-activity-2-6
+extra-code-to-recreate-the-plot-in-the-slides-for-the-diabetes-dataset.
