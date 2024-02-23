@@ -111,7 +111,7 @@
 <h1>
 <span class="header-section-number">24</span> Class Activity 18<a class="anchor" aria-label="anchor" href="#class-activity-18"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/">shiny</a></span><span class="op">)</span></span>
@@ -137,7 +137,7 @@
 <span class="header-section-number">24.1.0.1</span> Step 1: Setting Up a Basic Shiny App<a class="anchor" aria-label="anchor" href="#step-1-setting-up-a-basic-shiny-app"><i class="fas fa-link"></i></a>
 </h4>
 <p>Start with a simple “Hello World!” app to understand the basic structure.</p>
-<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span><span class="st">"Hello World!"</span><span class="op">)</span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui</span>, server <span class="op">=</span> <span class="va">server</span>, options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -148,7 +148,7 @@
 <span class="header-section-number">24.1.0.2</span> Step 2: Enhancing the UI with More Information<a class="anchor" aria-label="anchor" href="#step-2-enhancing-the-ui-with-more-information"><i class="fas fa-link"></i></a>
 </h4>
 <p>Add more elements to the UI to make it informative.</p>
-<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Tracking Covid in Minnesota"</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html">h1</a></span><span class="op">(</span><span class="st">"A Detailed Overview"</span><span class="op">)</span>,</span>
@@ -166,7 +166,7 @@
 <span class="header-section-number">24.1.0.3</span> Step 3: Structuring the App with a Sidebar Layout<a class="anchor" aria-label="anchor" href="#step-3-structuring-the-app-with-a-sidebar-layout"><i class="fas fa-link"></i></a>
 </h4>
 <p>Organize the app’s layout using sidebarLayout to separate inputs from results.</p>
-<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Tracking Covid in Minnesota"</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span></span>
@@ -183,7 +183,7 @@
 <span class="header-section-number">24.1.0.4</span> Step 4: Reading and Preparing Data<a class="anchor" aria-label="anchor" href="#step-4-reading-and-preparing-data"><i class="fas fa-link"></i></a>
 </h4>
 <p>Fetch and prepare Covid data for Minnesota for analysis.</p>
-<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">table_usafacts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/bow.html">bow</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/minnesota"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dmi3kno.github.io/polite/reference/scrape.html">scrape</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>       <span class="co"># find all links</span></span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>     <span class="co"># get the url</span></span>
@@ -205,7 +205,7 @@
 <span class="header-section-number">24.1.0.5</span> Step 5: Incorporating User Inputs<a class="anchor" aria-label="anchor" href="#step-5-incorporating-user-inputs"><i class="fas fa-link"></i></a>
 </h4>
 <p>Enhance the UI with inputs for filtering data based on user selection.</p>
-<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Tracking Covid in Minnesota"</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span></span>
@@ -230,7 +230,7 @@
 <span class="header-section-number">24.1.0.6</span> Step 6: Developing the Server Logic<a class="anchor" aria-label="anchor" href="#step-6-developing-the-server-logic"><i class="fas fa-link"></i></a>
 </h4>
 <p>Implement server logic to respond to user inputs and generate outputs.</p>
-<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Filter data based on inputs</span></span>
 <span>  <span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span></span>
@@ -261,7 +261,7 @@
 <h3>
 <span class="header-section-number">24.1.1</span> Implementation 2<a class="anchor" aria-label="anchor" href="#implementation-2"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Tracking Covid in Minnesota"</span><span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span></span>
@@ -280,7 +280,7 @@
 <span>        <span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">server1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">filtered_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">covid_data</span>,</span>
@@ -297,7 +297,7 @@
 <span>        <span class="fu">filtered_data</span><span class="op">(</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
 <span>        </span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">app1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui1</span>, server <span class="op">=</span> <span class="va">server1</span>, options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">1200</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">app1</span></span></code></pre></div>
 
@@ -331,7 +331,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-22.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-23.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

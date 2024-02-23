@@ -97,7 +97,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.890   0.113  34.963 
+  3.753   0.099  28.249 
 ```
 
 ```r
@@ -107,7 +107,7 @@ df1_final1 <- reduce(df1, dplyr::bind_rows)
 
 
 
-<!--
+
 
 
 ```r
@@ -134,10 +134,9 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.821   0.133  40.598 
+  3.736   0.128  44.452 
 ```
 
--->
 
 </details>
 
@@ -147,7 +146,7 @@ end_time - start_time # Calculate duration
 
 1. Go to the [scrapethissite](https://www.scrapethissite.com/pages/forms/) and extract the table on the front page.
 
-<!--
+
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -164,7 +163,7 @@ table_base <- session1 %>% .[[1]]
 
 
 </details>
--->
+
 
 2. Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
 
@@ -222,7 +221,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.582   0.124   8.673 
+  1.520   0.076   8.546 
 ```
 
 ```r
@@ -269,7 +268,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.617   0.051   8.850 
+  1.550   0.068   8.357 
 ```
 
 ```r

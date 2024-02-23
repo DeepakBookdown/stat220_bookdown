@@ -96,7 +96,7 @@ df1_final1 <- reduce(df1, dplyr::bind_rows)
 
 
 
-<!--
+
 
 ```{r}
 # alternate using map_df()
@@ -120,7 +120,6 @@ end_time <- proc.time() # Capture end time
 end_time - start_time # Calculate duration
 ```
 
--->
 
 </details>
 
@@ -130,7 +129,7 @@ end_time - start_time # Calculate duration
 
 1. Go to the [scrapethissite](https://www.scrapethissite.com/pages/forms/) and extract the table on the front page.
 
-<!--
+
 <details>
 <summary class="answer">Click for answer</summary>
 
@@ -146,7 +145,7 @@ table_base <- session1 %>% .[[1]]
 
 
 </details>
--->
+
 
 2. Find out the number of pages that contain the movie table, while looking for the changes in the url in the address bar. How does the url changes when you go to the next page?
 

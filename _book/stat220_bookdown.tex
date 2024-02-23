@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-22}
+\date{2024-02-23}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.7769
+[1] 28.77806
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   Africa           59 9th      
- 2     3 9th   Asia             86 9th      
- 3     6 9th   Middle East      90 9th      
- 4     7 9th   Middle East      91 9th      
- 5     9 9th   North America    59 9th      
- 6    11 9th   Asia             90 9th      
- 7    16 9th   Africa           80 9th      
- 8    17 9th   Asia             73 9th      
- 9    18 9th   Asia             96 9th      
-10    19 9th   Asia             79 9th      
-11    20 9th   North America    63 9th      
-12    23 9th   Asia             52 9th      
-13     2 10th  Asia             54 10th     
-14     8 10th  Africa           85 10th     
-15    10 10th  Middle East      52 10th     
-16    12 10th  Asia            100 10th     
-17    13 10th  South America    50 10th     
-18    14 10th  North America    59 10th     
-19    21 10th  Middle East      80 10th     
-20    24 10th  Europe           54 10th     
-21     4 11th  North America    68 11th     
-22     5 11th  Middle East      81 11th     
-23    15 11th  North America    59 11th     
-24    22 11th  North America    52 11th     
+ 1     1 9th   North America    75 9th      
+ 2     2 9th   Africa           69 9th      
+ 3     4 9th   Asia             69 9th      
+ 4     5 9th   South America    99 9th      
+ 5     6 9th   South America    78 9th      
+ 6     8 9th   Middle East      51 9th      
+ 7    10 9th   Africa           84 9th      
+ 8    11 9th   Asia             91 9th      
+ 9    12 10th  Europe           85 10th     
+10    13 10th  South America    81 10th     
+11    17 10th  Africa           60 10th     
+12    21 10th  South America    52 10th     
+13    22 10th  Middle East      57 10th     
+14    23 10th  Middle East      66 10th     
+15     3 11th  South America    75 11th     
+16     7 11th  North America    72 11th     
+17     9 11th  Middle East      60 11th     
+18    14 11th  Middle East      58 11th     
+19    15 11th  North America    67 11th     
+20    16 11th  Africa           77 11th     
+21    18 11th  Middle East      83 11th     
+22    19 11th  South America    51 11th     
+23    20 11th  Europe           98 11th     
+24    24 11th  Middle East      65 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                 9
-2 Asia                 8
-3 Americas             7
+1 EMEA                13
+2 Asia                 2
+3 Americas             9
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "9th"  "10th" "11th"
+[1] "11th" "9th"  "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 9th             12
-2 Others          12
+1 11th            10
+2 Others          14
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6622,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.906   0.157  71.445 
+  3.784   0.094  28.149 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6631,6 +6631,35 @@ Click for answer
 \NormalTok{df1\_final1 }\OtherTok{\textless{}{-}} \FunctionTok{reduce}\NormalTok{(df1, dplyr}\SpecialCharTok{::}\NormalTok{bind\_rows)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alternate using map\_df()}
+\NormalTok{start\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture start time}
+
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\ControlFlowTok{function}\NormalTok{(i) }\FunctionTok{str\_glue}\NormalTok{(\{new\_urls\}, \{index[i]\}))}
+\NormalTok{urls }\OtherTok{\textless{}{-}} \FunctionTok{map}\NormalTok{(index, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{str\_glue}\NormalTok{(\{new\_urls\}, \{.x\}))}
+
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(rvest)}
+\FunctionTok{library}\NormalTok{(glue)}
+\FunctionTok{library}\NormalTok{(janitor)}
+
+\CommentTok{\# Assuming \textquotesingle{}urls\textquotesingle{} is already defined}
+\NormalTok{movies\_data }\OtherTok{\textless{}{-}} \FunctionTok{map\_df}\NormalTok{(urls, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{read\_html}\NormalTok{(.x) }\SpecialCharTok{\%\textgreater{}\%}
+                        \FunctionTok{html\_table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{                        .[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{                        janitor}\SpecialCharTok{::}\FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+                        \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), as.character))) }
+\NormalTok{end\_time }\OtherTok{\textless{}{-}} \FunctionTok{proc.time}\NormalTok{() }\CommentTok{\# Capture end time}
+\NormalTok{end\_time }\SpecialCharTok{{-}}\NormalTok{ start\_time }\CommentTok{\# Calculate duration}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   user  system elapsed 
+  3.836   0.089  45.604 
+\end{verbatim}
 
 \hypertarget{group-activity-2-4}{%
 \section{Group Activity 2}\label{group-activity-2-4}}
@@ -6641,6 +6670,18 @@ Click for answer
 \item
   Go to the \href{https://www.scrapethissite.com/pages/forms/}{scrapethissite} and extract the table on the front page.
 \end{enumerate}
+
+Click for answer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{session1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_html}\NormalTok{(}\StringTok{"https://www.scrapethissite.com/pages/forms/"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_nodes}\NormalTok{(}\AttributeTok{css =} \StringTok{"table"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{html\_table}\NormalTok{()}
+
+\NormalTok{table\_base }\OtherTok{\textless{}{-}}\NormalTok{ session1 }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ .[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -6697,7 +6738,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.637   0.064   8.661 
+  1.477   0.115   8.607 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6746,7 +6787,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.575   0.099   8.862 
+  1.522   0.059   8.562 
 \end{verbatim}
 
 \begin{Shaded}
