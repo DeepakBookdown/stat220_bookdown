@@ -35,7 +35,7 @@ db_train <- db_split %>% training()
 db_test <- db_split %>% testing()
 ```
 
-a. Creating the recipe
+### a. *Creating the Recipe:* Construct a recipe for the model by normalizing `glucose` and `insulin` predictors to predict `diabetes` status on the training set, ensuring data scales are comparable.
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -51,7 +51,7 @@ db_recipe <- recipe(diabetes ~  glucose + insulin, data = db_train) %>%
 
 </details>
 
-b. Create your model specification and use `tune()` as a placeholder for the number of neighbors
+### b. *Model Specification:* Define the KNN model using a flexible `tune()` placeholder for the number of neighbors, specifying a `classification` task.
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -68,7 +68,7 @@ knn_spec <- nearest_neighbor(weight_func = "rectangular",
 
 </details>
 
-c. Split the `db_train` data set into `v = 10` folds, stratified by `diabetes`
+### c. *Creating Folds:* Divide the training data into 10 stratified folds based on the diabetes outcome to prepare for cross-validation, ensuring representation.
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -82,7 +82,7 @@ db_vfold <- vfold_cv(db_train, v = 10, strata = diabetes)
 
 </details>
 
-d. Create a grid of `K` values, the number of neighbors and run 10-fold CV on the `k_vals` grid, storing four performance metrics. The vizualization code is provided for your reference.
+### d. *Cross-Validation Grid:* Generate a sequence of K values to test with 10-fold cross-validation, evaluating model performance across a range of neighbors.
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -115,27 +115,22 @@ cv_metrics %>% group_by(.metric) %>% slice_max(mean)
 ```
 
 ```
-# A tibble: 12 × 7
+# A tibble: 7 × 7
 # Groups:   .metric [4]
-   neighbors .metric  .estimator  mean     n std_err .config
-       <dbl> <chr>    <chr>      <dbl> <int>   <dbl> <chr>  
- 1        23 accuracy binary     0.776    10  0.0260 Prepro…
- 2        24 accuracy binary     0.776    10  0.0260 Prepro…
- 3        25 accuracy binary     0.776    10  0.0257 Prepro…
- 4        26 accuracy binary     0.776    10  0.0257 Prepro…
- 5        27 accuracy binary     0.776    10  0.0290 Prepro…
- 6        28 accuracy binary     0.776    10  0.0290 Prepro…
- 7        23 ppv      binary     0.803    10  0.0226 Prepro…
- 8        24 ppv      binary     0.803    10  0.0226 Prepro…
- 9        27 sens     binary     0.9      10  0.0229 Prepro…
-10        28 sens     binary     0.9      10  0.0229 Prepro…
-11        23 spec     binary     0.54     10  0.0607 Prepro…
-12        24 spec     binary     0.54     10  0.0607 Prepro…
+  neighbors .metric  .estimator  mean     n std_err .config 
+      <dbl> <chr>    <chr>      <dbl> <int>   <dbl> <chr>   
+1        15 accuracy binary     0.783    10  0.0188 Preproc…
+2        16 accuracy binary     0.783    10  0.0188 Preproc…
+3        15 ppv      binary     0.809    10  0.0191 Preproc…
+4        16 ppv      binary     0.809    10  0.0191 Preproc…
+5        15 sens     binary     0.884    10  0.0218 Preproc…
+6        16 sens     binary     0.884    10  0.0218 Preproc…
+7        18 spec     binary     0.593    10  0.0559 Preproc…
 ```
 
 </details>
 
-### Extra: Plot the metrics
+### e. *Visualization:* Plot the cross-validation results to determine the optimal K value, comparing different performance metrics visually.
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -166,42 +161,11 @@ final.results %>%
 
 ## Group Activity 2
 
-a. Let's fit the logistic regression model.
 
+### a. Data Preparation and Train-Test Split
 
-```r
-set.seed(12345)
-db_single <- db %>% select(diabetes, glucose)
-db_split <- initial_split(db_single, prop = 0.80)
+Load the `mlbench` package and `tidymodels` framework, select relevant features for predicting `glucose`, and split the data into training and test sets. For this activity, use `mass` and `insulin` as your features.
 
-# Create training data
-db_train <- db_split %>% training()
-
-# Create testing data
-db_test <- db_split %>% testing()
-
-fitted_logistic_model <- logistic_reg() %>% # Call the model function
-        # Set the engine/family of the model
-        set_engine("glm") %>%
-        # Set the mode
-        set_mode("classification") %>%
-        # Fit the model
-        fit(diabetes~., data = db_train)
-
-tidy(fitted_logistic_model)
-```
-
-```
-# A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  <chr>          <dbl>     <dbl>     <dbl>    <dbl>
-1 (Intercept)  -5.61     0.678       -8.28 1.20e-16
-2 glucose       0.0392   0.00514      7.62 2.55e-14
-```
-
-</details>
-
-b. We are interested in predicting the diabetes status of patients depending on the amount of glucose. Verify that the glucose value of 143.11 gives the probability of having diabetes as 1/2.
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -209,39 +173,30 @@ b. We are interested in predicting the diabetes status of patients depending on 
 
 
 
-$$log\left(\frac{p}{1-p}\right)  = \beta_0 + \beta_1x$$
-
-
-
 ```r
-(p <- round(exp(-5.61 + 0.0392* 143.11) / (1 + exp(-5.61 + 0.0392* 143.11)),2))
-```
+library(mlbench)
+library(tidymodels)
+library(dplyr)
 
-```
-[1] 0.5
+data(PimaIndiansDiabetes2)
+db <- PimaIndiansDiabetes2 %>% 
+  drop_na() %>%
+  select(glucose, mass, insulin)
+
+# Splitting the data
+set.seed(2056)
+db_split <- initial_split(db, prop = 0.75, strata = glucose)
+db_train <- training(db_split)
+db_test <- testing(db_split)
 ```
 
 </details>
 
-c. What value of glucose is needed to have a probability of diabetes of 0.75?
+### b. Model Specification
 
-<details>
-<summary class="answer">Click for answer</summary>
-*Answer:* 
+Define a linear regression model for predicting `glucose` as a function of `mass` and `insulin.`
 
-
-```r
-p <- 0.75
-(x <- (log(p/(1-p)) - (-5.61))/0.0392)	
-```
-
-```
-[1] 171.1381
-```
-
-</details>
-
-d. Make a classifier that classifies the diabetes status of new patients with a threshold of 0.75, i.e, a new patient is classified as negative if the estimated class probability is less than 0.75. Also, create a confusion matrix of the resulting predictions.
+<!--
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -249,23 +204,124 @@ d. Make a classifier that classifies the diabetes status of new patients with a 
 
 
 
-
 ```r
-# Prediction Probabilities
-library(probably)
-pred_prob <- predict(fitted_logistic_model,  new_data = db_test,   type = "prob")
+lm_spec <- linear_reg() %>%
+  set_engine("lm") %>%
+  set_mode("regression")
 
-db_results <- db_test %>% bind_cols(pred_prob) %>%
-  mutate(.pred_class = make_two_class_pred(.pred_neg, levels(diabetes), threshold = .75)) %>%
-  select(diabetes, glucose, contains(".pred"))
-
-
-db_results %>%  
-  conf_mat(diabetes,.pred_class) %>% 
-  autoplot(type = "heatmap")
+lm_spec
 ```
 
-<img src="class_activity_23_files/figure-epub3/unnamed-chunk-13-1.png" width="100%" />
+```
+Linear Regression Model Specification (regression)
 
+Computational engine: lm 
+```
 
 </details>
+
+-->
+
+### c. Fit the Model
+
+
+Fit the linear model to the training data, predicting `glucose` based on `mass` and `insulin.`
+
+<!--
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:* 
+
+
+```r
+lm_mod <- lm_spec %>%
+  fit(glucose ~ mass + insulin, data = db_train)
+```
+
+</details>
+
+-->
+
+### d. Predict on Test Data and Evaluate the Model
+
+Use the fitted model to predict `glucose` levels on the test set and evaluate the model's accuracy with RMSE and R-squared metrics.
+
+<!--
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:* 
+
+
+
+```r
+# Predicting glucose levels
+results <- db_test %>%
+  bind_cols(predictions = predict(lm_mod, new_data = db_test, type = "raw")) %>%
+  select(glucose, predictions)
+
+# Displaying first 6 predictions
+results %>%
+  slice_head(n = 6) %>%
+  knitr::kable()
+```
+
+
+
+|    | glucose| predictions|
+|:---|-------:|-----------:|
+|4   |      89|    111.1240|
+|15  |     166|    122.7949|
+|95  |     142|    105.0963|
+|108 |     144|    118.8372|
+|109 |      83|    101.7945|
+|112 |     155|    175.8348|
+
+```r
+# Evaluating the model
+eval_metrics <- metric_set(rmse, rsq)
+
+eval_metrics(data = results,
+             truth = glucose,
+             estimate = predictions) %>%
+  select(-2) %>%
+  knitr::kable()
+```
+
+
+
+|.metric | .estimate|
+|:-------|---------:|
+|rmse    | 26.473038|
+|rsq     |  0.256966|
+
+</details>
+-->
+
+### (Bonus) Create a scatter plot to visualize the actual vs. predicted glucose levels, including a regression line for reference.
+
+<!--
+
+<details>
+<summary class="answer">Click for answer</summary>
+*Answer:* 
+
+
+
+```r
+results %>%
+  ggplot(aes(x = glucose, y = predictions)) +
+  geom_point(color = "blue", alpha = 0.6) +
+  geom_smooth(method = "lm", color = "red", linetype = "dashed") +
+  labs(title = "Predicted vs Actual Glucose Levels",
+       x = "Actual Glucose",
+       y = "Predicted Glucose") +
+  theme_minimal()
+```
+
+<img src="class_activity_23_files/figure-epub3/unnamed-chunk-14-1.png" width="100%" />
+
+</details>
+
+-->

@@ -64,7 +64,6 @@ table_base <- session1 %>% .[[1]]
 
 
 
-
 ```r
 library(tidyverse)
 library(rvest)
@@ -97,7 +96,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.753   0.099  28.249 
+  3.926   0.168  52.643 
 ```
 
 ```r
@@ -134,7 +133,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.736   0.128  44.452 
+  3.897   0.124  46.640 
 ```
 
 
@@ -221,7 +220,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.520   0.076   8.546 
+  1.547   0.080   9.751 
 ```
 
 ```r
@@ -268,7 +267,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.550   0.068   8.357 
+  1.585   0.056   8.970 
 ```
 
 ```r

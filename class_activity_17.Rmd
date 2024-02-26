@@ -61,7 +61,6 @@ table_base <- session1 %>% .[[1]]
 <summary class="answer">Click for answer</summary>
 
 
-
 ```{r}
 library(tidyverse)
 library(rvest)
@@ -118,6 +117,8 @@ movies_data <- map_df(urls, ~read_html(.x) %>%
                         mutate(across(everything(), as.character))) 
 end_time <- proc.time() # Capture end time
 end_time - start_time # Calculate duration
+
+movies_data %>% slice_head(n=6)
 ```
 
 
@@ -218,7 +219,7 @@ sports_data <- map_df(urls, ~read_html(.x) %>%
 end_time <- proc.time() # Capture end time
 end_time - start_time # Calculate duration
 
-sports_data
+sports_data %>% slice_head(n=7)
 ```
 
 </details>
