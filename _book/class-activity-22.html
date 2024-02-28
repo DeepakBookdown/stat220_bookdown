@@ -101,6 +101,7 @@
 <li><a class="" href="class-activity-21.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
 <li><a class="active" href="class-activity-22.html"><span class="header-section-number">28</span> Class Activity 22</a></li>
 <li><a class="" href="class-activity-23.html"><span class="header-section-number">29</span> Class Activity 23</a></li>
+<li><a class="" href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></li>
 </ul>
 
         <div class="book-extra">
@@ -112,7 +113,7 @@
 <h1>
 <span class="header-section-number">28</span> Class Activity 22<a class="anchor" aria-label="anchor" href="#class-activity-22"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
@@ -128,7 +129,7 @@
 <span class="header-section-number">28.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1-7"><i class="fas fa-link"></i></a>
 </h2>
 <p>Load the <code>mlbench</code> package to get <code>PimaIndiansDiabetes2</code> dataset.</p>
-<div class="sourceCode" id="cb484"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb486"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the data - diabetes</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">PimaIndiansDiabetes2</span><span class="op">)</span></span>
 <span><span class="va">db</span> <span class="op">&lt;-</span> <span class="va">PimaIndiansDiabetes2</span></span>
@@ -140,7 +141,7 @@
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb485"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">db_split</span> <span class="op">&lt;-</span> <span class="fu">initial_split</span><span class="op">(</span><span class="va">db</span>, prop <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
@@ -156,24 +157,24 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb486"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb488"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define recipe and preprocess the data</span></span>
 <span><span class="va">db_recipe</span> <span class="op">&lt;-</span> <span class="fu">recipe</span><span class="op">(</span><span class="va">diabetes</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">db_raw</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">step_scale</span><span class="op">(</span><span class="fu">all_predictors</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">step_center</span><span class="op">(</span><span class="fu">all_predictors</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">prep</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb489"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># specify the model</span></span>
 <span><span class="va">db_knn_spec7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/nearest_neighbor.html">nearest_neighbor</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"classification"</span>,</span>
 <span>                             engine <span class="op">=</span> <span class="st">"kknn"</span>,</span>
 <span>                             weight_func <span class="op">=</span> <span class="st">"rectangular"</span>,</span>
 <span>                             neighbors <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb488"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb490"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># define the workflow</span></span>
 <span><span class="va">db_workflow</span> <span class="op">&lt;-</span> <span class="fu">workflow</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">add_recipe</span><span class="op">(</span><span class="va">db_recipe</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">add_model</span><span class="op">(</span><span class="va">db_knn_spec7</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb489"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># fit the model</span></span>
 <span><span class="va">db_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/fit.html">fit</a></span><span class="op">(</span><span class="va">db_workflow</span>, data <span class="op">=</span> <span class="va">db_train</span><span class="op">)</span></span></code></pre></div>
 </details><ol start="3" style="list-style-type: lower-alpha">
@@ -182,7 +183,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb490"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb492"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test_features</span> <span class="op">&lt;-</span> <span class="va">db_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">glucose</span>, <span class="va">insulin</span><span class="op">)</span> </span>
 <span><span class="va">db_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/predict.html">predict</a></span><span class="op">(</span><span class="va">db_fit</span>, <span class="va">test_features</span>, type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
 <span></span>
@@ -205,7 +206,7 @@ Click for answer
 <span class="header-section-number">28.2</span> Group Activity 2<a class="anchor" aria-label="anchor" href="#group-activity-2-6"><i class="fas fa-link"></i></a>
 </h2>
 <p>Calculate the accuracy, sensitivity, specificity, and positive predictive value by hand using the following confusion matrix.</p>
-<div class="sourceCode" id="cb492"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb494"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">conf_mat</span><span class="op">(</span><span class="va">db_results</span>, truth <span class="op">=</span> <span class="va">diabetes</span>, estimate <span class="op">=</span> <span class="va">predicted</span><span class="op">)</span></span></code></pre></div>
 <pre><code>          Truth
 Prediction pos neg
@@ -214,28 +215,28 @@ Prediction pos neg
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb494"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb496"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">accuracy</span><span class="op">(</span><span class="va">db_results</span>, truth <span class="op">=</span> <span class="va">diabetes</span>,</span>
 <span>         estimate <span class="op">=</span> <span class="va">predicted</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 3
   .metric  .estimator .estimate
   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
 1 accuracy binary         0.796</code></pre>
-<div class="sourceCode" id="cb496"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb498"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">sens</span><span class="op">(</span><span class="va">db_results</span>, truth <span class="op">=</span> <span class="va">diabetes</span>,</span>
 <span>         estimate <span class="op">=</span> <span class="va">predicted</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
 1 sens    binary         0.586</code></pre>
-<div class="sourceCode" id="cb498"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb500"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/spec.html">spec</a></span><span class="op">(</span><span class="va">db_results</span>, truth <span class="op">=</span> <span class="va">diabetes</span>,</span>
 <span>         estimate <span class="op">=</span> <span class="va">predicted</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
 1 spec    binary         0.884</code></pre>
-<div class="sourceCode" id="cb500"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb502"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ppv</span><span class="op">(</span><span class="va">db_results</span>, truth <span class="op">=</span> <span class="va">diabetes</span>,</span>
 <span>         estimate <span class="op">=</span> <span class="va">predicted</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 3
@@ -251,7 +252,7 @@ Click for answer
 <details><summary class="answer">
 Click for answer
 </summary><p><em>Answer:</em></p>
-<div class="sourceCode" id="cb502"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb504"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">metrics_for_k</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">k</span>, <span class="va">db_train</span>, <span class="va">db_test</span><span class="op">)</span><span class="op">{</span></span>
 <span><span class="va">db_knn_spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://parsnip.tidymodels.org/reference/nearest_neighbor.html">nearest_neighbor</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"classification"</span>,</span>
 <span>                             engine <span class="op">=</span> <span class="st">"kknn"</span>,</span>
@@ -287,7 +288,7 @@ optim.results <- purrr::map_dfr(k, ~metrics_for_k(.x, db_train, db_test))
 ```
 
 -->
-<div class="sourceCode" id="cb503"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb505"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">optim.results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">k</span>, y <span class="op">=</span> <span class="va">.estimate</span>, color <span class="op">=</span> <span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder2</a></span><span class="op">(</span><span class="va">.metric</span>, <span class="va">k</span>, <span class="va">.estimate</span> <span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
@@ -329,7 +330,7 @@ optim.results <- purrr::map_dfr(k, ~metrics_for_k(.x, db_train, db_test))
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-25.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-27.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

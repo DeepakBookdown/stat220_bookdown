@@ -101,6 +101,7 @@
 <li><a class="" href="class-activity-21.html"><span class="header-section-number">27</span> Class Activity 21</a></li>
 <li><a class="" href="class-activity-22.html"><span class="header-section-number">28</span> Class Activity 22</a></li>
 <li><a class="" href="class-activity-23.html"><span class="header-section-number">29</span> Class Activity 23</a></li>
+<li><a class="" href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></li>
 </ul>
 
         <div class="book-extra">
@@ -112,7 +113,7 @@
 <h1>
 <span class="header-section-number">26</span> Class Activity 20<a class="anchor" aria-label="anchor" href="#class-activity-20"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load the necessary libraries</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/">shiny</a></span><span class="op">)</span></span>
@@ -131,7 +132,7 @@
 <span class="header-section-number">26.1</span> Group Activity 1<a class="anchor" aria-label="anchor" href="#group-activity-1-5"><i class="fas fa-link"></i></a>
 </h2>
 <p>Explore the magic of <code>leaflet</code> firsthand! Simply paste the code provided in the slides into the field below and run it to witness the output in action.</p>
-<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># paste the code here</span></span></code></pre></div>
 </div>
 <div id="group-activity-2-5" class="section level2" number="26.2">
@@ -144,7 +145,7 @@
 <span class="header-section-number">26.2.1</span> Q1: How do we obtain and prepare the COVID-19 vaccination data?<a class="anchor" aria-label="anchor" href="#q1-how-do-we-obtain-and-prepare-the-covid-19-vaccination-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>To analyze COVID-19 vaccination rates, we start by scraping the necessary data from a webpage. This involves selecting the specific HTML elements that contain the data, parsing it into a readable format, and cleaning the column names for easier manipulation. We also filter the data to include only certain states for focused analysis.</p>
-<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covid_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="st">"https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -160,7 +161,7 @@
 <span class="header-section-number">26.2.2</span> Q2: How do we represent geographical data for mapping?<a class="anchor" aria-label="anchor" href="#q2-how-do-we-represent-geographical-data-for-mapping"><i class="fas fa-link"></i></a>
 </h3>
 <p>Next, we create a spatial representation of the Midwest states. This involves mapping state boundaries and converting them into a spatial polygons format, which <code>Leaflet</code> can use to plot the data geographically.</p>
-<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb460"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">USA_Midwest</span> <span class="op">&lt;-</span> <span class="fu">maps</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/maps/man/map.html">map</a></span><span class="op">(</span><span class="st">"state"</span>, </span>
 <span>                         regions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ohio"</span>, <span class="st">"indiana"</span>, <span class="st">"michigan"</span>, <span class="st">"illinois"</span>, <span class="st">"missouri"</span>, <span class="st">"wisconsin"</span>, <span class="st">"minnesota"</span>, </span>
 <span>                                     <span class="st">"iowa"</span>, <span class="st">"kansas"</span>, <span class="st">"nebraska"</span>, <span class="st">"south dakota"</span>, <span class="st">"north dakota"</span><span class="op">)</span>, </span>
@@ -172,7 +173,7 @@
 <span class="header-section-number">26.2.3</span> Q3: How do we integrate the vaccination data with the geographical map?<a class="anchor" aria-label="anchor" href="#q3-how-do-we-integrate-the-vaccination-data-with-the-geographical-map"><i class="fas fa-link"></i></a>
 </h3>
 <p>Merging the COVID-19 vaccination data with the geographical map allows us to visualize vaccination rates across different regions. This step combines the spatial polygons with the vaccination data based on state names.</p>
-<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/SpatialPolygons.html">SpatialPolygonsDataFrame</a></span><span class="op">(</span><span class="va">USA_Midwest</span>, <span class="va">covid_final</span>, match.ID <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="q4-how-do-we-categorize-vaccination-rates-for-visualization" class="section level3" number="26.2.4">
@@ -180,7 +181,7 @@
 <span class="header-section-number">26.2.4</span> Q4: How do we categorize vaccination rates for visualization?<a class="anchor" aria-label="anchor" href="#q4-how-do-we-categorize-vaccination-rates-for-visualization"><i class="fas fa-link"></i></a>
 </h3>
 <p>To visually differentiate regions based on their vaccination rates, we create bins of vaccination percentages and assign a color palette. This helps in categorizing states into different levels of vaccination coverage.</p>
-<div class="sourceCode" id="cb460"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb462"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
 <span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/colorNumeric.html">colorBin</a></span><span class="op">(</span><span class="st">"viridis"</span>, domain <span class="op">=</span> <span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span>, bins <span class="op">=</span> <span class="va">bins</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -189,7 +190,7 @@
 <span class="header-section-number">26.2.5</span> Q5: How do we add informative labels to the map?<a class="anchor" aria-label="anchor" href="#q5-how-do-we-add-informative-labels-to-the-map"><i class="fas fa-link"></i></a>
 </h3>
 <p>Labels enhance the map’s interactivity by providing detailed information on hover or click. Here, we format the labels to display the state name and its observed vaccination rate.</p>
-<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"&lt;strong&gt; %s &lt;/strong&gt; &lt;br/&gt; Observed: %s"</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_upper</a></span><span class="op">(</span><span class="va">map</span><span class="op">$</span><span class="va">state</span><span class="op">)</span>, <span class="va">map</span><span class="op">$</span><span class="va">percent_fully_vaccinated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu">htmltools</span><span class="fu">::</span><span class="va"><a href="https://rstudio.github.io/htmltools/reference/HTML.html">HTML</a></span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -197,7 +198,7 @@
 <h3>
 <span class="header-section-number">26.2.6</span> Q6: How do we plot the finalized map with Leaflet?<a class="anchor" aria-label="anchor" href="#q6-how-do-we-plot-the-finalized-map-with-leaflet"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb462"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb464"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html">leaflet</a></span><span class="op">(</span><span class="va">map</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-methods.html">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">93.1616</span>, lat <span class="op">=</span> <span class="fl">44.4583</span>, zoom <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -221,7 +222,7 @@
 <h3>
 <span class="header-section-number">26.2.7</span> Q7: Think about how would you include your favorite state beside these midwestern states to the leaflet plot. How would you go about including all the states? You may exclude <code>Alaska</code> and <code>Hawaii</code> from the analysis.<a class="anchor" aria-label="anchor" href="#q7-think-about-how-would-you-include-your-favorite-state-beside-these-midwestern-states-to-the-leaflet-plot.-how-would-you-go-about-including-all-the-states-you-may-exclude-alaska-and-hawaii-from-the-analysis."><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covid_final</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="st">"https://usafacts.org/visualizations/covid-vaccine-tracker-states/state/minnesota"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span>css <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -337,7 +338,7 @@ rsconnect::setAccountInfo(name='&lt;account-name&gt;',
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-25.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-27.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

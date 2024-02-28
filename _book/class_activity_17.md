@@ -96,7 +96,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.926   0.168  52.643 
+  3.808   0.114  28.163 
 ```
 
 ```r
@@ -133,7 +133,24 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  3.897   0.124  46.640 
+  3.847   0.092  34.107 
+```
+
+```r
+movies_data %>% slice_head(n=6)
+```
+
+```
+# A tibble: 6 × 6
+  x     release_date movie  production_budget domestic_gross
+  <chr> <chr>        <chr>  <chr>             <chr>         
+1 1     Dec 9, 2022  Avata… $460,000,000      $684,075,767  
+2 2     Apr 23, 2019 Aveng… $400,000,000      $858,373,000  
+3 3     May 20, 2011 Pirat… $379,000,000      $241,071,802  
+4 4     Apr 22, 2015 Aveng… $365,000,000      $459,005,868  
+5 5     May 17, 2023 Fast X $340,000,000      $146,126,015  
+6 6     Dec 16, 2015 Star … $306,000,000      $936,662,225  
+# ℹ 1 more variable: worldwide_gross <chr>
 ```
 
 
@@ -220,7 +237,7 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.547   0.080   9.751 
+  1.495   0.080   9.181 
 ```
 
 ```r
@@ -267,28 +284,24 @@ end_time - start_time # Calculate duration
 
 ```
    user  system elapsed 
-  1.585   0.056   8.970 
+  1.557   0.068   9.211 
 ```
 
 ```r
-sports_data
+sports_data %>% slice_head(n=7)
 ```
 
 ```
-# A tibble: 582 × 9
-   team_name        year  wins  losses ot_losses win_percent
-   <chr>            <chr> <chr> <chr>  <chr>     <chr>      
- 1 Boston Bruins    1990  44    24     <NA>      0.55       
- 2 Buffalo Sabres   1990  31    30     <NA>      0.388      
- 3 Calgary Flames   1990  46    26     <NA>      0.575      
- 4 Chicago Blackha… 1990  49    23     <NA>      0.613      
- 5 Detroit Red Win… 1990  34    38     <NA>      0.425      
- 6 Edmonton Oilers  1990  37    37     <NA>      0.463      
- 7 Hartford Whalers 1990  31    38     <NA>      0.388      
- 8 Los Angeles Kin… 1990  46    24     <NA>      0.575      
- 9 Minnesota North… 1990  27    39     <NA>      0.338      
-10 Montreal Canadi… 1990  39    30     <NA>      0.487      
-# ℹ 572 more rows
+# A tibble: 7 × 9
+  team_name         year  wins  losses ot_losses win_percent
+  <chr>             <chr> <chr> <chr>  <chr>     <chr>      
+1 Boston Bruins     1990  44    24     <NA>      0.55       
+2 Buffalo Sabres    1990  31    30     <NA>      0.388      
+3 Calgary Flames    1990  46    26     <NA>      0.575      
+4 Chicago Blackhaw… 1990  49    23     <NA>      0.613      
+5 Detroit Red Wings 1990  34    38     <NA>      0.425      
+6 Edmonton Oilers   1990  37    37     <NA>      0.463      
+7 Hartford Whalers  1990  31    38     <NA>      0.388      
 # ℹ 3 more variables: goals_for_gf <chr>,
 #   goals_against_ga <chr>, x <chr>
 ```

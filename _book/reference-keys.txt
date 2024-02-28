@@ -252,3 +252,9 @@ b.-model-specification
 c.-fit-the-model
 d.-predict-on-test-data-and-evaluate-the-model
 bonus-create-a-scatter-plot-to-visualize-the-actual-vs.-predicted-glucose-levels-including-a-regression-line-for-reference.
+class-activity-24
+group-activity-1-9
+a.-calculate-log-odds
+b.-convert-log-odds-to-odds
+c.-convert-odds-to-probability
+group-activity-2-8
