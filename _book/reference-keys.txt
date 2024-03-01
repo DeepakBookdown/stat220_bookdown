@@ -258,3 +258,7 @@ a.-calculate-log-odds
 b.-convert-log-odds-to-odds
 c.-convert-odds-to-probability
 group-activity-2-8
+class-activity-25
+group-activity-1-10
+group-activity-2-9
+extra-group-activity-3

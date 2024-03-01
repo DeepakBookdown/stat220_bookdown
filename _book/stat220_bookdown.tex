@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-27}
+\date{2024-02-29}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.79053
+[1] 28.79595
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     1 9th   South America    73 9th      
- 2     5 9th   Europe           73 9th      
- 3     6 9th   Middle East      67 9th      
- 4     7 9th   Middle East      64 9th      
- 5    14 9th   South America    90 9th      
- 6    16 9th   Middle East      90 9th      
- 7    19 9th   Middle East      94 9th      
- 8     8 10th  Europe           85 10th     
- 9    18 10th  South America    79 10th     
-10    20 10th  Middle East      60 10th     
-11    21 10th  Africa           78 10th     
-12     2 11th  Africa           90 11th     
-13     3 11th  Europe           86 11th     
-14     4 11th  South America   100 11th     
-15     9 11th  Africa           60 11th     
-16    10 11th  Africa           65 11th     
-17    11 11th  Europe           57 11th     
-18    12 11th  Europe           70 11th     
-19    13 11th  Europe           62 11th     
-20    15 11th  Middle East      90 11th     
-21    17 11th  North America    83 11th     
-22    22 11th  Middle East      76 11th     
-23    23 11th  Europe           92 11th     
-24    24 11th  Asia             51 11th     
+ 1     2 9th   Africa           51 9th      
+ 2     3 9th   Africa           57 9th      
+ 3     6 9th   Asia             50 9th      
+ 4     8 9th   Africa           70 9th      
+ 5    10 9th   Europe           59 9th      
+ 6    12 9th   Asia             74 9th      
+ 7    13 9th   North America    76 9th      
+ 8    14 9th   Europe          100 9th      
+ 9    17 9th   North America    86 9th      
+10    20 9th   South America    69 9th      
+11    24 9th   Asia             92 9th      
+12     1 10th  Asia             75 10th     
+13     4 10th  Middle East      85 10th     
+14     5 10th  Africa           77 10th     
+15     9 10th  Asia             82 10th     
+16    11 10th  Europe           53 10th     
+17    15 10th  North America    99 10th     
+18    19 10th  Africa           97 10th     
+19    23 10th  Asia             89 10th     
+20     7 11th  Europe           53 11th     
+21    16 11th  Asia             84 11th     
+22    18 11th  Asia             55 11th     
+23    21 11th  Europe           86 11th     
+24    22 11th  South America    91 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,8 +4700,8 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                18
-2 Asia                 1
+1 EMEA                11
+2 Asia                 8
 3 Americas             5
 \end{verbatim}
 
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "11th" "9th"  "10th"
+[1] "9th"  "10th" "11th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,8 +4746,8 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 11th            13
-2 Others          11
+1 9th             11
+2 Others          13
 \end{verbatim}
 
 \hypertarget{your-turn-2-2}{%
@@ -6622,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.885   0.110  28.335 
+  3.806   0.110  50.832 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6658,7 +6658,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.871   0.097  28.088 
+  3.692   0.121  39.192 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6757,7 +6757,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.612   0.059   9.937 
+  1.508   0.065   8.663 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6806,7 +6806,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.527   0.094   8.805 
+  1.580   0.033   8.835 
 \end{verbatim}
 
 \begin{Shaded}
@@ -8129,22 +8129,18 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 12 x 7
+# A tibble: 8 x 7
 # Groups:   .metric [4]
-   neighbors .metric  .estimator  mean     n std_err .config
-       <dbl> <chr>    <chr>      <dbl> <int>   <dbl> <chr>  
- 1        39 accuracy binary     0.738    10  0.0273 Prepro~
- 2        40 accuracy binary     0.738    10  0.0273 Prepro~
- 3        25 ppv      binary     0.778    10  0.0225 Prepro~
- 4        26 ppv      binary     0.778    10  0.0225 Prepro~
- 5        31 sens     binary     0.834    10  0.0261 Prepro~
- 6        32 sens     binary     0.834    10  0.0261 Prepro~
- 7        33 sens     binary     0.834    10  0.0226 Prepro~
- 8        34 sens     binary     0.834    10  0.0226 Prepro~
- 9        35 sens     binary     0.834    10  0.0226 Prepro~
-10        36 sens     binary     0.834    10  0.0226 Prepro~
-11        25 spec     binary     0.582    10  0.0487 Prepro~
-12        26 spec     binary     0.582    10  0.0487 Prepro~
+  neighbors .metric  .estimator  mean     n std_err .config 
+      <dbl> <chr>    <chr>      <dbl> <int>   <dbl> <chr>   
+1        23 accuracy binary     0.751    10  0.0301 Preproc~
+2        24 accuracy binary     0.751    10  0.0301 Preproc~
+3        17 ppv      binary     0.783    10  0.0225 Preproc~
+4        18 ppv      binary     0.783    10  0.0225 Preproc~
+5        37 sens     binary     0.891    10  0.0310 Preproc~
+6        38 sens     binary     0.891    10  0.0310 Preproc~
+7        17 spec     binary     0.5      10  0.0562 Preproc~
+8        18 spec     binary     0.5      10  0.0562 Preproc~
 \end{verbatim}
 
 \hypertarget{e.-visualization-plot-the-cross-validation-results-to-determine-the-optimal-k-value-comparing-different-performance-metrics-visually.}{%
@@ -8382,6 +8378,223 @@ The probability of having diabetes at a glucose level of 150 mg/dL is calculated
 \item
   Evaluate the performance of a diabetes prediction model at different classification thresholds and visualize how various metrics such as accuracy, sensitivity, and PPV change across these thresholds. Use a sequence of threshold values, apply each one to classify test data, calculate the performance metrics for each classification, and then create a line plot to illustrate the results.
 \end{enumerate}
+
+\hypertarget{class-activity-25}{%
+\chapter{Class Activity 25}\label{class-activity-25}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse) }
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(factoextra)}
+\FunctionTok{library}\NormalTok{(janitor)}
+\FunctionTok{library}\NormalTok{(broom)}
+
+\NormalTok{select }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\NormalTok{select}
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_stata}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{10}\NormalTok{))}
+
+
+\NormalTok{standardize }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{FALSE}\NormalTok{) \{}
+\NormalTok{  (x }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na.rm =}\NormalTok{ na.rm)) }\SpecialCharTok{/} \FunctionTok{sd}\NormalTok{(x, }\AttributeTok{na.rm =}\NormalTok{ na.rm)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-10}{%
+\section{Group Activity 1}\label{group-activity-1-10}}
+
+Let's look at the following data tibble that randomly creates some \texttt{x-} and \texttt{y-} coordinates around the cluster centroids that we just saw in class. Please answer the questions based on this data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+
+\NormalTok{my\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{X1 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{120}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{7.33}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{)),}
+  \AttributeTok{X2 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{120}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{6.33}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{))}
+\NormalTok{)}
+
+\NormalTok{my\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-2-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  How many clusters can you identify in the data?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:} Answers may vary
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Fit \texttt{kmeans} algorithm to the data picking the number of clusters you previously identified in part \texttt{a}.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{res\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =} \DecValTok{3}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Add the cluster association to the dataset and make a scatter plot color-coded by the cluster association.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{augment}\NormalTok{(res\_kmeans, }\AttributeTok{data =}\NormalTok{ my\_df) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2, }\AttributeTok{color =}\NormalTok{ .cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-4-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Repeat parts \texttt{b-c} for identifying more number of clusters than what you picked in part a.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{res\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =} \DecValTok{5}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{augment}\NormalTok{(res\_kmeans, }\AttributeTok{data =}\NormalTok{ my\_df) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2, }\AttributeTok{color =}\NormalTok{ .cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-6-1}
+
+\hypertarget{group-activity-2-9}{%
+\section{Group Activity 2}\label{group-activity-2-9}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Aggregate the total within sum of squares for each k to the data table \texttt{multi\_kmeans}.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{k =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{model =}\NormalTok{ purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(k, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =}\NormalTok{ .x, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)),}
+    \AttributeTok{tot.withinss =}\NormalTok{ purrr}\SpecialCharTok{::}\FunctionTok{map\_dbl}\NormalTok{(model, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{glance}\NormalTok{(.x)}\SpecialCharTok{$}\NormalTok{tot.withinss)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Make an elbow plot modifying the code below:
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_kmeans }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(k, tot.withinss)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{15}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-8-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  After picking an optimal number of cluster, use the in-built function in the \texttt{factoextra} package to construct the final cluster plot.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{kmeans.final }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\DecValTok{5}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\FunctionTok{fviz\_cluster}\NormalTok{(kmeans.final, }\AttributeTok{data =}\NormalTok{ my\_df, }\AttributeTok{ggtheme =} \FunctionTok{theme\_stata}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-9-1}
+
+\hypertarget{extra-group-activity-3}{%
+\section{(Extra) Group Activity 3}\label{extra-group-activity-3}}
+
+Let's look at the following data tibble that randomly creates some \texttt{x-} and \texttt{y-} coordinates around the cluster centroids. Now, there are more clusters and the data points are closer to each other. Please repeat the analysis as seen above to find the optimal number of clusters.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+
+\NormalTok{my\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{X1 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{240}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{7.33}\NormalTok{, }\FloatTok{2.5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{)),}
+  \AttributeTok{X2 =} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{240}\NormalTok{, }\AttributeTok{mean =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{6.33}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{, }\FloatTok{3.5}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\FloatTok{5.5}\NormalTok{), }\AttributeTok{each =} \DecValTok{40}\NormalTok{))}
+\NormalTok{)}
+
+\NormalTok{my\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-10-1}
 
   \bibliography{book.bib,packages.bib}
 
