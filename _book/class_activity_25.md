@@ -195,7 +195,7 @@ my_df %>%
 <img src="class_activity_25_files/figure-epub3/unnamed-chunk-10-1.png" width="100%" />
 
 
-<!--
+
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -285,4 +285,4 @@ fviz_cluster(kmeans.final, data = my_df, ggtheme = theme_stata())
 <img src="class_activity_25_files/figure-epub3/unnamed-chunk-17-1.png" width="100%" />
 
 
--->
+

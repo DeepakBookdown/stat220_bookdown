@@ -120,7 +120,7 @@
 
 \title{Stat 220 Introduction to Data Science}
 \author{Deepak Bastola}
-\date{2024-02-29}
+\date{2024-03-05}
 
 \begin{document}
 \maketitle
@@ -4217,7 +4217,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] 28.79595
+[1] 28.80979
 \end{verbatim}
 
 \hypertarget{c.-creating-date-time-objects-create-a-date-time-object-for-march-15-2020-133000-using-make_datetime.}{%
@@ -4650,30 +4650,30 @@ Click for answer
 # A tibble: 24 x 5
       id grade region        score grade_fac
    <int> <chr> <chr>         <dbl> <fct>    
- 1     2 9th   Africa           51 9th      
- 2     3 9th   Africa           57 9th      
- 3     6 9th   Asia             50 9th      
- 4     8 9th   Africa           70 9th      
- 5    10 9th   Europe           59 9th      
- 6    12 9th   Asia             74 9th      
- 7    13 9th   North America    76 9th      
- 8    14 9th   Europe          100 9th      
- 9    17 9th   North America    86 9th      
-10    20 9th   South America    69 9th      
-11    24 9th   Asia             92 9th      
-12     1 10th  Asia             75 10th     
-13     4 10th  Middle East      85 10th     
-14     5 10th  Africa           77 10th     
-15     9 10th  Asia             82 10th     
-16    11 10th  Europe           53 10th     
-17    15 10th  North America    99 10th     
-18    19 10th  Africa           97 10th     
-19    23 10th  Asia             89 10th     
-20     7 11th  Europe           53 11th     
-21    16 11th  Asia             84 11th     
-22    18 11th  Asia             55 11th     
-23    21 11th  Europe           86 11th     
-24    22 11th  South America    91 11th     
+ 1     1 9th   Middle East      58 9th      
+ 2     7 9th   South America    66 9th      
+ 3     9 9th   North America    60 9th      
+ 4    11 9th   Europe           67 9th      
+ 5    14 9th   Middle East      67 9th      
+ 6    19 9th   South America    51 9th      
+ 7    21 9th   North America    63 9th      
+ 8    23 9th   Asia             50 9th      
+ 9     2 10th  North America    55 10th     
+10     5 10th  North America    55 10th     
+11    16 10th  Asia             96 10th     
+12    18 10th  South America    51 10th     
+13    22 10th  Asia             56 10th     
+14     3 11th  North America    54 11th     
+15     4 11th  Middle East      80 11th     
+16     6 11th  Africa           59 11th     
+17     8 11th  Asia             64 11th     
+18    10 11th  Asia             67 11th     
+19    12 11th  Africa           55 11th     
+20    13 11th  Africa           89 11th     
+21    15 11th  Africa           98 11th     
+22    17 11th  South America    54 11th     
+23    20 11th  Europe           76 11th     
+24    24 11th  Middle East      81 11th     
 \end{verbatim}
 
 \hypertarget{b.-create-a-new-column-region_fac-by-converting-the-region-column-into-a-factor.-collapse-the-region_fac-levels-into-three-categories-americas-emea-and-asia.-count-the-number-of-students-in-each-collapsed-region-category.}{%
@@ -4700,9 +4700,9 @@ Click for answer
 # A tibble: 3 x 2
   region_collapsed     n
   <fct>            <int>
-1 EMEA                11
-2 Asia                 8
-3 Americas             5
+1 EMEA                10
+2 Asia                 5
+3 Americas             9
 \end{verbatim}
 
 \hypertarget{c.-create-a-new-column-grade_infreq-that-is-a-copy-of-the-grade_fac-column.-reorder-the-levels-of-grade_infreq-based-on-their-frequency-in-the-dataset.-print-the-levels-of-grade_infreq-to-check-the-ordering.}{%
@@ -4723,7 +4723,7 @@ Click for answer
 \end{Shaded}
 
 \begin{verbatim}
-[1] "9th"  "10th" "11th"
+[1] "11th" "9th"  "10th"
 \end{verbatim}
 
 \hypertarget{d.-create-a-new-column-grade_lumped-by-lumping-the-least-frequent-level-of-the-grade_fac-column-into-an-others-category.-count-the-number-of-students-in-each-of-the-categories-of-the-grade_lumped-column.}{%
@@ -4746,7 +4746,7 @@ Click for answer
 # A tibble: 2 x 2
   grade_lumped     n
   <fct>        <int>
-1 9th             11
+1 11th            11
 2 Others          13
 \end{verbatim}
 
@@ -6622,7 +6622,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.806   0.110  50.832 
+  3.707   0.092  35.426 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6658,7 +6658,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  3.692   0.121  39.192 
+  3.755   0.084  41.934 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6757,7 +6757,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.508   0.065   8.663 
+  1.466   0.064   8.523 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6806,7 +6806,7 @@ Click for answer
 
 \begin{verbatim}
    user  system elapsed 
-  1.580   0.033   8.835 
+  1.443   0.092   8.444 
 \end{verbatim}
 
 \begin{Shaded}
@@ -8133,14 +8133,14 @@ Click for answer
 # Groups:   .metric [4]
   neighbors .metric  .estimator  mean     n std_err .config 
       <dbl> <chr>    <chr>      <dbl> <int>   <dbl> <chr>   
-1        23 accuracy binary     0.751    10  0.0301 Preproc~
-2        24 accuracy binary     0.751    10  0.0301 Preproc~
-3        17 ppv      binary     0.783    10  0.0225 Preproc~
-4        18 ppv      binary     0.783    10  0.0225 Preproc~
-5        37 sens     binary     0.891    10  0.0310 Preproc~
-6        38 sens     binary     0.891    10  0.0310 Preproc~
-7        17 spec     binary     0.5      10  0.0562 Preproc~
-8        18 spec     binary     0.5      10  0.0562 Preproc~
+1        25 accuracy binary     0.770    10  0.0269 Preproc~
+2        26 accuracy binary     0.770    10  0.0269 Preproc~
+3        15 ppv      binary     0.793    10  0.0228 Preproc~
+4        16 ppv      binary     0.793    10  0.0228 Preproc~
+5        39 sens     binary     0.919    10  0.0201 Preproc~
+6        40 sens     binary     0.919    10  0.0201 Preproc~
+7         3 spec     binary     0.548    10  0.0423 Preproc~
+8         4 spec     binary     0.548    10  0.0423 Preproc~
 \end{verbatim}
 
 \hypertarget{e.-visualization-plot-the-cross-validation-results-to-determine-the-optimal-k-value-comparing-different-performance-metrics-visually.}{%
@@ -8595,6 +8595,567 @@ Let's look at the following data tibble that randomly creates some \texttt{x-} a
 \end{Shaded}
 
 \includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-10-1}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  How many clusters can you identify in the data?
+\end{enumerate}
+
+Answer: Answers may vary!
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Fit \texttt{kmeans} algorithm to the data picking the number of clusters you previously identified in part a.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{res\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =} \DecValTok{6}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Add the cluster association to the dataset and make a scatter plot color-coded by the cluster association.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{augment}\NormalTok{(res\_kmeans, }\AttributeTok{data =}\NormalTok{ my\_df) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2, }\AttributeTok{color =}\NormalTok{ .cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-12-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Repeat parts b-c for identifying more number of clusters than what you picked in part a.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{res\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =} \DecValTok{8}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{augment}\NormalTok{(res\_kmeans, }\AttributeTok{data =}\NormalTok{ my\_df) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(X1, X2, }\AttributeTok{color =}\NormalTok{ .cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-14-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Aggregate the total within sum of squares for each k to the data table \texttt{multi\_kmeans.}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_kmeans }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{k =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{15}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{model =}\NormalTok{ purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(k, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\AttributeTok{centers =}\NormalTok{ .x, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)),}
+    \AttributeTok{tot.withinss =}\NormalTok{ purrr}\SpecialCharTok{::}\FunctionTok{map\_dbl}\NormalTok{(model, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{glance}\NormalTok{(.x)}\SpecialCharTok{$}\NormalTok{tot.withinss)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Make an elbow plot modifying the code below:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_kmeans }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(k, tot.withinss)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-16-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  After picking an optimal number of cluster, use the in-built function in the \texttt{factoextra} package to construct the final cluster plot.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{kmeans.final }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(my\_df, }\DecValTok{8}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\FunctionTok{fviz\_cluster}\NormalTok{(kmeans.final, }\AttributeTok{data =}\NormalTok{ my\_df, }\AttributeTok{ggtheme =} \FunctionTok{theme\_stata}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_25_files/figure-latex/unnamed-chunk-17-1}
+
+\hypertarget{class-activity-27}{%
+\chapter{Class Activity 27}\label{class-activity-27}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the necessary libraries}
+\FunctionTok{library}\NormalTok{(tidyverse) }
+\FunctionTok{library}\NormalTok{(tidymodels)}
+\FunctionTok{library}\NormalTok{(yardstick) }\CommentTok{\# extra package for getting metrics}
+\FunctionTok{library}\NormalTok{(parsnip) }\CommentTok{\# tidy interface to models}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(vip)}
+\FunctionTok{library}\NormalTok{(ISLR)}
+\FunctionTok{library}\NormalTok{(rpart.plot)}
+\FunctionTok{library}\NormalTok{(janitor)}
+\FunctionTok{library}\NormalTok{(ranger)}
+
+
+\NormalTok{fire }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/deepbas/statdatasets/main/Algeriafires.csv"}\NormalTok{)}
+\NormalTok{fire }\OtherTok{\textless{}{-}}\NormalTok{ fire }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{drop\_na}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate\_at}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{13}\NormalTok{), as.numeric) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{classes =} \FunctionTok{as.factor}\NormalTok{(classes)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{year, }\SpecialCharTok{{-}}\NormalTok{day, }\SpecialCharTok{{-}}\NormalTok{month)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{group-activity-1-11}{%
+\section{Group Activity 1}\label{group-activity-1-11}}
+
+Use the \texttt{fire} data set and predict fire using all available predictor variables.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Split the dataset into training and test set by the proportion \(80\) to \(20\), create a 10 fold cross validation object, and a recipe t0 preprocess the data.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{314}\NormalTok{) }\CommentTok{\# Remember to always set your seed.}
+
+\NormalTok{fire\_split }\OtherTok{\textless{}{-}} \FunctionTok{initial\_split}\NormalTok{(fire, }\AttributeTok{prop =} \FloatTok{0.80}\NormalTok{,  }\AttributeTok{strata =}\NormalTok{ classes)}
+
+\NormalTok{fire\_train }\OtherTok{\textless{}{-}}\NormalTok{ fire\_split }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{training}\NormalTok{()}
+\NormalTok{fire\_test }\OtherTok{\textless{}{-}}\NormalTok{ fire\_split }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{testing}\NormalTok{()}
+
+\CommentTok{\# Create folds for cross validation on the training data set}
+
+\NormalTok{fire\_folds }\OtherTok{\textless{}{-}} \FunctionTok{vfold\_cv}\NormalTok{(fire\_train, }\AttributeTok{v =} \DecValTok{10}\NormalTok{, }\AttributeTok{strata =}\NormalTok{ classes)}
+
+\NormalTok{fire\_recipe }\OtherTok{\textless{}{-}} \FunctionTok{recipe}\NormalTok{(classes }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ fire\_train) }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{step\_dummy}\NormalTok{(}\FunctionTok{all\_nominal}\NormalTok{(), }\SpecialCharTok{{-}}\FunctionTok{all\_outcomes}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{prep}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Specify a decision tree classification model with \texttt{rpart} computational engine. Prepare the model for tuning (i.e., fitting with a range of parameters for validation purposes).
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_model }\OtherTok{\textless{}{-}} \FunctionTok{decision\_tree}\NormalTok{(}\AttributeTok{cost\_complexity =} \FunctionTok{tune}\NormalTok{(),}
+                            \AttributeTok{tree\_depth =} \FunctionTok{tune}\NormalTok{(),}
+                            \AttributeTok{min\_n =} \FunctionTok{tune}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%} 
+              \FunctionTok{set\_engine}\NormalTok{(}\StringTok{\textquotesingle{}rpart\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+              \FunctionTok{set\_mode}\NormalTok{(}\StringTok{\textquotesingle{}classification\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Combine the model and recipe into a workflow to easily manage the model-building process.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_workflow }\OtherTok{\textless{}{-}} \FunctionTok{workflow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+                 \FunctionTok{add\_model}\NormalTok{(tree\_model) }\SpecialCharTok{\%\textgreater{}\%} 
+                 \FunctionTok{add\_recipe}\NormalTok{(fire\_recipe)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Create a grid of hyper-parameter values to test
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_grid }\OtherTok{\textless{}{-}} \FunctionTok{grid\_random}\NormalTok{(}\FunctionTok{cost\_complexity}\NormalTok{(),}
+                          \FunctionTok{tree\_depth}\NormalTok{(),}
+                          \FunctionTok{min\_n}\NormalTok{(), }
+                          \AttributeTok{size =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Tune decision tree workflow
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{314}\NormalTok{)}
+\NormalTok{tree\_tuning }\OtherTok{\textless{}{-}}\NormalTok{ tree\_workflow }\SpecialCharTok{\%\textgreater{}\%} 
+               \FunctionTok{tune\_grid}\NormalTok{(}\AttributeTok{resamples =}\NormalTok{ fire\_folds,}
+                         \AttributeTok{grid =}\NormalTok{ tree\_grid)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Show the best models under the accuracy criteria.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_tuning }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{show\_best}\NormalTok{(}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 5 x 9
+  cost_complexity tree_depth min_n .metric  .estimator  mean
+            <dbl>      <int> <int> <chr>    <chr>      <dbl>
+1        6.85e- 8          9     2 accuracy binary     0.974
+2        1.37e-10          6     3 accuracy binary     0.968
+3        5.22e- 3          3    18 accuracy binary     0.963
+4        1.03e- 4         11    26 accuracy binary     0.963
+5        5.77e- 3          6    33 accuracy binary     0.963
+# i 3 more variables: n <int>, std_err <dbl>, .config <chr>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Select best model based on accuracy and view the best parameters. What is the corresponding tree depth?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{best\_tree }\OtherTok{\textless{}{-}}\NormalTok{ tree\_tuning }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{select\_best}\NormalTok{(}\AttributeTok{metric =} \StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{)}
+\NormalTok{best\_tree}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 4
+  cost_complexity tree_depth min_n .config              
+            <dbl>      <int> <int> <chr>                
+1    0.0000000685          9     2 Preprocessor1_Model04
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Using the \texttt{best\_tree} object, finalize the workflow using \texttt{finalize\_workflow()}.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{final\_tree\_workflow }\OtherTok{\textless{}{-}}\NormalTok{ tree\_workflow }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{finalize\_workflow}\NormalTok{(best\_tree)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  Fit the train data to the finalized workflow and extract the fit.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_wf\_fit }\OtherTok{\textless{}{-}}\NormalTok{ final\_tree\_workflow }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{fit}\NormalTok{(}\AttributeTok{data =}\NormalTok{ fire\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree\_fit }\OtherTok{\textless{}{-}}\NormalTok{ tree\_wf\_fit }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{extract\_fit\_parsnip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Construct variable importance plot. What can you conclude from this plot?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vip}\NormalTok{(tree\_fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_27_files/figure-latex/unnamed-chunk-12-1}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  Construct a decision tree. What do you see in this plot?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rpart.plot}\NormalTok{(tree\_fit}\SpecialCharTok{$}\NormalTok{fit, }\AttributeTok{roundint =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_27_files/figure-latex/unnamed-chunk-13-1}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-activity-2-10}{%
+\section{Group Activity 2}\label{group-activity-2-10}}
+
+Use the \texttt{fire} dataset again to fit a random forest algorithm to produce optimal set of variables used in predicting fire. Use the same recipe defined earlier in group activity 1.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Specify a decision tree classification model with \texttt{ranger} computational engine and \texttt{impurity} for variable importance. Prepare the model for tuning (i.e., fitting with a range of parameters for validation purposes).
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rf\_model }\OtherTok{\textless{}{-}} \FunctionTok{rand\_forest}\NormalTok{(}\AttributeTok{mtry =} \FunctionTok{tune}\NormalTok{(),}
+                        \AttributeTok{trees =} \FunctionTok{tune}\NormalTok{(),}
+                        \AttributeTok{min\_n =} \FunctionTok{tune}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%} 
+            \FunctionTok{set\_engine}\NormalTok{(}\StringTok{\textquotesingle{}ranger\textquotesingle{}}\NormalTok{, }\AttributeTok{importance =} \StringTok{"impurity"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+            \FunctionTok{set\_mode}\NormalTok{(}\StringTok{\textquotesingle{}classification\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Define a workflow object.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rf\_workflow }\OtherTok{\textless{}{-}} \FunctionTok{workflow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+               \FunctionTok{add\_model}\NormalTok{(rf\_model) }\SpecialCharTok{\%\textgreater{}\%} 
+               \FunctionTok{add\_recipe}\NormalTok{(fire\_recipe)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Create a grid of hyper parameter values to test. Try different values.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rf\_grid }\OtherTok{\textless{}{-}} \FunctionTok{grid\_random}\NormalTok{(}\FunctionTok{mtry}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{range\_set}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{8}\NormalTok{)),}
+                       \FunctionTok{trees}\NormalTok{(),}
+                       \FunctionTok{min\_n}\NormalTok{(),}
+                       \AttributeTok{size =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Tune the random forest workflow. Use the \texttt{fire\_folds} object from before with 10 cross validation routine.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rf\_tuning }\OtherTok{\textless{}{-}}\NormalTok{ rf\_workflow }\SpecialCharTok{\%\textgreater{}\%} 
+             \FunctionTok{tune\_grid}\NormalTok{(}\AttributeTok{resamples =}\NormalTok{ fire\_folds,}
+                       \AttributeTok{grid =}\NormalTok{ rf\_grid)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Select the best model based on accuracy.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{best\_rf }\OtherTok{\textless{}{-}}\NormalTok{ rf\_tuning }\SpecialCharTok{\%\textgreater{}\%} 
+           \FunctionTok{select\_best}\NormalTok{(}\AttributeTok{metric =} \StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Finalize the workflow, fit the model, and extract the parameters.
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{final\_rf\_workflow }\OtherTok{\textless{}{-}}\NormalTok{ rf\_workflow }\SpecialCharTok{\%\textgreater{}\%} 
+                     \FunctionTok{finalize\_workflow}\NormalTok{(best\_rf)}
+\NormalTok{rf\_wf\_fit }\OtherTok{\textless{}{-}}\NormalTok{ final\_rf\_workflow }\SpecialCharTok{\%\textgreater{}\%} 
+             \FunctionTok{fit}\NormalTok{(}\AttributeTok{data =}\NormalTok{ fire\_train)}
+\NormalTok{rf\_fit }\OtherTok{\textless{}{-}}\NormalTok{ rf\_wf\_fit }\SpecialCharTok{\%\textgreater{}\%} 
+          \FunctionTok{extract\_fit\_parsnip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Plot the variable importance. What can you conclude from this plot?
+\end{enumerate}
+
+Click for answer
+
+\emph{Answer:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vip}\NormalTok{(rf\_fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=1\linewidth]{class_activity_27_files/figure-latex/unnamed-chunk-20-1}
 
   \bibliography{book.bib,packages.bib}
 

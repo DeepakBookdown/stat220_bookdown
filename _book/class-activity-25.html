@@ -103,6 +103,7 @@
 <li><a class="" href="class-activity-23.html"><span class="header-section-number">29</span> Class Activity 23</a></li>
 <li><a class="" href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></li>
 <li><a class="active" href="class-activity-25.html"><span class="header-section-number">31</span> Class Activity 25</a></li>
+<li><a class="" href="class-activity-27.html"><span class="header-section-number">32</span> Class Activity 27</a></li>
 </ul>
 
         <div class="book-extra">
@@ -247,103 +248,72 @@ Click for answer
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">X1</span>, <span class="va">X2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-10-1.png" width="100%"></div>
-<!--
-
-<details>
-<summary class="answer">Click for answer</summary>
-*Answer:* 
-
-a. How many clusters can you identify in the data?
-
-Answer: Answers may vary!
-
-b. Fit `kmeans` algorithm to the data picking the number of clusters you previously identified in part a.
-
-
-```r
-set.seed(1234)
-res_kmeans <- kmeans(my_df, centers = 6, nstart = 25)
-```
-
-c. Add the cluster association to the dataset and make a scatter plot color-coded by the cluster association.
-
-
-
-```r
-augment(res_kmeans, data = my_df) %>%
-  ggplot(aes(X1, X2, color = .cluster)) +
-  geom_point()
-```
-
-<img src="class_activity_25_files/figure-html/unnamed-chunk-12-1.png" width="100%" />
-
-d. Repeat parts b-c for identifying more number of clusters than what you picked in part a.
-
-
-
-```r
-set.seed(1234)
-res_kmeans <- kmeans(my_df, centers = 8, nstart = 25)
-```
-
-
-
-```r
-augment(res_kmeans, data = my_df) %>%
-  ggplot(aes(X1, X2, color = .cluster)) +
-  geom_point()
-```
-
-<img src="class_activity_25_files/figure-html/unnamed-chunk-14-1.png" width="100%" />
-
-e. Aggregate the total within sum of squares for each k to the data table `multi_kmeans.`
-
-
-
-```r
-multi_kmeans <- tibble(k = 1:15) %>%
-  mutate(
-    model = purrr::map(k, ~ kmeans(my_df, centers = .x, nstart = 25)),
-    tot.withinss = purrr::map_dbl(model, ~ glance(.x)$tot.withinss)
-  )
-```
-
-</details>
-
-b. Make an elbow plot modifying the code below:
-
-
-```r
-multi_kmeans %>%
-  ggplot(aes(k, tot.withinss)) +
-  geom_point() +
-  geom_line() +
-  scale_x_continuous(breaks = 1:15)
-```
-
-<img src="class_activity_25_files/figure-html/unnamed-chunk-16-1.png" width="100%" />
-
-
-
-g. After picking an optimal number of cluster, use the in-built function in the `factoextra` package to construct the final cluster plot.
-
-
-```r
-set.seed(1234)
-kmeans.final <- kmeans(my_df, 8, nstart = 25)
-fviz_cluster(kmeans.final, data = my_df, ggtheme = theme_stata())
-```
-
-<img src="class_activity_25_files/figure-html/unnamed-chunk-17-1.png" width="100%" />
-
-
--->
+<details><summary class="answer">
+Click for answer
+</summary><p><em>Answer:</em></p>
+<ol style="list-style-type: lower-alpha">
+<li>How many clusters can you identify in the data?</li>
+</ol>
+<p>Answer: Answers may vary!</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Fit <code>kmeans</code> algorithm to the data picking the number of clusters you previously identified in part a.</li>
+</ol>
+<div class="sourceCode" id="cb536"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
+<span><span class="va">res_kmeans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="va">my_df</span>, centers <span class="op">=</span> <span class="fl">6</span>, nstart <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Add the cluster association to the dataset and make a scatter plot color-coded by the cluster association.</li>
+</ol>
+<div class="sourceCode" id="cb537"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">res_kmeans</span>, data <span class="op">=</span> <span class="va">my_df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">X1</span>, <span class="va">X2</span>, color <span class="op">=</span> <span class="va">.cluster</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-12-1.png" width="100%"></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Repeat parts b-c for identifying more number of clusters than what you picked in part a.</li>
+</ol>
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
+<span><span class="va">res_kmeans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="va">my_df</span>, centers <span class="op">=</span> <span class="fl">8</span>, nstart <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">res_kmeans</span>, data <span class="op">=</span> <span class="va">my_df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">X1</span>, <span class="va">X2</span>, color <span class="op">=</span> <span class="va">.cluster</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-14-1.png" width="100%"></div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Aggregate the total within sum of squares for each k to the data table <code>multi_kmeans.</code>
+</li>
+</ol>
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">multi_kmeans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    model <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">k</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="va">my_df</span>, centers <span class="op">=</span> <span class="va">.x</span>, nstart <span class="op">=</span> <span class="fl">25</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    tot.withinss <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">model</span>, <span class="op">~</span> <span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">$</span><span class="va">tot.withinss</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+</details><ol start="2" style="list-style-type: lower-alpha">
+<li>Make an elbow plot modifying the code below:</li>
+</ol>
+<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">multi_kmeans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">tot.withinss</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-16-1.png" width="100%"></div>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>After picking an optimal number of cluster, use the in-built function in the <code>factoextra</code> package to construct the final cluster plot.</li>
+</ol>
+<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
+<span><span class="va">kmeans.final</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="va">my_df</span>, <span class="fl">8</span>, nstart <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/factoextra/man/fviz_cluster.html">fviz_cluster</a></span><span class="op">(</span><span class="va">kmeans.final</span>, data <span class="op">=</span> <span class="va">my_df</span>, ggtheme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_stata.html">theme_stata</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="class_activity_25_files/figure-html/unnamed-chunk-17-1.png" width="100%"></div>
 
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="class-activity-24.html"><span class="header-section-number">30</span> Class Activity 24</a></div>
-<div class="empty"></div>
+<div class="next"><a href="class-activity-27.html"><span class="header-section-number">32</span> Class Activity 27</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -368,7 +338,7 @@ fviz_cluster(kmeans.final, data = my_df, ggtheme = theme_stata())
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-02-29.</p>
+    <p>"<strong>Stat 220 Introduction to Data Science</strong>" was written by Deepak Bastola. It was last built on 2024-03-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

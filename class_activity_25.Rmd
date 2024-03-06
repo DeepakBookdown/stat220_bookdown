@@ -173,7 +173,7 @@ my_df %>%
 ```
 
 
-<!--
+
 
 <details>
 <summary class="answer">Click for answer</summary>
@@ -249,4 +249,4 @@ fviz_cluster(kmeans.final, data = my_df, ggtheme = theme_stata())
 ```
 
 
--->
+
